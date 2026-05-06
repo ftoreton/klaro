@@ -1,0 +1,321 @@
+{
+  "version": "1.0.0",
+  "metier_id": "gros-oeuvre",
+  "nom": "Maçonnerie et gros œuvre léger",
+  "norme_reference": "DTU 20.1 (maçonnerie) / DTU 21 (béton) / DTU 13.1 (fondations)",
+  "disclaimer": "Klaro est un outil d'aide et de recommandation. Tout ce qui touche à la structure d'un bâtiment (murs porteurs, fondations, poutres) nécessite l'avis d'un bureau d'études structure ou d'un architecte. Ne modifiez jamais un mur porteur sans étude préalable.",
+  "avertissement_structure": "ATTENTION : Ce module concerne le gros œuvre LÉGER (cloisons maçonnées, dalles de surface, petites ouvertures non porteuses). Pour tout élément structurel (mur porteur, reprise en sous-œuvre, poteau, fondation profonde), un bureau d'études est OBLIGATOIRE.",
+  "regles_metier": {
+    "sechage_beton": "Résistance minimale atteinte à 28 jours — ne charger qu'après 7 jours minimum à 20°C",
+    "sechage_maconnerie": "Attendre 24h minimum entre chaque rang de parpaings, 48h avant tout chargement",
+    "aplomb_tolerance": "Tolérance ±5mm/m en aplomb, ±3mm/m en niveau pour une maçonnerie neuve",
+    "ferraillage": "Obligatoire pour toute dalle ou semelle — jamais de béton sans armature sous charge",
+    "mur_porteur": "JAMAIS modifier, percer ou ouvrir un mur porteur sans étude de structure et permis si nécessaire",
+    "protection_intemperies": "Protéger le béton frais des gelées (< 5°C) et du soleil direct (évaporation trop rapide)"
+  },
+  "alertes_bloquantes": [
+    {
+      "id": "alerte-01",
+      "message": "Impossible de couler le béton sans avoir préparé le sol, posé le film polyane et installé le ferraillage",
+      "taches_concernees": ["go-09", "go-10"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-02",
+      "message": "Temps de séchage béton non respecté — charger une dalle avant 7 jours peut provoquer un effondrement",
+      "taches_concernees": ["go-12"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-03",
+      "message": "Impossible de monter un mur sans que le niveau de la première assise soit parfaitement horizontal",
+      "taches_concernees": ["go-14"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-04",
+      "message": "Toute ouverture dans un mur nécessite un linteau — jamais de dépose de parpaings au-dessus d'une ouverture sans linteau en place",
+      "taches_concernees": ["go-17"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-05",
+      "message": "Vérifier la nature du mur (porteur ou non) AVANT toute intervention — un mur porteur mal traité peut provoquer l'effondrement partiel du bâtiment",
+      "taches_concernees": ["go-02"],
+      "niveau": "critique"
+    }
+  ],
+  "score_chantier": {
+    "calcul": "taches_validees / total_taches * 100",
+    "penalites": [
+      { "condition": "ferraillage_omis", "malus": 30 },
+      { "condition": "sechage_non_respecte", "malus": 25 },
+      { "condition": "linteau_absent", "malus": 25 },
+      { "condition": "tache_critique_non_traitee", "malus": 10 },
+      { "condition": "alerte_bloquante_active", "malus": 15 }
+    ],
+    "risques_signales": [
+      "Risque fissure structurelle si ferraillage insuffisant",
+      "Risque humidité ascensionnelle si film polyane absent",
+      "Risque effondrement partiel si mur porteur modifié sans étude",
+      "Risque fissuration si séchage béton non respecté",
+      "Risque pont thermique si chaînage non isolé"
+    ]
+  },
+  "taches": [
+    {
+      "id": "go-01",
+      "ordre": 1,
+      "titre": "Définir le projet maçonnerie",
+      "critique": false,
+      "explication": "Définissez précisément ce que vous allez faire : créer un mur, ouvrir une baie, couler une dalle, construire une marche ou un seuil. Chaque type de travail a ses contraintes et ses autorisations.",
+      "recommandation_klaro": "Vérifiez si votre projet nécessite un permis de construire ou une déclaration préalable de travaux (création de surface, modification de façade, ouverture en façade). Renseignez-vous en mairie avant de commencer — une construction sans autorisation peut être démolie à vos frais.",
+      "erreur_frequente": "Se lancer dans des travaux de maçonnerie sans vérifier les autorisations nécessaires. Une extension de 5m² ou la création d'une fenêtre en façade peut nécessiter une déclaration préalable — et l'absence de déclaration est sanctionnable.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": []
+    },
+    {
+      "id": "go-02",
+      "ordre": 2,
+      "titre": "Vérifier la faisabilité structurelle",
+      "critique": true,
+      "explication": "Avant toute intervention sur un mur existant, déterminez s'il est porteur ou non. Un mur porteur qui soutient le plancher ou la charpente ne peut jamais être ouvert ou abattu sans étude de structure.",
+      "recommandation_klaro": "Pour savoir si un mur est porteur : regardez sa position par rapport aux autres niveaux (un mur porteur est souvent dans l'alignement d'un mur du niveau inférieur), son épaisseur (≥ 20cm souvent porteur en maçonnerie), et la direction des solives du plancher (elles reposent sur les murs porteurs). En cas de doute : bureau d'études obligatoire.",
+      "erreur_frequente": "Abattre un mur parce qu'il \"fait intérieur\" sans vérifier sa nature porteuse. Des bâtiments entiers se sont partiellement effondrés suite à ce type d'erreur. Si vous avez le moindre doute, arrêtez et consultez un professionnel.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-01"]
+    },
+    {
+      "id": "go-03",
+      "ordre": 3,
+      "titre": "Prendre les mesures précises",
+      "critique": false,
+      "explication": "Mesurez avec précision toutes les dimensions de votre projet : longueur et hauteur des murs, dimensions des ouvertures, surface des dalles. Ces mesures déterminent les quantités de matériaux à commander.",
+      "recommandation_klaro": "Pour calculer les parpaings : surface du mur (m²) × 10 = nombre de parpaings 20×20×50cm, avec 10% de pertes. Pour le béton : longueur × largeur × épaisseur (en m) = volume en m³. Commandez toujours 10 à 15% de plus — un retour en magasin pour quelques parpaings fait perdre une demi-journée.",
+      "erreur_frequente": "Calculer juste les quantités nécessaires sans marge. La livraison suivante prend 2 jours, les parpaings de rattrapage ne sont jamais exactement du même lot (légère variation de teinte), et le chantier s'arrête.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-02"]
+    },
+    {
+      "id": "go-04",
+      "ordre": 4,
+      "titre": "Tracer l'implantation au sol",
+      "critique": true,
+      "explication": "Reportez au sol la position exacte de tous les éléments à construire (murs, dalles, semelles) avant de commencer quoi que ce soit. Ce tracé est la référence de tout le chantier.",
+      "recommandation_klaro": "Utilisez un cordeau à craie et un niveau laser rotatif pour tracer des lignes précises. Vérifiez l'équerrage avec la règle du 3-4-5 (côtés de 3, 4 et 5 unités forment un angle droit parfait). Reportez le tracé sur plusieurs points fixes (murs existants, plots) pour pouvoir le repositionner si les marques s'effacent.",
+      "erreur_frequente": "Tracer à l'approximation ou en utilisant un mur existant comme référence sans vérifier qu'il est droit. Un mur de maçonnerie existant peut être hors d'aplomb de 3 à 5cm — prendre cette référence décale tout le projet.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-03"]
+    },
+    {
+      "id": "go-05",
+      "ordre": 5,
+      "titre": "Vérifier les niveaux et alignements",
+      "critique": true,
+      "explication": "Vérifiez que tous les points de départ de votre construction sont au même niveau. Un départ de niveau incorrect se répercute sur toute la hauteur du mur et les finitions deviennent impossibles.",
+      "recommandation_klaro": "Utilisez un niveau laser ou un niveau à eau (tuyau transparent rempli d'eau) pour reporter le niveau de référence sur tous les murs existants. Matérialisez ce niveau de référence avec un trait fin sur tous les murs — il vous servira de repère tout au long du chantier.",
+      "erreur_frequente": "Commencer à construire depuis un sol irrégulier sans avoir établi un niveau de référence unique. Chaque mur démarre à une hauteur différente et les raccordements (plancher, toiture) deviennent un casse-tête impossible.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-04"]
+    },
+    {
+      "id": "go-06",
+      "ordre": 6,
+      "titre": "Préparer le terrain et le support",
+      "critique": true,
+      "explication": "Le sol support doit être stable, propre et débarrassé de toute matière organique (végétaux, humus, ancienne remblais non compactés) avant de commencer toute construction.",
+      "recommandation_klaro": "Décapez sur au moins 20 à 30cm de profondeur pour atteindre un sol stable (portance suffisante). Vérifiez que le sol ne se dérobe pas sous une pression du pied. En cas de sol meuble ou remblayé : compactage obligatoire par couches de 20cm avec une plaque vibrante.",
+      "erreur_frequente": "Couler une dalle directement sur un sol non préparé avec de l'humus ou des remblais récents non tassés. Le tassement différentiel qui suit provoque des fissures dans la dalle et les murs dans les mois qui suivent.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-05"]
+    },
+    {
+      "id": "go-07",
+      "ordre": 7,
+      "titre": "Décaisser si nécessaire",
+      "critique": false,
+      "explication": "Le décaissement consiste à creuser le sol jusqu'à la profondeur prévue pour la fondation ou le hérisson. La profondeur dépend du type de construction et des conditions du sol.",
+      "recommandation_klaro": "Profondeur minimale pour une dalle de sol intérieur : 30cm sous le niveau fini (10cm hérisson + 10cm polyane + 10cm dalle). Pour une semelle de mur extérieur : hors-gel obligatoire — 50 à 80cm selon la région. Conservez la terre décaissée à portée pour le remblayage des tranchées de fondation.",
+      "erreur_frequente": "Ne pas descendre assez profond pour les fondations extérieures. Une semelle de fondation posée au-dessus de la limite hors-gel gonfle avec le gel et fissure tout le mur au-dessus.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-06"]
+    },
+    {
+      "id": "go-08",
+      "ordre": 8,
+      "titre": "Mettre en place le hérisson (gravier)",
+      "critique": false,
+      "explication": "Le hérisson est une couche de graviers (15 à 20cm) posée sous la dalle de sol. Il permet le drainage de l'humidité du sol vers les bords et évite les remontées capillaires.",
+      "recommandation_klaro": "Utilisez du gravier propre 20/40mm (pas de sable — il capte l'humidité). Étalez uniformément sur 15 à 20cm et tassez à la plaque vibrante. Vérifiez la planéité avec une règle de 2m — un hérisson plan donne une dalle plane. L'épaisseur doit être régulière sur toute la surface.",
+      "erreur_frequente": "Poser le film polyane directement sur le sol sans hérisson. Sans drainage, la vapeur d'eau du sol pousse sur le film, le perce avec le temps, et l'humidité monte dans la dalle et les murs.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-07"]
+    },
+    {
+      "id": "go-09",
+      "ordre": 9,
+      "titre": "Poser le film polyane (anti-humidité)",
+      "critique": true,
+      "explication": "Le film polyane (polyéthylène 200µm minimum) est la barrière anti-humidité entre le sol et la dalle. Il empêche les remontées d'humidité capillaire dans le béton.",
+      "recommandation_klaro": "Remontez le film de 20cm sur les murs périphériques — cette surépaisseur sera coupée ras après la dalle. Les lés se chevauchent de 30cm minimum et se scotchent avec du ruban adhésif armé. Attention aux perforations : un seul trou suffit à créer un pont capillaire.",
+      "erreur_frequente": "Ne pas faire remonter le polyane sur les murs périphériques. L'humidité contourne le film par les bords et monte dans les murs — c'est le chemin le plus court et il est quasi-systématiquement emprunté.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-08"]
+    },
+    {
+      "id": "go-10",
+      "ordre": 10,
+      "titre": "Installer le ferraillage",
+      "critique": true,
+      "explication": "Le ferraillage (treillis soudé ou armatures HA) est l'armature en acier qui donne au béton sa résistance à la traction et empêche les fissures de propagation. Sans ferraillage, le béton casse sous les charges.",
+      "recommandation_klaro": "Pour une dalle de sol intérieur : treillis soudé ST25 (mailles 15×15cm, fil de 5mm) posé sur des cales béton de 3cm pour le noyer au centre de la dalle. Les lés de treillis se chevauchent d'une maille. Pour les semelles de fondation : armatures HA8 longitudinales + étriers HA6 tous les 30cm.",
+      "erreur_frequente": "Poser le treillis directement sur le polyane au sol. Le béton coulé en dessous est nul en résistance — le treillis doit être au centre ou dans le tiers inférieur de la dalle. Sans les cales d'enrobage, l'acier n'est pas protégé de l'oxydation.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-09"]
+    },
+    {
+      "id": "go-11",
+      "ordre": 11,
+      "titre": "Couler la dalle ou la semelle",
+      "critique": true,
+      "explication": "Le coulage du béton doit être réalisé en une seule fois sur chaque zone, sans interruption. Un joint de reprise dans une dalle affaiblit structurellement la liaison.",
+      "recommandation_klaro": "Pour une dalle > 10m² : louez une bétonnière ou commandez du béton prêt à l'emploi (BPE). Le béton prêt à l'emploi est dosé, malaxé et livré — la résistance est garantie. Pour le coulage manuel : dosage standard C25 (350kg de ciment pour 800kg de sable et 1200kg de gravier). Vibrez le béton à la règle vibrante ou à la tige pour chasser les bulles d'air.",
+      "recommandation_klaro": "Commandez le BPE avec une résistance C25/30 minimum pour une dalle de sol. Prévoyez la pompe à béton si l'accès est difficile — le BPE livré sans pompe doit être gâché dans les 90 minutes après la livraison.",
+      "erreur_frequente": "Gâcher le béton avec trop d'eau pour le rendre plus fluide et plus facile à étaler. Un béton trop mouillé perd 30 à 40% de sa résistance finale et se fissure en surface en séchant. La fluidité s'obtient par des adjuvants plastifiants, pas par l'eau.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-10"]
+    },
+    {
+      "id": "go-12",
+      "ordre": 12,
+      "titre": "Respecter les temps de séchage du béton",
+      "critique": true,
+      "explication": "Le béton gagne en résistance progressivement sur 28 jours. Charger une dalle trop tôt ou y travailler avant le délai provoque des fissures et une perte de résistance définitive.",
+      "recommandation_klaro": "Délais à respecter : 24h pour une circulation à pied légère, 7 jours pour des charges légères (matériaux, brouette), 28 jours pour la résistance nominale et les charges lourdes. Par temps chaud et sec, humidifiez la dalle les 3 premiers jours (cure humide) pour éviter les fissures de retrait de surface.",
+      "erreur_frequente": "Commencer à monter les murs sur une semelle coulée la veille. La semelle n'a pas encore de résistance suffisante — les premières rangées de parpaings enfoncent légèrement et la construction démarre hors niveau.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-11"]
+    },
+    {
+      "id": "go-13",
+      "ordre": 13,
+      "titre": "Monter les murs (parpaings ou briques)",
+      "critique": false,
+      "explication": "La montée des murs se fait rang par rang, avec des joints de mortier de 1 à 1,5cm d'épaisseur. Chaque rang doit être vérifié en niveau et en aplomb avant de passer au suivant.",
+      "recommandation_klaro": "Commencez par les angles — montez les 3 à 4 premiers rangs des angles en premier, vérifiez-les à l'aplomb, puis tendez un cordeau entre les angles pour guider les rangs intermédiaires. Le mortier de pose doit avoir la consistance d'une pâte ferme — ni trop liquide (le parpaing coule), ni trop sec (mauvaise adhérence).",
+      "erreur_frequente": "Poser les parpaings sans cordeau guide entre les angles. Les rangs dérivent progressivement et le mur est en S quand on prend du recul — impossible à rattraper sans tout démonter.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-12"]
+    },
+    {
+      "id": "go-14",
+      "ordre": 14,
+      "titre": "Vérifier aplomb et niveau à chaque rang",
+      "critique": true,
+      "explication": "Un mur hors d'aplomb de 1cm sur 2m de hauteur est visible à l'œil nu et impossible à rattraper en finition. Le contrôle doit être systématique, pas ponctuel.",
+      "recommandation_klaro": "Vérifiez le niveau sur chaque rang (pas un sur deux). Utilisez un niveau de 1m minimum — un niveau de 30cm amplifie les erreurs. L'aplomb se vérifie côté extérieur et côté intérieur. Un fil à plomb tendu depuis le haut du mur sur toute la hauteur est le test le plus fiable.",
+      "erreur_frequente": "Vérifier le niveau et l'aplomb uniquement tous les 3 ou 4 rangs. Les erreurs s'accumulent silencieusement — 2mm par rang sur 10 rangs font 20mm de dérive totale, visible et irrattrapable.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-13"]
+    },
+    {
+      "id": "go-15",
+      "ordre": 15,
+      "titre": "Réaliser les chaînages horizontaux et verticaux",
+      "critique": true,
+      "explication": "Les chaînages sont des poutres en béton armé qui ceinturent le mur horizontalement (en tête de mur et à chaque plancher) et verticalement (aux angles et aux extrémités). Ils rendent le mur monolithique et résistant aux efforts.",
+      "recommandation_klaro": "Chaînage horizontal : coffré avec des demi-parpaings en U (blocs à coffrage incorporé), ferraillé avec 4 barres HA10 + étriers HA6 tous les 25cm, puis bétonné. Chaînage vertical aux angles : remplissez les alvéoles des parpaings avec du béton de chaînage et une barre HA10 centrée. Ne jamais scier un chaînage pour faire passer un tuyau.",
+      "erreur_frequente": "Réaliser les chaînages sans ferraillage en pensant que le béton seul suffit. Le béton non armé est fragile en traction et en flexion — un chaînage sans acier est structurellement nul et ne remplit pas sa fonction.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-14"]
+    },
+    {
+      "id": "go-16",
+      "ordre": 16,
+      "titre": "Créer les ouvertures (portes et fenêtres)",
+      "critique": true,
+      "explication": "Une ouverture dans un mur maçonné affaiblit localement la structure — elle doit être dimensionnée et encadrée correctement pour redistribuer les charges autour de l'ouverture.",
+      "recommandation_klaro": "La largeur maximale d'une ouverture dans un mur non porteur en parpaings est généralement de 2,5m sans calcul de structure. Au-delà, ou dans un mur porteur, un bureau d'études est obligatoire. Prévoyez des montants renforcés (parpaings pleins ou chaînages verticaux) de chaque côté de l'ouverture.",
+      "erreur_frequente": "Créer une ouverture en retirant des parpaings sans prévoir de soutènement provisoire ni de linteau permanent. Même dans un mur non porteur, les parpaings au-dessus de l'ouverture sont en porte-à-faux et peuvent s'effondrer.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-15"]
+    },
+    {
+      "id": "go-17",
+      "ordre": 17,
+      "titre": "Poser les linteaux",
+      "critique": true,
+      "explication": "Le linteau est la poutre qui reprend le poids du mur au-dessus d'une ouverture (porte, fenêtre). Sans linteau, le mur s'effondre progressivement dans l'ouverture.",
+      "recommandation_klaro": "Le linteau doit reposer sur au moins 20cm de chaque côté de l'ouverture (appui minimum). Choisissez un linteau préfabriqué béton armé (plus simple) ou un linteau en U à bétonner sur place. La portée du linteau = largeur de l'ouverture + 2 × 20cm d'appui. Ne jamais poser un linteau non adapté à la largeur de l'ouverture.",
+      "erreur_frequente": "Utiliser un linteau trop court ou trop léger pour la portée. Un linteau qui fléchit crée des fissures en diagonale de part et d'autre de l'ouverture — les fameux \"fissures en aile d'oiseau\" visibles dans beaucoup de maisons.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-16"]
+    },
+    {
+      "id": "go-18",
+      "ordre": 18,
+      "titre": "Réaliser les seuils et appuis",
+      "critique": false,
+      "explication": "Le seuil (bas de porte) et l'appui de fenêtre (bas de fenêtre extérieure) protègent les ouvertures de l'eau et finissent proprement la jonction entre le mur et la menuiserie.",
+      "recommandation_klaro": "Le seuil de porte doit être légèrement incliné vers l'extérieur (1 à 2%) pour évacuer l'eau de pluie. L'appui de fenêtre doit déborder de 3cm par rapport à la façade et être muni d'un larmier en sous-face (gorge ou nervure qui empêche l'eau de longer le mur). Matériaux : pierre reconstituée, béton préfabriqué ou pierre naturelle.",
+      "erreur_frequente": "Poser un seuil ou un appui de fenêtre sans pente ou sans larmier. L'eau ruisselle sur la façade plutôt que de tomber loin du mur — taches, infiltrations et efflorescences en quelques années.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-17"]
+    },
+    {
+      "id": "go-19",
+      "ordre": 19,
+      "titre": "Réaliser les reprises d'enduit et scellements",
+      "critique": false,
+      "explication": "Chaque jonction entre le mur neuf et les murs existants, les passages de gaines et les scellements doivent être repris avec du mortier pour garantir la continuité structurelle et l'étanchéité.",
+      "recommandation_klaro": "Les jonctions entre maçonnerie neuve et ancienne : posez un treillis armé (bande de renfort) sur toute la longueur de la jonction avant l'enduit pour éviter les fissures de reprise. Pour les scellements de pièces métalliques (gonds, sabots) : mortier de scellement ou résine époxy selon la charge à reprendre.",
+      "erreur_frequente": "Enduire directement par-dessus une jonction entre mur neuf et mur ancien sans renfort de treillis. La fissure de retrait thermique se crée systématiquement à cet endroit — visible dans les 6 à 12 mois.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-18"]
+    },
+    {
+      "id": "go-20",
+      "ordre": 20,
+      "titre": "Traiter les ponts thermiques",
+      "critique": false,
+      "explication": "Les chaînages béton armé créent des ponts thermiques (zones froides) qui traversent l'isolation et consomment de l'énergie inutilement. Ils doivent être traités pour les constructions à performance énergétique.",
+      "recommandation_klaro": "Solution simple et efficace : posez des blocs de coffrage en polystyrène expansé (type Unibloc ou équivalent) côté extérieur du chaînage avant le bétonnage. Ils restent en place définitivement et isolent le chaînage. Autre solution : bardage extérieur ou isolation par l'extérieur (ITE) qui noie les ponts thermiques.",
+      "erreur_frequente": "Réaliser tous les chaînages en béton armé nu sans traitement thermique dans une construction neuve ou une rénovation performante. Les ponts thermiques aux chaînages peuvent représenter 10 à 15% des pertes de chaleur totales du bâtiment.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-15"]
+    },
+    {
+      "id": "go-21",
+      "ordre": 21,
+      "titre": "Vérifier la planéité finale",
+      "critique": true,
+      "explication": "Une fois le gros œuvre terminé, contrôlez la planéité de toutes les surfaces qui recevront un enduit, un doublage ou une finition. Corriger maintenant coûte peu — corriger après l'enduit coûte beaucoup.",
+      "recommandation_klaro": "Passez une règle de 2m sur chaque face de mur dans plusieurs directions. L'écart toléré sous règle de 2m pour une maçonnerie brute est de 10mm — au-delà, un ragréage ou un gobetis est nécessaire avant l'enduit de finition. Photographiez les zones à corriger avec les mesures notées.",
+      "erreur_frequente": "Enduire directement sur un mur très irrégulier sans correction préalable. L'enduit de finition ne peut absorber que 15 à 20mm d'écart — au-delà, il craque et se décolle en quelques cycles gel/dégel.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-19"]
+    },
+    {
+      "id": "go-22",
+      "ordre": 22,
+      "titre": "Nettoyer et sécuriser la zone",
+      "critique": false,
+      "explication": "Le chantier de maçonnerie génère des déchets volumineux et dangereux : gravats, morceaux de béton, barres d'acier coupées, sacs de ciment vides. La zone doit être nettoyée et sécurisée entre chaque phase.",
+      "recommandation_klaro": "Prévoyez une benne à gravats dès le début du chantier — les gravats de maçonnerie pèsent lourd et ne se transportent pas en voiture. Balayez les restes de mortier sec avant qu'ils durcissent sur le sol (1h après la pose). Sécurisez les fouilles et tranchées avec des barrières si des personnes circulent à proximité.",
+      "erreur_frequente": "Laisser s'accumuler les gravats et déchets de chantier sans évacuation régulière. En fin de chantier, le volume est considérable, la benne est pleine, et il faut en commander une deuxième en urgence — avec les délais et coûts qui vont avec.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-21"]
+    },
+    {
+      "id": "go-23",
+      "ordre": 23,
+      "titre": "Respecter les délais avant travaux suivants",
+      "critique": true,
+      "explication": "La maçonnerie et le béton continuent de sécher et de prendre de la résistance plusieurs semaines après la pose. Les corps de métier suivants (placo, chape, enduit) doivent respecter ces délais.",
+      "recommandation_klaro": "Délais minimaux avant travaux suivants : enduit intérieur sur maçonnerie neuve = 3 semaines. Chape sur dalle béton = 28 jours. Placo sur mur neuf = 4 semaines (risque de moisissures si l'humidité de construction n'est pas évacuée). Aérez le chantier autant que possible pour accélérer le séchage.",
+      "erreur_frequente": "Poser du placo sur des murs de maçonnerie fraîche encore humides. L'humidité de construction migre dans le placo, fait gonfler les joints et crée des moisissures dans la cloison — tout est à refaire.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["go-22"]
+    }
+  ]
+}
