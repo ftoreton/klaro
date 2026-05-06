@@ -1140,6 +1140,850 @@
           ]
         }
       ]
+    },
+    {
+      "id": "points_singuliers_zinguerie",
+      "label": "Points singuliers & zinguerie",
+      "tasks": [
+        {
+          "id": "toit_057",
+          "title": "Faîtage : ventilé (sec) ou scellé au mortier",
+          "phase": "points_singuliers_zinguerie",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["tuiles_terre_cuite", "tuiles_beton", "ardoises"],
+          "applies_to_age": ["all"],
+          "explanation": "Faîtage ventilé : tuiles ou ardoises de faîtage clipsées sur closoir ventilé (sec, moderne, OBLIGATOIRE avec écran HPV ou combles isolés). Faîtage scellé : mortier traditionnel (combles non isolés uniquement).",
+          "klaro_recommendation": "Faîtage ventilé : closoir en aluminium ou polypropylène souple, fixé sur le faîtage, tuiles posées dessus avec crochets. Permet sortie d'air des combles. Scellé : mortier de chaux + sable + ciment, dosage 1:3, étalé sur le faîtage. Faîtage = source majeure de fuites si mal réalisé. Photographiez le détail.",
+          "common_mistake": "Faîtage scellé au mortier sur combles isolés — pas de ventilation, condensation, charpente humide.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["toit_055"],
+          "norm_reference": "DTU 40.21 à 40.29 + DTU 40.11",
+          "control_questions": [
+            { "question": "Faîtage ventilé si combles isolés ou écran HPV ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_058",
+          "title": "Traiter les rives latérales",
+          "phase": "points_singuliers_zinguerie",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Rives latérales (bords de pignon) : tuiles à rabat (clipsées sur le pignon), bardelis (rang vertical) ou bandeau zinc. Empêchent l'eau de passer sous la couverture par les côtés.",
+          "klaro_recommendation": "Tuiles à rabat = solution moderne et propre (kit fabricant). Bardelis = rang vertical de tuiles scellées (technique traditionnelle). Bandeau zinc = profilé en L formant gouttière en pied de pignon. Choix selon esthétique et zone (ABF impose souvent une technique précise).",
+          "common_mistake": "Pose sans tuile de rive — vent qui passe sous la couverture par le pignon, arrachement progressif des tuiles latérales.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_055"],
+          "norm_reference": "DTU 40.21 à 40.29",
+          "control_questions": []
+        },
+        {
+          "id": "toit_059",
+          "title": "Noues : zinc ou plomb, point de fuite majeur",
+          "phase": "points_singuliers_zinguerie",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Noue = jonction de deux versants formant angle rentrant (concentre l'eau). Réalisée en zinc ou plomb, en pose ouverte (visible) ou fermée (sous tuiles). POINT DE FUITE MAJEUR.",
+          "klaro_recommendation": "Noue ouverte : bande de zinc 33-50 cm de large, formée à pli central, agrafée sur les chevrons. Tuiles découpées au taillant en suivant le pli. Noue fermée : tuiles emboîtées sur la noue (esthétique mais plus délicate). Pente de noue ≥ 30%. Pose obligatoire par couvreur expérimenté : 80% des fuites de toiture viennent des noues mal exécutées.",
+          "common_mistake": "Pose noue par amateur — pli mal formé, agrafage insuffisant, infiltrations majeures dans les semaines suivantes.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["decennale_pro"],
+          "photo_required_before_validation": true,
+          "depends_on": ["toit_055"],
+          "norm_reference": "DTU 40.41 + DTU 40.21 à 40.29",
+          "control_questions": [
+            { "question": "Noues réalisées par couvreur qualifié et photographiées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_060",
+          "title": "Traiter les arêtiers",
+          "phase": "points_singuliers_zinguerie",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Arêtier = jonction de deux versants en angle sortant (toit à 4 pans, par exemple). Recouvrement par tuiles d'arêtier ou bande métallique selon technique.",
+          "klaro_recommendation": "Tuiles d'arêtier : tuiles spéciales clipsées sur l'angle (kit fabricant). Bande métallique zinc : profilé formé sur mesure, agrafé. Étanchéité par closoir ventilé ou mortier selon stratégie générale. Pose plus simple que les noues mais à soigner aux jonctions avec faîtage et rives.",
+          "common_mistake": "Pas de raccord soigné entre arêtier et faîtage — point de fuite à la jonction.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_055"],
+          "norm_reference": "DTU 40.21 à 40.29",
+          "control_questions": []
+        },
+        {
+          "id": "toit_061",
+          "title": "Solins de cheminée : plomb plissé + bandes + retours",
+          "phase": "points_singuliers_zinguerie",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Étanchéité autour de la souche de cheminée : plomb plissé (épouse les irrégularités), bandes de raccordement haute et basse, retours latéraux. POINT DE FUITE MAJEUR.",
+          "klaro_recommendation": "Plomb plissé en rouleau (3-5 kg/m²), façonné à la massette en bois. Bande basse (en pied de souche, sous les tuiles). Bandes latérales en escalier (sous chaque rang de tuiles). Bande haute (au-dessus de la souche, dessus les tuiles, formant tablier). Mastic spécifique cheminée pour étanchéifier le contact souche-plomb. Pose obligatoire par couvreur expérimenté.",
+          "common_mistake": "Mastic seul autour de la cheminée — fissuration en quelques années, infiltrations massives.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["decennale_pro"],
+          "photo_required_before_validation": true,
+          "depends_on": ["toit_055"],
+          "norm_reference": "DTU 40.41 + DTU 24.1",
+          "control_questions": [
+            { "question": "Solins cheminée plomb plissé + bandes + retours réalisés et photographiés ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_062",
+          "title": "Fenêtres de toit avec kit étanchéité",
+          "phase": "points_singuliers_zinguerie",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Fenêtres de toit (Velux ou équivalent) avec kit d'étanchéité spécifique fourni par le fabricant. Raccordements pourtour soignés (collerettes, bandes adhésives, couvre-joints).",
+          "klaro_recommendation": "Toujours utiliser le KIT FABRICANT correspondant à la fenêtre et au type de couverture. Pose selon notice : cadre fixe sur les chevrons, écran sous toiture rabattu et étanchéifié, tuiles découpées en escalier autour. Couvre-joints encastrés en haut (déflecteur d'eau) et latéralement. Kit isolation périphérique pour combles aménagés.",
+          "common_mistake": "Pose Velux sans kit fabricant ('on improvise') — infiltrations dans les premiers mois, garantie refusée.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["toit_055"],
+          "norm_reference": "DTU 40.x + Notices fabricants Velux/Roto/Fakro",
+          "control_questions": [
+            { "question": "Fenêtres de toit posées avec kit étanchéité fabricant ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_063",
+          "title": "Sorties de toit (VMC, ventilation, conduits) avec embase",
+          "phase": "points_singuliers_zinguerie",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Sorties de toit pour VMC, ventilation primaire plomberie, conduits divers : embase étanche spécifique selon Ø du conduit. Mise en œuvre identique au principe des fenêtres de toit.",
+          "klaro_recommendation": "Embase préfabriquée adaptée au type de couverture (tuile ronde, tuile plate, ardoise) et au Ø du conduit. Écran sous toiture rabattu et étanchéifié sur l'embase. Tuiles découpées proprement autour. Manchons d'étanchéité aux jonctions. Photographiez chaque sortie après pose.",
+          "common_mistake": "Étanchéifier au mastic seul autour d'un conduit — fissuration, infiltrations.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["toit_055"],
+          "norm_reference": "DTU 40.x + DTU 68.3",
+          "control_questions": [
+            { "question": "Sorties de toit avec embase étanche adaptée et photographiées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_064",
+          "title": "Gouttières avec pente 5 mm/m vers descente",
+          "phase": "points_singuliers_zinguerie",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Gouttières fixées en pente régulière vers la descente : 5 mm/m minimum. Naissances (raccord gouttière-descente), talons (bouts de gouttière), dauphins (tuyau coudé en pied).",
+          "klaro_recommendation": "Crochets de gouttière espacés de 50 cm maximum, fixés sur les chevrons ou la rive. Pente vérifiée au cordeau. Joints d'étanchéité aux raccords entre éléments (mastic spécial gouttière). Section adaptée à la surface de toit (Ø 100-125 mm courant maison individuelle). Évacuez vers réseau eaux pluviales ou récupération.",
+          "common_mistake": "Gouttière sans pente — eau qui stagne, débordement aux moindres orages, gel et déformation l'hiver.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 40.5",
+          "control_questions": [
+            { "question": "Gouttières posées avec pente ≥ 5 mm/m vers descente ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_065",
+          "title": "Descentes d'eau pluviale et raccordement réseau",
+          "phase": "points_singuliers_zinguerie",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Descentes d'eau pluviale en pied de gouttière, raccordées au réseau (collecteur, regard, infiltration ou récupération). Pas de rejet sauvage sur la voirie ou chez le voisin.",
+          "klaro_recommendation": "Descente Ø 80-100 mm courant. Coudes en pied (dauphin) pour orienter vers regard. Raccordement à : collecteur des eaux pluviales (zone urbaine), puisard d'infiltration (terrain perméable + réglementation locale), récupérateur d'eau de pluie (cuve enterrée ou aérienne). Vérifiez les obligations locales (parfois infiltration imposée).",
+          "common_mistake": "Évacuer la pluie en bas du mur sans regard — infiltrations dans les fondations, humidité dans la cave.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_064"],
+          "norm_reference": "DTU 40.5 + Code environnement",
+          "control_questions": []
+        },
+        {
+          "id": "toit_066",
+          "title": "Panneaux photovoltaïques : surimposition vs intégration",
+          "phase": "points_singuliers_zinguerie",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Surimposition (kit standardisé sur tuiles, lames d'air en sous-face) vs intégration au bâti (panneaux remplaçant les tuiles). Surimposition recommandée : moins de fuites possibles.",
+          "klaro_recommendation": "Surimposition : crochets ou rails fixés sur les chevrons à travers les tuiles, panneaux clipsés. Étanchéité par embases spécifiques aux points de fixation. Lame d'air sous panneaux pour ventilation. Intégration : panneaux deviennent la couverture, pose plus délicate, plus de risques de fuites. DP obligatoire dans les deux cas. Pose par RGE QualiPV obligatoire pour aides.",
+          "common_mistake": "Intégration au bâti par poseur non spécialisé — infiltrations en quelques années, dépose intégrale obligatoire.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Avis Techniques + RGE QualiPV",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "ventilation_toiture",
+      "label": "Ventilation de la toiture",
+      "tasks": [
+        {
+          "id": "toit_067",
+          "title": "Combles perdus : chatières, lucarnes ou grilles pignons",
+          "phase": "ventilation_toiture",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Combles perdus : ventilation pour évacuer la vapeur d'eau venant du logement et l'humidité résiduelle. Chatières, lucarnes ou grilles en pignon. Surface de ventilation : 1/500 de la surface au sol minimum.",
+          "klaro_recommendation": "Chatières (tuile ventilée) réparties en partie haute des versants (sortie d'air chaud) et basse (entrée d'air frais). Grilles en pignon : alternative simple, à protéger contre rongeurs (grillage à mailles fines). Calcul : 1 m² au sol = 20 cm² de ventilation. Sans ventilation, condensation et dégradation.",
+          "common_mistake": "Combles perdus aveugles (aucune ventilation) — humidité piégée, charpente qui pourrit progressivement.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 40.21 à 40.29 + Bonnes pratiques",
+          "control_questions": [
+            { "question": "Surface de ventilation ≥ 1/500 surface au sol (combles perdus) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_068",
+          "title": "Combles aménagés : lame d'air 2 cm + entrée/sortie",
+          "phase": "ventilation_toiture",
+          "applies_to_intervention_type": ["renovation_totale", "creation_surelevation"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Combles aménagés isolés : lame d'air 2 cm minimum entre isolant et écran sous toiture. Entrée d'air à l'égout (chatières d'égout, déflecteurs). Sortie au faîtage ventilé.",
+          "klaro_recommendation": "Continuité de la lame d'air du bas vers le haut indispensable. Déflecteurs en carton ou PVC entre chevrons à l'aplomb de la sablière (canal d'air libre). Faîtage ventilé en haut. Chatière de faîtage tous les 5-7 m si versant long. Sans circulation d'air = condensation sous la couverture.",
+          "common_mistake": "Bourrer l'isolant jusqu'aux tuiles en bouchant la lame d'air — condensation sous la couverture, charpente humide en hiver.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "CPT 3651 + DTU 45.10",
+          "control_questions": [
+            { "question": "Lame d'air 2 cm + entrée à l'égout + sortie au faîtage ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_069",
+          "title": "Vérifier l'absence d'obstruction de la ventilation",
+          "phase": "ventilation_toiture",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Inspection : chatières non bouchées par feuilles ou nids, déflecteurs en place, isolant qui ne déborde pas dans la lame d'air, grillages pignons intacts.",
+          "klaro_recommendation": "Inspection annuelle (en automne après chute des feuilles). Nettoyage des chatières (souffleur ou aspiration). Vérification que l'isolant ne s'est pas tassé/déplacé en bouchant la ventilation. Présence de nids d'oiseaux/insectes à retirer. Sans cette maintenance, ventilation inopérante.",
+          "common_mistake": "Considérer la ventilation 'posée une fois pour toutes' — feuilles mortes ou nids qui obstruent en quelques années, condensation qui apparaît.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_067"],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "securite_incendie",
+      "label": "Sécurité incendie",
+      "tasks": [
+        {
+          "id": "toit_070",
+          "title": "Hauteur de souche : 40 cm mini au-dessus du faîtage à 8 m",
+          "phase": "securite_incendie",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Souche de cheminée : hauteur minimale 40 cm au-dessus du faîtage à moins de 8 m de distance horizontale. Au-delà, hauteur réglementaire selon distance. Tirage assuré + sécurité.",
+          "klaro_recommendation": "Mesurez la hauteur de la souche par rapport au faîtage le plus proche. Distance horizontale entre souche et faîtage. Si > 8 m : la souche peut être moins haute que le faîtage (selon abaque). Si < 8 m : 40 cm minimum au-dessus. Sans hauteur suffisante : tirage compromis, refoulement des fumées dans le logement.",
+          "common_mistake": "Souche sous-dimensionnée 'pour ne pas la voir' — refoulement, mauvais tirage, risque CO.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 24.1",
+          "control_questions": [
+            { "question": "Hauteur de souche ≥ 40 cm au-dessus du faîtage à < 8 m ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_071",
+          "title": "DSF entre conduit fumée et matériaux combustibles",
+          "phase": "securite_incendie",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Distance de sécurité au feu (DSF) entre conduit de fumée et tout matériau combustible (charpente bois, isolant, lattage) selon DTU 24.1/24.2. Coffrage incombustible obligatoire si proximité.",
+          "klaro_recommendation": "DSF générale : 16 cm pour conduit isolé, 25-30 cm pour conduit non isolé. Mesure entre paroi externe du conduit et premier matériau combustible. Si non respectable : coffrage en plaques de plâtre + laine de roche A1 entre conduit et bois/isolant. Faire valider par fumiste.",
+          "common_mistake": "Charpente en contact direct avec conduit de fumée non isolé — inflammation possible en saison de chauffe intensive.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 24.1 + DTU 24.2",
+          "control_questions": [
+            { "question": "DSF respectée entre conduit et matériaux combustibles ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_072",
+          "title": "Bâtiments mitoyens : mur pare-feu en limite",
+          "phase": "securite_incendie",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Bâtiments mitoyens : mur pare-feu en limite de propriété, dépassant la couverture selon DTU. Empêche la propagation d'un incendie d'un bâtiment à l'autre.",
+          "klaro_recommendation": "Mur pare-feu = mur en maçonnerie (béton, parpaing, brique pleine) dépassant la couverture de 30-60 cm selon réglementation locale. Vérifiez en mairie. Si construction neuve adossée à un mitoyen sans pare-feu existant : étude réglementaire obligatoire. Refus possible permis si non conforme.",
+          "common_mistake": "Construire mitoyen sans vérifier la conformité du mur séparatif — non conformité ERP, refus assurance en cas de sinistre.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 20.1 + Code construction",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "controle_reception",
+      "label": "Contrôle & réception",
+      "tasks": [
+        {
+          "id": "toit_073",
+          "title": "Inspection visuelle complète à la fin du chantier",
+          "phase": "controle_reception",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Inspection à 360° depuis le sol (jumelles ou drone) : alignement des tuiles, traitement des points singuliers, état des zingueries, finitions périphérie.",
+          "klaro_recommendation": "Jumelles 8× ou 10× pour inspection précise depuis le sol. Drone si toiture grande ou complexe (~150-300 € pour relevé pro). Inspection sous tous les angles. Marquez les défauts au crayon ou par photos numérotées. Reprenez immédiatement avec l'artisan tant que l'échafaudage est en place.",
+          "common_mistake": "Considérer le chantier fini sans inspection — défauts découverts après démontage de l'échafaudage, intervention coûteuse pour reprises.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["toit_055"],
+          "norm_reference": "DTU 40.x + bonnes pratiques",
+          "control_questions": [
+            { "question": "Inspection visuelle complète réalisée et photographiée ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_074",
+          "title": "Test à l'eau (tuyau d'arrosage)",
+          "phase": "controle_reception",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Test fonctionnel : tuyau d'arrosage simulant pluie battante sur la toiture pendant 30 min minimum. Vérification simultanée à l'intérieur (combles, périphérie cheminée, fenêtres de toit, noues).",
+          "klaro_recommendation": "Une personne au sol arrose, une autre en combles inspecte. Arrosez par sections : faîtage, rampants, noues, périphérie cheminée, fenêtres de toit, rives. Cherchez : gouttes, traces humides, odeur d'humidité. Si fuite détectée : marquez l'emplacement intérieur, identifiez le défaut extérieur, reprenez immédiatement.",
+          "common_mistake": "Sauter le test et attendre la première pluie — si fuite, l'eau aura déjà fait des dégâts (placo, isolation, plancher).",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["toit_073"],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": [
+            { "question": "Test à l'eau (30 min minimum) réalisé sans fuite détectée ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_075",
+          "title": "Vérifier l'écoulement effectif des eaux pluviales",
+          "phase": "controle_reception",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Test gouttières et descentes : eau qui s'écoule librement, pas de stagnation, descentes non obstruées, raccord au réseau fonctionnel.",
+          "klaro_recommendation": "Pendant le test à l'eau : observez le remplissage des gouttières et l'écoulement vers les descentes. Vérifiez la pente (pas de stagnation au milieu). Vérifiez les naissances (raccord gouttière-descente) : pas de fuite. Au sol : eau qui sort par le dauphin, va au regard ou collecteur sans débordement.",
+          "common_mistake": "Gouttière qui stagne 'à peine' — l'hiver suivant, gel, déformation, dégradation.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_074"],
+          "norm_reference": "DTU 40.5",
+          "control_questions": [
+            { "question": "Écoulement gouttières + descentes fonctionnel sans stagnation ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_076",
+          "title": "Vérifier l'absence de tuiles fissurées ou non fixées",
+          "phase": "controle_reception",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Inspection finale : aucune tuile fissurée (stress de pose ou défaut fabricant), aucun désalignement visible, aucune tuile non fixée selon plan.",
+          "klaro_recommendation": "Inspection aux jumelles ou drone. Marquez les tuiles douteuses. Demandez à l'artisan de les remplacer (souvent 1-2% de tuiles à reprendre dans une pose neuve). Vérifiez visuellement la fixation aux rives, faîtage, égout, rampants exposés. Sans cette inspection : tuiles qui glissent au premier coup de vent.",
+          "common_mistake": "Ignorer une fissure 'minime' sur une tuile — propagation à l'usage, infiltration au prochain orage important.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_073"],
+          "norm_reference": "DTU 40.x",
+          "control_questions": []
+        },
+        {
+          "id": "toit_077",
+          "title": "Photographier les points singuliers terminés",
+          "phase": "controle_reception",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Archivage photo de tous les points singuliers terminés : solins de cheminée, noues, faîtage, fenêtres de toit, sorties de toit, raccords zinguerie. Preuve de bonne exécution.",
+          "klaro_recommendation": "Photos haute résolution depuis échafaudage (avant démontage) ou drone. Plusieurs angles par point. Date EXIF. Archivage avec dossier travaux : papier + cloud. Sert pour : assurance DO en cas de sinistre futur, vente du bien, expertise éventuelle. Sans photos, preuve impossible.",
+          "common_mistake": "Démonter l'échafaudage avant de photographier les détails — accès impossible, photos médiocres au sol.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["toit_073"],
+          "norm_reference": "Bonnes pratiques + assurance DO",
+          "control_questions": [
+            { "question": "Photos archivées de tous les points singuliers terminés ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_078",
+          "title": "Demander PV de réception + attestation décennale + fiches",
+          "phase": "controle_reception",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Documents à exiger de l'artisan : procès-verbal de réception signé (avec ou sans réserves), attestation décennale en cours de validité, fiches techniques des matériaux posés, factures détaillées.",
+          "klaro_recommendation": "PV de réception = acte juridique fondamental, démarre la garantie décennale. Signez sans réserves uniquement si tout est OK. Avec réserves : listez les défauts à reprendre + délai. Attestation décennale daté du jour des travaux, à conserver 10 ans. Fiches techniques (tuiles, écran, fixations) avec marque/référence/lot. Factures détaillées (matériaux + main d'œuvre).",
+          "common_mistake": "Signer le PV de réception sans réserves alors que des défauts existent — recours plus difficile pour la suite.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["decennale_pro"],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_073"],
+          "norm_reference": "Loi Spinetta 1978 + Code civil 1792",
+          "control_questions": [
+            { "question": "PV de réception + attestation décennale + fiches + factures archivés ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "maintenance_post_travaux",
+      "label": "Maintenance post-travaux",
+      "tasks": [
+        {
+          "id": "toit_079",
+          "title": "Programmer une inspection annuelle",
+          "phase": "maintenance_post_travaux",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Inspection annuelle de la toiture (idéalement automne) : état des tuiles, présence de mousse, gouttières, solins, faîtage. Détecter les défauts naissants avant qu'ils ne s'aggravent.",
+          "klaro_recommendation": "Inspection visuelle aux jumelles depuis le sol. Recherche : tuiles déplacées (vent), mousse / lichen (humidité, dégradation à long terme), gouttières encombrées (feuilles), solins fissurés, faîtage abîmé. Notez les anomalies dans un carnet d'entretien. Faites intervenir un couvreur pour reprises mineures avant aggravation.",
+          "common_mistake": "Inspecter uniquement après une tempête — défauts déjà aggravés, réparations plus coûteuses.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": []
+        },
+        {
+          "id": "toit_080",
+          "title": "Démoussage et antimousse tous les 5-10 ans",
+          "phase": "maintenance_post_travaux",
+          "applies_to_intervention_type": ["maintenance_nettoyage", "all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Mousse et lichen retiennent l'humidité, dégradent les tuiles et favorisent les infiltrations. Démoussage manuel ou par produit + application d'un antimousse préventif tous les 5-10 ans selon exposition.",
+          "klaro_recommendation": "Toujours par pro avec dispositif antichute (échafaudage + harnais). Démoussage manuel à la brosse ou par jet basse pression (jamais haute pression : abîme les tuiles). Application d'un produit antimousse hydrofuge en pulvérisation. Évacuation des résidus. Coût ~10-25 €/m². Refusez les démarcheurs anonymes (arnaques fréquentes).",
+          "common_mistake": "Nettoyage haute pression — granulats des tuiles arrachés, perte d'étanchéité, dégradation accélérée.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Bonnes pratiques + DTU 40.x",
+          "control_questions": []
+        },
+        {
+          "id": "toit_081",
+          "title": "Vérifier après chaque tempête, neige ou orage important",
+          "phase": "maintenance_post_travaux",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Événement climatique fort = inspection visuelle dans les 24-48h : tuiles déplacées par vent, débris sur la toiture, gouttières arrachées, descentes décalées. Détection précoce limite les infiltrations.",
+          "klaro_recommendation": "Inspection aux jumelles depuis le sol après chaque événement majeur. Si tuile manquante visible : protégez la zone côté intérieur (bassine, bâche) et appelez couvreur en urgence. Conservez les preuves (photos datées) pour assurance habitation si déclaration de sinistre nécessaire.",
+          "common_mistake": "Attendre une fuite intérieure visible — l'eau a déjà fait des dégâts importants invisibles dans la charpente / l'isolation.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": []
+        },
+        {
+          "id": "toit_082",
+          "title": "Conserver factures, attestations et photos 10 ans",
+          "phase": "maintenance_post_travaux",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Conservation OBLIGATOIRE pendant la durée de la garantie décennale (10 ans à partir de la réception). Factures, attestations, fiches techniques, PV de réception, photos.",
+          "klaro_recommendation": "Dossier 'Travaux Toiture' : papier + numérique (cloud). Documents : devis, factures, attestation décennale, attestation DO, fiches techniques, PV de réception, photos avant/pendant/après. En cas de revente : transmettez le dossier à l'acheteur (la décennale suit le bien). En cas de sinistre : ces documents conditionnent la prise en charge.",
+          "common_mistake": "Jeter les documents après les travaux — sinistre 5 ans après, impossible de prouver les conditions de pose, refus assurance.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_078"],
+          "norm_reference": "Code civil 1792 + Loi Spinetta 1978",
+          "control_questions": [
+            { "question": "Dossier complet (factures, attestations, photos) archivé pour 10 ans ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
     }
-  ]
+  ],
+  "blocking_points": [
+    {
+      "id": "block_001",
+      "message": "Pas d'intervention en toiture sans dispositif antichute (échafaudage OU ligne de vie + harnais photographié).",
+      "blocks_task_id": "toit_031",
+      "requires_task_id": "toit_012"
+    },
+    {
+      "id": "block_002",
+      "message": "Pas d'intervention en toiture seul (deux personnes minimum).",
+      "blocks_task_id": "toit_031",
+      "requires_task_id": "toit_015"
+    },
+    {
+      "id": "block_003",
+      "message": "Pas d'intervention en toiture par météo défavorable (vent > 50 km/h, pluie, gel, neige, brouillard).",
+      "blocks_task_id": "toit_031",
+      "requires_task_id": "toit_011"
+    },
+    {
+      "id": "block_004",
+      "message": "Pas d'intervention en toiture > 6 m sans pro couvreur qualifié avec décennale.",
+      "blocks_task_id": "toit_031",
+      "requires_task_id": "toit_018"
+    },
+    {
+      "id": "block_005",
+      "message": "Pas de manipulation d'amiante par un particulier — entreprise certifiée SS3/SS4 obligatoire.",
+      "blocks_task_id": "toit_030",
+      "requires_task_id": "toit_004"
+    },
+    {
+      "id": "block_006",
+      "message": "Pas de travaux si bâtiment < 1997 sans diagnostic amiante avant travaux (DAAT).",
+      "blocks_task_id": "toit_030",
+      "requires_task_id": "toit_003"
+    },
+    {
+      "id": "block_007",
+      "message": "Pas de traitement de mérule par un particulier — entreprise certifiée obligatoire.",
+      "blocks_task_id": "toit_026",
+      "requires_task_id": "toit_006"
+    },
+    {
+      "id": "block_008",
+      "message": "Pas de modification de charpente porteuse sans étude charpentier qualifié ou BET.",
+      "blocks_task_id": "toit_029",
+      "requires_task_id": "toit_024"
+    },
+    {
+      "id": "block_009",
+      "message": "Pas de couverture sans écran sous toiture continu et étanche aux jonctions.",
+      "blocks_task_id": "toit_050",
+      "requires_task_id": "toit_042"
+    },
+    {
+      "id": "block_010",
+      "message": "Pas de couverture sans ventilation sous toiture (chatières, lame d'air, faîtage ventilé).",
+      "blocks_task_id": "toit_073",
+      "requires_task_id": "toit_067"
+    },
+    {
+      "id": "block_011",
+      "message": "Pas de fixation insuffisante en zone climatique exposée (zone 4 ou site exposé = fixation 100%).",
+      "blocks_task_id": "toit_073",
+      "requires_task_id": "toit_055"
+    },
+    {
+      "id": "block_012",
+      "message": "Pas de pose de tuiles sur une pente inférieure à la pente minimale du fabricant.",
+      "blocks_task_id": "toit_050",
+      "requires_task_id": "toit_007"
+    },
+    {
+      "id": "block_013",
+      "message": "Pas de modification d'aspect (matériau, couleur, fenêtres de toit, panneaux) sans déclaration préalable.",
+      "blocks_task_id": "toit_031",
+      "requires_task_id": "toit_019"
+    },
+    {
+      "id": "block_014",
+      "message": "Pas de travaux en périmètre ABF sans accord de l'Architecte des Bâtiments de France.",
+      "blocks_task_id": "toit_031",
+      "requires_task_id": "toit_020"
+    },
+    {
+      "id": "block_015",
+      "message": "Pas de travaux structurels sans assurance dommage-ouvrage souscrite avant chantier.",
+      "blocks_task_id": "toit_029",
+      "requires_task_id": "toit_022"
+    },
+    {
+      "id": "block_016",
+      "message": "Pas de pose de zinc à joint debout ou de membrane d'étanchéité terrasse sans pro qualifié avec décennale.",
+      "blocks_task_id": "toit_073",
+      "requires_task_id": "toit_052"
+    },
+    {
+      "id": "block_017",
+      "message": "Pas de noue, solin de cheminée ou raccord bâclé — pro qualifié obligatoire et photo requise.",
+      "blocks_task_id": "toit_073",
+      "requires_task_id": "toit_059"
+    },
+    {
+      "id": "block_018",
+      "message": "Pas de validation finale sans test à l'eau ou inspection après pluie réelle.",
+      "blocks_task_id": "toit_078",
+      "requires_task_id": "toit_074"
+    }
+  ],
+  "scoring": {
+    "progression_percent": {
+      "formula": "validated_tasks / total_tasks * 100",
+      "total_tasks": 82,
+      "filtered_by": "applies_to_intervention_type INCLUDES intervention_type AND applies_to_couverture_type INCLUDES couverture_type AND applies_to_age INCLUDES age"
+    },
+    "safety_score": {
+      "base": 100,
+      "description": "Score sécurité (FORTEMENT pondéré : chute = première cause de mortalité)",
+      "penalties": [
+        {
+          "condition": "Dispositif antichute non en place ou non photographié (toit_012/013 non validées)",
+          "malus": 50,
+          "category": "critique_bloquant"
+        },
+        {
+          "condition": "Travail seul (toit_015 non validée)",
+          "malus": 50,
+          "category": "critique_bloquant"
+        },
+        {
+          "condition": "Météo défavorable non vérifiée (toit_011 non validée)",
+          "malus": 40,
+          "category": "critique_bloquant"
+        },
+        {
+          "condition": "Amiante détecté et entreprise non certifiée (toit_004 non validée)",
+          "malus": 50,
+          "category": "critique_bloquant",
+          "applies_to_age": ["avant_1997"]
+        },
+        {
+          "condition": "Diagnostic amiante absent si bâtiment < 1997 (toit_003 non validée)",
+          "malus": 40,
+          "category": "critique_bloquant",
+          "applies_to_age": ["avant_1997"]
+        },
+        {
+          "condition": "Mérule non traitée par entreprise certifiée (toit_006 non validée)",
+          "malus": 40,
+          "category": "critique_bloquant"
+        },
+        {
+          "condition": "Charpente porteuse modifiée sans BET (toit_024 non validée)",
+          "malus": 40,
+          "category": "critique_bloquant",
+          "applies_to_intervention_type": ["creation_surelevation", "renovation_totale"]
+        },
+        {
+          "condition": "EPI absents ou incomplets (toit_016 non validée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Zone au sol non balisée (toit_017 non validée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Intervention > 6 m sans pro qualifié (toit_018 non validée)",
+          "malus": 30,
+          "category": "critique"
+        }
+      ]
+    },
+    "structural_compliance_score": {
+      "description": "Conformité structurelle : charpente diagnostiquée, BET si applicable, autorisations, ABF",
+      "components": [
+        { "id": "diagnostic_charpente", "weight": 25, "validates_if": "toit_005 validated" },
+        { "id": "etude_bet", "weight": 25, "validates_if": "toit_024 validated OR intervention_type NOT IN ['creation_surelevation','renovation_totale']" },
+        { "id": "autorisation_urbanisme", "weight": 20, "validates_if": "toit_019 validated OR no_authorization_required" },
+        { "id": "abf", "weight": 15, "validates_if": "toit_020 validated OR not_in_abf_perimeter" },
+        { "id": "assurance_do", "weight": 15, "validates_if": "toit_022 validated OR intervention_type NOT IN ['renovation_totale','creation_surelevation']" }
+      ]
+    },
+    "watertightness_score": {
+      "description": "Étanchéité : écran continu, points singuliers traités, test à l'eau réalisé",
+      "components": [
+        { "id": "ecran_continu", "weight": 20, "validates_if": "toit_040 validated AND toit_042 validated" },
+        { "id": "noues", "weight": 20, "validates_if": "toit_059 validated" },
+        { "id": "solins_cheminee", "weight": 20, "validates_if": "toit_061 validated" },
+        { "id": "fenetres_toit", "weight": 10, "validates_if": "toit_062 validated OR no_velux" },
+        { "id": "sorties_toit", "weight": 10, "validates_if": "toit_063 validated" },
+        { "id": "test_eau", "weight": 20, "validates_if": "toit_074 validated" }
+      ]
+    },
+    "ventilation_score": {
+      "description": "Ventilation sous toiture : chatières, lame d'air, faîtage ventilé, non obstruée",
+      "components": [
+        { "id": "ventilation_combles", "weight": 40, "validates_if": "toit_067 validated OR toit_068 validated" },
+        { "id": "lame_air", "weight": 30, "validates_if": "toit_041 validated OR toit_068 validated" },
+        { "id": "faitage_ventile", "weight": 20, "validates_if": "toit_057 validated" },
+        { "id": "non_obstruction", "weight": 10, "validates_if": "toit_069 validated" }
+      ]
+    },
+    "fire_safety_score": {
+      "description": "Sécurité incendie : DSF cheminée, hauteur souche, mur pare-feu mitoyen",
+      "components": [
+        { "id": "hauteur_souche", "weight": 35, "validates_if": "toit_070 validated" },
+        { "id": "dsf_conduit", "weight": 35, "validates_if": "toit_071 validated" },
+        { "id": "mur_parefeu", "weight": 30, "validates_if": "toit_072 validated OR no_mitoyen" }
+      ]
+    },
+    "documents_attached_score": {
+      "description": "Pourcentage des justificatifs requis effectivement uploadés",
+      "required_documents": [
+        { "type": "diagnostic_amiante", "required_if": "age == 'avant_1997'" },
+        { "type": "entreprise_certifiee_amiante", "required_if": "amiante_detected" },
+        { "type": "diagnostic_charpente", "required_if": "intervention_type IN ['renovation_totale','creation_surelevation']" },
+        { "type": "entreprise_certifiee_merule", "required_if": "merule_detected" },
+        { "type": "etude_bet", "required_if": "intervention_type IN ['creation_surelevation'] OR modification_charpente_porteuse" },
+        { "type": "autorisation_urbanisme", "required_if": "modification_aspect OR creation_surface" },
+        { "type": "assurance_do", "required_if": "intervention_type IN ['renovation_totale','creation_surelevation']" },
+        { "type": "decennale_pro", "required_if": "intervention_pro" },
+        { "type": "dispositif_antichute_photo", "required_if": "intervention_en_hauteur" },
+        { "type": "meteo_favorable", "required_if": "intervention_en_hauteur" }
+      ],
+      "formula": "documents_attached / documents_required * 100"
+    },
+    "critical_alerts": [
+      {
+        "id": "alert_chute",
+        "message": "Dispositif antichute absent ou non photographié — risque de chute mortelle.",
+        "triggered_if": "toit_012 not validated AND toit_013 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_seul",
+        "message": "Travail seul sur toiture — interdiction absolue, secours impossibles en cas d'accident.",
+        "triggered_if": "toit_015 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_meteo",
+        "message": "Météo non vérifiée ou défavorable — risque de chute amplifié, intervention interdite.",
+        "triggered_if": "toit_011 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_amiante",
+        "message": "Amiante non diagnostiquée ou manipulée par non-certifié — exposition mortelle, responsabilité pénale.",
+        "triggered_if": "(toit_003 not validated AND age == 'avant_1997') OR (toit_004 not validated AND amiante_detected)",
+        "level": "danger"
+      },
+      {
+        "id": "alert_merule",
+        "message": "Mérule non traitée par entreprise certifiée — propagation à tout le bâtiment.",
+        "triggered_if": "toit_006 not validated AND merule_detected",
+        "level": "danger"
+      },
+      {
+        "id": "alert_charpente",
+        "message": "Charpente porteuse modifiée sans étude BET — risque d'effondrement, responsabilité pénale.",
+        "triggered_if": "toit_024 not validated AND intervention_type IN ['creation_surelevation','renovation_totale']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_pro_6m",
+        "message": "Intervention > 6 m sans pro couvreur qualifié — danger majeur + malfaçons probables.",
+        "triggered_if": "toit_018 not validated AND hauteur_chute > 6",
+        "level": "danger"
+      },
+      {
+        "id": "alert_ecran_discontinu",
+        "message": "Écran sous toiture discontinu ou jonctions non étanches — infiltrations garanties.",
+        "triggered_if": "toit_040 not validated OR toit_042 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_noues",
+        "message": "Noues bâclées — point de fuite majeur, infiltrations à venir.",
+        "triggered_if": "toit_059 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_solins",
+        "message": "Solins de cheminée bâclés — point de fuite majeur, infiltrations massives.",
+        "triggered_if": "toit_061 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_fixations",
+        "message": "Fixations insuffisantes en zone exposée — tuiles arrachées au premier coup de vent.",
+        "triggered_if": "toit_055 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_pente",
+        "message": "Pente inférieure à la pente minimale du matériau — infiltrations garanties, garantie refusée.",
+        "triggered_if": "toit_007 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_ventilation",
+        "message": "Ventilation sous toiture absente ou obstruée — condensation, charpente humide, dégradation.",
+        "triggered_if": "(toit_067 not validated AND toit_068 not validated) OR toit_069 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_test_eau",
+        "message": "Test à l'eau non réalisé en réception — défauts non détectés, dégâts au premier orage.",
+        "triggered_if": "toit_074 not validated AND intervention_type IN ['renovation_totale','renovation_partielle','creation_surelevation']",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_pv_decennale",
+        "message": "PV de réception ou attestation décennale absents — recours impossible en cas de sinistre.",
+        "triggered_if": "toit_078 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_dsf",
+        "message": "DSF conduit de fumée non respectée — risque incendie en saison de chauffe.",
+        "triggered_if": "toit_071 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_souche",
+        "message": "Hauteur de souche insuffisante — refoulement des fumées, risque CO.",
+        "triggered_if": "toit_070 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_assurance",
+        "message": "Assurance DO absente avant chantier — pas de préfinancement en cas de sinistre décennal.",
+        "triggered_if": "toit_022 not validated AND intervention_type IN ['renovation_totale','creation_surelevation']",
+        "level": "danger"
+      }
+    ]
+  }
 }
