@@ -1,0 +1,308 @@
+{
+  "version": "1.0.0",
+  "metier_id": "ventilation",
+  "nom": "Ventilation et VMC",
+  "norme_reference": "DTU 68.3 (ventilation mécanique) / Arrêté du 24/03/1982 / RE2020",
+  "disclaimer": "Klaro est un outil d'aide et de recommandation. La ventilation est réglementée — un logement sans ventilation réglementaire est non-conforme et non-assurable. En cas de doute sur le type de système à installer, faites appel à un professionnel certifié.",
+  "regles_metier": {
+    "principe_circulation_air": "L'air circule des pièces sèches (séjour, chambres) vers les pièces humides (cuisine, salle de bain, WC) — jamais l'inverse",
+    "entrees_air_obligatoires": "Obligatoires dans toutes les pièces principales (séjour, chambres) — intégrées dans les menuiseries ou en traversée de mur",
+    "bouches_extraction": "Obligatoires dans toutes les pièces humides : cuisine, salle de bain, WC, buanderie",
+    "longueur_max_gaines": "Limiter à 10m par bouche en simple flux, 5m de longueur droite équivalente recommandée — chaque coude à 90° équivaut à 1,5m de perte de charge",
+    "debit_minimal_reglementaire": "Cuisine : 75 à 135 m³/h selon équipement. Salle de bain : 15 m³/h. WC : 15 m³/h. Ces débits sont réglementaires (arrêté 1982)",
+    "entretien": "Filtre VMC double flux : nettoyage tous les 3 mois, remplacement tous les 12 mois. Bouches d'extraction : nettoyage annuel"
+  },
+  "alertes_bloquantes": [
+    {
+      "id": "alerte-01",
+      "message": "Impossible de fermer les plafonds sans avoir installé et fixé l'intégralité du réseau de gaines VMC",
+      "taches_concernees": ["vmc-08"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-02",
+      "message": "Ventilation dans les pièces humides obligatoire — un logement sans VMC fonctionnelle est non-conforme et développe des moisissures en quelques mois",
+      "taches_concernees": ["vmc-12"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-03",
+      "message": "Les entrées d'air dans les pièces de vie sont indispensables — sans elles, la VMC ne peut pas fonctionner (pas d'air neuf à extraire)",
+      "taches_concernees": ["vmc-13"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-04",
+      "message": "Réseau de gaines non étanche = fuites d'air = perte de performance et retour d'odeurs entre pièces",
+      "taches_concernees": ["vmc-15"],
+      "niveau": "important"
+    },
+    {
+      "id": "alerte-05",
+      "message": "VMC non raccordée à un circuit électrique dédié — la VMC doit tourner 24h/24, jamais commandée par un interrupteur",
+      "taches_concernees": ["vmc-17"],
+      "niveau": "important"
+    }
+  ],
+  "score_chantier": {
+    "calcul": "taches_validees / total_taches * 100",
+    "penalites": [
+      { "condition": "entrees_air_absentes", "malus": 25 },
+      { "condition": "bouches_extraction_absentes_piece_humide", "malus": 25 },
+      { "condition": "reseau_non_etanche", "malus": 15 },
+      { "condition": "tache_critique_non_traitee", "malus": 10 },
+      { "condition": "alerte_bloquante_active", "malus": 15 }
+    ],
+    "risques_signales": [
+      "Condensation et moisissures si renouvellement d'air insuffisant",
+      "Défaut de tirage si gaines trop longues ou trop de coudes",
+      "Retour d'odeurs entre pièces si réseau de gaines non étanche",
+      "Nuisances sonores si groupe VMC mal fixé ou mal positionné",
+      "Performance nulle si entrées d'air absentes ou obstruées"
+    ]
+  },
+  "taches": [
+    {
+      "id": "vmc-01",
+      "ordre": 1,
+      "titre": "Définir le type de ventilation",
+      "critique": false,
+      "explication": "VMC simple flux (extrait l'air vicié, l'air neuf entre par les grilles) ou double flux (extrait l'air vicié ET insuffle de l'air neuf filtré et préchauffé) : le choix dépend du niveau de performance énergétique visé et du budget.",
+      "recommandation_klaro": "Simple flux hygroréglable (type B) : le meilleur rapport qualité/prix pour une rénovation, les bouches s'adaptent automatiquement au taux d'humidité. Double flux : indispensable pour atteindre les objectifs RE2020, récupère jusqu'à 90% de l'énergie de l'air extrait — mais coûte 3 à 5x plus cher à l'installation et nécessite un entretien régulier des filtres.",
+      "erreur_frequente": "Choisir une VMC simple flux autoréglable (type A) par économie dans une rénovation. Ce système délivre le même débit constant quelle que soit l'humidité — il ventile trop fort quand la pièce est sèche (gaspillage d'énergie) et pas assez quand elle est très humide.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": []
+    },
+    {
+      "id": "vmc-02",
+      "ordre": 2,
+      "titre": "Identifier toutes les pièces à ventiler",
+      "critique": true,
+      "explication": "La réglementation impose des bouches d'extraction dans toutes les pièces humides et des entrées d'air dans toutes les pièces principales. Faites l'inventaire complet avant de tracer quoi que ce soit.",
+      "recommandation_klaro": "Pièces avec bouches d'extraction obligatoires : cuisine, salle de bain, douche, WC, buanderie, cellier. Pièces avec entrées d'air obligatoires : séjour, salle à manger, toutes les chambres. Dessinez le plan du logement avec les deux types de pièces clairement identifiés — c'est la base de tout le réseau.",
+      "erreur_frequente": "Oublier un WC ou une seconde salle de bain dans l'inventaire. Un espace non ventilé développe des moisissures en quelques mois — et elles se propagent aux pièces adjacentes par les interstices.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-01"]
+    },
+    {
+      "id": "vmc-03",
+      "ordre": 3,
+      "titre": "Définir l'emplacement du groupe VMC",
+      "critique": true,
+      "explication": "Le groupe VMC (le moteur) se place dans les combles, un faux plafond ou une gaine technique. Son emplacement détermine la longueur des gaines et le niveau sonore perçu dans les pièces.",
+      "recommandation_klaro": "Idéalement dans les combles perdus non habités : accès facile, bruit atténué, gaines courtes vers les pièces en dessous. En appartement sans combles : dans un faux plafond de couloir ou de cuisine, en s'assurant qu'il reste accessible pour l'entretien. Ne le placez jamais au-dessus d'une chambre — le bruit du moteur est audible surtout la nuit.",
+      "erreur_frequente": "Placer le groupe VMC au plus court sans réfléchir au bruit. Un groupe fixé sur la structure au-dessus d'une chambre transmet les vibrations dans toute la dalle — nuisances sonores garanties.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-02"]
+    },
+    {
+      "id": "vmc-04",
+      "ordre": 4,
+      "titre": "Vérifier l'accessibilité pour l'entretien",
+      "critique": true,
+      "explication": "Le groupe VMC nécessite un accès régulier pour nettoyer ou remplacer les filtres (double flux) et vérifier le fonctionnement. Un groupe inaccessible ne sera jamais entretenu.",
+      "recommandation_klaro": "Prévoyez une trappe d'accès d'au moins 60×60cm à proximité du groupe. En double flux, les caissons de filtres doivent s'ouvrir facilement sans outil. Vérifiez aussi que le groupe peut être décroché pour remplacement sans démolir le faux plafond autour.",
+      "erreur_frequente": "Encastrer le groupe VMC dans un faux plafond avec une trappe trop petite ou mal positionnée. En 5 ans, les filtres non changés colmatent le groupe, le débit chute, les moisissures reviennent — et il faut casser le faux plafond pour accéder.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-03"]
+    },
+    {
+      "id": "vmc-05",
+      "ordre": 5,
+      "titre": "Tracer le réseau de gaines",
+      "critique": true,
+      "explication": "Tracez sur le plan le chemin le plus court entre chaque bouche d'extraction et le groupe VMC. L'objectif est de minimiser les longueurs et les coudes pour maximiser le débit.",
+      "recommandation_klaro": "Regroupez les gaines dans un cheminement commun (gaine principale puis dérivations). Chaque coude à 90° équivaut à 1,5m de gaine droite en perte de charge — comptez-les dans votre calcul de longueur. La longueur maximale recommandée par bouche est de 10m en réseau rigide, 6m en réseau souple.",
+      "erreur_frequente": "Tracer les gaines en suivant les murs et plafonds existants sans optimiser le trajet. On se retrouve avec des gaines de 15 à 18m avec 6 coudes — le débit réel est alors 40 à 50% inférieur au débit nominal du groupe.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-03"]
+    },
+    {
+      "id": "vmc-06",
+      "ordre": 6,
+      "titre": "Prévoir les passages dans cloisons et plafonds",
+      "critique": true,
+      "explication": "Les gaines doivent traverser les cloisons et plafonds. Ces passages doivent être prévus avant la pose du placo — percer après dans du placo est possible mais crée des reprises inesthétiques.",
+      "recommandation_klaro": "Marquez au crayon sur les cloisons et plafonds l'emplacement de chaque passage de gaine avant la pose du placo. Posez des fourreaux de protection (gaines de protection) dans les passages maçonnés. Prévoyez des passages légèrement surdimensionnés (5cm de plus que le diamètre de gaine) pour faciliter la pose et les corrections.",
+      "erreur_frequente": "Oublier de prévoir un passage et devoir découper le placo après pose. La réparation d'un passage taillé dans un placo peint est toujours visible — et dans un faux plafond déjà enduit, la découpe laisse des traces permanentes.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-05"]
+    },
+    {
+      "id": "vmc-07",
+      "ordre": 7,
+      "titre": "Installer le groupe VMC",
+      "critique": true,
+      "explication": "Le groupe s'accroche à la structure (chevrons, solives) avec des fixations antivibratiles. Une fixation rigide transmet les vibrations du moteur dans toute la structure.",
+      "recommandation_klaro": "Utilisez impérativement des suspentes antivibratiles (manchons en caoutchouc) entre le groupe et la structure — elles sont souvent fournies avec l'appareil ou disponibles en accessoire. Fixez sur deux points minimum. Laissez 15cm de dégagement de chaque côté pour le raccordement des gaines et l'entretien futur.",
+      "erreur_frequente": "Fixer le groupe VMC directement sur les chevrons avec des vis sans amortisseurs. Le moteur qui tourne 24h/24 transmet ses vibrations dans toute la charpente — bourdonnement audible dans toutes les pièces, surtout la nuit.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-04"]
+    },
+    {
+      "id": "vmc-08",
+      "ordre": 8,
+      "titre": "Installer les gaines de ventilation",
+      "critique": true,
+      "explication": "Les gaines rigides (PVC ou acier galvanisé) sont préférables aux gaines souples sur les longues distances. Elles offrent moins de résistance à l'air et ne s'écrasent pas sous leur propre poids.",
+      "recommandation_klaro": "Gaine rigide circulaire : meilleure pour la performance, se nettoie facilement. Gaine souple : réservée aux derniers mètres entre gaine rigide et bouche (max 1,5m), jamais sur des longueurs importantes. Pour les doubles flux : gaines d'insufflation et gaines d'extraction doivent être séparées et clairement identifiées (marquage ou couleur différente).",
+      "erreur_frequente": "Faire tout le réseau en gaine souple spiralée pour simplifier la pose. La gaine souple crée 2 à 3 fois plus de résistance à l'air qu'une gaine rigide à diamètre équivalent — le groupe tourne plus fort, consomme plus et dure moins longtemps.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-07"]
+    },
+    {
+      "id": "vmc-09",
+      "ordre": 9,
+      "titre": "Limiter les longueurs et les coudes",
+      "critique": true,
+      "explication": "Chaque mètre de gaine et chaque coude augmente la résistance au passage de l'air et réduit le débit réel à la bouche. Au-delà d'un certain seuil, la bouche ne ventile plus suffisamment.",
+      "recommandation_klaro": "Calculez la longueur équivalente de chaque bras : longueur réelle + (nombre de coudes 90° × 1,5m) + (nombre de T ou Y × 1m). Si la longueur équivalente dépasse 8 à 10m, envisagez de déplacer le groupe ou d'augmenter le diamètre des gaines. Choisissez des coudes à grand rayon (45°) plutôt que des coudes courts à 90° — la perte de charge est divisée par 2.",
+      "erreur_frequente": "Multiplier les coudes à 90° pour contourner les obstacles sans calculer l'impact sur le débit. Cinq coudes à 90° représentent 7,5m de longueur équivalente supplémentaire — sur un bras de 5m, c'est 12,5m de longueur totale, hors des recommandations.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-08"]
+    },
+    {
+      "id": "vmc-10",
+      "ordre": 10,
+      "titre": "Assurer une légère pente des gaines horizontales",
+      "critique": false,
+      "explication": "Les gaines horizontales doivent avoir une légère pente (1 à 2%) vers le groupe VMC pour que la condensation éventuelle s'écoule vers le groupe et non vers les bouches dans les pièces.",
+      "recommandation_klaro": "Sur 3m de gaine horizontale, une différence de hauteur de 3 à 6cm vers le groupe suffit. Vérifiez la pente avec un niveau à bulle. Certains groupes VMC disposent d'un point de purge pour évacuer cette condensation — vérifiez dans la documentation et raccordez-le à un siphon si présent.",
+      "erreur_frequente": "Poser les gaines horizontales parfaitement à plat ou avec une légère contre-pente vers les bouches. L'eau de condensation s'accumule dans les zones les plus basses et finit par goutter par les bouches — taches au plafond et mauvaises odeurs.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-08"]
+    },
+    {
+      "id": "vmc-11",
+      "ordre": 11,
+      "titre": "Fixer correctement les gaines",
+      "critique": false,
+      "explication": "Les gaines doivent être fixées à la structure tous les 80cm à 1m pour éviter qu'elles s'affaissent, vibrent ou se décrochent sous leur propre poids au fil du temps.",
+      "recommandation_klaro": "Utilisez des colliers de fixation adaptés au diamètre de vos gaines (avec insert caoutchouc pour les sections proches du groupe). Fixez dans les chevrons ou les solives, pas uniquement dans le placo qui ne tient pas le poids. Pour les gaines en descente verticale, prévoyez une fixation à chaque passage de plancher.",
+      "erreur_frequente": "Laisser les gaines souples suspendues dans le vide entre deux fixations trop espacées. Elles s'affaissent et créent des creux où l'eau stagne — et le frottement des gaines entre elles crée du bruit à chaque rafale de vent.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-10"]
+    },
+    {
+      "id": "vmc-12",
+      "ordre": 12,
+      "titre": "Installer les bouches d'extraction",
+      "critique": true,
+      "explication": "Les bouches d'extraction se posent dans les pièces humides au plafond ou en partie haute des murs. Elles aspirent l'air vicié et l'humidité vers le groupe VMC.",
+      "recommandation_klaro": "Positionnez les bouches en partie haute (à 15cm du plafond maxi) et loin des ouvertures pour éviter les courts-circuits d'air. En cuisine : bouche à au moins 50cm de la hotte — la hotte traite les graisses, la VMC traite l'humidité et les odeurs résiduelles. Choisissez des bouches hygroréglables en simple flux type B — elles s'adaptent automatiquement au taux d'humidité de la pièce.",
+      "erreur_frequente": "Positionner la bouche de cuisine directement au-dessus de la hotte. La hotte aspire à 300-600 m³/h, la VMC à 75-135 m³/h — la VMC n'aspire rien quand la hotte tourne, et les graisses de la hotte encrassent la bouche VMC en quelques semaines.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-09"]
+    },
+    {
+      "id": "vmc-13",
+      "ordre": 13,
+      "titre": "Installer les entrées d'air",
+      "critique": true,
+      "explication": "Les entrées d'air dans les pièces de vie (chambres, séjour) sont indispensables au fonctionnement de la VMC — sans air neuf entrant, aucun air vicié ne peut être extrait. Ce sont elles qui créent le balayage de l'air dans le logement.",
+      "recommandation_klaro": "Entrées d'air intégrées dans les menuiseries (coffres de fenêtres) : solution la plus simple et la plus discrète. En traversée de mur : perforez à 15cm du plafond, posez une grille extérieure avec moustiquaire et un déflecteur intérieur. Débit minimal : 20 à 45 m³/h par pièce selon la surface. Ne les obstruez jamais avec des rideaux ou des meubles.",
+      "erreur_frequente": "Remplacer des fenêtres à entrées d'air existantes par des fenêtres étanches sans ajouter d'entrées d'air en traversée de mur. La VMC tourne dans le vide — elle aspire l'air par les défauts d'étanchéité (prises électriques, plinthes) créant des courants d'air froids parasites.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-12"]
+    },
+    {
+      "id": "vmc-14",
+      "ordre": 14,
+      "titre": "Assurer le renouvellement d'air global",
+      "critique": true,
+      "explication": "Le renouvellement d'air doit être suffisant pour l'ensemble du logement selon sa surface et son nombre d'occupants. Vérifiez que le groupe choisi est bien dimensionné pour le volume à ventiler.",
+      "recommandation_klaro": "Débit réglementaire minimal par logement (arrêté 1982) : cuisine 75 m³/h, salle de bain 15 m³/h, WC 15 m³/h, buanderie 30 m³/h. Le groupe VMC est dimensionné pour la somme de ces débits. Ajoutez 20% de marge pour compenser les pertes de charge du réseau. Un groupe sous-dimensionné ne peut pas être compensé par un réglage — il faut le remplacer.",
+      "erreur_frequente": "Choisir un groupe VMC basé uniquement sur la surface du logement sans calculer la somme des débits réglementaires par pièce. Un appartement avec 3 salles de bain peut nécessiter un groupe 2 fois plus puissant qu'un appartement de même surface avec une seule.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-13"]
+    },
+    {
+      "id": "vmc-15",
+      "ordre": 15,
+      "titre": "Rendre étanche le réseau (raccords et jonctions)",
+      "critique": true,
+      "explication": "Chaque raccord, chaque jonction entre deux sections de gaines doit être étanche. Une fuite de gaine représente du débit perdu dans les combles — la bouche associée ne ventile plus correctement.",
+      "recommandation_klaro": "Scotchez tous les raccords avec du ruban adhésif aluminium spécial gaines (pas du scotch ordinaire qui se décolle avec la chaleur). Pour les raccords à emboîter : enroulez du ruban adhésif aluminium sur 3 tours avant emboîtement. Vérifiez au passage de la main tous les raccords lors de la mise en route — vous sentirez les fuites d'air.",
+      "erreur_frequente": "Assembler les gaines à l'emboîtement sans scotcher les raccords. Les vibrations du groupe dessèrent progressivement les emboîtements — après 2 ans, 30 à 40% du débit du groupe fuit dans les combles au lieu d'aller aux bouches.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-11"]
+    },
+    {
+      "id": "vmc-16",
+      "ordre": 16,
+      "titre": "Isoler les gaines si nécessaire",
+      "critique": false,
+      "explication": "Les gaines qui traversent des volumes non chauffés (combles froids, vide-sanitaire, garage) doivent être isolées pour éviter la condensation de l'air chaud et humide extrait dans des gaines froides.",
+      "recommandation_klaro": "Utilisez des manchons isolants préformés adaptés au diamètre de vos gaines (épaisseur 25mm minimum). En double flux, les gaines d'air extrait ET d'air neuf passant dans les combles doivent être isolées. En simple flux, seul le conduit d'air extrait est concerné. Scotchez les jonctions des manchons isolants avec du ruban adhésif aluminium.",
+      "erreur_frequente": "Ne pas isoler les gaines dans les combles froids. L'air extrait (chaud et humide) se refroidit dans la gaine froide — la vapeur condense, s'accumule, et goutte par les bouches d'extraction ou crée de la moisissure dans les gaines.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-15"]
+    },
+    {
+      "id": "vmc-17",
+      "ordre": 17,
+      "titre": "Raccorder électriquement la VMC",
+      "critique": true,
+      "explication": "Le groupe VMC nécessite une alimentation électrique dédiée sur un circuit propre, protégé par un disjoncteur 2A, sans interrupteur accessible — il doit fonctionner en continu, 24h/24, 365 jours/an.",
+      "recommandation_klaro": "Prévoyez un circuit dédié depuis le tableau électrique : câble 1,5mm², disjoncteur 2A, sur un différentiel séparé du reste du logement. Aucun interrupteur accessible ne doit permettre de couper la VMC. Pour la VMC double flux avec régulation : prévoyez aussi une prise de communication si votre groupe est connecté ou programmable.",
+      "erreur_frequente": "Brancher la VMC sur une prise de courant banale ou sur un interrupteur. Les occupants l'éteignent quand elle fait du bruit ou pour économiser — sans ventilation, les moisissures apparaissent en quelques semaines dans les pièces humides.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-16"]
+    },
+    {
+      "id": "vmc-18",
+      "ordre": 18,
+      "titre": "Mettre en service le groupe VMC",
+      "critique": false,
+      "explication": "La mise en service consiste à mettre le groupe sous tension, vérifier son démarrage et s'assurer qu'il fonctionne sans bruit anormal. C'est aussi le moment de régler les débits si le groupe le permet.",
+      "recommandation_klaro": "Mettez en service avec toutes les bouches en place et le réseau complet. Laissez tourner 30 minutes avant de mesurer les débits — le groupe a besoin d'un temps de stabilisation. Si votre groupe dispose de réglages de vitesse ou de débit, commencez par le réglage intermédiaire puis ajustez après mesure.",
+      "erreur_frequente": "Mettre en service avant que toutes les bouches soient installées. Avec des orifices ouverts dans le réseau, le groupe aspire à plein régime dans le vide — les mesures sont faussées et le moteur s'use inutilement.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-17"]
+    },
+    {
+      "id": "vmc-19",
+      "ordre": 19,
+      "titre": "Vérifier les débits d'air",
+      "critique": true,
+      "explication": "Le débit réel à chaque bouche doit être mesuré et comparé aux valeurs réglementaires. Un débit insuffisant signifie une bouche sous-ventilée, un réseau trop résistant ou un groupe sous-dimensionné.",
+      "recommandation_klaro": "Utilisez un anémomètre à hélice ou un débitmètre à grille (louable 30€/jour ou disponible chez les négociants en ventilation). Mesurez chaque bouche individuellement et comparez au tableau des débits réglementaires. Si un débit est inférieur de plus de 20% à la valeur réglementaire, cherchez la cause : coude supplémentaire, gaine écrasée, raccord non étanche.",
+      "erreur_frequente": "Valider le fonctionnement sans mesurer les débits — \"ça tire\" n'est pas une mesure. Une bouche peut sembler aspirer correctement et ne délivrer que 8 m³/h au lieu de 15 m³/h réglementaires. La salle de bain sous-ventilée développe des moisissures en quelques mois.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-18"]
+    },
+    {
+      "id": "vmc-20",
+      "ordre": 20,
+      "titre": "Tester le fonctionnement global",
+      "critique": true,
+      "explication": "Vérifiez que le système fonctionne comme un ensemble cohérent : l'air circule bien des pièces de vie (entrées d'air) vers les pièces humides (bouches d'extraction), avec un balayage efficace de tout le logement.",
+      "recommandation_klaro": "Test du papier : fermez toutes les portes sauf une, et tenez un papier fin devant l'espace entre la porte et le plancher — le papier doit être attiré vers la pièce humide (côté bouche d'extraction). Si le papier reste immobile ou est repoussé, la circulation d'air ne se fait pas correctement. Ouvrez les fenêtres et vérifiez aussi que les entrées d'air laissent bien passer l'air.",
+      "erreur_frequente": "Tester uniquement les bouches individuellement sans vérifier la circulation globale de l'air. Un logement peut avoir des débits corrects à chaque bouche mais une mauvaise circulation si les passages sous les portes intérieures sont insuffisants (tapis épais, joints de porte trop étanches).",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-19"]
+    },
+    {
+      "id": "vmc-21",
+      "ordre": 21,
+      "titre": "Vérifier l'absence de bruit anormal",
+      "critique": false,
+      "explication": "Une VMC bien installée est quasi-silencieuse. Un bruit de souffle, de vibration ou de claquement signale un problème de pose qu'il faut corriger avant de fermer les faux plafonds.",
+      "recommandation_klaro": "Écoutez depuis chaque pièce avec la VMC en fonctionnement : le bruit maximum tolérable est un léger souffle discret. Vibrations : vérifiez les fixations antivibratiles du groupe et des gaines. Sifflement dans une bouche : la bouche est trop petite pour le débit, réduisez le débit ou installez une bouche plus grande. Claquement : une gaine frappe une structure au passage, localisez et fixez.",
+      "erreur_frequente": "Accepter un bruit de souffle important en se disant que \"ça va s'atténuer\". Le bruit ne s'atténue pas une fois les faux plafonds fermés — il est amplifié par la résonance de la cavité. Localisez et corrigez avant toute fermeture.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-20"]
+    },
+    {
+      "id": "vmc-22",
+      "ordre": 22,
+      "titre": "Nettoyer et finaliser le chantier",
+      "critique": false,
+      "explication": "Retirez tous les chutes de gaines, les emballages et les débris de perçage. Vérifiez que toutes les bouches sont propres et que les filtres (double flux) sont installés neufs pour la mise en service.",
+      "recommandation_klaro": "Notez dans un carnet d'entretien : date d'installation, référence du groupe, diamètres des gaines, débits mesurés à chaque bouche. Remettez ce carnet au propriétaire ou à l'occupant avec les dates de maintenance recommandées : filtre double flux tous les 3 à 12 mois selon le fabricant, nettoyage des bouches tous les 12 mois.",
+      "erreur_frequente": "Ne pas documenter l'installation et les débits mesurés à la réception. En cas de problème 2 ans plus tard (moisissures, bruit), impossible de savoir si le système fonctionnait correctement à l'origine ou si quelque chose a changé.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["vmc-21"]
+    }
+  ]
+}
