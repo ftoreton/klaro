@@ -1,0 +1,187 @@
+{
+  "version": "1.0.0",
+  "metier_id": "controle-final",
+  "nom": "Contrôle final & finitions",
+  "norme_reference": "Réception de chantier — art. 1792-6 Code Civil",
+  "disclaimer": "Ce module aide à préparer la réception du chantier. Pour un chantier avec entreprise, la réception est un acte juridique important : faites-la par écrit, avec réserves si nécessaire.",
+  "regles_metier": {
+    "principe_1": "Si ça se voit → c'est à corriger",
+    "principe_2": "Si ça ne fonctionne pas → ce n'est pas validé",
+    "principe_3": "Si ce n'est pas propre → ce n'est pas terminé",
+    "principe_4": "Toujours vérifier avec lumière naturelle"
+  },
+  "alertes_bloquantes": [
+    {
+      "id": "alerte-01",
+      "message": "Des défauts visibles sont encore présents — le chantier ne peut pas être clôturé.",
+      "taches_concernees": ["cf-04", "cf-07"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-02",
+      "message": "Tous les équipements n'ont pas été testés — la validation est incomplète.",
+      "taches_concernees": ["cf-03", "cf-09"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-03",
+      "message": "Le chantier n'est pas propre — la réception ne peut pas avoir lieu.",
+      "taches_concernees": ["cf-06"],
+      "niveau": "bloquant"
+    },
+    {
+      "id": "alerte-04",
+      "message": "La vérification pièce par pièce n'a pas été effectuée.",
+      "taches_concernees": ["cf-08"],
+      "niveau": "bloquant"
+    }
+  ],
+  "score_chantier": {
+    "calcul": "taches_validees / total_taches * 100",
+    "seuils": {
+      "chantier_pret": 90,
+      "a_corriger": 70,
+      "non_receptible": 0
+    },
+    "penalites": [
+      {
+        "condition": "Défauts visibles non corrigés",
+        "malus": 20
+      },
+      {
+        "condition": "Équipement non fonctionnel",
+        "malus": 20
+      },
+      {
+        "condition": "Propreté non validée",
+        "malus": 15
+      },
+      {
+        "condition": "Vérification pièce par pièce ignorée",
+        "malus": 15
+      }
+    ],
+    "indicateurs": {
+      "90_100": "Chantier prêt ✓",
+      "70_89": "À corriger avant réception",
+      "0_69": "Non réceptionnable — points bloquants à traiter"
+    },
+    "risques_signales": [
+      "Défaut accepté tacitement si réception sans réserve",
+      "Délai de garantie décennale démarre à la réception",
+      "Réserves non notées = vices apparents non opposables"
+    ]
+  },
+  "taches": [
+    {
+      "id": "cf-01",
+      "ordre": 1,
+      "titre": "Faire un tour complet du chantier",
+      "critique": true,
+      "explication": "Avant de regarder les détails, faites d'abord un tour global de tout le chantier pour avoir une vue d'ensemble. Ne corrigez rien encore — observez juste.",
+      "recommandation_klaro": "Promenez-vous dans chaque pièce dans l'ordre, de l'entrée jusqu'au dernier espace. Notez mentalement ou sur papier ce qui attire l'œil. Faites ce tour de préférence en journée avec la lumière naturelle.",
+      "erreur_frequente": "Commencer à corriger les défauts avant d'avoir fait le tour complet. On perd du temps sur un détail et on oublie de regarder le reste.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": []
+    },
+    {
+      "id": "cf-02",
+      "ordre": 2,
+      "titre": "Vérifier le rendu visuel global",
+      "critique": true,
+      "explication": "Regardez l'ensemble de chaque pièce d'un coup d'œil. Les couleurs sont-elles uniformes ? Les matériaux bien posés ? Rien ne choque à première vue ?",
+      "recommandation_klaro": "Placez-vous à l'entrée de chaque pièce et regardez l'ensemble depuis un seul point. Cherchez les différences de teinte, les irrégularités de surface, les décalages entre matériaux. Un défaut visible à 1 mètre est à corriger.",
+      "erreur_frequente": "Ne regarder que de près. Beaucoup de défauts (uniformité de peinture, planéité d'un carrelage) ne se voient qu'en prenant du recul.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["cf-01"]
+    },
+    {
+      "id": "cf-03",
+      "ordre": 3,
+      "titre": "Tester tous les équipements",
+      "critique": true,
+      "explication": "Testez chaque interrupteur, chaque robinet, chaque prise, chaque porte, chaque fenêtre. Tout doit fonctionner normalement.",
+      "recommandation_klaro": "Faites une liste : lumières (toutes les pièces), prises électriques (branchez quelque chose), eau (chaude et froide à chaque point d'eau), volets, portes intérieures, fenêtres, VMC. Cochez au fur et à mesure. Si quelque chose ne fonctionne pas, notez-le.",
+      "erreur_frequente": "Supposer que ça fonctionne parce que l'artisan a dit que c'est bon. Testez vous-même, c'est le seul moyen d'être sûr.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["cf-01"]
+    },
+    {
+      "id": "cf-04",
+      "ordre": 4,
+      "titre": "Repérer tous les défauts visibles",
+      "critique": true,
+      "explication": "Faites une liste exhaustive de tout ce qui n'est pas parfait : éclats, fissures, taches, rayures, alignements imparfaits. Rien n'est trop petit à ce stade.",
+      "recommandation_klaro": "Utilisez un éclairage rasant (lampe torche le long des murs) pour faire ressortir les défauts de planéité et les irrégularités. Photographiez chaque défaut avec un objet de référence (pièce de monnaie) pour montrer la taille. Consignez tout par pièce.",
+      "erreur_frequente": "Penser qu'un petit défaut n'est pas grave et ne pas le noter. Une fois la réception signée sans réserve, il est très difficile de faire corriger quoi que ce soit.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["cf-02"]
+    },
+    {
+      "id": "cf-05",
+      "ordre": 5,
+      "titre": "Contrôler les finitions dans le détail",
+      "critique": false,
+      "explication": "Les angles, les joints, les plinthes, les raccords entre matériaux — c'est là que se voient les finitions soignées ou bâclées.",
+      "recommandation_klaro": "Vérifiez : les angles rentrants et sortants (bien droits ?), les joints de carrelage (réguliers, propres ?), les plinthes (collées partout, pas de jour ?), les raccords peinture (pas de débordement ?), les tours de fenêtres et de portes. Ces détails font 80% de l'impression finale.",
+      "erreur_frequente": "Ne regarder que les grandes surfaces et négliger les raccords. Un joint mal fait ou une plinthe décollée fait mauvaise impression même si le reste est parfait.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["cf-04"]
+    },
+    {
+      "id": "cf-06",
+      "ordre": 6,
+      "titre": "Vérifier la propreté du chantier",
+      "critique": true,
+      "explication": "Le chantier doit être livré propre : pas de gravats, pas de poussière excessive, pas de déchets de matériaux, sols nettoyés.",
+      "recommandation_klaro": "Vérifiez que tous les gravats et déchets de chantier ont été évacués. Les sols doivent être balayés et nettoyés. Les vitres et surfaces accessibles doivent être débarrassées des projections de ciment, peinture ou colle. C'est une obligation contractuelle de l'artisan.",
+      "erreur_frequente": "Accepter un chantier sale en se disant qu'on fera le ménage soi-même. Ce nettoyage est dû par l'artisan — faites-le noter comme réserve s'il n'est pas fait.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["cf-01"]
+    },
+    {
+      "id": "cf-07",
+      "ordre": 7,
+      "titre": "Corriger les petits défauts",
+      "critique": false,
+      "explication": "Une fois tous les défauts listés, c'est le moment de les corriger ou de les faire corriger avant de valider définitivement.",
+      "recommandation_klaro": "Distinguez ce que vous pouvez corriger vous-même (petite retouche de peinture, joint à refaire) de ce qui incombe à l'artisan. Pour ce qui est dû par l'artisan, communiquez par écrit (email ou courrier) avec la liste précise des points à corriger et un délai raisonnable.",
+      "erreur_frequente": "Corriger soi-même des défauts qui sont de la responsabilité de l'artisan. En le faisant, on peut perdre le droit de recours contre lui sur ces points.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["cf-04", "cf-05"]
+    },
+    {
+      "id": "cf-08",
+      "ordre": 8,
+      "titre": "Vérification pièce par pièce",
+      "critique": true,
+      "explication": "Faites une validation finale de chaque pièce séparément, en cochant que tout est correct avant de passer à la suivante.",
+      "recommandation_klaro": "Prenez une feuille ou utilisez l'app : listez chaque pièce et cochez-la uniquement quand elle est 100% validée (rendu visuel OK, équipements OK, finitions OK, propre). Ne passez à la pièce suivante que quand la précédente est validée. C'est long, mais c'est ce qui garantit de ne rien rater.",
+      "erreur_frequente": "Valider le chantier en une seule passe rapide sans vérifier pièce par pièce. On rate toujours des défauts qu'on découvre après que l'artisan est parti.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["cf-06", "cf-07"]
+    },
+    {
+      "id": "cf-09",
+      "ordre": 9,
+      "titre": "Valider que tout fonctionne correctement",
+      "critique": true,
+      "explication": "Test final de fonctionnement global : lumières, eau, chauffage, ventilation, ouvertures. Tout doit marcher en même temps, pas seulement séparément.",
+      "recommandation_klaro": "Simulez une journée normale : allumez les lumières, ouvrez les robinets, vérifiez que la VMC tourne, testez le chauffage si possible. Certains problèmes n'apparaissent que quand tout fonctionne ensemble (disjoncteur qui saute, chute de pression). Faites ce test quand tout le reste est validé.",
+      "erreur_frequente": "Tester chaque équipement individuellement mais pas l'ensemble. Un circuit électrique peut fonctionner seul mais faire sauter le disjoncteur quand tout est allumé en même temps.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["cf-03", "cf-08"]
+    },
+    {
+      "id": "cf-10",
+      "ordre": 10,
+      "titre": "Clôturer le chantier",
+      "critique": true,
+      "explication": "Une fois tout validé, formalisez la fin du chantier : procès-verbal de réception, levée des réserves, récupération des documents.",
+      "recommandation_klaro": "Demandez et conservez : le procès-verbal de réception signé (ou confirmez par email la date de réception), les notices et garanties des équipements installés, les attestations de conformité (Consuel pour électricité, attestations RGE si travaux aidés), et les coordonnées pour le SAV. Ces documents vous protègent pendant 10 ans.",
+      "erreur_frequente": "Payer le solde sans avoir les documents. Une fois payé sans réserve et sans documents, il est très difficile de faire valoir ses droits en cas de problème.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["cf-09"]
+    }
+  ]
+}
