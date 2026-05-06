@@ -1,0 +1,833 @@
+{
+  "module": "maconnerie_gros_oeuvre",
+  "warnings_header": [
+    {
+      "id": "warn_001",
+      "level": "danger",
+      "title": "Élément porteur = BET obligatoire",
+      "message": "Toute intervention sur un élément porteur (mur, plancher, refend, fondation, linteau structurel) exige une étude par un Bureau d'Études Structure (BET). Sans étude, la tâche est bloquée. Une erreur engage la solidité du bâtiment et votre responsabilité civile et pénale."
+    },
+    {
+      "id": "warn_002",
+      "level": "danger",
+      "title": "Diagnostics obligatoires avant travaux",
+      "message": "Bâtiment construit avant le 1er juillet 1997 : diagnostic amiante (DAAT) obligatoire avant tout percement, ponçage ou démolition. Bâtiment avant 1949 : diagnostic plomb (CREP) obligatoire en plus. Sans diagnostic, le module bloque ces tâches."
+    },
+    {
+      "id": "warn_003",
+      "level": "danger",
+      "title": "Autorisation d'urbanisme",
+      "message": "Toute création de surface ou modification structurelle doit être conforme au PLU local et faire l'objet d'une déclaration préalable (DP) ou d'un permis de construire (PC). Travaux engagés sans autorisation = mise en demeure, démolition ordonnée, amende."
+    },
+    {
+      "id": "warn_004",
+      "level": "danger",
+      "title": "Assurance dommage-ouvrage obligatoire",
+      "message": "L'assurance dommage-ouvrage est obligatoire pour tout particulier maître d'ouvrage qui réalise des travaux affectant la solidité du bâtiment. À souscrire AVANT ouverture du chantier. Sans elle, vous portez seul la garantie décennale en cas de sinistre."
+    },
+    {
+      "id": "warn_005",
+      "level": "danger",
+      "title": "Étude de sol G1+G2 en zone RGA",
+      "message": "Loi ELAN : toute extension ou construction neuve en zone à risque retrait-gonflement des argiles (RGA) impose une étude géotechnique G1 puis G2. Sans étude, fondations sous-dimensionnées et fissures structurelles à terme."
+    }
+  ],
+  "phases": [
+    {
+      "id": "preparation_administrative",
+      "label": "Préparation administrative & urbanisme",
+      "tasks": [
+        {
+          "id": "maco_001",
+          "title": "Définir précisément le projet",
+          "phase": "preparation_administrative",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Précisez la nature exacte des travaux : cloison non porteuse, élément porteur, dalle, fondation, mur extérieur, scellement. La suite du module dépend de cette qualification.",
+          "klaro_recommendation": "Faites un descriptif écrit avec : nature des travaux, surface créée ou modifiée, hauteur, modifications de façade, intervention sur structure existante. Si vous hésitez sur 'porteur ou pas', considérez porteur jusqu'à preuve du contraire (étude BET).",
+          "common_mistake": "Sous-estimer la nature des travaux ('je vais juste casser ce petit mur') et découvrir trop tard qu'il s'agit d'un porteur — risque d'effondrement.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "La nature exacte des travaux est-elle qualifiée (porteur / non porteur / dalle / fondation) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_002",
+          "title": "Vérifier le PLU local",
+          "phase": "preparation_administrative",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Plan Local d'Urbanisme (PLU) : règles de hauteur max, emprise au sol, distance aux limites, matériaux autorisés. Périmètre des Bâtiments de France (ABF) si proche d'un monument classé.",
+          "klaro_recommendation": "Téléchargez le PLU sur le site de votre mairie ou consultez-le en mairie (gratuit). Vérifiez le zonage de votre parcelle (U, AU, A, N) et les règles spécifiques. Si périmètre ABF (500 m d'un monument classé) : avis ABF obligatoire en plus.",
+          "common_mistake": "Démarrer un projet sans lire le PLU et découvrir que la hauteur ou les matériaux sont interdits — refus d'autorisation.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_001"],
+          "norm_reference": "Code de l'urbanisme",
+          "control_questions": [
+            { "question": "Le PLU est-il consulté et le projet conforme (hauteur, emprise, distances, matériaux) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_003",
+          "title": "Déterminer le régime d'autorisation (DP ou PC)",
+          "phase": "preparation_administrative",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "DP (déclaration préalable) : 5 à 20 m² créés (40 m² en zone U), modification d'aspect extérieur. PC (permis de construire) : > 20 m² (> 40 m² zone U), changement de destination, démolition partielle structurelle.",
+          "klaro_recommendation": "Mesurez précisément la surface créée ou modifiée. Vérifiez le zonage (U = zone urbaine du PLU). En cas de doute : appelez le service urbanisme de votre mairie (gratuit, ils aident). Le régime d'autorisation détermine les délais (1 mois DP, 2-3 mois PC).",
+          "common_mistake": "Choisir DP par confort alors que le projet relève du PC — refus, perte de plusieurs mois et obligation de redéposer.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_002"],
+          "norm_reference": "Code de l'urbanisme R421-1 et R421-14",
+          "control_questions": [
+            { "question": "Régime d'autorisation déterminé (DP / PC / aucune) ?", "type": "text", "expected": "DP / PC / aucune selon projet" }
+          ]
+        },
+        {
+          "id": "maco_004",
+          "title": "Déposer DP ou PC en mairie et attendre l'autorisation",
+          "phase": "preparation_administrative",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Déposez le dossier complet (formulaire CERFA + plans + photos + notice). Délai d'instruction : 1 mois pour DP, 2-3 mois pour PC. Attendez l'arrêté ou le délai de tacite acceptation AVANT de commencer.",
+          "klaro_recommendation": "Dossier complet (sinon délai non démarré). Conservez le récépissé de dépôt. À la réception de l'arrêté : affichage obligatoire sur le terrain (panneau réglementaire) pendant toute la durée des travaux. Recours des tiers : 2 mois après affichage. Joignez l'autorisation à votre dossier Klaro.",
+          "common_mistake": "Démarrer les travaux avant d'avoir l'autorisation effective — recours possible, mise en demeure d'arrêt et démolition ordonnée.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["autorisation_urbanisme"],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_003"],
+          "norm_reference": "Code de l'urbanisme R423-23 et R423-32",
+          "control_questions": [
+            { "question": "Autorisation d'urbanisme obtenue et délai de recours expiré ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_005",
+          "title": "Obtenir l'accord syndic et AG si copropriété",
+          "phase": "preparation_administrative",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "En copropriété : tout travaux touchant aux parties communes (façade, structure, plomberie commune) ou modifiant la structure exige l'accord du syndic et un vote en AG (majorité variable selon nature).",
+          "klaro_recommendation": "Adressez une demande écrite au syndic avec descriptif précis et plans. Inscription à l'ordre du jour de l'AG. Vote selon majorité requise (article 24, 25 ou 26 selon nature). Conservez le PV d'AG. Sans accord : annulation possible des travaux, remise en état aux frais du copropriétaire.",
+          "common_mistake": "Réaliser des travaux structurels en copropriété sans accord — démolition ordonnée par le tribunal aux frais du copropriétaire.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_001"],
+          "norm_reference": "Loi du 10 juillet 1965 + Code de la copropriété",
+          "control_questions": [
+            { "question": "Si copropriété : accord syndic + vote AG obtenus et PV archivé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_006",
+          "title": "Vérifier les servitudes",
+          "phase": "preparation_administrative",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Servitudes : vues (distance aux limites pour fenêtres), mitoyenneté (mur partagé), droit de passage, urbanisme (réseaux, alignement). Toutes opposables aux travaux.",
+          "klaro_recommendation": "Demandez un certificat d'urbanisme (CU) pour l'inventaire complet des servitudes. Pour mur mitoyen : accord écrit du voisin OBLIGATOIRE pour toute modification. Notez tout sur un plan dédié.",
+          "common_mistake": "Oublier la servitude de vue et créer une fenêtre à moins de 1,90 m de la limite — recours du voisin et obligation de murer.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_002"],
+          "norm_reference": "Code civil 675-680 + Code de l'urbanisme",
+          "control_questions": [
+            { "question": "Servitudes vérifiées (vues, mitoyenneté, passage, urbanisme) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_007",
+          "title": "Souscrire une assurance dommage-ouvrage AVANT ouverture chantier",
+          "phase": "preparation_administrative",
+          "applies_to_works_type": ["element_porteur", "dalle", "fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "L'assurance dommage-ouvrage (DO) est obligatoire pour tout particulier maître d'ouvrage de travaux affectant la solidité. Souscrite AVANT ouverture du chantier, elle préfinance les réparations en cas de sinistre décennal.",
+          "klaro_recommendation": "Demandez 3 devis d'assurance DO (coût ~3-5% du montant des travaux). Joignez : devis détaillé des entreprises, attestations décennales des intervenants, plans, étude BET. Sans DO : revente du bien sous 10 ans = obligation d'informer l'acheteur, vente compromise. La DO suit le bien, pas le propriétaire.",
+          "common_mistake": "Considérer la DO 'optionnelle' pour économiser — en cas de sinistre, recours obligatoire contre l'entreprise (procédure longue, parfois insolvable). Sans DO + entreprise disparue = ruine.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["assurance_do"],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_004"],
+          "norm_reference": "Loi Spinetta du 4 janvier 1978 + Code des assurances L242-1",
+          "control_questions": [
+            { "question": "Assurance DO souscrite AVANT ouverture chantier (attestation jointe) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_008",
+          "title": "Déclarer l'ouverture de chantier (DOC) en mairie",
+          "phase": "preparation_administrative",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["construction_neuve", "all"],
+          "explanation": "Pour les travaux soumis à PC : déposer la DOC en mairie après obtention du permis et avant le début effectif des travaux. Démarche simple via formulaire CERFA.",
+          "klaro_recommendation": "Formulaire CERFA 13407 à déposer en mairie ou en ligne. Conservez le récépissé. La DOC déclenche le délai légal d'achèvement (2 ans renouvelables 1 an pour PC). Pour DP : la DOC n'est pas requise.",
+          "common_mistake": "Oublier la DOC après PC accordé — pas de risque pénal, mais peut compliquer la délivrance ultérieure du certificat de conformité.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_004"],
+          "norm_reference": "Code de l'urbanisme R424-9",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "diagnostics_obligatoires",
+      "label": "Diagnostics obligatoires avant travaux",
+      "tasks": [
+        {
+          "id": "maco_009",
+          "title": "Diagnostic amiante avant travaux (DAAT)",
+          "phase": "diagnostics_obligatoires",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["avant_1949", "1949_1997"],
+          "explanation": "OBLIGATOIRE pour tout bâtiment construit avant le 1er juillet 1997. Le DAAT identifie les matériaux amiantés et conditionne les méthodes d'intervention. Réalisé par diagnostiqueur certifié.",
+          "klaro_recommendation": "Faites intervenir un diagnostiqueur certifié AVANT toute intervention (percement, ponçage, démolition). Coût ~300-600 € pour une maison. Le rapport liste les matériaux amiantés (fibrociment, dalles vinyles amiantées, calorifugeage, joints, colles). Sans DAAT, vous engagez votre responsabilité pénale en cas d'exposition (vous + entreprise).",
+          "common_mistake": "Démarrer les travaux sans DAAT en pensant 'c'est trop cher' — exposition aux fibres d'amiante, cancer pulmonaire à terme, responsabilité pénale.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["diagnostic_amiante"],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_001"],
+          "norm_reference": "Code de la santé publique R1334-29-5 + Code du travail R4412-97",
+          "control_questions": [
+            { "question": "DAAT réalisé par diagnostiqueur certifié et rapport joint ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_010",
+          "title": "Diagnostic plomb (CREP) si bâtiment < 1949",
+          "phase": "diagnostics_obligatoires",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["avant_1949"],
+          "explanation": "OBLIGATOIRE pour tout bâtiment construit avant le 1er janvier 1949. Constat de Risque d'Exposition au Plomb (CREP) identifie les peintures au plomb. Dégradation par ponçage, grattage = poussières toxiques (saturnisme).",
+          "klaro_recommendation": "Diagnostiqueur certifié, coût ~150-300 €. Le CREP indique les zones plombées et leur état. Si plomb dégradé : précautions strictes (confinement, EPI, évacuation déchets en filière dédiée). Risque grave pour enfants (saturnisme = dommages neurologiques irréversibles).",
+          "common_mistake": "Poncer une peinture ancienne sans CREP — exposition au plomb, intoxication chronique des occupants surtout enfants.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["diagnostic_plomb"],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_001"],
+          "norm_reference": "Code de la santé publique L1334-5",
+          "control_questions": [
+            { "question": "CREP réalisé par diagnostiqueur certifié et rapport joint ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_011",
+          "title": "Si amiante détecté : entreprise certifiée sous-section 3 ou 4",
+          "phase": "diagnostics_obligatoires",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["avant_1949", "1949_1997"],
+          "explanation": "INTERDIT à un particulier d'intervenir sur amiante. Sous-section 3 (SS3) = retrait/encapsulage. Sous-section 4 (SS4) = interventions sur matériaux amiantés (ex : percement). Entreprise certifiée obligatoire.",
+          "klaro_recommendation": "Entreprises certifiées QUALIBAT 1552 (SS3) ou QUALIBAT 1553 (SS4). Coût élevé (1000-5000 € pour quelques m²). Plan de retrait à fournir, BSDA (bordereau de suivi des déchets) obligatoire. Filière éliminateur agréé. Délais : 2-3 mois minimum entre devis et fin de chantier.",
+          "common_mistake": "Faire intervenir un artisan non certifié pour 'gagner du temps' — exposition de l'entreprise et des occupants, responsabilité pénale du maître d'ouvrage.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["diagnostic_amiante"],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_009"],
+          "norm_reference": "Code du travail R4412-94 à R4412-148",
+          "control_questions": [
+            { "question": "Si amiante : entreprise SS3/SS4 certifiée engagée et plan de retrait fourni ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_012",
+          "title": "Si plomb détecté : précautions strictes",
+          "phase": "diagnostics_obligatoires",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["avant_1949"],
+          "explanation": "Confinement de la zone (bâche plastique au sol et fermée), EPI complets (combinaison jetable, masque FFP3, gants), méthodes humides (pas de ponçage à sec), gestion des déchets en filière dédiée.",
+          "klaro_recommendation": "Méthodes recommandées : décapage chimique (gel bloqueur), grattage à l'humide. INTERDIT : ponçage à sec, décapage thermique (vapeurs toxiques). Enfants et femmes enceintes éloignés. Nettoyage poussières au chiffon humide à usage unique. Déchets emballés et étiquetés.",
+          "common_mistake": "Décaper la peinture au pistolet thermique — vaporisation du plomb, intoxication aiguë de l'opérateur et des occupants.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_010"],
+          "norm_reference": "Code de la santé publique + Code du travail",
+          "control_questions": [
+            { "question": "Si plomb : précautions strictes mises en place (confinement, EPI, méthodes humides) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_013",
+          "title": "Repérer canalisations encastrées avant percement",
+          "phase": "diagnostics_obligatoires",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Avant tout percement de mur ou de dalle : détecter les canalisations cachées (élec, gaz, eau, chauffage). Détecteur multi-matériaux + récupération des plans si disponibles.",
+          "klaro_recommendation": "Détecteur multi-matériaux (Bosch GMS 120 ou similaire, ~80 €). Coupe-courant de la zone. Recherche plans aux archives mairie ou copropriété. Si bâtiment ancien sans plans : sondage progressif au foret fin avant gros percement. Marquez les zones risquées au crayon.",
+          "common_mistake": "Percer 'à l'aveugle' dans un mur — câble électrique sectionné (court-circuit, électrocution), canalisation gaz percée (explosion), tuyau d'eau percé (dégât des eaux).",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "NF C 15-100 + DTU 60.1",
+          "control_questions": [
+            { "question": "Détection préalable réalisée à chaque percement ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etude_structure",
+      "label": "Étude de structure (BET)",
+      "tasks": [
+        {
+          "id": "maco_014",
+          "title": "Faire intervenir un BET pour tout élément porteur ou fondation",
+          "phase": "etude_structure",
+          "applies_to_works_type": ["element_porteur", "fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Bureau d'Études Structure (BET) ou ingénieur structure obligatoire pour : modification d'élément porteur, création d'ouverture dans porteur, fondation, dalle structurelle. Le BET dimensionne, calcule, justifie.",
+          "klaro_recommendation": "Demandez 2-3 devis BET (coût 800-3000 € selon complexité). Le BET doit produire : note de calcul, plan d'exécution coffrage et armatures, dimensions exactes des linteaux et chaînages, mode d'étaiement provisoire. Sans BET, aucun assureur DO ne couvre, aucune garantie décennale ne tient.",
+          "common_mistake": "Vouloir économiser le BET et 'demander conseil à un maçon' — pas de note de calcul, pas de plans signés, pas d'assurance, responsabilité pénale en cas de sinistre.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_001"],
+          "norm_reference": "Eurocode 2 + Eurocode 6 + DTU 20.1 + DTU 21",
+          "control_questions": [
+            { "question": "Étude BET réalisée par professionnel qualifié et rapport joint ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_015",
+          "title": "Étude de sol G1+G2 en zone RGA pour extension/neuf",
+          "phase": "etude_structure",
+          "applies_to_works_type": ["fondation_extension"],
+          "applies_to_building_age": ["construction_neuve", "all"],
+          "explanation": "Loi ELAN : étude géotechnique G1 (avant achat ou conception) + G2 (avant travaux) obligatoire en zone à risque retrait-gonflement des argiles. Détermine la profondeur et le type de fondations.",
+          "klaro_recommendation": "Vérifiez si votre commune est en zone RGA (carte ANR / Géorisques.gouv.fr). Coût étude G1+G2 : 1500-4000 €. La G2 fournit les caractéristiques précises du sol et le dimensionnement des fondations. Sans elle, fondations sous-dimensionnées = fissures structurelles à 5-10 ans.",
+          "common_mistake": "Sauter l'étude de sol en 'auto-construction' — fondations sous-dimensionnées, fissures qui apparaissent en saison sèche, reprise très coûteuse.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_sol_g2"],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_014"],
+          "norm_reference": "Loi ELAN + NF P 94-500",
+          "control_questions": [
+            { "question": "Étude G1+G2 réalisée et rapport joint si zone RGA ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_016",
+          "title": "Borner par un géomètre si limites en jeu",
+          "phase": "etude_structure",
+          "applies_to_works_type": ["fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Géomètre-expert pour matérialiser les limites de propriété quand l'extension ou le mur de clôture est proche d'une limite. Borne officielle = preuve juridique, opposable.",
+          "klaro_recommendation": "Coût bornage : 800-2000 € selon complexité. Le PV de bornage est définitif et opposable au voisin. Indispensable si la construction est < 3 m de la limite (PLU exige souvent retrait minimum). Si désaccord avec voisin : seul le bornage géomètre fait foi.",
+          "common_mistake": "Construire 'à vue' contre la limite supposée — recours du voisin, obligation de démolir si limite franchie de quelques cm.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code civil 646 + Code de l'urbanisme",
+          "control_questions": []
+        },
+        {
+          "id": "maco_017",
+          "title": "Identifier les murs porteurs sur les plans",
+          "phase": "etude_structure",
+          "applies_to_works_type": ["element_porteur"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Localisez les murs porteurs sur les plans d'origine (souvent 20-30 cm d'épaisseur pour porteur en pierre, 15-20 cm en parpaing/béton). À défaut de plans : sondage et BET obligatoires. NE JAMAIS supposer 'ce mur n'a pas l'air porteur'.",
+          "klaro_recommendation": "Plans en mairie (archives), notaire, ancien propriétaire, syndic en copropriété. Indices visuels : direction des solives au plafond (les solives reposent sur les porteurs), épaisseur du mur, présence de chaînages aux angles. SANS plans + sans BET = pose impossible.",
+          "common_mistake": "'Casser un mur fin pour ouvrir le séjour' sans étude — c'est souvent un porteur de refend, effondrement partiel possible.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_014"],
+          "norm_reference": "Eurocode 6 + DTU 20.1",
+          "control_questions": [
+            { "question": "Murs porteurs identifiés sur plans ou par BET ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_018",
+          "title": "Récupérer le rapport BET complet",
+          "phase": "etude_structure",
+          "applies_to_works_type": ["element_porteur", "fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Le rapport BET doit contenir : note de calcul, dimensions exactes des linteaux (longueur, hauteur, section béton, sections d'acier), mode d'étaiement provisoire, sollicitations à reprendre.",
+          "klaro_recommendation": "Vérifiez à réception : signé par ingénieur, daté, références d'assurance professionnelle. Doit comporter plans cotés et bordereaux d'aciers. Conservez 10 ans (durée garantie décennale). Joignez à votre dossier Klaro et à l'assureur DO.",
+          "common_mistake": "Recevoir un BET incomplet et démarrer les travaux — pas de plan d'exécution = pose à l'aveugle, conformité non garantie.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_014"],
+          "norm_reference": "Eurocode 2 + Eurocode 6",
+          "control_questions": [
+            { "question": "Rapport BET complet avec plans + note de calcul + dimensionnement ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preparation_chantier",
+      "label": "Préparation du chantier",
+      "tasks": [
+        {
+          "id": "maco_019",
+          "title": "Préparer la zone de stockage des matériaux",
+          "phase": "preparation_chantier",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Palettes accessibles à proximité du chantier, ciment au sec et surélevé, ferraillage à plat sur cales, blocs sur palettes propres.",
+          "klaro_recommendation": "Bâche au sol pour le stockage extérieur. Sacs de ciment sur palette + bâche dessus (l'humidité durcit le ciment, perte du sac complet). Ferraillage : éviter rouille de surface tolérable mais pas de rouille en plaques. Anticipez l'accès camion (largeur, portance du sol).",
+          "common_mistake": "Stocker le ciment à même le sol ou sans bâche — humidité qui prend le ciment en quelques jours, ressacs perdus.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 20.1",
+          "control_questions": []
+        },
+        {
+          "id": "maco_020",
+          "title": "Calculer les quantités précises",
+          "phase": "preparation_chantier",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Parpaings, ciment, sable, gravier, ferraillage, mortier : calcul précis avec marge de 5 à 10% pour chutes, casse, ajustements.",
+          "klaro_recommendation": "Pour 1 m² de mur en parpaing 20×20×50 : 10 blocs + 20 kg de mortier. Pour 1 m³ de béton dosé 350 kg/m³ : 350 kg ciment + 800 kg sable + 1100 kg gravier + 175 L d'eau. Achetez tout d'un coup, du même lot. Marge 10% évite les arrêts de chantier.",
+          "common_mistake": "Acheter au plus juste et tomber court en fin de chantier — arrêt et lot complémentaire à teinte/qualité parfois différente.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_018"],
+          "norm_reference": "DTU 20.1 + DTU 21",
+          "control_questions": []
+        },
+        {
+          "id": "maco_021",
+          "title": "Organiser la livraison",
+          "phase": "preparation_chantier",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Toupie béton dès 2-3 m³ (plus économique que sacs), palettes parpaings (camion-grue à demander si pas d'engin sur place), sacs ciment livrés sur palettes.",
+          "klaro_recommendation": "Vérifiez l'accès du camion (largeur, hauteur sous fil, portance). Toupie béton : prévenez l'horaire précis et l'emplacement de coulage (le béton commence à prendre dès la sortie de la toupie). Camion-grue ~80-150 €/heure, économise du portage manuel.",
+          "common_mistake": "Faire venir une toupie sans préparer le coulage — béton qui prend dans la toupie, surcoût + déchets.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_020"],
+          "norm_reference": "",
+          "control_questions": []
+        },
+        {
+          "id": "maco_022",
+          "title": "Couper et consigner les fluides",
+          "phase": "preparation_chantier",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Coupez l'eau, l'électricité et le gaz (si présent) sur la zone de travail. Consignation = vanne fermée, étiquette, vérification VAT (Vérification Absence Tension).",
+          "klaro_recommendation": "Coupure au tableau du circuit concerné, vanne d'arrêt eau de la zone, vanne gaz sectionnée. VAT à l'aide d'un VAT (vérificateur d'absence de tension). Étiquetez 'Travaux en cours, ne pas réenclencher'. Sans consignation = risque électrocution, dégât eau, explosion gaz.",
+          "common_mistake": "Couper le disjoncteur sans vérifier l'absence de tension — un câble peut rester sous tension par erreur de bornage, électrocution.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "NF C 18-510 + Code du travail",
+          "control_questions": [
+            { "question": "Fluides coupés et consignés (VAT électrique réalisée) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_023",
+          "title": "Mettre en place les EPI",
+          "phase": "preparation_chantier",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Casque (chute d'objet), chaussures S3 (semelle anti-perforation, embout coqué), gants anti-coupure, lunettes pour découpe, masque FFP3 OBLIGATOIRE pour silice (poussière de béton/parpaing = silicose).",
+          "klaro_recommendation": "EPI complets pour TOUTES les opérations (pas juste la 'phase dangereuse'). Casque coquard de chantier (norme EN 397). Chaussures S3 norme EN ISO 20345. Masque FFP3 (pas FFP2) pour découpe béton/parpaing (silice cristalline = cancérigène avéré). Renouveler les masques régulièrement.",
+          "common_mistake": "Découper un parpaing sans masque FFP3 — exposition silice, silicose développable en quelques années (maladie professionnelle reconnue).",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code du travail R4321-1 + EN 397/EN ISO 20345/EN 149",
+          "control_questions": [
+            { "question": "EPI complets en place (casque, S3, gants, lunettes, FFP3) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_024",
+          "title": "Installer la sécurité chantier",
+          "phase": "preparation_chantier",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Échafaudage > 3 m (jamais d'échelle pour travail prolongé), harnais en hauteur (toiture, terrasse > 3 m), signalisation, balisage de la zone, garde-corps provisoires aux trémies.",
+          "klaro_recommendation": "Échafaudage de pied conforme NF EN 12810 (monté par personne formée, plinthes anti-chute d'objet). Harnais antichute classe 1 + ligne de vie pour travaux en bord de toit. Balisage rubalise + panneau 'Chantier — accès interdit' visible. Sans sécurité, accident grave et responsabilité pénale.",
+          "common_mistake": "Travailler sur échelle pendant des heures — chute mortelle = première cause d'accident en bâtiment.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code du travail R4323-58 + NF EN 12810",
+          "control_questions": [
+            { "question": "Sécurité chantier en place (échafaudage, harnais, balisage) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_025",
+          "title": "Poser des témoins de fissures sur fissures existantes",
+          "phase": "preparation_chantier",
+          "applies_to_works_type": ["element_porteur", "scellement_reprise"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Avant intervention, repérez les fissures existantes et posez des témoins (jauges plâtre datées, jauges métriques transparentes). Suivi avant/pendant/après travaux pour détecter une aggravation.",
+          "klaro_recommendation": "Témoins en plâtre (cordon plâtré sur la fissure, daté au feutre) ou jauges transparentes graduées vendues en magasin de bricolage. Photographiez chaque fissure datée + témoin. Surveillez l'évolution. Si fissure qui s'élargit pendant les travaux = arrêt immédiat et appel BET.",
+          "common_mistake": "Démarrer les travaux sans repérer les fissures existantes — impossible de prouver ensuite que la fissure préexistait, litige avec voisin/copropriété.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": [],
+          "norm_reference": "DTU 20.1 + bonnes pratiques",
+          "control_questions": [
+            { "question": "Témoins de fissures posés et photographiés AVANT travaux ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_026",
+          "title": "Étayer la zone AVANT toute découpe d'un porteur",
+          "phase": "preparation_chantier",
+          "applies_to_works_type": ["element_porteur"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Étaiement provisoire OBLIGATOIRE selon plan BET avant toute découpe ou démolition d'un porteur. Étais calculés pour reprendre la charge le temps des travaux. Jamais à l'œil.",
+          "klaro_recommendation": "Étais métalliques tubulaires de chantier (location). Nombre, espacement et capacité indiqués par BET. Madriers de répartition au-dessus pour répartir la charge. Étaiement vérifié à chaque demi-journée. Démontage progressif après mise en charge du linteau définitif.",
+          "common_mistake": "'Caler avec deux planches' avant de démolir — effondrement partiel, blessure grave ou morte.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": true,
+          "depends_on": ["maco_018"],
+          "norm_reference": "Eurocode 2 + DTU 20.1 + plan BET",
+          "control_questions": [
+            { "question": "Étaiement réalisé selon plan BET et photographié AVANT découpe ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "terrassement_fondations",
+      "label": "Terrassement & fondations",
+      "tasks": [
+        {
+          "id": "maco_027",
+          "title": "Tracer l'implantation au sol",
+          "phase": "terrassement_fondations",
+          "applies_to_works_type": ["fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Chaises d'implantation aux 4 angles, cordeau tendu, équerre 3-4-5 (méthode Pythagore) pour les angles droits. Plan signé par BET ou architecte.",
+          "klaro_recommendation": "Chaises = piquets bois reliés par planches pour fixer le cordeau au-delà des fouilles (le cordeau survit au terrassement). Équerre 3-4-5 : un côté de 3 m, un autre de 4 m, la diagonale doit faire 5 m. Vérifiez les diagonales du rectangle (doivent être égales). Précision finale : ±1 cm sur 10 m.",
+          "common_mistake": "Tracer 'à l'œil' avec une corde — extension qui n'est pas d'équerre, problèmes en cascade pour la couverture, les menuiseries, le carrelage.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_018"],
+          "norm_reference": "DTU 20.1 §6",
+          "control_questions": [
+            { "question": "Implantation tracée au cordeau avec équerrage 3-4-5 vérifié ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_028",
+          "title": "Décaisser à la profondeur hors gel",
+          "phase": "terrassement_fondations",
+          "applies_to_works_type": ["fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Profondeur hors gel selon zone : 60 cm minimum en zone tempérée, 80 cm à 1 m en zone froide ou argileuse. Étude de sol G2 donne la profondeur exacte.",
+          "klaro_recommendation": "Profondeur conforme G2 + 5-10 cm pour le béton de propreté. Largeur de la fouille : largeur de la semelle + 10-15 cm de chaque côté pour le coffrage si besoin. Sol décaissé jusqu'au sol porteur (pas dans la terre végétale). Évacuez les terres ou prévoyez une zone de remblai.",
+          "common_mistake": "Fonder à 40 cm 'pour aller plus vite' — le gel atteint la fondation, soulèvement, fissures structurelles.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": ["etude_sol_g2"],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_027"],
+          "norm_reference": "DTU 13.11 + DTU 13.12 + carte gel France",
+          "control_questions": [
+            { "question": "Profondeur de décaissement (cm) ?", "type": "number", "expected": "≥ 60 zone tempérée, ≥ 80 zone froide/argile" }
+          ]
+        },
+        {
+          "id": "maco_029",
+          "title": "Installer le drainage périphérique si nécessaire",
+          "phase": "terrassement_fondations",
+          "applies_to_works_type": ["fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Drain agricole + géotextile + lit de gravier en pied de fondation pour évacuer les eaux de ruissellement et de remontée. Indispensable en sol argileux ou nappe haute.",
+          "klaro_recommendation": "Drain Ø 100 mm en pente 1% vers un exutoire (puisard, fossé). Géotextile autour pour empêcher le colmatage par les fines. Lit de gravier 20/40 sur 20 cm. Si pas de drainage en sol argileux : eau qui stagne en pied de fondation, fissuration et remontées d'humidité dans les murs.",
+          "common_mistake": "Sauter le drainage en sol argileux 'pour économiser' — humidité dans les murs, sous-sol non utilisable, dégradations à terme.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_028"],
+          "norm_reference": "DTU 20.1 §10 + DTU 13.11",
+          "control_questions": []
+        },
+        {
+          "id": "maco_030",
+          "title": "Couler le béton de propreté",
+          "phase": "terrassement_fondations",
+          "applies_to_works_type": ["fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "5 à 10 cm de béton dosé 250 kg/m³ en fond de fouille. Sert à uniformiser la surface, isoler les aciers de la terre, et faciliter la pose du ferraillage.",
+          "klaro_recommendation": "Béton de propreté 'maigre' : 250 kg de ciment + 800 kg sable + 1100 kg gravier par m³. Étalez à plat, taloché grossier. Séchage 24h avant pose du ferraillage. Ne sert pas à reprendre les charges (rôle de la semelle au-dessus).",
+          "common_mistake": "Sauter le béton de propreté — aciers en contact avec la terre, corrosion, perte de capacité portante de la semelle.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_029"],
+          "norm_reference": "DTU 13.11 + DTU 21",
+          "control_questions": []
+        },
+        {
+          "id": "maco_031",
+          "title": "Installer le ferraillage de semelle selon plans BET",
+          "phase": "terrassement_fondations",
+          "applies_to_works_type": ["fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Aciers HA10 ou HA12 selon BET. Recouvrement minimum 50 ø (50 fois le diamètre). Enrobage 3 cm minimum (béton entre l'acier et l'extérieur). Cales d'enrobage en plastique ou béton.",
+          "klaro_recommendation": "Suivez STRICTEMENT le plan BET : nombre d'aciers, sections, longueurs, recouvrements, enrobage. Cales d'enrobage tous les 50-80 cm. Liaison entre semelle et chaînage vertical par aciers en attente. Aciers propres (rouille de surface OK, rouille en plaques = à brosser).",
+          "common_mistake": "Réduire le ferraillage 'pour économiser' — semelle qui se rompt en flexion, fissures structurelles dans le bâtiment.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": true,
+          "depends_on": ["maco_030"],
+          "norm_reference": "Eurocode 2 + DTU 13.11 + plan BET",
+          "control_questions": [
+            { "question": "Ferraillage conforme plan BET (sections, recouvrements 50ø, enrobage 3 cm) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_032",
+          "title": "Photographier le ferraillage AVANT coulage",
+          "phase": "terrassement_fondations",
+          "applies_to_works_type": ["fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Une fois recouvert de béton, le ferraillage est invisible. Photo OBLIGATOIRE avant coulage = preuve de conformité, document indispensable pour l'assurance DO en cas de litige.",
+          "klaro_recommendation": "Photos d'ensemble + détails (recouvrements, enrobage, cales). Plusieurs angles. Mettre une mire ou mètre dans le cadre pour échelle. Avec date dans les métadonnées EXIF. Archivez avec le dossier travaux. C'est votre preuve si désordre ultérieur.",
+          "common_mistake": "Couler sans photo et ne pas pouvoir prouver la conformité du ferraillage en cas de désordre — assurance DO refuse la prise en charge.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["maco_031"],
+          "norm_reference": "Bonnes pratiques + assurance DO",
+          "control_questions": [
+            { "question": "Photos du ferraillage prises et archivées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_033",
+          "title": "Couler les semelles",
+          "phase": "terrassement_fondations",
+          "applies_to_works_type": ["fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Béton dosé selon BET, généralement C25/30 (résistance caractéristique 25 MPa cylindre / 30 MPa cube). Vibration à l'aiguille pour éliminer les bulles d'air et garantir la cohésion.",
+          "klaro_recommendation": "Toupie béton recommandée dès 2-3 m³. Coulage continu pour éviter les reprises (joint froid = point faible). Vibration à l'aiguille vibrante (location ~30 €/jour) ou batte sur les aciers. Contrôle visuel : surface plane, aciers complètement noyés. Niveau supérieur taloché.",
+          "common_mistake": "Béton trop sec ou non vibré — bulles d'air, mauvais enrobage des aciers, semelle de capacité réduite.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_032"],
+          "norm_reference": "DTU 21 + Eurocode 2 + NF EN 206",
+          "control_questions": [
+            { "question": "Béton coulé en continu, vibré, niveau supérieur taloché ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dalle_dallage",
+      "label": "Dalle / dallage",
+      "tasks": [
+        {
+          "id": "maco_034",
+          "title": "Décaisser et compacter le sol support",
+          "phase": "dalle_dallage",
+          "applies_to_works_type": ["dalle", "fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Décaissement à la profondeur du dallage + hérisson + isolation + dalle. Compactage du sol par dame ou plaque vibrante jusqu'au refus (le sol ne s'enfonce plus sous l'engin).",
+          "klaro_recommendation": "Plaque vibrante en location ~50 €/jour. Compactage par couches de 20 cm maximum. Refus = critère de fin (pas de gain de compactage supplémentaire). Sans compactage : tassement différentiel, fissuration de la dalle.",
+          "common_mistake": "Couler la dalle sur sol mal compacté — tassement à long terme, fissuration en étoile, déformation des cloisons posées dessus.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 13.3",
+          "control_questions": [
+            { "question": "Sol support compacté au refus ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_035",
+          "title": "Mettre en place le hérisson",
+          "phase": "dalle_dallage",
+          "applies_to_works_type": ["dalle", "fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Hérisson = couche de gravier 20/40 sur 15 à 20 cm, compactée en couches. Sert à drainer l'eau, isoler du sol et permettre la diffusion thermique.",
+          "klaro_recommendation": "Gravier 20/40 (granulométrie 20-40 mm) propre, sans fines. Étalez en 2 couches de 8-10 cm, compactez chaque couche. Niveau supérieur plan et de niveau. Refoulez les pierres saillantes pour préparer la pose du polyane sans risque de perforation.",
+          "common_mistake": "Hérisson trop mince (< 10 cm) ou avec gravier sale (fines) — pas de drainage efficace, remontées d'humidité.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_034"],
+          "norm_reference": "DTU 13.3 §6",
+          "control_questions": [
+            { "question": "Hérisson 15-20 cm gravier 20/40 propre, compacté en 2 couches ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_036",
+          "title": "Poser un film polyane continu",
+          "phase": "dalle_dallage",
+          "applies_to_works_type": ["dalle", "fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Film polyane (200 microns minimum) sur tout le hérisson. Étanchéité au radon et aux remontées d'humidité. Recouvrements de 20 cm minimum, remontées en périphérie de 15 cm.",
+          "klaro_recommendation": "Polyane 200 microns minimum (parfois exigé 400 microns en zone radon). Recouvrements scotchés (scotch large adhérent). Remontées scotchées au mur ou retournées à l'intérieur de la dalle. Aucune perforation par les pierres du hérisson. Photo obligatoire avant pose du treillis.",
+          "common_mistake": "Polyane trop fin (50-100 microns) ou avec déchirures — humidité qui passe, dalle humide en permanence.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["maco_035"],
+          "norm_reference": "DTU 13.3 §6 + Arrêté radon",
+          "control_questions": [
+            { "question": "Polyane 200 microns continu, recouvrements 20 cm, remontées 15 cm ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_037",
+          "title": "Poser une isolation sous dalle si requis",
+          "phase": "dalle_dallage",
+          "applies_to_works_type": ["dalle", "fondation_extension"],
+          "applies_to_building_age": ["construction_neuve", "all"],
+          "explanation": "PSE (polystyrène expansé), XPS (extrudé) ou polyuréthane selon performance visée. Obligatoire RE2020 pour construction neuve : R ≥ 4 m²K/W sur sol.",
+          "klaro_recommendation": "Épaisseur selon performance : 10 cm de XPS (R = 3,3) à 16 cm pour atteindre R = 5. Posée sur le polyane, joints décalés entre lés. XPS résiste mieux à l'écrasement que PSE pour dalles très chargées (garage, atelier).",
+          "common_mistake": "Sauter l'isolation sous dalle en construction neuve — non conforme RE2020, sol froid en hiver, surconsommation chauffage.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_036"],
+          "norm_reference": "DTU 13.3 + RE2020",
+          "control_questions": [
+            { "question": "Isolation sous dalle conforme RE2020 (R ≥ 4) si construction neuve ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_038",
+          "title": "Installer le treillis soudé sur cales",
+          "phase": "dalle_dallage",
+          "applies_to_works_type": ["dalle", "fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Treillis soudé ST25 ou ST40 selon BET, posé sur cales pour garantir un enrobage de 3 cm sous (entre treillis et polyane) et 3 cm au-dessus (entre treillis et surface dalle). JAMAIS posé directement sur le polyane.",
+          "klaro_recommendation": "Cales d'enrobage en plastique ou béton, tous les 50-80 cm. Recouvrements de panneaux : 1 maille minimum (15-20 cm), liés au fil de fer. Le treillis travaille en flexion et empêche la fissuration. Sans enrobage : aciers exposés, corrosion.",
+          "common_mistake": "Poser le treillis directement sur le polyane et 'tirer' pendant le coulage — enrobage nul, treillis qui ne joue pas son rôle, fissures.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["maco_037"],
+          "norm_reference": "DTU 13.3 + Eurocode 2",
+          "control_questions": [
+            { "question": "Treillis posé sur cales (enrobage 3 cm sous et au-dessus) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_039",
+          "title": "Photographier le ferraillage AVANT coulage",
+          "phase": "dalle_dallage",
+          "applies_to_works_type": ["dalle", "fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Photo obligatoire du treillis posé sur cales, avant coulage du béton. Preuve de conformité une fois la dalle coulée et invisible.",
+          "klaro_recommendation": "Photos d'ensemble + détails des cales et recouvrements. Mire dans le cadre. Conservez avec dossier travaux. Photo essentielle pour : assurance DO, vente du bien, expertise sinistre.",
+          "common_mistake": "Couler sans photo — preuve impossible de la conformité.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["maco_038"],
+          "norm_reference": "Bonnes pratiques + assurance DO",
+          "control_questions": [
+            { "question": "Photos du ferraillage dalle prises et archivées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_040",
+          "title": "Prévoir les joints de fractionnement",
+          "phase": "dalle_dallage",
+          "applies_to_works_type": ["dalle", "fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Joints de fractionnement obligatoires dans les dalles > 25 m² ou longueur > 6 m. Permettent l'absorption des dilatations et limitent la fissuration.",
+          "klaro_recommendation": "Joints sciés au disque diamant 24-48h après coulage, profondeur 1/3 de l'épaisseur de la dalle. Espacement maximum 6 m linéaires. Joints intermédiaires si surface > 25 m². Sans joints : fissuration aléatoire, esthétique compromise et risque mécanique.",
+          "common_mistake": "Couler une dalle de 50 m² d'un seul tenant — fissuration en réseau dans les semaines qui suivent.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_038"],
+          "norm_reference": "DTU 13.3 §7",
+          "control_questions": [
+            { "question": "Joints de fractionnement prévus si > 25 m² ou > 6 m linéaires ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_041",
+          "title": "Couler la dalle",
+          "phase": "dalle_dallage",
+          "applies_to_works_type": ["dalle", "fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Épaisseur courante 12 à 15 cm pour dalle sur terre-plein, plus selon BET (charges, portée). Vibrer pour éliminer les bulles, talocher pour finir la surface plane.",
+          "klaro_recommendation": "Toupie béton C25/30 (résistance 25 MPa). Coulage continu pour éviter les joints froids. Vibration à l'aiguille en plusieurs points. Réglage à la règle vibrante ou règle de maçon. Talochage 2-4h après pour fermer la surface (selon plasticité). Niveau final ±5 mm sous règle de 2 m.",
+          "common_mistake": "Béton trop sec ou pas vibré — surface granuleuse, fissures à long terme, pas d'enrobage du treillis.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_040"],
+          "norm_reference": "DTU 13.3 + DTU 21",
+          "control_questions": [
+            { "question": "Béton coulé en continu, vibré, taloché, niveau ±5 mm/2m ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_042",
+          "title": "Réaliser la cure du béton (humidification 7 jours)",
+          "phase": "dalle_dallage",
+          "applies_to_works_type": ["dalle", "fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Cure = maintenir le béton humide pendant 7 jours minimum après coulage. Étape la plus zappée et CAUSE NUMÉRO 1 de fissuration des dalles. Bâche, arrosage régulier ou produit de cure.",
+          "klaro_recommendation": "Bâche plastique posée sur la dalle juste après talochage. OU arrosage 3-4 fois par jour pendant 7 jours. OU produit de cure liquide pulvérisé en surface (forme un film qui retient l'eau). Sans cure, le béton sèche en surface plus vite qu'en profondeur, retrait différentiel, fissures.",
+          "common_mistake": "Considérer la dalle finie après talochage et la laisser sécher au soleil — fissuration de retrait massive en quelques jours.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_041"],
+          "norm_reference": "DTU 21 + Eurocode 2 + NF EN 13670",
+          "control_questions": [
+            { "question": "Cure réalisée pendant 7 jours minimum (bâche, arrosage ou produit de cure) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_043",
+          "title": "Respecter le délai avant chargement (28 jours R28)",
+          "phase": "dalle_dallage",
+          "applies_to_works_type": ["dalle", "fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "R28 = résistance caractéristique du béton à 28 jours. Avant : montée progressive (50% à 7 jours, 70% à 14 jours, 100% à 28 jours). Circulation piétonne possible à 7 jours, charge nominale à 28 jours.",
+          "klaro_recommendation": "Pas de charge significative avant 7 jours. Pas de chape ni revêtement avant 21 jours. Charge maximale (mobilier, montage de murs) seulement à 28 jours. Cette discipline conditionne la durabilité de la dalle. Un chargement précoce = micro-fissures et perte de capacité portante.",
+          "common_mistake": "Charger la dalle à J+3 'pour tenir le planning' — micro-fissures invisibles, dégradation à long terme.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_042"],
+          "norm_reference": "Eurocode 2 + DTU 21 + NF EN 206",
+          "control_questions": [
+            { "question": "Délais respectés (7j piéton, 21j ouvrages secondaires, 28j charge nominale) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    }
+  ]
+}
