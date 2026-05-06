@@ -1198,6 +1198,700 @@
           ]
         }
       ]
+    },
+    {
+      "id": "reservations_techniques",
+      "label": "Réservations techniques & coordination",
+      "tasks": [
+        {
+          "id": "maco_064",
+          "title": "Anticiper les réservations dans murs et dalles AVANT coulage",
+          "phase": "reservations_techniques",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Réservations = passages prévus pour les gaines élec, plomberie, VMC, évacuations. À matérialiser AVANT coulage des dalles ou montage des murs. Coordination indispensable avec les autres lots.",
+          "klaro_recommendation": "Plan de réservations établi avec électricien, plombier et chauffagiste AVANT démarrage gros œuvre. Manchons PVC scellés dans les murs/dalles aux emplacements prévus. Diamètres adaptés aux gaines (Ø 50 mm pour évacuation lavabo, Ø 100 mm pour WC). Photographiez les réservations en place avant coulage.",
+          "common_mistake": "Oublier les réservations et devoir percer le béton durci — saignées qui affaiblissent la structure, surcoût important.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_063"],
+          "norm_reference": "DTU 20.1 + NF C 15-100 + DTU 60.1",
+          "control_questions": [
+            { "question": "Plan de réservations coordonné avec tous les lots et matérialisé avant coulage ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_065",
+          "title": "Coordonner avec le menuisier (dimensions tableaux)",
+          "phase": "reservations_techniques",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Le menuisier doit valider les dimensions précises des tableaux (équerrage, tolérances) avant la commande des menuiseries. Toute erreur de gros œuvre se répercute sur la pose des fenêtres.",
+          "klaro_recommendation": "Menuisier sur le chantier après le montage des murs et avant la commande définitive. Mesures contradictoires en 3 points par dimension. Tolérance d'équerrage < 2 mm/m. Si défaut : reprise gros œuvre AVANT commande menuiseries (refabrication impossible).",
+          "common_mistake": "Commander les menuiseries sur plans sans validation après gros œuvre — menuiseries qui ne rentrent pas, refabrication ou ajustements à grands frais.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_063"],
+          "norm_reference": "DTU 36.5 + DTU 20.1",
+          "control_questions": [
+            { "question": "Menuisier consulté pour validation dimensions tableaux après gros œuvre ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_066",
+          "title": "Coordonner avec le couvreur (arases hautes)",
+          "phase": "reservations_techniques",
+          "applies_to_works_type": ["element_porteur", "fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Le couvreur a besoin d'arases hautes parfaitement de niveau et planes pour poser les sablières (poutres horizontales recevant la charpente). Coordination indispensable.",
+          "klaro_recommendation": "Niveau de l'arase haute vérifié au laser après chaînage. Planéité ±5 mm/m. Hauteur conforme au plan d'exécution charpente. Sablière scellée ou ancrée selon plan. Sans coordination : charpente posée sur arase non plane = tuiles désaffleurées et infiltrations.",
+          "common_mistake": "Laisser une arase haute irrégulière — la charpente compense mal, désaffleurs des tuiles, infiltrations.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_059"],
+          "norm_reference": "DTU 31.1 + DTU 40.x (couverture)",
+          "control_questions": [
+            { "question": "Arases hautes de niveau (±5 mm/m) et coordonnées avec le couvreur ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_067",
+          "title": "Coordonner avec le carreleur (niveaux finis)",
+          "phase": "reservations_techniques",
+          "applies_to_works_type": ["dalle", "fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Le niveau fini (dalle + chape + carrelage) doit être anticipé. Le carreleur a besoin d'une dalle plane ±5 mm/m et au bon niveau pour la chape et le revêtement final.",
+          "klaro_recommendation": "Anticipez les épaisseurs : dalle (12-15 cm) + chape (5-8 cm) + carrelage (1-2 cm) = niveau fini cible. Sans cette coordination : marche d'eau aux portes, dénivellement entre pièces. Photographiez le niveau de la dalle après coulage avec mire.",
+          "common_mistake": "Couler la dalle sans se soucier du niveau fini — décalages avec les pièces voisines, marches non prévues.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_041"],
+          "norm_reference": "DTU 13.3 + DTU 52.1",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "curing_sechage",
+      "label": "Conditions météo & cure",
+      "tasks": [
+        {
+          "id": "maco_068",
+          "title": "Suspendre le bétonnage en cas de gel ou forte chaleur",
+          "phase": "curing_sechage",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Bétonnage interdit < 5°C (gel = béton qui ne prend pas correctement, perte de résistance) et > 30°C sans précautions (séchage trop rapide, fissures). Vérifiez la météo avant chaque coulage.",
+          "klaro_recommendation": "T° entre 5 et 30°C : conditions normales. < 5°C : reportez ou utilisez un adjuvant antigel + bâchage isolant. > 30°C : coulage tôt le matin, brumisation, bâchage immédiat, produit de cure renforcé. Ne JAMAIS couler par gelée annoncée la nuit suivante (le béton frais gèle).",
+          "common_mistake": "Couler par 2°C 'parce que la toupie est livrée' — béton gelé en surface, perte de 30 à 50% de résistance.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "NF EN 13670 + DTU 21",
+          "control_questions": [
+            { "question": "Température de coulage (°C) ?", "type": "number", "expected": "5 à 30 (sinon précautions)" }
+          ]
+        },
+        {
+          "id": "maco_069",
+          "title": "Bâcher les ouvrages frais en cas de pluie",
+          "phase": "curing_sechage",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Le ruissellement de pluie sur béton frais délave le ciment en surface, compromet la résistance et crée une couche superficielle friable.",
+          "klaro_recommendation": "Bâche plastique posée immédiatement si pluie annoncée. Bâche maintenue en place pendant 24-48h après coulage. Pour pluie faible : un simple film polyane suffit. Pour pluie forte : bâcher avec poids aux bords pour ne pas qu'elle s'envole.",
+          "common_mistake": "Laisser la dalle exposée à la pluie le soir du coulage — surface qui se délave, finition compromise, parfois reprise nécessaire.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_041"],
+          "norm_reference": "NF EN 13670 + DTU 21",
+          "control_questions": []
+        },
+        {
+          "id": "maco_070",
+          "title": "Cure systématique sur tous les bétons coulés",
+          "phase": "curing_sechage",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Cure = humidification 7 jours minimum sur tous les bétons (semelles, dalles, chaînages, linteaux). Étape la plus zappée et CAUSE NUMÉRO 1 de fissuration.",
+          "klaro_recommendation": "3 méthodes au choix : (1) bâche plastique posée juste après talochage, maintenue 7 jours ; (2) arrosage 3-4 fois par jour pendant 7 jours ; (3) produit de cure liquide pulvérisé en surface après talochage (forme un film qui retient l'humidité). En zone chaude/sèche : doublez les arrosages.",
+          "common_mistake": "Considérer le béton coulé comme 'fini' et le laisser sécher au soleil — fissuration de retrait massive en surface dès les 24-48h.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_041"],
+          "norm_reference": "NF EN 13670 + DTU 21 + Eurocode 2",
+          "control_questions": [
+            { "question": "Cure réalisée pendant 7 jours minimum sur tous les bétons coulés ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_071",
+          "title": "Respecter les délais de décoffrage",
+          "phase": "curing_sechage",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Délais minimum : 24-48h pour coffrages verticaux (faces de murs, chaînages verticaux), 7 jours pour dalles, 21 jours pour poutres et linteaux porteurs.",
+          "klaro_recommendation": "Décoffrage progressif (étais retirés un par un, surveillance fissures). En cas de doute : prolongez le délai (jamais préjudiciable). Pour ouvrages très chargés ou portées importantes : suivre strictement le plan BET. Décoffrage anticipé = micro-fissures invisibles + perte de capacité portante.",
+          "common_mistake": "Décoffrer une dalle à J+3 'pour libérer le coffrage' — micro-fissures, fléchissement, finition compromise.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_070"],
+          "norm_reference": "NF EN 13670 + DTU 21",
+          "control_questions": [
+            { "question": "Délais de décoffrage respectés (24-48h vertical, 7j dalle, 21j poutres/linteaux) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "controle_reception",
+      "label": "Contrôle & réception",
+      "tasks": [
+        {
+          "id": "maco_072",
+          "title": "Contrôler aplombs et niveaux finaux après séchage",
+          "phase": "controle_reception",
+          "applies_to_works_type": ["cloison_non_porteuse", "element_porteur", "dalle", "fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Vérification finale : aplombs des murs au fil à plomb ou laser, niveaux des dalles et arases hautes à la règle de 2 m. Tolérances : ±5 mm/m courant, ±2 mm/m pour finitions soignées.",
+          "klaro_recommendation": "Niveau laser pour les grandes longueurs. Règle de 2 m croisée sur dalles et arases. Notez tout défaut sur un croquis pour reprises. Tolérance ±5 mm/m = standard, ±2 mm/m = nécessaire pour pose carrelage grand format ou menuiseries précises.",
+          "common_mistake": "Considérer le gros œuvre fini sans contrôle final — défauts qui se révèlent à la pose des menuiseries ou du carrelage, reprises difficiles.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_071"],
+          "norm_reference": "DTU 20.1 §10 + DTU 13.3",
+          "control_questions": [
+            { "question": "Aplombs et niveaux finaux conformes (±5 mm/m courant, ±2 mm/m soigné) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_073",
+          "title": "Contrôler les ouvertures (équerrage, dimensions)",
+          "phase": "controle_reception",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Chaque ouverture (porte, fenêtre, baie) doit avoir équerrage parfait (diagonales égales ±2 mm/m), dimensions exactes pour pose menuiseries, appuis et linteau aux bonnes cotes.",
+          "klaro_recommendation": "Mesure des diagonales de chaque ouverture. Largeur en 3 points (haut, milieu, bas). Hauteur en 3 points (gauche, milieu, droite). Tolérance ±5 mm en absolu et < 2 mm/m d'équerrage. Photographiez avec mètre visible. Donnez les cotes définitives au menuisier.",
+          "common_mistake": "Tolérer un défaut d'équerrage > 2 mm/m — la menuiserie ne peut pas être posée d'aplomb et d'équerre simultanément.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_058"],
+          "norm_reference": "DTU 36.5 + DTU 20.1",
+          "control_questions": [
+            { "question": "Équerrage et dimensions des ouvertures conformes (±5 mm absolu, < 2 mm/m équerrage) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_074",
+          "title": "Vérifier l'absence de fissures structurelles",
+          "phase": "controle_reception",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Fissures de retrait (fines, en réseau, surface des dalles) = bénignes. Fissures structurelles (larges > 1 mm, traversantes, suivant un angle de 45°, évolutives) = graves.",
+          "klaro_recommendation": "Inspectez sous lumière rasante. Mesurez la largeur des fissures (jauge ou pied à coulisse). < 0,2 mm = retrait, normal. 0,2-1 mm = à surveiller, témoin de plâtre + suivi 3 mois. > 1 mm ou en escalier = appel BET immédiat. Si fissure dans chaînage ou sur porteur = STOP et BET en urgence.",
+          "common_mistake": "Reboucher rapidement une fissure structurelle pour 'masquer' — la fissure réapparaît + on perd la capacité de diagnostic.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_071"],
+          "norm_reference": "DTU 20.1 + Bonnes pratiques BET",
+          "control_questions": [
+            { "question": "Aucune fissure structurelle (> 1 mm, en escalier, sur porteur) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_075",
+          "title": "Réaliser le schéma de récolement",
+          "phase": "controle_reception",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Plan as-built avec position exacte des passages techniques, des ferraillages, des chaînages. Document à conserver précieusement (vente, expertise, intervention future).",
+          "klaro_recommendation": "Reportez sur le plan d'exécution les positions réelles : réservations dans murs/dalles, chaînages, fers d'attente, points singuliers. Joignez les photos avant coulage. Numérique + papier. Indispensable pour : sondage futur (où percer en sécurité), expertise sinistre, vente.",
+          "common_mistake": "Ne rien archiver — toute intervention future commence par un sondage à l'aveugle, parfois dangereuse.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_063"],
+          "norm_reference": "Bonnes pratiques + assurance DO",
+          "control_questions": [
+            { "question": "Schéma de récolement complet (plans + photos avant coulage) archivé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_076",
+          "title": "Sécuriser et nettoyer la zone",
+          "phase": "controle_reception",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Tri des gravats (béton, plâtre, bois, métaux). Déchets dangereux en filière dédiée (amiante = BSDA obligatoire, plomb = filière spécifique).",
+          "klaro_recommendation": "Bennes de tri à la déchetterie ou benne sur chantier. Gravats inertes : déchetterie courante ou centre de recyclage. Amiante : BSDA (bordereau de suivi déchets amiante) à conserver 5 ans. Plomb : centre agréé. Le brûlage et l'enfouissement sauvage sont interdits (sanctions pénales).",
+          "common_mistake": "Mettre tous les gravats dans la même benne — refus de la déchetterie, surcoût, voire amende si déchets dangereux mélangés.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_071"],
+          "norm_reference": "Code de l'environnement L541-1 + Décret BSDA",
+          "control_questions": [
+            { "question": "Déchets triés et évacués en filières adaptées (BSDA si amiante) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_077",
+          "title": "Respecter les délais avant travaux suivants",
+          "phase": "controle_reception",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["all"],
+          "explanation": "28 jours pour charge nominale (R28). 7 jours minimum avant ouvrages secondaires (chape, cloisons légères). Respectez ces délais dans le planning chantier.",
+          "klaro_recommendation": "Planifiez les autres lots APRÈS ces délais. Ne lancez pas un carrelage à J+10 d'une dalle = micro-fissures qui se reproduisent dans le carrelage. Pour ouvrages très sollicités : 28 jours minimum. Le respect de ces délais conditionne la durabilité de l'ouvrage et la garantie décennale.",
+          "common_mistake": "Charger ou faire intervenir d'autres lots avant J+7 'pour tenir le planning' — micro-fissures invisibles, dégradation à long terme.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_071"],
+          "norm_reference": "NF EN 13670 + Eurocode 2",
+          "control_questions": [
+            { "question": "Délais respectés avant travaux suivants (≥ 7j ouvrages secondaires, ≥ 28j charge nominale) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_078",
+          "title": "Déclarer l'achèvement des travaux (DAACT)",
+          "phase": "controle_reception",
+          "applies_to_works_type": ["all"],
+          "applies_to_building_age": ["construction_neuve", "all"],
+          "explanation": "Pour les travaux soumis à PC : déclaration attestant l'achèvement et la conformité des travaux (DAACT) à déposer en mairie. Démarche obligatoire après fin de chantier.",
+          "klaro_recommendation": "Formulaire CERFA 13408 à déposer en mairie ou en ligne dans les 90 jours après achèvement. Joignez : attestation conformité RT/RE2020, plan de récolement, attestation accessibilité PMR si applicable. La DAACT déclenche le délai de recours administratif (3 mois) puis la prescription définitive (10 ans = garantie décennale).",
+          "common_mistake": "Oublier la DAACT après PC accordé — la prescription décennale ne démarre pas, exposition prolongée à recours.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_077"],
+          "norm_reference": "Code de l'urbanisme R462-1 à R462-10",
+          "control_questions": [
+            { "question": "DAACT déposée en mairie après achèvement (si PC) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
     }
-  ]
+  ],
+  "blocking_points": [
+    {
+      "id": "block_001",
+      "message": "Pas de travaux sur élément porteur sans étude BET (rapport joint obligatoire).",
+      "blocks_task_id": "maco_026",
+      "requires_task_id": "maco_014"
+    },
+    {
+      "id": "block_002",
+      "message": "Pas de démolition / percement / ponçage si bâtiment < 1997 sans diagnostic amiante.",
+      "blocks_task_id": "maco_026",
+      "requires_task_id": "maco_009"
+    },
+    {
+      "id": "block_003",
+      "message": "Pas de démolition si amiante détecté sans entreprise certifiée SS3 ou SS4.",
+      "blocks_task_id": "maco_026",
+      "requires_task_id": "maco_011"
+    },
+    {
+      "id": "block_004",
+      "message": "Pas de fondation/extension sans étude de sol G1+G2 en zone RGA.",
+      "blocks_task_id": "maco_028",
+      "requires_task_id": "maco_015"
+    },
+    {
+      "id": "block_005",
+      "message": "Pas de chantier sans assurance dommage-ouvrage pour travaux structurels.",
+      "blocks_task_id": "maco_026",
+      "requires_task_id": "maco_007"
+    },
+    {
+      "id": "block_006",
+      "message": "Pas de travaux modifiant l'aspect extérieur ou créant surface sans DP/PC accordée.",
+      "blocks_task_id": "maco_019",
+      "requires_task_id": "maco_004"
+    },
+    {
+      "id": "block_007",
+      "message": "Pas de découpe d'un porteur sans étaiement validé selon BET (photo obligatoire).",
+      "blocks_task_id": "maco_052",
+      "requires_task_id": "maco_026"
+    },
+    {
+      "id": "block_008",
+      "message": "Pas de coulage sans photo du ferraillage en place.",
+      "blocks_task_id": "maco_033",
+      "requires_task_id": "maco_032"
+    },
+    {
+      "id": "block_009",
+      "message": "Pas de coulage de dalle sans photo du ferraillage sur cales.",
+      "blocks_task_id": "maco_041",
+      "requires_task_id": "maco_039"
+    },
+    {
+      "id": "block_010",
+      "message": "Pas de coulage de chaînage sans photo du ferraillage en place.",
+      "blocks_task_id": "maco_059",
+      "requires_task_id": "maco_063"
+    },
+    {
+      "id": "block_011",
+      "message": "Pas de chargement avant 28 jours (résistance nominale R28).",
+      "blocks_task_id": "maco_077",
+      "requires_task_id": "maco_043"
+    },
+    {
+      "id": "block_012",
+      "message": "Pas de cure = fissures programmées (humidification 7 jours minimum obligatoire).",
+      "blocks_task_id": "maco_071",
+      "requires_task_id": "maco_070"
+    },
+    {
+      "id": "block_013",
+      "message": "Pas de bétonnage par gel (< 5°C) ou forte chaleur (> 30°C) sans précautions adaptées.",
+      "blocks_task_id": "maco_041",
+      "requires_task_id": "maco_068"
+    },
+    {
+      "id": "block_014",
+      "message": "Pas de polyane discontinu = remontées d'humidité et radon.",
+      "blocks_task_id": "maco_038",
+      "requires_task_id": "maco_036"
+    },
+    {
+      "id": "block_015",
+      "message": "Pas de treillis posé directement sur polyane (cales obligatoires, enrobage 3 cm).",
+      "blocks_task_id": "maco_041",
+      "requires_task_id": "maco_038"
+    },
+    {
+      "id": "block_016",
+      "message": "Pas de chaînage interrompu ou sans recouvrement d'aciers conforme (≥ 50 ø).",
+      "blocks_task_id": "maco_059",
+      "requires_task_id": "maco_062"
+    },
+    {
+      "id": "block_017",
+      "message": "Pas de pose de blocs sans arase étanche en pied de mur.",
+      "blocks_task_id": "maco_048",
+      "requires_task_id": "maco_047"
+    },
+    {
+      "id": "block_018",
+      "message": "Pas de joints alignés verticalement (décalage 1/4 de bloc minimum).",
+      "blocks_task_id": "maco_049",
+      "requires_task_id": "maco_048"
+    },
+    {
+      "id": "block_019",
+      "message": "Pas de menuiserie sans validation des dimensions de tableau après gros œuvre.",
+      "blocks_task_id": "maco_073",
+      "requires_task_id": "maco_065"
+    },
+    {
+      "id": "block_020",
+      "message": "Pas de récolement absent — preuves perdues pour interventions futures et assurance DO.",
+      "blocks_task_id": "maco_078",
+      "requires_task_id": "maco_075"
+    }
+  ],
+  "scoring": {
+    "progression_percent": {
+      "formula": "validated_tasks / total_tasks * 100",
+      "total_tasks": 78,
+      "filtered_by": "applies_to_works_type INCLUDES works_type AND applies_to_building_age INCLUDES building_age"
+    },
+    "safety_score": {
+      "base": 100,
+      "penalties": [
+        {
+          "condition": "Travaux sur porteur sans étude BET (maco_014 non validée)",
+          "malus": 50,
+          "category": "critique_bloquant"
+        },
+        {
+          "condition": "Diagnostic amiante absent si bâtiment < 1997 (maco_009 non validée)",
+          "malus": 50,
+          "category": "critique_bloquant",
+          "applies_to_building_age": ["avant_1949", "1949_1997"]
+        },
+        {
+          "condition": "Diagnostic plomb absent si bâtiment < 1949 (maco_010 non validée)",
+          "malus": 40,
+          "category": "critique_bloquant",
+          "applies_to_building_age": ["avant_1949"]
+        },
+        {
+          "condition": "Étude de sol G2 absente en zone RGA (maco_015 non validée)",
+          "malus": 40,
+          "category": "critique_bloquant",
+          "applies_to_works_type": ["fondation_extension"]
+        },
+        {
+          "condition": "Assurance DO absente avant ouverture chantier (maco_007 non validée)",
+          "malus": 35,
+          "category": "critique_bloquant",
+          "applies_to_works_type": ["element_porteur", "dalle", "fondation_extension"]
+        },
+        {
+          "condition": "Autorisation d'urbanisme absente (DP/PC) (maco_004 non validée)",
+          "malus": 35,
+          "category": "critique_bloquant"
+        },
+        {
+          "condition": "Étaiement avant découpe porteur non photographié (maco_026 non validée)",
+          "malus": 35,
+          "category": "critique_bloquant",
+          "applies_to_works_type": ["element_porteur"]
+        },
+        {
+          "condition": "Photos du ferraillage avant coulage absentes (maco_032, maco_039, maco_063 non validées)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Cure 7 jours non réalisée (maco_070 échouée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Bétonnage hors plage 5-30°C sans précautions (maco_068 échouée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Chargement avant 28 jours (maco_077 échouée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Polyane discontinu ou perforé (maco_036 échouée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Treillis posé sur polyane sans cales (maco_038 échouée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Chaînage interrompu ou recouvrement insuffisant (maco_062 échouée)",
+          "malus": 25,
+          "category": "critique",
+          "applies_to_works_type": ["element_porteur", "fondation_extension"]
+        },
+        {
+          "condition": "Arase étanche absente en pied de mur (maco_047 échouée)",
+          "malus": 15,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Joints alignés verticalement (décalage < 1/4 bloc) (maco_048 échouée)",
+          "malus": 15,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Hors gel insuffisant (< 60 cm zone tempérée / < 80 cm zone froide) (maco_028 échouée)",
+          "malus": 20,
+          "category": "critique",
+          "applies_to_works_type": ["fondation_extension"]
+        },
+        {
+          "condition": "Linteau sans appuis suffisants (< 20 cm porteur / < 15 cm non porteur) (maco_055 échouée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Décoffrage anticipé (maco_071 échouée)",
+          "malus": 15,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Récolement absent (maco_075 non validée)",
+          "malus": 10,
+          "category": "non_conforme"
+        }
+      ]
+    },
+    "structural_compliance_score": {
+      "description": "Indicateur de conformité réglementaire (diagnostics, autorisations, étude BET, étude sol)",
+      "components": [
+        {
+          "id": "diagnostic_amiante",
+          "weight": 20,
+          "description": "Diagnostic amiante (DAAT) si bâtiment < 1997",
+          "validates_if": "maco_009 validated OR building_age == 'apres_1997'"
+        },
+        {
+          "id": "diagnostic_plomb",
+          "weight": 15,
+          "description": "Diagnostic plomb (CREP) si bâtiment < 1949",
+          "validates_if": "maco_010 validated OR building_age != 'avant_1949'"
+        },
+        {
+          "id": "etude_bet",
+          "weight": 30,
+          "description": "Étude BET si élément porteur ou fondation",
+          "validates_if": "maco_014 validated OR works_type NOT IN ['element_porteur','fondation_extension']"
+        },
+        {
+          "id": "etude_sol",
+          "weight": 15,
+          "description": "Étude de sol G1+G2 si extension en zone RGA",
+          "validates_if": "maco_015 validated OR works_type != 'fondation_extension' OR NOT zone_rga"
+        },
+        {
+          "id": "autorisation_urbanisme",
+          "weight": 10,
+          "description": "DP ou PC accordé si requis",
+          "validates_if": "maco_004 validated OR no_authorization_required"
+        },
+        {
+          "id": "assurance_do",
+          "weight": 10,
+          "description": "Assurance DO souscrite avant ouverture chantier",
+          "validates_if": "maco_007 validated OR works_type NOT IN ['element_porteur','dalle','fondation_extension']"
+        }
+      ]
+    },
+    "documents_attached_score": {
+      "description": "Pourcentage des justificatifs requis effectivement uploadés",
+      "required_documents": [
+        { "type": "etude_bet", "required_if": "works_type IN ['element_porteur','fondation_extension']" },
+        { "type": "diagnostic_amiante", "required_if": "building_age IN ['avant_1949','1949_1997']" },
+        { "type": "diagnostic_plomb", "required_if": "building_age == 'avant_1949'" },
+        { "type": "autorisation_urbanisme", "required_if": "creation_surface OR modif_aspect_exterieur" },
+        { "type": "assurance_do", "required_if": "works_type IN ['element_porteur','dalle','fondation_extension']" },
+        { "type": "etude_sol_g2", "required_if": "works_type == 'fondation_extension' AND zone_rga" }
+      ],
+      "formula": "documents_attached / documents_required * 100"
+    },
+    "critical_alerts": [
+      {
+        "id": "alert_bet_manquant",
+        "message": "BET manquant sur travaux structurels — pose impossible, garantie décennale et assurance DO compromises.",
+        "triggered_if": "maco_014 not validated AND works_type IN ['element_porteur','fondation_extension']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_amiante",
+        "message": "Diagnostic amiante absent sur bâtiment < 1997 — interdiction de démolir/percer/poncer, exposition mortelle possible.",
+        "triggered_if": "maco_009 not validated AND building_age IN ['avant_1949','1949_1997']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_plomb",
+        "message": "Diagnostic plomb absent sur bâtiment < 1949 — risque saturnisme grave surtout enfants.",
+        "triggered_if": "maco_010 not validated AND building_age == 'avant_1949'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_etude_sol",
+        "message": "Étude de sol G2 absente en zone RGA — fondations sous-dimensionnées, fissures structurelles à 5-10 ans.",
+        "triggered_if": "maco_015 not validated AND works_type == 'fondation_extension' AND zone_rga",
+        "level": "danger"
+      },
+      {
+        "id": "alert_assurance_do",
+        "message": "Assurance DO absente avant ouverture chantier — pas de préfinancement en cas de sinistre, ruine possible.",
+        "triggered_if": "maco_007 not validated AND works_type IN ['element_porteur','dalle','fondation_extension']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_autorisation",
+        "message": "Autorisation d'urbanisme absente — démolition ordonnée, amende, refus assurance.",
+        "triggered_if": "maco_004 not validated AND (creation_surface OR modif_aspect_exterieur)",
+        "level": "danger"
+      },
+      {
+        "id": "alert_etaiement",
+        "message": "Étaiement avant découpe porteur non photographié — preuve impossible, risque effondrement.",
+        "triggered_if": "maco_026 not validated AND works_type == 'element_porteur'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_photos_ferraillage",
+        "message": "Photos du ferraillage avant coulage absentes — preuve de conformité impossible, refus assurance DO.",
+        "triggered_if": "maco_032 not validated OR maco_039 not validated OR maco_063 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_cure",
+        "message": "Cure 7 jours non réalisée — fissuration de retrait massive programmée.",
+        "triggered_if": "maco_070 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_meteo",
+        "message": "Bétonnage hors plage 5-30°C sans précautions — perte de résistance majeure, garantie compromise.",
+        "triggered_if": "maco_068 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_chargement",
+        "message": "Chargement avant 28 jours — micro-fissures invisibles, perte de capacité portante.",
+        "triggered_if": "maco_077 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_polyane",
+        "message": "Polyane discontinu ou perforé — remontées d'humidité et radon dans l'habitation.",
+        "triggered_if": "maco_036 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_treillis_polyane",
+        "message": "Treillis posé directement sur polyane sans cales — enrobage nul, fissuration garantie.",
+        "triggered_if": "maco_038 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_chainage_interrompu",
+        "message": "Chaînage interrompu ou recouvrement insuffisant — structure non protégée contre efforts horizontaux.",
+        "triggered_if": "maco_062 not validated AND works_type IN ['element_porteur','fondation_extension']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_arase",
+        "message": "Arase étanche absente — humidité qui remonte, salpêtre, dégradations à terme.",
+        "triggered_if": "maco_047 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_joints_alignes",
+        "message": "Joints alignés verticalement — chaîne de fissures, mur fragilisé.",
+        "triggered_if": "maco_048 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_hors_gel",
+        "message": "Profondeur hors gel insuffisante — soulèvement par le gel, fissures structurelles.",
+        "triggered_if": "maco_028 not validated AND works_type == 'fondation_extension'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_linteau_appui",
+        "message": "Linteau avec appuis insuffisants — concentration des contraintes, rupture du jambage.",
+        "triggered_if": "maco_055 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_recolement",
+        "message": "Récolement absent — preuves perdues pour interventions futures, expertise sinistre, vente.",
+        "triggered_if": "maco_075 not validated",
+        "level": "bloquant"
+      }
+    ]
+  }
 }
