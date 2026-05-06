@@ -806,6 +806,915 @@
           ]
         }
       ]
+    },
+    {
+      "id": "pose_bouches",
+      "label": "Pose des bouches d'extraction",
+      "tasks": [
+        {
+          "id": "vmc_038",
+          "title": "Percer les ouvertures aux dimensions exactes",
+          "phase": "pose_bouches",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Scie cloche au diamètre indiqué dans la notice (Ø 100, 125 ou 160 mm courant). Trop grand = bouche qui ne tient pas, jeu d'air. Trop petit = pas insérable, fissures.",
+          "klaro_recommendation": "Mesurez précisément le Ø de la bouche avant percement. Scie cloche affûtée pour coupe propre. Marquez le centre au crayon. Aspiration de la poussière au fur et à mesure (placo = poussière fine). Une fois percé, vérifiez à blanc l'insertion de la bouche avant fixation définitive.",
+          "common_mistake": "Percer trop large 'pour avoir de la marge' — bouche qui flotte, jeu d'air, finition compromise.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_037"],
+          "norm_reference": "Notices fabricants bouches",
+          "control_questions": []
+        },
+        {
+          "id": "vmc_039",
+          "title": "Poser les bouches en partie haute, à 30 cm du plafond",
+          "phase": "pose_bouches",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Bouches d'extraction en partie HAUTE des pièces de service (à 30 cm du plafond environ), à distance de la porte. L'air vicié et chaud monte naturellement, les bouches doivent l'aspirer en haut.",
+          "klaro_recommendation": "Hauteur 1,80-2,00 m du sol courant (selon hauteur sous plafond). Distance de la porte : 1 m minimum (sinon court-circuit air entrant/sortant). Cuisine : à distance de la cuisinière (graisses qui colmatent). SDB : à distance de la douche (vapeur saturée). WC : centré dans la pièce.",
+          "common_mistake": "Bouche en partie basse — air vicié et humide stagnant en haut, bouche qui n'aspire que l'air relativement frais en bas.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_038"],
+          "norm_reference": "DTU 68.3 §9 + Arrêté 24/03/1982",
+          "control_questions": [
+            { "question": "Bouches posées en partie haute (≥ 30 cm du plafond) à distance de la porte ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_040",
+          "title": "Étiqueter chaque bouche selon son débit",
+          "phase": "pose_bouches",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Étiquette discrète indiquant : pièce, débit nominal, débit pointe (cuisine), date de pose. Facilite la maintenance et le diagnostic en cas de problème.",
+          "klaro_recommendation": "Étiquette plastifiée sur le côté de la bouche (invisible de face). Information : 'CUISINE - 75/135 m³/h - mai 2025'. Pour les bouches hygroréglables : note du fabricant et référence. Conservez aussi un récapitulatif sur le carnet d'entretien.",
+          "common_mistake": "Bouches non identifiées — au moment d'une maintenance ou d'un diagnostic, impossible de savoir quel débit est attendu.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_039"],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": []
+        },
+        {
+          "id": "vmc_041",
+          "title": "Bouches hygroréglables : sens de pose + capteur",
+          "phase": "pose_bouches",
+          "applies_to_vmc_type": ["simple_flux_hygro_a", "simple_flux_hygro_b", "double_flux", "double_flux_thermo"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Bouches hygroréglables : un capteur d'humidité (tresse hygroscopique) module l'ouverture selon l'humidité ambiante. Sens de pose imposé par le fabricant pour fonctionnement correct.",
+          "klaro_recommendation": "Lisez attentivement la notice : flèche de sens, position du capteur (haut/bas selon modèle), orientation. Test après pose : aspirer de la vapeur (douche, casserole) à proximité de la bouche, vérifier que le débit augmente. Sans cette vérification, la bouche peut être inopérante.",
+          "common_mistake": "Pose en sens inverse — capteur masqué, bouche en débit constant minimal, pièce humide ne s'évacue pas.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_039"],
+          "norm_reference": "Notices fabricants + DTU 68.3",
+          "control_questions": [
+            { "question": "Bouches hygroréglables : sens de pose respecté et capteur fonctionnel ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "entrees_air_menuiseries",
+      "label": "Entrées d'air & menuiseries",
+      "tasks": [
+        {
+          "id": "vmc_042",
+          "title": "Vérifier la présence des entrées d'air dans pièces principales",
+          "phase": "entrees_air_menuiseries",
+          "applies_to_vmc_type": ["simple_flux_autoreglable", "simple_flux_hygro_a", "simple_flux_hygro_b", "vmi"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Inventaire après pose des menuiseries : 1 entrée d'air par pièce principale (séjour, chambre, bureau). Visibles sur les fenêtres (haut du dormant) ou en façade.",
+          "klaro_recommendation": "Ouvrez chaque entrée d'air (test du clapet ou de la trappe) : air doit passer librement. Vérifiez l'auvent extérieur anti-pluie (ne doit pas être obstrué). Sans entrées d'air dans toutes les pièces principales : air aspiré par d'autres voies (cheminée, défauts d'étanchéité), VMC non fonctionnelle.",
+          "common_mistake": "Considérer que 'la maison respire par les défauts d'étanchéité' — qualité de l'air dégradée, condensation aux points froids.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_017"],
+          "norm_reference": "Arrêté 24/03/1982 + DTU 68.3",
+          "control_questions": [
+            { "question": "Entrées d'air présentes et fonctionnelles dans toutes les pièces principales ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_043",
+          "title": "Si entrées d'air manquantes : percement façade",
+          "phase": "entrees_air_menuiseries",
+          "applies_to_vmc_type": ["simple_flux_autoreglable", "simple_flux_hygro_a", "simple_flux_hygro_b", "vmi"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["renovation_existant"],
+          "explanation": "En rénovation sur menuiseries existantes sans entrées d'air : percement en façade avec auvent extérieur anti-pluie + grille intérieure. Solution moins esthétique mais nécessaire.",
+          "klaro_recommendation": "Carottage Ø 100 mm en façade au-dessus du linteau de la fenêtre. Auvent extérieur anti-pluie + grille anti-rongeurs. Manchon d'étanchéité côté intérieur (étanchéité à l'air). Réglette d'entrée d'air (autoréglable ou hygroréglable selon VMC). Étanchéité maçonnerie au mastic flexible.",
+          "common_mistake": "Percement sans auvent extérieur — pluie qui rentre dans le logement par grand vent.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_042"],
+          "norm_reference": "DTU 68.3 + DTU 20.1",
+          "control_questions": []
+        },
+        {
+          "id": "vmc_044",
+          "title": "Hygroréglable B : entrées d'air hygroréglables (PAS autoréglables)",
+          "phase": "entrees_air_menuiseries",
+          "applies_to_vmc_type": ["simple_flux_hygro_b"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Hygroréglable B = bouches hygroréglables + entrées d'air hygroréglables (modulation des deux côtés). Mélanger des entrées d'air autoréglables avec des bouches hygroréglables = système non fonctionnel (hygroréglable A par défaut).",
+          "klaro_recommendation": "Vérifiez la spécification sur le bon de commande des fenêtres : 'entrée d'air hygroréglable' explicitement. Référence fabricant compatible avec les bouches choisies. Si entrées autoréglables livrées par erreur : remplacement obligatoire (sinon perte du bénéfice hygro B sur les économies de chauffage).",
+          "common_mistake": "Entrées d'air autoréglables 22 m³/h par défaut + bouches hygro B — système qui fonctionne en hygro A, perte des bénéfices hygro B.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_042"],
+          "norm_reference": "DTU 68.3 + Avis Techniques hygro B",
+          "control_questions": [
+            { "question": "Hygroréglable B : entrées d'air hygroréglables (PAS autoréglables) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_045",
+          "title": "Double flux : PAS d'entrées d'air sur fenêtres",
+          "phase": "entrees_air_menuiseries",
+          "applies_to_vmc_type": ["double_flux", "double_flux_thermo"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Double flux : l'air neuf est insufflé via le réseau de gaines après filtration et préchauffage. Aucune entrée d'air sur les fenêtres. En rénovation : obturation des anciennes entrées d'air si présentes.",
+          "klaro_recommendation": "Vérifiez le bon de commande des fenêtres : aucune entrée d'air mentionnée. Si rénovation avec menuiseries existantes : obturation par capot étanche ou plaque vissée + mastic. Sans cette obturation : air froid non filtré qui entre par les fenêtres en hiver, perte de rendement double flux.",
+          "common_mistake": "Garder les entrées d'air des menuiseries existantes en passant en double flux — court-circuit, échangeur inefficace, condensation.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 68.3 + Avis Techniques double flux",
+          "control_questions": [
+            { "question": "Double flux : aucune entrée d'air sur fenêtres (existantes obturées) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_046",
+          "title": "Détalonnage portes intérieures (1 cm minimum)",
+          "phase": "entrees_air_menuiseries",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Toutes les portes intérieures doivent avoir 1 cm minimum d'espace sous la porte (détalonnage). Permet la circulation d'air des pièces principales (entrées d'air) vers les pièces de service (extraction).",
+          "klaro_recommendation": "Mesurez le jeu sous chaque porte. Si < 1 cm : démontez la porte, sciez le bas (scie circulaire avec rail guide pour bord net), poncez, repeignez. 1,5 à 2 cm idéal. Sans détalonnage : air qui ne circule pas, VMC qui aspire le même air en boucle, condensation et odeurs piégées.",
+          "common_mistake": "Pose des portes au ras du sol fini — VMC inopérante, condensation aux fenêtres en hiver.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 36.5 + DTU 68.3",
+          "control_questions": [
+            { "question": "Toutes les portes intérieures détalonnées (≥ 1 cm sous la porte) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "raccordement_electrique",
+      "label": "Raccordement électrique",
+      "tasks": [
+        {
+          "id": "vmc_047",
+          "title": "Raccorder le groupe sur circuit dédié 2A",
+          "phase": "raccordement_electrique",
+          "applies_to_vmc_type": ["simple_flux_autoreglable", "simple_flux_hygro_a", "simple_flux_hygro_b", "double_flux", "double_flux_thermo", "vmi"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Circuit dédié au tableau électrique avec disjoncteur 2A. Câble 1,5 mm² minimum. Raccordement direct au groupe (pas via prise débranchable, sauf pour boost).",
+          "klaro_recommendation": "Disjoncteur 2A spécifique étiqueté 'VMC' au tableau. Câble dédié sans dérivation. Raccordement aux bornes du groupe selon notice (phase, neutre, terre obligatoire). Vérifiez l'absence de coupure par les autres disjoncteurs (la VMC doit fonctionner en permanence). Test : couper les autres circuits, la VMC doit continuer à tourner.",
+          "common_mistake": "VMC sur prise du circuit éclairage SDB — quand SDB éteinte, VMC arrêtée.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_020"],
+          "norm_reference": "NF C 15-100 + DTU 68.3",
+          "control_questions": [
+            { "question": "Circuit dédié 2A étiqueté 'VMC' au tableau électrique ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_048",
+          "title": "Point de commande mural (boost cuisine/SDB)",
+          "phase": "raccordement_electrique",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Interrupteur ou boîtier de commande pour activer manuellement le mode pointe (cuisine 135 m³/h ou douche). Câblage filaire vers le groupe ou télécommande sans fil.",
+          "klaro_recommendation": "Position : à proximité de la cuisine (boost vapeurs cuisson) et de la SDB (boost après douche). Filaire 1,5 mm² ou télécommande radio (compatibilité fabricant). Étiquette claire (souvent un voyant indique l'activation). Utilité réelle : pic d'extraction quand nécessaire, économie quand pas besoin.",
+          "common_mistake": "Pas de boost installé — humidité de douche prolongée, condensation au plafond SDB.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_047"],
+          "norm_reference": "NF C 15-100 + DTU 68.3",
+          "control_questions": []
+        },
+        {
+          "id": "vmc_049",
+          "title": "Double flux thermo : raccord filtres + PAC",
+          "phase": "raccordement_electrique",
+          "applies_to_vmc_type": ["double_flux_thermo"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Double flux thermodynamique = double flux + PAC pour ECS et/ou chauffage d'appoint. Raccordements supplémentaires : filtres, sondes, PAC, ballon ECS, gestion électronique.",
+          "klaro_recommendation": "Pose et raccordement par installateur certifié (RGE QualiPAC). Alimentation renforcée selon notice (souvent 16-20A). Sonde extérieure pour gestion thermique. Communication Modbus ou similaire avec gestion centrale du logement. Vérification de la PAC (mise en marche, COP) après installation.",
+          "common_mistake": "Pose amateur d'un double flux thermo — câblage incorrect, garantie fabricant refusée.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_047"],
+          "norm_reference": "DTU 68.3 + Avis Techniques DF Thermo",
+          "control_questions": [
+            { "question": "Double flux thermo posé par installateur RGE QualiPAC ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_050",
+          "title": "Vérifier l'absence de coupure du circuit VMC",
+          "phase": "raccordement_electrique",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "La VMC doit fonctionner EN PERMANENCE (24h/24, 365 jours/an). Aucun disjoncteur domestique ne doit pouvoir la couper involontairement.",
+          "klaro_recommendation": "Test au tableau : coupez les disjoncteurs un par un, la VMC doit continuer à tourner sauf quand vous coupez SON disjoncteur dédié. Étiquetez clairement. Pour appareil gaz non étanche : disjoncteur VMC à NE PAS COUPER en partant en vacances (sauf coupure du gaz aussi).",
+          "common_mistake": "Couper le disjoncteur 'général' en partant en vacances — VMC arrêtée plusieurs jours, accumulation d'humidité, condensation, retour de mauvaises odeurs.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_047"],
+          "norm_reference": "DTU 68.3",
+          "control_questions": [
+            { "question": "Circuit VMC non coupé par autres disjoncteurs (test au tableau) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mise_en_service_mesures",
+      "label": "Mise en service & mesures",
+      "tasks": [
+        {
+          "id": "vmc_051",
+          "title": "Mettre en marche en mode normal et pointe",
+          "phase": "mise_en_service_mesures",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Première mise en marche : vérifier le démarrage du moteur, l'absence de bruit anormal (vibration, sifflement), le sens de rotation correct (extraction et non insufflation pour simple flux).",
+          "klaro_recommendation": "Mode normal d'abord. Écoutez attentivement le groupe : moteur régulier, pas de claquement. Vérifiez l'extraction aux bouches (papier essuie-tout qui colle = aspiration). Activez le mode pointe via le boost : moteur passe en vitesse supérieure, débit augmente. Si problèmes : appel SAV avant utilisation.",
+          "common_mistake": "Utiliser sans vérification — défaut de pose qui s'aggrave (gaine déconnectée, raccord qui fuit).",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_047"],
+          "norm_reference": "DTU 68.3 §10",
+          "control_questions": [
+            { "question": "Mise en marche normale et pointe testées sans bruit anormal ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_052",
+          "title": "Mesurer les débits à chaque bouche (anémomètre)",
+          "phase": "mise_en_service_mesures",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Mesure quantitative du débit à chaque bouche avec un anémomètre ou débitmètre (pas 'ça souffle = OK'). Méthode normalisée : capteur dans l'axe de la bouche, mesure stable sur 30 s.",
+          "klaro_recommendation": "Anémomètre à fil chaud ou débitmètre à hélice (location ~30 €/jour). Méthode : capteur appliqué contre la bouche (pas en biais), mesure stable sur 30 s, lecture en m³/h. Notez chaque mesure dans un tableau (cuisine X m³/h, SDB Y, WC Z, etc.). Photographiez les mesures (preuve d'exécution conforme).",
+          "common_mistake": "Test 'à la main' (sentir le souffle) — pas quantitatif, débit insuffisant non détecté.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["mesures_debits_anemometre"],
+          "photo_required_before_validation": true,
+          "depends_on": ["vmc_051"],
+          "norm_reference": "DTU 68.3 §10 + NF EN 13141",
+          "control_questions": [
+            { "question": "Débits mesurés à l'anémomètre à chaque bouche et photographiés ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_053",
+          "title": "Comparer débits mesurés vs réglementaires + ajuster",
+          "phase": "mise_en_service_mesures",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Comparaison aux débits arrêté 1982 : cuisine 75/135, SDB 15-30, WC 15-30, autre humide 15 m³/h. Si débits insuffisants : ajustement (réglage groupe, vérification gaines, repose si défaut).",
+          "klaro_recommendation": "Tableau de mesures : pièce | débit attendu | débit mesuré | conformité. Tolérance ±10%. Si insuffisant : vérifiez le tracé des gaines (coudes, longueur, écrasement), réglage du groupe (vitesses), ouverture des bouches. Si pas de résolution : appel pro pour diagnostic complet.",
+          "common_mistake": "Considérer 'tout fonctionne' sans comparer aux seuils réglementaires — pièces sous-ventilées, condensation à long terme.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_052"],
+          "norm_reference": "Arrêté 24/03/1982 + DTU 68.3",
+          "control_questions": [
+            { "question": "Débits mesurés conformes aux seuils réglementaires (cuisine, SDB, WC) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_054",
+          "title": "Double flux : équilibrer extraction et insufflation",
+          "phase": "mise_en_service_mesures",
+          "applies_to_vmc_type": ["double_flux", "double_flux_thermo"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Double flux : les débits d'extraction et d'insufflation doivent être équilibrés. Déséquilibre = surpression (insufflation > extraction) ou dépression (extraction > insufflation) dans le logement.",
+          "klaro_recommendation": "Mesure de l'extraction TOTALE (somme des bouches) et de l'insufflation TOTALE (somme des entrées d'air double flux). Tolérance ±5% entre les deux. Réglage par registres ou paramètres du groupe. Surpression légère préférable (évite les remontées d'odeurs). Pose par ventiliste pour équilibrage précis.",
+          "common_mistake": "Double flux non équilibré (insufflation 30% inférieure à l'extraction) — dépression du logement, refoulement de cheminée, courants d'air.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_052"],
+          "norm_reference": "DTU 68.3 + NF EN 13141",
+          "control_questions": [
+            { "question": "Double flux équilibré (extraction ≈ insufflation, ±5%) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_055",
+          "title": "Mesurer le niveau sonore (≤ 30 dB(A))",
+          "phase": "mise_en_service_mesures",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Niveau sonore dans les pièces principales (séjour, chambres) en mode normal : cible ≤ 30 dB(A) (équivalent à un chuchotement). Mesure au sonomètre ou application smartphone calibrée.",
+          "klaro_recommendation": "Sonomètre (location ou application gratuite calibrée). Mesure dans chaque pièce principale, à hauteur d'oreille. Cible : ≤ 30 dB(A) chambres, ≤ 35 dB(A) séjour. Si dépassement : suspension par silentblocs à vérifier, gaines isolées phoniquement, équilibrage des débits. Bruit au-dessus de 35 dB(A) = nuit gênée.",
+          "common_mistake": "Mesure une seule fois — niveau qui peut varier selon mode (pointe vs normal) et état du moteur.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_051"],
+          "norm_reference": "NF EN 13141 + Arrêté bruit",
+          "control_questions": [
+            { "question": "Niveau sonore mesuré ≤ 30 dB(A) en chambres / 35 dB(A) en séjour ?", "type": "number", "expected": "≤ 30 dB(A) chambres" }
+          ]
+        },
+        {
+          "id": "vmc_056",
+          "title": "Test d'infiltrométrie obligatoire RE2020",
+          "phase": "mise_en_service_mesures",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["construction_neuve_re2020"],
+          "explanation": "Test Blower-door (porte soufflante) qui mesure l'étanchéité globale du logement à l'air. OBLIGATOIRE en RE2020. Seuil : Q4Pa-surf ≤ 0,6 m³/h/m² maison individuelle, ≤ 1,0 m³/h/m² collectif.",
+          "klaro_recommendation": "Test réalisé par opérateur certifié Cofrac. Coût ~500-800 €. Met le logement en surpression/dépression à 4 Pa et mesure le débit de fuite. Localisation des fuites au fumigène ou caméra thermique. Document de mesure obligatoire pour attestation RE2020. À refaire si modifications majeures de l'enveloppe.",
+          "common_mistake": "Sauter le test 'pour économiser' — non-conformité RE2020, refus de certification, refus aides liées à la performance.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["test_infiltrometrie"],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_053"],
+          "norm_reference": "RE2020 + NF EN 13829",
+          "control_questions": [
+            { "question": "Q4Pa-surf mesuré (m³/h/m²) ?", "type": "number", "expected": "≤ 0,6 maison ind. RE2020" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "controle_reception",
+      "label": "Contrôle & réception",
+      "tasks": [
+        {
+          "id": "vmc_057",
+          "title": "Vérifier toutes les bouches en mode normal et pointe",
+          "phase": "controle_reception",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Test final : chaque bouche aspire correctement en mode normal. Cuisine et SDB en mode pointe : débit augmenté détectable. Hygroréglables : test à la vapeur (ouverture du capteur).",
+          "klaro_recommendation": "Tour complet du logement, papier essuie-tout devant chaque bouche : doit coller. Boost cuisine activé : papier nettement plus aspiré. Hygro : aspirer de la vapeur (douche ouverte) près d'une bouche SDB hygro = ouverture progressive. Si bouche silencieuse : appel SAV.",
+          "common_mistake": "Test partiel sur 2-3 bouches — bouche bouchée ou défaillante non détectée.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_053"],
+          "norm_reference": "DTU 68.3",
+          "control_questions": [
+            { "question": "Toutes les bouches fonctionnelles en modes normal et pointe ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_058",
+          "title": "Vérifier l'absence de bruit anormal",
+          "phase": "controle_reception",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Bruits anormaux à diagnostiquer : vibration (déséquilibre du moteur, fixation rigide), sifflement (gaine pincée, débit excessif), claquement (clapet anti-retour défaillant), bourdonnement basse fréquence (silentblocs HS).",
+          "klaro_recommendation": "Écoute attentive en mode normal pendant la nuit (silence ambiant). Identification de l'origine du bruit : groupe ? Bouches ? Réseau ? Si vibration : silentblocs à reposer. Si sifflement : gaine à vérifier. Si claquement : clapet à examiner. La VMC doit être quasi inaudible la nuit.",
+          "common_mistake": "Tolérer un bourdonnement persistant — origine d'un défaut qui s'aggrave (moteur en panne dans les mois suivants).",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_055"],
+          "norm_reference": "NF EN 13141",
+          "control_questions": [
+            { "question": "Aucun bruit anormal (vibration, sifflement, claquement) détecté ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_059",
+          "title": "Vérifier l'absence de courants d'air gênants",
+          "phase": "controle_reception",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Vérification au niveau des entrées d'air en hiver : pas de ressenti de courant d'air froid désagréable. Si trop intense : vérifier que les entrées d'air autoréglables ne sont pas bloquées en position ouverte.",
+          "klaro_recommendation": "Test : main devant l'entrée d'air en hiver. Léger courant d'air OK (l'air doit entrer), mais pas froid intense ressenti à 1 m. Si trop intense : entrée d'air défaillante (autoréglage HS, hygro bloquée ouverte) ou groupe sur-dimensionné. Pour double flux : air insufflé tempéré (15-18°C en hiver), pas de courant d'air froid.",
+          "common_mistake": "Considérer 'la VMC fait des courants d'air' comme normal — c'est un défaut de réglage ou de pose.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_042"],
+          "norm_reference": "DTU 68.3 + NF EN 13141",
+          "control_questions": []
+        },
+        {
+          "id": "vmc_060",
+          "title": "Double flux : vérifier le bypass été",
+          "phase": "controle_reception",
+          "applies_to_vmc_type": ["double_flux", "double_flux_thermo"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Bypass été = court-circuit de l'échangeur en période chaude (l'air neuf ne passe pas par l'échangeur, donc n'est pas réchauffé par l'air extrait). Indispensable pour rafraîchissement nocturne en été.",
+          "klaro_recommendation": "Vérifiez la présence du bypass dans le groupe choisi (mode 'free cooling'). Activation automatique selon T° ou manuelle. Test : passez en mode bypass, vérifiez que la T° de l'air insufflé descend (proche de la T° extérieure nocturne). Sans bypass : suréchauffement été.",
+          "common_mistake": "Double flux sans bypass été — surchauffe estivale, l'air neuf est réchauffé par l'air vicié sortant.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "NF EN 13141 + DTU 68.3",
+          "control_questions": [
+            { "question": "Bypass été présent et fonctionnel sur le double flux ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_061",
+          "title": "Procès-verbal de réception avec mesures",
+          "phase": "controle_reception",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "PV de réception signé : mesures de débits par bouche, niveau sonore, plan de récolement des gaines, références matériels. Acte juridique fondamental, démarre la garantie décennale.",
+          "klaro_recommendation": "PV avec entête (date, lieu, parties), tableau de mesures, plan as-built des gaines, références matériels, date de mise en service. Signez sans réserves uniquement si tout conforme. Avec réserves : listez les défauts à reprendre + délai. Conservez 10 ans (durée de la garantie décennale).",
+          "common_mistake": "Pas de PV de réception ou PV vague sans mesures — pas de preuve de conformité, recours difficile en cas de problème.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_053"],
+          "norm_reference": "Loi Spinetta 1978 + DTU 68.3",
+          "control_questions": [
+            { "question": "PV de réception signé avec mesures + plan as-built archivé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_062",
+          "title": "Remettre le carnet d'entretien à l'utilisateur",
+          "phase": "controle_reception",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Carnet d'entretien : planning de maintenance, références filtres, schéma du réseau, contacts SAV. Indispensable pour la pérennité du système et la valorisation du bien.",
+          "klaro_recommendation": "Carnet papier ou numérique avec : tâches de maintenance et fréquence (bouches 2-4 fois/an, filtres DF 6-12 mois, échangeur DF annuel, hydrocurage 5-10 ans), références fabricants, schéma du réseau, factures. À transmettre lors de la revente du bien (continuité de la maintenance).",
+          "common_mistake": "Pas de carnet d'entretien — maintenance oubliée ou mal faite, performance dégradée, panne prématurée.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_061"],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": [
+            { "question": "Carnet d'entretien remis et archivé (papier + numérique) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "maintenance",
+      "label": "Maintenance post-travaux",
+      "tasks": [
+        {
+          "id": "vmc_063",
+          "title": "Nettoyer les bouches 2-4 fois/an",
+          "phase": "maintenance",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Bouches d'extraction et entrées d'air à nettoyer 2 à 4 fois par an (cuisine plus fréquemment à cause des graisses). Eau savonneuse, brosse douce. NE PAS démonter les corps hygroréglables (capteurs fragiles).",
+          "klaro_recommendation": "Démontage facile : capot ou clip. Nettoyage à l'eau tiède savonneuse + brosse douce. Rinçage. Séchage avant repose. Pour bouches hygro : nettoyer le corps métallique uniquement, ne pas toucher la tresse hygroscopique. Cuisine : nettoyage tous les 3-4 mois (graisses).",
+          "common_mistake": "Bouches encrassées non nettoyées — débit divisé par 2-3, condensation, odeurs.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Bonnes pratiques + Notices fabricants",
+          "control_questions": []
+        },
+        {
+          "id": "vmc_064",
+          "title": "Double flux : remplacer les filtres tous les 6-12 mois",
+          "phase": "maintenance",
+          "applies_to_vmc_type": ["double_flux", "double_flux_thermo"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Double flux : 2 filtres (air neuf et air extrait) à remplacer tous les 6 à 12 mois selon environnement (pollution urbaine, allergies, animaux). Filtres encrassés = perte de rendement et risque mauvaise qualité d'air.",
+          "klaro_recommendation": "Référence des filtres : indiquée sur le groupe ou dans la notice. Achat à l'avance (1-2 jeux d'avance). Remplacement : ouverture du capot, retrait des filtres usagés (poussière + bactéries), pose des neufs en respectant le sens. Témoin de pression sur certains modèles haut de gamme. Coût : 30-80 € par jeu.",
+          "common_mistake": "Filtres jamais changés — débit insuffisant, surconsommation moteur, qualité d'air compromise.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "NF EN 13141 + Notices fabricants",
+          "control_questions": []
+        },
+        {
+          "id": "vmc_065",
+          "title": "Double flux : nettoyer l'échangeur tous les 12 mois",
+          "phase": "maintenance",
+          "applies_to_vmc_type": ["double_flux", "double_flux_thermo"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "L'échangeur de chaleur (cœur du double flux) accumule poussières et condensats. Nettoyage annuel pour conserver le rendement (jusqu'à 90% en début de vie, peut chuter à 60% si encrassé).",
+          "klaro_recommendation": "Démontage selon notice (souvent par tirage). Aspiration des poussières + rinçage à l'eau tiède (pas de produits agressifs). Séchage complet avant repose. Pour échangeurs à courants croisés en plastique : rinçage et séchage. Pour rotatifs : aspiration uniquement (le rotor est délicat). Documentez le nettoyage avec photo.",
+          "common_mistake": "Échangeur jamais nettoyé — rendement effondré, surconsommation chauffage en hiver.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Notices fabricants + NF EN 13141",
+          "control_questions": []
+        },
+        {
+          "id": "vmc_066",
+          "title": "Vérifier le moteur du groupe annuellement",
+          "phase": "maintenance",
+          "applies_to_vmc_type": ["simple_flux_autoreglable", "simple_flux_hygro_a", "simple_flux_hygro_b", "double_flux", "double_flux_thermo", "vmi"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Inspection annuelle du moteur : poussière sur l'hélice (frein le moteur), lubrification si applicable, état des paliers. Vérification du serrage des fixations.",
+          "klaro_recommendation": "Coupez l'alimentation avant intervention. Aspirez la poussière sur l'hélice et le moteur. Vérifiez le serrage des cosses électriques. Rotation manuelle du moteur (à l'arrêt) : doit tourner librement, pas de point dur. Bruit anormal = palier en fin de vie, prévoir le remplacement.",
+          "common_mistake": "Moteur jamais inspecté — encrassement, surchauffe, panne au mauvais moment (hiver).",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Notices fabricants + Bonnes pratiques",
+          "control_questions": []
+        },
+        {
+          "id": "vmc_067",
+          "title": "Hydrocurage du réseau tous les 5-10 ans",
+          "phase": "maintenance",
+          "applies_to_vmc_type": ["simple_flux_autoreglable", "simple_flux_hygro_a", "simple_flux_hygro_b", "double_flux", "double_flux_thermo", "vmi"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Nettoyage en profondeur du réseau de gaines (cuisine surtout) tous les 5-10 ans. Élimination des dépôts gras qui réduisent le diamètre utile et présentent un risque incendie.",
+          "klaro_recommendation": "Pro spécialisé en hydrocurage VMC. Brossage mécanique + aspiration haute puissance. Coût ~300-600 €. Plus fréquent en cuisine pro ou logement avec cuisson grasse intensive. Rapport de hydrocurage à conserver. Sans hydrocurage : encrassement progressif, risque feu de gaines (notamment cuisine).",
+          "common_mistake": "Réseau jamais hydrocuré — dépôts gras qui s'enflamment lors d'un retour de flamme cuisine, propagation incendie.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 68.3 + Bonnes pratiques",
+          "control_questions": []
+        },
+        {
+          "id": "vmc_068",
+          "title": "Appareil gaz non étanche : vérifier DSC + détecteur CO annuel",
+          "phase": "maintenance",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["avec_gaz_non_etanche"],
+          "applies_to_context": ["all"],
+          "explanation": "Vérification annuelle (par Qualigaz) : DSC fonctionnel (test simulation arrêt VMC = coupe le gaz), détecteur CO opérationnel (test bouton + remplacement pile/sonde selon notice).",
+          "klaro_recommendation": "Visite annuelle Qualigaz combinée avec entretien chaudière gaz. Test du DSC : couper la VMC, vérifier que le gaz est coupé en quelques secondes. Détecteur CO : test bouton mensuel + pile à remplacer. Sonde à remplacer tous les 5-10 ans selon modèle. Conservez le rapport annuel.",
+          "common_mistake": "DSC non testé annuellement — défaillance possible non détectée, sécurité illusoire.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Arrêté 23/02/2009 + EN 50291",
+          "control_questions": [
+            { "question": "DSC + détecteur CO testés annuellement par Qualigaz ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
     }
-  ]
+  ],
+  "blocking_points": [
+    {
+      "id": "block_001",
+      "message": "Pas d'isolation étanche sans VMC fonctionnelle (piège à humidité garanti).",
+      "blocks_task_id": "vmc_051",
+      "requires_task_id": "vmc_002"
+    },
+    {
+      "id": "block_002",
+      "message": "Pas d'appareil gaz non étanche sans DSC validé par pro Qualigaz (risque CO mortel).",
+      "blocks_task_id": "vmc_051",
+      "requires_task_id": "vmc_013"
+    },
+    {
+      "id": "block_003",
+      "message": "Pas de simple flux étanche en bâti ancien perspirant sans avis pro spécialisé.",
+      "blocks_task_id": "vmc_025",
+      "requires_task_id": "vmc_003"
+    },
+    {
+      "id": "block_004",
+      "message": "Pas de fermeture des plafonds avant photo du réseau de gaines complet.",
+      "blocks_task_id": "vmc_038",
+      "requires_task_id": "vmc_037"
+    },
+    {
+      "id": "block_005",
+      "message": "Pas d'étanchéité des raccords au scotch d'emballage — ruban étanchéité spécifique obligatoire.",
+      "blocks_task_id": "vmc_037",
+      "requires_task_id": "vmc_034"
+    },
+    {
+      "id": "block_006",
+      "message": "Pas d'entrées d'air = VMC non fonctionnelle (à prévoir dès commande des fenêtres).",
+      "blocks_task_id": "vmc_051",
+      "requires_task_id": "vmc_017"
+    },
+    {
+      "id": "block_007",
+      "message": "Pas de détalonnage des portes < 1 cm = circulation d'air bloquée.",
+      "blocks_task_id": "vmc_051",
+      "requires_task_id": "vmc_046"
+    },
+    {
+      "id": "block_008",
+      "message": "Pas de gaines double flux non calorifugées en zone non chauffée.",
+      "blocks_task_id": "vmc_051",
+      "requires_task_id": "vmc_036"
+    },
+    {
+      "id": "block_009",
+      "message": "Pas de longueur de gaine > maximum fabricant — perte de débit majeure.",
+      "blocks_task_id": "vmc_051",
+      "requires_task_id": "vmc_030"
+    },
+    {
+      "id": "block_010",
+      "message": "Pas de coudes excessifs — chaque coude = 1-2 m de perte de charge.",
+      "blocks_task_id": "vmc_051",
+      "requires_task_id": "vmc_031"
+    },
+    {
+      "id": "block_011",
+      "message": "Pas de mise en service sans mesure de débits à l'anémomètre.",
+      "blocks_task_id": "vmc_061",
+      "requires_task_id": "vmc_052"
+    },
+    {
+      "id": "block_012",
+      "message": "Pas de réception sans procès-verbal et carnet d'entretien.",
+      "blocks_task_id": "vmc_063",
+      "requires_task_id": "vmc_062"
+    },
+    {
+      "id": "block_013",
+      "message": "Pas de prise d'air neuf double flux à moins de 8 m d'une source de pollution.",
+      "blocks_task_id": "vmc_025",
+      "requires_task_id": "vmc_009"
+    },
+    {
+      "id": "block_014",
+      "message": "Pas de groupe VMC dans combles perdus non isolés (condensation).",
+      "blocks_task_id": "vmc_025",
+      "requires_task_id": "vmc_008"
+    },
+    {
+      "id": "block_015",
+      "message": "Pas de groupe VMC dans pièce de vie (bruit transmis).",
+      "blocks_task_id": "vmc_025",
+      "requires_task_id": "vmc_008"
+    },
+    {
+      "id": "block_016",
+      "message": "Pas de neuf RE2020 sans test d'infiltrométrie validé.",
+      "blocks_task_id": "vmc_061",
+      "requires_task_id": "vmc_056"
+    },
+    {
+      "id": "block_017",
+      "message": "Pas de hygroréglable B avec entrées d'air autoréglables — entrées hygro obligatoires.",
+      "blocks_task_id": "vmc_051",
+      "requires_task_id": "vmc_044"
+    },
+    {
+      "id": "block_018",
+      "message": "Pas de double flux avec entrées d'air sur fenêtres (interdites en DF).",
+      "blocks_task_id": "vmc_051",
+      "requires_task_id": "vmc_045"
+    }
+  ],
+  "scoring": {
+    "progression_percent": {
+      "formula": "validated_tasks / total_tasks * 100",
+      "total_tasks": 68,
+      "filtered_by": "applies_to_vmc_type INCLUDES vmc_type AND applies_to_bati_type INCLUDES bati_type AND applies_to_gaz INCLUDES gaz AND applies_to_context INCLUDES context"
+    },
+    "safety_score": {
+      "base": 100,
+      "description": "Score sécurité (FORTEMENT pondéré : risque CO mortel)",
+      "penalties": [
+        {
+          "condition": "Appareil gaz non étanche sans DSC (vmc_013 non validée)",
+          "malus": 50,
+          "category": "critique_bloquant",
+          "applies_to_gaz": ["avec_gaz_non_etanche"]
+        },
+        {
+          "condition": "Attestation Qualigaz absente (vmc_014 non validée)",
+          "malus": 40,
+          "category": "critique_bloquant",
+          "applies_to_gaz": ["avec_gaz_non_etanche"]
+        },
+        {
+          "condition": "Détecteur CO absent (vmc_015 non validée)",
+          "malus": 35,
+          "category": "critique_bloquant",
+          "applies_to_gaz": ["avec_gaz_non_etanche"]
+        },
+        {
+          "condition": "Mesure CO non effectuée ou > 30 ppm (vmc_016 non validée)",
+          "malus": 35,
+          "category": "critique_bloquant",
+          "applies_to_gaz": ["avec_gaz_non_etanche"]
+        },
+        {
+          "condition": "Test infiltrométrie absent en RE2020 (vmc_056 non validée)",
+          "malus": 25,
+          "category": "critique",
+          "applies_to_context": ["construction_neuve_re2020"]
+        }
+      ]
+    },
+    "airflow_score": {
+      "description": "Qualité du renouvellement d'air : entrées d'air, détalonnage, débits, équilibrage",
+      "components": [
+        { "id": "entrees_air", "weight": 25, "validates_if": "vmc_042 validated OR vmc_type IN ['double_flux','double_flux_thermo']" },
+        { "id": "detalonnage", "weight": 15, "validates_if": "vmc_046 validated" },
+        { "id": "debits_mesures", "weight": 30, "validates_if": "vmc_052 validated AND vmc_053 validated" },
+        { "id": "equilibrage_df", "weight": 15, "validates_if": "vmc_054 validated OR vmc_type NOT IN ['double_flux','double_flux_thermo']" },
+        { "id": "longueur_gaines", "weight": 15, "validates_if": "vmc_030 validated AND vmc_031 validated" }
+      ]
+    },
+    "energy_efficiency_score": {
+      "description": "Efficacité énergétique double flux : calorifugeage, étanchéité réseau, équilibrage, bypass",
+      "components": [
+        { "id": "calorifugeage", "weight": 30, "validates_if": "vmc_036 validated" },
+        { "id": "etancheite_reseau", "weight": 30, "validates_if": "vmc_034 validated AND vmc_035 validated" },
+        { "id": "equilibrage", "weight": 20, "validates_if": "vmc_054 validated OR vmc_type NOT IN ['double_flux','double_flux_thermo']" },
+        { "id": "bypass_ete", "weight": 20, "validates_if": "vmc_060 validated OR vmc_type NOT IN ['double_flux','double_flux_thermo']" }
+      ],
+      "applies_only_if": "vmc_type IN ['double_flux','double_flux_thermo']"
+    },
+    "moisture_safety_score": {
+      "description": "Adéquation système / type de bâti : pas de simple flux étanche en bâti ancien",
+      "components": [
+        { "id": "systeme_adapte_bati", "weight": 50, "validates_if": "vmc_003 validated OR bati_type == 'bati_recent_apres_1948'" },
+        { "id": "pare_vapeur_compatible", "weight": 25, "validates_if": "vmc_018 validated" },
+        { "id": "evacuation_condensats_df", "weight": 25, "validates_if": "vmc_029 validated OR vmc_type NOT IN ['double_flux','double_flux_thermo']" }
+      ]
+    },
+    "critical_alerts": [
+      {
+        "id": "alert_dsc",
+        "message": "DSC absent avec appareil gaz non étanche — risque CO mortel.",
+        "triggered_if": "vmc_013 not validated AND gaz == 'avec_gaz_non_etanche'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_qualigaz",
+        "message": "Attestation Qualigaz manquante — sécurité gaz non validée, refus assurance possible.",
+        "triggered_if": "vmc_014 not validated AND gaz == 'avec_gaz_non_etanche'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_co_detecteur",
+        "message": "Détecteur CO absent — intoxication insidieuse possible, risque mortel.",
+        "triggered_if": "vmc_015 not validated AND gaz == 'avec_gaz_non_etanche'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_co_mesure",
+        "message": "Mesure CO non effectuée ou > 30 ppm — appareils gaz à arrêter immédiatement.",
+        "triggered_if": "vmc_016 not validated AND gaz == 'avec_gaz_non_etanche'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_bati_ancien_simple_flux",
+        "message": "Simple flux étanche sur bâti ancien perspirant — humidité piégée, dégradation des murs.",
+        "triggered_if": "vmc_003 not validated AND bati_type == 'bati_ancien_avant_1948' AND vmc_type IN ['simple_flux_autoreglable','simple_flux_hygro_a','simple_flux_hygro_b']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_entrees_air",
+        "message": "Entrées d'air absentes — VMC non fonctionnelle, condensation aux fenêtres.",
+        "triggered_if": "vmc_042 not validated AND vmc_type NOT IN ['double_flux','double_flux_thermo']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_detalonnage",
+        "message": "Portes non détalonnées — air ne circule pas, VMC inopérante.",
+        "triggered_if": "vmc_046 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_combles_perdus",
+        "message": "Groupe VMC en combles perdus non isolés — condensation, durée de vie réduite.",
+        "triggered_if": "vmc_008 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_etancheite_raccords",
+        "message": "Raccords au scotch d'emballage — décollement progressif, fuites d'air.",
+        "triggered_if": "vmc_034 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_calorifugeage",
+        "message": "Gaines double flux non calorifugées en zone non chauffée — condensation, perte rendement.",
+        "triggered_if": "vmc_036 not validated AND vmc_type IN ['double_flux','double_flux_thermo']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_debits_non_mesures",
+        "message": "Débits non mesurés à l'anémomètre — conformité non vérifiée, risque sous-débit.",
+        "triggered_if": "vmc_052 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_equilibrage_df",
+        "message": "Double flux non équilibré — surpression/dépression, refoulement de cheminée.",
+        "triggered_if": "vmc_054 not validated AND vmc_type IN ['double_flux','double_flux_thermo']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_test_infiltro",
+        "message": "Test infiltrométrie absent en RE2020 — non conforme, refus certification.",
+        "triggered_if": "vmc_056 not validated AND context == 'construction_neuve_re2020'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_pv_reception",
+        "message": "PV de réception et carnet d'entretien absents — preuve de conformité impossible.",
+        "triggered_if": "vmc_061 not validated OR vmc_062 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_photos",
+        "message": "Photos du réseau avant fermeture absentes — preuves perdues pour SAV et garantie.",
+        "triggered_if": "vmc_037 not validated",
+        "level": "bloquant"
+      }
+    ]
+  }
 }
