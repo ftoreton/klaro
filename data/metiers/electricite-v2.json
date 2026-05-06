@@ -1,0 +1,759 @@
+{
+  "module": "electricite",
+  "phases": [
+    {
+      "id": "preparation",
+      "label": "Préparation & conception",
+      "tasks": [
+        {
+          "id": "elec_001",
+          "title": "Définir le projet électrique",
+          "phase": "preparation",
+          "explanation": "Listez les pièces concernées, les équipements prévus (four, lave-linge, climatisation...) et vos besoins en éclairage et prises.",
+          "klaro_recommendation": "Faites une pièce par pièce sur papier : nombre de prises souhaitées, points lumineux, équipements fixes. C'est la base de tout le projet.",
+          "common_mistake": "Sous-estimer les besoins dès le départ et devoir ajouter des circuits après travaux, ce qui coûte beaucoup plus cher.",
+          "pro_recommended": false,
+          "depends_on": [],
+          "norm_reference": "NF C 15-100 §4",
+          "control_questions": [
+            { "question": "La liste des pièces et équipements est-elle complète ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_002",
+          "title": "Vérifier la compatibilité avec l'installation existante",
+          "phase": "preparation",
+          "explanation": "En rénovation, il faut contrôler l'état des fils, la présence d'une prise de terre et l'état du tableau actuel avant de toucher quoi que ce soit.",
+          "klaro_recommendation": "Repérez la couleur des fils : si vous voyez des fils sans couleur normalisée (rouge/noir/vert-jaune) ou en tissu, l'installation date d'avant 1970 — prévoir une refonte complète.",
+          "common_mistake": "Mixer une vieille installation sans terre avec de nouveaux circuits, ce qui crée une non-conformité totale et un risque électrique.",
+          "pro_recommended": true,
+          "depends_on": ["elec_001"],
+          "norm_reference": "NF C 15-100 §8.3",
+          "control_questions": [
+            { "question": "Une prise de terre est-elle présente ?", "type": "boolean", "expected": "true" },
+            { "question": "Les fils ont-ils des couleurs normalisées (bleu/marron ou noir/rouge + vert-jaune) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_003",
+          "title": "Réaliser le bilan de puissance",
+          "phase": "preparation",
+          "explanation": "Additionnez les puissances de tous vos équipements pour vérifier que votre abonnement EDF (3 kVA à 36 kVA) est suffisant.",
+          "klaro_recommendation": "Appliquez un coefficient de simultanéité de 0,7 sur les prises et l'éclairage (tout ne marche pas en même temps). Résultat > abonnement actuel → demandez une augmentation à Enedis.",
+          "common_mistake": "Ne pas anticiper l'ajout d'une borne de recharge VE ou d'une pompe à chaleur qui peut nécessiter un abonnement bien supérieur.",
+          "pro_recommended": false,
+          "depends_on": ["elec_001"],
+          "norm_reference": "NF C 15-100 §4.2",
+          "control_questions": [
+            { "question": "La puissance totale estimée est-elle inférieure à la puissance de l'abonnement souscrit ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_004",
+          "title": "Créer le schéma électrique",
+          "phase": "preparation",
+          "explanation": "Le schéma unifilaire (vue tableau) et le schéma architectural (vue plan) sont les deux documents de référence de votre installation. Obligatoires pour le Consuel.",
+          "klaro_recommendation": "Le schéma architectural montre où sont prises, interrupteurs et luminaires sur le plan de chaque pièce. L'unifilaire montre comment le tableau est organisé. Des outils gratuits en ligne (QElectroTech, Home-Wiring) peuvent vous aider.",
+          "common_mistake": "Ne faire que l'unifilaire et oublier le plan architectural — le Consuel peut refuser le dossier.",
+          "pro_recommended": false,
+          "depends_on": ["elec_003"],
+          "norm_reference": "NF C 15-100 §5",
+          "control_questions": [
+            { "question": "Le schéma unifilaire est-il réalisé ?", "type": "boolean", "expected": "true" },
+            { "question": "Le schéma architectural est-il réalisé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_005",
+          "title": "Vérifier les obligations locales (parafoudre, déclaration)",
+          "phase": "preparation",
+          "explanation": "Le parafoudre est obligatoire dans certaines zones géographiques exposées à la foudre (zones AQ2). Une déclaration préalable peut être nécessaire pour certains travaux.",
+          "klaro_recommendation": "Consultez la carte des zones foudre sur le site de votre gestionnaire de réseau ou demandez à votre mairie. En zone AQ2, le parafoudre est obligatoire sur le tableau — prévoir son emplacement dès la conception.",
+          "common_mistake": "Découvrir l'obligation de parafoudre après avoir câblé le tableau, ce qui oblige à recommencer le montage.",
+          "pro_recommended": false,
+          "depends_on": ["elec_004"],
+          "norm_reference": "NF C 15-100 §4.4.2",
+          "control_questions": [
+            { "question": "La zone parafoudre (AQ1 ou AQ2) est-elle vérifiée ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "securisation",
+      "label": "Sécurisation du chantier",
+      "tasks": [
+        {
+          "id": "elec_006",
+          "title": "Couper le courant et consigner l'installation",
+          "phase": "securisation",
+          "explanation": "Avant tout travail électrique, coupez le disjoncteur principal et vérifiez l'absence de tension avec un testeur (VAT). Mettez un cadenas sur le compteur si possible.",
+          "klaro_recommendation": "Le VAT (vérificateur d'absence de tension) est l'outil obligatoire avant de toucher un fil. Ne vous fiez jamais à l'apparence : un fil peut être sous tension même si le disjoncteur est coupé (câbles multisources). Coût : ~15 €.",
+          "common_mistake": "Couper le tableau sans vérifier avec un testeur. Certains circuits peuvent être alimentés par une autre source (groupe électrogène, onduleur).",
+          "pro_recommended": true,
+          "depends_on": [],
+          "norm_reference": "NF C 18-510",
+          "control_questions": [
+            { "question": "L'absence de tension a-t-elle été vérifiée avec un VAT ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_007",
+          "title": "Repérer l'arrivée électrique (point de livraison Enedis)",
+          "phase": "securisation",
+          "explanation": "Identifiez l'entrée du câble Enedis dans votre logement, l'emplacement du compteur Linky et la liaison vers votre tableau principal.",
+          "klaro_recommendation": "Photographiez l'existant : compteur, câbles de liaison, branchement de la terre. Ces photos sont indispensables en cas de problème et pour constituer le dossier Consuel.",
+          "common_mistake": "Débrancher ou modifier les câbles côté compteur Enedis sans autorisation — c'est une intervention Enedis uniquement.",
+          "pro_recommended": false,
+          "depends_on": ["elec_006"],
+          "norm_reference": "NF C 14-100",
+          "control_questions": []
+        },
+        {
+          "id": "elec_008",
+          "title": "Vérifier ou créer la prise de terre",
+          "phase": "securisation",
+          "explanation": "La prise de terre protège les personnes en cas de défaut électrique. Elle doit avoir une résistance inférieure à 100 ohms (mesurée avec un telluromètre).",
+          "klaro_recommendation": "Si aucune prise de terre n'existe : piquet de terre en cuivre de 1,5 m minimum enfoncé dans le sol humide, relié par un câble vert-jaune 16 mm² minimum jusqu'au tableau. Mesurez toujours la résistance avant de refermer.",
+          "common_mistake": "Raccorder la prise de terre sur une canalisation d'eau ou de gaz — c'est dangereux et non conforme NF C 15-100.",
+          "pro_recommended": true,
+          "depends_on": ["elec_007"],
+          "norm_reference": "NF C 15-100 §5.4.2",
+          "control_questions": [
+            { "question": "La résistance de la prise de terre est-elle inférieure à 100 Ω ?", "type": "number", "expected": "< 100" },
+            { "question": "La section du conducteur de terre est-elle ≥ 16 mm² (cuivre) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gros_oeuvre",
+      "label": "Gros œuvre électrique",
+      "tasks": [
+        {
+          "id": "elec_009",
+          "title": "Définir l'emplacement de l'ETEL et de la GTL",
+          "phase": "gros_oeuvre",
+          "explanation": "L'ETEL (Espace Technique Électrique de Logement) regroupe le tableau et les équipements de communication dans une zone dédiée. Largeur minimale : 600 mm, du sol au plafond.",
+          "klaro_recommendation": "Choisissez un endroit sec, ventilé, accessible, jamais dans une salle de bain, une chambre ou dans une pièce humide. Un couloir ou un cellier sont idéaux. Prévoyez de l'espace pour les câbles entrants et sortants.",
+          "common_mistake": "Mettre le tableau dans un endroit inaccessible (placard encombré, sous un escalier bas) — le Consuel peut refuser et la maintenance devient impossible.",
+          "pro_recommended": false,
+          "depends_on": ["elec_004"],
+          "norm_reference": "NF C 15-100 §7.1",
+          "control_questions": [
+            { "question": "La largeur de l'ETEL est-elle d'au moins 600 mm ?", "type": "boolean", "expected": "true" },
+            { "question": "L'ETEL est-il hors zone humide ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_010",
+          "title": "Dimensionner le tableau électrique",
+          "phase": "gros_oeuvre",
+          "explanation": "Choisissez un tableau avec suffisamment de rangées pour accueillir tous vos disjoncteurs + une réserve d'au moins 20% d'emplacements libres.",
+          "klaro_recommendation": "Comptez vos circuits, ajoutez 20% minimum, et prévoyez des rangées entières libres plutôt que des trous éparpillés. Un tableau 3 rangées de 13 modules est souvent le minimum pour une maison de 80 m².",
+          "common_mistake": "Choisir un tableau juste au bon nombre de circuits, sans réserve — première évolution (borne VE, clim) et tout est à recommencer.",
+          "pro_recommended": false,
+          "depends_on": ["elec_009"],
+          "norm_reference": "NF C 15-100 §7.1.3",
+          "control_questions": [
+            { "question": "Le tableau a-t-il au moins 20% d'emplacements libres ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_011",
+          "title": "Choisir les interrupteurs différentiels (type A, AC, F)",
+          "phase": "gros_oeuvre",
+          "explanation": "Les différentiels protègent les personnes. Leur type dépend des usages : AC pour l'éclairage/prises classiques, A pour les équipements électroniques (lave-linge, lave-vaisselle), F pour les variateurs.",
+          "klaro_recommendation": "Règle simple : type A minimum pour tous les circuits cuisine et salle de bain. Type F si variateurs d'éclairage. Un différentiel 30 mA par groupe de circuits maximum — ne mettez pas tout sur un seul.",
+          "common_mistake": "Mettre tous les circuits sur un seul différentiel de type AC — un défaut de lave-linge coupe toute la maison.",
+          "pro_recommended": false,
+          "depends_on": ["elec_010"],
+          "norm_reference": "NF C 15-100 §7.2.3",
+          "control_questions": [
+            { "question": "Les circuits cuisine et salle de bain sont-ils sur des différentiels de type A ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_012",
+          "title": "Répartir les circuits par usage",
+          "phase": "gros_oeuvre",
+          "explanation": "Chaque groupe d'usage (éclairage, prises, circuits spécialisés) doit être sur un circuit séparé avec son propre disjoncteur.",
+          "klaro_recommendation": "Équilibrez les circuits entre les différentiels pour ne jamais laisser la maison entière dans le noir si un différentiel saute. Groupez les circuits par zone géographique ET par type d'usage.",
+          "common_mistake": "Mettre tous les éclairages sur un seul circuit — un court-circuit dans un luminaire coupe toutes les lumières de la maison.",
+          "pro_recommended": false,
+          "depends_on": ["elec_011"],
+          "norm_reference": "NF C 15-100 §7.2",
+          "control_questions": []
+        },
+        {
+          "id": "elec_013",
+          "title": "Planifier les circuits éclairage",
+          "phase": "gros_oeuvre",
+          "explanation": "Un circuit éclairage peut alimenter au maximum 8 points lumineux. Fil de 1,5 mm², disjoncteur 10A.",
+          "klaro_recommendation": "Prévoyez un circuit éclairage par zone (chambres, séjour, cuisine/couloirs). Évitez de mélanger éclairages et prises sur un même circuit même si la norme l'autorise techniquement.",
+          "common_mistake": "Dépasser 8 points lumineux par circuit ou utiliser du 2,5 mm² pour réaliser des économies sur les protections — la section et la protection doivent être cohérentes.",
+          "pro_recommended": false,
+          "depends_on": ["elec_012"],
+          "norm_reference": "NF C 15-100 §7.2.1",
+          "control_questions": [
+            { "question": "Chaque circuit éclairage a-t-il au maximum 8 points lumineux ?", "type": "boolean", "expected": "true" },
+            { "question": "La section des fils éclairage est-elle de 1,5 mm² minimum ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_014",
+          "title": "Planifier les circuits prises",
+          "phase": "gros_oeuvre",
+          "explanation": "8 prises maximum par circuit sur fil 1,5 mm² (disjoncteur 16A) ou 12 prises sur 2,5 mm² (disjoncteur 16A). En pratique, on préfère 2,5 mm² partout.",
+          "klaro_recommendation": "Utilisez systématiquement du 2,5 mm² pour les circuits prises — c'est le standard actuel. La différence de prix est faible et vous avez plus de flexibilité pour l'usage.",
+          "common_mistake": "Installer plus de 8 prises sur du 1,5 mm² — risque de surchauffe du câble en cas de forte consommation simultanée.",
+          "pro_recommended": false,
+          "depends_on": ["elec_012"],
+          "norm_reference": "NF C 15-100 §7.2.2",
+          "control_questions": [
+            { "question": "Le nombre de prises par circuit respecte-t-il la limite (8 sur 1,5 mm² ou 12 sur 2,5 mm²) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_015",
+          "title": "Planifier les circuits spécialisés",
+          "phase": "gros_oeuvre",
+          "explanation": "Certains équipements exigent un circuit dédié (une seule prise pour un seul appareil) : lave-linge, lave-vaisselle, four, plaque de cuisson, réfrigérateur, congélateur.",
+          "klaro_recommendation": "Section minimale : 2,5 mm² pour lave-linge/lave-vaisselle/four, 6 mm² pour plaque de cuisson. Ne jamais brancher deux équipements puissants sur le même circuit spécialisé.",
+          "common_mistake": "Mettre le four et la plaque sur le même circuit — la plaque seule peut consommer 7 kW, bien au-delà d'un disjoncteur 20A sur 2,5 mm².",
+          "pro_recommended": false,
+          "depends_on": ["elec_012"],
+          "norm_reference": "NF C 15-100 §7.2.4",
+          "control_questions": [
+            { "question": "Chaque gros équipement (four, plaque, lave-linge) a-t-il son circuit dédié ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_016",
+          "title": "Organiser l'électricité de la cuisine",
+          "phase": "gros_oeuvre",
+          "explanation": "La cuisine demande au minimum 6 prises (dont 4 au-dessus du plan de travail) + les circuits spécialisés pour les équipements encastrés.",
+          "klaro_recommendation": "Placez les prises de plan de travail à 10-15 cm au-dessus du plan de travail. Prévoyez une prise tous les 80 cm environ sur le plan de travail. N'oubliez pas la hotte (circuit dédié ou prise dédiée).",
+          "common_mistake": "Ne prévoir que 2 prises en cuisine et se retrouver avec des multiprises partout — dangereux et inesthétique.",
+          "pro_recommended": false,
+          "depends_on": ["elec_015"],
+          "norm_reference": "NF C 15-100 §7.2.5",
+          "control_questions": [
+            { "question": "Y a-t-il au moins 6 prises en cuisine dont 4 sur le plan de travail ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_017",
+          "title": "Sécuriser la salle de bain — volumes et protections",
+          "phase": "gros_oeuvre",
+          "explanation": "La salle de bain est divisée en zones (volume 0 = dans la baignoire, volume 1 = au-dessus, volume 2 = à côté). Chaque zone a des règles strictes sur ce qu'on peut installer.",
+          "klaro_recommendation": "Règle simple : aucune prise standard dans les 60 cm autour de la baignoire ou de la douche. Le sèche-serviette doit être en dehors du volume 1. Seuls les appareils étanches (IP44 minimum) sont autorisés en volume 2. Différentiel 30 mA type A obligatoire.",
+          "common_mistake": "Installer une prise à portée de baignoire ou oublier le volume 2 — c'est un refus Consuel garanti et un risque mortel d'électrocution.",
+          "pro_recommended": true,
+          "depends_on": ["elec_012"],
+          "norm_reference": "NF C 15-100 §7.7",
+          "control_questions": [
+            { "question": "Aucune prise n'est-elle installée dans les volumes 0, 1 et 2 ?", "type": "boolean", "expected": "true" },
+            { "question": "Le circuit salle de bain est-il protégé par un différentiel 30 mA type A ?", "type": "boolean", "expected": "true" },
+            { "question": "Les appareils en volume 2 sont-ils IP44 minimum ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_018",
+          "title": "Planifier la VMC (ventilation mécanique contrôlée)",
+          "phase": "gros_oeuvre",
+          "explanation": "La VMC doit être sur un circuit dédié protégé par un disjoncteur de 2A maximum, sans interrupteur sur le circuit.",
+          "klaro_recommendation": "Ne mettez jamais d'interrupteur sur le circuit VMC — elle doit fonctionner en permanence. Placez le moteur VMC en combles ou dans un espace technique hors zone humide.",
+          "common_mistake": "Mettre la VMC sur le même circuit que l'éclairage pour économiser un disjoncteur — la VMC s'arrête chaque fois qu'on coupe la lumière.",
+          "pro_recommended": false,
+          "depends_on": ["elec_012"],
+          "norm_reference": "NF C 15-100 §7.2.4",
+          "control_questions": [
+            { "question": "La VMC a-t-elle un circuit dédié sans interrupteur ?", "type": "boolean", "expected": "true" },
+            { "question": "Le disjoncteur VMC est-il de 2A maximum ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_019",
+          "title": "Planifier le chauffage électrique",
+          "phase": "gros_oeuvre",
+          "explanation": "Chaque radiateur électrique doit être sur un circuit dédié. Si vous utilisez un fil pilote (pour programmer la chauffe pièce par pièce), il nécessite un câblage spécifique.",
+          "klaro_recommendation": "Section minimale 2,5 mm² pour les radiateurs jusqu'à 3500W, 4 mm² au-dessus. Prévoyez une prise fil pilote (6 ordres) si vous installez une gestion domotique du chauffage.",
+          "common_mistake": "Mettre plusieurs radiateurs sur un même circuit — en hiver par grand froid, le disjoncteur saute régulièrement.",
+          "pro_recommended": false,
+          "depends_on": ["elec_012"],
+          "norm_reference": "NF C 15-100 §7.2.4",
+          "control_questions": []
+        },
+        {
+          "id": "elec_020",
+          "title": "Planifier le chauffe-eau",
+          "phase": "gros_oeuvre",
+          "explanation": "Le chauffe-eau électrique (cumulus) exige un circuit dédié. Si vous avez une offre heures creuses/heures pleines, ajoutez un contacteur jour/nuit qui optimise la chauffe.",
+          "klaro_recommendation": "Section 2,5 mm², disjoncteur 20A. Prévoyez d'emblée le câblage pour un contacteur HC/HP même si vous ne souscrivez pas l'option maintenant — le câblage coûte peu, le rajout après travaux beaucoup.",
+          "common_mistake": "Oublier le contacteur HC/HP et perdre des années de réduction sur la facture d'électricité.",
+          "pro_recommended": false,
+          "depends_on": ["elec_015"],
+          "norm_reference": "NF C 15-100 §7.2.4",
+          "control_questions": [
+            { "question": "Le chauffe-eau a-t-il un circuit dédié en 2,5 mm² disjoncteur 20A ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_021",
+          "title": "Planifier les installations extérieures",
+          "phase": "gros_oeuvre",
+          "explanation": "Éclairage de jardin, prises extérieures, portail — tout doit être sur un circuit dédié avec différentiel 30 mA et des matériels adaptés aux intempéries (IP44 minimum).",
+          "klaro_recommendation": "Les câbles enterrés doivent être dans des gaines ICD (gaines spéciales enterrées) à au moins 50 cm de profondeur. Prévoyez un câble de réserve dans chaque gaine pour les évolutions futures.",
+          "common_mistake": "Utiliser des prises et luminaires intérieurs à l'extérieur — la première pluie provoque un court-circuit.",
+          "pro_recommended": false,
+          "depends_on": ["elec_012"],
+          "norm_reference": "NF C 15-100 §7.8",
+          "control_questions": [
+            { "question": "Les matériels extérieurs sont-ils IP44 minimum ?", "type": "boolean", "expected": "true" },
+            { "question": "Le circuit extérieur a-t-il un différentiel 30 mA dédié ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_022",
+          "title": "Planifier volets roulants et motorisations",
+          "phase": "gros_oeuvre",
+          "explanation": "Les volets roulants électriques, portails motorisés et store bannes nécessitent un câblage dédié (alimentation + télécommande ou bus domotique).",
+          "klaro_recommendation": "Posez une gaine ICTA vide + un câble d'alimentation 2,5 mm² à chaque volet, même si vous n'installez pas la motorisation maintenant. La gaine encastrée dans la maçonnerie ne se refait pas.",
+          "common_mistake": "Ne pas prévoir les gaines pour volets roulants lors de la construction, forçant à des cheminements apparents disgracieux.",
+          "pro_recommended": false,
+          "depends_on": ["elec_012"],
+          "norm_reference": "",
+          "control_questions": []
+        },
+        {
+          "id": "elec_023",
+          "title": "Planifier le réseau de communication (RJ45, fibre)",
+          "phase": "gros_oeuvre",
+          "explanation": "Le réseau informatique (internet, TV) se planifie en même temps que l'électricité : poses des prises RJ45, du coffret de communication et du passage de la fibre.",
+          "klaro_recommendation": "Tirez des câbles RJ45 cat 6 dans chaque pièce principale (séjour, chambres, bureau) même si vous utilisez le WiFi. La connexion filaire est toujours plus stable. Centralisez tout dans le coffret de communication de la GTL.",
+          "common_mistake": "Négliger le câblage réseau en se disant qu'on fera tout en WiFi, puis installer des répéteurs partout pour compenser les zones mortes.",
+          "pro_recommended": false,
+          "depends_on": ["elec_009"],
+          "norm_reference": "NF C 15-100 §7.1.1",
+          "control_questions": []
+        },
+        {
+          "id": "elec_024",
+          "title": "Planifier les détecteurs de fumée DAAF",
+          "phase": "gros_oeuvre",
+          "explanation": "Un détecteur de fumée (DAAF) est obligatoire dans chaque logement, avec au moins un par niveau. Ils peuvent être alimentés par pile ou par le circuit électrique.",
+          "klaro_recommendation": "Positionnez le DAAF dans le couloir ou dégagement principal de chaque niveau, à plat au plafond. Si vous câblez des DAAF sur secteur, prévoyez maintenant la boîte d'encastrement et le câble d'alimentation.",
+          "common_mistake": "Placer le DAAF dans une cuisine ou salle de bain — les vapeurs de cuisson et l'humidité provoquent des fausses alarmes incessantes.",
+          "pro_recommended": false,
+          "depends_on": [],
+          "norm_reference": "Loi du 09/03/2010 — DAAF obligatoire",
+          "control_questions": [
+            { "question": "Au moins un DAAF est-il prévu par niveau de logement ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_025",
+          "title": "Anticiper la borne de recharge VE et la domotique",
+          "phase": "gros_oeuvre",
+          "explanation": "Une borne de recharge pour voiture électrique nécessite un circuit 32A en 7 kW ou une installation triphasée en 22 kW. Anticiper le câblage évite de casser les murs plus tard.",
+          "klaro_recommendation": "Tirez dès maintenant un câble 6 mm² depuis le tableau jusqu'au garage ou à l'emplacement prévu, même si la borne n'est posée que dans 5 ans. Le câblage seul coûte peu — refaire la gaine dans le béton coûte cher.",
+          "common_mistake": "Ne pas anticiper la borne VE et devoir faire des travaux de maçonnerie coûteux pour passer le câble une fois la maison terminée.",
+          "pro_recommended": false,
+          "depends_on": ["elec_010"],
+          "norm_reference": "NF C 15-100 §7.12",
+          "control_questions": []
+        },
+        {
+          "id": "elec_026",
+          "title": "Respecter les hauteurs réglementaires",
+          "phase": "gros_oeuvre",
+          "explanation": "Les prises et interrupteurs ont des hauteurs minimum imposées par la norme pour des raisons de sécurité (enfants, inondations) et d'accessibilité.",
+          "klaro_recommendation": "Prises 16A : au moins 5 cm du sol. Prises 32A : au moins 12 cm du sol. Interrupteurs : entre 90 et 130 cm. En accessibilité PMR (personnes à mobilité réduite) : interrupteurs à 90-105 cm, prises à 70-90 cm.",
+          "common_mistake": "Poser les prises à ras du sol pour 'faire propre', et se retrouver avec des prises inondées au premier dégât des eaux.",
+          "pro_recommended": false,
+          "depends_on": ["elec_014"],
+          "norm_reference": "NF C 15-100 §7.3",
+          "control_questions": [
+            { "question": "Les prises 16A sont-elles à au moins 5 cm du sol ?", "type": "boolean", "expected": "true" },
+            { "question": "Les interrupteurs sont-ils entre 90 et 130 cm ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_027",
+          "title": "Tracer les chemins de câbles et saignées",
+          "phase": "gros_oeuvre",
+          "explanation": "Les câbles électriques doivent circuler exclusivement en vertical ou en horizontal, jamais en diagonale, pour permettre de les retrouver lors de futurs perçages.",
+          "klaro_recommendation": "Respectez la règle : vertical depuis une prise ou un interrupteur jusqu'au plafond, puis horizontal jusqu'à la suivante. Photographiez tous les cheminements avant de fermer les murs — vous en aurez besoin lors d'une prochaine rénovation.",
+          "common_mistake": "Tirer les câbles en diagonale pour gagner du temps — un futur perçage de cheville peut perforer le câble et provoquer un incendie.",
+          "pro_recommended": false,
+          "depends_on": ["elec_004"],
+          "norm_reference": "NF C 15-100 §5.2",
+          "control_questions": [
+            { "question": "Les chemins de câbles sont-ils uniquement horizontaux et verticaux ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_028",
+          "title": "Poser les gaines ICTA",
+          "phase": "gros_oeuvre",
+          "explanation": "Les gaines ICTA (gaines orange ondulées) protègent les câbles dans les murs et permettent de les remplacer sans casser les murs.",
+          "klaro_recommendation": "Diamètre 16 mm pour 1 ou 2 câbles 1,5 mm², 20 mm pour 2,5 mm² ou plusieurs câbles. Ne jamais faire de coude inférieur à 90°. Tirez un fil de tirage avant de fermer pour pouvoir rechâbler plus tard.",
+          "common_mistake": "Noyer les câbles directement dans l'enduit sans gaine — impossible à remplacer en cas de défaut.",
+          "pro_recommended": false,
+          "depends_on": ["elec_027"],
+          "norm_reference": "NF C 15-100 §5.2.3",
+          "control_questions": [
+            { "question": "Chaque câble est-il dans une gaine ICTA adaptée à sa section ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_029",
+          "title": "Poser les boîtes d'encastrement",
+          "phase": "gros_oeuvre",
+          "explanation": "Les boîtes d'encastrement reçoivent les prises, interrupteurs et mécanismes. Elles doivent être à la bonne profondeur et parfaitement de niveau.",
+          "klaro_recommendation": "Profondeur minimum 40 mm. Utilisez un niveau à bulle systématiquement. En maçonnerie, fixez avec du plâtre ; en placo, utilisez des boîtes à griffes. Alignez visuellement les boîtes d'une même pièce à la même hauteur.",
+          "common_mistake": "Poser les boîtes en biais ou à des hauteurs différentes d'une prise à l'autre — l'appareillage final sera de travers et visible.",
+          "pro_recommended": false,
+          "depends_on": ["elec_028"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Les boîtes ont-elles une profondeur d'au moins 40 mm ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_030",
+          "title": "Poser les boîtes de dérivation",
+          "phase": "gros_oeuvre",
+          "explanation": "Les boîtes de dérivation (jonctions entre câbles) doivent toujours rester accessibles — ne jamais les noyer sous l'enduit ou le placo.",
+          "klaro_recommendation": "Placez-les de préférence au plafond, dans les combles ou derrière des trappes d'accès. Si une boîte de dérivation est dans un mur, installez une trappe de visite. Évitez-les au maximum en préférant tirer des câbles individuels jusqu'au tableau.",
+          "common_mistake": "Noyer une boîte de dérivation dans le plâtre — en cas de défaut d'isolation, il faut casser le mur pour intervenir.",
+          "pro_recommended": false,
+          "depends_on": ["elec_028"],
+          "norm_reference": "NF C 15-100 §5.2.4",
+          "control_questions": [
+            { "question": "Toutes les boîtes de dérivation sont-elles accessibles sans casse ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_031",
+          "title": "Tirer les fils électriques",
+          "phase": "gros_oeuvre",
+          "explanation": "Chaque circuit est câblé avec la bonne section de fil selon son usage : 1,5 mm² éclairage, 2,5 mm² prises, 6 mm² plaque de cuisson, 10 mm² gros équipements triphasés.",
+          "klaro_recommendation": "Utilisez des câbles R2V ou H07VR de marque connue. Tirez toujours avec une longueur suffisante au tableau (50 cm minimum de rab). Évitez les épissures (jonctions en cours de câble) — une connexion par boîte de dérivation uniquement.",
+          "common_mistake": "Utiliser des câbles de mauvaise qualité ou des sections trop faibles pour 'économiser' — un câble sous-dimensionné chauffe, fond et peut provoquer un incendie.",
+          "pro_recommended": false,
+          "depends_on": ["elec_029"],
+          "norm_reference": "NF C 15-100 §5.3",
+          "control_questions": [
+            { "question": "Les sections de câbles correspondent-elles aux usages (1,5 mm² éclairage, 2,5 mm² prises) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_032",
+          "title": "Étiqueter chaque câble",
+          "phase": "gros_oeuvre",
+          "explanation": "Chaque câble doit être identifié des deux côtés (tableau et point de destination) avec une étiquette ou un marqueur indélébile.",
+          "klaro_recommendation": "Utilisez des étiquettes autocollantes ou des colliers de câble avec écriture. Notez le numéro du circuit et la pièce. Cette étape prend 30 minutes et vous fait gagner des heures lors du raccordement du tableau.",
+          "common_mistake": "Ne pas étiqueter et passer 3 heures au tableau à identifier les circuits avec un testeur.",
+          "pro_recommended": false,
+          "depends_on": ["elec_031"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Chaque câble est-il identifié côté tableau et côté pièce ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "raccordement",
+      "label": "Raccordement",
+      "tasks": [
+        {
+          "id": "elec_033",
+          "title": "Poser et raccorder le tableau électrique",
+          "phase": "raccordement",
+          "explanation": "Le tableau est le cœur de l'installation : on y raccorde tous les câbles sur les disjoncteurs, différentiels et le peigne d'alimentation (barre qui distribue le courant).",
+          "klaro_recommendation": "Serrez les bornes au couple (tournevis dynamométrique), vérifiez que chaque fil est bien inséré (pas de conducteur apparent hors borne). Commencez toujours par la prise de terre, puis les neutres, puis les phases. Le tableau hors tension obligatoire.",
+          "common_mistake": "Ne pas serrer les bornes suffisamment — un fil desserré chauffe, fond et peut provoquer un incendie dans le tableau.",
+          "pro_recommended": true,
+          "depends_on": ["elec_032", "elec_010"],
+          "norm_reference": "NF C 15-100 §7.1",
+          "control_questions": [
+            { "question": "Toutes les bornes sont-elles serrées au couple ?", "type": "boolean", "expected": "true" },
+            { "question": "Aucun conducteur nu n'est-il visible hors des bornes ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_034",
+          "title": "Raccorder les prises",
+          "phase": "raccordement",
+          "explanation": "Une prise comporte 3 bornes : phase (fil marron ou noir), neutre (fil bleu), terre (fil vert-jaune). L'ordre et le serrage sont essentiels.",
+          "klaro_recommendation": "Phase à droite (borne droite), neutre à gauche (borne gauche), terre en haut au centre. Serrez bien chaque vis. Ne coupez pas le fil vert-jaune de terre même si la prise semble fonctionner sans — c'est ce qui vous protège en cas de défaut.",
+          "common_mistake": "Inverser phase et neutre — la prise fonctionne mais les appareils branchés peuvent présenter un risque d'électrocution sur leur châssis.",
+          "pro_recommended": false,
+          "depends_on": ["elec_033"],
+          "norm_reference": "NF C 15-100 §7.3.1",
+          "control_questions": [
+            { "question": "La terre est-elle raccordée sur toutes les prises ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_035",
+          "title": "Raccorder les interrupteurs et points lumineux",
+          "phase": "raccordement",
+          "explanation": "Chaque point lumineux doit se terminer par un DCL (Dispositif de Connexion pour Luminaire — le petit socle au plafond). Le câblage dépend du schéma : simple allumage, va-et-vient, ou télérupteur.",
+          "klaro_recommendation": "Le DCL est obligatoire au plafond pour chaque point lumineux — il permet de remplacer un luminaire sans électricien. Pour les va-et-vient (interrupteur des deux côtés), utilisez un câble 3 conducteurs (3G1,5 mm²).",
+          "common_mistake": "Raccorder le luminaire directement sur des dominos dans la boîte de dérivation sans DCL — non conforme et dangereux pour le remplacement.",
+          "pro_recommended": false,
+          "depends_on": ["elec_033"],
+          "norm_reference": "NF C 15-100 §7.4.1",
+          "control_questions": [
+            { "question": "Un DCL est-il installé sur chaque point lumineux au plafond ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_036",
+          "title": "Installer le parafoudre si zone obligatoire",
+          "phase": "raccordement",
+          "explanation": "Le parafoudre se place dans le tableau après le disjoncteur principal. Il protège l'installation et vos appareils électroniques contre les surtensions dues à la foudre.",
+          "klaro_recommendation": "Choisissez un parafoudre de type 2 minimum (Type 1+2 recommandé en zone AQ2). La longueur des connexions doit être la plus courte possible (< 50 cm recommandé pour une protection efficace).",
+          "common_mistake": "Installer le parafoudre avec des câbles de connexion trop longs — l'inductance des fils diminue fortement l'efficacité de la protection.",
+          "pro_recommended": true,
+          "depends_on": ["elec_033", "elec_005"],
+          "norm_reference": "NF C 15-100 §4.4.2 + NF EN 61643-11",
+          "control_questions": [
+            { "question": "La zone AQ nécessite-t-elle un parafoudre ?", "type": "boolean", "expected": "true" },
+            { "question": "Le parafoudre est-il de type 2 minimum ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_037",
+          "title": "Étiqueter le tableau électrique",
+          "phase": "raccordement",
+          "explanation": "Chaque disjoncteur du tableau doit être clairement identifié : pièce et usage (ex : 'Chambre 1 éclairage', 'Cuisine prises', 'Lave-linge').",
+          "klaro_recommendation": "Utilisez des étiquettes plastifiées ou le schéma imprimé collé sur la porte du tableau. L'étiquetage est contrôlé par le Consuel — un tableau non étiqueté est un motif de refus.",
+          "common_mistake": "Laisser le tableau sans étiquettes ou avec des étiquettes illisibles écrites au stylo bic.",
+          "pro_recommended": false,
+          "depends_on": ["elec_033"],
+          "norm_reference": "NF C 15-100 §7.1.4",
+          "control_questions": [
+            { "question": "Chaque disjoncteur est-il clairement identifié (pièce + usage) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "controle",
+      "label": "Contrôles & mise en service",
+      "tasks": [
+        {
+          "id": "elec_038",
+          "title": "Tester la continuité de la terre et l'isolement des câbles",
+          "phase": "controle",
+          "explanation": "Avant de fermer les murs, vérifiez que chaque câble est intact (pas de coupure) et que les fils ne sont pas en contact entre eux ou avec la terre.",
+          "klaro_recommendation": "Utilisez un contrôleur d'installation (type Megger ou équivalent) pour mesurer la résistance d'isolement : doit être > 1 MΩ entre conducteurs. Ce test DOIT être fait avant de refermer murs et plafonds.",
+          "common_mistake": "Refermer les murs sans tester et découvrir un défaut d'isolement après — il faut tout ouvrir.",
+          "pro_recommended": true,
+          "depends_on": ["elec_034", "elec_035"],
+          "norm_reference": "NF C 15-100 §6.1",
+          "control_questions": [
+            { "question": "La résistance d'isolement est-elle supérieure à 1 MΩ sur tous les circuits ?", "type": "boolean", "expected": "true" },
+            { "question": "La continuité de la prise de terre est-elle vérifiée sur tous les circuits ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_039",
+          "title": "Tester le déclenchement des différentiels",
+          "phase": "controle",
+          "explanation": "Chaque interrupteur différentiel doit être testé : appuyez sur le bouton TEST — il doit couper immédiatement. Testez aussi avec un appareil de mesure pour vérifier le seuil de déclenchement.",
+          "klaro_recommendation": "Le bouton TEST simule un défaut. Il doit déclencher en moins de 300 ms. Testez chaque différentiel individuellement. Si l'un ne déclenche pas correctement, remplacez-le — ne jamais forcer ou court-circuiter un différentiel défaillant.",
+          "common_mistake": "Ne jamais tester les différentiels et découvrir lors d'un vrai défaut qu'ils ne fonctionnent pas — c'est le scénario mortel.",
+          "pro_recommended": true,
+          "depends_on": ["elec_033"],
+          "norm_reference": "NF C 15-100 §6.2",
+          "control_questions": [
+            { "question": "Chaque différentiel a-t-il été testé et déclenche-t-il correctement ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_040",
+          "title": "Mettre sous tension circuit par circuit",
+          "phase": "controle",
+          "explanation": "La première mise sous tension se fait progressivement : d'abord le tableau seul, puis circuit par circuit, en vérifiant l'absence d'anomalie à chaque étape.",
+          "klaro_recommendation": "Procédure : ouvrez (coupez) tous les disjoncteurs de départ. Fermez le différentiel général. Puis fermez un circuit à la fois et vérifiez tension + absence de déclenchement intempestif. Si un différentiel saute, isolez le circuit défaillant.",
+          "common_mistake": "Tout mettre sous tension d'un coup et ne pas savoir quel circuit provoque le problème quand ça disjoncte.",
+          "pro_recommended": true,
+          "depends_on": ["elec_038", "elec_039"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Chaque circuit a-t-il été mis sous tension individuellement sans déclenchement intempestif ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_041",
+          "title": "Installer les appareillages finaux",
+          "phase": "controle",
+          "explanation": "Les plaques de finition, mécanismes de prises, interrupteurs et luminaires s'installent en dernière étape, une fois les tests réussis.",
+          "klaro_recommendation": "Vérifiez que les boîtes sont propres et sans plâtre avant de poser les mécanismes. Serrez les vis de fixation sans forcer sur les griffes de placo. Testez chaque prise avec un testeur de prise (circuit + terre + polarité).",
+          "common_mistake": "Poser les plaques avant les tests finaux et devoir tout démonter pour corriger un câblage.",
+          "pro_recommended": false,
+          "depends_on": ["elec_040"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Chaque prise a-t-elle été testée (phase/neutre/terre) après pose ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "elec_042",
+          "title": "Préparer le passage du Consuel",
+          "phase": "controle",
+          "explanation": "Le Consuel est l'organisme qui vérifie votre installation avant la mise en service définitive (obligatoire pour les constructions neuves et rénovations totales). Il délivre une attestation sans laquelle EDF ne branche pas.",
+          "klaro_recommendation": "Préparez le dossier : schéma unifilaire + schéma architectural à jour, rapport de mesures (terre, isolement, différentiels), tableau étiqueté. Le Consuel vérifie surtout la salle de bain, la cuisine, la prise de terre et le tableau.",
+          "common_mistake": "Appeler le Consuel sans avoir les schémas à jour ou avant d'avoir terminé l'installation — la contre-visite est payante.",
+          "pro_recommended": true,
+          "depends_on": ["elec_041", "elec_004"],
+          "norm_reference": "NF C 15-100 — Attestation Consuel",
+          "control_questions": [
+            { "question": "Les schémas unifilaire et architectural sont-ils à jour ?", "type": "boolean", "expected": "true" },
+            { "question": "Le rapport de mesures (terre, isolement, différentiels) est-il disponible ?", "type": "boolean", "expected": "true" },
+            { "question": "Le tableau est-il complet et étiqueté ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    }
+  ],
+  "blocking_points": [
+    {
+      "id": "block_001",
+      "message": "Impossible de fermer les murs avant validation des tests de continuité et d'isolement.",
+      "blocks_task_id": "elec_041",
+      "requires_task_id": "elec_038"
+    },
+    {
+      "id": "block_002",
+      "message": "Mise sous tension interdite avant raccordement complet du tableau et tests des différentiels.",
+      "blocks_task_id": "elec_040",
+      "requires_task_id": "elec_033"
+    },
+    {
+      "id": "block_003",
+      "message": "Pas de pose d'appareillage final avant tests de déclenchement des différentiels.",
+      "blocks_task_id": "elec_041",
+      "requires_task_id": "elec_039"
+    },
+    {
+      "id": "block_004",
+      "message": "Pas de passage Consuel possible sans schéma électrique à jour.",
+      "blocks_task_id": "elec_042",
+      "requires_task_id": "elec_004"
+    },
+    {
+      "id": "block_005",
+      "message": "La prise de terre doit être mesurée et validée avant tout raccordement.",
+      "blocks_task_id": "elec_033",
+      "requires_task_id": "elec_008"
+    },
+    {
+      "id": "block_006",
+      "message": "Aucun câble ne peut être tiré avant que les gaines ICTA soient posées.",
+      "blocks_task_id": "elec_031",
+      "requires_task_id": "elec_028"
+    },
+    {
+      "id": "block_007",
+      "message": "Le tableau ne peut pas être dimensionné avant le bilan de puissance.",
+      "blocks_task_id": "elec_010",
+      "requires_task_id": "elec_003"
+    },
+    {
+      "id": "block_008",
+      "message": "Aucun travail électrique ne doit commencer sans couper et consigner l'installation.",
+      "blocks_task_id": "elec_027",
+      "requires_task_id": "elec_006"
+    }
+  ],
+  "scoring": {
+    "progression_percent": {
+      "formula": "validated_tasks / total_tasks * 100",
+      "total_tasks": 42
+    },
+    "safety_score": {
+      "base": 100,
+      "penalties": [
+        {
+          "condition": "Prise de terre non mesurée (elec_008 non validée)",
+          "malus": 30,
+          "category": "critique"
+        },
+        {
+          "condition": "Différentiels non testés (elec_039 non validée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Tests isolement non effectués avant fermeture murs (elec_038 non validée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Volumes salle de bain non respectés (elec_017 échouée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Installation consignée non vérifiée (elec_006 non validée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Schéma électrique absent (elec_004 non validée)",
+          "malus": 15,
+          "category": "bloquant"
+        },
+        {
+          "condition": "Étiquetage tableau absent (elec_037 non validée)",
+          "malus": 10,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Hauteurs réglementaires non respectées (elec_026 échouée)",
+          "malus": 10,
+          "category": "non_conforme"
+        }
+      ]
+    },
+    "critical_alerts": [
+      {
+        "id": "alert_terre",
+        "message": "Prise de terre non validée — installation non sécurisée.",
+        "triggered_if": "elec_008 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_differentiel",
+        "message": "Différentiels non testés — protection des personnes non garantie.",
+        "triggered_if": "elec_039 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_sdb",
+        "message": "Salle de bain non vérifiée — risque d'électrocution.",
+        "triggered_if": "elec_017 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_isolement",
+        "message": "Tests d'isolement non effectués avant fermeture des murs.",
+        "triggered_if": "elec_038 not validated AND walls closed",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_consuel",
+        "message": "Consuel non passé — EDF ne peut pas brancher l'installation.",
+        "triggered_if": "elec_042 not validated",
+        "level": "bloquant"
+      }
+    ]
+  }
+}
