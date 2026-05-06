@@ -1,0 +1,506 @@
+{
+  "module": "revetements_sols",
+  "phases": [
+    {
+      "id": "preparation",
+      "label": "Préparation & diagnostic du support",
+      "tasks": [
+        {
+          "id": "sols_001",
+          "title": "Définir le type de revêtement",
+          "phase": "preparation",
+          "explanation": "Carrelage (grès cérame, faïence), parquet (massif, contrecollé, stratifié) ou sol souple (PVC en lés, dalles LVT, lino). Chaque type a ses contraintes de support et de pose.",
+          "klaro_recommendation": "Carrelage : pièces humides + zones de passage. Parquet massif/contrecollé : pièces sèches + chauffage compatible. Sol PVC/LVT : économique, rapide, adapté aux supports tolérants. Vérifiez la compatibilité avec un plancher chauffant si présent (résistance thermique du revêtement).",
+          "common_mistake": "Choisir un parquet massif sur plancher chauffant — dilatation incontrôlée et déformation garantie.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 52.1 / 51.2 / 53.2",
+          "control_questions": [
+            { "question": "Le revêtement choisi est-il compatible avec le support et l'usage de la pièce ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sols_002",
+          "title": "Vérifier l'état du support (dalle / chape)",
+          "phase": "preparation",
+          "explanation": "Inspectez le support : fissures, parties friables, traces d'humidité, restes de colle, anciens revêtements. Toute faiblesse du support compromet la pose.",
+          "klaro_recommendation": "Tapez sur la dalle au manche d'un marteau : son creux = décollement à reprendre. Frottez avec la main : si la surface se sablée, le support est friable et nécessite un primaire durcisseur. Aucun revêtement ne tient sur un support qui se délite.",
+          "common_mistake": "Poser sur un support friable en pensant que la colle compensera — décollement du revêtement entier dans les 6 mois.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_001"],
+          "norm_reference": "DTU 52.1 §6.1",
+          "control_questions": [
+            { "question": "Le support est-il sain (pas de fissure active, ni partie friable, ni décollement) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sols_003",
+          "title": "Vérifier la planéité du sol",
+          "phase": "preparation",
+          "explanation": "Posez une règle de 2 m sur le sol et mesurez la flèche maximale sous la règle. Tolérances : 7 mm pour carrelage standard, 5 mm pour grand format (>40 cm), 3 mm pour parquet et sols souples.",
+          "klaro_recommendation": "Mesurez en plusieurs endroits par pièce (au moins 5 mesures). Notez les défauts >5 mm sur un croquis : ils nécessiteront un ragréage. Pour les très grands carreaux (>60 cm), exigez 3 mm sous la règle de 2 m, sinon 'effet sourire' garanti aux joints.",
+          "common_mistake": "Considérer qu'un sol 'à peu près plat' suffit — un défaut de 8 mm sur un carreau de 60 cm crée des joints en escalier irrécupérables.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_002"],
+          "norm_reference": "DTU 52.1 §6.2",
+          "control_questions": [
+            { "question": "Flèche maximale sous règle de 2 m (mm) ?", "type": "number", "expected": "≤ 7 carrelage / ≤ 5 grand format / ≤ 3 parquet & souples" }
+          ]
+        },
+        {
+          "id": "sols_004",
+          "title": "Vérifier le taux d'humidité du support",
+          "phase": "preparation",
+          "explanation": "Le support doit être sec avant pose. Mesure au déshumidiomètre : ≤ 3% pour chape ciment, ≤ 0,5% pour anhydrite. Sur dalle béton neuve : 1 mois de séchage par cm d'épaisseur.",
+          "klaro_recommendation": "Mesure au déshumidiomètre à pointes (location ~20 €). Si pas de mesure : test de la feuille plastique (carré 50×50 collé au scotch sur le sol pendant 24h — buée dessous = sol pas sec). Une dalle béton de 8 cm = 8 mois de séchage minimum. Précipiter = revêtement décollé.",
+          "common_mistake": "Poser sur une dalle 'visiblement sèche' sans mesure — l'humidité résiduelle migre, soulève le revêtement et provoque moisissures sous parquet.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_002"],
+          "norm_reference": "DTU 52.1 §6.3 + DTU 51.2",
+          "control_questions": [
+            { "question": "Taux d'humidité mesuré (%) ?", "type": "number", "expected": "≤ 3 chape ciment / ≤ 0,5 anhydrite" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preparation_support",
+      "label": "Préparation du support",
+      "tasks": [
+        {
+          "id": "sols_005",
+          "title": "Nettoyer et préparer le support",
+          "phase": "preparation_support",
+          "explanation": "Aspirez à fond toute la pièce (poussière, débris). Retirez les anciens points de colle, traces de plâtre, taches de peinture. Le support doit être propre, dépoussiéré, sans graisse.",
+          "klaro_recommendation": "Aspirateur de chantier (pas balai qui soulève la poussière). Pour les anciens résidus de colle : grattoir + ponceuse selon nature. Aucune trace de gras/cire (dégraissant alcalin si nécessaire) car la colle ne tient pas sur surfaces grasses. Faites le nettoyage juste avant le primaire (sinon poussière redéposée).",
+          "common_mistake": "Balayer rapidement et coller — la fine couche de poussière empêche l'accrochage de la colle, décollement quelques mois plus tard.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_004"],
+          "norm_reference": "DTU 52.1 §6.4",
+          "control_questions": [
+            { "question": "Le support est-il aspiré, dégraissé et exempt de résidus ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sols_006",
+          "title": "Appliquer un primaire d'accrochage",
+          "phase": "preparation_support",
+          "explanation": "Le primaire d'accrochage uniformise la porosité du support, bloque les remontées de poussière et améliore l'adhérence de la colle ou du ragréage.",
+          "klaro_recommendation": "Choisissez le primaire selon le support : universel pour béton/chape, spécifique pour anhydrite ou support très absorbant. Application au rouleau, croisé, sans manque ni surcharge. Respectez le temps de séchage (2-4h selon produit) avant ragréage ou colle.",
+          "common_mistake": "Sauter le primaire pour gagner du temps — ragréage qui se fissure (séchage trop rapide en surface) ou colle qui n'adhère pas.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_005"],
+          "norm_reference": "DTU 52.1 §6.5",
+          "control_questions": [
+            { "question": "Le primaire est-il appliqué uniformément et sec avant suite ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sols_007",
+          "title": "Réaliser un ragréage si nécessaire",
+          "phase": "preparation_support",
+          "explanation": "Si la planéité dépasse les tolérances (>5-7 mm sous règle 2 m), un ragréage autolissant rétablit le niveau. Épaisseur courante : 3-10 mm.",
+          "klaro_recommendation": "Ragréage autolissant fibré pour épaisseur 3-30 mm. Mélangez avec rigueur (proportion d'eau exacte) : trop liquide = fissures, trop épais = grumeaux. Étalez à la lisseuse, puis débullez avec un rouleau à picots. Séchage 24-48h avant pose. Vérifiez la nouvelle planéité avant de continuer.",
+          "common_mistake": "Compenser un défaut de 1 cm avec uniquement de la colle à carrelage — surépaisseur de colle = fissuration garantie aux joints à terme.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_006"],
+          "norm_reference": "DTU 52.1 §6.6",
+          "control_questions": [
+            { "question": "Après ragréage, la planéité respecte-t-elle la tolérance du revêtement choisi ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "calepinage",
+      "label": "Calepinage & joints",
+      "tasks": [
+        {
+          "id": "sols_008",
+          "title": "Définir le calepinage (plan de pose)",
+          "phase": "calepinage",
+          "explanation": "Le calepinage est le plan théorique de pose : sens des carreaux, alignement, gestion des coupes en périphérie. Il évite d'avoir un mauvais résultat visuel à la fin.",
+          "klaro_recommendation": "Mesurez la pièce, dessinez la pose à l'échelle. Évitez de finir par une coupe < 5 cm (peu esthétique) : décalez le départ pour avoir des coupes équilibrées des deux côtés. Pour pose en quinconce ou diagonale, le calepinage est encore plus crucial. Photographiez le plan avant de commencer.",
+          "common_mistake": "Démarrer la pose sans calepinage et finir avec une bande de 2 cm contre le mur du fond — visuellement raté, refaire est très coûteux.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_007"],
+          "norm_reference": "DTU 52.1 §7.1",
+          "control_questions": [
+            { "question": "Le calepinage est-il dessiné et les coupes ≥ 5 cm équilibrées en périphérie ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sols_009",
+          "title": "Définir le point de départ de pose",
+          "phase": "calepinage",
+          "explanation": "Le point de départ est l'endroit du premier carreau, choisi pour que la pose soit visuellement réussie sur les zones les plus visibles (entrée de pièce, devant porte).",
+          "klaro_recommendation": "Démarrez de préférence depuis le centre de la pièce ou depuis l'entrée principale, en alignant un carreau entier sur l'axe principal. Tracez les axes au cordeau à craie. Posez quelques carreaux à blanc pour valider visuellement avant d'encoller.",
+          "common_mistake": "Démarrer 'depuis un mur' sans vérifier qu'il est droit — une pièce rarement carrée donne un résultat tordu propagé sur toute la pose.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_008"],
+          "norm_reference": "DTU 52.1 §7.1",
+          "control_questions": []
+        },
+        {
+          "id": "sols_010",
+          "title": "Prévoir les joints de dilatation",
+          "phase": "calepinage",
+          "explanation": "Les joints de dilatation absorbent les mouvements du support et du revêtement. Obligatoires : périphériques (5-8 mm contre les murs), de fractionnement (tous les 40 m² ou 8 m linéaires), au passage de seuils.",
+          "klaro_recommendation": "Joint périphérique 5-8 mm autour de la pièce (sera caché par la plinthe). Joint de fractionnement tous les 40 m² ou 8 m max — repérez sur le calepinage. Reprenez les joints existants du support (jamais ponter un joint de dalle). Sans ces joints, le carrelage fissure aux changements de température.",
+          "common_mistake": "Poser les carreaux jusqu'au mur ou pont sur un joint de dalle — fissures garanties dès le premier été ou hiver.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_008"],
+          "norm_reference": "DTU 52.1 §7.2",
+          "control_questions": [
+            { "question": "Les joints périphériques (5-8 mm) et de fractionnement sont-ils prévus ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pose",
+      "label": "Pose du revêtement",
+      "tasks": [
+        {
+          "id": "sols_011",
+          "title": "Préparer la colle adaptée",
+          "phase": "pose",
+          "explanation": "Choisissez la colle selon le revêtement, le support et l'usage : C2 pour carrelage standard, C2S1/S2 pour grands formats ou plancher chauffant, colle souple pour zones fortement sollicitées.",
+          "klaro_recommendation": "Respectez les proportions d'eau exactes. Mélangez à la machine (perceuse + malaxeur) jusqu'à obtention d'une pâte homogène sans grumeaux. Laissez reposer 5 minutes (maturation), puis re-mélangez brièvement. Préparez seulement la quantité utilisable en 30 minutes (au-delà, la colle commence à durcir).",
+          "common_mistake": "Préparer trop de colle d'un coup et essayer d'en utiliser au-delà du temps ouvert — la colle ne fait plus prise correctement.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_010"],
+          "norm_reference": "DTU 52.1 §8.1 + NF EN 12004",
+          "control_questions": [
+            { "question": "La colle choisie est-elle adaptée (classe C2 mini, S1/S2 si grand format/plancher chauffant) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sols_012",
+          "title": "Poser les premiers carreaux",
+          "phase": "pose",
+          "explanation": "Étalez la colle au peigne adapté (taille des dents proportionnelle au format du carreau). Posez le carreau, marouflez avec un mouvement de va-et-vient pour évacuer l'air et garantir le contact.",
+          "klaro_recommendation": "Pour les grands formats (>30×30) et l'extérieur : DOUBLE ENCOLLAGE obligatoire (colle au sol + colle au dos du carreau). Le double encollage assure 100% de contact (pas de vide sous le carreau qui finit par se fissurer). Vérifiez le contact en soulevant un carreau test après pose : ≥ 80% de surface accrochée.",
+          "common_mistake": "Simple encollage sur grands carreaux — vides sous le carreau, fissures aux pas répétés ou au choc.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_011"],
+          "norm_reference": "DTU 52.1 §8.2",
+          "control_questions": [
+            { "question": "Double encollage appliqué sur carreaux >30×30 cm ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sols_013",
+          "title": "Respecter l'alignement et les niveaux",
+          "phase": "pose",
+          "explanation": "Pendant la pose, contrôlez en permanence l'alignement (cordeau ou règle) et le niveau (niveau à bulle ou laser) entre carreaux. Un défaut se corrige tant que la colle est fraîche.",
+          "klaro_recommendation": "Posez 4-6 carreaux puis vérifiez : règle sur les bords (alignement), règle posée à plat (planéité), niveau à bulle sur 2 carreaux (pas de 'lèvre'). Tapotez doucement avec la talochette caoutchoutée pour ajuster. Au-delà du temps ouvert (~30 min), la correction est impossible.",
+          "common_mistake": "Poser une rangée entière puis vérifier — toute correction nécessite de retirer plusieurs carreaux et de tout reprendre.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_012"],
+          "norm_reference": "DTU 52.1 §8.3",
+          "control_questions": [
+            { "question": "Aucune lèvre (différence de niveau entre 2 carreaux) > 1 mm ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sols_014",
+          "title": "Poser les croisillons (écartement)",
+          "phase": "pose",
+          "explanation": "Les croisillons garantissent un joint régulier entre carreaux : 2 mm pour rectifié, 3-5 mm pour standard, 8-10 mm pour terre cuite/grand format extérieur.",
+          "klaro_recommendation": "Choisissez l'épaisseur selon le format du carreau et le rendu souhaité. JAMAIS de pose bord à bord (zéro joint) : la dilatation provoque casse ou décollement. Retirez les croisillons avant durcissement total de la colle (~24h après pose). Pour les grands formats, utilisez des nivelettes (système niveleur) qui évitent les lèvres.",
+          "common_mistake": "Poser sans croisillons en se fiant à 'l'œil' — joints irréguliers, écarts visibles, et pas de marge de dilatation.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_012"],
+          "norm_reference": "DTU 52.1 §8.4",
+          "control_questions": [
+            { "question": "Tous les joints sont-ils respectés avec croisillons (jamais bord à bord) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sols_015",
+          "title": "Découper les carreaux (angles & finitions)",
+          "phase": "pose",
+          "explanation": "Les coupes (en périphérie, autour des huisseries, des tuyaux) se réalisent à la coupe-carreaux manuelle (jusqu'à 30 cm) ou à la scie diamantée à eau (grands formats, courbes, percements).",
+          "klaro_recommendation": "Mesurez précisément, marquez au feutre, coupez à 1-2 mm en deçà pour intégrer le joint. Pour les courbes (autour d'un tuyau) : scie diamantée à eau. Polissez les bords coupés avec une lime diamant si visibles (les bords saillants risquent de blesser ou éclater). Travaillez avec lunettes et gants.",
+          "common_mistake": "Couper à la disqueuse standard (sèche) — éclats sur la face visible, finition catastrophique.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_013"],
+          "norm_reference": "DTU 52.1 §8.5",
+          "control_questions": []
+        },
+        {
+          "id": "sols_016",
+          "title": "Poser les plinthes",
+          "phase": "pose",
+          "explanation": "Plinthes carrelage : posées après le sol, sur la même colle, joint de 2-3 mm entre sol et plinthe. Plinthes bois ou PVC : posées en dernier, après peinture, vissées ou collées au mur.",
+          "klaro_recommendation": "Plinthes carrelage : alignez le joint plinthe-sol avec les joints du carrelage de sol (effet visuel propre). Plinthes bois/PVC : laissez 1-2 mm entre la plinthe et le sol fini (sinon mouvement empêché et fissure). Pour les coupes d'angle, utilisez une boîte à onglet.",
+          "common_mistake": "Coller la plinthe contre le sol sans aucun jeu — au moindre mouvement du sol ou de la plinthe, l'une des deux se décolle ou fissure.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_015"],
+          "norm_reference": "DTU 52.1 §9 + DTU 36.5",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "joints_finitions",
+      "label": "Joints & finitions",
+      "tasks": [
+        {
+          "id": "sols_017",
+          "title": "Laisser sécher la colle",
+          "phase": "joints_finitions",
+          "explanation": "Avant de marcher sur le carrelage et de réaliser les joints, respectez le temps de séchage de la colle : 24h minimum, 48h recommandé selon produit et conditions (humidité, température).",
+          "klaro_recommendation": "À 20°C et humidité normale : 24h pour marcher légèrement, 48h pour utilisation et réalisation des joints. Plus froid ou plus humide : doublez le temps. Pas de courant d'air violent (séchage hétérogène). Vérifiez en pressant sur un joint de croisillon : il ne doit pas s'enfoncer.",
+          "common_mistake": "Faire les joints à H+12 — la colle pas sèche se fissure sous le poids du jointoyeur, carreaux qui bougent.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_016"],
+          "norm_reference": "DTU 52.1 §8.6 + notice colle",
+          "control_questions": [
+            { "question": "Temps de séchage colle respecté (≥ 24h) avant joints ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sols_018",
+          "title": "Réaliser les joints",
+          "phase": "joints_finitions",
+          "explanation": "Préparez le mortier de joint (selon largeur : fin pour ≤ 5 mm, large pour > 5 mm), étalez à la raclette caoutchouc en passes diagonales par rapport aux joints pour bien remplir.",
+          "klaro_recommendation": "Travaillez par zones de 2-3 m². Étalez à la raclette en croisant les passes (deux directions perpendiculaires aux joints). Forcez la pénétration. Évitez les joints trop creux : ils accumulent saletés et se fissurent. Pour pièces humides, choisissez un mortier hydrofuge ou époxy.",
+          "common_mistake": "Étaler le joint dans le sens des carreaux — le joint passe sur le carreau sans remplir le creux entre les deux.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_017"],
+          "norm_reference": "DTU 52.1 §10.1",
+          "control_questions": []
+        },
+        {
+          "id": "sols_019",
+          "title": "Nettoyer les résidus de joint",
+          "phase": "joints_finitions",
+          "explanation": "10-20 minutes après application (selon produit) : éponge humide pour retirer l'excès de joint en surface des carreaux. Plusieurs passes nécessaires, en rinçant l'éponge à chaque fois.",
+          "klaro_recommendation": "Premier passage : éponge bien essorée, mouvement diagonal (ne pas creuser le joint). Attendez 30 min, second passage avec éponge propre. Le voile de ciment résiduel se retire 24h après avec un produit anti-laitance ou détergent acide doux. Carreaux poreux (ardoise, terre cuite) : protégez-les avant pose.",
+          "common_mistake": "Laisser le joint sécher complètement sur les carreaux — voile de ciment quasi impossible à retirer ensuite, carrelage durablement terne.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_018"],
+          "norm_reference": "DTU 52.1 §10.2",
+          "control_questions": []
+        },
+        {
+          "id": "sols_020",
+          "title": "Vérifier la planéité finale",
+          "phase": "joints_finitions",
+          "explanation": "Après séchage des joints, contrôlez la planéité finale du sol avec une règle de 2 m. Tolérance : 5 mm pour carrelage standard, 3 mm pour grand format. Aucune lèvre supérieure à 1 mm entre 2 carreaux.",
+          "klaro_recommendation": "Faites le contrôle à plusieurs endroits, en croisant les directions. Inspectez visuellement sous éclairage rasant pour détecter les défauts. Tout défaut > 1 mm entre 2 carreaux = lèvre, point d'usure et risque de blessure (orteils). Documentez la planéité finale (photo + mesure).",
+          "common_mistake": "Ne pas contrôler la planéité finale et découvrir une lèvre majeure une fois les meubles posés.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_019"],
+          "norm_reference": "DTU 52.1 §11.1",
+          "control_questions": [
+            { "question": "Flèche maximale finale sous règle 2 m (mm) ?", "type": "number", "expected": "≤ 5 standard / ≤ 3 grand format" },
+            { "question": "Aucune lèvre > 1 mm entre 2 carreaux ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sols_021",
+          "title": "Traiter les joints périphériques au silicone",
+          "phase": "joints_finitions",
+          "explanation": "Les joints périphériques (contre les murs, entre 2 matériaux différents, autour des sanitaires) se réalisent au silicone sanitaire (souple) et non au mortier (rigide).",
+          "klaro_recommendation": "Silicone neutre sanitaire (anti-moisissures). Posez du scotch de masquage des deux côtés du joint pour avoir une ligne nette. Appliquez le silicone, lissez avec le doigt mouillé au savon ou à l'outil dédié. Retirez le scotch IMMÉDIATEMENT après lissage (avant durcissement).",
+          "common_mistake": "Remplir les joints périphériques au mortier — fissure dès la première dilatation, infiltration d'eau possible.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_020"],
+          "norm_reference": "DTU 52.1 §10.3 + DTU 52.2",
+          "control_questions": [
+            { "question": "Joints périphériques traités au silicone (jamais au mortier) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "protection",
+      "label": "Protection finale",
+      "tasks": [
+        {
+          "id": "sols_022",
+          "title": "Protéger le sol après pose",
+          "phase": "protection",
+          "explanation": "Si d'autres corps de métier interviennent après (peinture, menuiseries, cuisine), protégez le sol avec carton ondulé ou film cartonné jusqu'à la fin du chantier.",
+          "klaro_recommendation": "Carton ondulé recommandé (mieux que film plastique seul qui glisse). Scotchez les jonctions sans coller au sol (scotch de masquage léger). Évitez les chocs (chute d'outil = carreau fissuré ou éclat). Pour parquet et sols souples : film de protection adhésif spécial (vendu en rouleaux de chantier).",
+          "common_mistake": "Laisser le sol exposé pendant les autres travaux — gouttes de peinture, taches de plâtre, rayures, voire carreau fissuré par chute d'outil.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sols_021"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Le sol est-il protégé pour la durée des travaux suivants ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    }
+  ],
+  "blocking_points": [
+    {
+      "id": "block_001",
+      "message": "Impossible de poser un revêtement sur un sol non plan — ragréage obligatoire si défaut > tolérance.",
+      "blocks_task_id": "sols_011",
+      "requires_task_id": "sols_007"
+    },
+    {
+      "id": "block_002",
+      "message": "Le support doit être sec avant pose — humidité résiduelle = décollement garanti.",
+      "blocks_task_id": "sols_011",
+      "requires_task_id": "sols_004"
+    },
+    {
+      "id": "block_003",
+      "message": "Pas de pose sans calepinage — risque de finir avec une coupe minuscule contre le mur.",
+      "blocks_task_id": "sols_012",
+      "requires_task_id": "sols_008"
+    },
+    {
+      "id": "block_004",
+      "message": "Pas de joints avant respect du temps de séchage de la colle (≥ 24h).",
+      "blocks_task_id": "sols_018",
+      "requires_task_id": "sols_017"
+    },
+    {
+      "id": "block_005",
+      "message": "Pas de pose grand format (>30×30) en simple encollage — double encollage obligatoire.",
+      "blocks_task_id": "sols_012",
+      "requires_task_id": "sols_011"
+    },
+    {
+      "id": "block_006",
+      "message": "Pas de pose sur support non aspiré et non dégraissé.",
+      "blocks_task_id": "sols_011",
+      "requires_task_id": "sols_005"
+    },
+    {
+      "id": "block_007",
+      "message": "Pas de pose sans joints de dilatation (périphériques + fractionnement) prévus.",
+      "blocks_task_id": "sols_012",
+      "requires_task_id": "sols_010"
+    },
+    {
+      "id": "block_008",
+      "message": "Pas de joints périphériques au mortier — silicone obligatoire.",
+      "blocks_task_id": "sols_022",
+      "requires_task_id": "sols_021"
+    }
+  ],
+  "scoring": {
+    "progression_percent": {
+      "formula": "validated_tasks / total_tasks * 100",
+      "total_tasks": 22
+    },
+    "safety_score": {
+      "base": 100,
+      "penalties": [
+        {
+          "condition": "Planéité hors tolérance (sols_003 ou sols_020 échouée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Humidité du support non contrôlée ou hors tolérance (sols_004 échouée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Double encollage absent sur grand format (sols_012 échouée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Joints de dilatation absents (sols_010 non validée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Temps de séchage colle non respecté avant joints (sols_017 échouée)",
+          "malus": 15,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Calepinage absent ou coupes < 5 cm en périphérie (sols_008 échouée)",
+          "malus": 15,
+          "category": "bloquant"
+        },
+        {
+          "condition": "Primaire absent sur support absorbant (sols_006 non validée)",
+          "malus": 10,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Joints périphériques au mortier au lieu de silicone (sols_021 échouée)",
+          "malus": 10,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Lèvres > 1 mm entre carreaux (sols_013 ou sols_020 échouée)",
+          "malus": 10,
+          "category": "non_conforme"
+        }
+      ]
+    },
+    "critical_alerts": [
+      {
+        "id": "alert_planeite",
+        "message": "Défaut de planéité — risque fissure carrelage et lèvres irrécupérables.",
+        "triggered_if": "sols_003 not validated OR sols_020 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_humidite",
+        "message": "Humidité du support non contrôlée — décollement et moisissures à venir.",
+        "triggered_if": "sols_004 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_double_encollage",
+        "message": "Double encollage absent sur grand format — vides sous carreaux et risque de casse.",
+        "triggered_if": "sols_012 not validated AND format > 30x30",
+        "level": "danger"
+      },
+      {
+        "id": "alert_dilatation",
+        "message": "Joints de dilatation absents — fissures garanties au premier changement de température.",
+        "triggered_if": "sols_010 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_sechage",
+        "message": "Joints réalisés avant séchage complet de la colle — décollement possible.",
+        "triggered_if": "sols_018 validated AND sols_017 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_calepinage",
+        "message": "Pas de calepinage — risque de finition visuelle compromise (coupes minuscules).",
+        "triggered_if": "sols_008 not validated AND sols_012 validated",
+        "level": "bloquant"
+      }
+    ]
+  }
+}
