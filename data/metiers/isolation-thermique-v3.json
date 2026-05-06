@@ -1,0 +1,587 @@
+{
+  "module": "isolation_thermique",
+  "warnings_header": [
+    {
+      "id": "warn_001",
+      "level": "danger",
+      "title": "Isoler sans ventilation = piège à humidité",
+      "message": "Une VMC fonctionnelle est OBLIGATOIRE avant toute isolation étanche. Sans VMC, la vapeur d'eau produite par les occupants reste piégée dans l'isolation : moisissures, dégradation du bâti, problèmes sanitaires. Le module bloque la pose de pare-vapeur tant que la VMC n'est pas validée."
+    },
+    {
+      "id": "warn_002",
+      "level": "danger",
+      "title": "Isoler sans diagnostiquer l'humidité = aggravation",
+      "message": "Toute trace d'humidité, infiltration ou remontée capillaire doit être identifiée et TRAITÉE avant isolation. Isoler sur un mur humide enferme l'eau, accélère les dégradations et rend les réparations 10× plus coûteuses."
+    },
+    {
+      "id": "warn_003",
+      "level": "danger",
+      "title": "Bâti ancien (< 1948) = règles spécifiques",
+      "message": "Murs en pierre, terre, pisé ou colombages exigent des isolants perspirants (laine de bois, chanvre, ouate, liège) et un frein-vapeur HYGROVARIABLE. Pare-vapeur étanche INTERDIT — il pourrit le mur de l'intérieur. Pro spécialisé bâti ancien fortement recommandé."
+    },
+    {
+      "id": "warn_004",
+      "level": "danger",
+      "title": "Conduits de fumée = distance de sécurité au feu (DSF)",
+      "message": "Les isolants combustibles à proximité d'un conduit non isolé causent des incendies. Coffrage incombustible obligatoire selon DTU 24.1/24.2. Tous les conduits traversant la zone à isoler doivent être identifiés AVANT pose et traités selon les distances réglementaires."
+    },
+    {
+      "id": "warn_005",
+      "level": "danger",
+      "title": "Spots encastrés en combles = capots CBI obligatoires",
+      "message": "Sans capot CBI (Couvercle Bonne Isolation) au-dessus des spots dans les combles isolés, surchauffe garantie et risque incendie majeur. Capots à poser AVANT isolation."
+    },
+    {
+      "id": "warn_006",
+      "level": "info",
+      "title": "Aides financières conditionnées au RGE",
+      "message": "MaPrimeRénov', CEE, éco-PTZ, TVA 5,5 % : artisan RGE (Reconnu Garant de l'Environnement) obligatoire ET demande déposée AVANT signature du devis. Pas de RGE = pas d'aides. R minimum à respecter selon le poste isolé (3,7 murs / 7 combles perdus / 6 combles aménagés / 3 plancher bas)."
+    }
+  ],
+  "phases": [
+    {
+      "id": "diagnostic_prealable",
+      "label": "Diagnostic préalable & conception",
+      "tasks": [
+        {
+          "id": "iso_001",
+          "title": "Définir précisément la zone à isoler",
+          "phase": "diagnostic_prealable",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Murs intérieurs (ITI) ou extérieurs (ITE), combles perdus (non habitables), combles aménagés (habitables), plancher bas (sur cave/vide sanitaire), toiture par l'extérieur (sarking). Chaque zone a ses contraintes propres.",
+          "klaro_recommendation": "Faites un plan coté de chaque zone à isoler. Prioriser : toiture (30% des déperditions) > murs (25%) > plancher bas (10%). Pour une rénovation d'ampleur : isoler par étapes en commençant par la toiture donne le meilleur ratio gain/coût.",
+          "common_mistake": "Isoler les murs avant les combles 'parce que c'est plus facile' — l'air chaud monte et s'échappe par le toit, gain énergétique fortement réduit.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "RE2020 + DTU 45.10/45.11/45.2",
+          "control_questions": [
+            { "question": "La zone à isoler est-elle clairement définie sur plan coté ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_002",
+          "title": "Identifier le type de bâti (ancien < 1948 vs récent)",
+          "phase": "diagnostic_prealable",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Bâti ancien (< 1948) : murs en pierre, terre, pisé, colombages — perspirants, ils gèrent l'humidité par diffusion. Bâti récent (> 1948) : structure étanche en béton/parpaing/brique — gestion par étanchéité.",
+          "klaro_recommendation": "Vérifiez l'année de construction (DPE, acte notarié, archives mairie). Bâti ancien = isolant perspirant + frein-vapeur HYGROVARIABLE obligatoire. Récent = pare-vapeur classique. Le mauvais choix sur bâti ancien = mur pourri en quelques années.",
+          "common_mistake": "Traiter un bâti en pierre du XIXᵉ avec laine de verre + pare-vapeur étanche — humidité piégée dans le mur, dégradation rapide de la pierre et des enduits.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_001"],
+          "norm_reference": "Règles de l'art bâti ancien (ATHEBA)",
+          "control_questions": [
+            { "question": "Le type de bâti est-il identifié (ancien < 1948 ou récent) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_003",
+          "title": "Diagnostic des sources d'humidité AVANT tout",
+          "phase": "diagnostic_prealable",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Identifier : remontées capillaires (humidité du sol), infiltrations latérales (mur exposé pluie), fuites toiture, condensation (manque ventilation), ponts thermiques (zones froides où l'humidité condense).",
+          "klaro_recommendation": "Inspection visuelle + humidimètre (mesure du taux d'humidité dans les matériaux). Repérez : taches sombres, salpêtre (cristaux blancs), peinture qui cloque, plinthes gondolées, odeur de moisi. Photographiez chaque zone humide avec date. Si humidité importante : faire intervenir un diagnostiqueur spécialisé.",
+          "common_mistake": "Ignorer une tache d'humidité 'pas grave' et isoler par-dessus — l'eau s'accumule dans l'isolant, dégradation invisible mais accélérée.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": true,
+          "depends_on": [],
+          "norm_reference": "DTU 20.1 + bonnes pratiques humidité",
+          "control_questions": [
+            { "question": "Diagnostic humidité réalisé et zones humides photographiées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_004",
+          "title": "Traiter la cause de l'humidité AVANT isolation",
+          "phase": "diagnostic_prealable",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Drainage périphérique (remontées), réparation toiture (infiltration), injection de résine (capillarité ascensionnelle), reprise d'enduit (infiltration latérale). Isoler sur cause non traitée = aggravation garantie.",
+          "klaro_recommendation": "Drainage extérieur + barrière étanche pour remontées capillaires. Reprise zinguerie / tuiles défectueuses pour fuites toiture. Injection résine si bâti ancien sans coupure de capillarité. Attendre le séchage complet (mesure humidimètre) avant isolation. Documentez les travaux par photos.",
+          "common_mistake": "Vouloir aller vite et isoler sur un mur encore humide — l'isolant se gorge d'eau, perd 50-80% de sa performance, moisissures inéluctables.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_003"],
+          "norm_reference": "DTU 20.1 + DTU 14.1",
+          "control_questions": [
+            { "question": "Cause d'humidité traitée et support sec (humidimètre) avant isolation ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_005",
+          "title": "Vérifier la présence et le bon fonctionnement de la VMC",
+          "phase": "diagnostic_prealable",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "VMC obligatoire avant pose pare-vapeur. Sans VMC, la vapeur produite par les occupants (douche, cuisine, respiration) reste piégée. Simple flux ou double flux selon projet et budget.",
+          "klaro_recommendation": "Vérifiez : présence VMC (caisson en combles ou local technique), bouches d'extraction en pièces humides (cuisine, SDB, WC), entrées d'air en pièces sèches (chambres, séjour). Test : feuille de papier qui tient sur la bouche d'extraction = ça aspire. Si VMC absente ou en panne = installation/réparation AVANT isolation. Ne posez JAMAIS de pare-vapeur sans VMC fonctionnelle.",
+          "common_mistake": "Isoler dans une maison sans VMC pour 'gagner de l'énergie' — moisissures aux murs, fenêtres ruisselantes, qualité d'air dégradée.",
+          "pro_status": "pro_obligatoire_blocage",
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 68.3 + RE2020 + Arrêté 24/03/1982",
+          "control_questions": [
+            { "question": "VMC présente et fonctionnelle (test feuille papier validé) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_006",
+          "title": "Audit énergétique ou DPE pour mesurer les déperditions",
+          "phase": "diagnostic_prealable",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["aides_maprimerenov", "haute_performance_bbc_passif"],
+          "explanation": "Audit énergétique réglementaire (depuis 2023 pour passoires F/G en cas de vente) ou DPE volontaire pour mesurer les déperditions et calibrer les travaux. Obligatoire pour MaPrimeRénov' rénovation d'ampleur.",
+          "klaro_recommendation": "Audit énergétique réglementaire = ~800-1500 € (auditeur certifié). Identifie les postes prioritaires et propose plusieurs scénarios. Le DPE simple (~150 €) suffit pour déclencher MaPrimeRénov' classique. Pour rénovation globale (saut de 2 classes minimum) : audit obligatoire.",
+          "common_mistake": "Démarrer les travaux sans audit et passer à côté d'un poste critique (toiture non isolée, ponts thermiques majeurs).",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_001"],
+          "norm_reference": "Loi Climat 2021 + DPE 3CL-2021",
+          "control_questions": [
+            { "question": "Audit énergétique ou DPE réalisé si éligible MaPrimeRénov' ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_007",
+          "title": "Thermographie infrarouge pour identifier les déperditions",
+          "phase": "diagnostic_prealable",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["haute_performance_bbc_passif"],
+          "explanation": "Caméra thermique en hiver (delta T° intérieur/extérieur > 10°C) qui visualise les ponts thermiques, défauts d'isolation, infiltrations d'air invisibles à l'œil.",
+          "klaro_recommendation": "Thermographie professionnelle ~300-600 €. Faite l'hiver, le matin tôt, après une nuit de chauffage. Le rapport identifie les zones froides (ponts thermiques) et les zones chaudes (infiltrations d'air). Indispensable pour viser BBC ou passif. Refaite après travaux pour vérifier l'efficacité.",
+          "common_mistake": "Sauter la thermographie sur un projet ambitieux — défauts résiduels invisibles qui plombent la performance finale.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_006"],
+          "norm_reference": "NF EN 13187",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "conception_choix_isolant",
+      "label": "Conception & choix de l'isolant",
+      "tasks": [
+        {
+          "id": "iso_008",
+          "title": "Définir la résistance thermique R visée",
+          "phase": "conception_choix_isolant",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Résistance thermique R (m².K/W) selon poste : R ≥ 3,7 murs, R ≥ 7 combles perdus, R ≥ 6 combles aménagés, R ≥ 3 plancher bas. Seuils MaPrimeRénov' à vérifier (évoluent annuellement).",
+          "klaro_recommendation": "Visez les seuils des aides comme minimum, pas comme objectif. Pour une rénovation pérenne (10-20 ans) : R ≥ 5 murs / R ≥ 8-10 combles. Plus l'isolation est performante, plus le retour sur investissement est rapide. Vérifiez les seuils MaPrimeRénov' à jour sur france-renov.gouv.fr.",
+          "common_mistake": "Viser le minimum réglementaire sur 30 ans d'usage — performance dépassée en 5-10 ans, regrets et nouveaux travaux.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_002"],
+          "norm_reference": "RE2020 + Décret tertiaire + MaPrimeRénov'",
+          "control_questions": [
+            { "question": "R visé (m².K/W) ?", "type": "number", "expected": "≥ 3,7 murs / ≥ 7 combles perdus / ≥ 6 combles aménagés / ≥ 3 plancher" }
+          ]
+        },
+        {
+          "id": "iso_009",
+          "title": "Calculer l'épaisseur d'isolant nécessaire",
+          "phase": "conception_choix_isolant",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Épaisseur (m) = R (m².K/W) × λ (W/m.K). λ (lambda) = conductivité thermique de l'isolant (plus petit = plus performant). Donné sur la fiche produit.",
+          "klaro_recommendation": "Exemples : pour R = 7 avec laine de verre (λ = 0,035) : épaisseur 24,5 cm. Avec PUR (λ = 0,022) : 15,4 cm. Avec laine de bois (λ = 0,038) : 26,6 cm. Choisir un isolant avec λ faible = épaisseur réduite (utile en combles aménagés où la hauteur compte).",
+          "common_mistake": "Acheter un isolant standard sans vérifier λ — épaisseur insuffisante pour atteindre R cible.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_008"],
+          "norm_reference": "Th-U + ACERMI",
+          "control_questions": [
+            { "question": "Épaisseur calculée selon R cible et λ de l'isolant choisi ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_010",
+          "title": "Choisir le type d'isolant adapté",
+          "phase": "conception_choix_isolant",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Laines minérales (verre/roche) : bon marché, performance correcte, A1 incombustible. Biosourcés (laine de bois, ouate, chanvre, lin, liège) : écologique, bon déphasage, perspirant. Synthétiques (PSE, XPS, PUR, PIR) : performance/épaisseur, sensibilité au feu.",
+          "klaro_recommendation": "Critères de choix : R visé, perspirance (bâti ancien), déphasage (confort été), réaction au feu, écologie, budget. Combles : laine de verre soufflée (économique) ou ouate cellulose (déphasage). Murs ITE : PSE/PUR (rigide, λ faible). Bâti ancien : laine de bois ou chanvre OBLIGATOIRE.",
+          "common_mistake": "Choisir uniquement sur le prix sans considérer la perspirance — sur bâti ancien, isolant non perspirant = mur pourri.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_002", "iso_009"],
+          "norm_reference": "ACERMI + DTU 45.10/45.11/45.2",
+          "control_questions": [
+            { "question": "Isolant choisi adapté au type de bâti et à l'usage ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_011",
+          "title": "Bâti ancien : isolants perspirants UNIQUEMENT",
+          "phase": "conception_choix_isolant",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["bati_ancien_avant_1948"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Bâti ancien = murs perspirants (pierre, terre, pisé, colombages) qui gèrent l'humidité par diffusion. Isolants perspirants OBLIGATOIRES : laine de bois, chanvre, ouate de cellulose, liège. INTERDIT : PSE, PUR, laine minérale + pare-vapeur étanche.",
+          "klaro_recommendation": "Laine de bois rigide (Pavatherm, Steico) ou chanvre en panneaux pour ITI. Ouate de cellulose insufflée pour combles. Liège pour zones humides. Évitez tout matériau étanche à la vapeur (Sd > 5 m). Pro spécialisé bâti ancien fortement recommandé. Le coût est plus élevé mais c'est la seule solution durable.",
+          "common_mistake": "Mettre de la laine de verre + pare-vapeur étanche dans une maison en pierre du XIXᵉ — humidité piégée, dégradation de la pierre, moisissures internes.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_002"],
+          "norm_reference": "Règles ATHEBA + DTU 31.2",
+          "control_questions": [
+            { "question": "Isolant choisi est-il perspirant (Sd faible) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_012",
+          "title": "Vérifier la réaction au feu (Euroclasse)",
+          "phase": "conception_choix_isolant",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Euroclasse A1/A2 = incombustible (laines minérales). B-D = combustible avec dégagement limité (biosourcés selon traitement). E-F = combustible (PSE, PUR sans traitement). Critique près des conduits de fumée.",
+          "klaro_recommendation": "Combles près de conduit de fumée : laines minérales A1 obligatoires dans la zone DSF (1 m autour du conduit). Biosourcés acceptés si traités feu et/ou éloignés des points chauds. PSE/PUR à proscrire en combles si conduit non isolé.",
+          "common_mistake": "Mettre du PSE ou PUR près d'un conduit de fumée non isolé — incendie possible en cas de surchauffe du conduit.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_010"],
+          "norm_reference": "NF EN 13501-1 + DTU 24.1",
+          "control_questions": [
+            { "question": "Euroclasse de l'isolant adaptée à la zone (A1 si proximité conduit) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_013",
+          "title": "Vérifier la résistance à la compression et au tassement",
+          "phase": "conception_choix_isolant",
+          "applies_to_iso_type": ["combles_perdus", "combles_amenages"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Ouate de cellulose tasse de 15-20% en quelques années. Laines minérales soufflées : 5-10%. Pour conserver le R initial, il faut prévoir une surépaisseur compensatrice à la pose.",
+          "klaro_recommendation": "Pour ouate cellulose visant R = 7 (24 cm) : posez 28-30 cm pour compenser le tassement. Vérifiez la densité minimale recommandée par le fabricant (souvent 35 kg/m³ minimum pour ouate). Refus du fabricant si tassement excessif = densité de pose à augmenter.",
+          "common_mistake": "Poser à la densité minimale 'pour économiser' — tassement rapide, R divisé par 2 en 5 ans.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_010"],
+          "norm_reference": "DTU 45.11 + ACERMI",
+          "control_questions": [
+            { "question": "Surépaisseur prévue pour compenser le tassement (ouate, laines soufflées) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_014",
+          "title": "Choisir le pare-vapeur ou frein-vapeur adapté",
+          "phase": "conception_choix_isolant",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Pare-vapeur classique : Sd > 18 m (très étanche, bâti récent). Frein-vapeur hygrovariable : Sd variable selon humidité (laisse respirer le mur en été, étanche en hiver — bâti ancien et haute performance). Pare-pluie HPV : Sd < 0,1 m (côté extérieur).",
+          "klaro_recommendation": "Bâti récent + isolation classique : pare-vapeur Sd > 18 m suffit. Bâti ancien : OBLIGATOIREMENT frein-vapeur hygrovariable (Pro Clima Intello, Siga Majrex, Klimasan). Coûte 2-3× plus cher mais protège le mur. Coté extérieur : pare-pluie HPV obligatoire en sarking ou sous bardage.",
+          "common_mistake": "Utiliser un pare-vapeur étanche sur bâti ancien — l'humidité du mur ne peut plus s'évacuer côté intérieur, condensation et dégradation.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_002", "iso_010"],
+          "norm_reference": "DTU 31.2 + DTU 45.10",
+          "control_questions": [
+            { "question": "Pare-vapeur (Sd > 18) sur bâti récent OU frein-vapeur hygrovariable sur bâti ancien ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_015",
+          "title": "Appliquer la règle des 2/3 - 1/3",
+          "phase": "conception_choix_isolant",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Règle anti-condensation : la résistance thermique côté chaud du pare-vapeur doit représenter au moins 2/3 de la résistance totale. Sinon le point de rosée se forme dans l'isolant = condensation interne.",
+          "klaro_recommendation": "Si vous posez 2 couches d'isolant avec pare-vapeur entre les deux : la couche côté chaud (intérieur) doit faire ≥ 2/3 de l'épaisseur totale. Pour bicouche en combles : pare-vapeur sous la dernière couche (côté placo). Erreur fréquente en rénovation : doublage extérieur d'isolation = pare-vapeur mal placé, condensation cachée.",
+          "common_mistake": "Pare-vapeur posé entre la dalle et l'isolant en combles = pare-vapeur côté froid, condensation garantie dans l'isolant.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_014"],
+          "norm_reference": "DTU 45.10 + Th-U",
+          "control_questions": [
+            { "question": "Règle 2/3 côté chaud du pare-vapeur respectée ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preparation_administrative",
+      "label": "Préparation administrative & aides",
+      "tasks": [
+        {
+          "id": "iso_016",
+          "title": "Vérifier les aides éligibles",
+          "phase": "preparation_administrative",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["aides_maprimerenov", "haute_performance_bbc_passif"],
+          "explanation": "MaPrimeRénov' (revenus + perf), CEE (Certificats Économies Énergie, sans condition revenus), éco-PTZ (prêt à taux zéro), TVA 5,5% (artisan RGE), aides locales (région, département, commune).",
+          "klaro_recommendation": "Simulateur sur france-renov.gouv.fr. Cumulables sous conditions. CEE versées par l'énergéticien (Total, EDF...) sous forme de prime ou réduction. TVA 5,5% appliquée directement par l'artisan RGE sur la facture. Vérifiez les aides locales sur le site de votre commune.",
+          "common_mistake": "Ne pas cumuler les aides par méconnaissance — perte de plusieurs milliers d'euros possibles.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_001"],
+          "norm_reference": "France Rénov + CGE 2025",
+          "control_questions": [
+            { "question": "Aides éligibles identifiées et simulées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_017",
+          "title": "Sélectionner un artisan RGE",
+          "phase": "preparation_administrative",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["aides_maprimerenov", "haute_performance_bbc_passif"],
+          "explanation": "RGE (Reconnu Garant de l'Environnement) = qualification d'artisan obligatoire pour bénéficier des aides à la rénovation énergétique. Mention RGE liée à un poste précis (isolation murs, combles, etc.).",
+          "klaro_recommendation": "Annuaire RGE sur france-renov.gouv.fr. Vérifiez la qualification PRÉCISE (RGE Qualibat 7141 isolation par exemple). Demandez l'attestation RGE en cours de validité (renouvellement annuel). Sans RGE = pas d'aides, même si l'artisan est compétent. 3 devis minimum recommandés.",
+          "common_mistake": "Faire confiance à un artisan qui dit 'je suis RGE' sans vérifier — qualification expirée ou non adaptée au poste = refus des aides au paiement.",
+          "pro_status": "pro_rge_obligatoire_si_aides",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_016"],
+          "norm_reference": "Décret 2014-812 RGE",
+          "control_questions": [
+            { "question": "Artisan RGE qualifié pour le poste, attestation en cours de validité ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_018",
+          "title": "Pour ITE : déposer une déclaration préalable",
+          "phase": "preparation_administrative",
+          "applies_to_iso_type": ["ite_murs"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "ITE = modification de l'aspect extérieur de la façade. Déclaration préalable de travaux (DP) obligatoire en mairie. Délai d'instruction 1 mois. Périmètre Bâtiments de France (ABF) si proche d'un monument classé.",
+          "klaro_recommendation": "Formulaire CERFA 13703 + plans + photos. Délai 1 mois (2 mois en zone ABF). Affichage obligatoire sur le terrain pendant les travaux. Recours des tiers : 2 mois après affichage. Sans DP : mise en demeure d'arrêt et obligation de remettre en état.",
+          "common_mistake": "Démarrer une ITE sans DP en pensant 'c'est juste une isolation' — démolition ordonnée par la mairie possible.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_001"],
+          "norm_reference": "Code de l'urbanisme R421-17",
+          "control_questions": [
+            { "question": "DP déposée et délai d'instruction écoulé pour ITE ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_019",
+          "title": "Si copropriété et ITE : accord assemblée générale",
+          "phase": "preparation_administrative",
+          "applies_to_iso_type": ["ite_murs"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "ITE en copropriété touche aux parties communes (façade) : accord syndic + vote en AG obligatoire (majorité variable selon nature des travaux et règlement de copropriété).",
+          "klaro_recommendation": "Demande écrite au syndic avec descriptif et devis. Inscription à l'ordre du jour AG. Vote selon majorité requise (article 24, 25 ou 26 selon règlement). Conservez le PV d'AG. Sans accord : démolition ordonnée par tribunal aux frais du copropriétaire.",
+          "common_mistake": "Engager une ITE en copropriété sans vote AG — annulation possible et remise en état.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_018"],
+          "norm_reference": "Loi 10 juillet 1965 + Code copropriété",
+          "control_questions": [
+            { "question": "Si copropriété : vote AG obtenu et PV archivé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_020",
+          "title": "Demandes d'aides AVANT signature des devis",
+          "phase": "preparation_administrative",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["aides_maprimerenov", "haute_performance_bbc_passif"],
+          "explanation": "MaPrimeRénov' et CEE : demande à déposer AVANT signature du devis. Sinon forclusion = aides perdues définitivement.",
+          "klaro_recommendation": "Procédure : 1) Devis RGE détaillé. 2) Création compte sur maprimerenov.gouv.fr. 3) Dépôt du dossier avec devis + justificatifs revenus + RGE. 4) Notification d'acceptation. 5) SEULEMENT APRÈS : signature du devis et démarrage. Pour CEE : signer la convention avec l'énergéticien partenaire AVANT devis.",
+          "common_mistake": "Signer le devis 'pour bloquer le prix' avant dépôt MaPrimeRénov' — aides refusées définitivement, perte sèche.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_017"],
+          "norm_reference": "France Rénov + CEE",
+          "control_questions": [
+            { "question": "Demande aides déposée AVANT signature devis ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "securite_incendie_prealable",
+      "label": "Sécurité incendie préalable",
+      "tasks": [
+        {
+          "id": "iso_021",
+          "title": "Identifier les conduits de fumée traversant la zone",
+          "phase": "securite_incendie_prealable",
+          "applies_to_iso_type": ["combles_perdus", "combles_amenages", "sarking"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Cheminées, poêles, chaudières : conduits qui traversent la zone à isoler. Vérifier conformité (DTU 24.1/24.2), état (fissures, corrosion), isolation propre du conduit.",
+          "klaro_recommendation": "Inventaire visuel : conduit maçonné (pierre, brique), conduit métallique inox/acier, type de combustible (bois, fioul, gaz). Vérifier le ramonage (1 fois/an obligatoire). Si conduit ancien non isolé : faire intervenir un fumiste pour évaluation. Photographiez chaque conduit.",
+          "common_mistake": "Isoler en oubliant un conduit chaud — incendie possible en saison de chauffe.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 24.1 + DTU 24.2",
+          "control_questions": [
+            { "question": "Tous les conduits de fumée identifiés et leur conformité vérifiée ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_022",
+          "title": "Distance de sécurité au feu (DSF) et coffrage incombustible",
+          "phase": "securite_incendie_prealable",
+          "applies_to_iso_type": ["combles_perdus", "combles_amenages", "sarking"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "DSF entre conduit et matériaux combustibles selon DTU 24.1/24.2 : 16 cm pour conduit isolé, 25-30 cm minimum pour conduit non isolé. Coffrage en plaque de plâtre BA13 fini (incombustible) obligatoire si proximité avec isolant combustible.",
+          "klaro_recommendation": "Distance mesurée entre la paroi externe du conduit et le matériau combustible le plus proche. Si DSF non respectable : coffrage en plaques de plâtre + laine de roche A1 entre conduit et isolant. Documentez par photos. Faites valider par un fumiste ou pro spécialisé.",
+          "common_mistake": "Souffler de la ouate de cellulose contre un conduit non isolé — incendie possible à la première saison de chauffe intensive.",
+          "pro_status": "pro_obligatoire_blocage",
+          "photo_required_before_validation": true,
+          "depends_on": ["iso_021"],
+          "norm_reference": "DTU 24.1 §6 + DTU 24.2",
+          "control_questions": [
+            { "question": "DSF respectée et coffrage incombustible posé si nécessaire ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_023",
+          "title": "Capots CBI sur spots encastrés AVANT isolation",
+          "phase": "securite_incendie_prealable",
+          "applies_to_iso_type": ["combles_perdus", "combles_amenages"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Spots encastrés (LED ou halogène) dans plafond surmonté d'isolant : capot CBI (Couvercle Bonne Isolation) obligatoire au-dessus pour évacuer la chaleur. Sans capot, surchauffe du spot et risque incendie majeur.",
+          "klaro_recommendation": "Capot CBI = boîtier rigide non combustible dimensionné pour entourer le spot, avec hauteur libre suffisante au-dessus. Posé sur le plafond AVANT pose ou soufflage de l'isolant. Vérifiez la compatibilité spot/capot (puissance, dimensions). Photographiez chaque capot en place.",
+          "common_mistake": "Souffler la laine ou poser des panneaux directement sur des spots — surchauffe, fonte des câbles, incendie.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": true,
+          "depends_on": [],
+          "norm_reference": "NF C 15-100 + DTU 45.11",
+          "control_questions": [
+            { "question": "Capots CBI posés sur tous les spots encastrés AVANT isolation ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_024",
+          "title": "Distance de sécurité avec tout point chaud",
+          "phase": "securite_incendie_prealable",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Tout point chaud (transformateur, halogène basse tension, conduit chaud, ballast) doit être éloigné des matériaux combustibles. Suivez les notices fabricants (souvent 5-10 cm minimum).",
+          "klaro_recommendation": "Inventaire des points chauds dans la zone : transformateurs spots, ballasts néons, conduits VMC chauds, etc. Lisez les notices fabricants pour les distances minimales. En cas de doute : remplacement par LED basse consommation (peu de chaleur) ou capot incombustible.",
+          "common_mistake": "Considérer 'tout va bien' sans inventaire des points chauds — surchauffe, dégradation des câbles, incendie.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "NF C 15-100",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "preparation_chantier",
+      "label": "Préparation du chantier",
+      "tasks": [
+        {
+          "id": "iso_025",
+          "title": "Préparer les EPI adaptés",
+          "phase": "preparation_chantier",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Combinaison jetable, masque FFP3 (laine minérale = irritant fort, fibres < 5 microns), gants nitrile, lunettes étanches. Laine de bois moins irritante mais EPI quand même.",
+          "klaro_recommendation": "FFP3 obligatoire pour laines minérales (FFP2 insuffisant). Combinaison à manches longues. Lunettes monoblocs (les fibres passent dans les espaces). Renouvelez le masque toutes les 4-8h ou en cas de gêne respiratoire. Douche après chaque journée (les fibres collent à la peau).",
+          "common_mistake": "Travailler avec la laine de verre sans masque — irritation des voies respiratoires, micro-coupures dermiques.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code du travail R4321-1 + EN 149",
+          "control_questions": [
+            { "question": "EPI complets en place (combinaison, FFP3, gants, lunettes) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_026",
+          "title": "Stocker les isolants à l'abri",
+          "phase": "preparation_chantier",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Local sec, ventilé, à l'abri des chocs et des intempéries. Laines minérales : protection au sol et bâche. Biosourcés : extra-sensibles à l'humidité, stockage strict au sec.",
+          "klaro_recommendation": "Pas à même le sol (palettes ou cales). Bâche par-dessus si stockage à l'extérieur (ce qui n'est pas idéal). Laine de bois ou ouate qui prend l'humidité = perte de performance et risque moisissures dans le mur après pose. Stockez juste avant pose si possible.",
+          "common_mistake": "Stocker sous une bâche au sol par temps de pluie — eau qui s'infiltre, isolant à jeter.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Notices fabricants",
+          "control_questions": []
+        },
+        {
+          "id": "iso_027",
+          "title": "Vérifier la hauteur sous plafond résiduelle (combles aménagés)",
+          "phase": "preparation_chantier",
+          "applies_to_iso_type": ["combles_amenages", "sarking"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Après pose isolant + finition, la hauteur sous plafond ne doit pas tomber sous 1,80 m fini (réglementaire). Pour confort réel : 2,30 m minimum souhaitable.",
+          "klaro_recommendation": "Mesurez la hauteur actuelle. Soustrayez : épaisseur isolant + frein-vapeur + lattage + placo. Si hauteur résiduelle < 1,80 m : envisagez une isolation plus performante avec λ faible (PUR, laine de bois haute densité) pour réduire l'épaisseur. Ou sarking par l'extérieur (pas de perte hauteur).",
+          "common_mistake": "Isoler en perdant 30 cm sous une charpente déjà basse — pièce inutilisable, regret immédiat.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_009"],
+          "norm_reference": "Décret 2002-120 (logement décent)",
+          "control_questions": [
+            { "question": "Hauteur sous plafond résiduelle (m) ?", "type": "number", "expected": "≥ 1,80" }
+          ]
+        },
+        {
+          "id": "iso_028",
+          "title": "Pour ITE : monter l'échafaudage et bâcher",
+          "phase": "preparation_chantier",
+          "applies_to_iso_type": ["ite_murs"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "ITE nécessite un échafaudage de pied conforme NF EN 12810 sur toute la hauteur de la façade. Bâche pour protéger contre la pluie pendant le chantier.",
+          "klaro_recommendation": "Échafaudage monté par personne formée, plinthes anti-chute d'objet. Bâche micro-perforée (laisse passer l'air mais arrête la pluie). Filets de sécurité. Balisage de zone interdite au sol. Protection des plantes et menuiseries.",
+          "common_mistake": "Travailler depuis une échelle pour ITE 'pour économiser' — chute mortelle = première cause d'accident en BTP.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "NF EN 12810 + Code du travail",
+          "control_questions": []
+        },
+        {
+          "id": "iso_029",
+          "title": "Coordonner avec les autres lots AVANT pose",
+          "phase": "preparation_chantier",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Couvreur (continuité toiture-isolation), électricien (passage gaines avant pare-vapeur), plombier (traversées), chauffagiste (conduits VMC). La coordination AVANT évite la casse APRÈS.",
+          "klaro_recommendation": "Réunion pré-chantier avec tous les corps de métier intervenant après le gros œuvre. Plan partagé des passages techniques. Calendrier coordonné : électricien et plombier AVANT pose isolant et pare-vapeur. VMC : caissons et conduits posés avant isolation des combles.",
+          "common_mistake": "Isoler avant le passage des gaines élec — il faut tout rouvrir, pare-vapeur troué, étanchéité ruinée.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 45.10 + bonnes pratiques",
+          "control_questions": [
+            { "question": "Réunion de coordination pré-chantier réalisée avec les autres lots ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    }
+  ]
+}
