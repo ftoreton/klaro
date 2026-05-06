@@ -1,0 +1,625 @@
+{
+  "module": "chauffage_ecs",
+  "warnings_header": [
+    {
+      "id": "warn_001",
+      "level": "danger",
+      "title": "Installation gaz et fioul neuves INTERDITES",
+      "message": "RE2020 interdit le gaz neuf en maisons individuelles depuis 2022 et logements collectifs depuis 2025. Le fioul en remplacement est interdit depuis juillet 2022. Klaro ne propose JAMAIS d'installation neuve sur ces énergies, uniquement leur dépose conforme."
+    },
+    {
+      "id": "warn_002",
+      "level": "danger",
+      "title": "Appareils à combustion = risque CO mortel",
+      "message": "Granulés et bûches : risque monoxyde de carbone (CO). Détecteur CO OBLIGATOIRE, ventilation conforme, conduit tubé et étanche, ramonage 2 fois/an pour bois et 1 fois/an pour granulés. Plus de 100 morts par an en France par CO."
+    },
+    {
+      "id": "warn_003",
+      "level": "danger",
+      "title": "Cuve fioul en dépose : opération réglementée",
+      "message": "Vidange + dégazage + neutralisation par entreprise certifiée OBLIGATOIRES. Certificat de neutralisation à conserver à VIE (exigé en cas de vente du bien). Déclaration en mairie pour cuve enterrée."
+    },
+    {
+      "id": "warn_004",
+      "level": "danger",
+      "title": "Réseau gaz en dépose : pro Qualigaz uniquement",
+      "message": "Coupure et scellement du compteur par GRDF. Dépose et bouchage des canalisations par pro Qualigaz uniquement. Certificat de conformité de dépose à conserver. Particulier interdit d'intervenir sur réseau gaz."
+    },
+    {
+      "id": "warn_005",
+      "level": "danger",
+      "title": "PAC : fluides frigorigènes réservés aux pros",
+      "message": "Manipulation des fluides frigorigènes réservée aux techniciens attestation fluides catégorie I à IV. Particulier INTERDIT de manipuler le circuit frigorifique. R290 (propane) inflammable = restrictions de pose strictes."
+    },
+    {
+      "id": "warn_006",
+      "level": "danger",
+      "title": "Conduits de fumée : DSF + tubage + ramonage",
+      "message": "DSF (distance de sécurité au feu) obligatoire selon DTU 24.1, tubage quasi systématique en rénovation, hauteur 40 cm au-dessus du faîtage à 8 m. Ramonage obligatoire selon règlement local. Mauvais conduit = incendie ou intoxication CO."
+    },
+    {
+      "id": "warn_007",
+      "level": "info",
+      "title": "Aides MaPrimeRénov'/CEE : RGE obligatoire",
+      "message": "Artisan RGE OBLIGATOIRE selon énergie : QualiPAC pour PAC, QualiBois pour granulés/bûches, Qualisol pour solaire, Qualifelec pour électrique. Demande déposée AVANT signature du devis. Pas de RGE = pas d'aides."
+    },
+    {
+      "id": "warn_008",
+      "level": "danger",
+      "title": "Klaro privilégie le pro RGE qualifié",
+      "message": "La quasi-totalité des installations chauffage relèvent du pro qualifié RGE. Klaro a vocation à informer et coordonner, pas à autoriser un particulier à poser une PAC ou une chaudière granulés sans pro."
+    }
+  ],
+  "phases": [
+    {
+      "id": "diagnostic_dimensionnement",
+      "label": "Diagnostic & dimensionnement",
+      "tasks": [
+        {
+          "id": "chauf_001",
+          "title": "Définir précisément le projet",
+          "phase": "diagnostic_dimensionnement",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Énergie principale (PAC, granulés, bûches, électrique, solaire, mixte), type d'ECS, surface à chauffer, type d'émetteurs souhaités (radiateurs, PCBT, soufflants).",
+          "klaro_recommendation": "Faites un descriptif écrit avec : énergie + ECS + surface + émetteurs + contraintes (espace disponible, accessibilité, budget). Ce document conditionne tout le projet. Comparez 2-3 énergies avant de choisir (coût d'investissement + d'exploitation + aides).",
+          "common_mistake": "Démarrer 'sur une intuition' sans comparer les énergies — choix sous-optimal sur 15-20 ans, regrets.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "RE2020 + DTU 65",
+          "control_questions": [
+            { "question": "Le projet est-il défini par écrit (énergie, ECS, surface, émetteurs) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_002",
+          "title": "Vérifier l'éligibilité réglementaire de l'énergie visée",
+          "phase": "diagnostic_dimensionnement",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["construction_neuve_re2020", "renovation_existant"],
+          "explanation": "RE2020 interdit le GAZ neuf en maisons individuelles depuis 2022 et logements collectifs depuis 2025. Le FIOUL en remplacement est interdit depuis juillet 2022. Klaro propose uniquement énergies renouvelables ou électriques.",
+          "klaro_recommendation": "Vérifiez le contexte : neuf RE2020 = pas de gaz, pas de fioul. Rénovation : fioul interdit en remplacement (sauf prolongement chaudière existante). Privilégier PAC, granulés, solaire selon profil. Si vous trouvez une chaudière gaz neuve à un bon prix : c'est qu'elle ne répond plus à la norme actuelle.",
+          "common_mistake": "Acheter une chaudière fioul d'occasion ou une chaudière gaz en neuf — installation illégale, refus du Consuel, refus aides.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_001"],
+          "norm_reference": "RE2020 + Décret 2022-8 fioul",
+          "control_questions": [
+            { "question": "L'énergie visée est-elle conforme RE2020 (pas de gaz neuf, pas de fioul en remplacement) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_003",
+          "title": "Effectuer un bilan thermique du logement",
+          "phase": "diagnostic_dimensionnement",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Bilan thermique : calcul des déperditions (W/m²) selon zone climatique (H1/H2/H3), surface, isolation, exposition. Détermine la PUISSANCE nécessaire et calibre tout le projet.",
+          "klaro_recommendation": "Bilan thermique par bureau d'études ou logiciel agréé (~300-800 €). Valeur en kW = surface × W/m² selon isolation. Maison BBC : 30-40 W/m². Maison ancienne mal isolée : 80-120 W/m². Sans bilan, surdimensionnement quasi systématique = surcoût installation + cycles courts + usure prématurée.",
+          "common_mistake": "Dimensionner 'à la louche' avec une règle de 100 W/m² — surdimensionnement de 30-50%, cycles courts, surconsommation.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": ["bilan_thermique"],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_001"],
+          "norm_reference": "RE2020 + Méthode Th-BCE",
+          "control_questions": [
+            { "question": "Bilan thermique réalisé et puissance calculée ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_004",
+          "title": "Recalculer le dimensionnement APRÈS isolation",
+          "phase": "diagnostic_dimensionnement",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Si isolation prévue ou récente : RECALCUL du dimensionnement APRÈS isolation. Les besoins peuvent être divisés par 2 ou 3. Sinon surdimensionnement = surconsommation et inconfort (cycles courts).",
+          "klaro_recommendation": "Si isolation déjà faite : prenez les caractéristiques après isolation pour le bilan. Si à venir : faites isoler AVANT de dimensionner le chauffage. Une PAC bien dimensionnée pour maison isolée = 6-10 kW. Mal dimensionnée pour maison avant isolation = 18-25 kW. Différence majeure.",
+          "common_mistake": "Garder la chaudière 30 kW de l'ancienne installation après isolation — surdimensionnement, surconsommation, court-cyclage.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_003"],
+          "norm_reference": "RE2020 + Bonnes pratiques",
+          "control_questions": [
+            { "question": "Dimensionnement recalculé après / pour l'isolation prévue ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_005",
+          "title": "PAC : compatibilité avec émetteurs existants",
+          "phase": "diagnostic_dimensionnement",
+          "applies_to_energie": ["pac_air_eau", "pac_geothermie"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["renovation_existant"],
+          "explanation": "PAC = T° de départ basse (35-50°C en croisière). Radiateurs haute température (T° dimensionnement 70-80°C) = PAC peu performante. Vérifier la compatibilité ou prévoir des radiateurs basse T° / PCBT.",
+          "klaro_recommendation": "Radiateurs alu ou acier basse T° (T° dimensionnement 45-55°C) = compatibles PAC. PCBT (T° 30-40°C) = idéal. Anciens radiateurs fonte : souvent surdimensionnés, peuvent fonctionner en basse T° après isolation. Faites valider par le pro lors du dimensionnement.",
+          "common_mistake": "Brancher PAC sur radiateurs anciens haute T° sans vérification — PAC en mode appoint électrique permanent, COP médiocre.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_003"],
+          "norm_reference": "DTU 65 + NF EN 14511",
+          "control_questions": [
+            { "question": "Émetteurs existants compatibles avec basse T° de la PAC ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_006",
+          "title": "PCBT : compatibilité du sol existant",
+          "phase": "diagnostic_dimensionnement",
+          "applies_to_energie": ["plancher_chauffant_hydraulique"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["renovation_existant"],
+          "explanation": "PCBT en rénovation : épaisseur de chape disponible (souvent 6-10 cm minimum), résistance du plancher (poids de la chape), hauteur sous plafond résiduelle, hauteur des portes.",
+          "klaro_recommendation": "Mesurez l'épaisseur disponible : isolant 5 cm + tubes + chape 4-6 cm = 10-12 cm minimum. Si trop peu : PCBT en rénovation à faible épaisseur (kit 3-4 cm sec) ou abandon du PCBT. Vérifiez la portance du plancher (en bois : étude charpentier). Coupez les portes au bas pour conserver le passage.",
+          "common_mistake": "Vouloir poser un PCBT classique sur dalle existante sans mesure — dépassement hauteur sous plafond, portes qui frottent.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_001"],
+          "norm_reference": "DTU 65.14 + NF EN 1264",
+          "control_questions": [
+            { "question": "PCBT compatible (épaisseur disponible, portance, hauteur portes) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_007",
+          "title": "Géothermie : étude G1+G2 + test TRT obligatoires",
+          "phase": "diagnostic_dimensionnement",
+          "applies_to_energie": ["pac_geothermie"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "PAC géothermie : étude de sol G1 puis G2 par géotechnicien + test de réponse thermique (TRT) du sol obligatoires. Dimensionnement du champ de captage (sondes verticales, capteurs horizontaux) par bureau d'études.",
+          "klaro_recommendation": "Étude G1+G2 ~2000-4000 €. TRT ~3000-5000 €. Bureau d'études géothermie pour dimensionnement précis du champ. Sans étude : sous-dimensionnement = PAC qui ne tient pas en hiver. Sur-dimensionnement = surcoût massif (forage à 50-100 €/m). Validation par le BRGM en zone réglementée.",
+          "common_mistake": "Forer 'à la louche' selon longueur estimée — sous-dimensionnement, PAC qui passe en mode appoint en hiver.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_sol_geothermie"],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_001"],
+          "norm_reference": "NF X10-970 + DTU 65 + Réglementation BRGM",
+          "control_questions": [
+            { "question": "Étude G1+G2 + TRT réalisés et rapport joint ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_008",
+          "title": "Solaire : analyse orientation, inclinaison, masques",
+          "phase": "diagnostic_dimensionnement",
+          "applies_to_energie": ["solaire_thermique"],
+          "applies_to_ecs": ["cesi_solaire", "all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Solaire thermique : orientation idéale plein sud (±30° tolérables), inclinaison 30-45°, absence de masques (arbres, bâtiments) en hiver, surface disponible. Surface 1-1,5 m²/personne pour ECS.",
+          "klaro_recommendation": "Application 'Sun Surveyor' ou logiciel solaire pour évaluer la course du soleil et les masques. Surface 4-6 m² courant pour 4 personnes. Ballon dimensionné = 50-75 L/personne. Combiné solaire (chauffage + ECS) : surface 10-15 m². Pas de solaire en zone fortement ombragée (Nord, montagne profonde).",
+          "common_mistake": "Capteurs orientés ouest avec masques arbres l'hiver — production divisée par 2-3 en hiver, retour sur investissement médiocre.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_001"],
+          "norm_reference": "NF EN 12975 + Qualisol",
+          "control_questions": [
+            { "question": "Orientation, inclinaison, absence de masques validées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_009",
+          "title": "Chauffage par air : circulation entre pièces",
+          "phase": "diagnostic_dimensionnement",
+          "applies_to_energie": ["pac_air_air", "poele_granules", "poele_buches"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "PAC air-air et poêles : chauffent l'air ambiant. Pièces fermées par des portes pleines = peu chauffées (T° 4-6°C inférieure). Étudier la circulation d'air ou multiplier les unités/poêles.",
+          "klaro_recommendation": "Détalonnage 1-2 cm sous portes intérieures pour favoriser la circulation. Portes ouvertes en journée. Dans plan ouvert : 1 unité / 1 poêle peut suffire. Logements compartimentés : multi-split (PAC AA) avec 1 unité par pièce ou complément électrique dans chambres.",
+          "common_mistake": "Compter sur 1 poêle salon pour chauffer toute la maison — chambres glaciales en hiver.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_001"],
+          "norm_reference": "DTU 65 + Bonnes pratiques",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "aides_rge",
+      "label": "Aides & RGE (avant signature de devis)",
+      "tasks": [
+        {
+          "id": "chauf_010",
+          "title": "Vérifier les aides éligibles",
+          "phase": "aides_rge",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["renovation_existant"],
+          "explanation": "MaPrimeRénov' (revenus + perf), CEE (Certificats Économies Énergie, sans condition revenus), éco-PTZ, TVA 5,5% (artisan RGE), aides locales. Selon énergie, montants variables.",
+          "klaro_recommendation": "Simulateur sur france-renov.gouv.fr. PAC AE : MaPrimeRénov' jusqu'à 5000 € + CEE 4000-5000 €. Chaudière granulés : MaPrimeRénov' jusqu'à 11000 € + CEE 4500 €. Cumulables sous conditions. CEE versées par énergéticien (Total, EDF...). TVA 5,5% appliquée par l'artisan RGE.",
+          "common_mistake": "Ne pas cumuler les aides — perte de plusieurs milliers d'euros possibles.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_001"],
+          "norm_reference": "France Rénov + CGE 2025",
+          "control_questions": [
+            { "question": "Aides éligibles identifiées et simulées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_011",
+          "title": "Sélectionner un artisan RGE selon l'énergie",
+          "phase": "aides_rge",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "RGE selon énergie : QualiPAC pour PAC, QualiBois pour granulés/bûches, Qualisol pour solaire, Qualifelec pour électrique. Qualification précise et en cours de validité obligatoire pour aides.",
+          "klaro_recommendation": "Annuaire RGE sur france-renov.gouv.fr. Vérifiez la qualification PRÉCISE : QualiPAC pour PAC, QualiBois pour bois énergie, Qualisol pour solaire. Demandez l'attestation RGE en cours de validité au jour des travaux. 3 devis minimum recommandés.",
+          "common_mistake": "Faire confiance à un artisan qui dit 'je suis RGE' sans vérifier — qualification expirée ou non adaptée à l'énergie = refus aides.",
+          "pro_status": "pro_rge_obligatoire_si_aides",
+          "blocking_justification_required": ["attestation_rge"],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_010"],
+          "norm_reference": "Décret 2014-812 RGE",
+          "control_questions": [
+            { "question": "Artisan RGE qualifié pour l'énergie, attestation en cours de validité ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_012",
+          "title": "Demander les aides AVANT signature du devis",
+          "phase": "aides_rge",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["renovation_existant"],
+          "explanation": "MaPrimeRénov' et CEE : demande à déposer AVANT signature du devis. Sinon FORCLUSION = aides perdues définitivement. Étape la plus zappée.",
+          "klaro_recommendation": "Procédure : 1) Devis RGE détaillé. 2) Compte sur maprimerenov.gouv.fr. 3) Dépôt du dossier (devis + revenus + RGE). 4) Notification d'acceptation. 5) SEULEMENT APRÈS : signature du devis et démarrage. Pour CEE : signer la convention avec l'énergéticien partenaire AVANT devis.",
+          "common_mistake": "Signer le devis 'pour bloquer le prix' avant dépôt MaPrimeRénov' — aides refusées définitivement, perte sèche.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_011"],
+          "norm_reference": "France Rénov + CEE",
+          "control_questions": [
+            { "question": "Demande aides déposée AVANT signature devis ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_013",
+          "title": "Vérifier décennale et assurance pro de l'artisan",
+          "phase": "aides_rge",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Garantie décennale obligatoire de l'artisan (loi 1978). Assurance responsabilité civile professionnelle. Documents à demander avant signature.",
+          "klaro_recommendation": "Demandez : attestation décennale en cours de validité (renouvelée chaque année), attestation RC pro, K-bis ou extrait Sirene. Sans décennale = zéro recours en cas de sinistre. Conservez les documents 10 ans (durée garantie décennale).",
+          "common_mistake": "Accepter un devis sans vérifier la décennale en cours de validité — sinistre + entreprise sans assurance = ruine.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Loi Spinetta 1978",
+          "control_questions": [
+            { "question": "Attestation décennale + RC pro en cours de validité jointes ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "depose_ancien_gaz",
+      "label": "Dépose chaudière gaz (si applicable)",
+      "tasks": [
+        {
+          "id": "chauf_014",
+          "title": "Coupure et scellement compteur par GRDF",
+          "phase": "depose_ancien_gaz",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["depose_chaudiere_gaz"],
+          "applies_to_context": ["all"],
+          "explanation": "Si arrêt définitif du gaz : faire couper l'alimentation et SCELLER ou DÉPOSER le compteur par GRDF. Démarche officielle, gratuite, ~2-4 semaines de délai.",
+          "klaro_recommendation": "Demande sur grdf.fr ou par téléphone. Choix : coupure simple (compteur en place pour réactivation possible) ou résiliation définitive (dépose compteur). Pour conversion à une autre énergie : résiliation définitive recommandée. PV de coupure à conserver.",
+          "common_mistake": "Couper soi-même la vanne gaz et bricoler — illégal, dangereux, pas de PV pour l'assurance.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["attestation_qualigaz"],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 61.1 + GRDF",
+          "control_questions": [
+            { "question": "Coupure GRDF effectuée et PV de coupure reçu ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_015",
+          "title": "Dépose chaudière par pro Qualigaz",
+          "phase": "depose_ancien_gaz",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["depose_chaudiere_gaz"],
+          "applies_to_context": ["all"],
+          "explanation": "Dépose de la chaudière gaz par pro Qualigaz uniquement. Purge du circuit + dépose + attestation de conformité de dépose. Déchet à évacuer en filière agréée.",
+          "klaro_recommendation": "Pro Qualigaz (annuaire qualigaz.com). Coût ~200-500 € selon complexité. Purge circuit hydraulique + débranchement gaz + dépose physique. Évacuation chaudière en déchetterie ou centre recyclage. Attestation de dépose à conserver. Photographiez la chaudière déposée et la zone vide.",
+          "common_mistake": "Faire déposer par un plombier non Qualigaz — non conforme, refus assurance en cas de problème ultérieur.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["attestation_qualigaz"],
+          "photo_required_before_validation": true,
+          "depends_on": ["chauf_014"],
+          "norm_reference": "DTU 61.1 + Qualigaz",
+          "control_questions": [
+            { "question": "Chaudière déposée par Qualigaz et attestation reçue ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_016",
+          "title": "Boucher ou déposer les canalisations gaz",
+          "phase": "depose_ancien_gaz",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["depose_chaudiere_gaz"],
+          "applies_to_context": ["all"],
+          "explanation": "Canalisations gaz : bouchage à la cocotte (bouchon spécifique gaz) ou dépose entière. JAMAIS laissé 'ouvert' (risque fuite si réactivation accidentelle).",
+          "klaro_recommendation": "Pro Qualigaz pour intervention. Bouchage cocotte = solution si dépose partielle (réseau resté en place). Dépose totale recommandée si arrêt définitif. Pour conversion à une autre énergie : retrait des canalisations apparentes pour libérer l'espace. Attestation à conserver.",
+          "common_mistake": "Couper le tube et laisser ouvert avec un chiffon — fuite possible si gaz remis en service par erreur (risque explosion).",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["attestation_qualigaz"],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_015"],
+          "norm_reference": "DTU 61.1",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_017",
+          "title": "Conserver le certificat de dépose à vie",
+          "phase": "depose_ancien_gaz",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["depose_chaudiere_gaz"],
+          "applies_to_context": ["all"],
+          "explanation": "Certificat de conformité de dépose à conserver à VIE. Demandé en cas de vente du bien, vérification d'absence de gaz résiduel, expertise sinistre.",
+          "klaro_recommendation": "Archivage papier + numérique (cloud). Joignez aux documents du logement (acte de propriété). À transmettre à l'acheteur en cas de vente. Sans certificat : difficultés à prouver la dépose conforme = blocage potentiel à la vente.",
+          "common_mistake": "Égarer le certificat — devoir refaire intervenir un Qualigaz pour vérification + nouveau certificat.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_016"],
+          "norm_reference": "DTU 61.1 + Qualigaz",
+          "control_questions": [
+            { "question": "Certificat de dépose Qualigaz archivé (papier + numérique) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "depose_ancien_fioul",
+      "label": "Dépose cuve fioul (si applicable)",
+      "tasks": [
+        {
+          "id": "chauf_018",
+          "title": "Vidange complète par entreprise certifiée",
+          "phase": "depose_ancien_fioul",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["depose_cuve_fioul_aerienne", "depose_cuve_fioul_enterree"],
+          "applies_to_context": ["all"],
+          "explanation": "Vidange de la cuve fioul + résidus (boues au fond) par entreprise certifiée. Les résidus sont des déchets dangereux à éliminer en filière dédiée (déchet industriel dangereux).",
+          "klaro_recommendation": "Entreprise certifiée (annuaire FFS3E ou syndicat des vidangeurs). Coût vidange cuve 1500 L : ~300-500 €. BSD (bordereau de suivi des déchets) à conserver. Résidus de fond = filière agréée (centre de traitement). Le fioul restant peut parfois être récupéré pour autre usage.",
+          "common_mistake": "Vidanger soi-même 'pour économiser' — résidus déversés au sol (pollution, sanctions), risque incendie/explosion.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code environnement L541 + Arrêté 1er juin 2018",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_019",
+          "title": "Dégazage de la cuve",
+          "phase": "depose_ancien_fioul",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["depose_cuve_fioul_aerienne", "depose_cuve_fioul_enterree"],
+          "applies_to_context": ["all"],
+          "explanation": "Dégazage = élimination des vapeurs explosives résiduelles dans la cuve vide. OBLIGATOIRE avant toute manipulation, découpe, ou opération chaude.",
+          "klaro_recommendation": "Effectué par entreprise certifiée, technique spécialisée (lavage chimique, ventilation forcée, neutralisation des vapeurs). Coût intégré à la prestation de neutralisation. Sans dégazage : explosion possible à la moindre étincelle (perceuse, chalumeau, électricité statique).",
+          "common_mistake": "Manipuler une cuve vide non dégazée — explosion en quelques secondes au moindre point chaud, mort.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_018"],
+          "norm_reference": "Arrêté 1er juin 2018",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_020",
+          "title": "Cuve aérienne : démontage et évacuation",
+          "phase": "depose_ancien_fioul",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["depose_cuve_fioul_aerienne"],
+          "applies_to_context": ["all"],
+          "explanation": "Cuve aérienne (acier ou polyéthylène en cave/garage) : après dégazage, démontage et évacuation par filière agréée. Certificat de prise en charge à conserver.",
+          "klaro_recommendation": "Démontage par entreprise certifiée. Cuve évacuée par camion grue ou découpe in situ si accès difficile. Filière de recyclage acier ou polyéthylène. Coût total dépose cuve aérienne : ~800-1500 €. Récupérez le certificat de prise en charge.",
+          "common_mistake": "Tenter de découper soi-même une cuve même 'vide' — risque explosion résiduelle.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_019"],
+          "norm_reference": "Arrêté 1er juin 2018",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_021",
+          "title": "Cuve enterrée : retrait total OU neutralisation in situ",
+          "phase": "depose_ancien_fioul",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["depose_cuve_fioul_enterree"],
+          "applies_to_context": ["all"],
+          "explanation": "Cuve enterrée : 2 options. Retrait total = creusement, levage, évacuation (coûteux). Neutralisation in situ = remplissage par produit inerte (sable, perlite, mousse polyuréthane).",
+          "klaro_recommendation": "Neutralisation in situ = solution courante (~1500-3000 €) si accès difficile au retrait. Remplissage complet de la cuve avec produit certifié. Bouchage des orifices. Cuve devient inerte, reste enterrée. Retrait total : préférable si reconstruction sur la zone, coût ~3000-6000 € (creusement, levage par grue, évacuation).",
+          "common_mistake": "Laisser la cuve enterrée 'comme ça' sans neutralisation — pollution future possible, sanctions, blocage à la vente du bien.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_019"],
+          "norm_reference": "Arrêté 1er juin 2018",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_022",
+          "title": "Cuve enterrée neutralisée : déclaration mairie + plan",
+          "phase": "depose_ancien_fioul",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["depose_cuve_fioul_enterree"],
+          "applies_to_context": ["all"],
+          "explanation": "Pour cuve enterrée neutralisée : déclaration en mairie (parfois exigée selon arrêté local) + plan de récolement avec position GPS exacte de la cuve.",
+          "klaro_recommendation": "Démarche en mairie avec attestation de neutralisation. Plan de récolement : position GPS, coordonnées sur plan cadastral, profondeur, dimensions. À transmettre lors de la vente du bien. Évite les surprises lors de futurs travaux extérieurs (un coup de pelle dans une cuve neutralisée non documentée = problèmes).",
+          "common_mistake": "Pas de déclaration ni de plan — futurs travaux extérieurs deviennent risqués, problèmes à la vente.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_021"],
+          "norm_reference": "Arrêté 1er juin 2018",
+          "control_questions": [
+            { "question": "Déclaration mairie + plan de récolement archivés ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_023",
+          "title": "Conserver certificat de neutralisation à VIE",
+          "phase": "depose_ancien_fioul",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["depose_cuve_fioul_aerienne", "depose_cuve_fioul_enterree"],
+          "applies_to_context": ["all"],
+          "explanation": "Certificat de neutralisation/dépose à conserver à VIE. Document EXIGÉ lors de toute vente du bien (notaire le demande systématiquement). Sans certificat = blocage de vente.",
+          "klaro_recommendation": "Archivage papier + numérique (cloud). Joignez aux documents du logement (acte de propriété). À transmettre à l'acheteur en cas de vente. Sans certificat : refaire intervenir une entreprise certifiée pour nouvelle attestation, coût + délai.",
+          "common_mistake": "Égarer le certificat — blocage de vente, devoir refaire vérifier la cuve par un certifié, surcoût.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["certificat_neutralisation_cuve"],
+          "photo_required_before_validation": true,
+          "depends_on": ["chauf_020", "chauf_021"],
+          "norm_reference": "Arrêté 1er juin 2018",
+          "control_questions": [
+            { "question": "Certificat de neutralisation/dépose archivé (papier + numérique) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_024",
+          "title": "Dépose chaudière fioul",
+          "phase": "depose_ancien_fioul",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["depose_cuve_fioul_aerienne", "depose_cuve_fioul_enterree"],
+          "applies_to_context": ["all"],
+          "explanation": "Dépose de la chaudière fioul par chauffagiste. Attention aux résidus de fioul dans le brûleur, la pompe, le filtre — déchet dangereux à évacuer en filière dédiée.",
+          "klaro_recommendation": "Pro chauffagiste pour la dépose. Démontage du brûleur (résidus + filtre = déchets dangereux), de la pompe, vidange complète du circuit. Évacuation en déchetterie ou centre recyclage. Coût ~200-500 €. Photographiez la zone vide.",
+          "common_mistake": "Évacuer la chaudière en déchet ordinaire avec brûleur — refus déchetterie, sanctions environnementales.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_018"],
+          "norm_reference": "Arrêté 1er juin 2018 + Code environnement",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "preparation_chantier",
+      "label": "Préparation du chantier",
+      "tasks": [
+        {
+          "id": "chauf_025",
+          "title": "Coordonner avec les autres lots",
+          "phase": "preparation_chantier",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Coordination cruciale : élec (alim PAC mono ou tri selon puissance, fil pilote, gestionnaire d'énergie), plomberie (raccordement réseau ECS), couvreur (sortie de toit conduit fumée), maçon (socle béton unité ext.), isolation (recalcul puissance après isolation), VMC (entrée d'air si appareil non étanche).",
+          "klaro_recommendation": "Réunion de coordination pré-chantier avec tous les corps de métier. Plan partagé des passages techniques, alimentations, raccordements. Calendrier coordonné : isolation AVANT dimensionnement chauffage. Gros œuvre AVANT pose unités. Sans coordination : retours en arrière coûteux.",
+          "common_mistake": "Démarrer le chauffage avant l'isolation — surdimensionnement, surconsommation à vie.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 65 + bonnes pratiques",
+          "control_questions": [
+            { "question": "Réunion de coordination pré-chantier réalisée avec tous les lots ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_026",
+          "title": "Vérifier la livraison du matériel",
+          "phase": "preparation_chantier",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Réception : conformité au bon de commande (modèle, puissance, accessoires), intégrité (pas de dommage transport), garanties (notice + carte garantie). Réserves sur bon de livraison si défaut.",
+          "klaro_recommendation": "Inventaire visuel détaillé. Photographiez chaque appareil. Réserves écrites en cas de défaut (sinon recours impossible). Conservez emballages et notices pendant le chantier (utiles pour la pose et la maintenance ultérieure). Vérifiez le numéro de série pour activation de la garantie.",
+          "common_mistake": "Signer le bon de livraison sans vérification — toute réclamation refusée par transporteur.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_027",
+          "title": "Préparer les EPI",
+          "phase": "preparation_chantier",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Gants, lunettes, chaussures S3, masque pour découpe, harnais antichute si pose en toiture (capteurs solaires).",
+          "klaro_recommendation": "EPI complets pour TOUTES les opérations. Harnais EN 361 + ligne de vie + ancrages certifiés pour pose toiture. Gants anti-coupure pour manipulation tubes cuivre. Lunettes pour brasage et découpe. Masque FFP2 pour découpe béton (silice).",
+          "common_mistake": "Travailler en hauteur sans harnais — chute mortelle.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code travail R4321-1 + EN 397/EN 361",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_028",
+          "title": "Granulés/bûches : prévoir l'accès stockage",
+          "phase": "preparation_chantier",
+          "applies_to_energie": ["chaudiere_granules", "chaudiere_buches", "poele_granules", "poele_buches"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Accès camion souffleur granulés (longueur tuyau souffleur 25 m max courant), accès bûches (palette + transpalette ou camion grue). Accès large + sol stable.",
+          "klaro_recommendation": "Camion souffleur granulés ~10 m de long, hauteur 3,50 m. Vérifiez largeur d'accès, hauteur fil, portance sol (camion ~26 tonnes). Distance silo - bouche de remplissage ≤ 25 m. Pour bûches : zone de stockage couverte, accessible camion ou véhicule personnel. Pour poêle granulés en sac : zone sèche absolument.",
+          "common_mistake": "Silo accessible uniquement par tuyau de 30 m — refus livraison ou supplément important.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Bonnes pratiques granulés",
+          "control_questions": []
+        }
+      ]
+    }
+  ]
+}
