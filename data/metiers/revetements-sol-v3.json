@@ -552,6 +552,458 @@
           ]
         }
       ]
+    },
+    {
+      "id": "finition_joints",
+      "label": "Finition des joints (carrelage)",
+      "applies_to": ["carrelage"],
+      "tasks": [
+        {
+          "id": "sol_034",
+          "title": "Préparer le mortier-joint adapté",
+          "phase": "finition_joints",
+          "applies_to": ["carrelage"],
+          "explanation": "Mortier-joint choisi selon largeur (fin pour ≤ 5 mm, large > 5 mm), classement (CG1 standard, CG2 amélioré pour zones humides) et teinte (assortie ou contrastée).",
+          "klaro_recommendation": "Pièces humides + zones de passage : CG2 (anti-moisissures, résistance à l'eau prolongée). Cuisine pro / passages intensifs : joint époxy (étanche, anti-tâches, plus cher). Mélangez les proportions exactes : trop liquide = retrait fissures, trop épais = lissage difficile. Préparez la quantité utilisable en 30 min.",
+          "common_mistake": "Joint CG1 standard en douche italienne — moisissures sous 6 mois et joints qui s'effritent.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_033"],
+          "norm_reference": "DTU 52.2 §9.1 + NF EN 13888",
+          "control_questions": [
+            { "question": "Le mortier-joint est-il adapté (CG2 ou époxy en zones humides) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_035",
+          "title": "Appliquer le mortier-joint à la raclette",
+          "phase": "finition_joints",
+          "applies_to": ["carrelage"],
+          "explanation": "Étalez le joint à la raclette caoutchouc en passes diagonales par rapport aux joints pour les remplir intégralement, sans laisser de creux.",
+          "klaro_recommendation": "Travaillez par zones de 2-3 m². Étalez en croisant les passes (deux directions perpendiculaires aux joints). Forcez la pénétration. Joints intégralement remplis (jamais creux), affleurant la face du carreau. Pour pièces humides : aucun manque toléré, sinon point d'infiltration.",
+          "common_mistake": "Étaler le joint dans le sens des carreaux — le joint passe sur le carreau sans remplir le creux entre les deux.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_034"],
+          "norm_reference": "DTU 52.2 §9.2",
+          "control_questions": [
+            { "question": "Tous les joints sont-ils intégralement remplis (pas de creux) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_036",
+          "title": "Nettoyer la laitance à l'éponge humide avant durcissement",
+          "phase": "finition_joints",
+          "applies_to": ["carrelage"],
+          "explanation": "10-20 minutes après application (selon produit) : éponge humide pour retirer l'excès de joint en surface des carreaux. Plusieurs passes nécessaires, en rinçant l'éponge à chaque fois.",
+          "klaro_recommendation": "Premier passage : éponge bien essorée, mouvement diagonal (ne pas creuser le joint). Attendez 30 min, second passage avec éponge propre. Surveillez le durcissement du joint au toucher : trop tôt = vous l'arrachez, trop tard = voile durci impossible à retirer.",
+          "common_mistake": "Laisser le joint sécher complètement sur les carreaux — voile de ciment quasi impossible à retirer ensuite, carrelage durablement terne.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_035"],
+          "norm_reference": "DTU 52.2 §9.3",
+          "control_questions": []
+        },
+        {
+          "id": "sol_037",
+          "title": "Nettoyage final (voile de ciment) 24-48h après",
+          "phase": "finition_joints",
+          "applies_to": ["carrelage"],
+          "explanation": "24 à 48h après les joints, le voile de ciment résiduel se retire avec un produit anti-laitance (acide doux, pH 1-3) ou détergent spécialisé.",
+          "klaro_recommendation": "Diluez le produit selon notice. Appliquez à l'éponge ou au balai brosse, frottez, rincez abondamment à l'eau claire. Pour carreaux poreux (terre cuite, ardoise) : protégez-les AVANT pose et utilisez un produit pH neutre. Testez sur une zone discrète avant le grand nettoyage.",
+          "common_mistake": "Utiliser un acide fort sur joint ciment — l'acide attaque aussi le joint, qui se creuse et perd sa cohésion.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_036"],
+          "norm_reference": "DTU 52.2 §9.3",
+          "control_questions": [
+            { "question": "Voile de ciment retiré sans dégradation des joints ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_038",
+          "title": "Joints souples silicone aux périphériques et fractionnement",
+          "phase": "finition_joints",
+          "applies_to": ["carrelage"],
+          "explanation": "Joints périphériques (contre les murs), de fractionnement et autour des sanitaires : silicone sanitaire (souple) et non mortier (rigide). Permet l'absorption des mouvements.",
+          "klaro_recommendation": "Silicone neutre sanitaire (anti-moisissures) en pièces humides. Posez du scotch de masquage des deux côtés du joint pour avoir une ligne nette. Appliquez le silicone, lissez au doigt mouillé au savon ou à l'outil dédié. Retirez le scotch IMMÉDIATEMENT après lissage (avant durcissement).",
+          "common_mistake": "Remplir les joints périphériques au mortier — fissure dès la première dilatation, infiltration possible en zone humide.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_037"],
+          "norm_reference": "DTU 52.2 §9.4 + CPT 3527",
+          "control_questions": [
+            { "question": "Joints périphériques et de fractionnement traités au silicone (jamais au mortier) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finition_plinthes",
+      "label": "Plinthes & seuils",
+      "applies_to": ["all"],
+      "tasks": [
+        {
+          "id": "sol_039",
+          "title": "Poser les plinthes",
+          "phase": "finition_plinthes",
+          "applies_to": ["all"],
+          "explanation": "Plinthes carrelage, bois ou PVC selon revêtement. Carrelage : posées sur la même colle que le sol, joint 2-3 mm avec sol. Bois/PVC : posées après peinture, vissées ou collées au mur.",
+          "klaro_recommendation": "Plinthes carrelage : alignez le joint plinthe-sol avec les joints du carrelage (effet visuel propre). Plinthes bois/PVC : laissez 1-2 mm entre la plinthe et le sol fini (sinon mouvement empêché et fissure). Coupes d'angle à la boîte à onglet ou scie diagonale.",
+          "common_mistake": "Coller la plinthe contre le sol sans aucun jeu — au moindre mouvement du sol ou de la plinthe, l'une des deux se décolle ou fissure.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_038"],
+          "norm_reference": "DTU 52.2 §10 + DTU 36.5",
+          "control_questions": []
+        },
+        {
+          "id": "sol_040",
+          "title": "Poser les barres de seuil aux jonctions",
+          "phase": "finition_plinthes",
+          "applies_to": ["all"],
+          "explanation": "Aux jonctions entre 2 revêtements différents (carrelage / parquet par exemple), entre 2 pièces ou au passage des portes : barre de seuil pour masquer la jonction et absorber les différences de hauteur.",
+          "klaro_recommendation": "Barre adaptée au type de jonction : plate (même niveau), inclinée (différence de hauteur), spéciale carrelage/parquet. Largeur 30-40 mm courante. Pose vissée (chevilles dans support) ou clipsée (rail collé au sol). Photographiez les jonctions terminées.",
+          "common_mistake": "Sauter la barre de seuil et coller bord à bord 2 revêtements différents — la jonction se dégrade au fil des passages, écarts qui se creusent.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_039"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Toutes les jonctions de revêtements ont-elles une barre de seuil ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_041",
+          "title": "Ajuster les portes (jeu sous les portes)",
+          "phase": "finition_plinthes",
+          "applies_to": ["all"],
+          "explanation": "Après pose du sol, vérifiez le jeu sous les portes : 5 mm minimum pour laisser passer l'air (ventilation VMC) et le sol fini sans frottement.",
+          "klaro_recommendation": "Ouvrez/fermez chaque porte : aucune ne doit frotter ni accrocher. Si frottement : démontez la porte, sciez le bas (scie circulaire avec rail guide pour bord net), poncez, repeignez le bord scié. Le jeu de 5 mm garantit le tirage de la VMC entre pièces.",
+          "common_mistake": "Forcer le passage de la porte qui frotte — usure du sol au passage et porte abîmée.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_039"],
+          "norm_reference": "DTU 36.5 + DTU 68.3 (VMC)",
+          "control_questions": [
+            { "question": "Jeu de 5 mm minimum sous chaque porte ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "controle",
+      "label": "Contrôle final & récolement",
+      "applies_to": ["all"],
+      "tasks": [
+        {
+          "id": "sol_042",
+          "title": "Vérifier la planéité finale",
+          "phase": "controle",
+          "applies_to": ["all"],
+          "explanation": "Contrôle final à la règle de 2 m : flèche maximale 5 mm carrelage standard / 3 mm grand format ou parquet/souples. Aucune lèvre > 1 mm entre 2 carreaux ou lames.",
+          "klaro_recommendation": "Mesurez à plusieurs endroits, en croisant les directions. Inspectez visuellement sous éclairage rasant pour détecter les défauts. Tout défaut > 1 mm entre 2 éléments = lèvre, point d'usure et risque de blessure (orteils). Documentez par photos pour traçabilité.",
+          "common_mistake": "Ne pas contrôler la planéité finale et découvrir une lèvre majeure une fois les meubles posés — déposer le revêtement à cet endroit.",
+          "pro_recommended": false,
+          "photo_required_before_validation": true,
+          "depends_on": ["sol_041"],
+          "norm_reference": "DTU 52.2 §11.1 + DTU 51.2 + DTU 53.2",
+          "control_questions": [
+            { "question": "Flèche maximale finale sous règle 2 m (mm) ?", "type": "number", "expected": "≤ 5 carrelage / ≤ 3 grand format & souples" },
+            { "question": "Aucune lèvre > 1 mm entre 2 éléments ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_043",
+          "title": "Test fonctionnel (eau, siphons en zones humides)",
+          "phase": "controle",
+          "applies_to": ["carrelage"],
+          "explanation": "En zones humides : test fonctionnel à l'eau (douche, sol SDB) — vérifier que l'eau s'évacue rapidement vers le siphon, pas de stagnation, pas de remontée d'odeurs.",
+          "klaro_recommendation": "Faites couler de l'eau dans la douche pendant 2-3 min, observez : évacuation continue vers le siphon, pas de flaque, joints qui restent secs côté pièce. Vérifiez aussi le siphon de sol classique : remplissage correct, pas de bruit de gargouillis. Photographiez le test (eau visible).",
+          "common_mistake": "Considérer le chantier fini sans test à l'eau — découvrir une stagnation ou une fuite après installation des sanitaires, dépose nécessaire.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_042"],
+          "norm_reference": "CPT 3527 + DTU 60.11",
+          "control_questions": [
+            { "question": "Test fonctionnel à l'eau validé (évacuation rapide, pas de stagnation) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_044",
+          "title": "Photographier et archiver le récolement",
+          "phase": "controle",
+          "applies_to": ["all"],
+          "explanation": "Photographiez le rendu final pièce par pièce. Conservez un dossier de récolement : marque/référence du revêtement, lot/bain, type de colle, date de pose, plan calepinage.",
+          "klaro_recommendation": "Photos d'ensemble + détails (plinthes, jonctions, zones étanchées). Archivez papier + numérique. Conservez 1-2 m² de chutes pour réparations futures. Le dossier sert pour : retoucher en cas de carreau cassé, justifier des travaux pour MaPrimeRénov' / vente, prouver la qualité d'exécution en cas de litige.",
+          "common_mistake": "Ne rien archiver et perdre toute trace de la référence du revêtement — réparation impossible avec un lot identique.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_042"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Le récolement (photos, références, lots, calepinage) est-il archivé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_045",
+          "title": "Protéger le sol pendant la fin du chantier",
+          "phase": "controle",
+          "applies_to": ["all"],
+          "explanation": "Si d'autres lots interviennent après (peinture, menuiseries, cuisine), protégez le sol avec carton ondulé ou film cartonné spécifique jusqu'à la fin du chantier.",
+          "klaro_recommendation": "Carton ondulé ou film cartonné de chantier (spécifique sols). Scotchez les jonctions sans coller au sol (scotch de masquage léger). Évitez les chocs (chute d'outil = carreau fissuré, parquet rayé). Pour parquet et sols souples : film de protection adhésif spécial (rouleaux de chantier).",
+          "common_mistake": "Laisser le sol exposé pendant les autres travaux — gouttes de peinture, taches de plâtre, rayures, voire élément fissuré par chute d'outil.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_044"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Le sol est-il protégé pour la durée des travaux suivants ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
     }
-  ]
+  ],
+  "blocking_points": [
+    {
+      "id": "block_001",
+      "message": "Impossible de poser un revêtement sur un sol non plan — ragréage obligatoire si défaut > tolérance.",
+      "blocks_task_id": "sol_023",
+      "requires_task_id": "sol_012"
+    },
+    {
+      "id": "block_002",
+      "message": "Le support doit être sec avant pose — humidité résiduelle = décollement et moisissures garantis.",
+      "blocks_task_id": "sol_023",
+      "requires_task_id": "sol_009"
+    },
+    {
+      "id": "block_003",
+      "message": "Pas de pose sans calepinage validé à blanc.",
+      "blocks_task_id": "sol_025",
+      "requires_task_id": "sol_020"
+    },
+    {
+      "id": "block_004",
+      "message": "Pas de joints avant respect du temps de séchage de la colle (≥ 24h ou ≥ 8h selon colle).",
+      "blocks_task_id": "sol_035",
+      "requires_task_id": "sol_033"
+    },
+    {
+      "id": "block_005",
+      "message": "Pas de pose grand format (>1100 cm²) en simple encollage — double encollage obligatoire.",
+      "blocks_task_id": "sol_025",
+      "requires_task_id": "sol_024"
+    },
+    {
+      "id": "block_006",
+      "message": "Pas de pose en zone humide sans SPEC/SEL et sans test de mise en eau 24h validé.",
+      "blocks_task_id": "sol_025",
+      "requires_task_id": "sol_018"
+    },
+    {
+      "id": "block_007",
+      "message": "Pas de pose sans joints de dilatation périphériques (5-10 mm carrelage / 8-10 mm parquet flottant).",
+      "blocks_task_id": "sol_033",
+      "requires_task_id": "sol_029"
+    },
+    {
+      "id": "block_008",
+      "message": "Pas de joints périphériques au mortier — silicone obligatoire (souplesse).",
+      "blocks_task_id": "sol_042",
+      "requires_task_id": "sol_038"
+    },
+    {
+      "id": "block_009",
+      "message": "Pas de finition sans validation de la cohésion et planéité du support.",
+      "blocks_task_id": "sol_011",
+      "requires_task_id": "sol_008"
+    },
+    {
+      "id": "block_010",
+      "message": "Pas de parquet flottant sans sous-couche acoustique unique posée bord à bord.",
+      "blocks_task_id": "sol_025",
+      "requires_task_id": "sol_022"
+    },
+    {
+      "id": "block_011",
+      "message": "Pas de finition validée sans contrôle planéité finale et test fonctionnel à l'eau (zones humides).",
+      "blocks_task_id": "sol_044",
+      "requires_task_id": "sol_043"
+    },
+    {
+      "id": "block_012",
+      "message": "Pas de PVC/lino sans soudure des lés aux jonctions.",
+      "blocks_task_id": "sol_033",
+      "requires_task_id": "sol_032"
+    }
+  ],
+  "scoring": {
+    "progression_percent": {
+      "formula": "validated_tasks / total_tasks * 100",
+      "total_tasks": 45,
+      "filtered_by": "applies_to == revetement_type OR applies_to == 'all'"
+    },
+    "safety_score": {
+      "base": 100,
+      "penalties": [
+        {
+          "condition": "Étanchéité SPEC/SEL absente ou test 24h non validé en zone humide (sol_017 ou sol_018 échouée)",
+          "malus": 30,
+          "category": "critique",
+          "applies_to": ["carrelage"]
+        },
+        {
+          "condition": "Humidité du support non contrôlée ou hors tolérance (sol_009 échouée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Planéité hors tolérance (sol_008 ou sol_042 échouée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Double encollage absent sur grand format > 1100 cm² (sol_024 échouée)",
+          "malus": 20,
+          "category": "critique",
+          "applies_to": ["carrelage"]
+        },
+        {
+          "condition": "Joints de désolidarisation périphériques absents (sol_029 ou sol_031 non validée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Joints de fractionnement absents en grandes surfaces (sol_030 non validée)",
+          "malus": 20,
+          "category": "critique",
+          "applies_to": ["carrelage", "parquet_colle"]
+        },
+        {
+          "condition": "Temps de séchage colle non respecté avant joints (sol_033 échouée)",
+          "malus": 15,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Calepinage à blanc absent ou coupes < 5 cm en zones visibles (sol_005 ou sol_020 échouée)",
+          "malus": 15,
+          "category": "bloquant"
+        },
+        {
+          "condition": "Acclimatation des matériaux < 48h (sol_014 échouée)",
+          "malus": 15,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Primaire absent sur support absorbant (sol_011 non validée)",
+          "malus": 10,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Joints périphériques au mortier au lieu de silicone (sol_038 échouée)",
+          "malus": 10,
+          "category": "non_conforme",
+          "applies_to": ["carrelage"]
+        },
+        {
+          "condition": "Lèvres > 1 mm entre éléments (sol_026 ou sol_042 échouée)",
+          "malus": 10,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Sous-couche acoustique multiple ou absente sous parquet flottant (sol_022 échouée)",
+          "malus": 15,
+          "category": "non_conforme",
+          "applies_to": ["parquet_flottant"]
+        },
+        {
+          "condition": "Soudure des lés absente sur PVC/lino (sol_032 échouée)",
+          "malus": 15,
+          "category": "non_conforme",
+          "applies_to": ["pvc", "lino"]
+        },
+        {
+          "condition": "Mortier-joint inadapté (CG1 en zone humide au lieu de CG2 / époxy)",
+          "malus": 10,
+          "category": "non_conforme",
+          "applies_to": ["carrelage"]
+        }
+      ]
+    },
+    "critical_alerts": [
+      {
+        "id": "alert_etancheite",
+        "message": "SPEC/SEL absent ou test 24h non validé — infiltration garantie en zone humide.",
+        "triggered_if": "(sol_017 not validated OR sol_018 not validated) AND zone_humide",
+        "level": "danger"
+      },
+      {
+        "id": "alert_humidite",
+        "message": "Humidité du support non contrôlée — décollement et moisissures à venir.",
+        "triggered_if": "sol_009 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_planeite",
+        "message": "Défaut de planéité — risque fissure carrelage et lèvres irrécupérables.",
+        "triggered_if": "sol_008 not validated OR sol_042 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_double_encollage",
+        "message": "Double encollage absent sur grand format — vides sous carreaux et risque de casse.",
+        "triggered_if": "sol_024 not validated AND format > 1100cm2",
+        "level": "danger"
+      },
+      {
+        "id": "alert_dilatation",
+        "message": "Joints de dilatation absents — fissures ou bombement garantis aux variations thermo-hygrométriques.",
+        "triggered_if": "sol_029 not validated OR sol_031 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_fractionnement",
+        "message": "Joints de fractionnement absents en grande surface — fissuration aux changements thermiques.",
+        "triggered_if": "sol_030 not validated AND surface > 40m2",
+        "level": "danger"
+      },
+      {
+        "id": "alert_sechage",
+        "message": "Joints réalisés avant séchage complet de la colle — décollement possible.",
+        "triggered_if": "sol_035 validated AND sol_033 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_calepinage",
+        "message": "Pose lancée sans pose à blanc validée — risque de finition compromise.",
+        "triggered_if": "sol_020 not validated AND sol_025 validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_acclimatation",
+        "message": "Matériaux non acclimatés 48h — variations dimensionnelles après pose (fentes ou bombement parquet).",
+        "triggered_if": "sol_014 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_souscouche_parquet",
+        "message": "Sous-couche acoustique manquante ou multiple sous parquet flottant — instabilité et bruit.",
+        "triggered_if": "sol_022 not validated AND revetement == 'parquet_flottant'",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_soudure_lés",
+        "message": "Lés de PVC/lino non soudés aux jonctions — infiltrations et gondolement à terme.",
+        "triggered_if": "sol_032 not validated AND revetement IN ['pvc', 'lino']",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_test_eau",
+        "message": "Test fonctionnel à l'eau non réalisé en zone humide — défaut d'évacuation non détecté avant fin chantier.",
+        "triggered_if": "sol_043 not validated AND zone_humide",
+        "level": "bloquant"
+      }
+    ]
+  }
 }
