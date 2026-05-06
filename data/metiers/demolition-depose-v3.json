@@ -1374,6 +1374,645 @@
           "control_questions": []
         }
       ]
+    },
+    {
+      "id": "tri_evacuation_dechets",
+      "label": "Tri & évacuation des déchets",
+      "tasks": [
+        {
+          "id": "demo_071",
+          "title": "Trier les déchets par flux pendant la démolition",
+          "phase": "tri_evacuation_dechets",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Tri à la source pendant la démolition (jamais en mélange si filière dédiée disponible). 7 flux minimum selon décret 2021 : bois, métal, plâtre, plastique, verre, papier-carton, fraction minérale.",
+          "klaro_recommendation": "Big-bags ou bennes différenciés par flux. Étiquetage clair. Plâtre TRÈS important à séparer (filière dédiée, non mélangeable avec inertes). Bois propre vs bois traité. Métal : valeur de revente possible. Photos du tri pour archivage.",
+          "common_mistake": "Tout mélange dans une seule benne — refus en déchetterie ou surcoût massif (tri à postériori coûteux).",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_037"],
+          "norm_reference": "Décret 1er juillet 2021 (tri 7 flux)",
+          "control_questions": [
+            { "question": "Tri à la source 7 flux respecté pendant démolition ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_072",
+          "title": "Évacuer les inertes en ISDI",
+          "phase": "tri_evacuation_dechets",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Déchets inertes (béton, brique, tuiles, céramique non amiantée, verre) : évacuation en ISDI (Installation de Stockage de Déchets Inertes). Filière la moins coûteuse.",
+          "klaro_recommendation": "Déchetterie acceptant les inertes ou centre de tri dédié. Coût ~5-15 €/tonne. Bennes 5-30 m³. Bon de pesée à conserver. Réutilisation possible en remblai si propre. PAS de mélange avec plâtre, bois, métal (rejette le tout en non dangereux plus cher).",
+          "common_mistake": "Mélanger gravats + plâtre — déclassement en non dangereux, surcoût important.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_071"],
+          "norm_reference": "Code environnement + Arrêté 12 décembre 2014 (ISDI)",
+          "control_questions": []
+        },
+        {
+          "id": "demo_073",
+          "title": "Évacuer non dangereux en ISDND",
+          "phase": "tri_evacuation_dechets",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Déchets non dangereux (bois non traité, plâtre, plastiques, isolants non dangereux) : ISDND (Installation de Stockage de Déchets Non Dangereux) ou centre de tri spécifique selon flux.",
+          "klaro_recommendation": "Plâtre : filière dédiée (Placoplatre, Knauf reprennent). Bois : filière valorisation énergétique ou panneaux. Plastiques : filière recyclage. Coût ~50-150 €/tonne selon flux. Bons de pesée conservés. Pour grands volumes : prestataire spécialisé multi-flux.",
+          "common_mistake": "Plâtre en ISDI — refusé (incompatibilité chimique avec inertes).",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_071"],
+          "norm_reference": "Code environnement + Arrêté ISDND",
+          "control_questions": []
+        },
+        {
+          "id": "demo_074",
+          "title": "Évacuer déchets dangereux en ISDD avec BSDD",
+          "phase": "tri_evacuation_dechets",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["avant_1949", "1949_1997"],
+          "applies_to_context": ["all"],
+          "explanation": "Déchets dangereux (amiante, plomb, peintures plombifères, solvants, colles bitumineuses amiantées) : ISDD (Installation de Stockage de Déchets Dangereux) avec BSDD obligatoire à chaque étape.",
+          "klaro_recommendation": "Sacs / big-bags étanches étiquetés selon nature. Transporteur agréé. Centre d'élimination agréé (annuaire ADEME). BSDD signé par chaque intervenant (producteur/transporteur/éliminateur). Coût élevé (~300-1500 €/m³ selon nature). Conservation BSDD à VIE pour amiante.",
+          "common_mistake": "Déchets dangereux en filière classique — sanctions pénales lourdes, contamination décharge.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["bsdd_dechets_dangereux"],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_042"],
+          "norm_reference": "Code environnement L541-7-1",
+          "control_questions": [
+            { "question": "Déchets dangereux évacués en ISDD avec BSDD signé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_075",
+          "title": "Conserver bons de pesée et bordereaux 10 ans",
+          "phase": "tri_evacuation_dechets",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Tous les bons de pesée et bordereaux de dépôt à conserver 10 ans (preuve de filière, exigée en cas de contrôle DREAL ou de vente du bien). Pour amiante : conservation à VIE.",
+          "klaro_recommendation": "Archivage papier + numérique (cloud). Joignez aux documents du logement. À transmettre à l'acheteur en cas de vente. Sans bordereaux : sanctions possibles, blocage à la vente. Pour amiante : BSDD complet (3 signatures) à VIE.",
+          "common_mistake": "Égarer les bordereaux — pas de preuve de filière, sanctions DREAL.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_072"],
+          "norm_reference": "Code environnement L541-7-2",
+          "control_questions": [
+            { "question": "Tous les bordereaux et bons de pesée archivés ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_076",
+          "title": "Privilégier le réemploi pour éléments en bon état",
+          "phase": "tri_evacuation_dechets",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Éléments en bon état : briques anciennes, parquet ancien, sanitaires fonctionnels, carrelage rare, portes, radiateurs en fonte, équipements anciens. Plateformes spécialisées (Cycle-Up, Articonnex), brocantes, dons.",
+          "klaro_recommendation": "Économie circulaire : valorisation 30-70% des matériaux possible. Stockage soigné (sec) avant transmission. Plateformes : Cycle-Up, Articonnex, Ressourceries locales. Brocantes pour pièces de qualité. Dons (Le Bon Coin, recyclerie). Évite le coût d'évacuation.",
+          "common_mistake": "Tout en benne par défaut — perte de valeur, gaspillage matière.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_038"],
+          "norm_reference": "Loi AGEC + Économie circulaire",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "controle_reception",
+      "label": "Contrôle & réception",
+      "tasks": [
+        {
+          "id": "demo_077",
+          "title": "Vérifier intégrité structurelle post-démolition",
+          "phase": "controle_reception",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Inspection après démolition : pas de fissures nouvelles, étaiements stables si présents, pas de désordres visibles sur les éléments conservés. Photographier pour archivage.",
+          "klaro_recommendation": "Tour complet de la zone démolie + zones adjacentes. Inspection des planchers, plafonds, murs voisins. Si fissures nouvelles : noter date, dimensions, photo. Si fissures > 1 mm ou en escalier : appel BET pour expertise. Pour démolition porteur : vérifier que le linteau ne fléchit pas après dépose étais.",
+          "common_mistake": "Fin de chantier sans inspection — défauts cachés découverts plus tard, intervention complexe.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["demo_057"],
+          "norm_reference": "DTU 20.1 + Bonnes pratiques",
+          "control_questions": [
+            { "question": "Intégrité structurelle vérifiée et photographiée ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_078",
+          "title": "Vérifier témoins de fissures (évolution avant/après)",
+          "phase": "controle_reception",
+          "applies_to_demo_type": ["mur_porteur_partiel", "cheminee"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Si témoins de fissures posés avant démolition : vérifier l'évolution. Témoin intact = aucune aggravation. Témoin fissuré ou décalé = aggravation, expertise BET nécessaire.",
+          "klaro_recommendation": "Inspection visuelle des témoins (plâtre ou jauge transparente). Photos avant/pendant/après pour comparaison. Si aggravation : arrêt des travaux, expertise BET, possibilité de reprise structurelle. Conservez les photos comme preuve. Surveillance prolongée 6-12 mois pour fissures évolutives.",
+          "common_mistake": "Ignorer un témoin fissuré 'parce que ça ne paraît pas grave' — aggravation à long terme, risque structurel.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_021"],
+          "norm_reference": "Bonnes pratiques BET",
+          "control_questions": [
+            { "question": "Témoins de fissures vérifiés (évolution avant/après) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_079",
+          "title": "Photographier la zone démolie sous tous les angles",
+          "phase": "controle_reception",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Photos de l'état après démolition sous tous les angles : ensemble, détails, points de raccord, surfaces conservées. État zéro pour les travaux suivants.",
+          "klaro_recommendation": "Photos haute résolution. Plusieurs angles. Mire / mètre dans le cadre pour échelle. Date EXIF visible. Archivage avec dossier travaux : papier + cloud. Sert pour : reconstitution, expertise, vente, suivi des entreprises suivantes.",
+          "common_mistake": "Pas de photos après démolition — pas d'état zéro pour les lots suivants.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["demo_077"],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": [
+            { "question": "Photos après démolition prises et archivées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_080",
+          "title": "Plan de récolement (démolis vs conservés)",
+          "phase": "controle_reception",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Plan de récolement actualisé : éléments démolis (rouge), éléments conservés (vert), réseaux conservés (selon couleur), réseaux modifiés/supprimés. Sert de base aux travaux suivants.",
+          "klaro_recommendation": "Reportez sur le plan d'origine ou nouveau plan : zones démolies, zones conservées, position des réseaux. Joindre les photos avant/pendant/après. Numérique + papier. Indispensable pour : prochains lots (élec, plomberie, placo), expertise, vente.",
+          "common_mistake": "Pas de plan de récolement — les lots suivants doivent re-sonder, surcoût.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_079"],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": [
+            { "question": "Plan de récolement (démolis/conservés) établi et archivé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_081",
+          "title": "Récupérer toutes les attestations et bordereaux",
+          "phase": "controle_reception",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Documents à conserver : DAAT, CREP, BSDD amiante, attestation entreprise certifiée si amiante, étude BET si porteur, rapport entreprise sur étaiement, bons de pesée déchets, autorisations urbanisme.",
+          "klaro_recommendation": "Dossier 'Travaux Démolition' : papier + cloud. Documents : devis, factures, attestations diagnostics, attestation entreprise SS3/SS4, étude BET, BSDD amiante (à VIE), bons de pesée déchets (10 ans), autorisations urbanisme. À transmettre lors de la vente du bien (transmissibilité avec le bien).",
+          "common_mistake": "Jeter les attestations diagnostics — refaire à zéro pour vente, surcoût + délai.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code civil 1792 + Code environnement L541-7-2",
+          "control_questions": [
+            { "question": "Tous les documents (DAAT, CREP, BSDD, BET, bordereaux) archivés ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nettoyage_remise_etat",
+      "label": "Nettoyage & remise en état",
+      "tasks": [
+        {
+          "id": "demo_082",
+          "title": "Nettoyer la zone (aspirateur HEPA si poussières fines)",
+          "phase": "nettoyage_remise_etat",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Nettoyage final : aspirateur HEPA pour poussières fines (silice, plâtre), nettoyage humide pour limiter la dispersion. EPI maintenus (FFP3, gants).",
+          "klaro_recommendation": "Aspirateur de chantier avec filtre HEPA H13/H14 (filtre 99,95% des particules). Pour amiante/plomb : aspiration par entreprise certifiée. Nettoyage humide (eau + chiffon microfibre à usage unique). Évacuation des chiffons en filière dédiée si suspicion. Aération longue de la pièce après.",
+          "common_mistake": "Aspirateur ménager classique — poussière fine traverse le filtre, dispersion dans toute la maison.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_077"],
+          "norm_reference": "Code travail R4222 + Bonnes pratiques",
+          "control_questions": []
+        },
+        {
+          "id": "demo_083",
+          "title": "Vérifier fluides après remise en service progressive",
+          "phase": "nettoyage_remise_etat",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Remise en service progressive des fluides : éclairage, eau, gaz si applicable. Vérification du bon fonctionnement et de l'absence de défaut avant utilisation normale.",
+          "klaro_recommendation": "Élec : remise sous tension circuit par circuit, vérification VAT inverse (présence tension), test d'éclairage et prises. Eau : ouverture progressive, purge des tuyaux, vérification absence de fuite (papier essuie-tout sur raccords). Gaz : si manipulé, contrôle Qualigaz obligatoire avant remise en service.",
+          "common_mistake": "Tout réenclencher d'un coup — court-circuit, fuite massive, dégât majeur.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_082"],
+          "norm_reference": "NF C 15-100 + DTU 60.1 + DTU 61.1",
+          "control_questions": []
+        },
+        {
+          "id": "demo_084",
+          "title": "Vérifier absence de fuites avant remise en eau",
+          "phase": "nettoyage_remise_etat",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Avant remise en eau définitive : test d'étanchéité sur les canalisations recoupées ou modifiées. Pression service maintenue 1-2h, recherche de fuite (papier essuie-tout).",
+          "klaro_recommendation": "Mise en pression progressive. Inspection visuelle de chaque raccord. Papier essuie-tout autour des raccords (toute trace humide = fuite). Si fuite : reprise immédiate avant remise en service. Pour gros chantier : test pression formel à 1,5 fois la pression de service pendant 24h.",
+          "common_mistake": "Remise en eau sans test — fuite découverte plusieurs heures plus tard, dégât des eaux.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_083"],
+          "norm_reference": "DTU 60.1 + DTU 60.11",
+          "control_questions": [
+            { "question": "Test étanchéité fluides effectué avant remise en service définitive ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_085",
+          "title": "Préparer la zone pour les travaux suivants",
+          "phase": "nettoyage_remise_etat",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Préparation pour les lots suivants : sol nivelé (chape ou ragréage si nécessaire), support sain, repères tracés (axes, niveaux), plan de récolement à disposition.",
+          "klaro_recommendation": "Niveau du sol vérifié (règle 2 m). Si défaut > tolérance : ragréage avant lot suivant. Repères tracés au cordeau pour prochains corps de métier. Plan de récolement remis aux entreprises suivantes (élec, plomberie, placo). Photos finales pour archivage.",
+          "common_mistake": "Lot suivant qui démarre sur sol non nivelé — défauts qui se propagent dans tout le projet.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_084"],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": [
+            { "question": "Zone préparée pour lots suivants (niveau, repères, plan) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
     }
-  ]
+  ],
+  "blocking_points": [
+    {
+      "id": "block_001",
+      "message": "Pas de démolition si bâtiment < 1997 sans diagnostic amiante avant travaux (DAAT).",
+      "blocks_task_id": "demo_032",
+      "requires_task_id": "demo_003"
+    },
+    {
+      "id": "block_002",
+      "message": "Pas de manipulation d'amiante par un particulier — entreprise certifiée SS3 ou SS4 obligatoire.",
+      "blocks_task_id": "demo_040",
+      "requires_task_id": "demo_005"
+    },
+    {
+      "id": "block_003",
+      "message": "Pas de démolition si bâtiment < 1949 sans constat plomb (CREP).",
+      "blocks_task_id": "demo_032",
+      "requires_task_id": "demo_004"
+    },
+    {
+      "id": "block_004",
+      "message": "Pas de démolition d'élément porteur sans étude BET.",
+      "blocks_task_id": "demo_052",
+      "requires_task_id": "demo_018"
+    },
+    {
+      "id": "block_005",
+      "message": "Pas de découpe d'élément porteur sans étaiement validé et photographié.",
+      "blocks_task_id": "demo_054",
+      "requires_task_id": "demo_052"
+    },
+    {
+      "id": "block_006",
+      "message": "Pas de démolition sans coupure et consignation préalables des fluides (élec, gaz, eau).",
+      "blocks_task_id": "demo_045",
+      "requires_task_id": "demo_022"
+    },
+    {
+      "id": "block_007",
+      "message": "Pas de coupure élec sans VAT (Vérification Absence de Tension).",
+      "blocks_task_id": "demo_045",
+      "requires_task_id": "demo_023"
+    },
+    {
+      "id": "block_008",
+      "message": "Pas de démolition extérieure avec terrassement sans DT-DICT effectuée.",
+      "blocks_task_id": "demo_066",
+      "requires_task_id": "demo_008"
+    },
+    {
+      "id": "block_009",
+      "message": "Pas de démolition sans permis de démolir si requis par PLU ou secteur protégé.",
+      "blocks_task_id": "demo_032",
+      "requires_task_id": "demo_012"
+    },
+    {
+      "id": "block_010",
+      "message": "Pas de démolition en bâtiment classé / inscrit MH sans autorisation ABF / DRAC.",
+      "blocks_task_id": "demo_032",
+      "requires_task_id": "demo_013"
+    },
+    {
+      "id": "block_011",
+      "message": "Pas de démolition en copropriété sans accord d'AG si parties communes.",
+      "blocks_task_id": "demo_032",
+      "requires_task_id": "demo_014"
+    },
+    {
+      "id": "block_012",
+      "message": "Pas de fibrociment manipulé par particulier (sous-section 3 obligatoire).",
+      "blocks_task_id": "demo_065",
+      "requires_task_id": "demo_005"
+    },
+    {
+      "id": "block_013",
+      "message": "Pas d'évacuation déchets amiante / plomb hors filière ISDD avec BSDD.",
+      "blocks_task_id": "demo_075",
+      "requires_task_id": "demo_074"
+    },
+    {
+      "id": "block_014",
+      "message": "Pas de mélange des flux de déchets (tri 7 flux obligatoire).",
+      "blocks_task_id": "demo_072",
+      "requires_task_id": "demo_071"
+    },
+    {
+      "id": "block_015",
+      "message": "Pas de démolition seul pour intervention lourde (deux personnes minimum).",
+      "blocks_task_id": "demo_048",
+      "requires_task_id": "demo_030"
+    },
+    {
+      "id": "block_016",
+      "message": "Pas de démolition sans EPI complets (masque FFP3 minimum, P3 si suspicion amiante / plomb).",
+      "blocks_task_id": "demo_045",
+      "requires_task_id": "demo_030"
+    },
+    {
+      "id": "block_017",
+      "message": "Pas de démolition sans humidification continue pour limiter la poussière (silice = silicose).",
+      "blocks_task_id": "demo_046",
+      "requires_task_id": "demo_034"
+    },
+    {
+      "id": "block_018",
+      "message": "Pas de remise en service des fluides avant vérification absence de fuite ou de circuit dénudé.",
+      "blocks_task_id": "demo_083",
+      "requires_task_id": "demo_051"
+    },
+    {
+      "id": "block_019",
+      "message": "Pas de démolition de mur porteur en attaquant le bas (HAUT vers BAS obligatoire).",
+      "blocks_task_id": "demo_054",
+      "requires_task_id": "demo_053"
+    },
+    {
+      "id": "block_020",
+      "message": "Pas de décoffrage étais avant 7 jours minimum (linteau peu chargé).",
+      "blocks_task_id": "demo_077",
+      "requires_task_id": "demo_057"
+    }
+  ],
+  "scoring": {
+    "progression_percent": {
+      "formula": "validated_tasks / total_tasks * 100",
+      "total_tasks": 85,
+      "filtered_by": "applies_to_demo_type INCLUDES demo_type AND applies_to_age INCLUDES age AND applies_to_context INCLUDES context"
+    },
+    "safety_score": {
+      "base": 100,
+      "description": "Score sécurité (FORTEMENT pondéré : amiante, plomb, porteur, fluides)",
+      "penalties": [
+        {
+          "condition": "Manipulation amiante sans certification (demo_005, 040 non validées)",
+          "malus": 50,
+          "category": "critique_bloquant",
+          "applies_to_age": ["avant_1949", "1949_1997"]
+        },
+        {
+          "condition": "DAAT absent si bâtiment < 1997 (demo_003 non validée)",
+          "malus": 50,
+          "category": "critique_bloquant",
+          "applies_to_age": ["avant_1949", "1949_1997"]
+        },
+        {
+          "condition": "CREP absent si bâtiment < 1949 (demo_004 non validée)",
+          "malus": 40,
+          "category": "critique_bloquant",
+          "applies_to_age": ["avant_1949"]
+        },
+        {
+          "condition": "Démolition mur porteur sans étude BET (demo_018 non validée)",
+          "malus": 50,
+          "category": "critique_bloquant",
+          "applies_to_demo_type": ["mur_porteur_partiel", "cheminee"]
+        },
+        {
+          "condition": "Étaiement absent ou non photographié (demo_052 non validée)",
+          "malus": 50,
+          "category": "critique_bloquant",
+          "applies_to_demo_type": ["mur_porteur_partiel", "cheminee"]
+        },
+        {
+          "condition": "Fluides non consignés (demo_022, 024, 025 non validées)",
+          "malus": 35,
+          "category": "critique_bloquant"
+        },
+        {
+          "condition": "VAT non effectuée (demo_023 non validée)",
+          "malus": 30,
+          "category": "critique_bloquant"
+        },
+        {
+          "condition": "DT-DICT absente pour démolition extérieure (demo_008 non validée)",
+          "malus": 35,
+          "category": "critique_bloquant",
+          "applies_to_demo_type": ["petit_ouvrage_exterieur", "terrasse_dalle_existante"]
+        },
+        {
+          "condition": "Plomb manipulé sans précautions (demo_006 non validée)",
+          "malus": 25,
+          "category": "critique",
+          "applies_to_age": ["avant_1949"]
+        },
+        {
+          "condition": "EPI absents ou incomplets (demo_030 non validée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Humidification absente (demo_034 non validée)",
+          "malus": 15,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Démolition mur porteur du bas vers le haut (demo_054 échouée)",
+          "malus": 30,
+          "category": "critique",
+          "applies_to_demo_type": ["mur_porteur_partiel"]
+        }
+      ]
+    },
+    "structural_compliance_score": {
+      "description": "Conformité structurelle : BET, étaiement, autorisations, témoins fissures",
+      "components": [
+        { "id": "etude_bet", "weight": 30, "validates_if": "demo_018 validated OR demo_type NOT IN ['mur_porteur_partiel','cheminee']" },
+        { "id": "etaiement_photo", "weight": 25, "validates_if": "demo_052 validated OR demo_type NOT IN ['mur_porteur_partiel','cheminee']" },
+        { "id": "linteau_dimensions", "weight": 15, "validates_if": "demo_055 validated OR demo_type != 'mur_porteur_partiel'" },
+        { "id": "decoffrage_delai", "weight": 15, "validates_if": "demo_057 validated OR demo_type NOT IN ['mur_porteur_partiel','cheminee']" },
+        { "id": "temoins_fissures", "weight": 15, "validates_if": "demo_021 validated OR demo_type NOT IN ['mur_porteur_partiel','cheminee']" }
+      ]
+    },
+    "waste_management_score": {
+      "description": "Gestion déchets : tri à la source, filières, BSDD, réemploi",
+      "components": [
+        { "id": "tri_7_flux", "weight": 25, "validates_if": "demo_037 validated AND demo_071 validated" },
+        { "id": "filieres_isdi_isdnd", "weight": 20, "validates_if": "demo_072 validated AND demo_073 validated" },
+        { "id": "bsdd_dangereux", "weight": 25, "validates_if": "demo_074 validated OR (age == 'apres_1997' AND no_dangereux)" },
+        { "id": "bordereaux_archives", "weight": 15, "validates_if": "demo_075 validated" },
+        { "id": "reemploi", "weight": 15, "validates_if": "demo_038 validated OR demo_076 validated" }
+      ]
+    },
+    "regulatory_compliance_score": {
+      "description": "Conformité réglementaire : diagnostics, urbanisme, copropriété, PEMD",
+      "components": [
+        { "id": "daat_diagnostic", "weight": 25, "validates_if": "demo_003 validated OR age == 'apres_1997'" },
+        { "id": "crep_diagnostic", "weight": 15, "validates_if": "demo_004 validated OR age != 'avant_1949'" },
+        { "id": "urbanisme", "weight": 20, "validates_if": "demo_011 validated AND (demo_012 validated OR no_permis_required)" },
+        { "id": "abf_drac", "weight": 15, "validates_if": "demo_013 validated OR context NOT IN ['classe_inscrit_mh','perimetre_abf']" },
+        { "id": "copropriete", "weight": 10, "validates_if": "demo_014 validated OR context != 'copropriete'" },
+        { "id": "dt_dict", "weight": 10, "validates_if": "demo_008 validated OR demo_type NOT IN ['petit_ouvrage_exterieur','terrasse_dalle_existante']" },
+        { "id": "pemd", "weight": 5, "validates_if": "demo_009 validated OR surface < 1000" }
+      ]
+    },
+    "documents_attached_score": {
+      "description": "Pourcentage des justificatifs requis effectivement uploadés",
+      "required_documents": [
+        { "type": "daat_realise", "required_if": "age IN ['avant_1949','1949_1997']" },
+        { "type": "crep_plomb", "required_if": "age == 'avant_1949'" },
+        { "type": "etude_bet", "required_if": "demo_type IN ['mur_porteur_partiel','cheminee']" },
+        { "type": "permis_demolir", "required_if": "demo_type IN ['mur_porteur_partiel','petit_ouvrage_exterieur','cheminee']" },
+        { "type": "accord_abf", "required_if": "context IN ['classe_inscrit_mh','perimetre_abf']" },
+        { "type": "accord_copropriete", "required_if": "context == 'copropriete'" },
+        { "type": "consignation_fluides_photo", "required_if": "always" },
+        { "type": "etaiement_photo", "required_if": "demo_type IN ['mur_porteur_partiel','cheminee']" },
+        { "type": "entreprise_certifiee_amiante", "required_if": "amiante_detected" },
+        { "type": "bsdd_dechets_dangereux", "required_if": "amiante_detected OR plomb_detected" },
+        { "type": "pemd_diagnostic", "required_if": "surface > 1000" },
+        { "type": "dt_dict_recepissee", "required_if": "demo_type IN ['petit_ouvrage_exterieur','terrasse_dalle_existante']" },
+        { "type": "assurance_do", "required_if": "demo_type IN ['mur_porteur_partiel','cheminee'] AND occupied" }
+      ],
+      "formula": "documents_attached / documents_required * 100"
+    },
+    "critical_alerts": [
+      {
+        "id": "alert_amiante",
+        "message": "Amiante non diagnostiqué ou manipulé sans entreprise certifiée — exposition mortelle, responsabilité pénale.",
+        "triggered_if": "(demo_003 not validated AND age IN ['avant_1949','1949_1997']) OR (demo_005 not validated AND amiante_detected)",
+        "level": "danger"
+      },
+      {
+        "id": "alert_plomb",
+        "message": "Plomb non diagnostiqué — risque saturnisme grave, surtout enfants.",
+        "triggered_if": "demo_004 not validated AND age == 'avant_1949'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_porteur_bet",
+        "message": "Mur porteur démoli sans étude BET — risque effondrement, responsabilité pénale.",
+        "triggered_if": "demo_018 not validated AND demo_type IN ['mur_porteur_partiel','cheminee']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_etaiement",
+        "message": "Étaiement absent avant démolition porteur — risque effondrement immédiat.",
+        "triggered_if": "demo_052 not validated AND demo_type IN ['mur_porteur_partiel','cheminee']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_fluides",
+        "message": "Fluides non consignés — risque électrocution, explosion, dégât des eaux.",
+        "triggered_if": "demo_022 not validated OR demo_023 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_dt_dict",
+        "message": "DT-DICT non effectuée — risque de couper gaz/élec/fibre, accident grave + responsabilité civile illimitée.",
+        "triggered_if": "demo_008 not validated AND demo_type IN ['petit_ouvrage_exterieur','terrasse_dalle_existante']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_permis_demolir",
+        "message": "Permis de démolir absent quand requis — sanctions, obligation de reconstruire à l'identique.",
+        "triggered_if": "demo_012 not validated AND permis_required",
+        "level": "danger"
+      },
+      {
+        "id": "alert_abf",
+        "message": "Bâtiment classé / inscrit / ABF sans autorisation — sanctions pénales lourdes, obligation de reconstruction.",
+        "triggered_if": "demo_013 not validated AND context IN ['classe_inscrit_mh','perimetre_abf']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_copropriete",
+        "message": "Copropriété sans accord AG — annulation possible, démolition à reconstruire.",
+        "triggered_if": "demo_014 not validated AND context == 'copropriete'",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_fibrociment",
+        "message": "Fibrociment manipulé par particulier — fibres amiante libérées, contamination.",
+        "triggered_if": "demo_065 not validated AND fibrociment_detected",
+        "level": "danger"
+      },
+      {
+        "id": "alert_bsdd",
+        "message": "Déchets dangereux sans BSDD ni filière ISDD — sanctions pénales lourdes.",
+        "triggered_if": "demo_074 not validated AND (amiante_detected OR plomb_detected)",
+        "level": "danger"
+      },
+      {
+        "id": "alert_tri_dechets",
+        "message": "Mélange des flux de déchets — refus filières, surcoût, non-conforme.",
+        "triggered_if": "demo_071 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_epi",
+        "message": "EPI absents ou incomplets — exposition silice (silicose), blessures.",
+        "triggered_if": "demo_030 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_humidification",
+        "message": "Démolition à sec — nuage de poussière, silice respirée, silicose à terme.",
+        "triggered_if": "demo_034 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_remise_service",
+        "message": "Remise en service fluides sans vérification — court-circuit, dégât des eaux, fuite.",
+        "triggered_if": "demo_083 not validated",
+        "level": "bloquant"
+      }
+    ]
+  }
 }
