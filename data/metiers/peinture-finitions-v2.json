@@ -1,0 +1,492 @@
+{
+  "module": "peinture_finitions",
+  "phases": [
+    {
+      "id": "preparation_support",
+      "label": "Préparation du support",
+      "tasks": [
+        {
+          "id": "peint_001",
+          "title": "Vérifier que le support est prêt (placo terminé)",
+          "phase": "preparation_support",
+          "explanation": "La peinture ne se pose que sur un support fini : bandes à joints terminées, enduits secs, surfaces lissées. Tout placo non terminé doit être finalisé AVANT.",
+          "klaro_recommendation": "Vérifiez : pas de bande qui dépasse, pas d'enduit humide, pas de tête de vis qui ressort. Le placo doit être totalement sec (24-48h après dernière passe d'enduit selon humidité ambiante). Touchez : la surface doit être ferme et froide, pas tiède (signe d'humidité résiduelle).",
+          "common_mistake": "Démarrer la peinture sur un placo encore humide — apparition de cloques et auréoles dans les jours qui suivent.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 59.1 §6.1",
+          "control_questions": [
+            { "question": "Le placo est-il sec, lisse et terminé (bandes, enduits, vis) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_002",
+          "title": "Contrôler la qualité des joints placo",
+          "phase": "preparation_support",
+          "explanation": "Inspectez chaque joint sous éclairage rasant : aucune fissure, pas de bande qui se décolle, pas de relief visible. Les défauts ressortiront amplifiés sous la peinture.",
+          "klaro_recommendation": "Lampe tenue à plat contre le mur (lumière rasante) — passez sur chaque joint et chaque angle. Marquez au crayon les défauts : marche entre plaques, bande qui se décolle, micro-fissure. Tout point marqué doit être repris à l'enduit + ponçage AVANT peinture.",
+          "common_mistake": "Découvrir les défauts une fois la peinture posée — il faut alors poncer la peinture, reboucher, repeindre toute la zone.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_001"],
+          "norm_reference": "DTU 59.1 §6.2 + DTU 25.41",
+          "control_questions": [
+            { "question": "Tous les joints sont-ils sains (pas de fissure, pas de bande décollée) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_003",
+          "title": "Reboucher les trous et imperfections",
+          "phase": "preparation_support",
+          "explanation": "Trous de cheville, éclats, micro-fissures, traces de chocs : rebouchage à l'enduit de rebouchage (pâte) en plusieurs passes fines plutôt qu'une grosse.",
+          "klaro_recommendation": "Enduit de rebouchage en pâte (prêt à l'emploi) pour petits défauts. Enduit en poudre pour grosses zones (séchage plus dur, moins de retrait). Posez 2 passes fines avec ponçage léger entre les deux. Bombez très légèrement la deuxième passe — elle se rétractera en séchant.",
+          "common_mistake": "Reboucher en une seule grosse passe — l'enduit se rétracte au séchage et il faut tout reprendre.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_002"],
+          "norm_reference": "DTU 59.1 §6.3",
+          "control_questions": []
+        },
+        {
+          "id": "peint_004",
+          "title": "Poncer les surfaces (murs et plafonds)",
+          "phase": "preparation_support",
+          "explanation": "Le ponçage uniformise la surface, retire les marques de spatule et prépare l'accroche de la sous-couche. Grain 120 pour les zones d'enduit, 180-220 pour la finition.",
+          "klaro_recommendation": "Ponceuse girafe pour les grandes surfaces (avec aspiration), cale à poncer manuelle pour les angles. Travaillez par mouvements croisés. Vérifiez après chaque zone à la lumière rasante. Portez masque FFP3 + lunettes — la poussière de placo est très fine et nocive.",
+          "common_mistake": "Sauter le ponçage pour gagner du temps — peinture qui révèle toutes les marques de spatule sous éclairage rasant.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_003"],
+          "norm_reference": "DTU 59.1 §6.4",
+          "control_questions": [
+            { "question": "Toutes les surfaces sont-elles poncées (grain 120 puis 180-220) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_005",
+          "title": "Dépoussiérer les supports",
+          "phase": "preparation_support",
+          "explanation": "Après ponçage, la poussière fine reste partout. Aspirez à fond, puis essuyez avec un chiffon humide ou microfibre pour retirer la couche résiduelle.",
+          "klaro_recommendation": "Aspirateur de chantier (puissant, filtre HEPA si possible) sur tous les murs, plafonds, sols, plinthes, encadrements. Puis chiffon microfibre légèrement humide (pas mouillé) en passes croisées. Laissez sécher avant la sous-couche. Sans ce dépoussiérage, la sous-couche n'accroche pas.",
+          "common_mistake": "Balayer rapidement et appliquer la sous-couche — la peinture emprisonne la poussière, finition rugueuse et fragile.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_004"],
+          "norm_reference": "DTU 59.1 §6.5",
+          "control_questions": [
+            { "question": "Les supports sont-ils dépoussiérés (aspiration + chiffon humide) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "protection_souscouche",
+      "label": "Protection & sous-couche",
+      "tasks": [
+        {
+          "id": "peint_006",
+          "title": "Protéger les sols et menuiseries",
+          "phase": "protection_souscouche",
+          "explanation": "Bâche au sol (carton ou plastique épais), scotch de masquage sur plinthes, encadrements, prises, interrupteurs. Toute surface non peinte doit être protégée.",
+          "klaro_recommendation": "Scotch de masquage spécifique peinture (ne laisse pas de résidus, se retire proprement). Posez-le précisément sur la limite à protéger. Bâches au sol fixées par scotch sur les bords pour éviter les plis. Protégez aussi les ampoules et appareillages électriques. Démontez si possible plaques de prises et interrupteurs.",
+          "common_mistake": "Utiliser du scotch standard d'emballage — il laisse des résidus collants ou arrache la peinture en se retirant.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_005"],
+          "norm_reference": "DTU 59.1 §7",
+          "control_questions": [
+            { "question": "Sols, menuiseries, prises et appareillages sont-ils protégés ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_007",
+          "title": "Appliquer une sous-couche (impression)",
+          "phase": "protection_souscouche",
+          "explanation": "La sous-couche bloque la porosité du support, harmonise l'absorption (zones d'enduit + zones de placo nu) et améliore l'accroche de la peinture finale.",
+          "klaro_recommendation": "Sous-couche universelle ou spéciale placo. Appliquez au rouleau (manchon 12 mm pour murs lisses). Une seule couche suffit en général. Sans sous-couche, la peinture sèche plus vite sur l'enduit que sur le placo et laisse des traces visibles ('effet cartonnage').",
+          "common_mistake": "Peindre directement sur placo neuf — taches visibles, jonctions enduit/plaque qui marquent à travers la peinture, surconsommation de peinture finale.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_006"],
+          "norm_reference": "DTU 59.1 §7.2",
+          "control_questions": [
+            { "question": "Une sous-couche d'impression a-t-elle été appliquée ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_008",
+          "title": "Vérifier l'absorption du support",
+          "phase": "protection_souscouche",
+          "explanation": "Après séchage de la sous-couche, vérifiez l'uniformité : surface mate uniforme, pas de zone brillante (peu absorbante) ou très mate (très absorbante).",
+          "klaro_recommendation": "Si zones encore très absorbantes (matières plus foncées) : passez une seconde couche de sous-couche localement. C'est ce qui garantit que la peinture finale aura une teinte uniforme. Test simple : posez une goutte d'eau — elle doit être absorbée uniformément partout.",
+          "common_mistake": "Se contenter d'une sous-couche hétérogène — la peinture finale révèle les zones d'absorption différente comme des taches plus foncées ou plus claires.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_007"],
+          "norm_reference": "DTU 59.1 §7.2",
+          "control_questions": [
+            { "question": "L'absorption du support est-elle uniforme après sous-couche ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_009",
+          "title": "Corriger les défauts après sous-couche",
+          "phase": "protection_souscouche",
+          "explanation": "La sous-couche révèle les défauts qui ne se voyaient pas sur le placo nu. C'est le bon moment pour les corriger : reboucher, poncer localement, repasser de la sous-couche sur les retouches.",
+          "klaro_recommendation": "Inspectez sous lumière rasante après séchage. Marquez les défauts au crayon, reprenez : enduit fin (couteau japonais), ponçage léger, dépoussiérage, sous-couche localisée. Cette étape est ce qui distingue une peinture amateur d'une finition propre.",
+          "common_mistake": "Ignorer les défauts après sous-couche en pensant que 'la peinture les masquera' — ils ressortent au contraire amplifiés.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_008"],
+          "norm_reference": "DTU 59.1 §7.3",
+          "control_questions": [
+            { "question": "Tous les défauts révélés par la sous-couche sont-ils corrigés ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "application",
+      "label": "Application de la peinture",
+      "tasks": [
+        {
+          "id": "peint_010",
+          "title": "Appliquer la première couche de peinture",
+          "phase": "application",
+          "explanation": "Première couche posée généreusement et uniformément. Le but est de couvrir, pas de finir : la teinte définitive viendra avec la deuxième couche.",
+          "klaro_recommendation": "Méthode du W : déchargez le rouleau en formant un W (ou M) sur le mur, puis répartissez en passes verticales croisées. Travaillez par sections de 1 m² maxi pour éviter les marques de reprise. Démarrez TOUJOURS par les angles et bordures au pinceau, puis le rouleau juste après (technique de raccord à frais).",
+          "common_mistake": "Vouloir cacher le support en une seule couche en chargeant le rouleau — coulures, traces de rouleau, et au final résultat moins bon qu'avec deux couches fines.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_009"],
+          "norm_reference": "DTU 59.1 §8.1",
+          "control_questions": []
+        },
+        {
+          "id": "peint_011",
+          "title": "Respecter les temps de séchage",
+          "phase": "application",
+          "explanation": "Entre deux couches, respectez le temps de séchage indiqué sur le pot (généralement 4-12h selon peinture, température et humidité).",
+          "klaro_recommendation": "À 20°C, humidité 50% : 4-6h pour la plupart des peintures acryliques. Plus froid ou plus humide : doublez. La peinture doit être sèche au toucher ET ne plus être collante. Une seconde couche posée trop tôt arrache la première (résultat catastrophique).",
+          "common_mistake": "Repasser une couche dans la journée 'parce que ça paraît sec' — la peinture en surface a séché mais le dessous est encore humide, le rouleau l'arrache.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_010"],
+          "norm_reference": "DTU 59.1 §8.2 + notice fabricant",
+          "control_questions": [
+            { "question": "Temps de séchage entre couches respecté (≥ 4h en conditions normales) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_012",
+          "title": "Appliquer la seconde couche",
+          "phase": "application",
+          "explanation": "La seconde couche garantit l'uniformité de teinte et la couverture totale. Minimum 2 couches sur tous les murs et plafonds, 3 couches pour les couleurs vives ou foncées sur fond clair.",
+          "klaro_recommendation": "Même méthode que la première couche. Travaillez vite mais proprement par sections. La seconde couche doit être posée avant que la première ne soit totalement dure (généralement 4-24h après la première). Au-delà, l'accroche entre couches diminue.",
+          "common_mistake": "Ne faire qu'une seule couche pour économiser — uniformité ratée, transparence du support, retouches visibles à vie.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_011"],
+          "norm_reference": "DTU 59.1 §8.3",
+          "control_questions": [
+            { "question": "Au moins 2 couches de finition appliquées (3 si couleur vive sur fond clair) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_013",
+          "title": "Réaliser les finitions (angles, reprises)",
+          "phase": "application",
+          "explanation": "Les angles, les bordures et les zones de raccord rouleau/pinceau exigent un soin particulier. Le pinceau termine ce que le rouleau ne peut pas atteindre.",
+          "klaro_recommendation": "Pinceau brosse (rond ou plat) bien chargé, mouvements souples. Pour les angles muraux : pinceau coudé. Travaillez à frais : posez le rouleau juste après le pinceau pour fondre les démarcations. Inspectez à la lumière rasante : aucune zone non peinte, aucune surépaisseur.",
+          "common_mistake": "Laisser des traces de pinceau visibles aux angles (peinture non fondue avec celle du rouleau) — démarcation visible à vie sous certains éclairages.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_012"],
+          "norm_reference": "DTU 59.1 §8.4",
+          "control_questions": []
+        },
+        {
+          "id": "peint_014",
+          "title": "Respecter l'ordre : plafonds puis murs",
+          "phase": "application",
+          "explanation": "Ordre logique : plafonds en premier (les éclaboussures tombent sur les murs encore à peindre), puis murs (du haut vers le bas), puis boiseries en dernier.",
+          "klaro_recommendation": "Plafond intégralement avant de commencer les murs. Pour le plafond, utilisez un manche télescopique (évite l'échelle) avec rouleau adapté. Sur les murs : démarrez par le haut, descendez progressivement. Sans cet ordre, vous abîmez forcément des zones déjà peintes.",
+          "common_mistake": "Peindre les murs avant le plafond — éclaboussures du plafond tombent sur les murs neufs, retouches visibles.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_010"],
+          "norm_reference": "DTU 59.1 §8.5",
+          "control_questions": [
+            { "question": "Ordre respecté (plafond → murs → boiseries) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_015",
+          "title": "Peindre boiseries / portes si prévu",
+          "phase": "application",
+          "explanation": "Boiseries (portes, plinthes, encadrements) peintes en dernier. Préparation : ponçage léger, dégraissage, sous-couche bois (si bois nu), 2 couches de peinture spéciale boiseries.",
+          "klaro_recommendation": "Peinture glycéro ou acrylique satinée/laquée pour boiseries (résistante au lessivage et aux chocs). Travail minutieux : peignez d'abord les détails au pinceau, puis les surfaces planes au rouleau laqueur (manchon mousse). Démontez si possible (porte sur tréteaux) pour un résultat impeccable.",
+          "common_mistake": "Utiliser une peinture murale standard sur les portes — pas assez résistante, traces de doigts apparentes en quelques semaines.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_014"],
+          "norm_reference": "DTU 59.1 §9",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "finitions",
+      "label": "Finitions & nettoyage",
+      "tasks": [
+        {
+          "id": "peint_016",
+          "title": "Appliquer les joints acryliques (finition)",
+          "phase": "finitions",
+          "explanation": "Joints acryliques peints (pas silicone) entre plinthes/murs, autour des huisseries, aux jonctions plafond/mur si fissures. L'acrylique se peint, le silicone ne se peint pas.",
+          "klaro_recommendation": "Mastic acrylique blanc ou teinté. Posez en boudin fin, lissez au doigt mouillé. Laissez sécher 24h minimum avant peinture. Pour les jonctions cloison/plafond : une fine bande de mastic acrylique évite la micro-fissure visible et se peint avec le reste. JAMAIS de silicone à ces endroits car non peignable.",
+          "common_mistake": "Utiliser du silicone aux jonctions intérieures — il ne se peint pas, reste visible et finit par jaunir.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_012"],
+          "norm_reference": "DTU 59.1 §10.1",
+          "control_questions": [
+            { "question": "Les jonctions intérieures sont-elles traitées au mastic acrylique (jamais silicone) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_017",
+          "title": "Nettoyer les coulures ou défauts",
+          "phase": "finitions",
+          "explanation": "En cours de séchage, repérez et reprenez les coulures, traces de rouleau, projections. Plus la correction est précoce, plus elle est facile.",
+          "klaro_recommendation": "Si peinture encore fraîche : passez doucement le rouleau sur la coulure pour la résorber. Si peinture sèche : poncez localement la coulure (grain 220), dépoussiérez, repassez la couche localement (raccord à frais sur une zone large pour fondre). Pour les projections sur surfaces protégées : retirez à l'eau immédiatement.",
+          "common_mistake": "Laisser une coulure sécher entièrement et tenter de la 'gommer' à la peinture par-dessus — la coulure ressort en relief.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_013"],
+          "norm_reference": "DTU 59.1 §10.2",
+          "control_questions": []
+        },
+        {
+          "id": "peint_018",
+          "title": "Retirer les protections",
+          "phase": "finitions",
+          "explanation": "Retirez le scotch de masquage AVANT que la peinture soit totalement dure (idéalement 1-2h après dernière couche, peinture encore légèrement souple). Tirez à 45° en douceur.",
+          "klaro_recommendation": "Sur peinture encore souple : le scotch se retire net, ligne propre. Sur peinture totalement dure : risque de soulever des plaques. Si vous avez attendu : passez un cutter le long du scotch pour casser le film de peinture avant de tirer. Retirez les bâches en pliant vers l'intérieur (poussières confinées).",
+          "common_mistake": "Attendre 24h avant de retirer le scotch — la peinture sèche le solidarise au support, des plaques se déchirent en le retirant.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_017"],
+          "norm_reference": "DTU 59.1 §10.3",
+          "control_questions": [
+            { "question": "Le scotch a-t-il été retiré dans le bon délai (peinture encore souple) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "controle",
+      "label": "Contrôle final & retouches",
+      "tasks": [
+        {
+          "id": "peint_019",
+          "title": "Vérifier le rendu final (uniformité)",
+          "phase": "controle",
+          "explanation": "Inspectez chaque mur et plafond : sous éclairage naturel ET sous éclairage rasant. Cherchez : zones moins couvertes, traces de rouleau, raccords visibles, éclaboussures.",
+          "klaro_recommendation": "Test au crayon (effaçable) : marquez tout défaut visible. Reculez de 2 m, puis approchez à 30 cm. Tournez autour de la pièce. Faites le contrôle à plusieurs moments de la journée (lumière naturelle change). Notez sur un plan les zones à reprendre.",
+          "common_mistake": "Valider le rendu seulement sous lumière artificielle d'appoint — au matin ou en plein jour, les défauts ressortent et il faut tout reprendre.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_018"],
+          "norm_reference": "DTU 59.1 §11.1",
+          "control_questions": [
+            { "question": "Le rendu est-il uniforme sous lumière naturelle et lumière rasante ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_020",
+          "title": "Faire les retouches finales",
+          "phase": "controle",
+          "explanation": "Retouches localisées sur les défauts marqués : ponçage léger, dépoussiérage, repassage de peinture en raccord à frais sur une zone élargie pour fondre.",
+          "klaro_recommendation": "N'attendez jamais : reprenez les défauts pendant que vous avez encore la peinture du même lot (si vous rachetez plus tard, la nuance peut différer). Pour fondre une retouche : ne peignez pas seulement la zone, étendez sur 30-50 cm autour pour éviter une démarcation visible. Pinceau pour les détails, mini-rouleau pour les zones plus larges.",
+          "common_mistake": "Retoucher uniquement la zone du défaut au pinceau — la retouche est visible comme une tache.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_019"],
+          "norm_reference": "DTU 59.1 §11.2",
+          "control_questions": [
+            { "question": "Toutes les retouches sont-elles fondues et invisibles ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    }
+  ],
+  "blocking_points": [
+    {
+      "id": "block_001",
+      "message": "Impossible de peindre sur un support non préparé — placo terminé, joints sains, rebouchage fait.",
+      "blocks_task_id": "peint_007",
+      "requires_task_id": "peint_001"
+    },
+    {
+      "id": "block_002",
+      "message": "Ponçage obligatoire avant peinture — sans lui, marques de spatule visibles à vie.",
+      "blocks_task_id": "peint_007",
+      "requires_task_id": "peint_004"
+    },
+    {
+      "id": "block_003",
+      "message": "Sous-couche obligatoire sur placo neuf — sinon traces et hétérogénéité d'absorption.",
+      "blocks_task_id": "peint_010",
+      "requires_task_id": "peint_007"
+    },
+    {
+      "id": "block_004",
+      "message": "Respect du temps de séchage entre couches — sinon arrachage de la première couche.",
+      "blocks_task_id": "peint_012",
+      "requires_task_id": "peint_011"
+    },
+    {
+      "id": "block_005",
+      "message": "Impossible d'avoir un bon rendu sans 2 couches minimum (3 si couleur vive).",
+      "blocks_task_id": "peint_019",
+      "requires_task_id": "peint_012"
+    },
+    {
+      "id": "block_006",
+      "message": "Pas de peinture sans dépoussiérage complet après ponçage.",
+      "blocks_task_id": "peint_007",
+      "requires_task_id": "peint_005"
+    },
+    {
+      "id": "block_007",
+      "message": "Pas de peinture sans protection des sols, menuiseries et appareillages.",
+      "blocks_task_id": "peint_007",
+      "requires_task_id": "peint_006"
+    },
+    {
+      "id": "block_008",
+      "message": "Pas de murs avant plafond — éclaboussures inévitables sur murs déjà peints.",
+      "blocks_task_id": "peint_010",
+      "requires_task_id": "peint_014"
+    },
+    {
+      "id": "block_009",
+      "message": "Pas de silicone aux jonctions intérieures peintes — utiliser mastic acrylique peignable.",
+      "blocks_task_id": "peint_019",
+      "requires_task_id": "peint_016"
+    }
+  ],
+  "scoring": {
+    "progression_percent": {
+      "formula": "validated_tasks / total_tasks * 100",
+      "total_tasks": 20
+    },
+    "safety_score": {
+      "base": 100,
+      "penalties": [
+        {
+          "condition": "Sous-couche absente sur placo neuf (peint_007 non validée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Moins de 2 couches de finition (peint_012 échouée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Temps de séchage non respecté entre couches (peint_011 échouée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Ponçage absent ou insuffisant avant peinture (peint_004 non validée)",
+          "malus": 15,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Dépoussiérage absent après ponçage (peint_005 non validée)",
+          "malus": 15,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Défauts révélés par sous-couche non corrigés (peint_009 échouée)",
+          "malus": 15,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Ordre plafond → murs non respecté (peint_014 échouée)",
+          "malus": 10,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Silicone utilisé aux jonctions au lieu de mastic acrylique (peint_016 échouée)",
+          "malus": 10,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Scotch retiré trop tard (peinture totalement dure) (peint_018 échouée)",
+          "malus": 10,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Rendu non uniforme sous lumière rasante (peint_019 échouée)",
+          "malus": 10,
+          "category": "bloquant"
+        }
+      ]
+    },
+    "critical_alerts": [
+      {
+        "id": "alert_souscouche",
+        "message": "Sous-couche absente — risque rendu médiocre, taches visibles, surconsommation peinture finale.",
+        "triggered_if": "peint_007 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_2couches",
+        "message": "Moins de 2 couches appliquées — uniformité ratée, transparence du support visible.",
+        "triggered_if": "peint_012 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_sechage",
+        "message": "Temps de séchage non respecté — la couche suivante arrache la précédente.",
+        "triggered_if": "peint_011 not validated AND peint_012 validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_poncage",
+        "message": "Ponçage insuffisant — marques de spatule visibles à vie sous éclairage rasant.",
+        "triggered_if": "peint_004 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_depoussierage",
+        "message": "Dépoussiérage absent — peinture qui emprisonne la poussière, finition rugueuse.",
+        "triggered_if": "peint_005 not validated AND peint_007 validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_ordre",
+        "message": "Ordre plafond → murs non respecté — éclaboussures du plafond sur murs peints.",
+        "triggered_if": "peint_014 not validated AND peint_010 validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_silicone",
+        "message": "Silicone aux jonctions intérieures — non peignable, reste visible, jaunit avec le temps.",
+        "triggered_if": "peint_016 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_rendu",
+        "message": "Rendu non uniforme sous lumière rasante — défauts visibles, retouches nécessaires.",
+        "triggered_if": "peint_019 not validated",
+        "level": "bloquant"
+      }
+    ]
+  }
+}
