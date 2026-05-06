@@ -1,0 +1,707 @@
+{
+  "module": "demolition_depose",
+  "warnings_header": [
+    {
+      "id": "warn_001",
+      "level": "danger",
+      "title": "Amiante = cancer",
+      "message": "Tout bâtiment AVANT le 1er juillet 1997 peut contenir de l'amiante dans des matériaux invisibles : colles de carrelage, dalles vinyle, calorifuges, flocages, plaques fibrociment, mastics, faux plafonds, enduits texturés. DAAT (Diagnostic Amiante Avant Travaux) OBLIGATOIRE. Manipulation par particulier INTERDITE — entreprise certifiée sous-section 3 ou 4 obligatoire."
+    },
+    {
+      "id": "warn_002",
+      "level": "danger",
+      "title": "Plomb = saturnisme",
+      "message": "Bâtiments AVANT 1949 contiennent souvent des peintures plombifères. Risque neurologique irréversible chez l'enfant. CREP obligatoire. EPI P3, combinaison, confinement, nettoyage humide systématique."
+    },
+    {
+      "id": "warn_003",
+      "level": "danger",
+      "title": "Élément porteur = effondrement",
+      "message": "Toute démolition d'un mur porteur, refend, plancher, linteau structurel exige étude par charpentier ou Bureau d'Études Structure (BET). Étaiement préalable OBLIGATOIRE. Sans étude, sans étaiement = effondrement potentiellement mortel."
+    },
+    {
+      "id": "warn_004",
+      "level": "danger",
+      "title": "Réseaux = électrocution, explosion",
+      "message": "Coupure et consignation des fluides (élec, gaz, eau) AVANT toute démolition. VAT (Vérification Absence de Tension) obligatoire. Pour démolition extérieure avec terrassement : DT-DICT obligatoire. Couper une fibre = jusqu'à plusieurs millions € de dommages."
+    },
+    {
+      "id": "warn_005",
+      "level": "info",
+      "title": "Permis de démolir + ABF",
+      "message": "Permis de démolir obligatoire dans certaines zones selon PLU et secteurs sauvegardés. Vérifier en mairie. Bâtiments classés / inscrits MH = autorisation spéciale ABF/DRAC. Copropriété = accord AG si parties communes touchées."
+    },
+    {
+      "id": "warn_006",
+      "level": "info",
+      "title": "Gestion des déchets : tri 7 flux + BSDD",
+      "message": "Tri à la source obligatoire (décret 1er juillet 2021 - 7 flux). Filières dédiées : ISDI inerte / ISDND non dangereux / ISDD dangereux. Bordereaux BSDD obligatoires pour amiante et déchets dangereux. Diagnostic PEMD pour démolitions > 1000 m². Bordereaux à conserver 10 ans (à vie pour amiante)."
+    },
+    {
+      "id": "warn_007",
+      "level": "danger",
+      "title": "Klaro privilégie le pro qualifié",
+      "message": "La démolition d'un mur porteur, l'intervention sur amiante / plomb, la démolition extérieure complexe relèvent EXCLUSIVEMENT du pro qualifié. Klaro a vocation à informer, pas à autoriser un particulier à abattre un mur porteur."
+    }
+  ],
+  "phases": [
+    {
+      "id": "diagnostic_obligatoire",
+      "label": "Diagnostics obligatoires & repérages",
+      "tasks": [
+        {
+          "id": "demo_001",
+          "title": "Définir précisément le projet",
+          "phase": "diagnostic_obligatoire",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Nature exacte de la démolition (cloison, plafond, mur, sol, équipement, ouvrage extérieur), surface/volume concerné, élément porteur ou non porteur. Cette qualification conditionne TOUTE la suite.",
+          "klaro_recommendation": "Faites un descriptif écrit + plan annoté avec : nature de l'élément, dimensions, matériau présumé, présence ou non de réseaux. Si vous hésitez sur 'porteur ou pas' : considérez porteur jusqu'à preuve du contraire (étude BET). Photographiez l'état initial sous tous les angles.",
+          "common_mistake": "Sous-estimer la nature de la démolition ('je vais juste casser ce petit mur') et découvrir trop tard qu'il s'agit d'un porteur — risque effondrement.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code construction + Code travail",
+          "control_questions": [
+            { "question": "Le projet est-il qualifié précisément (nature, surface, porteur/non porteur) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_002",
+          "title": "Identifier l'âge du bâtiment et obligations diagnostic",
+          "phase": "diagnostic_obligatoire",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Âge du bâtiment détermine les diagnostics obligatoires : DAAT amiante si < 1er juillet 1997, CREP plomb si < 1949. Ces dates sont impératives.",
+          "klaro_recommendation": "Vérifiez l'année de construction (acte notarié, plans, archives mairie). Bâtiment ancien sans plans : présomption d'amiante et de plomb. Pour < 1949 : DAAT + CREP obligatoires. Pour 1949-1997 : DAAT obligatoire. Pour > 1997 : pas de diagnostic obligatoire mais prudence sur certains revêtements (peintures plombifères importées, colles bitumineuses).",
+          "common_mistake": "Considérer 'pas de problème' visuellement et démarrer sans diagnostic — exposition aux fibres d'amiante ou poussières plomb, conséquences sanitaires graves.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_001"],
+          "norm_reference": "Code santé publique R1334-29-5",
+          "control_questions": [
+            { "question": "Année de construction identifiée et diagnostics requis listés ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_003",
+          "title": "Diagnostic amiante avant travaux (DAAT)",
+          "phase": "diagnostic_obligatoire",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["avant_1949", "1949_1997"],
+          "applies_to_context": ["all"],
+          "explanation": "DAAT OBLIGATOIRE pour tout bâtiment construit avant le 1er juillet 1997. Couvre matériaux, produits, équipements (MPC). Réalisé par diagnostiqueur certifié. Identifie les éléments amiantés et leur état.",
+          "klaro_recommendation": "Diagnostiqueur certifié, coût ~300-600 €. Le rapport liste les MPC amiantés présents, leur état (risque de libération de fibres), et les préconisations d'intervention. Sans DAAT : engagement de votre responsabilité pénale en cas d'exposition (vous + entreprise + voisinage). Joignez le rapport à votre dossier Klaro.",
+          "common_mistake": "Démarrer la démolition sans DAAT 'parce que ça paraît récent' — découpe d'une plaque fibrociment ou ponçage d'une colle de carrelage = libération massive de fibres invisibles.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["daat_realise"],
+          "photo_required_before_validation": true,
+          "depends_on": ["demo_002"],
+          "norm_reference": "Code santé publique R1334-29-5 + Arrêté 19/08/2011",
+          "control_questions": [
+            { "question": "DAAT réalisé par diagnostiqueur certifié et rapport joint ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_004",
+          "title": "Constat de risque d'exposition au plomb (CREP)",
+          "phase": "diagnostic_obligatoire",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["avant_1949"],
+          "applies_to_context": ["all"],
+          "explanation": "CREP OBLIGATOIRE pour tout bâtiment construit avant le 1er janvier 1949. Identifie les peintures plombifères. Dégradation par démolition, ponçage, grattage = poussières toxiques (saturnisme).",
+          "klaro_recommendation": "Diagnostiqueur certifié, coût ~150-300 €. Le CREP indique les zones plombées et leur état. Si plomb dégradé : précautions strictes (confinement, EPI P3, évacuation déchets en filière dédiée). Risque grave pour enfants (saturnisme = dommages neurologiques irréversibles).",
+          "common_mistake": "Démolir une peinture ancienne sans CREP — exposition au plomb, intoxication chronique des occupants surtout enfants.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["crep_plomb"],
+          "photo_required_before_validation": true,
+          "depends_on": ["demo_002"],
+          "norm_reference": "Code santé publique L1334-5 + Arrêté 25/04/2006",
+          "control_questions": [
+            { "question": "CREP réalisé par diagnostiqueur certifié et rapport joint ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_005",
+          "title": "Si amiante détecté : entreprise certifiée SS3/SS4",
+          "phase": "diagnostic_obligatoire",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["avant_1949", "1949_1997"],
+          "applies_to_context": ["all"],
+          "explanation": "INTERDIT à un particulier d'intervenir sur amiante. Sous-section 3 (SS3) = retrait/encapsulage. Sous-section 4 (SS4) = intervention sur matériaux amiantés sans retrait. Entreprise certifiée QUALIBAT 1552 (SS3) ou 1553 (SS4) obligatoire.",
+          "klaro_recommendation": "Coût élevé (1000-15000 € selon volume). Plan de retrait à fournir avant intervention. BSDA (bordereau suivi déchets amiante) obligatoire. Filière éliminateur agréé. Délais 2-3 mois minimum. Voisinage informé. Ne tentez JAMAIS de déposer vous-même : toute fibre libérée contamine durablement votre foyer.",
+          "common_mistake": "Faire intervenir un artisan non certifié pour 'gagner de l'argent' — exposition de l'entreprise + des occupants + du voisinage, responsabilité pénale du maître d'ouvrage.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["entreprise_certifiee_amiante"],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_003"],
+          "norm_reference": "Code travail R4412-94 à R4412-148",
+          "control_questions": [
+            { "question": "Si amiante : entreprise SS3/SS4 certifiée engagée + plan de retrait + BSDA prévus ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_006",
+          "title": "Si plomb détecté : précautions strictes ou pro",
+          "phase": "diagnostic_obligatoire",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["avant_1949"],
+          "applies_to_context": ["all"],
+          "explanation": "Confinement de la zone (bâche plastique au sol et fermée), EPI complets (combinaison jetable, masque P3, gants, lunettes), méthodes humides (pas de ponçage à sec), gestion des déchets en filière dédiée.",
+          "klaro_recommendation": "Méthodes recommandées : décapage chimique (gel bloqueur), grattage à l'humide. INTERDIT : ponçage à sec, décapage thermique (vapeurs toxiques). Enfants et femmes enceintes éloignés. Nettoyage poussières au chiffon humide à usage unique. Déchets emballés et étiquetés. Pour grandes surfaces : pro spécialisé.",
+          "common_mistake": "Décaper la peinture au pistolet thermique — vaporisation du plomb, intoxication aiguë de l'opérateur et des occupants.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_004"],
+          "norm_reference": "Code santé publique + Code travail",
+          "control_questions": [
+            { "question": "Si plomb : précautions strictes mises en place (confinement, EPI P3, méthodes humides) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_007",
+          "title": "Repérer les réseaux encastrés (élec, eau, gaz, VMC)",
+          "phase": "diagnostic_obligatoire",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Avant tout percement / démolition : détecter les canalisations cachées (élec, gaz, eau, chauffage, VMC). Détecteur multi-matériaux + récupération des plans si disponibles.",
+          "klaro_recommendation": "Détecteur multi-matériaux (Bosch GMS 120 ou similaire, ~80 €). Coupe-courant de la zone. Recherche plans aux archives mairie ou copropriété. Si bâtiment ancien sans plans : sondage progressif au foret fin avant gros percement. Marquez les zones à risque au crayon. Photographiez le repérage.",
+          "common_mistake": "Démolir 'à l'aveugle' dans un mur — câble électrique sectionné (court-circuit, électrocution), canalisation gaz percée (explosion), tuyau d'eau percé (dégât des eaux).",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["demo_001"],
+          "norm_reference": "NF C 15-100 + DTU 60.1",
+          "control_questions": [
+            { "question": "Détection des réseaux encastrés effectuée et photographiée ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_008",
+          "title": "DT-DICT pour démolition extérieure avec terrassement",
+          "phase": "diagnostic_obligatoire",
+          "applies_to_demo_type": ["petit_ouvrage_exterieur", "terrasse_dalle_existante"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "DT (Déclaration de Travaux) sur www.reseaux-et-canalisations.gouv.fr : GRATUIT et OBLIGATOIRE avant tout creusement, particulier inclus. Identifie tous les exploitants de réseaux à proximité.",
+          "klaro_recommendation": "Démarche en ligne gratuite, ~15 min. Vous recevez la liste des exploitants à contacter (gaz, élec HT, eau, fibre, télécom). Récépissés DT à conserver. Délai 7-15 jours avant les travaux. SANS DT : sanctions pénales en cas d'accident, responsabilité civile illimitée pour dommages causés.",
+          "common_mistake": "Démarrer le terrassement 'pour creuser un peu' sans DT — câble fibre coupé = jusqu'à 1-2 millions € de dommages, gaz = explosion possible.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["dt_dict_recepissee"],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_001"],
+          "norm_reference": "Décret 2011-1241 + Construire Sans Détruire",
+          "control_questions": [
+            { "question": "DT-DICT effectuée et récépissés reçus ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_009",
+          "title": "Diagnostic PEMD si bâtiment > 1000 m² ou usage spécifique",
+          "phase": "diagnostic_obligatoire",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Diagnostic Produits Matériaux Déchets (PEMD) obligatoire pour bâtiments > 1000 m² ou certains usages (industriel, agricole, tertiaire). Identifie les matériaux pour réemploi/recyclage et leurs filières.",
+          "klaro_recommendation": "Diagnostiqueur PEMD certifié. Identifie les matériaux selon 4 catégories (réemploi, recyclage, valorisation énergétique, élimination). Permet d'optimiser la gestion des déchets et de valoriser le réemploi. Pour maison individuelle < 1000 m² : non obligatoire mais recommandé pour gros chantier.",
+          "common_mistake": "Démolir > 1000 m² sans PEMD — non conforme, refus filières, sanctions.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": ["pemd_diagnostic"],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_001"],
+          "norm_reference": "Loi AGEC + Décret 2021-822",
+          "control_questions": []
+        },
+        {
+          "id": "demo_010",
+          "title": "Vérifier la présence d'espèces protégées",
+          "phase": "diagnostic_obligatoire",
+          "applies_to_demo_type": ["petit_ouvrage_exterieur", "cheminee", "faux_plafond"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Chauves-souris, hirondelles, certains rongeurs (loirs, fouines) en zones rurales : espèces protégées au titre du Code de l'environnement. Période d'intervention restreinte selon protection.",
+          "klaro_recommendation": "Inspection visuelle des combles, cheminées, cabanons (traces de présence : guano, plumes, traces). Si nidification : intervention possible uniquement HORS période de reproduction (généralement avril-août interdit pour chauves-souris et hirondelles). Contact LPO ou DREAL si doute. Sanctions importantes en cas de destruction d'espèce protégée.",
+          "common_mistake": "Démolir une cheminée en mai avec colonie d'hirondelles — destruction d'espèce protégée, sanctions pénales.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_001"],
+          "norm_reference": "Code environnement L411-1 + Arrêtés espèces protégées",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "preparation_administrative",
+      "label": "Préparation administrative",
+      "tasks": [
+        {
+          "id": "demo_011",
+          "title": "Vérifier obligations urbanisme en mairie",
+          "phase": "preparation_administrative",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "PLU local, secteur sauvegardé, périmètre ABF (500 m d'un monument classé), site patrimonial remarquable. Selon zone : permis de démolir, déclaration préalable, autorisation spéciale.",
+          "klaro_recommendation": "Service urbanisme de la mairie (gratuit). Demandez un certificat d'urbanisme (CU) pour avoir l'inventaire complet. En zone protégée : restrictions importantes possibles (façade conservée, matériaux imposés). Pour démolition intérieure dans logement : généralement pas d'obligation, mais vérifiez.",
+          "common_mistake": "Démolir une cheminée patrimoniale en zone ABF sans autorisation — sanctions, obligation de reconstruire à l'identique.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_001"],
+          "norm_reference": "Code urbanisme",
+          "control_questions": [
+            { "question": "Obligations urbanisme vérifiées en mairie ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_012",
+          "title": "Demander permis de démolir si requis",
+          "phase": "preparation_administrative",
+          "applies_to_demo_type": ["mur_porteur_partiel", "petit_ouvrage_exterieur", "cheminee"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Permis de démolir obligatoire pour : démolition significative (> 5 m² en zone protégée), démolition totale, modification structurelle visible (cheminée, ouvrage extérieur). Délai instruction 2 mois.",
+          "klaro_recommendation": "Formulaire CERFA 13405. Dossier avec plans, photos, descriptif. Délai 2 mois. Affichage obligatoire pendant les travaux. Recours des tiers : 2 mois après affichage. Sans permis quand requis : démolition illégale, obligation de reconstruire à l'identique + amende.",
+          "common_mistake": "Démolir une cheminée extérieure visible de la rue sans permis — sanctions et obligation de reconstruire.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["permis_demolir"],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_011"],
+          "norm_reference": "Code urbanisme R421-26 à R421-29",
+          "control_questions": [
+            { "question": "Permis de démolir obtenu si requis ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_013",
+          "title": "Bâtiment classé/inscrit MH : autorisation ABF/DRAC",
+          "phase": "preparation_administrative",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["classe_inscrit_mh", "perimetre_abf"],
+          "explanation": "Bâtiment classé Monument Historique : autorisation spéciale du Ministère de la Culture / DRAC obligatoire AVANT toute intervention. Bâtiment inscrit ou en périmètre ABF : avis ABF obligatoire.",
+          "klaro_recommendation": "Service patrimoine de la DRAC pour les classés. Architecte des Bâtiments de France (ABF) pour les inscrits et périmètres. Délais longs (4-6 mois pour classés). Restrictions strictes (matériaux d'origine, techniques traditionnelles). Sanctions pénales sévères en cas d'intervention sans autorisation. Architecte du patrimoine fortement recommandé.",
+          "common_mistake": "Démolir une cheminée en pierre dans une maison du XVIIIe sans autorisation DRAC — sanctions pénales lourdes, obligation de reconstruire à l'identique avec matériaux d'origine.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["accord_abf"],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_011"],
+          "norm_reference": "Code patrimoine L621-1 + L621-30",
+          "control_questions": [
+            { "question": "Autorisation ABF/DRAC obtenue si bâtiment classé/inscrit/ABF ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_014",
+          "title": "Copropriété : accord AG si parties communes",
+          "phase": "preparation_administrative",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["copropriete"],
+          "explanation": "En copropriété : démolition touchant aux parties communes (mur porteur, façade, plancher partagé, gaine technique commune) = accord AG obligatoire (majorité variable selon nature).",
+          "klaro_recommendation": "Demande écrite au syndic avec descriptif et plans. Inscription à l'ordre du jour AG. Vote selon majorité (article 24 entretien, 25 amélioration, 26 modification importante). Conservez le PV d'AG. Sans accord : annulation possible, remise en état aux frais du copropriétaire.",
+          "common_mistake": "Casser un mur porteur en copropriété sans vote AG — copropriétaires peuvent obtenir reconstruction.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["accord_copropriete"],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Loi 10 juillet 1965 + Code copropriété",
+          "control_questions": [
+            { "question": "Si copropriété : vote AG obtenu et PV archivé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_015",
+          "title": "Assurance dommage-ouvrage si démolition structurelle",
+          "phase": "preparation_administrative",
+          "applies_to_demo_type": ["mur_porteur_partiel", "cheminee"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Démolition structurelle dans bâtiment occupé (mur porteur, cheminée, plancher) = travaux affectant la solidité. Assurance dommage-ouvrage (DO) obligatoire pour le particulier maître d'ouvrage.",
+          "klaro_recommendation": "3 devis d'assurance DO (~3-5% du montant des travaux). Joignez : devis détaillé, attestation décennale entreprise, étude BET, plans. Sans DO : revente du bien sous 10 ans = obligation d'informer l'acheteur, vente compromise. La DO suit le bien, pas le propriétaire.",
+          "common_mistake": "Considérer la DO 'optionnelle' pour économiser — en cas de sinistre, recours individuel contre l'entreprise (long, parfois insolvable).",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["assurance_do"],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Loi Spinetta 1978 + Code assurances L242-1",
+          "control_questions": [
+            { "question": "Assurance DO souscrite avant ouverture chantier (attestation jointe) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_016",
+          "title": "Prévenir le voisinage",
+          "phase": "preparation_administrative",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["copropriete", "all"],
+          "explanation": "Information préalable du voisinage : nature des travaux, dates, plages horaires, durée prévisionnelle, nuisances attendues (bruit, poussière). Charte de bon voisinage évite la plupart des conflits.",
+          "klaro_recommendation": "Lettre ou message dans boîtes aux lettres voisines 1-2 semaines avant. Plages horaires respectées (généralement 8h-12h / 14h-19h en semaine, samedi limité, dimanche interdit). Affichage en hall d'immeuble en copropriété. Vos coordonnées en cas de plainte. Bonne relation = absence de procédures.",
+          "common_mistake": "Démolir sans prévenir le voisinage — plaintes en mairie, conciliation, parfois procédure judiciaire pour nuisances.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code de la santé publique R1334-30 (bruit)",
+          "control_questions": []
+        },
+        {
+          "id": "demo_017",
+          "title": "Autorisation occupation domaine public si benne",
+          "phase": "preparation_administrative",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Benne sur trottoir / voirie = occupation du domaine public. Autorisation préalable de la mairie obligatoire (arrêté de voirie). Taxe d'occupation parfois applicable.",
+          "klaro_recommendation": "Demande en mairie 2-3 semaines avant. Coût ~30-100 €/jour selon commune. Signalisation obligatoire (cônes, panneaux, gyrophare nuit). Protection du sol pour éviter dégâts au revêtement public. Sans autorisation : amende et obligation de retirer la benne.",
+          "common_mistake": "Poser une benne sur le trottoir sans autorisation — amende immédiate + retrait obligatoire.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code voirie + Arrêté municipal",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "etude_structure_si_porteur",
+      "label": "Étude de structure (si élément porteur)",
+      "tasks": [
+        {
+          "id": "demo_018",
+          "title": "Modification élément porteur : étude BET obligatoire",
+          "phase": "etude_structure_si_porteur",
+          "applies_to_demo_type": ["mur_porteur_partiel", "cheminee"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Toute modification d'élément porteur (mur, refend, plancher, linteau structurel, cheminée structurelle) impose une étude par charpentier qualifié ou Bureau d'Études Structure (BET). Plan d'exécution + calculs justificatifs.",
+          "klaro_recommendation": "Devis BET ~800-3000 € selon complexité. Le BET produit : note de calcul, plan d'exécution coffrage et armatures du linteau de remplacement, mode d'étaiement provisoire, sollicitations à reprendre. Sans BET, aucun assureur DO ne couvre, aucune décennale ne tient. Conservez le rapport 10 ans.",
+          "common_mistake": "Vouloir économiser le BET et 'demander conseil à un maçon' — pas de note de calcul, pas de plans signés, pas d'assurance, responsabilité pénale en cas de sinistre.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_001"],
+          "norm_reference": "Eurocode 2 + Eurocode 6 + DTU 20.1",
+          "control_questions": [
+            { "question": "Étude BET réalisée et plan d'exécution joint ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_019",
+          "title": "Récupérer le rapport BET complet",
+          "phase": "etude_structure_si_porteur",
+          "applies_to_demo_type": ["mur_porteur_partiel", "cheminee"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Rapport BET complet : note de calcul, dimensions exactes du linteau de remplacement, sections d'acier, mode d'étaiement, sollicitations, plans cotés.",
+          "klaro_recommendation": "Vérifiez à réception : signé par ingénieur, daté, références d'assurance professionnelle. Doit comporter plans cotés et bordereaux d'aciers. Conservez 10 ans (durée garantie décennale). Joignez à votre dossier Klaro et à l'assureur DO.",
+          "common_mistake": "Recevoir un BET incomplet et démarrer la démolition — pas de plan d'exécution = démolition à l'aveugle, conformité non garantie.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_018"],
+          "norm_reference": "Eurocode 2 + Eurocode 6",
+          "control_questions": [
+            { "question": "Rapport BET complet avec plans + note de calcul + dimensionnement linteau ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_020",
+          "title": "Identifier les murs porteurs sur les plans",
+          "phase": "etude_structure_si_porteur",
+          "applies_to_demo_type": ["cloison_maconnee_non_porteuse", "mur_porteur_partiel", "cheminee"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Localisez les murs porteurs sur les plans d'origine (souvent 20-30 cm d'épaisseur pour porteur en pierre, 15-20 cm en parpaing/béton). À défaut de plans : sondage et BET obligatoires. NE JAMAIS supposer 'ce mur n'a pas l'air porteur'.",
+          "klaro_recommendation": "Plans en mairie (archives), notaire, ancien propriétaire, syndic en copropriété. Indices visuels : direction des solives au plafond (les solives reposent sur les porteurs), épaisseur du mur, présence de chaînages aux angles. SANS plans + sans BET = démolition impossible.",
+          "common_mistake": "'Casser un mur fin pour ouvrir le séjour' sans étude — c'est souvent un porteur de refend, effondrement partiel possible.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_018"],
+          "norm_reference": "Eurocode 6 + DTU 20.1",
+          "control_questions": [
+            { "question": "Murs porteurs identifiés sur plans ou par BET ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_021",
+          "title": "Témoins de fissures sur fissures existantes",
+          "phase": "etude_structure_si_porteur",
+          "applies_to_demo_type": ["mur_porteur_partiel", "cheminee"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Avant démolition, repérez les fissures existantes et posez des témoins (jauges plâtre datées, jauges métriques transparentes). Suivi avant/pendant/après pour détecter une aggravation.",
+          "klaro_recommendation": "Témoins en plâtre (cordon plâtré sur la fissure, daté au feutre) ou jauges transparentes graduées vendues en magasin de bricolage. Photographiez chaque fissure datée + témoin. Surveillez l'évolution. Si fissure qui s'élargit pendant la démolition = arrêt immédiat et appel BET.",
+          "common_mistake": "Démarrer la démolition sans repérer les fissures existantes — impossible de prouver ensuite que la fissure préexistait, litige avec voisin/copropriété.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 20.1 + Bonnes pratiques",
+          "control_questions": [
+            { "question": "Témoins de fissures posés et photographiés AVANT démolition ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "securite_fluides_consignation",
+      "label": "Sécurité fluides & consignation",
+      "tasks": [
+        {
+          "id": "demo_022",
+          "title": "Couper et consigner l'alimentation électrique",
+          "phase": "securite_fluides_consignation",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Coupure générale au tableau du circuit concerné. Consignation = vanne fermée + cadenas + étiquette 'Travaux en cours, ne pas réenclencher'. Empêche un tiers de remettre sous tension par erreur.",
+          "klaro_recommendation": "Coupure du disjoncteur dédié au tableau. Cadenas avec clé personnelle. Étiquette claire avec date et nom. Photo du tableau cadenassé. En copropriété : informez les voisins en cas de circuit partagé. Sans consignation : risque réenclenchement par autre occupant = électrocution mortelle.",
+          "common_mistake": "Couper le disjoncteur sans cadenas — un autre occupant peut réenclencher 'pour vérifier', électrocution.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["consignation_fluides_photo"],
+          "photo_required_before_validation": true,
+          "depends_on": [],
+          "norm_reference": "NF C 18-510 + Code travail",
+          "control_questions": [
+            { "question": "Disjoncteur coupé, cadenassé, étiqueté et photographié ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_023",
+          "title": "Vérification absence de tension (VAT)",
+          "phase": "securite_fluides_consignation",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "VAT = test avec testeur certifié sur tous les circuits avant intervention. Confirme l'absence de tension malgré la consignation (un câble peut rester sous tension par erreur de bornage).",
+          "klaro_recommendation": "VAT (Vérificateur d'Absence de Tension) NF EN 61243-3 (~30-80 €). Test sur chaque câble avant manipulation. Vérifiez d'abord le bon fonctionnement du VAT sur une source connue, puis testez les câbles à vérifier, puis re-testez sur la source connue. Si tension présente malgré la consignation : appelez un électricien.",
+          "common_mistake": "Couper le disjoncteur sans VAT — un câble peut rester sous tension par erreur de bornage, électrocution.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_022"],
+          "norm_reference": "NF C 18-510 + NF EN 61243-3",
+          "control_questions": [
+            { "question": "VAT effectuée sur chaque circuit avant intervention ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_024",
+          "title": "Couper l'arrivée de gaz si présente",
+          "phase": "securite_fluides_consignation",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Si présence de gaz : couper la vanne au compteur, consigner. Vérifier l'absence de gaz résiduel par odeur. Pour intervention proche du compteur ou des canalisations : coupure GRDF préférable.",
+          "klaro_recommendation": "Vanne quart de tour au compteur (perpendiculaire à la canalisation = fermée). Consignation par étiquette + scotch sur la vanne. Si manipulation sur réseau gaz : pro Qualigaz obligatoire (cf. module Chauffage). Aération de la pièce avant intervention. Détecteur portable de gaz si doute.",
+          "common_mistake": "Démolir une cloison contenant une canalisation gaz sans coupure — fuite possible, explosion.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": [],
+          "norm_reference": "DTU 61.1 + Arrêté 2 août 1977",
+          "control_questions": [
+            { "question": "Gaz coupé au compteur, consigné, photographié ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_025",
+          "title": "Couper l'arrivée d'eau et vidanger",
+          "phase": "securite_fluides_consignation",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Coupure de la vanne d'arrêt général. Vidange du réseau concerné par ouverture des robinets aval (purger). Évite les fuites lors de la démolition d'une cloison contenant des canalisations.",
+          "klaro_recommendation": "Vanne d'arrêt général repérée à l'avance (souvent en sous-sol, garage, ou local technique). Purge des robinets aval pour vider les tubes. Photographiez la vanne fermée. Pour vidange complète : ouvrir le robinet le plus bas du réseau. En copropriété : prévenez si circuit partagé.",
+          "common_mistake": "Démolir une cloison avec canalisation d'eau sans coupure — dégât des eaux, parfois dans le logement du voisin du dessous.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": [],
+          "norm_reference": "DTU 60.1 + DTU 60.11",
+          "control_questions": [
+            { "question": "Eau coupée, réseau vidangé, photographié ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_026",
+          "title": "Reporter sur photo les circuits dans la zone à démolir",
+          "phase": "securite_fluides_consignation",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Photographier et noter sur plan tous les circuits, canalisations, gaines passant dans la zone à démolir. Sert de preuve pour évaluation des coûts de réfection ultérieure et de protection juridique.",
+          "klaro_recommendation": "Photos générales + détails des passages électriques, plomberie, VMC, chauffage. Tracer sur plan annoté la position de chaque réseau. Si réseaux à conserver : marquage clair pour ne pas les sectionner. Photos avec date EXIF, archivées numériquement.",
+          "common_mistake": "Démolir sans photographier les réseaux préexistants — impossible de reconstruire à l'identique ou d'évaluer les modifications.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["demo_007"],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": [
+            { "question": "Tous les réseaux dans la zone photographiés et reportés sur plan ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preparation_chantier_protection",
+      "label": "Préparation du chantier & protection",
+      "tasks": [
+        {
+          "id": "demo_027",
+          "title": "Vider la zone de tout mobilier réutilisable",
+          "phase": "preparation_chantier_protection",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Évacuation préalable de tout mobilier, équipement, objet de valeur. Évite la casse et la poussière qui s'incruste. Stockage dans une autre pièce ou en garde-meuble.",
+          "klaro_recommendation": "Démontage des éléments fragiles (lustres, étagères murales, miroirs). Stockage à l'écart de la zone de travail. Pour objets de valeur : retirez du logement pendant les travaux (risque vol et poussière). Inventaire photographié pour assurance.",
+          "common_mistake": "Laisser des objets dans la pièce 'pour gagner du temps' — casse, vol ou poussière incrustée définitivement.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": []
+        },
+        {
+          "id": "demo_028",
+          "title": "Confiner la zone si logement occupé",
+          "phase": "preparation_chantier_protection",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Si logement occupé pendant travaux : confinement strict de la zone (bâches, sas plastique, scotch périphérique). Empêche la poussière de se propager dans les autres pièces (silice, plomb si bâtiment ancien).",
+          "klaro_recommendation": "Bâches plastiques 100-200 microns sur le sol et fermant la zone (porte d'entrée à la zone). Sas avec deux rideaux (entrée propre, sortie sale). Scotch d'étanchéité sur les portes voisines. Aspirateur HEPA pour le nettoyage. Pour amiante/plomb : confinement spécialisé par entreprise certifiée.",
+          "common_mistake": "Démolir sans confinement dans un logement occupé — poussière partout, dans les meubles, dans les vêtements, dans les voies respiratoires.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_027"],
+          "norm_reference": "Code travail R4222 + Bonnes pratiques",
+          "control_questions": []
+        },
+        {
+          "id": "demo_029",
+          "title": "Protéger les éléments conservés",
+          "phase": "preparation_chantier_protection",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Protection des éléments conservés (sols, menuiseries, escalier, mobilier intégré, équipements) avec bâches et plaques rigides. Évite les rayures et les chocs.",
+          "klaro_recommendation": "Plaques de carton ondulé épais (2-3 cm) sur les sols sensibles (parquet, carrelage). Bâches plastiques épaisses fixées au scotch. Plaques de bois (CP 5 mm) sur les sols très sollicités. Protection des plinthes, encadrements, escaliers (planches vissées). Démontez les éléments fragiles si possible.",
+          "common_mistake": "Bâche fine et glissante sur parquet — dégâts au passage des brouettes, rayures profondes.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": []
+        },
+        {
+          "id": "demo_030",
+          "title": "Préparer EPI complets",
+          "phase": "preparation_chantier_protection",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Casque coquard EN 397, lunettes de protection, gants anti-coupure, chaussures de sécurité S3 (semelle anti-perforation, embout coqué), masque FFP3 OBLIGATOIRE (poussières silice/béton/plâtre), protection auditive, harnais si chute possible.",
+          "klaro_recommendation": "Masque FFP3 (pas FFP2) pour démolition (silice cristalline = silicose, cancérigène avéré). Protection auditive (EN 352) pour disqueuse, marteau-piqueur, etc. Chaussures S3 norme EN ISO 20345. Gants anti-coupure niveau 5. Lunettes monoblocs étanches. EPI complets coûtent ~150-300 €.",
+          "common_mistake": "Démolir sans masque ou avec FFP2 — exposition silice, silicose à terme (maladie professionnelle reconnue).",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code travail R4321-1 + EN 397/S3/FFP3",
+          "control_questions": [
+            { "question": "EPI complets en place (casque, S3, gants, lunettes, FFP3, audio) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_031",
+          "title": "Zone amiante/plomb : EPI renforcés ou pro",
+          "phase": "preparation_chantier_protection",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["avant_1949", "1949_1997"],
+          "applies_to_context": ["all"],
+          "explanation": "Pour zones suspectes amiante/plomb : EPI renforcés (combinaison jetable type 5/6, masque P3 à filtres, gants étanches, sas de décontamination) — sinon entreprise certifiée. Particulier interdit pour amiante.",
+          "klaro_recommendation": "Combinaison Tyvek jetable type 5/6 (étanche aux fibres). Masque à filtre P3 (pas FFP3 simple). Sas de décontamination : zone d'enlèvement des EPI souillés. Douche obligatoire après intervention. Pour amiante : INTERDIT au particulier — entreprise SS3/SS4 obligatoire.",
+          "common_mistake": "Manipuler de l'amiante avec FFP3 standard — fibres qui passent au moindre défaut, exposition mortelle à long terme.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["entreprise_certifiee_amiante"],
+          "photo_required_before_validation": false,
+          "depends_on": ["demo_005"],
+          "norm_reference": "Code travail R4412-94 à R4412-148",
+          "control_questions": [
+            { "question": "Si amiante/plomb : entreprise certifiée engagée OU EPI renforcés P3 ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "demo_032",
+          "title": "Préparer les outils adaptés",
+          "phase": "preparation_chantier_protection",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Outils selon nature de la démolition : perforateur (béton, parpaing), marteau-piqueur électrique ou pneumatique (gros volumes), disqueuse (découpe métal/béton), scie sabre (placo, bois), masse, pied-de-biche, ciseau à brique.",
+          "klaro_recommendation": "Disques diamant pour disqueuse (béton, brique). Lames métal pour scie sabre. Mèches béton + percussion pour perforateur. Vérifiez l'état avant utilisation (fissure disque = projection mortelle). Location des gros outils si usage ponctuel (perforateur ~25 €/jour, marteau-piqueur ~50 €/jour).",
+          "common_mistake": "Disque émoussé ou fissuré sur disqueuse — projection violente, blessure grave.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code travail R4323-91",
+          "control_questions": []
+        },
+        {
+          "id": "demo_033",
+          "title": "Éclairage de chantier puissant",
+          "phase": "preparation_chantier_protection",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Lumière naturelle souvent insuffisante en démolition (poussière + zones sombres). Éclairage de chantier puissant (LED ~2000-5000 lumens) pour bien voir l'élément à démolir et anticiper les surprises.",
+          "klaro_recommendation": "Projecteur LED de chantier sur trépied (50-100 W = 5000-10000 lumens). Multi-prises pour alimentation sur circuit non coupé. Lampe frontale en complément. Bonne visibilité = travail plus précis et plus sûr.",
+          "common_mistake": "Démolir dans la pénombre — coupures, ratés, blessures.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code travail R4223-2",
+          "control_questions": []
+        },
+        {
+          "id": "demo_034",
+          "title": "Brumisateur/pulvérisateur pour humidification",
+          "phase": "preparation_chantier_protection",
+          "applies_to_demo_type": ["all"],
+          "applies_to_age": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Humidification continue PENDANT la démolition limite la dispersion de poussière (silice, plâtre, plomb). OBLIGATOIRE pour limiter l'exposition silice (silicose = maladie professionnelle reconnue).",
+          "klaro_recommendation": "Pulvérisateur à pression (5-10 L) ou brumisateur de chantier. Eau pulvérisée sur la zone juste avant et pendant la démolition. Pas de jets puissants (pourrait propulser des fragments). Pour amiante : confinement humide obligatoire par entreprise certifiée. Sans humidification : poussière qui reste en suspension des heures.",
+          "common_mistake": "Démolir à sec — nuage de poussière respirée, silicose à terme + voisinage exposé.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code travail R4222 + Bonnes pratiques silice",
+          "control_questions": [
+            { "question": "Pulvérisateur/brumisateur prêt pour humidification continue ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    }
+  ]
+}
