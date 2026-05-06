@@ -1444,6 +1444,870 @@
           ]
         }
       ]
+    },
+    {
+      "id": "assainissement_non_collectif",
+      "label": "Assainissement non collectif",
+      "tasks": [
+        {
+          "id": "vrd_073",
+          "title": "Faire dimensionner la filière par un pro",
+          "phase": "assainissement_non_collectif",
+          "applies_to_project_type": ["assainissement_non_collectif"],
+          "applies_to_raccordement": ["assainissement_non_collectif"],
+          "applies_to_rga": ["all"],
+          "explanation": "Dimensionnement par bureau d'études ANC selon : nature du sol (perméabilité, étude G1+G2), nombre d'occupants (1 EH = 100 L/j), surface disponible, contraintes locales.",
+          "klaro_recommendation": "Bureau d'études certifié (~800-1500 €). Étude de sol pédologique (test de perméabilité K). Filière selon perméabilité : épandage classique si sol perméable, filtre à sable si sol peu perméable, filtre compact pour terrain restreint, micro-station si peu d'espace. Plan de la filière.",
+          "common_mistake": "Filière improvisée sans dimensionnement — non conforme SPANC, démolition + nouveau dossier.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["autorisation_spanc"],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_008"],
+          "norm_reference": "DTU 64.1 + Arrêté 7 sept. 2009",
+          "control_questions": [
+            { "question": "Filière dimensionnée par bureau d'études certifié ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_074",
+          "title": "Installer la fosse toutes eaux",
+          "phase": "assainissement_non_collectif",
+          "applies_to_project_type": ["assainissement_non_collectif"],
+          "applies_to_raccordement": ["assainissement_non_collectif"],
+          "applies_to_rga": ["all"],
+          "explanation": "Fosse toutes eaux : volume adapté au nombre d'occupants (3000 L pour 5 EH courant). Pente d'arrivée 2-4%. Ventilation primaire en sortie de toit obligatoire (évacuation des gaz).",
+          "klaro_recommendation": "Fosse béton ou polyéthylène selon préférence. Pose sur lit de sable 10 cm + remblai compacté autour. Niveau parfaitement horizontal (vérifié au laser). Ventilation primaire (Ø 100 mm) en sortie de toit (gaz d'égout). Trappes de visite accessibles. Coût fosse 3000 L : ~800-2000 €.",
+          "common_mistake": "Pas de ventilation primaire — gaz qui remontent dans la maison, odeurs persistantes.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["autorisation_spanc"],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_073"],
+          "norm_reference": "DTU 64.1",
+          "control_questions": [
+            { "question": "Fosse posée niveau, raccords étanches, ventilation primaire en toit ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_075",
+          "title": "Mettre en place le filtre",
+          "phase": "assainissement_non_collectif",
+          "applies_to_project_type": ["assainissement_non_collectif"],
+          "applies_to_raccordement": ["assainissement_non_collectif"],
+          "applies_to_rga": ["all"],
+          "explanation": "Filtre selon dimensionnement : sable (épandage à faible profondeur), zéolithe (filtre vertical compact), filtre compact (faible emprise), micro-station (traitement biologique aérobie).",
+          "klaro_recommendation": "Suivez le plan de la filière à la lettre. Granulométrie sable conforme (0,5-2 mm calibré). Géotextile entre couches. Drains d'épandage à plat avec recouvrement spécifique. Pour micro-station : raccordement électrique selon notice. Photographiez chaque couche AVANT recouvrement.",
+          "common_mistake": "Sable non conforme ou couches mal posées — traitement insuffisant, pollution du sol.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["autorisation_spanc"],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_074"],
+          "norm_reference": "DTU 64.1 + Arrêté 7 sept. 2009",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_076",
+          "title": "Réaliser l'épandage ou exutoire",
+          "phase": "assainissement_non_collectif",
+          "applies_to_project_type": ["assainissement_non_collectif"],
+          "applies_to_raccordement": ["assainissement_non_collectif"],
+          "applies_to_rga": ["all"],
+          "explanation": "Épandage : tranchées d'infiltration de 60-80 cm de large, profondeur 60-80 cm, longueur selon dimensionnement. Lit (en sable filtrant). Micro-station : rejet en milieu hydraulique superficiel ou infiltration avec autorisation.",
+          "klaro_recommendation": "Tranchées espacées de 1,5 m minimum, longueur cumulée selon dimensionnement (~25 m pour 5 EH en sol moyen). Pente quasi nulle (étalement uniforme). Géotextile en couverture des drains. Coût filière complète : 6000-15000 € selon technique.",
+          "common_mistake": "Épandage sous-dimensionné ou en sol imperméable — débordement, pollution, non-conformité.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["autorisation_spanc"],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_075"],
+          "norm_reference": "DTU 64.1",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_077",
+          "title": "Validation SPANC AVANT remblai (visite obligatoire)",
+          "phase": "assainissement_non_collectif",
+          "applies_to_project_type": ["assainissement_non_collectif"],
+          "applies_to_raccordement": ["assainissement_non_collectif"],
+          "applies_to_rga": ["all"],
+          "explanation": "Visite de conformité du SPANC OBLIGATOIRE avant remblai de la filière. Vérification : conformité au dossier, étanchéité fosse, granulométrie filtre, niveaux, raccordements.",
+          "klaro_recommendation": "Demande de visite SPANC après pose et avant remblai (délai 1-2 semaines). Coût ~100-200 €. Si non conforme : reprise obligatoire avant remblai. PV de conformité OBLIGATOIRE pour clore le dossier. Photos détaillées de la filière en place.",
+          "common_mistake": "Remblayer sans validation SPANC — non-conformité, démolition + amende, nouvelle filière à refaire.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["autorisation_spanc"],
+          "photo_required_before_validation": true,
+          "depends_on": ["vrd_076"],
+          "norm_reference": "DTU 64.1 + Arrêté 27 avril 2012",
+          "control_questions": [
+            { "question": "Visite SPANC effectuée AVANT remblai et PV de conformité reçu ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "recuperation_eau_pluie",
+      "label": "Récupération d'eau de pluie",
+      "tasks": [
+        {
+          "id": "vrd_078",
+          "title": "Choisir l'usage (extérieur ou intérieur)",
+          "phase": "recuperation_eau_pluie",
+          "applies_to_project_type": ["recuperation_eau_pluie"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Usage EXTÉRIEUR (arrosage, lavage voiture) : pas de déclaration. Usage INTÉRIEUR (WC, lave-linge) : déclaration mairie obligatoire selon arrêté du 21 août 2008. Double réseau strictement séparé du réseau eau potable.",
+          "klaro_recommendation": "Usage extérieur seul : 80% des installations particuliers, simple et sans formalité. Usage intérieur : économie potentielle plus importante mais réglementation plus stricte (compteur, signalétique, disconnecteur). Évaluez le ratio coût/économie selon votre consommation.",
+          "common_mistake": "Faire un branchement intérieur sans déclaration ni double réseau — contamination réseau public possible, sanctions sévères.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_009"],
+          "norm_reference": "Arrêté 21 août 2008",
+          "control_questions": [
+            { "question": "Usage défini (extérieur ou intérieur) et déclaration faite si intérieur ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_079",
+          "title": "Dimensionner la cuve",
+          "phase": "recuperation_eau_pluie",
+          "applies_to_project_type": ["recuperation_eau_pluie"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Volume de cuve = 5 à 10% de la pluviométrie annuelle × surface de toiture × coefficient de récupération (0,8). Exemple : 100 m² toiture × 800 mm pluie × 0,8 = 64 m³/an, cuve 3-6 m³ courant.",
+          "klaro_recommendation": "Calcul selon surface toiture, pluviométrie locale et besoins. Trop petite = trop-plein fréquent. Trop grande = surcoût et stagnation. Cuve 3000 L = ~500-800 €, cuve 5000 L = ~800-1500 €. Trop-plein OBLIGATOIRE vers exutoire (réseau EP, infiltration, fossé).",
+          "common_mistake": "Cuve sous-dimensionnée — débordement à chaque pluie, perte de la majorité de l'eau récupérable.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_078"],
+          "norm_reference": "Arrêté 21 août 2008 + Bonnes pratiques",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_080",
+          "title": "Installer la cuve avec filtration et trop-plein",
+          "phase": "recuperation_eau_pluie",
+          "applies_to_project_type": ["recuperation_eau_pluie"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Cuve enterrée (esthétique, T° stable) ou aérienne (économique, accès facile). Filtration en amont (filtre à feuilles entre toiture et cuve). Trop-plein vers exutoire avec siphon anti-rongeurs.",
+          "klaro_recommendation": "Cuve enterrée : décaissement, lit de sable 20 cm, pose, remblai sable compacté autour. Cuve aérienne : socle plan stable, à l'abri du gel si possible. Filtre à feuilles autonettoyant en amont. Trop-plein dimensionné = arrivée (Ø 100 mm). Crépine d'aspiration avec flotteur (eau propre du milieu de la cuve).",
+          "common_mistake": "Pas de filtration en amont — feuilles et débris dans la cuve, dépôts, prolifération bactérienne.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_079"],
+          "norm_reference": "Arrêté 21 août 2008",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_081",
+          "title": "Usage intérieur : double réseau strictement séparé",
+          "phase": "recuperation_eau_pluie",
+          "applies_to_project_type": ["recuperation_eau_pluie"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Pour usage intérieur (WC, lave-linge) : double réseau strictement séparé du réseau d'eau potable. JAMAIS de connexion possible (contamination du réseau public). Signalétique 'eau non potable' OBLIGATOIRE sur tous les points d'usage.",
+          "klaro_recommendation": "Tubes de couleur différente (brun, gris foncé) pour le réseau EP intérieur. Vannes étiquetées 'eau pluie - non potable'. Pictogramme normalisé sur chaque point de puisage. Aucun raccord entre les deux réseaux. Audit possible par autorités sanitaires.",
+          "common_mistake": "Brancher la cuve sur le réseau d'eau potable 'pour secours' — contamination du réseau public, sanctions sévères, risque sanitaire collectif.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_080"],
+          "norm_reference": "Arrêté 21 août 2008 + Code santé publique",
+          "control_questions": [
+            { "question": "Si usage intérieur : double réseau séparé + signalétique sur points d'usage ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_082",
+          "title": "Disconnecteur + compteur si rejet en EU",
+          "phase": "recuperation_eau_pluie",
+          "applies_to_project_type": ["recuperation_eau_pluie"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Disconnecteur OBLIGATOIRE sur l'arrivée d'eau de ville en cas d'appoint au réseau pluvial (anti-retour). Compteur OBLIGATOIRE si rejet en réseau d'eaux usées (taxe d'assainissement applicable).",
+          "klaro_recommendation": "Disconnecteur certifié EA ou BA selon usage. Pose sur l'arrivée d'eau potable AVANT le réseau pluvial intérieur. Compteur d'eau de pluie consommée si rejet en EU (déclaration consommation à la collectivité). Sans disconnecteur : retour possible vers le réseau public, sanctions.",
+          "common_mistake": "Pas de disconnecteur sur l'appoint d'eau de ville — risque retour eau pluie vers réseau public.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_081"],
+          "norm_reference": "Arrêté 30 nov. 2005 + Arrêté 21 août 2008",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "mur_soutenement",
+      "label": "Mur de soutènement",
+      "tasks": [
+        {
+          "id": "vrd_083",
+          "title": "Mur > 1,50 m : étude BET OBLIGATOIRE",
+          "phase": "mur_soutenement",
+          "applies_to_project_type": ["mur_soutenement"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Tout mur de soutènement > 1,50 m de hauteur : étude par Bureau d'Études Structure ou ingénieur OBLIGATOIRE. Calcul de poussée des terres, dimensionnement fondations, sections d'aciers, drainage.",
+          "klaro_recommendation": "Devis BET ~800-3000 € selon complexité. Le BET produit : note de calcul (poussée, stabilité), plan d'exécution (fondation + voile + ferraillage + drainage), spécifications matériaux. Sans étude, aucun assureur DO ne couvre, aucune décennale ne tient. Conservez le rapport 10 ans.",
+          "common_mistake": "Construire un mur de 2 m sans étude — calcul de poussée erroné, basculement à terme, ruine du mur + dégâts terrain voisin.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Eurocode 7 + DTU 20.1",
+          "control_questions": [
+            { "question": "Si mur > 1,50 m : étude BET réalisée et plan d'exécution joint ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_084",
+          "title": "Réaliser une fondation adaptée",
+          "phase": "mur_soutenement",
+          "applies_to_project_type": ["mur_soutenement"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Semelle filante hors gel (60-80 cm), ferraillage selon BET (HA10/12, recouvrement 50ø, enrobage 3 cm), béton C25/30. Largeur de semelle ~50% de la hauteur du mur (selon calcul).",
+          "klaro_recommendation": "Décaissement à la profondeur hors gel + 5 cm pour béton de propreté. Lit de gravier drainant 10 cm. Béton de propreté. Ferraillage selon plan BET (ne JAMAIS improviser sur soutènement). Photographie obligatoire avant coulage. Coulage continu, vibration, talochage.",
+          "common_mistake": "Semelle sous-dimensionnée pour économiser béton — basculement du mur à terme.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_083"],
+          "norm_reference": "Eurocode 2 + Eurocode 7 + DTU 13.11",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_085",
+          "title": "Construire le mur (béton banché, agglos, gabions)",
+          "phase": "mur_soutenement",
+          "applies_to_project_type": ["mur_soutenement"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Techniques selon hauteur et budget : béton banché (le plus courant), agglos à bancher (creux remplis de béton + ferraillage), gabions (cages métalliques remplies de pierres), enrochement (blocs de pierre).",
+          "klaro_recommendation": "Béton banché : coffrage + ferraillage + coulage en hauteurs successives. Agglos à bancher : pose des blocs creux, ferraillage vertical et horizontal, remplissage en béton. Gabions : pose et remplissage de pierres calibrées. Enrochement : blocs > 200 kg, pose technique. Suivez les plans BET strictement.",
+          "common_mistake": "Improviser la technique sans suivre les plans BET — non conforme, ruine.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_084"],
+          "norm_reference": "DTU 20.1 + Eurocode 6/7",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_086",
+          "title": "Drainage à l'arrière du mur (OBLIGATOIRE)",
+          "phase": "mur_soutenement",
+          "applies_to_project_type": ["mur_soutenement"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Drain agricole + gravier 20/40 + géotextile à l'arrière du mur. SANS DRAINAGE = pression hydrostatique = ruine du mur garantie. Erreur la plus fréquente sur soutènement amateur.",
+          "klaro_recommendation": "Drain Ø 100 mm en pied de mur, pente 2-3 ‰ vers exutoire. Gravier 20/40 sur 30-50 cm de hauteur de mur. Géotextile en chaussette autour du drain et entre gravier et terre. Évacuation de l'eau via barbacanes (cf. tâche suivante). Photographiez avant remblai. Sans ce drainage, mur basculé en 5-10 ans.",
+          "common_mistake": "Mur de soutènement sans drainage arrière — pression hydrostatique = ruine en quelques années.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["vrd_085"],
+          "norm_reference": "DTU 14.1 + Eurocode 7",
+          "control_questions": [
+            { "question": "Drain + gravier + géotextile en arrière du mur (photographié) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_087",
+          "title": "Barbacanes pour évacuer l'eau",
+          "phase": "mur_soutenement",
+          "applies_to_project_type": ["mur_soutenement"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Barbacanes = passages dans le mur (Ø 50-100 mm tube PVC) pour évacuer l'eau qui accumule à l'arrière. Espacement 1,5 à 2 m maximum, en partie basse du mur.",
+          "klaro_recommendation": "Tubes PVC Ø 50-100 mm noyés dans le mur lors de la construction. Légère pente vers l'extérieur. Crépine ou géotextile côté arrière (anti-bouchage par les terres). Eau évacuée se collecte au pied de mur dans un caniveau ou exutoire. Sans barbacanes : eau accumulée à l'arrière même avec drain.",
+          "common_mistake": "Mur sans barbacanes — drainage saturé en grande pluie, pression sur le mur.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_086"],
+          "norm_reference": "DTU 20.1 + Eurocode 7",
+          "control_questions": [
+            { "question": "Barbacanes posées tous les 1,5-2 m en partie basse du mur ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "controle_reception",
+      "label": "Contrôle & réception",
+      "tasks": [
+        {
+          "id": "vrd_088",
+          "title": "Vérifier niveaux et pentes finales",
+          "phase": "controle_reception",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Contrôle final à la règle de 2 m + niveau laser : pente régulière vers exutoire (1,5-2% terrasse), planéité globale, contrôle aux 4 coins de l'ouvrage.",
+          "klaro_recommendation": "Vérification croisée (4 directions). Test à l'eau possible (verser un seau, observer écoulement). Tolérances : ≤ 5 mm sous règle 2 m carrelage, ≤ 3 mm grand format. Pente régulière sans contre-pente. Photographiez les contrôles. Si défaut localisé : reprenez avant fin de chantier.",
+          "common_mistake": "Pas de vérification finale des pentes — flaques découvertes à la première pluie, intervention complexe.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_071"],
+          "norm_reference": "DTU 13.3 + DTU 52.1",
+          "control_questions": [
+            { "question": "Niveaux et pentes finales vérifiés au laser ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_089",
+          "title": "Test d'écoulement (50 L vérifier arrivée exutoire)",
+          "phase": "controle_reception",
+          "applies_to_project_type": ["reseaux_enterres", "drainage_peripherique", "assainissement_non_collectif", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Test fonctionnel : verser 50 L d'eau dans le regard amont, vérifier l'arrivée à l'exutoire dans un délai raisonnable (selon longueur et pente). Pas de stagnation intermédiaire.",
+          "klaro_recommendation": "Verser un volume mesuré (50-100 L) dans le regard le plus en amont. Chronométrez et vérifiez l'arrivée à l'exutoire. Inspection visuelle des regards intermédiaires (pas de stagnation, écoulement régulier). Pour réseau plus complexe : caméra d'inspection (location ~150 €/jour) qui produit une vidéo du réseau.",
+          "common_mistake": "Pas de test d'écoulement — défauts cachés découverts à l'usage (bouchon, contre-pente).",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["test_ecoulement_video"],
+          "photo_required_before_validation": true,
+          "depends_on": ["vrd_038"],
+          "norm_reference": "DTU 60.32 + DTU 64.1",
+          "control_questions": [
+            { "question": "Test d'écoulement effectué (50 L verser, écoulement OK) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_090",
+          "title": "Eau potable : test de pression du réseau",
+          "phase": "controle_reception",
+          "applies_to_project_type": ["reseaux_enterres", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Pour réseau d'eau potable enterré : test de pression à 1,5 fois la pression de service pendant 1h minimum. Vérification de l'absence de fuite (chute de pression < 0,3 bar).",
+          "klaro_recommendation": "Pompe de test (location ~30 €/jour) avec manomètre. Bouchonner les points de puisage, mettre sous pression, surveiller. AVANT remblai définitif. Si chute de pression > 0,3 bar : recherche de fuite (audition, papier essuie-tout sur raccords). Photographiez le manomètre stable.",
+          "common_mistake": "Remblayer sans test de pression — fuite découverte plusieurs mois après, casse de la dalle pour intervenir.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_038"],
+          "norm_reference": "DTU 60.11 + DTU 60.32",
+          "control_questions": [
+            { "question": "Test de pression eau potable validé (chute < 0,3 bar/1h) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_091",
+          "title": "Vérifier absence de stagnation après pluie",
+          "phase": "controle_reception",
+          "applies_to_project_type": ["terrasse_sur_dalle", "terrasse_sur_plots", "terrasse_sur_lambourdes_bois", "allee_beton", "allee_paves_dallage", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Test à l'eau ou observation après une pluie réelle : aucune stagnation, écoulement régulier vers exutoire. Si flaques : pente insuffisante ou contre-pente locale.",
+          "klaro_recommendation": "Tuyau d'arrosage simulant une pluie pendant 15-30 min. Observation : eau qui s'écoule vers exutoire, pas de flaques persistantes. Si flaques (2-3 cm d'eau qui restent) : pente insuffisante ou défaut localisé. À reprendre AVANT fin de chantier (carrelage ou pavés à reposer localement).",
+          "common_mistake": "Découvrir des flaques après le départ de l'artisan — reprise compliquée et coûteuse.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_088"],
+          "norm_reference": "DTU 13.3 + DTU 52.1",
+          "control_questions": [
+            { "question": "Aucune stagnation d'eau après simulation pluie 15-30 min ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_092",
+          "title": "Plan de récolement des réseaux enterrés",
+          "phase": "controle_reception",
+          "applies_to_project_type": ["reseaux_enterres", "drainage_peripherique", "assainissement_non_collectif", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Plan as-built avec position EXACTE des réseaux enterrés : coordonnées (X, Y, Z), profondeurs, fluides, tracés réels. INDISPENSABLE pour interventions futures (DT-DICT, réparation).",
+          "klaro_recommendation": "Reportez sur le plan d'origine ou un nouveau plan : tracés précis, profondeurs mesurées, position des regards et tabourets, références (couleur grillage, Ø canalisation). Joignez les photos avant remblai. Numérique + papier. Indispensable pour : sondage futur en sécurité, vente du bien, expertise sinistre.",
+          "common_mistake": "Pas de plan de récolement — toute intervention future commence par un sondage à l'aveugle, parfois dangereuse (gaz, élec).",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["plan_recolement"],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_042"],
+          "norm_reference": "Bonnes pratiques + DT-DICT",
+          "control_questions": [
+            { "question": "Plan de récolement complet (tracés, profondeurs, regards, photos) archivé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_093",
+          "title": "Conserver factures, attestations, plans 10 ans",
+          "phase": "controle_reception",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Conservation OBLIGATOIRE pendant la durée de la garantie décennale (10 ans à partir de la réception). Factures, attestations, fiches techniques, PV de réception, plan de récolement, photos.",
+          "klaro_recommendation": "Dossier 'Travaux Extérieurs/VRD' : papier + numérique (cloud). Documents : devis, factures, attestation décennale, attestation DO, fiches techniques, PV de réception, plan de récolement, photos avant remblai, validations SPANC/concessionnaire. En cas de revente : transmettez le dossier à l'acheteur.",
+          "common_mistake": "Jeter les documents — sinistre 5 ans après, impossible de prouver les conditions de pose, refus assurance.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_092"],
+          "norm_reference": "Code civil 1792 + Loi Spinetta 1978",
+          "control_questions": [
+            { "question": "Dossier complet (factures, attestations, plans, photos) archivé pour 10 ans ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "maintenance",
+      "label": "Maintenance post-travaux",
+      "tasks": [
+        {
+          "id": "vrd_094",
+          "title": "Hydrocurage des évacuations EU/EP tous les 2-5 ans",
+          "phase": "maintenance",
+          "applies_to_project_type": ["reseaux_enterres", "assainissement_non_collectif", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Hydrocurage = nettoyage haute pression des canalisations (graisses cuisine, racines, dépôts). Tous les 2 à 5 ans selon usage. Évite les bouchages.",
+          "klaro_recommendation": "Pro spécialisé hydrocurage. Coût ~200-500 € selon longueur. Plus fréquent si racines à proximité (arbres, haies). Caméra d'inspection en complément si problème récurrent. Conservez les rapports.",
+          "common_mistake": "Réseau jamais hydrocuré — bouchage progressif, intervention en urgence à un moment inopportun.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Bonnes pratiques + DTU 60.32",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_095",
+          "title": "Vérifier le drainage périphérique annuellement",
+          "phase": "maintenance",
+          "applies_to_project_type": ["drainage_peripherique", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Inspection annuelle du drainage : regards (eau qui passe librement), sortie d'exutoire (pas de colmatage), absence de stagnation visible.",
+          "klaro_recommendation": "Inspection après une grosse pluie : eau qui sort à l'exutoire = drainage OK. Si pas d'eau alors qu'il a beaucoup plu : drain colmaté. Nettoyage des regards (feuilles, sédiments). Hydrocurage du drain si nécessaire (~300-500 €).",
+          "common_mistake": "Ignorer le drainage 'parce que c'est invisible' — colmatage progressif, humidité dans la cave.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Bonnes pratiques + DTU 14.1",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_096",
+          "title": "ANC : vidange fosse 4 ans + contrôle SPANC",
+          "phase": "maintenance",
+          "applies_to_project_type": ["assainissement_non_collectif"],
+          "applies_to_raccordement": ["assainissement_non_collectif"],
+          "applies_to_rga": ["all"],
+          "explanation": "Vidange fosse toutes eaux tous les 4 ans environ (50% du volume rempli de boues). Contrôle SPANC tous les 4 à 10 ans selon collectivité.",
+          "klaro_recommendation": "Vidangeur agréé, coût ~150-300 €. BSDA (bordereau suivi déchets) à conserver. Contrôle SPANC périodique : visite, vérification du fonctionnement, rapport. Conservez tous les documents (vidange + SPANC) pour 10 ans.",
+          "common_mistake": "Pas de vidange régulière — saturation de la fosse, débordement, dysfonctionnement filière.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 64.1 + Arrêté 27 avril 2012",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_097",
+          "title": "Terrasse bois : saturateur annuel",
+          "phase": "maintenance",
+          "applies_to_project_type": ["terrasse_sur_lambourdes_bois"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Saturateur (huile pénétrante) appliqué tous les 12 mois sur les lames de terrasse en bois. Sans saturateur : grisaille en 6 mois (UV + humidité), bois qui sèche et fendille.",
+          "klaro_recommendation": "Nettoyage haute pression léger ou brossage à sec avant application. Saturateur incolore ou teinté selon préférence. Application au pinceau ou rouleau, sur lames sèches. 2 couches recommandées. Période idéale : printemps ou automne (T° modérée).",
+          "common_mistake": "Pas d'entretien — terrasse grisâtre en 6 mois, esthétique compromise et durabilité réduite.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 51.4 + Notices fabricants saturateur",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_098",
+          "title": "Carrelage extérieur : démoussage 2-3 ans",
+          "phase": "maintenance",
+          "applies_to_project_type": ["terrasse_sur_dalle", "allee_beton", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Mousse, lichen et dépôts verts sur le carrelage extérieur tous les 2-3 ans. Démoussage par produit antimousse + brossage + rinçage. Sans entretien : surface glissante (chute), dégradation des joints.",
+          "klaro_recommendation": "Antimousse pulvérisé (laisse agir 24-48h), brossage à la brosse dure, rinçage abondant. Pour mousse résistante : nettoyeur haute pression (basse pression sur joints, sinon délitement). Application préventive d'un imperméabilisant tous les 5 ans.",
+          "common_mistake": "Nettoyeur haute pression directement sur joints — joints délités, à refaire.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 52.1 + Bonnes pratiques",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_099",
+          "title": "Refaire les joints extérieurs tous les 5-10 ans",
+          "phase": "maintenance",
+          "applies_to_project_type": ["terrasse_sur_dalle", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Mortier-joint extérieur soumis à gel/dégel + UV : durée de vie 5-10 ans selon exposition. Joints abîmés = infiltrations dans la dalle, dégradation accélérée.",
+          "klaro_recommendation": "Inspection annuelle des joints. Si fissurés ou délités : reprise locale ou complète. Démontage à la lame (couteau japonais), nettoyage, nouveau mortier-joint CG2. Joint silicone neutre aux jonctions souples (mur/terrasse, joints de fractionnement).",
+          "common_mistake": "Joints fissurés non repris — eau qui s'infiltre, dégradation de la dalle dessous.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 52.1",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_100",
+          "title": "Inspecter après gel intense, tempête ou forte pluie",
+          "phase": "maintenance",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Événement climatique fort = inspection visuelle dans les 24-48h : fissures dans la dalle, joints abîmés, gouttières débordantes, écoulement EP correct, mur de soutènement intact.",
+          "klaro_recommendation": "Tour complet de l'extérieur après chaque événement majeur. Photographiez les défauts pour suivi (témoins de fissures). Détection précoce limite les dégâts. Conservez les preuves (photos datées) pour assurance habitation si déclaration de sinistre nécessaire.",
+          "common_mistake": "Attendre une dégradation visible — l'eau a déjà fait des dégâts importants (fondations, drainage).",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": []
+        }
+      ]
     }
-  ]
+  ],
+  "blocking_points": [
+    {
+      "id": "block_001",
+      "message": "Pas de creusement sans DT-DICT validée (récépissé obligatoire).",
+      "blocks_task_id": "vrd_032",
+      "requires_task_id": "vrd_010"
+    },
+    {
+      "id": "block_002",
+      "message": "Pas de tranchée > 1,30 m sans blindage et sans deux personnes minimum.",
+      "blocks_task_id": "vrd_035",
+      "requires_task_id": "vrd_028"
+    },
+    {
+      "id": "block_003",
+      "message": "Pas de remblai avant photos de la tranchée (lit de sable, canalisations, grillage avertisseur).",
+      "blocks_task_id": "vrd_043",
+      "requires_task_id": "vrd_042"
+    },
+    {
+      "id": "block_004",
+      "message": "Pas de canalisation enterrée sans grillage avertisseur 20 cm au-dessus.",
+      "blocks_task_id": "vrd_043",
+      "requires_task_id": "vrd_041"
+    },
+    {
+      "id": "block_005",
+      "message": "Pas d'ANC sans dossier SPANC validé avant travaux et contrôle de conformité avant remblai.",
+      "blocks_task_id": "vrd_073",
+      "requires_task_id": "vrd_008"
+    },
+    {
+      "id": "block_006",
+      "message": "Pas de remblai ANC sans visite SPANC validée.",
+      "blocks_task_id": "vrd_096",
+      "requires_task_id": "vrd_077"
+    },
+    {
+      "id": "block_007",
+      "message": "Pas de terrasse / mur / piscine sans autorisation d'urbanisme (DP/PC selon surface).",
+      "blocks_task_id": "vrd_032",
+      "requires_task_id": "vrd_003"
+    },
+    {
+      "id": "block_008",
+      "message": "Pas de mur de soutènement > 1,50 m sans étude BET.",
+      "blocks_task_id": "vrd_084",
+      "requires_task_id": "vrd_083"
+    },
+    {
+      "id": "block_009",
+      "message": "Pas de raccordement au réseau public sans autorisation du concessionnaire.",
+      "blocks_task_id": "vrd_046",
+      "requires_task_id": "vrd_007"
+    },
+    {
+      "id": "block_010",
+      "message": "Pas de coulage de dalle sans photo du ferraillage et du polyane.",
+      "blocks_task_id": "vrd_061",
+      "requires_task_id": "vrd_058"
+    },
+    {
+      "id": "block_011",
+      "message": "Pas de chargement de dalle béton avant 28 jours pour résistance nominale.",
+      "blocks_task_id": "vrd_066",
+      "requires_task_id": "vrd_065"
+    },
+    {
+      "id": "block_012",
+      "message": "Pas de cure du béton = fissures programmées (humidification 7 jours minimum).",
+      "blocks_task_id": "vrd_065",
+      "requires_task_id": "vrd_062"
+    },
+    {
+      "id": "block_013",
+      "message": "Pas de bétonnage par gel ou forte chaleur sans précautions adaptées.",
+      "blocks_task_id": "vrd_061",
+      "requires_task_id": "vrd_029"
+    },
+    {
+      "id": "block_014",
+      "message": "Pas de carrelage extérieur sans absorption d'eau < 0,5 % et antidérapant R10 minimum.",
+      "blocks_task_id": "vrd_088",
+      "requires_task_id": "vrd_066"
+    },
+    {
+      "id": "block_015",
+      "message": "Pas de drainage périphérique sans géotextile, gravier et raccordement à exutoire.",
+      "blocks_task_id": "vrd_088",
+      "requires_task_id": "vrd_051"
+    },
+    {
+      "id": "block_016",
+      "message": "Pas de mur de soutènement sans drainage arrière (ruine garantie sinon).",
+      "blocks_task_id": "vrd_088",
+      "requires_task_id": "vrd_086"
+    },
+    {
+      "id": "block_017",
+      "message": "Pas de récupération EP intérieure sans double réseau séparé du réseau eau potable.",
+      "blocks_task_id": "vrd_088",
+      "requires_task_id": "vrd_081"
+    },
+    {
+      "id": "block_018",
+      "message": "Pas de réception sans test d'écoulement vérifié.",
+      "blocks_task_id": "vrd_092",
+      "requires_task_id": "vrd_089"
+    },
+    {
+      "id": "block_019",
+      "message": "Pas de fin de chantier sans plan de récolement (réseaux enterrés invisibles à terme).",
+      "blocks_task_id": "vrd_093",
+      "requires_task_id": "vrd_092"
+    },
+    {
+      "id": "block_020",
+      "message": "Pas de pose en zone RGA sans étude de sol G1+G2 pour ouvrages fixes.",
+      "blocks_task_id": "vrd_032",
+      "requires_task_id": "vrd_015"
+    }
+  ],
+  "scoring": {
+    "progression_percent": {
+      "formula": "validated_tasks / total_tasks * 100",
+      "total_tasks": 100,
+      "filtered_by": "applies_to_project_type INCLUDES project_type AND applies_to_raccordement INCLUDES raccordement AND applies_to_rga INCLUDES rga"
+    },
+    "safety_score": {
+      "base": 100,
+      "description": "Score sécurité (FORTEMENT pondéré : DT-DICT, tranchée, ANC, BET)",
+      "penalties": [
+        {
+          "condition": "DT-DICT non effectuée (vrd_010 non validée)",
+          "malus": 50,
+          "category": "critique_bloquant"
+        },
+        {
+          "condition": "Tranchée > 1,30 m sans blindage (vrd_028 non validée)",
+          "malus": 50,
+          "category": "critique_bloquant"
+        },
+        {
+          "condition": "ANC sans validation SPANC (vrd_077 non validée)",
+          "malus": 40,
+          "category": "critique_bloquant",
+          "applies_to_project_type": ["assainissement_non_collectif"]
+        },
+        {
+          "condition": "Mur > 1,50 m sans étude BET (vrd_083 non validée)",
+          "malus": 40,
+          "category": "critique_bloquant",
+          "applies_to_project_type": ["mur_soutenement"]
+        },
+        {
+          "condition": "Étude G1+G2 absente en zone RGA (vrd_015 non validée)",
+          "malus": 35,
+          "category": "critique"
+        },
+        {
+          "condition": "Autorisation urbanisme absente (vrd_003 non validée)",
+          "malus": 30,
+          "category": "critique"
+        },
+        {
+          "condition": "Grillage avertisseur absent (vrd_041 non validée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Photos avant remblai absentes (vrd_042 non validée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Drainage arrière de mur soutènement absent (vrd_086 non validée)",
+          "malus": 30,
+          "category": "critique",
+          "applies_to_project_type": ["mur_soutenement"]
+        },
+        {
+          "condition": "Cure du béton non réalisée (vrd_062 non validée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "EPI absents (vrd_025 non validée)",
+          "malus": 20,
+          "category": "non_conforme"
+        }
+      ]
+    },
+    "compliance_score": {
+      "description": "Conformité réglementaire : autorisations, DT-DICT, SPANC, raccordement public",
+      "components": [
+        { "id": "dt_dict", "weight": 25, "validates_if": "vrd_010 validated OR project_type IN ['terrasse_sur_plots','terrasse_sur_lambourdes_bois']" },
+        { "id": "autorisation_urbanisme", "weight": 20, "validates_if": "vrd_003 validated OR no_authorization_required" },
+        { "id": "spanc", "weight": 20, "validates_if": "vrd_008 validated AND vrd_077 validated OR project_type != 'assainissement_non_collectif'" },
+        { "id": "raccordement_public", "weight": 15, "validates_if": "vrd_007 validated AND vrd_046 validated OR raccordement != 'tout_a_l_egout'" },
+        { "id": "etude_sol_rga", "weight": 10, "validates_if": "vrd_015 validated OR rga == 'non'" },
+        { "id": "etude_bet_mur", "weight": 10, "validates_if": "vrd_083 validated OR project_type != 'mur_soutenement'" }
+      ]
+    },
+    "water_management_score": {
+      "description": "Gestion des eaux : pentes, exutoires, drainage, étanchéité",
+      "components": [
+        { "id": "pentes_respectees", "weight": 25, "validates_if": "vrd_022 validated AND vrd_038 validated" },
+        { "id": "exutoires_definis", "weight": 25, "validates_if": "vrd_020 validated AND vrd_021 validated" },
+        { "id": "drainage", "weight": 20, "validates_if": "vrd_049 validated OR project_type != 'drainage_peripherique'" },
+        { "id": "etancheite_fondations", "weight": 15, "validates_if": "vrd_052 validated OR project_type != 'drainage_peripherique'" },
+        { "id": "test_ecoulement", "weight": 15, "validates_if": "vrd_089 validated OR no_reseaux_enterres" }
+      ]
+    },
+    "durability_score": {
+      "description": "Durabilité : compactage, hérisson, ferraillage, cure, matériaux gel-dégel",
+      "components": [
+        { "id": "compactage", "weight": 20, "validates_if": "vrd_033 validated AND vrd_054 validated" },
+        { "id": "ferraillage_dalle", "weight": 20, "validates_if": "vrd_058 validated OR project_type NOT IN ['terrasse_sur_dalle','allee_beton','amenagement_complet']" },
+        { "id": "cure_beton", "weight": 25, "validates_if": "vrd_062 validated OR project_type NOT IN ['terrasse_sur_dalle','allee_beton','amenagement_complet']" },
+        { "id": "materiaux_gel_degel", "weight": 20, "validates_if": "vrd_066 validated OR project_type NOT IN ['terrasse_sur_dalle','allee_beton','amenagement_complet']" },
+        { "id": "joints_dilatation", "weight": 15, "validates_if": "vrd_059 validated AND vrd_060 validated" }
+      ]
+    },
+    "documents_attached_score": {
+      "description": "Pourcentage des justificatifs requis effectivement uploadés",
+      "required_documents": [
+        { "type": "dt_dict_recepissee", "required_if": "creusement" },
+        { "type": "autorisation_spanc", "required_if": "project_type == 'assainissement_non_collectif'" },
+        { "type": "autorisation_urbanisme", "required_if": "modification_aspect OR creation_surface" },
+        { "type": "etude_sol_g2", "required_if": "rga == 'oui_argile' AND ouvrage_fixe" },
+        { "type": "etude_bet", "required_if": "project_type == 'mur_soutenement' AND hauteur > 1.5" },
+        { "type": "autorisation_raccordement_public", "required_if": "raccordement == 'tout_a_l_egout'" },
+        { "type": "plan_recolement", "required_if": "reseaux_enterres" },
+        { "type": "test_ecoulement_video", "required_if": "reseaux_enterres" }
+      ],
+      "formula": "documents_attached / documents_required * 100"
+    },
+    "critical_alerts": [
+      {
+        "id": "alert_dt_dict",
+        "message": "DT-DICT non effectuée — risque de couper gaz/élec/fibre, accident grave + responsabilité civile illimitée.",
+        "triggered_if": "vrd_010 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_tranchee",
+        "message": "Tranchée > 1,30 m sans blindage — risque d'éboulement mortel, plusieurs morts par an en France.",
+        "triggered_if": "vrd_028 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_spanc",
+        "message": "ANC sans validation SPANC — démolition obligatoire, nouveau dossier à refaire.",
+        "triggered_if": "vrd_077 not validated AND project_type == 'assainissement_non_collectif'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_bet_mur",
+        "message": "Mur soutènement > 1,50 m sans étude BET — basculement à terme, ruine du mur + dégâts.",
+        "triggered_if": "vrd_083 not validated AND project_type == 'mur_soutenement'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_etude_sol",
+        "message": "Étude G1+G2 absente en zone RGA — fondations sous-dimensionnées, fissures à 5-10 ans.",
+        "triggered_if": "vrd_015 not validated AND rga IN ['oui_argile','inconnu']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_autorisation",
+        "message": "Autorisation urbanisme absente — démolition ordonnée, amende.",
+        "triggered_if": "vrd_003 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_grillage",
+        "message": "Grillage avertisseur absent — sanctions en cas d'accident futur lors de creusement.",
+        "triggered_if": "vrd_041 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_photos_tranchee",
+        "message": "Photos avant remblai absentes — preuves perdues pour SAV, garantie, expertise.",
+        "triggered_if": "vrd_042 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_drainage_mur",
+        "message": "Mur de soutènement sans drainage arrière — pression hydrostatique = ruine garantie.",
+        "triggered_if": "vrd_086 not validated AND project_type == 'mur_soutenement'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_cure",
+        "message": "Cure 7 jours non réalisée — fissuration de retrait massive programmée.",
+        "triggered_if": "vrd_062 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_carrelage_gel",
+        "message": "Carrelage extérieur non gel-dégel (absorption > 0,5%) — éclatement au premier hiver.",
+        "triggered_if": "vrd_066 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_ep_interieur",
+        "message": "Récupération EP intérieure sans double réseau séparé — contamination réseau public possible.",
+        "triggered_if": "vrd_081 not validated AND usage == 'interieur'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_test_ecoulement",
+        "message": "Test d'écoulement non réalisé — défauts cachés découverts à l'usage.",
+        "triggered_if": "vrd_089 not validated AND reseaux_enterres",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_recolement",
+        "message": "Plan de récolement absent — toute intervention future commence par sondage à l'aveugle, risqué.",
+        "triggered_if": "vrd_092 not validated AND reseaux_enterres",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_raccordement_public",
+        "message": "Raccordement au réseau public non effectué par concessionnaire — refus de mise en service.",
+        "triggered_if": "vrd_046 not validated AND raccordement == 'tout_a_l_egout'",
+        "level": "danger"
+      }
+    ]
+  }
 }
