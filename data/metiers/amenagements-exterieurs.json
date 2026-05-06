@@ -1,0 +1,309 @@
+{
+  "version": "1.0.0",
+  "metier_id": "amenagements-exterieurs",
+  "nom": "Extérieurs et VRD léger",
+  "norme_reference": "DTU 13.3 (dallages) / DTU 60.11 (évacuations) / DTU 70.1 (réseaux enterrés) / NF P98-405 (voirie)",
+  "disclaimer": "Klaro est un outil d'aide et de recommandation. Pour les raccordements au réseau public (eau, assainissement, électricité), une déclaration de travaux et l'intervention d'un professionnel agréé peuvent être obligatoires selon votre commune.",
+  "regles_metier": {
+    "pente_ecoulement": "Minimum 1,5% (1,5cm/m) pour évacuer l'eau — 2% recommandé pour les terrasses, jamais vers le bâtiment",
+    "profondeur_reseaux": "Eau potable : 80cm min (hors gel selon région). Électricité enterrée : 60cm sous pelouse, 85cm sous sol circulé. Assainissement : selon pente, minimum 60cm de recouvrement",
+    "compactage": "Par couches de 20cm maximum avec plaque vibrante — jamais compacter en une seule couche épaisse",
+    "geotextile": "Obligatoire entre le sol naturel et le hérisson — empêche la remontée des fines et le tassement différentiel",
+    "reseaux_gainage": "Eau en gaine bleue, électricité en gaine rouge, télécoms en gaine verte — couleurs normalisées obligatoires",
+    "dallage_exterieur": "Matériaux extérieurs doivent être classés gel/dégel (indice G) et antidérapants (indice R) selon usage"
+  },
+  "alertes_bloquantes": [
+    {
+      "id": "alerte-01",
+      "message": "Impossible de couler une dalle ou de poser un revêtement sans compactage validé — l'affaissement différentiel fissurera tout en quelques années",
+      "taches_concernees": ["ext-09"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-02",
+      "message": "Pente d'écoulement obligatoire avant toute mise en œuvre — une terrasse sans pente correcte crée des flaques permanentes et dégrade les matériaux",
+      "taches_concernees": ["ext-10"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-03",
+      "message": "Tous les réseaux enterrés doivent être validés et photographiés AVANT fermeture — toute modification après coûte une journée de terrassement",
+      "taches_concernees": ["ext-15"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-04",
+      "message": "L'écoulement des eaux doit être testé avant la pose du revêtement final — corriger une pente sous un dallage posé est impossible sans tout déposer",
+      "taches_concernees": ["ext-15"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-05",
+      "message": "Aucune pente dirigée vers le bâtiment — l'eau doit toujours s'éloigner des fondations et des murs",
+      "taches_concernees": ["ext-10", "ext-20"],
+      "niveau": "critique"
+    }
+  ],
+  "score_chantier": {
+    "calcul": "taches_validees / total_taches * 100",
+    "penalites": [
+      { "condition": "compactage_insuffisant", "malus": 25 },
+      { "condition": "pente_absente_ou_vers_batiment", "malus": 25 },
+      { "condition": "reseaux_non_gainees", "malus": 15 },
+      { "condition": "ecoulement_non_teste", "malus": 15 },
+      { "condition": "tache_critique_non_traitee", "malus": 10 },
+      { "condition": "alerte_bloquante_active", "malus": 15 }
+    ],
+    "risques_signales": [
+      "Affaissement et fissuration si compactage insuffisant",
+      "Stagnation d'eau et dégradation si pente absente ou inversée",
+      "Détérioration réseau si gaines absentes ou mal protégées",
+      "Infiltration en fondation si eau dirigée vers le bâtiment",
+      "Gel et éclatement des matériaux si revêtement non classé gel/dégel"
+    ]
+  },
+  "taches": [
+    {
+      "id": "ext-01",
+      "ordre": 1,
+      "titre": "Définir le projet extérieur",
+      "critique": false,
+      "explication": "Définissez précisément ce que vous allez réaliser : terrasse, allée, parking, clôture, réseau d'arrosage, éclairage extérieur, récupération d'eau. Chaque élément a ses contraintes propres.",
+      "recommandation_klaro": "Vérifiez les autorisations nécessaires en mairie : une terrasse en saillie sur le domaine public, une clôture en limite de propriété, un portail motorisé ou une piscine peuvent nécessiter une déclaration préalable de travaux. Renseignez-vous avant de commander les matériaux — un refus de permis peut vous obliger à tout démonter.",
+      "erreur_frequente": "Commencer les travaux extérieurs sans consulter le PLU (Plan Local d'Urbanisme) de votre commune. Certaines zones imposent des matériaux spécifiques, des hauteurs de clôture maximales ou des distances de recul obligatoires.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": []
+    },
+    {
+      "id": "ext-02",
+      "ordre": 2,
+      "titre": "Étudier l'écoulement des eaux",
+      "critique": true,
+      "explication": "Avant de modifier quoi que ce soit, observez comment l'eau s'écoule naturellement sur votre terrain lors d'une pluie. Tous vos aménagements doivent respecter — voire améliorer — cet écoulement naturel.",
+      "recommandation_klaro": "Observez votre terrain après une pluie significative : où l'eau stagne-t-elle ? Vers où s'écoule-t-elle ? Ces points bas naturels sont souvent les seuls endroits où l'eau peut partir — les modifier impose de créer un exutoire artificiel. Photographiez le terrain sous la pluie — c'est la cartographie la plus précise possible.",
+      "erreur_frequente": "Aménager sans étudier l'écoulement existant et créer une terrasse qui capte l'eau de ruissellement des voisins ou de la voirie sans prévoir son évacuation. L'eau redirigée finit toujours par trouver un chemin — souvent vers les fondations.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-01"]
+    },
+    {
+      "id": "ext-03",
+      "ordre": 3,
+      "titre": "Tracer les zones d'intervention",
+      "critique": false,
+      "explication": "Reportez au sol, avec des piquets et un cordeau, les contours exacts de chaque zone de travaux. Ce tracé est la référence de toutes les dimensions et pentes à atteindre.",
+      "recommandation_klaro": "Utilisez un niveau laser rotatif pour reporter les niveaux de référence sur les murs, les piquets et les éléments existants. Matérialisez à la bombe de marquage (bombe sur herbe ou craie sur sol dur) les limites des zones à décaisser. Vérifiez les distances par rapport aux limites de propriété et aux réseaux enterrés existants (DICT — Déclaration d'Intention de Commencement de Travaux — obligatoire avant tout terrassement).",
+      "erreur_frequente": "Commencer à terrasser sans avoir fait une DICT (déclaration aux gestionnaires de réseaux). Sectionner une canalisation de gaz, une fibre optique ou un câble EDF peut coûter plusieurs milliers d'euros de réparation et entraîne des poursuites.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-02"]
+    },
+    {
+      "id": "ext-04",
+      "ordre": 4,
+      "titre": "Vérifier la nature du sol",
+      "critique": true,
+      "explication": "La nature du sol détermine la profondeur de décaissement nécessaire, le type de fondation de terrasse, et la capacité portante de votre future surface. Un sol argileux et un sol sableux ne se traitent pas de la même façon.",
+      "recommandation_klaro": "Test simple : faites un trou de 30cm de profondeur et examinez ce que vous trouvez. Terre végétale sombre (20-40cm) : à décaisser entièrement. Argile collante : sol sensible au gel et aux variations d'humidité, compactage difficile, nécessite un géotextile et un hérisson épais. Gravier ou sable : sol stable et drainant, idéal pour les fondations de terrasse.",
+      "erreur_frequente": "Poser une terrasse directement sur la terre végétale ou l'argile sans décaissement. La terre végétale se comprime sous les charges et tasse — la terrasse s'affaisse en 2 à 3 ans, surtout aux angles.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-03"]
+    },
+    {
+      "id": "ext-05",
+      "ordre": 5,
+      "titre": "Décaisser le terrain",
+      "critique": true,
+      "explication": "Le décaissement consiste à enlever la terre végétale et les matières organiques jusqu'au sol stable ou jusqu'à la profondeur requise par le projet. C'est la base de toute la stabilité future.",
+      "recommandation_klaro": "Profondeur standard pour une terrasse : 35 à 45cm sous le niveau fini (10cm revêtement + 5cm mortier ou sable + 20cm hérisson + 5cm géotextile). Pour une allée carrossable : 50 à 60cm minimum. Conservez la terre décaissée dans un endroit accessible pour les remblayages latéraux ou tranchées.",
+      "erreur_frequente": "Décaisser insuffisamment pour \"gagner du temps\". Une terrasse posée trop haut par rapport au seuil de la maison crée un problème d'évacuation d'eau vers le bâtiment — et modifier le niveau final implique de tout déposer.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-04"]
+    },
+    {
+      "id": "ext-06",
+      "ordre": 6,
+      "titre": "Préparer le fond de forme",
+      "critique": true,
+      "explication": "Le fond de forme est la surface de sol nu préparée sur laquelle va reposer tout le reste. Il doit être homogène, sans zones molles ni débris.",
+      "recommandation_klaro": "Scarifiez le fond de fouille avec un croc ou une motobineuse pour décompacter la surface. Éliminez toutes les racines, cailloux pointus et débris organiques. Si des zones sont molles (trou sous pied), renforcez avec du gravier concassé compacté avant de continuer. Vérifiez que le fond de forme respecte déjà approximativement la pente finale souhaitée.",
+      "erreur_frequente": "Négliger les zones molles en pensant que le hérisson va les compenser. Un point mou dans le fond de forme crée un tassement différentiel localisé — une dalle ou un dallage fissurent systématiquement à cet endroit.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-05"]
+    },
+    {
+      "id": "ext-07",
+      "ordre": 7,
+      "titre": "Poser le géotextile",
+      "critique": true,
+      "explication": "Le géotextile est une membrane perméable à l'eau qui sépare le sol naturel du hérisson. Il empêche les fines argileuses de remonter dans le gravier et de le colmater avec le temps.",
+      "recommandation_klaro": "Choisissez un géotextile non-tissé de 200 à 300 g/m² (résistance suffisante pour les charges d'une terrasse). Posez-le en remontant de 15 à 20cm sur les bords (contre les murs et les bordures) pour éviter les contournements. Assemblez les lés avec un chevauchement de 30cm minimum — pas de fixation nécessaire, le hérisson maintient le géotextile en place.",
+      "erreur_frequente": "Omettre le géotextile pour économiser 50€ sur une terrasse de 20m². Sans séparation, les fines du sol naturel migrent dans le hérisson en 3 à 5 ans — le gravier se colmate, perd sa capacité drainante et le tassement différentiel commence.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-06"]
+    },
+    {
+      "id": "ext-08",
+      "ordre": 8,
+      "titre": "Créer le hérisson en gravier compacté",
+      "critique": true,
+      "explication": "Le hérisson est la couche de gravier concassé non calcaire qui répartit les charges, draine l'eau et crée une base stable pour le revêtement ou la dalle.",
+      "recommandation_klaro": "Utilisez du gravier concassé 20/40mm (pas de sable, pas de gravier roulé qui ne se compacte pas). Épaisseur : 15 à 20cm minimum pour une terrasse piétonne, 25 à 30cm pour un passage carrossable. Étalez et compactez par couches de 10cm maximum à la plaque vibrante — un seul passage en couche épaisse ne compacte que les 8 premiers centimètres.",
+      "erreur_frequente": "Utiliser du tout-venant (mélange de gravats et de fines) au lieu de gravier concassé propre. Le tout-venant contient des fines qui se compactent en masse dure mais se saturent d'eau par capillarité — mauvais drainage et risque de gel.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-07"]
+    },
+    {
+      "id": "ext-09",
+      "ordre": 9,
+      "titre": "Compacter correctement",
+      "critique": true,
+      "explication": "Le compactage est l'étape la plus critique pour la stabilité de tous vos aménagements extérieurs. Un mauvais compactage = tassement différentiel garanti dans les 2 à 3 ans.",
+      "recommandation_klaro": "Louez une plaque vibrante (40 à 60 kg) — 50€/jour et ça change tout. Passez la plaque au moins 3 fois dans des directions croisées sur chaque couche. Test de compactage simple : marchez sur le hérisson — si le gravier s'enfonce sous votre pied, ce n'est pas assez compacté. Un hérisson bien compacté ne bouge pas du tout sous votre poids.",
+      "erreur_frequente": "Compacter avec les pieds ou avec une dame à main sur plus de 5cm de hérisson. Une dame à main ne compacte qu'au-dessous du centimètre — la couche profonde reste meuble et tassera sous les premières charges.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-08"]
+    },
+    {
+      "id": "ext-10",
+      "ordre": 10,
+      "titre": "Vérifier et marquer les pentes d'écoulement",
+      "critique": true,
+      "explication": "La pente d'écoulement doit être définie et matérialisée avant de couler la dalle ou de poser le lit de pose. Corriger une pente après coup est très difficile et coûteux.",
+      "recommandation_klaro": "Pente minimale : 1,5% (1,5cm/m). Pente recommandée pour une terrasse : 2% (2cm/m). Utilisez des repères de niveau (piquets ou tasseau avec cales) positionnés tous les 2m selon les pentes souhaitées — ils guideront la réglette lors du coulage ou de la pose. Vérifiez que toutes les pentes divergent du bâtiment et convergent vers un exutoire (caniveau, drain, surface perméable).",
+      "erreur_frequente": "Régler les pentes \"à l'œil\" depuis le niveau du sol fini sans repères matérialisés. On croit avoir mis 2% de pente et on se retrouve à 0,5% d'un côté et 3% de l'autre — avec des zones de stagnation et un écoulement inégal.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-09"]
+    },
+    {
+      "id": "ext-11",
+      "ordre": 11,
+      "titre": "Installer les réseaux enterrés",
+      "critique": true,
+      "explication": "Eau potable, électricité extérieure, arrosage automatique, éclairage de jardin, récupérateur d'eau : tous les réseaux enterrés se posent avant le hérisson supérieur ou la dalle, jamais après.",
+      "recommandation_klaro": "Creusez les tranchées de réseaux après le premier compactage du hérisson de base — cela évite de retaper le fond de fouille. Respectez les profondeurs réglementaires : eau 80cm, électricité 60cm sous pelouse (85cm sous voirie), télécoms 45cm. Croisements entre réseaux : espacez verticalement de 20cm minimum et positionnez l'électricité au-dessus de l'eau.",
+      "erreur_frequente": "Passer les réseaux après le compactage final sans recréer les couches de protection autour des gaines. Un câble électrique posé directement sur du gravier concassé est abimé en quelques années par le gravier qui coupe l'isolation.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-10"]
+    },
+    {
+      "id": "ext-12",
+      "ordre": 12,
+      "titre": "Protéger les réseaux par gaines colorées",
+      "critique": true,
+      "explication": "Chaque réseau enterré doit être protégé dans une gaine rigide de couleur normalisée. Ces couleurs permettent d'identifier rapidement le type de réseau lors de futurs travaux.",
+      "recommandation_klaro": "Couleurs obligatoires : rouge pour l'électricité, bleu pour l'eau potable, vert pour les télécoms, marron pour l'assainissement, jaune pour le gaz. Posez un grillage avertisseur coloré (même code couleur) 20cm au-dessus de chaque réseau avant de remblayer — il prévient quiconque creusera à proximité. Étiquetez les sorties de gaine avec le type de réseau.",
+      "erreur_frequente": "Utiliser des gaines noires ou blanches sans couleur normalisée, ou mélanger les couleurs. Dans 10 ans, personne ne sait ce qu'il y a dans quelle gaine — le câble électrique est sectionné lors de futurs terrassements parce que personne n'a vu le grillage rouge.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-11"]
+    },
+    {
+      "id": "ext-13",
+      "ordre": 13,
+      "titre": "Rendre étanches les raccords aux jonctions des réseaux",
+      "critique": true,
+      "explication": "Regards de visite, jonctions entre gaines, sorties en attente et raccords doivent être étanches pour éviter l'infiltration d'eau dans les réseaux et les courts-circuits dans les câbles extérieurs.",
+      "recommandation_klaro": "Regards d'assainissement : vérifiez l'étanchéité de la jonction entre le regard et la canalisation avec du mastic de jointement. Raccords électriques enterrés : utilisez des boîtes de jonction étanches IP68 avec résine de remplissage. Gaines d'eau : raccords à compression ou soudure électrique selon le matériau — jamais de colle seule sur des raccords extérieurs enterrés.",
+      "erreur_frequente": "Enterrer des raccords électriques extérieurs dans des boîtes standard (IP44). L'humidité du sol s'infiltre par capillarité sur plusieurs mois — les fils s'oxydent, les disjoncteurs différentiels déclenchent sans raison apparente.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-12"]
+    },
+    {
+      "id": "ext-14",
+      "ordre": 14,
+      "titre": "Installer les évacuations (drains et caniveaux)",
+      "critique": true,
+      "explication": "Les drains, caniveaux et regards de collecte évacuent l'eau de surface et l'eau de ruissellement vers l'exutoire (réseau pluvial, puits perdu, noue végétale). Ils se posent avant le revêtement.",
+      "recommandation_klaro": "Caniveau de façade (le long du bâtiment) : indispensable pour protéger les fondations. Posez-le avec une pente minimum de 1% vers le regard de collecte. Drain périphérique sur terrain en pente : tuyau annelé en géotextile posé dans un lit de gravier, pente 1 à 2%. Regard de collecte : préférez les regards béton ou PP (polypropylène) aux regards PVC qui se déforment sous le trafic.",
+      "erreur_frequente": "Poser un caniveau sans raccordement à un exutoire (juste \"pour la forme\"). Un caniveau qui ne va nulle part remplit et déborde exactement là où il ne faut pas — souvent contre le mur du bâtiment.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-13"]
+    },
+    {
+      "id": "ext-15",
+      "ordre": 15,
+      "titre": "Vérifier l'écoulement avant fermeture",
+      "critique": true,
+      "explication": "Testez tous les réseaux et tous les écoulements AVANT de poser le revêtement définitif. C'est la dernière chance de corriger sans tout déposer.",
+      "recommandation_klaro": "Simulez une pluie avec un tuyau d'arrosage : arrosez généreusement la surface et suivez le cheminement de l'eau. Vérifiez que les caniveaux captent bien l'eau, que les regards se remplissent et évacuent, et qu'aucune zone ne stagne. Pour les réseaux électriques : test de continuité à chaque câble tiré avant remblayage.",
+      "erreur_frequente": "Poser le revêtement final sans tester l'écoulement réel. Une fois les dalles ou le carrelage posé, une zone de stagnation d'eau ne peut être corrigée qu'en déposant toute la surface concernée — opération aussi coûteuse que la pose initiale.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-14"]
+    },
+    {
+      "id": "ext-16",
+      "ordre": 16,
+      "titre": "Réaliser la dalle ou le support de revêtement",
+      "critique": false,
+      "explication": "Selon le type de revêtement, la base peut être une dalle béton (terrasse lourde), un lit de sable ou de mortier (dalles sur plot ou dalles posées), ou simplement le hérisson compacté (gravillon, enrobé).",
+      "recommandation_klaro": "Dalle béton : épaisseur minimum 10cm avec treillis ST25, béton C25/30. Dalles sur plots réglables : système le plus simple pour les terrasses piétonnes — ne nécessite pas de dalle béton, facilement démontable, parfait pour les terrasses sur toiture-terrasse existante. Lit de sable/mortier pour dallage : 3 à 5cm de mortier dosé à 300kg, posez les dalles dedans à plat.",
+      "erreur_frequente": "Couler une dalle extérieure sans joints de dilatation. Toute dalle extérieure de plus de 3m × 3m doit avoir des joints de dilatation (sciage ou profilé inox) — la dilatation thermique d'une dalle exposée au soleil peut atteindre 5mm/m entre hiver et été.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-15"]
+    },
+    {
+      "id": "ext-17",
+      "ordre": 17,
+      "titre": "Respecter les temps de séchage",
+      "critique": true,
+      "explication": "Une dalle béton extérieure doit sécher avant d'être chargée ou de recevoir un revêtement collé. La marche à pied trop tôt et les charges prématurées réduisent définitivement sa résistance.",
+      "recommandation_klaro": "Dalle béton : 7 jours avant circulation légère, 28 jours avant charge lourde et pose de revêtement collé. Humidifiez la dalle les 3 à 5 premiers jours (cure humide) — surtout en période chaude et ensoleillée — pour éviter les fissures de retrait de surface. Couvrez d'un film polyane si gel prévu dans les 48h après coulage.",
+      "erreur_frequente": "Poser les dalles ou carrelage extérieur à J+3 sur une dalle béton coulée. Le béton n'a pas atteint sa résistance — la colle ne fait pas prise correctement et les dalles se décollent lors du premier hiver.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-16"]
+    },
+    {
+      "id": "ext-18",
+      "ordre": 18,
+      "titre": "Poser le revêtement extérieur",
+      "critique": false,
+      "explication": "Dalles béton, carrelage extérieur, lames de bois (terrasse), pavés, gravillon : chaque matériau a ses exigences de pose et sa durée de vie en extérieur. Choisissez en fonction du climat local.",
+      "recommandation_klaro": "Matériaux pour extérieur soumis au gel : classement G requis (résistance au gel) pour les carrelages et dalles. Classement R pour l'antidérapant : R11 pour les terrasses privées, R12 pour les abords de piscine. Bois de terrasse : privilégiez les essences naturellement durables (ipé, teck, robinier) ou les bois traités classe 4. Gravillon : le plus simple et le moins cher, parfait pour allées secondaires.",
+      "erreur_frequente": "Poser du carrelage intérieur (non classé gel) en extérieur parce qu'il \"a l'air solide\". Après le premier hiver, les carreaux éclatent par le gel qui dilate l'eau absorbée — ils se transforment en éclats dangereux.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-17"]
+    },
+    {
+      "id": "ext-19",
+      "ordre": 19,
+      "titre": "Traiter les joints extérieurs",
+      "critique": false,
+      "explication": "Les joints entre dalles extérieures, entre le dallage et le bâtiment, et autour des regards doivent être adaptés aux contraintes extérieures : gel, dilatation thermique, eau permanente.",
+      "recommandation_klaro": "Joint de dallage extérieur : mortier de jointement hydrofuge (jamais de joint intérieur standard). Largeur minimale 5mm — plus le format est grand, plus le joint doit être large. Joints périphériques (entre dallage et mur) : silicone extérieur souple, jamais de joint rigide — la dilatation différentielle entre le dallage et le mur crée des contraintes importantes. Traitez les joints au moins 2 semaines après la pose des dalles.",
+      "erreur_frequente": "Utiliser du coulis de joint intérieur en extérieur. Le coulis intérieur absorbe l'eau, gonfle au gel et s'expulse entre les dalles dès le premier hiver — les dalles se décalent et le joint blanc s'effrite.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-18"]
+    },
+    {
+      "id": "ext-20",
+      "ordre": 20,
+      "titre": "Vérifier les niveaux et pentes finales",
+      "critique": true,
+      "explication": "Une fois le revêtement posé, vérifiez que les pentes réelles correspondent aux pentes prévues et que l'eau s'écoule dans la bonne direction sur toute la surface.",
+      "recommandation_klaro": "Posez un niveau à bulle numérique (ou une application de mesure de pente sur smartphone) sur la surface finie — la pente doit être ≥ 1,5% dans la bonne direction. Vérifiez particulièrement les zones de jonction entre la terrasse et le seuil de porte : le revêtement fini doit être au minimum 2cm en dessous du seuil intérieur pour empêcher l'eau d'entrer.",
+      "erreur_frequente": "Poser les dalles au même niveau que le seuil de porte, voire légèrement au-dessus. La moindre flaque sur la terrasse rentre directement dans le logement. La règle des 2cm sous le seuil est impérative et non négociable.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-19"]
+    },
+    {
+      "id": "ext-21",
+      "ordre": 21,
+      "titre": "Nettoyer le chantier",
+      "critique": false,
+      "explication": "Les chutes de matériaux, restes de mortier, emballages et gravats doivent être évacués. Les outils de terrassement et les coffrages temporaires doivent être retirés.",
+      "recommandation_klaro": "Arrosez le revêtement neuf pour éliminer les résidus de ciment et de mortier avant qu'ils ne sèchent définitivement — après séchage, seul un produit décapant acide (dangereux) peut les éliminer. Pour les lames de bois : traitez immédiatement avec une huile de finition extérieure — le bois non traité grisit en 6 semaines en extérieur.",
+      "erreur_frequente": "Laisser les voiles de ciment sécher sur le carrelage extérieur neuf. Le ciment qui a séché sur la surface d'une dalle extérieure résiste aux nettoyages ordinaires — seul un nettoyage acide peut l'éliminer, avec risque d'attaquer les joints et la surface du carrelage.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-20"]
+    },
+    {
+      "id": "ext-22",
+      "ordre": 22,
+      "titre": "Tester l'écoulement après travaux",
+      "critique": true,
+      "explication": "Le test final par simulation de pluie valide l'ensemble du système : pentes, caniveaux, drains et exutoires fonctionnent-ils comme prévu avec le revêtement définitif en place ?",
+      "recommandation_klaro": "Arrosez généreusement toute la surface pendant 10 minutes avec un tuyau d'arrosage. Vérifiez : aucune zone ne stagne plus de 30 secondes, tous les caniveaux captent l'eau, toutes les descentes évacuent, aucune eau ne s'écoule vers le bâtiment. Idéalement, faites ce test par temps sec pour pouvoir observer clairement le cheminement de l'eau.",
+      "erreur_frequente": "Valider sans test de pluie en se fiant aux mesures de pente prises à la règle. Une dalle peut avoir une pente mesurée correcte mais présenter des creux locaux (irrégularités de pose) qui créent des flaques. Seule l'eau révèle ces défauts.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["ext-21"]
+    }
+  ]
+}
