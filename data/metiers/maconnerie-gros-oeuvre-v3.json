@@ -828,6 +828,376 @@
           ]
         }
       ]
+    },
+    {
+      "id": "montage_murs",
+      "label": "Montage des murs",
+      "tasks": [
+        {
+          "id": "maco_044",
+          "title": "Tracer l'implantation des murs",
+          "phase": "montage_murs",
+          "applies_to_works_type": ["cloison_non_porteuse", "element_porteur", "fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Tracé sur la dalle ou la semelle au cordeau et à l'équerre, en respectant le plan d'exécution. Vérification des angles à 90° et des dimensions.",
+          "klaro_recommendation": "Cordeau à craie pour matérialiser les axes des murs. Équerre 3-4-5 ou laser pour les angles droits. Tracez aussi les emplacements des futures ouvertures (portes, fenêtres) pour anticiper. Vérifiez les diagonales du périmètre.",
+          "common_mistake": "Démarrer la pose sans implantation tracée — murs hors équerre, problèmes en cascade pour le reste du chantier.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_043"],
+          "norm_reference": "DTU 20.1 §6",
+          "control_questions": [
+            { "question": "Implantation tracée et angles vérifiés à 90° ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_045",
+          "title": "Préparer le mortier au dosage adapté",
+          "phase": "montage_murs",
+          "applies_to_works_type": ["cloison_non_porteuse", "element_porteur", "fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Mortier dosé selon DTU 20.1 : mortier bâtard (chaux + ciment) pour usage courant, mortier ciment pour humidité ou résistance accrue. JAMAIS 'à l'œil' — le dosage conditionne la résistance.",
+          "klaro_recommendation": "Mortier bâtard standard : 1 volume ciment + 1 volume chaux + 5 volumes sable + eau. Mortier ciment : 1 ciment + 3 sable + eau. Mélange à la bétonnière (location ~25 €/jour) ou au malaxeur. Consistance plastique non coulante. Préparez la quantité utilisable en 1h max.",
+          "common_mistake": "Doser au pifomètre — résistance variable, joints qui se fissurent ou s'effritent.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_044"],
+          "norm_reference": "DTU 20.1 §7",
+          "control_questions": [
+            { "question": "Dosage mortier conforme DTU (bâtard ou ciment selon usage) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_046",
+          "title": "Choisir le mortier selon le type de bloc",
+          "phase": "montage_murs",
+          "applies_to_works_type": ["cloison_non_porteuse", "element_porteur", "fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Mortier traditionnel pour parpaing classique (joints 10-15 mm). Mortier-colle spécifique pour béton cellulaire (Siporex, Ytong) ou bloc rectifié à pose collée (joints fins 1-3 mm).",
+          "klaro_recommendation": "Lisez la fiche technique du bloc choisi. Béton cellulaire = colle dédiée Siporex/Ytong. Bloc rectifié = colle haute performance, joints minces. Parpaing standard = mortier classique. Mauvais choix de mortier = blocs qui ne tiennent pas ou liaison fragile.",
+          "common_mistake": "Coller du béton cellulaire au mortier classique — pas d'adhérence chimique, blocs qui se désolidarisent.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_045"],
+          "norm_reference": "DTU 20.1 §7 + notice fabricant blocs",
+          "control_questions": []
+        },
+        {
+          "id": "maco_047",
+          "title": "Poser le premier rang sur arase étanche",
+          "phase": "montage_murs",
+          "applies_to_works_type": ["cloison_non_porteuse", "element_porteur", "fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Arase = chape de mortier nivelée en pied de mur + bande d'arase étanche (membrane bitumineuse ou polyéthylène). Bloque les remontées capillaires d'humidité du sol vers les murs.",
+          "klaro_recommendation": "Chape de mortier à la dose ciment (1:3) parfaitement de niveau (vérifié au laser). Bande d'arase posée en continu sur la chape, dépassant légèrement de chaque côté. Premier rang de blocs posé sur l'arase. Sans arase, humidité qui remonte dans le mur, salpêtre, dégradations.",
+          "common_mistake": "Sauter la bande d'arase étanche — humidité qui remonte par capillarité, plinthe imbibée, peinture qui cloque.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["maco_046"],
+          "norm_reference": "DTU 20.1 §8.1",
+          "control_questions": [
+            { "question": "Arase étanche posée sous le premier rang (photo) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_048",
+          "title": "Monter rang par rang en respectant les règles",
+          "phase": "montage_murs",
+          "applies_to_works_type": ["cloison_non_porteuse", "element_porteur", "fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Joints décalés d'au moins 1/4 du bloc (pas alignés verticalement = chaîne de fissures). Joints de 10 à 15 mm. Harpage aux angles (alternance des sens des blocs pour solidariser).",
+          "klaro_recommendation": "Décalage des joints verticaux ≥ 1/4 du bloc (ex : bloc 50 cm = décalage ≥ 12 cm). Joints horizontaux et verticaux remplis intégralement. Harpage aux angles : un rang termine côté A, le rang suivant termine côté B. Vérifiez à chaque rang.",
+          "common_mistake": "Aligner les joints verticaux pour aller plus vite — chaîne de fissures par décollement, mur qui se fragilise.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_047"],
+          "norm_reference": "DTU 20.1 §8.2",
+          "control_questions": [
+            { "question": "Joints décalés ≥ 1/4 bloc et harpage aux angles ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_049",
+          "title": "Vérifier aplomb, niveau et alignement à CHAQUE rang",
+          "phase": "montage_murs",
+          "applies_to_works_type": ["cloison_non_porteuse", "element_porteur", "fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Aplomb (vertical) au fil à plomb ou laser, niveau (horizontal) au niveau bulle de 2 m, alignement au cordeau tendu. Vérification à CHAQUE rang, pas seulement au début.",
+          "klaro_recommendation": "Niveau bulle de 2 m posé sur le rang en cours. Fil à plomb ou laser sur l'aplomb des montants. Cordeau tendu pour aligner les blocs. Tolérance : ±2 mm/m. Toute erreur non corrigée à un rang se répercute amplifiée sur les rangs suivants.",
+          "common_mistake": "Vérifier seulement tous les 3-4 rangs — défauts qui se cumulent, mur courbe ou penché impossible à rattraper.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_048"],
+          "norm_reference": "DTU 20.1 §8.3",
+          "control_questions": [
+            { "question": "Aplomb, niveau, alignement vérifiés à chaque rang (±2 mm/m) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_050",
+          "title": "Tirer le cordeau de niveau pour chaque rang",
+          "phase": "montage_murs",
+          "applies_to_works_type": ["cloison_non_porteuse", "element_porteur", "fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Cordeau tendu d'un angle à l'autre du mur, à hauteur du dessus du rang en cours. Tous les blocs alignés sur le cordeau. Garantit la rectitude horizontale.",
+          "klaro_recommendation": "Cordeau fixé aux extrémités à la hauteur exacte du rang en cours. Bloqué par poids ou collés au mortier des angles. Tendu sans flèche au milieu. Posez chaque bloc au contact du cordeau (sans le déformer). Cordeau retendu à chaque rang.",
+          "common_mistake": "Aligner 'à l'œil' sans cordeau — micro-décalages cumulés, mur qui ondule visiblement.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_049"],
+          "norm_reference": "DTU 20.1 §8.3",
+          "control_questions": []
+        },
+        {
+          "id": "maco_051",
+          "title": "Hourder les blocs creux dans les zones de chaînage",
+          "phase": "montage_murs",
+          "applies_to_works_type": ["element_porteur", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Hourdage = remplissage des alvéoles des blocs creux avec du mortier OU pose de blocs pleins dans les zones de chaînage (angles, jonctions, encadrements d'ouverture).",
+          "klaro_recommendation": "Aux emplacements des futurs chaînages verticaux : remplissage des alvéoles AVANT pose du bloc, ou pose de blocs pleins. Le ferraillage du chaînage passera ensuite dans cette colonne pleine. Sans hourdage, le chaînage ne reprend pas correctement les efforts.",
+          "common_mistake": "Poser des blocs creux non hourdés dans la zone de chaînage — chaînage non efficace, structure fragilisée.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_048"],
+          "norm_reference": "DTU 20.1 §8.4 + Eurocode 6",
+          "control_questions": [
+            { "question": "Blocs hourdés dans les zones de chaînage (angles, jonctions, encadrements) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ouvertures_linteaux",
+      "label": "Ouvertures & linteaux",
+      "tasks": [
+        {
+          "id": "maco_052",
+          "title": "Ouverture dans mur porteur EXISTANT : étaiement + découpe",
+          "phase": "ouvertures_linteaux",
+          "applies_to_works_type": ["element_porteur"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Création d'ouverture dans un porteur existant : étaiement préalable selon BET (étais des deux côtés), découpe progressive à la disqueuse, dégagement de l'emplacement linteau.",
+          "klaro_recommendation": "Étais en place et vérifiés AVANT toute découpe. Découpe progressive (jamais d'un seul coup), commencer par le haut pour dégager le linteau, descendre ensuite. Évacuation des gravats au fur et à mesure. Photographiez chaque étape. Si fissures qui apparaissent : ARRÊT IMMÉDIAT et appel BET.",
+          "common_mistake": "Démolir une ouverture sans étaiement complet selon BET — effondrement du linteau et de la maçonnerie supérieure.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": true,
+          "depends_on": ["maco_026"],
+          "norm_reference": "Eurocode 6 + DTU 20.1 + plan BET",
+          "control_questions": [
+            { "question": "Étaiement BET en place et découpe progressive (photos étape par étape) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_053",
+          "title": "Ouverture dans cloison non porteuse",
+          "phase": "ouvertures_linteaux",
+          "applies_to_works_type": ["cloison_non_porteuse"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Découpe à la disqueuse ou scie sabre selon matériau. Soin aux vibrations qui peuvent fissurer alentour (cloisons placo voisines, plafond).",
+          "klaro_recommendation": "Tracé précis aux dimensions exactes (largeur ouverture + 2× appuis). Disqueuse à eau pour limiter la poussière. Découpe en plusieurs passes plutôt qu'une grosse pour limiter les vibrations. Linteau préfabriqué possible (béton armé ou métallique léger) pour cloison.",
+          "common_mistake": "Disqueuse à sec dans une cloison briquetée — poussière partout, vibrations qui décollent les bandes des cloisons placo voisines.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_023"],
+          "norm_reference": "DTU 20.1 §9.1",
+          "control_questions": []
+        },
+        {
+          "id": "maco_054",
+          "title": "Calculer le linteau selon portée et charge",
+          "phase": "ouvertures_linteaux",
+          "applies_to_works_type": ["cloison_non_porteuse", "element_porteur", "fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Linteau porteur : section béton + ferraillage calculés par BET selon portée, charge à reprendre, rive du plancher. Linteau non porteur : préfabriqué standard utilisable.",
+          "klaro_recommendation": "Pour porteur : note de calcul BET obligatoire (largeur, hauteur, sections d'aciers). Linteau coulé en place dans coffrage OU linteau précontraint préfabriqué (homologué). Pour non porteur : linteau béton armé préfabriqué de magasin (capacités indiquées sur produit).",
+          "common_mistake": "Improviser un linteau 'à vue' sur ouverture porteuse — rupture en flexion, effondrement du mur supérieur.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_052"],
+          "norm_reference": "Eurocode 2 + Eurocode 6 + DTU 20.1",
+          "control_questions": [
+            { "question": "Linteau dimensionné par BET (porteur) ou préfabriqué adapté (non porteur) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_055",
+          "title": "Poser le linteau avec appuis suffisants",
+          "phase": "ouvertures_linteaux",
+          "applies_to_works_type": ["cloison_non_porteuse", "element_porteur", "fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Appuis minimum : 20 cm de chaque côté pour porteur, 15 cm en non porteur. L'appui transmet les charges du linteau vers les jambages (montants verticaux du mur).",
+          "klaro_recommendation": "Mesurez et vérifiez les appuis avant pose. Pour porteur : appuis sur jambages hourdés (béton plein ou alvéoles remplies). Mortier de pose sur l'appui. Niveau bulle pour la pose horizontale. Si appui insuffisant : reprendre le mur ou élargir l'ouverture pour atteindre une zone porteuse.",
+          "common_mistake": "Poser un linteau avec 5 cm d'appui — concentration des contraintes, rupture du jambage, effondrement.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_054"],
+          "norm_reference": "DTU 20.1 §9.2 + Eurocode 6",
+          "control_questions": [
+            { "question": "Appuis ≥ 20 cm porteur / ≥ 15 cm non porteur ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_056",
+          "title": "Caler et solidariser le linteau avec la maçonnerie supérieure",
+          "phase": "ouvertures_linteaux",
+          "applies_to_works_type": ["cloison_non_porteuse", "element_porteur", "fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Mortier sur le linteau, blocs au-dessus posés normalement, chaînage horizontal au-dessus si requis. Le linteau doit être totalement intégré à la maçonnerie.",
+          "klaro_recommendation": "Mortier généreux entre le linteau et le premier rang au-dessus. Pas de vide. Si chaînage horizontal au-dessus : ferraillage continu, recouvrement avec armatures du linteau. Le tout doit former une structure monolithique.",
+          "common_mistake": "Laisser un vide ou un calage approximatif au-dessus du linteau — concentration des charges, fissuration au-dessus de l'ouverture.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_055"],
+          "norm_reference": "DTU 20.1 §9.3",
+          "control_questions": []
+        },
+        {
+          "id": "maco_057",
+          "title": "Décoffrer le linteau après 7 jours minimum",
+          "phase": "ouvertures_linteaux",
+          "applies_to_works_type": ["cloison_non_porteuse", "element_porteur", "fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Pour linteau coulé en place : décoffrage après 7 jours minimum (jamais avant prise complète). Pour linteau préfabriqué : pas de décoffrage, mais respect des délais de mise en charge (28 jours pour charge nominale).",
+          "klaro_recommendation": "7 jours = délai minimum pour linteau peu chargé. Pour linteau lourdement sollicité : 14 à 21 jours selon BET. Décoffrage progressif (étais retirés un par un, surveillance des éventuelles fissures). Si fissures à l'enlèvement : remettre les étais et appeler BET.",
+          "common_mistake": "Décoffrer à J+3 'pour libérer les étais' — linteau qui n'a pas atteint sa résistance, fléchissement et fissuration.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_056"],
+          "norm_reference": "Eurocode 2 + DTU 21",
+          "control_questions": [
+            { "question": "Délai de décoffrage respecté (≥ 7 jours linteau peu chargé) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_058",
+          "title": "Réaliser les seuils et appuis",
+          "phase": "ouvertures_linteaux",
+          "applies_to_works_type": ["cloison_non_porteuse", "element_porteur", "fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Seuil bas (porte) ou appui de fenêtre : avec pente vers l'extérieur (1-2%), rejingot (relevé arrière de 25 mm minimum), étanchéité sous l'appui (membrane EPDM ou bitume).",
+          "klaro_recommendation": "Appui maçonné en place ou rapporté (béton préfabriqué, pierre reconstituée). Pente 1-2% vers l'extérieur (mesurée au niveau). Rejingot 25 mm pour bloquer l'eau. Étanchéité sous appui pour empêcher les remontées capillaires. Toujours posé AVANT la menuiserie.",
+          "common_mistake": "Appui plat ou pente vers l'intérieur — eau qui passe derrière, infiltrations dans les murs.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_057"],
+          "norm_reference": "DTU 20.1 §9.4 + DTU 36.5",
+          "control_questions": [
+            { "question": "Pente 1-2% vers extérieur, rejingot ≥ 25 mm, étanchéité sous appui ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chainages",
+      "label": "Chaînages (structure)",
+      "tasks": [
+        {
+          "id": "maco_059",
+          "title": "Chaînage horizontal haut (obligatoire en haut de mur porteur)",
+          "phase": "chainages",
+          "applies_to_works_type": ["element_porteur", "fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Le chaînage horizontal haut ceinture le mur en partie haute. OBLIGATOIRE pour porteur. Section béton + ferraillage selon BET. Reprend les efforts horizontaux (vent, sismique) et solidarise la structure.",
+          "klaro_recommendation": "Coffrage en U ou bloc de chaînage spécial (forme creuse). Ferraillage continu : 4 aciers HA10/12 longitudinaux + cadres tous les 15-20 cm. Recouvrement aux jonctions ≥ 50 ø. Liaison avec chaînages verticaux. Coulage continu (jamais d'interruption sur un chaînage).",
+          "common_mistake": "Économiser le chaînage haut sur un mur porteur — fissuration aux jonctions, mur qui se déforme dans le temps.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": true,
+          "depends_on": ["maco_018"],
+          "norm_reference": "Eurocode 6 + Eurocode 8 (sismique) + DTU 20.1",
+          "control_questions": [
+            { "question": "Chaînage horizontal haut posé selon BET (continu, recouvrements, photos) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_060",
+          "title": "Chaînages horizontaux intermédiaires si hauteur > 3 m",
+          "phase": "chainages",
+          "applies_to_works_type": ["element_porteur", "fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Pour murs > 3 m de hauteur : chaînage horizontal intermédiaire à mi-hauteur. Limite l'élancement et les déformations sous charge.",
+          "klaro_recommendation": "Chaînage intermédiaire à environ 50% de la hauteur. Section et ferraillage selon BET. Continuité avec chaînages verticaux aux angles. Indispensable pour murs hauts (étages, bâtiments à forte hauteur sous plafond).",
+          "common_mistake": "Sauter le chaînage intermédiaire sur mur de 4 m — risque de flambement, déformation, fissuration en partie médiane.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_059"],
+          "norm_reference": "Eurocode 6 + DTU 20.1",
+          "control_questions": [
+            { "question": "Chaînage intermédiaire posé si hauteur > 3 m ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_061",
+          "title": "Chaînages verticaux à chaque angle et encadrement d'ouverture > 60 cm",
+          "phase": "chainages",
+          "applies_to_works_type": ["element_porteur", "fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Chaînages verticaux obligatoires : tous les angles du bâtiment, jonctions de murs (T, croix), encadrements d'ouvertures > 60 cm de largeur. Solidarisent les murs et reprennent les efforts.",
+          "klaro_recommendation": "Coulés dans une colonne de blocs hourdés (alvéoles remplies) ou dans coffrage. Ferraillage : 4 aciers HA10/12 longitudinaux + cadres tous les 15-20 cm. Recouvrement avec chaînages horizontaux ≥ 50 ø. Coulage en une fois après pose des blocs.",
+          "common_mistake": "Sauter un chaînage vertical sur une jonction de murs — fissures verticales aux jonctions, écartement progressif des murs.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_059"],
+          "norm_reference": "Eurocode 6 + DTU 20.1",
+          "control_questions": [
+            { "question": "Chaînages verticaux posés à tous les angles, jonctions, encadrements > 60 cm ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_062",
+          "title": "Vérifier la continuité des chaînages",
+          "phase": "chainages",
+          "applies_to_works_type": ["element_porteur", "fondation_extension"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Les chaînages doivent former un cadre continu autour de chaque mur (haut + verticaux + raccord avec semelle). Aucune interruption. Recouvrements d'aciers conformes Eurocode (≥ 50 ø).",
+          "klaro_recommendation": "Vérifiez visuellement les jonctions horizontales-verticales : aciers des chaînages verticaux remontent dans le chaînage horizontal, recouvrements respectés. Aciers d'attente en pied de mur reliés à la semelle. Une chaîne discontinue ne reprend pas les efforts. Photographiez chaque jonction.",
+          "common_mistake": "Couler un chaînage vertical sans liaison effective avec horizontal — chaînage 'inutile', structure non protégée.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": false,
+          "depends_on": ["maco_061"],
+          "norm_reference": "Eurocode 6 + DTU 20.1",
+          "control_questions": [
+            { "question": "Continuité des chaînages vérifiée (recouvrements ≥ 50 ø, aucune interruption) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "maco_063",
+          "title": "Photographier tous les ferraillages de chaînage AVANT coulage",
+          "phase": "chainages",
+          "applies_to_works_type": ["element_porteur", "fondation_extension", "mur_exterieur_cloture"],
+          "applies_to_building_age": ["all"],
+          "explanation": "Photo OBLIGATOIRE de chaque chaînage (horizontal et vertical) avant coulage. Une fois recouvert de béton, le ferraillage est invisible. Preuve de conformité indispensable pour assurance DO.",
+          "klaro_recommendation": "Photos d'ensemble + détails (recouvrements, cadres, enrobage). Mire ou mètre dans le cadre. Plusieurs angles. Date dans EXIF. Archivez avec dossier travaux. Sans photo, pas de preuve = assurance DO refuse en cas de désordre.",
+          "common_mistake": "Couler les chaînages sans photo — preuve impossible, refus assurance, responsabilité personnelle.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["maco_062"],
+          "norm_reference": "Bonnes pratiques + assurance DO",
+          "control_questions": [
+            { "question": "Photos de tous les chaînages prises et archivées AVANT coulage ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
     }
   ]
 }
