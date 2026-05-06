@@ -1,0 +1,1049 @@
+{
+  "module": "plomberie",
+  "phases": [
+    {
+      "id": "preparation",
+      "label": "Préparation & conception",
+      "tasks": [
+        {
+          "id": "plomb_001",
+          "title": "Définir le projet plomberie",
+          "phase": "preparation",
+          "explanation": "Listez les pièces concernées (SDB, cuisine, WC, buanderie), les équipements (douche, baignoire, WC, lavabo, évier, machines) et le type de production d'eau chaude.",
+          "klaro_recommendation": "Faites un plan coté pièce par pièce avec l'emplacement précis de chaque équipement. Notez les besoins spécifiques : douche italienne (siphon de sol), WC suspendu (bâti-support), baignoire d'angle. Anticipez les évolutions (deuxième SDB future ?).",
+          "common_mistake": "Démarrer les travaux sans plan complet et découvrir en cours de chantier qu'on n'a pas prévu d'arrivée pour le lave-vaisselle ou le sèche-serviettes.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Le plan liste-t-il tous les équipements et leur emplacement ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_002",
+          "title": "Repérer l'arrivée d'eau et les évacuations existantes",
+          "phase": "preparation",
+          "explanation": "Localisez le compteur d'eau, la vanne d'arrêt général, la chute principale (gros tube vertical d'évacuation) et les arrivées existantes.",
+          "klaro_recommendation": "La vanne d'arrêt général doit être facilement accessible. Si elle est inaccessible ou défaillante, faites-la remplacer. La chute principale (Ø 100 mm en général) impose la position du futur WC : plus on s'en éloigne, plus la pente cumulée pose problème.",
+          "common_mistake": "Concevoir un nouveau WC à 8 m de la chute principale sans tenir compte de la pente — résultat : tuyauterie qui descend trop bas pour rester dans le sol.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_001"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "La vanne d'arrêt général est-elle accessible et fonctionnelle ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_003",
+          "title": "Vérifier la pression du réseau",
+          "phase": "preparation",
+          "explanation": "Mesurez la pression d'arrivée d'eau au manomètre. Idéal : 3 bars. Au-delà, prévoyez un réducteur de pression. En dessous de 1,5 bar, prévoyez un surpresseur.",
+          "klaro_recommendation": "Branchez un manomètre sur un robinet (kit ~15 €). Mesurez à plusieurs moments de la journée (la pression varie avec la consommation du quartier). Une pression > 4 bars use prématurément les robinetteries et risque de faire éclater des raccords.",
+          "common_mistake": "Ne pas mesurer la pression avant de poser des équipements modernes sensibles (mitigeurs thermostatiques, machines) qui sont garantis 3 bars maxi.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_002"],
+          "norm_reference": "DTU 60.11 §4.1",
+          "control_questions": [
+            { "question": "Pression mesurée au manomètre (bars) ?", "type": "number", "expected": "≤ 3 (sinon réducteur)" }
+          ]
+        },
+        {
+          "id": "plomb_004",
+          "title": "Vérifier l'état du réseau existant",
+          "phase": "preparation",
+          "explanation": "Inspectez le réseau actuel : vétusté, présence de plomb (interdit pour l'eau potable depuis 1995), fuites visibles, dépôts de calcaire, corrosion.",
+          "klaro_recommendation": "Si présence de plomb (tuyaux gris ternes, raccords plombés) : remplacement obligatoire pour l'eau potable. Le calcaire s'identifie aux réductions de débit et aux dépôts blancs. La corrosion sur cuivre se voit aux taches vertes (verdet). Documentez l'état avant intervention.",
+          "common_mistake": "Garder une partie du réseau en plomb par économie — non conforme, dangereux pour la santé, et bloquant pour la vente du logement.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_002"],
+          "norm_reference": "Arrêté 11 janvier 2007 (eau potable)",
+          "control_questions": [
+            { "question": "Le réseau est-il exempt de plomb ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_005",
+          "title": "Choisir le type de réseau d'alimentation",
+          "phase": "preparation",
+          "explanation": "PER (polyéthylène réticulé) : souple, rapide à poser, économique. Multicouche : intermédiaire, garde sa forme. Cuivre : durable, bonne tenue thermique, plus cher et long à poser.",
+          "klaro_recommendation": "PER en gaine pour les passages cachés (le tube peut être tiré sans raccord caché, c'est l'idéal). Multicouche en apparent ou si forme à conserver. Cuivre pour le départ chauffe-eau et zones près de fortes températures. Évitez les raccords cachés non démontables.",
+          "common_mistake": "Mélanger les matériaux sans raccords adaptés (laiton/PER) — corrosion électrolytique et fuite à terme.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_001"],
+          "norm_reference": "DTU 60.1 §3 + DTU 60.5",
+          "control_questions": []
+        },
+        {
+          "id": "plomb_006",
+          "title": "Choisir la production d'eau chaude",
+          "phase": "preparation",
+          "explanation": "Chauffe-eau électrique (ballon classique), thermodynamique (pompe à chaleur, économique mais bruyant), instantané gaz (réservé aux pros certifiés Qualigaz).",
+          "klaro_recommendation": "Pour la rénovation : ballon thermodynamique si volume disponible et bonne ventilation (réduit la facture de 60-70%). Ballon classique en secours/petits espaces. Tout projet gaz (chaudière, instantané) DOIT être réalisé par un professionnel certifié Qualigaz — interdit en auto-rénovation.",
+          "common_mistake": "Vouloir installer soi-même un instantané gaz sans certification — non conforme, dangereux (risque d'explosion ou d'intoxication CO), et l'assurance ne couvre pas en cas de sinistre.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_001"],
+          "norm_reference": "DTU 61.1 (gaz — réservé Qualigaz)",
+          "control_questions": [
+            { "question": "Si production gaz prévue : intervenant certifié Qualigaz ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_007",
+          "title": "Dimensionner le ballon ECS",
+          "phase": "preparation",
+          "explanation": "Comptez 50 litres minimum par personne dans le foyer, à ajuster selon les usages (baignoire = +50 L, douche fréquente = +30 L).",
+          "klaro_recommendation": "Famille 4 personnes avec baignoire : 250 L mini. Couple sans bain : 100-150 L. Trop petit = douches froides en fin de journée. Trop grand = surconsommation pour maintenir un volume inutile en température. Privilégiez un ballon avec résistance stéatite (anti-calcaire, durée de vie ×2).",
+          "common_mistake": "Sous-dimensionner pour économiser à l'achat — le ballon trop petit oblige à allumer la résistance plus souvent et coûte plus cher à l'usage.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_006"],
+          "norm_reference": "DTU 60.11 §6",
+          "control_questions": [
+            { "question": "Volume du ballon (litres) ?", "type": "number", "expected": "≥ 50 L × nb personnes" }
+          ]
+        },
+        {
+          "id": "plomb_008",
+          "title": "Définir l'emplacement précis des équipements",
+          "phase": "preparation",
+          "explanation": "Sur le plan, positionnez chaque équipement avec ses cotes exactes (axes WC, axes douche, position évier). Ces cotes conditionnent les arrivées et évacuations.",
+          "klaro_recommendation": "Respectez les hauteurs et axes standards : WC axe à 40 cm du mur latéral, douche évacuation centrée sur le receveur, lavabo à 85 cm du sol fini. Pour une SDB confortable, comptez 60 cm de circulation devant chaque équipement.",
+          "common_mistake": "Positionner deux équipements trop près l'un de l'autre — impossible d'accéder pour le ménage ou l'entretien.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_001"],
+          "norm_reference": "DTU 60.11 + NF P 99-611 (cotes ergonomiques)",
+          "control_questions": []
+        },
+        {
+          "id": "plomb_009",
+          "title": "Calculer les débits et diamètres par tronçon",
+          "phase": "preparation",
+          "explanation": "Chaque tronçon d'alimentation doit avoir un diamètre adapté au nombre d'équipements desservis. Trop petit = perte de pression et débit insuffisant en pointe.",
+          "klaro_recommendation": "Règle simple : Ø 12 mm (PER) ou Ø 14/16 mm (cuivre) pour un seul équipement, Ø 16 mm (PER) ou Ø 18/20 mm (cuivre) pour plusieurs. La nourrice (collecteur) doit être en Ø 20-25 mm. Pour une douche moderne haut débit (>15 L/min), augmentez d'un cran.",
+          "common_mistake": "Utiliser du Ø 12 mm partout pour économiser — perte de pression notable dès qu'on ouvre deux robinets en simultané.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_005", "plomb_008"],
+          "norm_reference": "DTU 60.11 §5",
+          "control_questions": [
+            { "question": "Les diamètres sont-ils calculés par tronçon selon le nombre d'équipements ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conception_reseau",
+      "label": "Conception du réseau",
+      "tasks": [
+        {
+          "id": "plomb_010",
+          "title": "Tracer le réseau d'alimentation",
+          "phase": "conception_reseau",
+          "explanation": "Le réseau d'alimentation se trace au plus court entre la nourrice et chaque point de puisage, en évitant les zones de gel et en restant accessible.",
+          "klaro_recommendation": "Privilégiez un cheminement vertical depuis le sol ou horizontal en plinthe. Évitez les passages dans les murs extérieurs (risque de gel). Si passage extérieur inévitable : isolation renforcée + cordon chauffant. Tracez les passages sur le plan pour le futur dossier as-built.",
+          "common_mistake": "Faire passer un tube d'eau dans un mur extérieur non isolé — gel garanti au premier hiver, tube éclaté.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_009"],
+          "norm_reference": "DTU 60.11 §7",
+          "control_questions": [
+            { "question": "Aucune canalisation ne passe-t-elle en zone de gel non isolée ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_011",
+          "title": "Tracer le réseau d'évacuation avec pentes",
+          "phase": "conception_reseau",
+          "explanation": "L'évacuation fonctionne par gravité : pente comprise entre 1 et 3 %, idéal 2 % (soit 2 cm par mètre). Trop pentu = solides restent, trop plat = stagnation.",
+          "klaro_recommendation": "Calculez la pente cumulée du point le plus éloigné jusqu'à la chute. Sur 6 m à 2 %, vous descendez de 12 cm — assurez-vous d'avoir cette hauteur disponible dans le sol. Si non, repensez l'emplacement ou prévoyez un broyeur pour le WC (en dernier recours).",
+          "common_mistake": "Tracer une pente à 5 % en pensant que 'plus c'est pentu, mieux ça coule' — l'eau descend trop vite, les solides restent et bouchent.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_002", "plomb_008"],
+          "norm_reference": "DTU 60.11 §8.1",
+          "control_questions": [
+            { "question": "La pente prévue est-elle entre 1 et 3 % (idéal 2 %) ?", "type": "number", "expected": "1 à 3" }
+          ]
+        },
+        {
+          "id": "plomb_012",
+          "title": "Positionner les nourrices / collecteurs",
+          "phase": "conception_reseau",
+          "explanation": "La nourrice est un collecteur où arrivent les départs d'eau (un par équipement). Elle se place dans un endroit accessible, à l'abri du gel, idéalement près du chauffe-eau.",
+          "klaro_recommendation": "Une nourrice eau froide + une nourrice eau chaude. Chaque sortie alimente un seul équipement (couplage simple = moins de pertes de charge, isolement individuel possible). Prévoir une trappe de visite si la nourrice est encastrée.",
+          "common_mistake": "Cacher la nourrice derrière un placo sans trappe — accès impossible en cas de problème, il faudra casser le mur.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_010"],
+          "norm_reference": "DTU 60.11 §7",
+          "control_questions": [
+            { "question": "Les nourrices sont-elles accessibles (trappe de visite si encastrées) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_013",
+          "title": "Définir l'emplacement des vannes d'arrêt",
+          "phase": "conception_reseau",
+          "explanation": "Une vanne d'arrêt général + une vanne par pièce (ou par appareil) permettent d'isoler en cas de fuite ou d'intervention sans couper toute la maison.",
+          "klaro_recommendation": "Vanne générale accessible (pas derrière un meuble lourd). Vanne par pièce humide en entrée. Vanne par appareil pour WC, lave-linge, lave-vaisselle (intervention possible sans couper la maison). Privilégiez les vannes 1/4 de tour, plus durables que les robinets à clapet.",
+          "common_mistake": "Pas de vanne d'isolement sur le WC — toute intervention oblige à couper l'eau de la maison entière.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_010"],
+          "norm_reference": "DTU 60.11 §7.3",
+          "control_questions": [
+            { "question": "Une vanne d'isolement est-elle prévue par pièce ou par appareil ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_014",
+          "title": "Prévoir la ventilation des chutes",
+          "phase": "conception_reseau",
+          "explanation": "Sans ventilation, l'évacuation crée un effet siphon qui vide les gardes d'eau (remontée d'odeurs). Solution : ventilation primaire en toiture ou clapet aérateur si toiture inaccessible.",
+          "klaro_recommendation": "Ventilation primaire = prolongation de la chute jusqu'au-dessus de la toiture. Si impossible : clapet aérateur (boîtier qui laisse entrer l'air mais pas sortir) en sortie de chute, posé au-dessus du dernier appareil raccordé. Vérifiez les règles de copropriété si appartement.",
+          "common_mistake": "Ne prévoir aucune ventilation — odeurs d'égout dans la maison dès la première semaine d'utilisation.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_011"],
+          "norm_reference": "DTU 60.11 §8.4",
+          "control_questions": [
+            { "question": "La ventilation des chutes est-elle prévue (primaire ou clapet) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_015",
+          "title": "Prévoir le bouclage ECS si distance > 8 m",
+          "phase": "conception_reseau",
+          "explanation": "Si la distance entre le ballon ECS et le point de puisage le plus éloigné dépasse 8 m, prévoyez un bouclage (circulation continue) pour éviter le développement de légionellose et avoir l'eau chaude immédiatement.",
+          "klaro_recommendation": "Le bouclage = retour de l'eau chaude vers le ballon avec une petite pompe. Sans bouclage > 8 m : eau froide à attendre (gaspillage) + risque légionellose dans la zone stagnante. Prévoyez le bouclage dès la conception, ajout après coup très complexe.",
+          "common_mistake": "Avoir un ballon à 12 m de la SDB sans bouclage — 30 secondes d'eau froide à chaque douche et risque sanitaire.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_007", "plomb_010"],
+          "norm_reference": "Arrêté 30 nov. 2005 + DTU 60.11 §6.3",
+          "control_questions": [
+            { "question": "Distance ballon → point puisage le plus éloigné (m) ?", "type": "number", "expected": "≤ 8 sinon bouclage" }
+          ]
+        },
+        {
+          "id": "plomb_016",
+          "title": "Prévoir les sorties en attente",
+          "phase": "conception_reseau",
+          "explanation": "Chaque équipement a des hauteurs de sortie standards : eau chaude à gauche, eau froide à droite, écartement régulier (150 mm pour mitigeur classique).",
+          "klaro_recommendation": "Hauteurs standards : lavabo 50-60 cm sol fini, évier 50-55 cm sol fini, douche 110-120 cm sol fini, baignoire 60-70 cm. Écartement chaud/froid 150 mm précis (sinon mitigeur ne tient pas). Ces cotes se matérialisent par des bouchons d'attente jusqu'à la pose des robinetteries.",
+          "common_mistake": "Inverser eau chaude et eau froide ou faire un écartement de 140 mm — la robinetterie ne s'adapte pas et il faut tout reprendre.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_008"],
+          "norm_reference": "DTU 60.11 §7.5",
+          "control_questions": [
+            { "question": "Eau chaude à gauche, eau froide à droite, écartement 150 mm ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_017",
+          "title": "Coordonner avec électricien et carreleur",
+          "phase": "conception_reseau",
+          "explanation": "La plomberie partage des passages avec l'électricité (proximité interdite avec gaines élec) et impose des contraintes au carreleur (siphon de sol, SPEC en zone douche).",
+          "klaro_recommendation": "Avec l'élec : les conduites d'eau se posent sous les gaines élec (l'eau coule, l'élec ne mouille pas). Avec le carreleur : matérialisez précisément la position du siphon de sol, le sens de la pente du receveur, l'emplacement des sorties pour mitigeur. Réunissez tout le monde sur le plan avant le démarrage.",
+          "common_mistake": "Avancer chacun de son côté — résultat : le siphon de sol n'est pas au bon endroit ou la sortie d'eau passe sous le receveur de douche.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_010", "plomb_011"],
+          "norm_reference": "NF C 15-100 + DTU 52.2",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "gros_oeuvre_evacuations",
+      "label": "Gros œuvre — Évacuations (à poser AVANT les alimentations)",
+      "tasks": [
+        {
+          "id": "plomb_018",
+          "title": "Installer les chutes d'eaux usées et eaux vannes",
+          "phase": "gros_oeuvre_evacuations",
+          "explanation": "Eaux vannes (WC) = chute Ø 100 mm. Eaux usées (lavabo, douche, évier, machines) = chute Ø 50 mm minimum. Posez les chutes verticales en premier, fixées tous les 2 m.",
+          "klaro_recommendation": "Utilisez du PVC évacuation (gris ou marron) marqué 'EU' (eaux usées). Les coudes doivent être à grand rayon (45° de préférence, jamais deux coudes 90° en cascade sans tampon de visite). Fixez avec des colliers PVC + isolation phonique (mousse ou liège).",
+          "common_mistake": "Utiliser du PVC pression (blanc, plomberie eau chaude) en évacuation — non conforme, raccords incompatibles à long terme.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_011", "plomb_014"],
+          "norm_reference": "DTU 60.32 + DTU 60.11 §8",
+          "control_questions": [
+            { "question": "Diamètres respectés (Ø 100 WC, Ø 50 mini eaux usées) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_019",
+          "title": "Installer les collecteurs horizontaux avec pente 1 à 3 %",
+          "phase": "gros_oeuvre_evacuations",
+          "explanation": "Les collecteurs horizontaux (qui regroupent les évacuations vers la chute) ont une pente comprise entre 1 et 3 %, idéal 2 %. Vérifiez au niveau, pas à l'œil.",
+          "klaro_recommendation": "Posez d'abord les colliers de fixation avec la pente prévue (utilisez le niveau ou un cordeau tendu). Tirez le tube ensuite, contrôlez tous les 1 m. Pour une pente de 2 % sur 4 m de tube : départ à 0 cm, arrivée à 8 cm plus bas. Marquez les hauteurs avant de fixer.",
+          "common_mistake": "Poser le tube et fixer ensuite 'à l'œil' — la pente est rarement constante, certains tronçons stagnent et bouchent.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_018"],
+          "norm_reference": "DTU 60.32 §6 + DTU 60.11 §8.1",
+          "control_questions": [
+            { "question": "La pente est-elle vérifiée au niveau (1 à 3 %) ?", "type": "number", "expected": "1 à 3" }
+          ]
+        },
+        {
+          "id": "plomb_020",
+          "title": "Installer les évacuations d'appareils",
+          "phase": "gros_oeuvre_evacuations",
+          "explanation": "Chaque appareil a un diamètre d'évacuation : Ø 32-40 mm lavabo (selon siphon), Ø 40 mm douche, baignoire, évier, machines, Ø 100 mm WC.",
+          "klaro_recommendation": "Tirez chaque évacuation depuis le siphon de l'appareil jusqu'au collecteur, avec la même pente que les collecteurs (1-3 %). Distance maxi entre siphon et chute SANS ventilation : 1 m. Au-delà, prévoir une ventilation secondaire ou clapet aérateur.",
+          "common_mistake": "Poser une évacuation lavabo de 3 m sans ventilation — le siphon se vide à chaque utilisation par effet siphon.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_019"],
+          "norm_reference": "DTU 60.11 §8.2",
+          "control_questions": [
+            { "question": "Distance siphon → chute ≤ 1 m sans ventilation secondaire ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_021",
+          "title": "Installer le siphon de sol en douche italienne",
+          "phase": "gros_oeuvre_evacuations",
+          "explanation": "Le siphon de sol (caniveau ou bonde centrée) reçoit l'eau de la douche italienne. Le receveur (chape ou douche prête à carreler) doit avoir une pente de 1 à 2 % vers le siphon.",
+          "klaro_recommendation": "Posez le siphon avec sa grille au niveau du futur carrelage fini (pas plus haut, pas plus bas). Vérifiez la garde d'eau (50 mm mini). Pour une douche italienne : caniveau le long du mur ou bonde centrale, pente du receveur convergente vers le siphon. Réalisez la chape avant la pose du SPEC et du carrelage.",
+          "common_mistake": "Poser le siphon trop haut ou trop bas par rapport au futur carrelage — eau qui stagne au sol ou marche d'eau dans le bac.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_020"],
+          "norm_reference": "DTU 60.11 §8.3 + DTU 52.2",
+          "control_questions": [
+            { "question": "Pente du receveur vers le siphon (%) ?", "type": "number", "expected": "1 à 2" }
+          ]
+        },
+        {
+          "id": "plomb_022",
+          "title": "Vérifier la garde d'eau des siphons",
+          "phase": "gros_oeuvre_evacuations",
+          "explanation": "Le siphon retient une couche d'eau (garde d'eau, 50 mm minimum) qui empêche les odeurs d'égout de remonter. Tout siphon doit respecter cette garde.",
+          "klaro_recommendation": "Vérifiez sur la fiche produit du siphon que la garde d'eau est ≥ 50 mm. Pour les siphons plats (sous lavabo bas, sous receveur extra-plat), attention : certains modèles bas de gamme ont une garde de 30 mm seulement, non conforme. Photographiez chaque siphon en place avant fermeture.",
+          "common_mistake": "Choisir un siphon ultra-plat sans vérifier la garde — odeurs garanties dès le premier été.",
+          "pro_recommended": false,
+          "photo_required_before_validation": true,
+          "depends_on": ["plomb_021"],
+          "norm_reference": "DTU 60.11 §8.5 + NF EN 274",
+          "control_questions": [
+            { "question": "Garde d'eau de chaque siphon (mm) ?", "type": "number", "expected": "≥ 50" }
+          ]
+        },
+        {
+          "id": "plomb_023",
+          "title": "Installer la ventilation primaire (toiture) ou clapets aérateurs",
+          "phase": "gros_oeuvre_evacuations",
+          "explanation": "La ventilation primaire prolonge la chute principale jusqu'au-dessus de la toiture (Ø 100 mm, mitron de protection). Si toiture inaccessible : clapet aérateur en sortie de chute.",
+          "klaro_recommendation": "Ventilation primaire = la solution de référence (silencieuse, fiable, sans entretien). Le mitron empêche l'entrée d'oiseaux et de feuilles. Clapet aérateur en alternative : à poser obligatoirement au-dessus du dernier appareil raccordé, dans un volume aéré (jamais dans un placard fermé).",
+          "common_mistake": "Poser un clapet aérateur dans un placard fermé — il n'aspire pas d'air et ne fonctionne pas.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_018"],
+          "norm_reference": "DTU 60.11 §8.4",
+          "control_questions": [
+            { "question": "La ventilation est-elle effective (primaire ou clapet correctement positionné) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_024",
+          "title": "Étancher les traversées de planchers et murs",
+          "phase": "gros_oeuvre_evacuations",
+          "explanation": "Chaque traversée d'un tube dans un plancher ou un mur doit être étanchée avec un manchon adapté + mastic spécial (acrylique, polyuréthane). Évite les fuites d'air, d'eau et de bruit.",
+          "klaro_recommendation": "Posez un manchon PVC un peu plus large que le tube (jeu 5-10 mm). Comblez l'espace avec une mousse expansive ou un mastic acoustique. Ne jamais sceller directement le tube dans la dalle (le tube ne peut plus se dilater, fissures à terme).",
+          "common_mistake": "Sceller le tube directement dans la chape — au premier choc thermique, le tube fissure ou la chape se fend.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_018", "plomb_019", "plomb_020"],
+          "norm_reference": "DTU 60.11 §9 + DTU 25.41",
+          "control_questions": [
+            { "question": "Toutes les traversées sont-elles étanchées avec manchon + mastic ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_025",
+          "title": "Fixer solidement les évacuations",
+          "phase": "gros_oeuvre_evacuations",
+          "explanation": "Les évacuations se fixent avec des colliers PVC à intervalles réglementaires : tous les 50 cm en horizontal, tous les 2 m en vertical. Pas de jeu, pas de mouvement.",
+          "klaro_recommendation": "Utilisez des colliers acoustiques (avec joint caoutchouc) qui réduisent les bruits de chute. Vérifiez après pose qu'aucun tronçon n'est en porte-à-faux : le poids de l'eau pleine ferait fléchir et créerait des contre-pentes.",
+          "common_mistake": "Espacer les colliers pour économiser — fléchissement de la canalisation et création de contre-pentes invisibles à sec mais bloquantes en charge.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_019"],
+          "norm_reference": "DTU 60.32 §7",
+          "control_questions": [
+            { "question": "Les colliers sont-ils espacés ≤ 50 cm horizontal / ≤ 2 m vertical ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gros_oeuvre_alimentations",
+      "label": "Gros œuvre — Alimentations",
+      "tasks": [
+        {
+          "id": "plomb_026",
+          "title": "Installer le disconnecteur / clapet anti-retour",
+          "phase": "gros_oeuvre_alimentations",
+          "explanation": "Le disconnecteur (ou clapet anti-retour) empêche l'eau du réseau privé de remonter dans le réseau public. Obligatoire en arrivée générale (arrêté 30 novembre 2005).",
+          "klaro_recommendation": "Posez le disconnecteur juste après le compteur, avant tout autre équipement. Modèle adapté à l'usage : EA (clapet anti-retour simple) pour usage domestique courant, BA pour usages plus sensibles (collectifs, jardin avec arrosage). Vérifiez périodiquement (entretien annuel recommandé).",
+          "common_mistake": "Ne pas installer de disconnecteur — non conforme, risque sanitaire (retour d'eau souillée vers le réseau public), refus de réception du chantier.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_002"],
+          "norm_reference": "Arrêté 30 nov. 2005 + DTU 60.11 §4.5",
+          "control_questions": [
+            { "question": "Un disconnecteur ou clapet anti-retour est-il installé sur l'arrivée générale ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_027",
+          "title": "Installer le réducteur de pression si > 3 bars",
+          "phase": "gros_oeuvre_alimentations",
+          "explanation": "Si la pression mesurée dépasse 3 bars, posez un réducteur de pression réglé à 3 bars en aval du compteur. Évite l'usure prématurée des robinetteries et appareils.",
+          "klaro_recommendation": "Réducteur réglable + manomètre intégré pour vérifier le réglage. Réglez à 3 bars en sortie (mesurez avec un robinet ouvert au plus loin). Sans réducteur à 5-6 bars : durée de vie des mitigeurs divisée par 2-3, machines garanties uniquement à 3 bars.",
+          "common_mistake": "Penser que 'plus c'est puissant, mieux c'est' — la haute pression abîme les équipements et fait éclater les flexibles.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_003", "plomb_026"],
+          "norm_reference": "DTU 60.11 §4.1",
+          "control_questions": [
+            { "question": "Pression en sortie de réducteur (bars) ?", "type": "number", "expected": "≤ 3" }
+          ]
+        },
+        {
+          "id": "plomb_028",
+          "title": "Installer la vanne d'arrêt général",
+          "phase": "gros_oeuvre_alimentations",
+          "explanation": "La vanne d'arrêt général permet de couper toute l'eau de la maison en cas d'urgence (fuite, intervention, départ en vacances). Elle se pose en aval du compteur, accessible et repérée.",
+          "klaro_recommendation": "Vanne 1/4 de tour (plus durable et plus rapide qu'un robinet à clapet). Étiquetez-la clairement ('Arrêt général eau'). Tous les occupants doivent en connaître l'emplacement. Manipulez-la 1 fois par an pour éviter qu'elle ne se grippe.",
+          "common_mistake": "Cacher la vanne derrière un meuble lourd ou un placo sans trappe — en cas de fuite urgente, perte de plusieurs minutes pour la trouver.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_026"],
+          "norm_reference": "DTU 60.11 §7.3",
+          "control_questions": [
+            { "question": "La vanne d'arrêt général est-elle accessible et repérée ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_029",
+          "title": "Poser les nourrices / collecteurs",
+          "phase": "gros_oeuvre_alimentations",
+          "explanation": "Les nourrices (eau froide + eau chaude) regroupent les départs vers chaque équipement. Une nourrice avec une sortie par appareil = isolement individuel + circulation optimale.",
+          "klaro_recommendation": "Posez la nourrice eau froide alimentée par la vanne générale, et la nourrice eau chaude alimentée par le ballon. Chaque sortie a sa propre vanne d'isolement (pratique pour intervention sur un seul appareil). Local technique idéal : à proximité du chauffe-eau, avec accès garanti.",
+          "common_mistake": "Multiplier les départs en T (un tube alimentant plusieurs équipements) — fuite difficile à localiser et impossibilité d'isoler un seul appareil.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_028", "plomb_012"],
+          "norm_reference": "DTU 60.11 §7",
+          "control_questions": [
+            { "question": "Chaque équipement a-t-il sa propre sortie de nourrice avec vanne ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_030",
+          "title": "Tirer les alimentations vers chaque point",
+          "phase": "gros_oeuvre_alimentations",
+          "explanation": "Depuis la nourrice, un seul tube part vers chaque équipement. PER en gaine ICTA pour les passages cachés (changement possible sans casser).",
+          "klaro_recommendation": "Privilégiez le PER en gaine pour les tronçons cachés : un seul tube par équipement, pas de raccord intermédiaire caché. Tirez en évitant les angles trop serrés (rayon de courbure mini = 5× le diamètre). Maintenez les tubes propres jusqu'à la mise en service (bouchons sur les extrémités).",
+          "common_mistake": "Faire des raccords cachés au milieu d'un mur sans trappe — toute fuite future = casse du mur.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_029"],
+          "norm_reference": "DTU 60.11 §7 + DTU 60.5",
+          "control_questions": [
+            { "question": "Aucun raccord caché non démontable n'est présent sans trappe de visite ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_031",
+          "title": "Installer les vannes d'isolement",
+          "phase": "gros_oeuvre_alimentations",
+          "explanation": "Une vanne par pièce humide (en entrée) ou par appareil (WC, machines) permet d'isoler une zone sans couper toute la maison.",
+          "klaro_recommendation": "Vannes 1/4 de tour, accessibles (pas derrière un meuble fixe). Étiquetez chaque vanne ('SDB étage', 'WC RDC', 'Lave-linge'). Privilégiez la vanne dédiée par appareil pour le confort d'intervention. Coût supplémentaire négligeable, gain énorme à l'usage.",
+          "common_mistake": "Poser des vannes mais sans repérage — au moment d'intervenir, on ne sait pas laquelle alimente quoi.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_029"],
+          "norm_reference": "DTU 60.11 §7.3",
+          "control_questions": [
+            { "question": "Toutes les vannes sont-elles posées et étiquetées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_032",
+          "title": "Installer les antibéliers",
+          "phase": "gros_oeuvre_alimentations",
+          "explanation": "Lave-linge et lave-vaisselle ferment leurs électrovannes très rapidement, créant un coup de bélier (claquement violent dans les tubes). Un antibélier (petit ressort) absorbe ce choc.",
+          "klaro_recommendation": "Antibélier à visser sur l'arrivée d'eau de chaque machine, juste avant le robinet d'arrêt. Coût ~15 € l'unité. Sans antibélier : claquements à chaque cycle, vibrations dans les murs, risque de fuite à terme aux raccords sollicités.",
+          "common_mistake": "Ignorer les claquements en pensant que 'c'est normal' — au bout de quelques années, un raccord cède et c'est le dégât des eaux.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_030"],
+          "norm_reference": "DTU 60.11 §5.4",
+          "control_questions": [
+            { "question": "Un antibélier est-il posé sur lave-linge et lave-vaisselle ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_033",
+          "title": "Poser les sorties en attente",
+          "phase": "gros_oeuvre_alimentations",
+          "explanation": "Aux emplacements des futurs équipements, les tubes ressortent du mur avec des bouchons d'attente : eau chaude à gauche, eau froide à droite, écartement 150 mm, hauteurs réglementaires.",
+          "klaro_recommendation": "Vérifiez TROIS fois avant de fermer : positions, hauteurs, écartement, sens chaud/froid. Une erreur de 2 cm dans la hauteur de la sortie d'un mitigeur de douche = mitigeur trop bas/haut visuellement. Bouchonnez les attentes (capuchons étanches) jusqu'à la pose des robinetteries.",
+          "common_mistake": "Mal positionner les sorties en attente et devoir casser le carrelage neuf pour les déplacer après peinture/carrelage.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_030", "plomb_016"],
+          "norm_reference": "DTU 60.11 §7.5",
+          "control_questions": [
+            { "question": "Hauteurs et écartements respectés sur toutes les sorties ?", "type": "boolean", "expected": "true" },
+            { "question": "Eau chaude à gauche, eau froide à droite ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_034",
+          "title": "Fixer solidement les tuyaux d'alimentation",
+          "phase": "gros_oeuvre_alimentations",
+          "explanation": "Les tuyaux se fixent avec des colliers anti-vibration (avec joint caoutchouc), tous les 50 cm en horizontal, 1 m en vertical. Pas de contact direct avec la maçonnerie.",
+          "klaro_recommendation": "Le contact direct tube/maçonnerie transmet les vibrations et bruits d'écoulement. Les colliers anti-vibration découplent le tube. Pour le PER en gaine : la gaine peut frotter dans le mur sans dommage. Pour le cuivre apparent : impératif d'avoir des colliers à joint pour silence et longévité.",
+          "common_mistake": "Sceller le tube directement dans le mur — bruits d'écoulement audibles dans toute la maison.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_030"],
+          "norm_reference": "DTU 60.5 §5 + DTU 60.11 §9",
+          "control_questions": [
+            { "question": "Les tubes sont-ils fixés avec colliers anti-vibration aux bons intervalles ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_035",
+          "title": "Photographier le réseau complet avant fermeture",
+          "phase": "gros_oeuvre_alimentations",
+          "explanation": "Avant la fermeture des murs et plafonds, photographiez l'intégralité du réseau (alimentations + évacuations) avec les positions des vannes, raccords, nourrices, attentes.",
+          "klaro_recommendation": "Prenez une photo par section, en notant la pièce et la date. Marquez sur le plan les zones photographiées. Ce dossier est INDISPENSABLE pour : retrouver une fuite, ajouter un équipement plus tard, justifier les travaux en cas de litige ou de vente. Archivez sur cloud + papier.",
+          "common_mistake": "Fermer les murs sans photo et perdre toute trace du réseau — toute intervention future = casse + tâtonnement.",
+          "pro_recommended": false,
+          "photo_required_before_validation": true,
+          "depends_on": ["plomb_034", "plomb_025"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Toutes les sections de réseau sont-elles photographiées et archivées ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mise_en_eau_tests",
+      "label": "Mise en eau & tests",
+      "tasks": [
+        {
+          "id": "plomb_036",
+          "title": "Purger le réseau avant mise sous tension du chauffe-eau",
+          "phase": "mise_en_eau_tests",
+          "explanation": "Le chauffe-eau doit être complètement rempli d'eau AVANT toute mise sous tension électrique. Une résistance qui chauffe à vide grille en quelques secondes.",
+          "klaro_recommendation": "Ouvrez la vanne d'arrivée du ballon. Ouvrez un robinet d'eau chaude au point le plus haut (purge de l'air). Attendez que l'eau coule sans à-coups (pas de bulles). Le ballon est plein. SEULEMENT ENSUITE, mettez sous tension. Vérifiez l'absence de fuite au groupe de sécurité.",
+          "common_mistake": "Mettre sous tension un ballon vide ou partiellement rempli — résistance grillée en moins d'une minute, garantie souvent refusée.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_035"],
+          "norm_reference": "DTU 60.11 §6.4 + notice fabricant",
+          "control_questions": [
+            { "question": "Le ballon est-il complètement purgé avant mise sous tension ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_037",
+          "title": "Mettre en eau progressivement et purger les points hauts",
+          "phase": "mise_en_eau_tests",
+          "explanation": "Ouvrez la vanne d'arrêt général lentement, en commençant par les points les plus bas. Purgez ensuite chaque point haut pour évacuer l'air emprisonné.",
+          "klaro_recommendation": "Ouvrez la vanne générale au quart, attendez 30 secondes, puis progressivement jusqu'à pleine ouverture. Ouvrez ensuite chaque robinet en partant du plus bas vers le plus haut, jusqu'à ce que l'eau coule sans à-coups. Cette purge évite les coups de bélier et les bruits dans le réseau.",
+          "common_mistake": "Ouvrir la vanne en grand d'un coup — coup de bélier sur tout le réseau neuf, risque de fuite immédiate aux raccords mal serrés.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_036"],
+          "norm_reference": "DTU 60.11 §10.1",
+          "control_questions": [
+            { "question": "Tous les points sont-ils purgés (eau claire et constante) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_038",
+          "title": "Effectuer le test de pression (1,5 × pression de service, 24h)",
+          "phase": "mise_en_eau_tests",
+          "explanation": "Le test de pression vérifie l'étanchéité de tout le réseau. Mettez sous une pression de 1,5 fois la pression de service (donc ~4,5 bars si réseau à 3 bars), maintenue 24h minimum.",
+          "klaro_recommendation": "Utilisez une pompe de test (location ~30 €/jour) avec manomètre. Bouchonnez tous les points de puisage, mettez sous pression, laissez 24h. Notez la pression de départ et la pression à 1h, 6h, 24h. Une chute > 0,3 bar = fuite à rechercher. Faites ce test AVANT toute fermeture définitive des murs.",
+          "common_mistake": "Sauter le test de pression ou se contenter de 1h — une micro-fuite peut prendre 12h à se manifester sur le manomètre.",
+          "pro_recommended": true,
+          "photo_required_before_validation": true,
+          "depends_on": ["plomb_037"],
+          "norm_reference": "DTU 60.11 §10.2 + DTU 65.10",
+          "control_questions": [
+            { "question": "Pression de test (bars) ?", "type": "number", "expected": "1,5 × pression service" },
+            { "question": "Durée du test (heures) ?", "type": "number", "expected": "≥ 24" },
+            { "question": "Chute de pression à 24h (bars) ?", "type": "number", "expected": "≤ 0,3" }
+          ]
+        },
+        {
+          "id": "plomb_039",
+          "title": "Vérifier visuellement chaque raccord pendant le test",
+          "phase": "mise_en_eau_tests",
+          "explanation": "Pendant le test de pression, inspectez chaque raccord à la lampe et au papier essuie-tout : un suintement, même infime, est une fuite à corriger.",
+          "klaro_recommendation": "Passez du papier essuie-tout sec autour de chaque raccord et regardez après 1h : toute trace humide = fuite. Inspectez tous les raccords visibles AVANT de fermer les murs. Pour les raccords cachés à venir, c'est ce contrôle qui valide qu'aucune fuite ne se développera dans le mur.",
+          "common_mistake": "Se fier uniquement à la pression sans inspecter visuellement — une fuite très lente n'apparaît sur le manomètre qu'après plusieurs heures.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_038"],
+          "norm_reference": "DTU 60.11 §10.2",
+          "control_questions": [
+            { "question": "Chaque raccord visible est-il inspecté et sec ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_040",
+          "title": "Corriger les défauts (resserrage, remplacement)",
+          "phase": "mise_en_eau_tests",
+          "explanation": "En cas de fuite détectée : resserrer si raccord fileté, remplacer le raccord si fuite persiste. JAMAIS de mastic ou pâte à joint comme solution durable.",
+          "klaro_recommendation": "Pour un raccord fileté : démontez, nettoyez, refaites le filasse + pâte à joint, remontez. Pour un sertissage PER : démontez et resertissez avec un raccord neuf (un raccord serti se sert une seule fois). Le mastic en surface = solution provisoire qui finit toujours par lâcher.",
+          "common_mistake": "Mettre du mastic sur une fuite pour faire taire le manomètre — la fuite reprend dans les semaines qui suivent et le mur est déjà refermé.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_039"],
+          "norm_reference": "DTU 60.11 §10.3",
+          "control_questions": []
+        },
+        {
+          "id": "plomb_041",
+          "title": "Refaire un test après corrections",
+          "phase": "mise_en_eau_tests",
+          "explanation": "Après chaque correction, relancez un test de pression complet (24h minimum). Validez seulement quand la pression est stable sur toute la durée.",
+          "klaro_recommendation": "Ne fermez aucun mur, ne posez aucun habillage, tant que ce dernier test n'est pas concluant. Documentez le résultat (photo du manomètre à T0 et T+24h). Cette photo est votre preuve d'étanchéité en cas de litige.",
+          "common_mistake": "Fermer les murs après une correction sans refaire le test complet — la nouvelle micro-fuite ne sera détectée qu'après dégât des eaux.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_040"],
+          "norm_reference": "DTU 60.11 §10.2",
+          "control_questions": [
+            { "question": "Test final 24h sans chute de pression validé ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "calorifugeage",
+      "label": "Calorifugeage",
+      "tasks": [
+        {
+          "id": "plomb_042",
+          "title": "Calorifuger les canalisations ECS",
+          "phase": "calorifugeage",
+          "explanation": "Toutes les canalisations d'eau chaude sanitaire (ECS) doivent être isolées (manchons mousse) pour limiter les pertes thermiques. Obligation RE2020.",
+          "klaro_recommendation": "Manchons en mousse polyéthylène ou élastomère, épaisseur ≥ 9 mm. Découpez aux longueurs précises, ouvrez sur la longueur, refermez avec du scotch alu. Soignez les coudes et raccords : un point non isolé annule l'effet sur tout le tronçon. Économie d'énergie réelle : 5-15% sur la facture ECS.",
+          "common_mistake": "Calorifuger uniquement les longues lignes droites et oublier les coudes et raccords — pertes thermiques quasi équivalentes à un réseau non isolé.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_041"],
+          "norm_reference": "RE2020 + DTU 60.11 §11",
+          "control_questions": [
+            { "question": "Toutes les canalisations ECS sont-elles calorifugées (lignes + coudes + raccords) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_043",
+          "title": "Isoler les canalisations en zones non chauffées",
+          "phase": "calorifugeage",
+          "explanation": "Toute canalisation passant par une zone non chauffée (garage, vide sanitaire, combles, extérieur) doit être protégée du gel : isolation renforcée + cordon chauffant si zone exposée.",
+          "klaro_recommendation": "Manchons épaisseur ≥ 19 mm en zones non chauffées. Pour les zones très exposées (extérieur, combles non isolés en région froide) : ajoutez un cordon chauffant antigel piloté par thermostat (s'enclenche à 5°C). Sans cette protection, gel garanti dès -5°C extérieur prolongé.",
+          "common_mistake": "Penser que 'la maison est chauffée donc tout va bien' — la canalisation dans le garage non chauffé gèle au premier hiver rigoureux.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_042"],
+          "norm_reference": "DTU 60.11 §11 + DTU 60.5",
+          "control_questions": [
+            { "question": "Toutes les canalisations en zone non chauffée sont-elles protégées du gel ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_044",
+          "title": "Repérer et étiqueter toutes les vannes",
+          "phase": "calorifugeage",
+          "explanation": "Chaque vanne (générale, ECS, par pièce, par appareil) doit être étiquetée clairement et visiblement. En cas d'urgence, on doit pouvoir couper la bonne vanne en quelques secondes.",
+          "klaro_recommendation": "Étiquettes plastifiées ou pochettes collées : 'Arrêt général eau', 'Vanne ECS', 'SDB étage', 'WC RDC', 'Lave-linge'. Tenez à jour un schéma de récolement (plan avec position et nom de chaque vanne) que vous donnerez à tout occupant. Photographiez chaque vanne étiquetée.",
+          "common_mistake": "Penser qu'on s'en souviendra — au moment de la fuite, panique et perte de plusieurs minutes à chercher la bonne vanne.",
+          "pro_recommended": false,
+          "photo_required_before_validation": true,
+          "depends_on": ["plomb_031"],
+          "norm_reference": "DTU 60.11 §7.3",
+          "control_questions": [
+            { "question": "Toutes les vannes sont-elles étiquetées et photographiées ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finitions",
+      "label": "Finitions (après peinture et carrelage)",
+      "tasks": [
+        {
+          "id": "plomb_045",
+          "title": "Poser les robinetteries de finition",
+          "phase": "finitions",
+          "explanation": "Mitigeurs, mélangeurs, becs verseurs, douchettes : à poser après peinture et carrelage. Utilisez les rosaces fournies pour masquer les sorties d'attente.",
+          "klaro_recommendation": "Vérifiez l'écartement chaud/froid (150 mm standard) avant achat des mitigeurs. Posez du téflon ou de la filasse sur les filetages mâles. Serrez modérément (clé à pipe + main pour finition) — un serrage excessif déforme le laiton et fait fuir. Posez des flexibles neufs si remplacement (les anciens fatiguent).",
+          "common_mistake": "Réutiliser de vieux flexibles avec un mitigeur neuf — les flexibles fatigués éclatent et c'est un dégât des eaux d'autant que la salle de bain est neuve.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_041"],
+          "norm_reference": "DTU 60.11 §12",
+          "control_questions": []
+        },
+        {
+          "id": "plomb_046",
+          "title": "Installer le mitigeur thermostatique douche/bain",
+          "phase": "finitions",
+          "explanation": "Un mitigeur thermostatique limite la température maximale (réglage 38°C par défaut, butée anti-brûlure à 50°C max imposée par la norme). Évite les brûlures, surtout pour enfants et personnes âgées.",
+          "klaro_recommendation": "Mitigeur thermostatique recommandé sur douche et bain. Réglez la butée de sécurité à 38°C, vérifiez que la butée 'eau très chaude' ne dépasse pas 50°C. Sans thermostatique, une coupure d'eau froide peut envoyer de l'eau brûlante avec risque de brûlure grave en quelques secondes.",
+          "common_mistake": "Installer un simple mélangeur sans limitateur — risque de brûlure sérieux, surtout en présence d'enfants.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_045"],
+          "norm_reference": "Arrêté 30 nov. 2005 + NF EN 1111",
+          "control_questions": [
+            { "question": "Mitigeur thermostatique avec butée ≤ 50°C posé sur douche/bain ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_047",
+          "title": "Poser les cuvettes WC et raccorder",
+          "phase": "finitions",
+          "explanation": "WC posé au sol : joint mousse autour de la pipe, fixation au sol par vis avec chevilles, raccord souple ou pipe coudée vers la chute. WC suspendu : fixation au bâti-support déjà installé.",
+          "klaro_recommendation": "Joint mousse expansif (auto-adhésif) entre la pipe d'évacuation et la cuvette = étanchéité parfaite. Pas besoin de mastic supplémentaire. Vérifiez l'horizontalité de la cuvette au niveau (sinon eau qui flaque dans la cuvette). Pour WC suspendu : couple de serrage selon notice, joint d'étanchéité côté bâti.",
+          "common_mistake": "Forcer le serrage d'un WC en céramique — la cuvette se fend, retour au magasin avec la garantie compromise.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_018"],
+          "norm_reference": "DTU 60.11 §12 + notice fabricant",
+          "control_questions": []
+        },
+        {
+          "id": "plomb_048",
+          "title": "Poser les vasques, lavabos et raccorder aux évacuations",
+          "phase": "finitions",
+          "explanation": "Posez la vasque/lavabo selon notice (suspendu, sur plan, à pied), puis raccordez le siphon démontable au tube d'évacuation.",
+          "klaro_recommendation": "Siphon démontable obligatoire : permet le débouchage sans casser. Choisissez un siphon de bonne qualité (laiton chromé > plastique pour la durabilité). Vérifiez la garde d'eau (50 mm mini). Joint silicone sanitaire (anti-moisissures) entre vasque et plan/mur.",
+          "common_mistake": "Coller le siphon ou utiliser un modèle non démontable pour un encombrement réduit — débouchage impossible sans casse.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_020"],
+          "norm_reference": "DTU 60.11 §12",
+          "control_questions": [
+            { "question": "Tous les siphons sont-ils démontables ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_049",
+          "title": "Raccorder les machines avec robinet d'arrêt",
+          "phase": "finitions",
+          "explanation": "Lave-linge et lave-vaisselle : raccordez l'arrivée d'eau via un robinet d'arrêt accessible (pour fermer en cas de problème ou de départ prolongé) + flexible neuf fourni avec la machine.",
+          "klaro_recommendation": "Robinet 1/4 de tour, accessible sans déplacer la machine. Habituez-vous à le fermer lors d'absences > 48h (vacances) — la majorité des dégâts des eaux machines arrivent quand personne n'est là. Flexibles à remplacer tous les 5-10 ans même s'ils paraissent en bon état.",
+          "common_mistake": "Cacher le robinet derrière la machine — inaccessible en urgence, on ne peut couper que la maison entière.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_032"],
+          "norm_reference": "DTU 60.11 §12.3",
+          "control_questions": [
+            { "question": "Chaque machine a-t-elle son robinet d'arrêt accessible ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_050",
+          "title": "Installer trappes de visite sur raccords encastrés",
+          "phase": "finitions",
+          "explanation": "Tout raccord ou siphon encastré non démontable doit être accessible via une trappe de visite (cadre + porte amovible).",
+          "klaro_recommendation": "Trappes standard 30×30 cm ou 40×40 cm selon volume à atteindre. Posez-les en zones discrètes (sous lavabo, derrière WC, dans placard technique). Sans trappe, toute fuite dans le raccord caché = casse du carrelage ou du placo.",
+          "common_mistake": "Tirer le raccord puis carreler dessus en pensant 'ça tiendra' — au premier problème, casse de tout l'habillage.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_030"],
+          "norm_reference": "DTU 60.11 §7",
+          "control_questions": [
+            { "question": "Tous les raccords cachés non démontables ont-ils une trappe de visite ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "controle",
+      "label": "Contrôle & documentation",
+      "tasks": [
+        {
+          "id": "plomb_051",
+          "title": "Tester chaque point de puisage",
+          "phase": "controle",
+          "explanation": "Ouvrez chaque robinet et vérifiez : débit suffisant, eau chaude qui arrive, pas de fuite, pas de bruit anormal.",
+          "klaro_recommendation": "Test pièce par pièce : chaque mitigeur, chaque douche, chaque WC, chaque machine. Notez tout défaut (débit insuffisant, eau qui sent, fuite légère). Vérifiez la température de l'ECS au point le plus éloigné — si elle met plus de 30 secondes à arriver, le bouclage est nécessaire ou le tracé est trop long.",
+          "common_mistake": "Tester rapidement sans vérifier la température ECS et l'absence de fuite à chaque point — un défaut découvert après est plus difficile à corriger.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_045", "plomb_046", "plomb_047", "plomb_048", "plomb_049"],
+          "norm_reference": "DTU 60.11 §13",
+          "control_questions": [
+            { "question": "Tous les points de puisage testés (débit, température, étanchéité) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_052",
+          "title": "Vérifier l'évacuation correcte de chaque appareil",
+          "phase": "controle",
+          "explanation": "Pour chaque appareil, faites couler de l'eau pendant 30 secondes et vérifiez : évacuation rapide, pas de gargouillis (signe d'une mauvaise ventilation), pas de remontée d'odeur.",
+          "klaro_recommendation": "Test : remplir un évier puis le vidanger d'un coup — l'eau doit s'évacuer sans gargouillis et sans vider les siphons des autres appareils. Si gargouillis ou siphons qui se vident : ventilation insuffisante, ajoutez un clapet aérateur ou augmentez la ventilation primaire.",
+          "common_mistake": "Tester chaque appareil seul sans vérifier les interactions — un WC qui aspire le siphon du lavabo ne se voit qu'en charge.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_051"],
+          "norm_reference": "DTU 60.11 §13.2",
+          "control_questions": [
+            { "question": "Évacuation rapide sans gargouillis sur tous les appareils ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_053",
+          "title": "Réaliser le schéma de récolement",
+          "phase": "controle",
+          "explanation": "Le schéma de récolement (plan as-built) montre le réseau réellement posé : tracés, vannes, nourrices, raccords, équipements. À conserver précieusement.",
+          "klaro_recommendation": "Reportez sur le plan d'origine ou un nouveau plan : alimentations (eau froide, eau chaude), évacuations, position de chaque vanne (numérotée et étiquetée), nourrices, sorties en attente. Joignez les photos du réseau avant fermeture. Archivez papier + numérique. Indispensable pour : interventions futures, vente du logement, expertise sinistre.",
+          "common_mistake": "Ne pas faire de plan as-built — toute intervention future commence par un tâtonnement coûteux pour retrouver le réseau.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_044", "plomb_035"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Le schéma de récolement est-il réalisé et archivé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "plomb_054",
+          "title": "Notice du chauffe-eau et entretien programmé",
+          "phase": "controle",
+          "explanation": "Conservez la notice du chauffe-eau et la facture (preuve de garantie). Programmez la première vidange (selon recommandation fabricant, en général après 1 an puis tous les 2-3 ans).",
+          "klaro_recommendation": "Pour un ballon avec résistance stéatite : vidange tous les 2-3 ans suffit. Avec résistance blindée : vidange annuelle conseillée si eau calcaire. Le groupe de sécurité doit être manœuvré 1 fois par mois (10 secondes) pour éviter qu'il ne se grippe. Notez la date de mise en service et les entretiens dans un carnet d'entretien.",
+          "common_mistake": "Ne jamais entretenir le ballon — accumulation de tartre, durée de vie divisée par 2, et le groupe de sécurité grippé devient inopérant en cas de surpression.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["plomb_036"],
+          "norm_reference": "DTU 60.11 §6 + notice fabricant",
+          "control_questions": [
+            { "question": "Notice + carnet d'entretien archivés et premier entretien programmé ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    }
+  ],
+  "blocking_points": [
+    {
+      "id": "block_001",
+      "message": "Impossible de fermer les murs sans test de pression maintenu 24h validé.",
+      "blocks_task_id": "plomb_042",
+      "requires_task_id": "plomb_038"
+    },
+    {
+      "id": "block_002",
+      "message": "Les évacuations doivent être posées et leurs pentes validées AVANT les alimentations.",
+      "blocks_task_id": "plomb_026",
+      "requires_task_id": "plomb_019"
+    },
+    {
+      "id": "block_003",
+      "message": "Pas de fixation définitive des évacuations sans validation de la pente au niveau.",
+      "blocks_task_id": "plomb_025",
+      "requires_task_id": "plomb_019"
+    },
+    {
+      "id": "block_004",
+      "message": "Pas de mise sous tension du chauffe-eau avant purge complète du réseau.",
+      "blocks_task_id": "plomb_036",
+      "requires_task_id": "plomb_037"
+    },
+    {
+      "id": "block_005",
+      "message": "Pas de fermeture des murs sans photo du réseau complet et position des vannes.",
+      "blocks_task_id": "plomb_042",
+      "requires_task_id": "plomb_035"
+    },
+    {
+      "id": "block_006",
+      "message": "Pas de finitions (robinetterie, cuvettes) avant peinture et carrelage terminés.",
+      "blocks_task_id": "plomb_045",
+      "requires_task_id": "plomb_041"
+    },
+    {
+      "id": "block_007",
+      "message": "Pas de raccord encastré non démontable sans trappe de visite.",
+      "blocks_task_id": "plomb_030",
+      "requires_task_id": "plomb_050"
+    },
+    {
+      "id": "block_008",
+      "message": "Pas de mise en service sans disconnecteur installé sur arrivée générale.",
+      "blocks_task_id": "plomb_037",
+      "requires_task_id": "plomb_026"
+    },
+    {
+      "id": "block_009",
+      "message": "Pas de raccordement gaz par un particulier non certifié Qualigaz — interdit, dangereux, non assuré.",
+      "blocks_task_id": "plomb_006",
+      "requires_task_id": "plomb_006"
+    },
+    {
+      "id": "block_010",
+      "message": "Pas de finitions sans test final 24h sans chute de pression validé.",
+      "blocks_task_id": "plomb_045",
+      "requires_task_id": "plomb_041"
+    },
+    {
+      "id": "block_011",
+      "message": "Pas de mise en eau sans vanne d'arrêt général accessible et vannes d'isolement par appareil étiquetées.",
+      "blocks_task_id": "plomb_037",
+      "requires_task_id": "plomb_044"
+    }
+  ],
+  "scoring": {
+    "progression_percent": {
+      "formula": "validated_tasks / total_tasks * 100",
+      "total_tasks": 54
+    },
+    "safety_score": {
+      "base": 100,
+      "penalties": [
+        {
+          "condition": "Test de pression 24h non réalisé ou échoué (plomb_038, plomb_041)",
+          "malus": 30,
+          "category": "critique"
+        },
+        {
+          "condition": "Fuite détectée et non corrigée avant fermeture",
+          "malus": 30,
+          "category": "critique"
+        },
+        {
+          "condition": "Disconnecteur absent sur arrivée générale (plomb_026 non validée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Ventilation des chutes absente (plomb_023 non validée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Garde d'eau siphons < 50 mm (plomb_022 échouée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Calorifugeage ECS absent (plomb_042 non validée)",
+          "malus": 15,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Vannes non repérées / non étiquetées (plomb_044 échouée)",
+          "malus": 15,
+          "category": "bloquant"
+        },
+        {
+          "condition": "Photos avant fermeture absentes (plomb_035 non validée)",
+          "malus": 15,
+          "category": "bloquant"
+        },
+        {
+          "condition": "Pente évacuation hors tolérance 1-3 % (plomb_019 échouée)",
+          "malus": 15,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Mitigeur thermostatique absent en douche/bain (plomb_046 non validée)",
+          "malus": 10,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Trappes de visite absentes sur raccords encastrés (plomb_050 échouée)",
+          "malus": 10,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Antibélier absent sur machines (plomb_032 non validée)",
+          "malus": 5,
+          "category": "non_conforme"
+        }
+      ]
+    },
+    "leak_penalty": {
+      "condition": "Toute fuite détectée non corrigée avant validation finale",
+      "malus": 30,
+      "category": "critique",
+      "blocks_validation": true
+    },
+    "critical_alerts": [
+      {
+        "id": "alert_test_pression",
+        "message": "Test de pression 24h non validé — risque de fuite cachée après fermeture des murs.",
+        "triggered_if": "plomb_038 or plomb_041 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_disconnecteur",
+        "message": "Disconnecteur absent — non conforme arrêté 30 nov. 2005, risque sanitaire.",
+        "triggered_if": "plomb_026 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_ventilation",
+        "message": "Ventilation des chutes absente — remontée d'odeurs garantie.",
+        "triggered_if": "plomb_023 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_garde_eau",
+        "message": "Garde d'eau insuffisante sur siphons — odeurs et insectes par les évacuations.",
+        "triggered_if": "plomb_022 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_calorifugeage",
+        "message": "Calorifugeage ECS absent — non conforme RE2020 et surconsommation énergie.",
+        "triggered_if": "plomb_042 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_vannes",
+        "message": "Vannes non repérées — intervention en urgence compromise.",
+        "triggered_if": "plomb_044 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_photos",
+        "message": "Photos avant fermeture absentes — preuve impossible du réseau caché.",
+        "triggered_if": "plomb_035 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_gaz",
+        "message": "Tâche liée au gaz : INTERDIT à un particulier non certifié Qualigaz. Faire intervenir un pro certifié obligatoirement.",
+        "triggered_if": "production_ecs == 'gaz' AND non_certifie_qualigaz",
+        "level": "danger"
+      }
+    ]
+  }
+}
