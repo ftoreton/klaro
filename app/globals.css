@@ -1148,3 +1148,255 @@ button {
   .devis-row { grid-template-columns: auto 1fr; gap: 12px; }
   .devis-status, .devis-actions { grid-column: 2; }
 }
+
+/* ── Tag info (for "en cours" badge) ─────────────── */
+.tag.info { background: #e0eaff; color: #2456c8; }
+
+/* ── Tâches page ─────────────────────────────────── */
+.taches-stats-card {
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+  padding: 18px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-card);
+  flex-wrap: wrap;
+}
+
+.taches-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 50px;
+}
+
+.taches-stat .v {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+
+.taches-stat .l {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.taches-stat.warn .v { color: var(--warn); }
+.taches-stat.info .v { color: #2456c8; }
+.taches-stat.success .v { color: var(--accent); }
+.taches-stat.danger .v { color: var(--danger); }
+
+.taches-controls {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 4px 4px;
+}
+
+.taches-control-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.taches-control-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-right: 4px;
+}
+
+.taches-chip {
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fg-2);
+  cursor: pointer;
+  transition: all 150ms;
+}
+
+.taches-chip:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-2);
+}
+
+.taches-chip.active {
+  background: var(--fg);
+  color: #fff;
+  border-color: var(--fg);
+}
+
+.taches-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.taches-group-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 8px 4px 4px;
+}
+
+.taches-group-head h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+  text-transform: capitalize;
+}
+
+.taches-group-count {
+  font-size: 11px;
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.taches-list {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.taches-row {
+  padding: 12px 18px;
+  display: grid;
+  grid-template-columns: 24px 1fr auto auto;
+  gap: 14px;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  transition: background 150ms;
+}
+
+.taches-row:last-child { border-bottom: none; }
+.taches-row:hover { background: var(--surface-2); }
+
+.taches-row.done { opacity: 0.55; }
+.taches-row.done .taches-name { text-decoration: line-through; }
+.taches-row.overdue { background: linear-gradient(90deg, var(--danger-soft) 0%, transparent 12%); }
+.taches-row.today { background: linear-gradient(90deg, var(--warn-soft) 0%, transparent 12%); }
+.taches-row.blocked .taches-name { color: var(--fg-2); }
+.taches-row.blocked.overdue { background: var(--danger-soft); }
+
+.taches-check {
+  width: 22px;
+  height: 22px;
+  border-radius: var(--r-sm);
+  border: 1.5px solid var(--border-hover);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 150ms;
+  color: var(--accent);
+  padding: 0;
+}
+
+.taches-check:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.taches-check:disabled { cursor: not-allowed; }
+
+.taches-row.done .taches-check {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--fg);
+}
+
+.taches-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.taches-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.taches-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--fg-muted);
+  flex-wrap: wrap;
+}
+
+.taches-meta > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.taches-meta .sep {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--fg-disabled);
+}
+
+.taches-metier {
+  font-weight: 600;
+  color: var(--fg-2);
+  text-transform: capitalize;
+}
+
+.taches-due-overdue { color: var(--danger); font-weight: 600; }
+.taches-due-today { color: var(--warn); font-weight: 600; }
+
+.taches-blocked-info { color: var(--danger); font-weight: 500; }
+
+.taches-badges {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.taches-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.taches-actions .btn-do:disabled {
+  background: var(--bg-2);
+  color: var(--fg-disabled);
+  cursor: not-allowed;
+}
+
+.taches-actions .btn-do:disabled:hover {
+  background: var(--bg-2);
+  color: var(--fg-disabled);
+}
+
+@media (max-width: 768px) {
+  .taches-stats-card { gap: 18px; padding: 14px 16px; }
+  .taches-row { grid-template-columns: 24px 1fr; }
+  .taches-badges, .taches-actions { grid-column: 2; }
+}
