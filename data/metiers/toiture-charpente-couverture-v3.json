@@ -1,0 +1,618 @@
+{
+  "module": "toiture_charpente_couverture",
+  "warnings_header": [
+    {
+      "id": "warn_001",
+      "level": "danger",
+      "title": "Chute de hauteur = première cause de mortalité en travaux",
+      "message": "Une chute de 3 m provoque mort ou paralysie quasi certaine. AUCUNE intervention en toiture sans dispositif antichute (échafaudage périphérique OU harnais + ligne de vie). Travail seul INTERDIT. Pas de toiture par vent > 50 km/h, pluie, neige, gel ou brouillard."
+    },
+    {
+      "id": "warn_002",
+      "level": "danger",
+      "title": "Amiante en toiture (avant 1997)",
+      "message": "Les ardoises en fibrociment et certains éléments de couverture posés AVANT 1997 contiennent de l'amiante. Diagnostic amiante avant travaux (DAAT) OBLIGATOIRE. Manipulation par un particulier INTERDITE — entreprise certifiée sous-section 3 ou 4 obligatoire."
+    },
+    {
+      "id": "warn_003",
+      "level": "danger",
+      "title": "Mérule = ne JAMAIS bricoler",
+      "message": "Champignon lignivore qui détruit la charpente. Détection = entreprise certifiée OBLIGATOIRE, déclaration en mairie obligatoire dans certains départements. Une intervention amateur propage le champignon dans tout le bâtiment."
+    },
+    {
+      "id": "warn_004",
+      "level": "danger",
+      "title": "Charpente porteuse = étude obligatoire",
+      "message": "Toute modification structurelle (rehausse, ouverture, suppression d'élément) impose une étude par charpentier qualifié ou Bureau d'Études Structure (BET). Sans étude, risque d'effondrement et engagement de votre responsabilité civile et pénale."
+    },
+    {
+      "id": "warn_005",
+      "level": "info",
+      "title": "Administratif : DP, ABF, copropriété",
+      "message": "Déclaration préalable obligatoire pour modification d'aspect, fenêtres de toit, panneaux solaires. Périmètre Bâtiments de France (ABF) = matériau, couleur, forme imposés. Copropriété = toiture partie commune, accord AG obligatoire."
+    },
+    {
+      "id": "warn_006",
+      "level": "info",
+      "title": "Assurances obligatoires",
+      "message": "Assurance dommage-ouvrage obligatoire pour travaux structurels de couverture. Garantie décennale obligatoire de l'artisan (vérifier l'attestation). Sans ces protections, vous portez seul les risques pendant 10 ans."
+    },
+    {
+      "id": "warn_007",
+      "level": "danger",
+      "title": "Klaro privilégie le pro qualifié",
+      "message": "La quasi-totalité des interventions en toiture relèvent du pro recommandé voire obligatoire. Ce module a vocation à informer, pas à autoriser. Klaro privilégie systématiquement la mise en relation avec un couvreur ou charpentier qualifié."
+    }
+  ],
+  "phases": [
+    {
+      "id": "diagnostic_prealable",
+      "label": "Diagnostic préalable & sécurité",
+      "tasks": [
+        {
+          "id": "toit_001",
+          "title": "Définir précisément le projet et le type de couverture",
+          "phase": "diagnostic_prealable",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Réparation ponctuelle (quelques tuiles), rénovation partielle (pan complet), rénovation totale (toiture entière), création/surélévation, ou maintenance/nettoyage. Identifier précisément la couverture existante et celle visée.",
+          "klaro_recommendation": "Décrivez le projet par écrit : nature, surface concernée, matériau actuel, matériau visé. Photographiez la toiture actuelle depuis le sol et depuis les pignons opposés (mais sans monter). Identifiez la pente approximative. Le type d'intervention conditionne TOUTE la chaîne : sécurité, autorisations, choix techniques.",
+          "common_mistake": "Démarrer 'pour voir' sans plan précis — découverte de problèmes inattendus en cours de chantier, surcoûts importants.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 40.x + DTU 31.x",
+          "control_questions": [
+            { "question": "Le projet est-il défini par écrit avec photos depuis le sol ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_002",
+          "title": "Identifier l'âge du bâtiment et la nature de la couverture",
+          "phase": "diagnostic_prealable",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["avant_1997", "all"],
+          "explanation": "Bâtiment construit avant le 1er juillet 1997 = présence possible d'amiante (notamment ardoises fibrociment, sous-couches bitumineuses, joints). Identification visuelle + diagnostic obligatoire.",
+          "klaro_recommendation": "Vérifiez l'année de construction (DPE, acte notarié, archives mairie). Pour les ardoises fibrociment grises : forte présomption d'amiante avant 1997. Ne grattez pas, ne percez pas, ne cassez pas avant diagnostic. Photographiez de loin pour transmettre au diagnostiqueur.",
+          "common_mistake": "Considérer 'pas de problème' visuellement et démarrer les travaux — exposition aux fibres d'amiante, cancer pulmonaire à long terme.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_001"],
+          "norm_reference": "Code santé publique R1334-29-5",
+          "control_questions": [
+            { "question": "Année de construction identifiée et type de couverture noté ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_003",
+          "title": "Diagnostic amiante avant travaux (DAAT)",
+          "phase": "diagnostic_prealable",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["fibrociment_amiante_suspect", "all"],
+          "applies_to_age": ["avant_1997"],
+          "explanation": "OBLIGATOIRE pour tout bâtiment construit avant le 1er juillet 1997 ou couverture suspecte. Le DAAT identifie les matériaux amiantés et conditionne les méthodes d'intervention. Réalisé par diagnostiqueur certifié.",
+          "klaro_recommendation": "Diagnostiqueur certifié, coût ~300-600 €. Le rapport liste les matériaux amiantés présents et leur état (risque de libération de fibres). Sans DAAT, vous engagez votre responsabilité pénale en cas d'exposition (vous + entreprise + voisinage). Joignez le rapport à votre dossier Klaro.",
+          "common_mistake": "Démarrer la dépose 'sans toucher l'amiante' en pensant éviter le risque — découpe, cassure, ponçage = libération de fibres invisibles, exposition mortelle.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["diagnostic_amiante"],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_002"],
+          "norm_reference": "Code santé publique R1334-29-5 + Code travail R4412-97",
+          "control_questions": [
+            { "question": "DAAT réalisé par diagnostiqueur certifié et rapport joint ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_004",
+          "title": "Si amiante détecté : entreprise certifiée SS3/SS4",
+          "phase": "diagnostic_prealable",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["fibrociment_amiante_suspect", "all"],
+          "applies_to_age": ["avant_1997"],
+          "explanation": "INTERDIT à un particulier d'intervenir sur amiante. Sous-section 3 (SS3) = retrait/encapsulage. Sous-section 4 (SS4) = interventions sur matériaux amiantés. Entreprise certifiée QUALIBAT 1552 (SS3) ou 1553 (SS4) obligatoire.",
+          "klaro_recommendation": "Coût élevé (3000-15000 € pour une toiture). Plan de retrait à fournir, BSDA (bordereau suivi déchets amiante) obligatoire. Filière éliminateur agréé. Délais 2-3 mois minimum. Voisinage informé. Ne tentez JAMAIS de déposer vous-même : toute fibre libérée contamine durablement votre foyer.",
+          "common_mistake": "Faire intervenir un artisan non certifié pour 'gagner de l'argent' — exposition de l'entreprise + des occupants + du voisinage, responsabilité pénale du maître d'ouvrage.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["entreprise_certifiee_amiante"],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_003"],
+          "norm_reference": "Code travail R4412-94 à R4412-148",
+          "control_questions": [
+            { "question": "Si amiante : entreprise SS3/SS4 certifiée engagée + plan de retrait + BSDA prévus ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_005",
+          "title": "Évaluer l'état de la charpente",
+          "phase": "diagnostic_prealable",
+          "applies_to_intervention_type": ["renovation_totale", "creation_surelevation", "all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Charpentier qualifié ou BET pour évaluer : taux d'humidité, insectes xylophages (capricornes, vrillettes, lyctus), champignons (notamment mérule), fléchissements, état des assemblages.",
+          "klaro_recommendation": "Inspection visuelle + sondage à la pointe (le bois sain résiste, le bois attaqué se perce facilement). Photos détaillées. Mesure d'humidité (humidimètre). Vérifier la flèche des pièces principales (panne faîtière, entraits). Si modification structurelle prévue : étude obligatoire. Coût diagnostic : 300-800 €.",
+          "common_mistake": "Refaire la couverture sans contrôler la charpente — découverte de pourriture / xylophages après pose, dépose intégrale obligatoire et perte totale.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["diagnostic_charpente"],
+          "photo_required_before_validation": true,
+          "depends_on": ["toit_001"],
+          "norm_reference": "DTU 31.1 + DTU 31.3",
+          "control_questions": [
+            { "question": "Charpente diagnostiquée par charpentier qualifié et rapport joint ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_006",
+          "title": "Si mérule détectée : entreprise certifiée + déclaration mairie",
+          "phase": "diagnostic_prealable",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "La mérule (Serpula lacrymans) est un champignon lignivore qui détruit la charpente et se propage par mycélium dans toute la structure. Traitement par entreprise certifiée OBLIGATOIRE. Déclaration en mairie obligatoire dans certains départements (loi ALUR).",
+          "klaro_recommendation": "Identification : voile cotonneux blanchâtre, fructifications brun-orangé, dégradations cubiques du bois (fissures perpendiculaires aux fibres). Entreprise certifiée CTB-A+ ou équivalent. Traitement complet : retrait des bois infectés, pulvérisation fongicide, contrôle d'humidité (la mérule meurt < 22% d'humidité). Sans traitement complet, propagation à toute la maison.",
+          "common_mistake": "Tenter un traitement amateur — la mérule survit dans le mycélium invisible, repart de plus belle quelques mois plus tard.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["entreprise_certifiee_merule"],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_005"],
+          "norm_reference": "Loi ALUR + Code construction L133-7",
+          "control_questions": [
+            { "question": "Si mérule : entreprise certifiée + déclaration mairie effectuée ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_007",
+          "title": "Vérifier la pente de toiture vs matériau visé",
+          "phase": "diagnostic_prealable",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Pente minimale par matériau : tuile canal 27-60%, tuile plate 60-100%, ardoise 60-200%, zinc 5% mini, bac acier 7% mini, toiture terrasse 1-3%. Mauvais matériau pour la pente = infiltrations garanties.",
+          "klaro_recommendation": "Mesurez la pente actuelle (rapporteur d'angle ou app smartphone). Vérifiez la compatibilité avec le matériau visé. Si pente trop faible pour tuiles : envisagez zinc ou bac acier. Pente très forte : ardoises ou tuiles plates uniquement. Ne forcez JAMAIS un matériau hors plage : les fabricants refusent la garantie.",
+          "common_mistake": "Poser des tuiles sur 20% de pente — infiltrations dès le premier orage, refus de garantie, dépose obligatoire.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_001"],
+          "norm_reference": "DTU 40.21 à 40.29 + DTU 40.41 + DTU 40.46",
+          "control_questions": [
+            { "question": "Pente actuelle mesurée (%) et compatible avec le matériau visé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_008",
+          "title": "Identifier la zone climatique de vent (NV65)",
+          "phase": "diagnostic_prealable",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Zones de vent NV65 : zone 1 (faible) à zone 4 (très exposée, façade Atlantique, Méditerranée). Site protégé / normal / exposé selon le contexte local (sommet, plaine, vallée). Détermine les fixations.",
+          "klaro_recommendation": "Carte des zones de vent NV65 (en ligne sur Eurocodes ou notice fabricant). Site exposé = sommet, mer, plaine ouverte. Site normal = zones rurales courantes. Site protégé = vallée, ville dense. Zone 4 + site exposé = fixation 100% obligatoire (chaque tuile fixée). Zone 1 + protégé = 1/3 ou 1/5 acceptable.",
+          "common_mistake": "Sous-fixer en zone exposée — tuiles arrachées au premier coup de vent fort, dégâts importants chez les voisins.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_001"],
+          "norm_reference": "Règles NV65 + Eurocode 1",
+          "control_questions": [
+            { "question": "Zone de vent et site identifiés (zone 1 à 4 + protégé/normal/exposé) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_009",
+          "title": "Identifier la zone de neige (N84)",
+          "phase": "diagnostic_prealable",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Zones de neige N84 : A (faible, Sud) à E (très forte, Alpes/Pyrénées). Détermine les charges sur la charpente et le dimensionnement. Critique en montagne et zones froides.",
+          "klaro_recommendation": "Carte des zones de neige (Eurocode 1 EN 1991-1-3). En zone D ou E + altitude : charges importantes (jusqu'à 250-400 kg/m²) qui imposent une charpente renforcée. Études BET indispensables. Vérifiez la charge admissible de la charpente existante AVANT de poser un matériau plus lourd (tuiles béton vs ardoises par exemple).",
+          "common_mistake": "Remplacer des ardoises légères par tuiles béton lourdes en zone neigeuse sans recalcul — flèche excessive, fissuration, voire rupture.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_001"],
+          "norm_reference": "Règles N84 + Eurocode 1 EN 1991-1-3",
+          "control_questions": [
+            { "question": "Zone de neige identifiée et charge admissible vérifiée ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_010",
+          "title": "Vérifier le contexte urbanistique (ABF, PLU, copropriété)",
+          "phase": "diagnostic_prealable",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Périmètre Bâtiments de France (ABF, 500 m d'un monument classé) : matériau, couleur, forme imposés. PLU local : prescriptions spécifiques. Copropriété : toiture partie commune, accord AG obligatoire.",
+          "klaro_recommendation": "Service urbanisme de la mairie (gratuit). Vérifiez le périmètre ABF (carte sur Atlas des patrimoines). En zone ABF : avis ABF obligatoire avec délai allongé (4 mois pour PC). Copropriété : demande écrite au syndic + vote AG. Sans accord, démolition ordonnée + remise en état.",
+          "common_mistake": "Choisir un matériau non conforme au PLU ou refuser ABF — refus d'autorisation, projet bloqué, perte des aides.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_001"],
+          "norm_reference": "Code urbanisme + Loi 10 juillet 1965 (copropriété)",
+          "control_questions": [
+            { "question": "PLU consulté, ABF vérifié, accord copropriété obtenu si applicable ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "securite_acces",
+      "label": "Sécurité d'accès & antichute",
+      "tasks": [
+        {
+          "id": "toit_011",
+          "title": "Vérifier la météo AVANT chaque intervention",
+          "phase": "securite_acces",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "INTERDIT d'intervenir en toiture par : vent > 50 km/h (rafales emportent), pluie (toiture glissante), gel, neige, brouillard (visibilité, perte d'équilibre).",
+          "klaro_recommendation": "Vérifiez la météo le matin (Météo France, prévisions à 24h). Anémomètre (~30 €) pour mesurer le vent in situ. Une journée sèche, vent < 30 km/h, T° > 5°C est idéale. En cas de doute : reporter. Une chute par météo défavorable = mort ou paralysie quasi certaine.",
+          "common_mistake": "Monter 'juste pour vérifier' par temps de bruine — pied qui glisse sur tuiles humides, chute, blessure grave ou mort.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["meteo_favorable"],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code travail R4323-58 + bonnes pratiques",
+          "control_questions": [
+            { "question": "Météo vérifiée le matin (vent < 50 km/h, sec, hors gel/neige/brouillard) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_012",
+          "title": "Échafaudage périphérique conforme dès 3 m de chute",
+          "phase": "securite_acces",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Échafaudage de pied conforme NF EN 12810, monté par personne formée, plinthes anti-chute d'objet. Solution la plus sûre dès 3 m de chute.",
+          "klaro_recommendation": "Location ~150-300 €/semaine pour une maison individuelle. Échafaudage de pied recouvrant les 4 façades pour rénovation totale, pignons + façades opposées pour rénovation partielle. Vérifié quotidiennement. Plinthes anti-chute d'objet obligatoires (les outils ou tuiles tombent vite). Photographiez avant intervention.",
+          "common_mistake": "Travailler depuis une échelle simple à 6 m — chute mortelle, première cause d'accident en BTP.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": ["dispositif_antichute_photo"],
+          "photo_required_before_validation": true,
+          "depends_on": ["toit_011"],
+          "norm_reference": "NF EN 12810 + Code travail R4323-58",
+          "control_questions": [
+            { "question": "Échafaudage périphérique conforme en place et photographié ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_013",
+          "title": "À défaut : ligne de vie + harnais (formation indispensable)",
+          "phase": "securite_acces",
+          "applies_to_intervention_type": ["reparation_ponctuelle", "maintenance_nettoyage"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Pour interventions ponctuelles : ligne de vie temporaire avec points d'ancrage certifiés + harnais individuel antichute classe 1 + longe avec absorbeur d'énergie.",
+          "klaro_recommendation": "Points d'ancrage certifiés (fixation temporaire ou permanente). Harnais EN 361. Longe avec absorbeur d'énergie EN 355 (limite la décélération en cas de chute). Formation à l'utilisation indispensable (un harnais mal serré = chute mortelle). Coût matériel ~200-400 €. Vérification annuelle obligatoire.",
+          "common_mistake": "Acheter un harnais sans formation et l'utiliser mal serré ou sans absorbeur — choc à l'arrêt = traumatisme grave malgré la longe.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": ["dispositif_antichute_photo"],
+          "photo_required_before_validation": true,
+          "depends_on": ["toit_011"],
+          "norm_reference": "EN 361 + EN 355 + Code travail",
+          "control_questions": [
+            { "question": "Harnais + longe + ancrage certifiés en place et photographiés ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_014",
+          "title": "Filet antichute ou auvent de retenue",
+          "phase": "securite_acces",
+          "applies_to_intervention_type": ["renovation_partielle", "renovation_totale", "creation_surelevation"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Filet de protection (sous toiture pour rétention en cas de chute) ou auvent de retenue. Dispositif collectif obligatoire dès qu'il y a plusieurs intervenants en hauteur.",
+          "klaro_recommendation": "Filet en sous-face de la zone d'intervention (déformation tolérée 1,5 m sans toucher le sol). Auvent rigide pour zone passagère (entrée principale par exemple). Loué et installé par échafaudeurs en même temps que l'échafaudage. Indispensable en chantier prolongé.",
+          "common_mistake": "Travailler à 2-3 personnes sans dispositif collectif — chute d'un opérateur entraînant les autres.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_012"],
+          "norm_reference": "EN 1263-1 + Code travail",
+          "control_questions": []
+        },
+        {
+          "id": "toit_015",
+          "title": "Travailler à minimum DEUX personnes — JAMAIS seul",
+          "phase": "securite_acces",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Une personne au sol pour : signaler une approche, alerter les secours en cas d'accident, transmettre les outils, surveiller la météo. Seul = personne ne saura que vous êtes blessé pendant des heures.",
+          "klaro_recommendation": "Coordonnez les horaires avec un proche / un voisin. La 2e personne doit avoir le téléphone à portée et le numéro des secours. En cas de chute, les secours doivent intervenir en < 1h pour limiter les séquelles. Travail isolé = facteur aggravant majeur en accident BTP.",
+          "common_mistake": "Monter seul 'juste 5 minutes' — chute, perte de connaissance, secours appelés trop tard.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code travail R4512-13 (travail isolé)",
+          "control_questions": [
+            { "question": "Au moins 2 personnes présentes pendant l'intervention ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_016",
+          "title": "EPI obligatoires (casque, S3, harnais, lunettes)",
+          "phase": "securite_acces",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Casque coquard EN 397 (chute d'objet), chaussures antidérapantes S3 (semelle anti-perforation, embout coqué), gants, harnais si harnais utilisé, lunettes de protection pour découpe.",
+          "klaro_recommendation": "Casque toujours porté (chute de tuile = traumatisme crânien grave). Chaussures S3 avec semelle adhérente (chaussures de sport interdites). Gants anti-coupure pour manipulation tuiles/zinc. Lunettes pour disqueuse, découpe et soudure. EPI complets coûtent ~150-300 € — investissement minime.",
+          "common_mistake": "Travailler en baskets sur toiture humide — pied qui glisse, chute.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "EN 397 + EN ISO 20345 + Code travail",
+          "control_questions": [
+            { "question": "EPI complets en place (casque, S3, gants, lunettes) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_017",
+          "title": "Baliser la zone au sol",
+          "phase": "securite_acces",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Tuiles, outils, gravats peuvent tomber. Balisage rubalise + panneau 'Chantier interdit au public'. Aucune personne sous la zone d'intervention pendant les travaux.",
+          "klaro_recommendation": "Rubalise rouge/blanc à 3 m minimum du pourtour de la zone. Panneau visible. Enfants éloignés ABSOLUMENT (curiosité naturelle + zone dangereuse). Voisins informés. Animaux domestiques rentrés. Une tuile qui tombe d'une hauteur de 6 m peut tuer un enfant.",
+          "common_mistake": "Laisser les enfants jouer dans le jardin pendant les travaux — accident grave possible par chute d'objet.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code travail + responsabilité civile",
+          "control_questions": [
+            { "question": "Zone au sol balisée et accès interdit pendant intervention ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_018",
+          "title": "Au-delà de 6 m ou toiture complexe : pro OBLIGATOIRE",
+          "phase": "securite_acces",
+          "applies_to_intervention_type": ["renovation_totale", "creation_surelevation", "all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Au-delà de 6 m de hauteur ou sur toiture complexe (multiples versants, lucarnes, fenêtres de toit, cheminée centrale) : intervention DIY interdite. Seul un couvreur qualifié peut maîtriser l'ensemble des contraintes.",
+          "klaro_recommendation": "Appelez 3 couvreurs RGE pour devis. Vérifiez l'attestation décennale. Demandez des références (chantiers récents). Le coût d'un pro est largement inférieur aux conséquences d'une chute mortelle ou d'une malfaçon. Klaro privilégie SYSTÉMATIQUEMENT le pro qualifié pour ces interventions.",
+          "common_mistake": "Tenter une rénovation totale en DIY sur maison de plain-pied à 7 m de hauteur — chute, malfaçons, perte totale du chantier.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["decennale_pro"],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code travail + bonnes pratiques",
+          "control_questions": [
+            { "question": "Si > 6 m ou toiture complexe : pro couvreur engagé avec décennale ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preparation_administrative",
+      "label": "Préparation administrative",
+      "tasks": [
+        {
+          "id": "toit_019",
+          "title": "Vérifier les obligations d'urbanisme (DP / PC)",
+          "phase": "preparation_administrative",
+          "applies_to_intervention_type": ["renovation_partielle", "renovation_totale", "creation_surelevation"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "DP (déclaration préalable) : changement de matériau, couleur, fenêtres de toit, panneaux solaires. PC (permis de construire) : surélévation, changement de pente, modification importante de volume.",
+          "klaro_recommendation": "Service urbanisme de la mairie (gratuit). DP : formulaire CERFA 13703 + plans + photos + notice. Délai 1 mois (2 mois en zone ABF). PC : formulaire CERFA 13406 ou 13409 + dossier complet. Délai 2-3 mois. Affichage obligatoire sur le terrain pendant les travaux. Recours des tiers : 2 mois après affichage.",
+          "common_mistake": "Refaire la couverture en changeant de matériau sans DP — mise en demeure, obligation de remise en état.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["autorisation_urbanisme"],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_010"],
+          "norm_reference": "Code urbanisme R421-1 et R421-14",
+          "control_questions": [
+            { "question": "Autorisation d'urbanisme obtenue (DP/PC) et délai de recours expiré ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_020",
+          "title": "Si périmètre ABF : dépôt auprès Architecte Bâtiments de France",
+          "phase": "preparation_administrative",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Périmètre 500 m d'un monument classé ou inscrit. Avis ABF obligatoire : matériau, couleur, forme imposés. Délai d'instruction allongé (4 mois pour PC en zone ABF).",
+          "klaro_recommendation": "Vérifiez le périmètre ABF (Atlas des patrimoines). Dépôt du dossier en mairie qui transmet à l'ABF. Préparez plusieurs options de matériaux (ABF impose souvent un choix précis). Photos du voisinage utiles pour montrer la cohérence. Soyez patient : l'ABF peut imposer modifications.",
+          "common_mistake": "Choisir un matériau moderne sans consulter l'ABF — refus, perte de plusieurs mois, projet à reprendre.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_019"],
+          "norm_reference": "Code patrimoine L621-30 + L341-1",
+          "control_questions": [
+            { "question": "Avis ABF obtenu si périmètre concerné ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_021",
+          "title": "Si copropriété : accord AG (toiture = partie commune)",
+          "phase": "preparation_administrative",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "La toiture est une partie commune de la copropriété. Tout travaux de réparation, rénovation ou modification exige l'accord du syndic et un vote en AG (majorité variable selon nature).",
+          "klaro_recommendation": "Demande écrite au syndic avec descriptif et devis. Inscription à l'ordre du jour AG. Vote selon majorité requise (article 24 entretien, 25 amélioration, 26 modification importante). PV d'AG conservé. Sans accord : annulation possible, remise en état aux frais du copropriétaire.",
+          "common_mistake": "Faire refaire la couverture de son lot en copropriété sans vote AG — copropriétaires peuvent obtenir démolition.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Loi 10 juillet 1965 + Code copropriété",
+          "control_questions": [
+            { "question": "Si copropriété : vote AG obtenu et PV archivé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_022",
+          "title": "Souscrire assurance dommage-ouvrage AVANT chantier",
+          "phase": "preparation_administrative",
+          "applies_to_intervention_type": ["renovation_totale", "creation_surelevation"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Assurance dommage-ouvrage (DO) obligatoire pour tout particulier maître d'ouvrage de travaux structurels. Souscrite AVANT ouverture du chantier. Préfinance les réparations en cas de sinistre décennal.",
+          "klaro_recommendation": "3 devis d'assurance DO (~3-5% du montant des travaux). Joignez : devis détaillé, attestations décennales des intervenants, plans, étude charpente si applicable. Sans DO : revente du bien sous 10 ans = obligation d'informer l'acheteur, vente compromise. La DO suit le bien.",
+          "common_mistake": "Considérer la DO 'optionnelle' pour économiser — en cas de sinistre, recours individuel contre l'entreprise (long, parfois insolvable).",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": ["assurance_do"],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_019"],
+          "norm_reference": "Loi Spinetta 1978 + Code assurances L242-1",
+          "control_questions": [
+            { "question": "Assurance DO souscrite AVANT ouverture chantier (attestation jointe) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_023",
+          "title": "Vérifier garantie décennale + RGE de l'artisan",
+          "phase": "preparation_administrative",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Garantie décennale obligatoire de l'artisan (loi 1978). RGE Qualibat 3122 ou équivalent obligatoire pour bénéficier des aides énergétiques liées à la toiture (isolation, panneaux solaires).",
+          "klaro_recommendation": "Demandez : attestation décennale en cours de validité (renouvelée chaque année), attestation RGE pour le poste précis, K-bis ou extrait Sirene. Vérifiez sur france-renov.gouv.fr la validité du RGE. Sans décennale = refus de la DO et zéro recours en cas de sinistre.",
+          "common_mistake": "Accepter un devis sans vérifier l'attestation décennale en cours de validité — sinistre + entreprise sans assurance = ruine.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["decennale_pro"],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Loi Spinetta 1978 + Décret RGE 2014-812",
+          "control_questions": [
+            { "question": "Attestation décennale + RGE en cours de validité jointes ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "charpente_structure",
+      "label": "Charpente & structure",
+      "tasks": [
+        {
+          "id": "toit_024",
+          "title": "Modification charpente porteuse : étude obligatoire",
+          "phase": "charpente_structure",
+          "applies_to_intervention_type": ["creation_surelevation", "renovation_totale"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Toute modification d'élément structurel (rehausse, ouverture, suppression de pièce porteuse) impose une étude par charpentier qualifié ou Bureau d'Études Structure. Plan d'exécution avec sections et assemblages.",
+          "klaro_recommendation": "Devis BET ~800-3000 € selon complexité. Le BET produit : note de calcul, plan d'exécution charpente, dimensions des pièces, mode d'étaiement provisoire, sollicitations. Sans étude, aucun assureur DO ne couvre, aucune décennale ne tient. Conservez le rapport 10 ans.",
+          "common_mistake": "Vouloir économiser le BET et 'demander conseil à un charpentier' — pas de note de calcul signée, pas d'assurance, responsabilité pénale en cas de sinistre.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_005"],
+          "norm_reference": "Eurocode 5 + DTU 31.1 + DTU 31.3",
+          "control_questions": [
+            { "question": "Étude BET ou charpentier réalisée et plan d'exécution joint ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_025",
+          "title": "Traiter le bois si insectes xylophages détectés",
+          "phase": "charpente_structure",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Capricornes, vrillettes, lyctus, termites : insectes xylophages qui creusent et fragilisent le bois. Traitement par produit certifié CTB-P+ : pulvérisation, badigeon ou injection selon ampleur.",
+          "klaro_recommendation": "Identification par charpentier ou expert : trous de sortie circulaires, sciure fraîche, bois qui sonne creux. Petite attaque locale : pulvérisation insecticide CTB-P+. Attaque étendue : traitement par injection sous pression dans les pièces, zones les plus attaquées remplacées. Photos d'avant/après. Coût 30-100 €/m² selon méthode.",
+          "common_mistake": "Pulvérisation amateur avec produit grand public — efficacité insuffisante, attaque qui repart, charpente qui s'affaiblit progressivement.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["toit_005"],
+          "norm_reference": "Norme CTB-P+ + Code construction",
+          "control_questions": [
+            { "question": "Si attaque xylophage : traitement certifié CTB-P+ effectué et photographié ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_026",
+          "title": "Remplacer les pièces fortement attaquées ou fléchies",
+          "phase": "charpente_structure",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Pièce de charpente avec section utile réduite (attaque, pourriture, fissuration) ou flèche excessive : remplacement obligatoire. Calculs par charpentier pour dimensionnement.",
+          "klaro_recommendation": "Pas de 'rafistolage' sur élément porteur (chevron principal, panne, ferme, entrait). Remplacement par pièce neuve traitée classe d'emploi 2 (intérieur abrité). Étaiement provisoire pendant le remplacement. Bois lamellé-collé possible pour grandes portées. Documentez par photos.",
+          "common_mistake": "Doubler une pièce attaquée sans remplacement — la pièce attaquée continue à se dégrader, la nouvelle reprend mal les efforts.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_025"],
+          "norm_reference": "Eurocode 5 + DTU 31.1",
+          "control_questions": []
+        },
+        {
+          "id": "toit_027",
+          "title": "Renforcer les assemblages dégradés",
+          "phase": "charpente_structure",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Boulons, ferrures, sabots métalliques, équerres : éléments d'assemblage qui peuvent se desserrer ou se corroder. Renforcement par ajout d'éléments ou remplacement.",
+          "klaro_recommendation": "Inventaire des assemblages : tenons-mortaises, boulons traversants, étriers métalliques, sabots Simpson. Remplacez les boulons rouillés. Ajoutez des sabots ou équerres galvanisées pour conforter. Suivez les préconisations charpentier.",
+          "common_mistake": "Resserrer un boulon rouillé sans remplacement — il casse au prochain effort.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_026"],
+          "norm_reference": "Eurocode 5 + DTU 31.1",
+          "control_questions": []
+        },
+        {
+          "id": "toit_028",
+          "title": "Vérifier aplomb et alignement charpente après réparation",
+          "phase": "charpente_structure",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Après réparation : vérification de l'aplomb des fermes, alignement des chevrons, niveau des pannes. Une charpente déformée donne une couverture déformée.",
+          "klaro_recommendation": "Niveau laser sur la panne faîtière. Cordeau tendu d'un pignon à l'autre pour vérifier l'alignement des chevrons. Aplomb des fermes au fil à plomb ou laser. Tolérance 1 cm sur 5 m. Si défaut : reprise par charpentier avant pose couverture. Photographiez les vérifications.",
+          "common_mistake": "Poser la couverture sur une charpente non vérifiée — tuiles désaffleurées, infiltrations, esthétique compromise.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_027"],
+          "norm_reference": "DTU 31.1 + DTU 40.x",
+          "control_questions": [
+            { "question": "Aplomb et alignement charpente vérifiés (≤ 1 cm/5 m) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_029",
+          "title": "Création / surélévation : pose charpente selon plans BET",
+          "phase": "charpente_structure",
+          "applies_to_intervention_type": ["creation_surelevation"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Pour création ou surélévation : pose nouvelle charpente conforme aux plans BET. Sections, assemblages, ancrages exactement selon spécifications. Calculs neige / vent appliqués.",
+          "klaro_recommendation": "Bois traité classe d'emploi 2 minimum (3 si exposition humidité). Sections respectées. Assemblages tenons-mortaises ou métalliques selon plans. Ancrages dans la maçonnerie par tirefonds ou scellements chimiques. Photos détaillées de chaque étape pour archivage.",
+          "common_mistake": "Sous-dimensionner les sections pour économiser le bois — flèche excessive, fissuration, ruine partielle possible sous neige importante.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_bet"],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_024"],
+          "norm_reference": "Eurocode 5 + DTU 31.1 + DTU 31.3",
+          "control_questions": [
+            { "question": "Charpente posée conformément aux plans BET (sections, assemblages, ancrages) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    }
+  ]
+}
