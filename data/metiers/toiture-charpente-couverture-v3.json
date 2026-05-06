@@ -613,6 +613,533 @@
           ]
         }
       ]
+    },
+    {
+      "id": "depose_ancienne_couverture",
+      "label": "Dépose de l'ancienne couverture",
+      "tasks": [
+        {
+          "id": "toit_030",
+          "title": "Si amiante : intervention exclusive entreprise certifiée",
+          "phase": "depose_ancienne_couverture",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["fibrociment_amiante_suspect", "all"],
+          "applies_to_age": ["avant_1997", "all"],
+          "explanation": "Dépose d'une couverture amiantée = OPÉRATION RÉGLEMENTÉE. Entreprise certifiée SS3/SS4 obligatoire. Confinement, plan de retrait, EPI spécifiques, BSDA. Particulier exclu.",
+          "klaro_recommendation": "Phase la plus dangereuse : la dépose libère des fibres si manipulation incorrecte. L'entreprise spécialisée pose un confinement, dépose les éléments en humidification permanente, conditionne les déchets en sacs étanches étiquetés, transporte vers centre agréé avec BSDA. Ne reculez JAMAIS sur ce point pour économiser.",
+          "common_mistake": "Faire déposer par un couvreur non certifié 'qui a l'habitude' — exposition mortelle, responsabilité pénale, contamination du logement.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["entreprise_certifiee_amiante"],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_004"],
+          "norm_reference": "Code travail R4412-94 à R4412-148 + Décret BSDA",
+          "control_questions": [
+            { "question": "Si amiante : entreprise SS3/SS4 + plan de retrait + BSDA en place ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_031",
+          "title": "Déposer la couverture rang par rang du faîtage vers l'égout",
+          "phase": "depose_ancienne_couverture",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Sens de dépose : du faîtage vers l'égout (à l'inverse de la pose). Rang par rang, en empilant les éléments réutilisables et en évacuant les déchets vers la zone de tri.",
+          "klaro_recommendation": "Photographiez la couverture avant dépose (pureau, calepinage). Empilez les tuiles entières sur palettes avec intercalaires. Cassées et ébréchées en benne déchets inertes. Travaillez à 2-3 personnes : un sur la toiture, un à la chaîne descendante, un au sol. Toboggan ou monte-charge pour éviter les chutes d'objets.",
+          "common_mistake": "Jeter les tuiles depuis la toiture — projectiles dangereux + casse de tuiles potentiellement réutilisables.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["toit_012"],
+          "norm_reference": "DTU 40.x + bonnes pratiques",
+          "control_questions": [
+            { "question": "Dépose progressive du faîtage vers l'égout, photographiée ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_032",
+          "title": "Déposer les éléments de zinguerie",
+          "phase": "depose_ancienne_couverture",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Gouttières, descentes, solins, bandeaux, faîtages métalliques : déposer avec précaution (réutilisation possible si état correct, sinon recyclage métal).",
+          "klaro_recommendation": "Inspectez chaque élément avant dépose : zinc qui craque ou fissuré = à remplacer. Solins de cheminée fortement oxydés = remplacement. Gouttières en alu : souvent réutilisables. Triez les métaux pour le recyclage (zinc, cuivre, alu, acier ont une valeur). Conservez les éléments réutilisables à l'abri.",
+          "common_mistake": "Tordre les éléments à la dépose — fissuration invisible, fuites après repose.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_031"],
+          "norm_reference": "DTU 40.41 + DTU 40.5",
+          "control_questions": []
+        },
+        {
+          "id": "toit_033",
+          "title": "Évacuer les gravats avec traçabilité",
+          "phase": "depose_ancienne_couverture",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "BSDD (bordereau suivi déchets dangereux) ou BSDA (amiante) obligatoire. Benne dédiée pour déchets inertes (tuiles, ardoises non amiantées). Métaux séparés pour recyclage.",
+          "klaro_recommendation": "Benne déchetterie ou centre de tri : tuiles béton/terre cuite en inertes, ardoises naturelles en inertes, fibrociment amiante en filière agréée AVEC BSDA. Métaux (zinc, cuivre) triés pour recyclage (valeur). Conservez les bordereaux 5 ans minimum (preuve de traçabilité). Le brûlage et l'enfouissement sauvage sont interdits.",
+          "common_mistake": "Mélanger des fragments d'amiante avec gravats classiques — refus déchetterie + amende, contamination de la benne.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_032"],
+          "norm_reference": "Code environnement L541-1 + Décret BSDA",
+          "control_questions": [
+            { "question": "Déchets triés et évacués en filières adaptées (BSDA si amiante) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_034",
+          "title": "Bâcher la toiture la nuit et hors intervention",
+          "phase": "depose_ancienne_couverture",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Toiture déposée = comble exposé aux intempéries. Bâche solide, fixée par lattes ou poids, recouvrant entièrement les zones non couvertes.",
+          "klaro_recommendation": "Bâche armée 250-300 g/m² minimum. Recouvrement de 50 cm aux jonctions. Fixation par lattes clouées (pas par sangles seules : le vent les arrache). Pente assurée pour évacuation eau. Inspection quotidienne avant départ. Bâche provisoire 1-2 semaines max (UV dégradent la bâche).",
+          "common_mistake": "Bâche fine fixée par cordons — vent qui arrache, pluie qui inonde le comble en une nuit.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_031"],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": [
+            { "question": "Bâche de protection en place chaque nuit/hors intervention ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "support_voligeage",
+      "label": "Support & voligeage",
+      "tasks": [
+        {
+          "id": "toit_035",
+          "title": "Vérifier l'état des chevrons après dépose",
+          "phase": "support_voligeage",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Une fois la couverture déposée, inspection détaillée des chevrons : alignement, intégrité, équerrage par rapport aux pannes, traces d'humidité ou xylophages.",
+          "klaro_recommendation": "Test à la pointe sur chaque chevron (le bois sain résiste). Mesure de la flèche au cordeau tendu. Vérification des assemblages aux pannes. Photographiez les zones suspectes. Si défauts ponctuels : remplacement du chevron concerné. Si défauts généralisés : étude charpente complète.",
+          "common_mistake": "Refaire la couverture sans contrôler les chevrons — affaissement progressif, désalignement des tuiles, infiltrations.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["toit_031"],
+          "norm_reference": "DTU 31.1 + DTU 40.x",
+          "control_questions": [
+            { "question": "Chevrons inspectés et photographiés (alignement, intégrité, équerrage) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_036",
+          "title": "Remplacer les chevrons défectueux",
+          "phase": "support_voligeage",
+          "applies_to_intervention_type": ["renovation_totale"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Chevron porteur attaqué, fléchi, fissuré ou pourri : remplacement par chevron neuf de section identique (ou supérieure selon recalcul). Jamais de 'rafistolage' sur élément porteur.",
+          "klaro_recommendation": "Bois traité classe d'emploi 2 minimum, séché à 18% d'humidité maximum. Section identique (ou recalculée par charpentier). Étaiement provisoire avant dépose. Assemblage aux pannes par sabots ou tenons-mortaises. Vérifiez l'alignement avec les chevrons voisins après pose.",
+          "common_mistake": "Doubler un chevron pourri sans le remplacer — il continue à se dégrader, transmet l'humidité au nouveau chevron.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_035"],
+          "norm_reference": "Eurocode 5 + DTU 31.1",
+          "control_questions": []
+        },
+        {
+          "id": "toit_037",
+          "title": "Voligeage continu pour ardoises et zinc",
+          "phase": "support_voligeage",
+          "applies_to_intervention_type": ["all"],
+          "applies_to_couverture_type": ["ardoises", "zinc"],
+          "applies_to_age": ["all"],
+          "explanation": "Ardoises et zinc imposent un voligeage continu (planches jointives clouées sur les chevrons) pour répartir les charges et permettre la fixation par clous ou agrafes.",
+          "klaro_recommendation": "Planches en sapin ou peuplier, épaisseur 18-22 mm. Clouage 2 pointes par chevron. Joints décalés entre rangs (jamais alignés). Pose dans le sens des chevrons (perpendiculaire pour zinc à joint debout selon technique). Bois traité classe 2.",
+          "common_mistake": "Poser des ardoises sur liteaux espacés 'comme pour des tuiles' — non conforme, fixation impossible, ardoises qui glissent.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_036"],
+          "norm_reference": "DTU 40.11 (ardoises) + DTU 40.41 (zinc)",
+          "control_questions": [
+            { "question": "Voligeage continu posé pour ardoises ou zinc ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_038",
+          "title": "Voligeage tuiles : selon zone et matériau",
+          "phase": "support_voligeage",
+          "applies_to_intervention_type": ["renovation_totale"],
+          "applies_to_couverture_type": ["tuiles_terre_cuite", "tuiles_beton"],
+          "applies_to_age": ["all"],
+          "explanation": "Pour tuiles : voligeage non obligatoire (liteaux suffisent en zones courantes). Mais préconisé en zone exposée (zone 4 ou site exposé) pour rigidifier et protéger contre l'arrachement.",
+          "klaro_recommendation": "Zone 1-2 site protégé : liteaux suffisent. Zone 3-4 ou site exposé : voligeage continu recommandé (planches jointives) sous écran de sous-toiture. Améliore aussi l'isolation phonique et la résistance aux chocs (grêle).",
+          "common_mistake": "Toit en zone très ventée sans voligeage de protection — tuiles arrachées au premier coup de vent fort, dégâts aux voisins.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_036"],
+          "norm_reference": "DTU 40.21 à 40.29 + Règles NV65",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "ecran_sous_toiture",
+      "label": "Écran sous toiture",
+      "tasks": [
+        {
+          "id": "toit_039",
+          "title": "Choisir le type d'écran : HPV ou non HPV",
+          "phase": "ecran_sous_toiture",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "HPV (Hautement Perméable à la Vapeur, Sd < 0,1 m) : recommandé en cas d'isolation des combles, laisse passer la vapeur. Non HPV : nécessite lame d'air ventilée 2 cm minimum sous l'écran.",
+          "klaro_recommendation": "Combles aménagés isolés ou prévus isolés : écran HPV obligatoire (Pro Clima Solitex, Klober Permo, Delta-Vent N). Combles perdus non isolés : écran non HPV (Sd > 0,1) avec lame d'air ventilée. Marquage CE + ACERMI à exiger. Coût ~3-8 €/m². Sans écran : infiltrations, condensation, dégradation rapide.",
+          "common_mistake": "Mettre un écran non HPV sous combles isolés — vapeur d'eau bloquée, condensation dans l'isolant, charpente humide.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_038"],
+          "norm_reference": "CPT 3651 + CPT 3502",
+          "control_questions": [
+            { "question": "Type d'écran adapté (HPV si combles isolés) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_040",
+          "title": "Poser l'écran du bas vers le haut avec recouvrements",
+          "phase": "ecran_sous_toiture",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Pose horizontale, du bas (égout) vers le haut (faîtage). Recouvrement entre lés : 10 à 20 cm selon pente et fabricant (plus la pente est faible, plus le recouvrement est grand).",
+          "klaro_recommendation": "Recouvrement minimum 10 cm pour pente > 35%, 15 cm pour 25-35%, 20 cm pour < 25%. Tendu sans plis, agrafé ou cloué provisoirement aux chevrons. Bandes pré-imprimées sur l'écran indiquent la zone de recouvrement. Photographiez l'écran posé avant contre-lattage (preuve d'exécution).",
+          "common_mistake": "Poser de haut en bas — le sens des recouvrements est inversé, eau qui passe sous chaque jonction.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["toit_039"],
+          "norm_reference": "CPT 3651 + CPT 3502",
+          "control_questions": [
+            { "question": "Écran posé bas en haut, recouvrements 10-20 cm selon pente ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_041",
+          "title": "Lame d'air 2 cm minimum si écran non HPV",
+          "phase": "ecran_sous_toiture",
+          "applies_to_intervention_type": ["renovation_totale", "creation_surelevation"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Avec écran non HPV : lame d'air ventilée 2 cm minimum entre écran et isolant. Permet l'évacuation de la vapeur d'eau côté froid. Entrée d'air à l'égout, sortie au faîtage ventilé.",
+          "klaro_recommendation": "Pose de cales (tasseaux 24 mm minimum) sur les chevrons avant l'isolant. Vérifiez la circulation d'air en bas (chatières d'égout, déflecteurs) et en haut (faîtage ventilé, chatière de faîtage). Sans cette ventilation, point de rosée dans l'isolant, pourrissement.",
+          "common_mistake": "Bourrer l'isolant contre l'écran non HPV — lame d'air supprimée, condensation immédiate.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_039"],
+          "norm_reference": "CPT 3651",
+          "control_questions": [
+            { "question": "Lame d'air ≥ 2 cm conservée si écran non HPV ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_042",
+          "title": "Continuité aux jonctions (faîtage, rives, pénétrations)",
+          "phase": "ecran_sous_toiture",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Adhésifs spécifiques d'étanchéité aux jonctions : faîtage, rives latérales, pénétrations (cheminée, fenêtres de toit, conduits VMC). Une discontinuité = entrée d'eau garantie.",
+          "klaro_recommendation": "Adhésif compatible avec l'écran (gamme du fabricant : Tescon Vana, Solitex Tape...). Manchons préformés autour des conduits cylindriques. Bandes de raccordement spécifiques pour fenêtres de toit (kit fourni par Velux). Photographiez chaque jonction soignée.",
+          "common_mistake": "Découper l'écran autour d'une cheminée sans manchon ni adhésif — eau qui passe directement à chaque pluie.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["toit_040"],
+          "norm_reference": "CPT 3651 + Notices fabricants",
+          "control_questions": [
+            { "question": "Toutes les jonctions traitées avec adhésifs/manchons spécifiques ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_043",
+          "title": "Retour d'écran dans la gouttière à l'égout",
+          "phase": "ecran_sous_toiture",
+          "applies_to_intervention_type": ["renovation_totale", "creation_surelevation"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "À l'égout, l'écran sous toiture doit déborder dans la gouttière (sur 5-10 cm). Récupère les éventuelles infiltrations qui passent sous les tuiles et les évacue par la gouttière.",
+          "klaro_recommendation": "Bavette d'égout : descente de l'écran dans la gouttière, scotchée sur le bord intérieur de la gouttière. Possibilité d'utiliser une bavette aluminium spécifique pour pérenniser. Sans ce retour, l'eau s'infiltre dans les chevrons et le bardage.",
+          "common_mistake": "Couper l'écran à l'aplomb du chevron de rive — eau qui s'écoule sur le chevron et descend dans le mur.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_040"],
+          "norm_reference": "CPT 3651 + DTU 40.5",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "contre_lattage_lattage",
+      "label": "Contre-lattage & lattage",
+      "tasks": [
+        {
+          "id": "toit_044",
+          "title": "Poser les contre-liteaux (lame d'air sous toiture)",
+          "phase": "contre_lattage_lattage",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["tuiles_terre_cuite", "tuiles_beton", "ardoises"],
+          "applies_to_age": ["all"],
+          "explanation": "Contre-liteaux (section minimum 24 × 24 mm) fixés sur les chevrons par-dessus l'écran sous toiture. Créent la lame d'air sous toiture (ventilation et drainage des éventuelles infiltrations).",
+          "klaro_recommendation": "Bois traité classe d'emploi 2. Section 24 × 38 mm courante. Fixation par clous ou vis dans les chevrons. Posés dans le sens des chevrons (parallèles à la pente). Sans contre-liteaux, écran plaqué contre les liteaux = pas de drainage, infiltrations.",
+          "common_mistake": "Sauter les contre-liteaux pour 'gagner du temps' — eau qui peut stagner, écran qui ne joue pas son rôle.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_040"],
+          "norm_reference": "DTU 40.21 à 40.29 + DTU 40.11",
+          "control_questions": []
+        },
+        {
+          "id": "toit_045",
+          "title": "Calculer l'entraxe des liteaux selon le pureau",
+          "phase": "contre_lattage_lattage",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["tuiles_terre_cuite", "tuiles_beton", "ardoises"],
+          "applies_to_age": ["all"],
+          "explanation": "Pureau = longueur de tuile visible imposée par le fabricant selon la pente et la zone climatique. L'entraxe des liteaux = pureau. Plus la pente est faible, plus le pureau est court (recouvrement plus important).",
+          "klaro_recommendation": "Notice fabricant à consulter (tableau pureau selon pente et zone). Exemple tuile mécanique : pureau 32 cm pour pente > 50%, 30 cm pour 35-50%, 28 cm pour 25-35%. Mesurez précisément avec un mètre. Marquez les emplacements à la craie sur le contre-liteau avant pose des liteaux.",
+          "common_mistake": "Utiliser le pureau standard sans tenir compte de la pente — recouvrement insuffisant en faible pente, infiltrations.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_044"],
+          "norm_reference": "DTU 40.21 à 40.29 + Notices fabricants",
+          "control_questions": [
+            { "question": "Entraxe des liteaux calculé selon pureau (pente + zone) ?", "type": "number", "expected": "selon notice fabricant" }
+          ]
+        },
+        {
+          "id": "toit_046",
+          "title": "Poser les liteaux selon entraxe et zone",
+          "phase": "contre_lattage_lattage",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["tuiles_terre_cuite", "tuiles_beton", "ardoises"],
+          "applies_to_age": ["all"],
+          "explanation": "Liteaux (section selon entraxe et zone, généralement 27 × 40 mm courant) fixés sur les contre-liteaux. Bois traité classe d'emploi 2 minimum.",
+          "klaro_recommendation": "Section 27 × 40 mm pour entraxe < 40 cm. 38 × 50 mm pour entraxe plus grand. Bois traité classe 2 (autoclave). Clouage 2 pointes par contre-liteau, ou vis pour zones très exposées. Joints décalés entre liteaux (jamais alignés sur le même contre-liteau).",
+          "common_mistake": "Liteaux non traités — pourriture en quelques années, dépose de la couverture pour reprendre.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_045"],
+          "norm_reference": "DTU 40.21 à 40.29 + DTU 40.11",
+          "control_questions": [
+            { "question": "Liteaux traités classe 2 + section adaptée + joints décalés ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_047",
+          "title": "Vérifier l'alignement des liteaux à chaque rangée",
+          "phase": "contre_lattage_lattage",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["tuiles_terre_cuite", "tuiles_beton", "ardoises"],
+          "applies_to_age": ["all"],
+          "explanation": "Cordeau tendu d'un pignon à l'autre pour vérifier la rectitude horizontale de chaque rangée de liteaux. Tolérance < 5 mm/m.",
+          "klaro_recommendation": "Cordeau tendu entre deux pointes plantées dans les contre-liteaux des extrémités. Vérification à chaque liteau posé. Réajustement immédiat si défaut. Liteaux non alignés = couverture qui ondule visiblement, point d'infiltration possibles.",
+          "common_mistake": "Aligner 'à l'œil' — micro-décalages cumulés, ondulations visibles dans la couverture finie.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_046"],
+          "norm_reference": "DTU 40.21 à 40.29",
+          "control_questions": [
+            { "question": "Liteaux alignés au cordeau (tolérance < 5 mm/m) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pose_couverture",
+      "label": "Pose de la couverture",
+      "tasks": [
+        {
+          "id": "toit_048",
+          "title": "Calepinage avant pose",
+          "phase": "pose_couverture",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Avant la pose : nombre de rangs, position de la dernière rangée (jamais une demi-tuile), position des points singuliers (faîtage, rives, fenêtres de toit, cheminée).",
+          "klaro_recommendation": "Mesure de la hauteur du versant. Calcul du nombre de rangs en fonction du pureau. Ajustez le rang d'égout (légèrement plus court ou plus long) pour éviter une demi-tuile en faîtage. Calepinage horizontal aussi (recoupes en rives). Photographiez le calepinage avant pose.",
+          "common_mistake": "Démarrer la pose sans calepinage et finir avec une bande de 10 cm en faîtage — visuellement raté, infiltrations possibles.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_047"],
+          "norm_reference": "DTU 40.21 à 40.29",
+          "control_questions": [
+            { "question": "Calepinage réalisé et photographié avant pose ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_049",
+          "title": "Poser le rang d'égout en premier",
+          "phase": "pose_couverture",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["tuiles_terre_cuite", "tuiles_beton", "ardoises"],
+          "applies_to_age": ["all"],
+          "explanation": "Rang d'égout = première rangée en bas du versant, posée avec tuiles de bordure (chanlatte) ou tuile entière selon système. Donne la base de toute la pose.",
+          "klaro_recommendation": "Tuiles d'égout spécifiques (avec décrochement) ou tuiles entières + bavette d'égout en zinc. Pose alignée au cordeau, vérifiée au niveau. Décrochement de 4-5 cm dans la gouttière pour assurer l'évacuation. Première rangée fixée à 100% (charge concentrée).",
+          "common_mistake": "Décrochement insuffisant dans la gouttière — eau qui dépasse et coule sur le bardage.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_048"],
+          "norm_reference": "DTU 40.21 à 40.29 + DTU 40.5",
+          "control_questions": []
+        },
+        {
+          "id": "toit_050",
+          "title": "Poser les tuiles courantes du bas vers le haut",
+          "phase": "pose_couverture",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["tuiles_terre_cuite", "tuiles_beton"],
+          "applies_to_age": ["all"],
+          "explanation": "Pose progressive du bas (égout) vers le haut (faîtage), rang par rang. Recouvrement minimal du fabricant respecté selon pente et zone.",
+          "klaro_recommendation": "Tuiles à emboîtement (mécaniques) : pose horizontale, emboîtement latéral parfait. Tuiles à pureau plat (canal) : 2 rangs croisés (couvert / dessous). Vérifiez à chaque rang que l'alignement vertical et horizontal est correct. Tuiles défectueuses (ébréchées, fissurées) écartées.",
+          "common_mistake": "Emboîtement forcé sur tuiles désalignées — tuiles qui claquent au vent, infiltrations.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_049"],
+          "norm_reference": "DTU 40.21 à 40.29",
+          "control_questions": []
+        },
+        {
+          "id": "toit_051",
+          "title": "Poser les ardoises au crochet ou clou cuivre",
+          "phase": "pose_couverture",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["ardoises"],
+          "applies_to_age": ["all"],
+          "explanation": "Pose au crochet inox (technique moderne, plus rapide) ou au clou cuivre (technique traditionnelle, plus discrète). Pureau précis selon notice. Ardoises fendues ou découpées au taillant.",
+          "klaro_recommendation": "Pose au crochet : crochets inox 3 mm, fixés sur le liteau. Clou cuivre : 2 clous cuivre par ardoise (jamais acier galva, oxydation = fente de l'ardoise). Pureau exact (généralement 25-35 cm). Recouvrement minimum 7-10 cm selon pente. Pose qui demande compétence pro.",
+          "common_mistake": "Clous acier sur ardoises — oxydation, fente de l'ardoise, dépose et reprise nécessaire en quelques années.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_037"],
+          "norm_reference": "DTU 40.11",
+          "control_questions": [
+            { "question": "Ardoises fixées au crochet inox ou clou cuivre (jamais acier) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_052",
+          "title": "Zinc à joint debout : agrafes + soudure étain",
+          "phase": "pose_couverture",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["zinc"],
+          "applies_to_age": ["all"],
+          "explanation": "Bacs de zinc à joint debout : pose avec agrafes fixes (en haut) et coulissantes (sur le reste) pour absorber la dilatation thermique. Soudure étain aux raccords transversaux.",
+          "klaro_recommendation": "Technique exigeante : pose par couvreur-zingueur qualifié OBLIGATOIRE. Bacs de longueur limitée selon pente (10-12 m max). Joint debout serti à la machine. Agrafes acier inox. Soudures à l'étain pour les raccords (jamais brasure, fissuration). Pas de contact zinc/cuivre (pile galvanique). Pas de contact zinc/chêne neuf (corrosif).",
+          "common_mistake": "Pose amateur du zinc à joint debout — fuites garanties, coût de reprise élevé.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["decennale_pro"],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_037"],
+          "norm_reference": "DTU 40.41",
+          "control_questions": [
+            { "question": "Pose zinc à joint debout par couvreur-zingueur qualifié ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_053",
+          "title": "Bac acier : recouvrements + vis avec rondelles d'étanchéité",
+          "phase": "pose_couverture",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["bac_acier"],
+          "applies_to_age": ["all"],
+          "explanation": "Panneaux acier nervurés posés avec recouvrement longitudinal (1 nervure minimum) et transversal (15-20 cm selon pente). Fixation par vis tirefonds avec rondelle d'étanchéité (EPDM ou néoprène).",
+          "klaro_recommendation": "Bacs galvanisés ou prélaqués selon esthétique. Pente 7% minimum (réglementaire). Recouvrement transversal 15 cm pour pente > 30%, 20 cm pour 7-30%. Vis sur sommet de nervure (pas en fond). Rondelle EPDM compressée mais pas écrasée. Bac acier seul = bruyant : prévoir mousse anti-condensation en sous-face.",
+          "common_mistake": "Vis en fond de nervure — point bas, eau qui stagne autour de la rondelle, fuite.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_038"],
+          "norm_reference": "DTU 40.35 + Avis Techniques",
+          "control_questions": []
+        },
+        {
+          "id": "toit_054",
+          "title": "Toiture terrasse : isolant + membrane + relevés 15 cm",
+          "phase": "pose_couverture",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["toiture_terrasse"],
+          "applies_to_age": ["all"],
+          "explanation": "Toiture terrasse : isolant XPS ou PIR + membrane d'étanchéité (bitume soudée, EPDM ou PVC) selon DTU 43. Relevés en périphérie 15 cm minimum (sur acrotère). Pente 1-3% obligatoire.",
+          "klaro_recommendation": "Pose par étancheur qualifié OBLIGATOIRE (DTU 43 complexe). Isolant à pente intégrée si plat (formes de pente). Membrane bitume : 2 couches soudées au chalumeau. EPDM : monocouche collée. PVC : monocouche soudée à l'air chaud. Relevés sur acrotère étanchés et protégés (couvertine).",
+          "common_mistake": "Pose amateur de membrane bitume — soudures incomplètes, infiltrations dans les semaines suivantes.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["decennale_pro"],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_036"],
+          "norm_reference": "DTU 43.1 à 43.5",
+          "control_questions": [
+            { "question": "Toiture terrasse posée par étancheur qualifié (DTU 43) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_055",
+          "title": "Fixer les tuiles selon zone climatique (NV65)",
+          "phase": "pose_couverture",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["tuiles_terre_cuite", "tuiles_beton", "ardoises"],
+          "applies_to_age": ["all"],
+          "explanation": "Taux de fixation selon zone NV65 et site : 100% en zone 4 ou site exposé. 1/3 en zone 2-3 site normal. 1/5 en zone 1 site protégé. Toujours 100% aux rives, faîtage, égout et rampants exposés.",
+          "klaro_recommendation": "Zone 4 ou site exposé (mer, montagne, plaine ouverte) : chaque tuile fixée par crochet ou vis. Zone moins exposée : fixation 1 sur 3 ou 1 sur 5 alternée. Rives, faîtage, égout, rampants exposés au vent dominant : TOUJOURS 100%. Notice fabricant à respecter strictement.",
+          "common_mistake": "Sous-fixer en zone exposée — tuiles arrachées au premier coup de vent fort, dégâts importants chez les voisins.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_050"],
+          "norm_reference": "Règles NV65 + DTU 40.21 à 40.29",
+          "control_questions": [
+            { "question": "Fixation conforme à la zone NV65 (100% si zone 4/exposé, rives/faîtage/égout 100%) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "toit_056",
+          "title": "Utiliser les fixations adaptées (crochets, vis, clous)",
+          "phase": "pose_couverture",
+          "applies_to_intervention_type": ["renovation_totale", "renovation_partielle", "creation_surelevation"],
+          "applies_to_couverture_type": ["all"],
+          "applies_to_age": ["all"],
+          "explanation": "Crochets en acier inox ou cuivre, vis tirefonds avec joint d'étanchéité, clous cuivre pour ardoises. JAMAIS de fixation acier galva ordinaire (oxydation à terme).",
+          "klaro_recommendation": "Tuiles : crochets inox 3 mm ou vis tirefonds inox avec rondelle EPDM. Ardoises : clous cuivre (corrosion compatible avec ardoise). Zinc : agrafes inox. Bac acier : vis spécifiques avec rondelle EPDM. Fournisseurs spécialisés couverture (pas de bricolage avec fixations grand public).",
+          "common_mistake": "Crochets acier galvanisé sur ardoises — corrosion en 5-10 ans, ardoises qui tombent.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["toit_055"],
+          "norm_reference": "DTU 40.x + Notices fabricants",
+          "control_questions": [
+            { "question": "Fixations adaptées au matériau (inox, cuivre selon couverture) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
     }
   ]
 }
