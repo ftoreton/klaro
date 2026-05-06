@@ -634,6 +634,731 @@
           "control_questions": []
         }
       ]
+    },
+    {
+      "id": "application_peinture",
+      "label": "Application de la peinture",
+      "tasks": [
+        {
+          "id": "peint_038",
+          "title": "Préparer la peinture",
+          "phase": "application_peinture",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Mélange soigneux du pot (au mélangeur ou bâtonnet, jamais en secouant). Dilution éventuelle selon notice. Si plusieurs pots de même teinte : mélangez-les ensemble dans un grand seau pour homogénéiser.",
+          "klaro_recommendation": "Mélangeur sur perceuse pendant 2-3 min, mouvements en remontant du fond. Dilution selon notice (souvent 5-10% d'eau pour acrylique en première couche). Mélange entre pots = boxage : versez tous les pots de la même teinte dans un grand seau, mélangez, reversez. Évite les variations de nuance entre pots.",
+          "common_mistake": "Utiliser les pots un par un dans l'ordre — variations de nuance visibles entre les zones peintes avec des pots différents.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_037"],
+          "norm_reference": "DTU 59.1 §14.1",
+          "control_questions": []
+        },
+        {
+          "id": "peint_039",
+          "title": "Réaliser les découpes au pinceau à rechampir",
+          "phase": "application_peinture",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Pinceau à rechampir (queue de morue, biseauté) pour les angles plafond/mur, contours menuiseries, plinthes. C'est ce qui fait la netteté des lignes.",
+          "klaro_recommendation": "Pinceau de qualité (poils synthétiques pour acrylique, soies pour glycéro), bien chargé mais pas dégoulinant. Mouvements souples en suivant l'angle. Travaillez par sections de 1 m, juste avant le passage du rouleau pour fondre les démarcations (technique du raccord à frais).",
+          "common_mistake": "Pinceau standard plat — découpes irrégulières, ligne tremblée, perte de temps.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_038"],
+          "norm_reference": "DTU 59.1 §14.2",
+          "control_questions": []
+        },
+        {
+          "id": "peint_040",
+          "title": "Appliquer la première couche au rouleau adapté",
+          "phase": "application_peinture",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Rouleau choisi selon le support : poils courts (5-10 mm) pour surfaces lisses, moyens (12-15 mm) pour léger relief, longs (18-22 mm) pour relief marqué.",
+          "klaro_recommendation": "Manchon mousse pour laques (boiseries, brillances). Manchon poils synthétiques pour acrylique murs et plafonds. Méthode du W : déchargez le rouleau en formant un W (ou M) sur le mur, puis répartissez en passes verticales croisées. Travaillez par sections de 1 m² maxi pour éviter les marques de reprise.",
+          "common_mistake": "Charger trop le rouleau pour gagner du temps — coulures, traces de bord de rouleau, peinture qui glisse.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_039"],
+          "norm_reference": "DTU 59.1 §14.3",
+          "control_questions": []
+        },
+        {
+          "id": "peint_041",
+          "title": "Travailler humide sur humide en croisant les passes",
+          "phase": "application_peinture",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Travaillez 'humide sur humide' : la peinture en cours doit toujours raccorder une zone encore fraîche. Jamais reprendre sur une peinture qui sèche = traces de reprise visibles garanties.",
+          "klaro_recommendation": "Avancez par sections, toujours avec un bord humide. Croisez les passes : verticales puis horizontales puis lissage vertical pour finir. Si vous devez vous arrêter : finissez sur un angle ou une rupture (porte, fenêtre), jamais au milieu d'un mur.",
+          "common_mistake": "Faire une pause au milieu d'un mur — la zone qui sèche fait une reprise visible définitive sous la lumière rasante.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_040"],
+          "norm_reference": "DTU 59.1 §14.3",
+          "control_questions": [
+            { "question": "La pose s'est-elle faite humide sur humide, sans reprise au milieu d'un pan ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_042",
+          "title": "Respecter le sens de pose : haut en bas, plafond avant murs",
+          "phase": "application_peinture",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Plafond peint EN ENTIER avant de commencer les murs (à chaque couche, pas une fois pour toutes). Sur les murs : du haut vers le bas. Boiseries en dernier.",
+          "klaro_recommendation": "1ère couche plafond → 1ère couche murs → 2e couche plafond → 2e couche murs → boiseries. Manche télescopique pour le plafond (évite l'échelle). Sur les murs : du haut vers le bas pour récupérer les coulures éventuelles. Sans cet ordre, éclaboussures du plafond sur les murs neufs.",
+          "common_mistake": "Peindre les murs avant le plafond ou faire toutes les couches d'un mur d'affilée — éclaboussures du plafond sur murs déjà peints, retouches visibles.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_040"],
+          "norm_reference": "DTU 59.1 §14.4",
+          "control_questions": [
+            { "question": "Ordre respecté : plafond avant murs à chaque couche ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_043",
+          "title": "Respecter le délai de recouvrement avant la 2e couche",
+          "phase": "application_peinture",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Le délai de recouvrement (sur fiche technique) est différent du séchage au toucher. À 20°C / 50% humidité : 4-6h pour acrylique murs, 12-24h pour laque glycéro.",
+          "klaro_recommendation": "Lisez la fiche technique du produit. À 20°C / 50% humidité : valeurs nominales. Plus froid ou plus humide : doublez. Une seconde couche posée trop tôt arrache la première (résultat catastrophique). Pour gagner du temps : ne peignez pas plusieurs pièces en parallèle, terminez chaque pièce dans son délai.",
+          "common_mistake": "Repasser une couche dès que ça paraît sec au toucher — la peinture en surface a séché mais le dessous est encore humide, le rouleau l'arrache.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_040"],
+          "norm_reference": "DTU 59.1 §14.5 + fiche technique produit",
+          "control_questions": [
+            { "question": "Délai de recouvrement respecté entre 1ère et 2e couche ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_044",
+          "title": "Appliquer la 2e couche en croisant le sens",
+          "phase": "application_peinture",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "La 2e couche est posée en croisant le sens de la 1ère (si 1ère verticale, 2e horizontale puis finition verticale). Ce croisement assure couvrance et uniformité.",
+          "klaro_recommendation": "Même méthode que la 1ère couche (W, sections de 1 m², humide sur humide). Le sens de finition (lissage final) doit toujours être vertical sur les murs et toujours dans le sens de la lumière au plafond. Travaillez vite mais proprement.",
+          "common_mistake": "Appliquer la 2e couche dans le même sens que la 1ère — uniformité moins bonne, traces possibles selon l'éclairage.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_043"],
+          "norm_reference": "DTU 59.1 §14.6",
+          "control_questions": [
+            { "question": "Au moins 2 couches appliquées avec sens croisé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_045",
+          "title": "Appliquer une 3e couche si Q3/Q4 ou teinte exigeante",
+          "phase": "application_peinture",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["Q3", "Q4"],
+          "explanation": "Pour Q3 ou Q4, ou pour les teintes profondes, brillantes, ou couvrantes faibles : 3e couche obligatoire pour atteindre l'uniformité et la couvrance complète.",
+          "klaro_recommendation": "Vérifiez après 2e couche complètement sèche en lumière rasante : si la moindre transparence du fond est visible ou si l'uniformité n'est pas parfaite, 3e couche obligatoire. Pour les laques brillantes : 3e couche systématique. Pour les rouges, jaunes vifs, bleus profonds : 3e couche très souvent nécessaire.",
+          "common_mistake": "Se contenter de 2 couches sur une laque brillante ou un rouge vif — fond visible par transparence, finition compromise.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_044"],
+          "norm_reference": "DTU 59.1 §14.7 + Règles Q1-Q4",
+          "control_questions": [
+            { "question": "3e couche appliquée si Q3/Q4 ou teinte exigeante ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_046",
+          "title": "Peindre les boiseries",
+          "phase": "application_peinture",
+          "applies_to_support": ["bois"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Boiseries (portes, encadrements, plinthes bois) : sous-couche bois + 2 couches de finition adaptée (laque acrylique satinée ou glycéro, peinture spéciale boiseries).",
+          "klaro_recommendation": "Démontez les portes et posez-les sur tréteaux pour un résultat impeccable. Manchon mousse pour les surfaces planes (laqueur), pinceau à rechampir pour les détails (moulures, panneaux). Peinture glycéro = très résistante mais COV élevé. Acrylique satinée = plus saine, légèrement moins résistante. Égrenage léger entre couches au grain 240.",
+          "common_mistake": "Utiliser une peinture murale standard sur les boiseries — pas assez résistante, traces de doigts apparentes en quelques semaines.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_044"],
+          "norm_reference": "DTU 59.1 §15",
+          "control_questions": [
+            { "question": "Boiseries peintes avec peinture spéciale (sous-couche bois + 2 couches finition adaptée) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finitions_hors_peinture",
+      "label": "Finitions hors peinture",
+      "tasks": [
+        {
+          "id": "peint_047",
+          "title": "Joints acryliques de finition",
+          "phase": "finitions_hors_peinture",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Joints acryliques (peignables) entre menuiseries et placo, aux jonctions plafond/mur si fissures fines. Lissage au doigt savonné pour ligne nette.",
+          "klaro_recommendation": "Mastic acrylique (jamais silicone aux jonctions intérieures peintes — non peignable et jaunit). Posez en boudin fin, lissez au doigt mouillé au savon. Posez sur peinture sèche, ou avant la dernière couche pour intégrer le joint à la finition. Ces joints fins font la différence visuelle entre une finition pro et amateur.",
+          "common_mistake": "Utiliser du silicone aux jonctions intérieures — ne se peint pas, reste visible et finit par jaunir.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_044"],
+          "norm_reference": "DTU 59.1 §16.1",
+          "control_questions": [
+            { "question": "Les jonctions intérieures sont-elles traitées au mastic acrylique (jamais silicone) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_048",
+          "title": "Reposer les plinthes bois/MDF si déposées",
+          "phase": "finitions_hors_peinture",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Si les plinthes ont été déposées avant peinture : repose après finition. Si plinthes peintes en place : touchups ciblés à la fin.",
+          "klaro_recommendation": "Plinthes neuves : peintes au préalable (toutes faces sauf dos), puis posées (clous sans tête + colle néoprène ou MS). Coupes d'angle à la boîte à onglet (45°) ou scie diagonale. Joint acrylique en haut entre plinthe et mur.",
+          "common_mistake": "Repeindre les plinthes après pose en place — bavures sur le mur fraîchement peint, retouches visibles.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_044"],
+          "norm_reference": "DTU 36.5",
+          "control_questions": []
+        },
+        {
+          "id": "peint_049",
+          "title": "Reposer prises, interrupteurs, appliques",
+          "phase": "finitions_hors_peinture",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Reposez plaques de prises, interrupteurs, appliques, butoirs de portes, poignées une fois la peinture sèche.",
+          "klaro_recommendation": "Coupez le courant avant intervention. Vérifiez le bon serrage des bornes (un mauvais serrage chauffe et présente un risque incendie). Vérifiez que rien ne dépasse derrière les plaques. Plaques propres et alignées (à l'horizontale ou à la verticale selon la pose).",
+          "common_mistake": "Reposer les plaques sans couper le courant — risque d'électrocution et court-circuit.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_044"],
+          "norm_reference": "NF C 15-100",
+          "control_questions": []
+        },
+        {
+          "id": "peint_050",
+          "title": "Reposer les radiateurs et raccorder",
+          "phase": "finitions_hors_peinture",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Repose des radiateurs déposés : raccordement aux vannes, purge, mise en eau, vérification d'étanchéité.",
+          "klaro_recommendation": "Reposez à 2 personnes. Vérifiez l'étanchéité des raccords après mise en eau (papier essuie-tout en bordure pour détecter les suintements). Purgez le radiateur en partie haute pour évacuer l'air. Vérifiez le bon fonctionnement (montée en température homogène).",
+          "common_mistake": "Reposer le radiateur sans test d'étanchéité — fuite découverte plus tard, taches sur peinture neuve.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_044"],
+          "norm_reference": "DTU 65.10",
+          "control_questions": [
+            { "question": "Raccords étanches et radiateur purgé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_051",
+          "title": "Reposer les accessoires SDB",
+          "phase": "finitions_hors_peinture",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Porte-serviettes, miroirs, étagères, tringles : posés en dernier sur peinture sèche, avec chevilles adaptées au support.",
+          "klaro_recommendation": "Marquez les emplacements au crayon, vérifiez le niveau au laser ou niveau à bulle. Chevilles adaptées : Molly pour placo (charge moyenne), chevilles à bascule pour charge lourde sur placo. Chevilles classiques sur béton/parpaing. Notez l'emplacement des renforts cachés (pris des photos avant fermeture du placo) pour fixer dans le bois.",
+          "common_mistake": "Fixer un porte-serviettes lourd sur du placo simple sans cheville Molly — cheville arrachée, mur abîmé.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_044"],
+          "norm_reference": "",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "controle",
+      "label": "Contrôle qualité",
+      "tasks": [
+        {
+          "id": "peint_052",
+          "title": "Retirer toutes les protections",
+          "phase": "controle",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Adhésifs tirés à 45° vers le bas, sans à-coup, idéalement quand la peinture est encore légèrement souple (1-2h après dernière couche).",
+          "klaro_recommendation": "Sur peinture encore souple : le scotch se retire net. Sur peinture totalement dure : risque de soulever des plaques de peinture. Si vous avez attendu : passez un cutter le long du scotch pour casser le film de peinture avant de tirer. Retirez les bâches en pliant vers l'intérieur (poussières confinées).",
+          "common_mistake": "Attendre 24h avant de retirer le scotch — la peinture sèche le solidarise au support, des plaques se déchirent en le retirant.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_044"],
+          "norm_reference": "DTU 59.1 §17.1",
+          "control_questions": [
+            { "question": "Le scotch a-t-il été retiré dans le bon délai (peinture encore souple) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_053",
+          "title": "Contrôler en lumière rasante (renforcé Q3/Q4)",
+          "phase": "controle",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Contrôle final à la lampe LED rasante (à 30 cm du mur, parallèle à la surface). Pour Q2 : aucun défaut visible en éclairage normal. Pour Q3 : aucun défaut à 1 m. Pour Q4 : aucun défaut sous lumière rasante.",
+          "klaro_recommendation": "Faites le contrôle pièce par pièce, dans l'obscurité avec uniquement la lampe LED rasante. Marquez les défauts au crayon (effaçable). Approchez à 30 cm puis reculez à 1 m pour comparer. Documentez les défauts par photos. C'est le contrôle qualité de référence des règles Q1-Q4.",
+          "common_mistake": "Valider le rendu uniquement sous l'éclairage normal de la pièce — au matin ou avec un éclairage différent, les défauts ressortent et il faut tout reprendre.",
+          "pro_recommended": false,
+          "photo_required_before_validation": true,
+          "depends_on": ["peint_052"],
+          "norm_reference": "DTU 59.1 §17.2 + Règles Q1-Q4",
+          "control_questions": [
+            { "question": "Contrôle lumière rasante effectué et rendu conforme au niveau visé (Q2/Q3/Q4) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_054",
+          "title": "Vérifier l'opacité (pas de transparence du fond)",
+          "phase": "controle",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Aucune transparence du fond ne doit être visible. Aucune trace de sous-couche ou de support à travers la finition.",
+          "klaro_recommendation": "Inspectez sous éclairage naturel ET sous lumière rasante. Cherchez les zones où la couleur change légèrement (souvent : derrière les radiateurs, dans les angles, près du plafond). Si transparence : 3e couche localisée fondue avec le reste sur 30-50 cm.",
+          "common_mistake": "Valider une opacité 'presque parfaite' — sous certains éclairages la transparence ressort, finition compromise.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_053"],
+          "norm_reference": "DTU 59.1 §17.2",
+          "control_questions": [
+            { "question": "Aucune transparence du fond visible ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_055",
+          "title": "Vérifier l'uniformité",
+          "phase": "controle",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Pas de reprises visibles, pas de 'gras' de rouleau (surépaisseur), pas de marques de pinceau, pas de sens de pose visible.",
+          "klaro_recommendation": "Reculez de 2 m, puis approchez à 30 cm. Tournez autour de la pièce. Faites le contrôle à plusieurs moments de la journée (lumière naturelle change). Marquez les défauts. Pour Q3/Q4 : exigence renforcée — aucune trace de rouleau, aucune marque de reprise.",
+          "common_mistake": "Valider l'uniformité depuis un seul angle de vue — selon l'éclairage, des reprises invisibles deviennent évidentes.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_053"],
+          "norm_reference": "DTU 59.1 §17.2",
+          "control_questions": [
+            { "question": "Uniformité validée sous plusieurs éclairages et angles ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_056",
+          "title": "Vérifier la netteté des découpes",
+          "phase": "controle",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Lignes propres entre plafond/mur/plinthes/menuiseries, sans bavure ni manque. C'est ce qui distingue une finition pro à l'œil.",
+          "klaro_recommendation": "Inspectez chaque ligne de découpe sur au moins 1 m. Bavures = à reprendre au pinceau fin de la couleur de fond ou de finition (selon le sens de la bavure). Manques = à compléter au pinceau à rechampir. Pour Q4 : ligne nette à 30 cm de distance, sans tremblement.",
+          "common_mistake": "Laisser des bavures 'pas trop visibles' — elles ressortent à l'usage et fragilisent la finition globale.",
+          "pro_recommended": false,
+          "photo_required_before_validation": true,
+          "depends_on": ["peint_053"],
+          "norm_reference": "DTU 59.1 §17.2",
+          "control_questions": [
+            { "question": "Toutes les découpes sont-elles nettes (sans bavure ni manque) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_057",
+          "title": "Effectuer les retouches finales",
+          "phase": "controle",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Retouches localisées sur les défauts marqués. Tampon avec la peinture d'origine (lot identique). Sur grande surface : repassez tout le pan, pas seulement la zone.",
+          "klaro_recommendation": "Reprenez les défauts pendant que vous avez encore la peinture du même lot. Pour fondre une retouche : ne peignez pas seulement la zone, étendez sur 30-50 cm autour pour éviter une démarcation visible. Pinceau pour les détails, mini-rouleau pour les zones plus larges. Sur Q3/Q4 : ne tolérez aucun défaut visible après retouche.",
+          "common_mistake": "Retoucher uniquement la zone du défaut au pinceau — la retouche est visible comme une tache.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_056"],
+          "norm_reference": "DTU 59.1 §17.3",
+          "control_questions": [
+            { "question": "Toutes les retouches sont-elles fondues et invisibles sous lumière rasante ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "remise_en_service",
+      "label": "Remise en service",
+      "tasks": [
+        {
+          "id": "peint_058",
+          "title": "Respecter le délai avant remise en service",
+          "phase": "remise_en_service",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "24h avant trafic léger (passage), 7 jours avant lavage doux à l'eau, 28 jours avant résistance définitive (lessivage, frottement intense).",
+          "klaro_recommendation": "Pendant les 28 premiers jours, la peinture continue de polymériser. Évitez les chocs, les frottements et les nettoyages agressifs. Lavage à l'eau claire 7-10 jours après. Lessivage à éponge douce après 28 jours. Sans respect de ces délais : zones d'usure prématurée, marques visibles.",
+          "common_mistake": "Frotter ou laver énergiquement la peinture dans les premiers jours — marques d'usure définitives.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_057"],
+          "norm_reference": "DTU 59.1 §18 + fiche technique produit",
+          "control_questions": [
+            { "question": "Délais respectés (24h passage, 7j lavage doux, 28j résistance définitive) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_059",
+          "title": "Étiqueter et stocker les pots restants",
+          "phase": "remise_en_service",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Étiquetez chaque pot restant : pièce, mur, teinte (référence + numéro de lot), date de pose. Stockage au sec, à l'abri du gel.",
+          "klaro_recommendation": "Étiquette manuscrite ou imprimée collée sur le pot. Conservez l'étiquette d'origine du pot pour la référence. Stockez à 5-25°C (pas de gel, pas de chaleur). Pots ouverts : durée de conservation 6-12 mois (acrylique) à 12-24 mois (glycéro). Pour des retouches > 1 an plus tard : un nouveau pot peut donner une nuance différente, prévoir.",
+          "common_mistake": "Jeter les pots restants par souci de rangement — impossible de retoucher en cas de besoin sans repeindre tout le mur.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_057"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Pots étiquetés (pièce, mur, teinte, date) et stockés au sec ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_060",
+          "title": "Aérer la pièce pendant plusieurs jours",
+          "phase": "remise_en_service",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Aération continue pendant 3-7 jours minimum pour évacuer les COV (composés organiques volatils). Indispensable, surtout dans les chambres et avant occupation par enfants ou personnes sensibles.",
+          "klaro_recommendation": "Fenêtres ouvertes en grand pendant 24-48h après peinture, puis aération 30 min/jour pendant 1 semaine. Pour les peintures à très faibles COV (classement A+) : 2-3 jours suffisent. Pour glycéro ou peintures techniques : 7-15 jours minimum, ne pas occuper la chambre dans cet intervalle.",
+          "common_mistake": "Réoccuper immédiatement une chambre fraîchement peinte — exposition aux COV, maux de tête, problèmes respiratoires possibles surtout enfants.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_057"],
+          "norm_reference": "Décret COV 2014-373",
+          "control_questions": [
+            { "question": "Aération continue pendant ≥ 3 jours après peinture ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
     }
-  ]
+  ],
+  "blocking_points": [
+    {
+      "id": "block_001",
+      "message": "Pas de peinture si température hors plage 10-25°C ou hygrométrie > 70 %.",
+      "blocks_task_id": "peint_033",
+      "requires_task_id": "peint_006"
+    },
+    {
+      "id": "block_002",
+      "message": "Pas de sous-couche tant que dépoussiérage complet non effectué.",
+      "blocks_task_id": "peint_033",
+      "requires_task_id": "peint_016"
+    },
+    {
+      "id": "block_003",
+      "message": "Pas de première couche tant que défauts révélés par sous-couche non repris.",
+      "blocks_task_id": "peint_040",
+      "requires_task_id": "peint_036"
+    },
+    {
+      "id": "block_004",
+      "message": "Pas de seconde couche avant respect du délai de recouvrement (jamais le séchage au toucher).",
+      "blocks_task_id": "peint_044",
+      "requires_task_id": "peint_043"
+    },
+    {
+      "id": "block_005",
+      "message": "Pas de retrait des protections avant fin de séchage de la peinture (mais avant durcissement total : 1-2h après dernière couche).",
+      "blocks_task_id": "peint_052",
+      "requires_task_id": "peint_044"
+    },
+    {
+      "id": "block_006",
+      "message": "Pas de contrôle final sans lumière rasante (photo obligatoire).",
+      "blocks_task_id": "peint_057",
+      "requires_task_id": "peint_053"
+    },
+    {
+      "id": "block_007",
+      "message": "Pas de Q3/Q4 sans préparation du support à niveau équivalent (placo Q3 mini).",
+      "blocks_task_id": "peint_044",
+      "requires_task_id": "peint_013"
+    },
+    {
+      "id": "block_008",
+      "message": "Pas de peinture sur taches grasses/nicotine sans primaire bloqueur de taches.",
+      "blocks_task_id": "peint_033",
+      "requires_task_id": "peint_021"
+    },
+    {
+      "id": "block_009",
+      "message": "Pas de peinture sur moisissure sans traitement préalable et correction de la cause d'humidité.",
+      "blocks_task_id": "peint_033",
+      "requires_task_id": "peint_022"
+    },
+    {
+      "id": "block_010",
+      "message": "Pas de seconde couche en sens identique à la première (croisement obligatoire).",
+      "blocks_task_id": "peint_044",
+      "requires_task_id": "peint_044"
+    },
+    {
+      "id": "block_011",
+      "message": "Pas de finition validée sans contrôle lumière rasante + opacité + uniformité + netteté découpes.",
+      "blocks_task_id": "peint_058",
+      "requires_task_id": "peint_056"
+    },
+    {
+      "id": "block_012",
+      "message": "Pas de peinture sur ancien support peint sans test d'adhérence préalable.",
+      "blocks_task_id": "peint_033",
+      "requires_task_id": "peint_017"
+    },
+    {
+      "id": "block_013",
+      "message": "Pas de peinture sur bois sans traitement des nœuds résineux (anti-ressuage).",
+      "blocks_task_id": "peint_033",
+      "requires_task_id": "peint_029"
+    },
+    {
+      "id": "block_014",
+      "message": "Pas de remise en service avant respect du délai de séchage final (24h trafic léger).",
+      "blocks_task_id": "peint_059",
+      "requires_task_id": "peint_058"
+    }
+  ],
+  "scoring": {
+    "progression_percent": {
+      "formula": "validated_tasks / total_tasks * 100",
+      "total_tasks": 60,
+      "filtered_by": "applies_to_support == support_principal AND applies_to_finish_level INCLUDES finish_level"
+    },
+    "quality_score": {
+      "base": 100,
+      "penalties": [
+        {
+          "condition": "Conditions d'application non respectées (température/hygrométrie hors plage) (peint_006 échouée)",
+          "malus": 30,
+          "category": "critique"
+        },
+        {
+          "condition": "Sous-couche absente (peint_033 non validée)",
+          "malus": 30,
+          "category": "critique"
+        },
+        {
+          "condition": "Contrôle lumière rasante après sous-couche absent (peint_035 non validée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Défauts révélés par sous-couche non repris (peint_036 échouée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Délai de recouvrement non respecté (peint_043 échouée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Moins de 2 couches de finition (peint_044 échouée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Taches grasses/nicotine non bloquées (peint_021 non validée)",
+          "malus": 20,
+          "category": "critique",
+          "applies_to_support": ["ancien_peint"]
+        },
+        {
+          "condition": "Moisissures non traitées (peint_022 non validée)",
+          "malus": 20,
+          "category": "critique",
+          "applies_to_support": ["ancien_peint", "platre"]
+        },
+        {
+          "condition": "Test d'adhérence ancienne peinture absent (peint_017 non validée)",
+          "malus": 20,
+          "category": "critique",
+          "applies_to_support": ["ancien_peint"]
+        },
+        {
+          "condition": "Nœuds résineux non traités (peint_029 non validée)",
+          "malus": 20,
+          "category": "critique",
+          "applies_to_support": ["bois"]
+        },
+        {
+          "condition": "3e couche absente sur Q3/Q4 ou teinte exigeante (peint_045 non validée)",
+          "malus": 15,
+          "category": "non_conforme",
+          "applies_to_finish_level": ["Q3", "Q4"]
+        },
+        {
+          "condition": "Ordre plafond → murs non respecté à chaque couche (peint_042 échouée)",
+          "malus": 15,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Pose 'humide sur humide' non respectée (peint_041 échouée)",
+          "malus": 15,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Sens de pose 2e couche identique à 1ère (peint_044 échouée)",
+          "malus": 10,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Silicone utilisé aux jonctions au lieu de mastic acrylique (peint_047 échouée)",
+          "malus": 10,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Scotch retiré trop tard (peinture totalement dure) (peint_052 échouée)",
+          "malus": 10,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Égrenage absent sur ancien support brillant (peint_023 non validée)",
+          "malus": 15,
+          "category": "non_conforme",
+          "applies_to_support": ["ancien_peint"]
+        },
+        {
+          "condition": "Contrôle lumière rasante final non effectué (peint_053 non validée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Délai de remise en service non respecté (peint_058 échouée)",
+          "malus": 10,
+          "category": "non_conforme"
+        }
+      ]
+    },
+    "finish_level_match": {
+      "description": "Indicateur de cohérence entre le niveau de finition visé et la préparation effectivement réalisée",
+      "rules": [
+        {
+          "condition": "finish_level == 'Q4' AND peint_013 not validated AND placo_neuf",
+          "alert": "Q4 visé mais placo non vérifié au niveau Q4 — finition non atteignable",
+          "level": "danger"
+        },
+        {
+          "condition": "finish_level IN ['Q3','Q4'] AND peint_036 not validated",
+          "alert": "Q3/Q4 visé mais défauts révélés par sous-couche non repris — finition compromise",
+          "level": "danger"
+        },
+        {
+          "condition": "finish_level IN ['Q3','Q4'] AND peint_045 not validated",
+          "alert": "Q3/Q4 visé mais 3e couche absente — couvrance et uniformité non atteintes",
+          "level": "bloquant"
+        },
+        {
+          "condition": "finish_level == 'Q4' AND peint_053 not validated",
+          "alert": "Q4 visé mais contrôle lumière rasante final absent — niveau non vérifié",
+          "level": "danger"
+        }
+      ]
+    },
+    "critical_alerts": [
+      {
+        "id": "alert_conditions",
+        "message": "Conditions d'application non respectées (T° / hygrométrie) — séchage compromis et finition mate/fragile.",
+        "triggered_if": "peint_006 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_souscouche",
+        "message": "Sous-couche absente — risque rendu médiocre, taches visibles, surconsommation peinture finale.",
+        "triggered_if": "peint_033 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_lumiere_rasante_souscouche",
+        "message": "Contrôle lumière rasante après sous-couche absent — défauts non détectés, finale compromise.",
+        "triggered_if": "peint_035 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_defauts",
+        "message": "Défauts révélés par sous-couche non repris — finition finale dégradée, retouches massives à prévoir.",
+        "triggered_if": "peint_036 not validated AND peint_040 validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_recouvrement",
+        "message": "Délai de recouvrement non respecté — la 2e couche arrache la 1ère.",
+        "triggered_if": "peint_044 validated AND peint_043 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_2couches",
+        "message": "Moins de 2 couches appliquées — uniformité ratée, transparence du support visible.",
+        "triggered_if": "peint_044 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_taches",
+        "message": "Taches non bloquées — remontent à travers les couches en quelques jours.",
+        "triggered_if": "peint_021 not validated AND ancien_peint",
+        "level": "danger"
+      },
+      {
+        "id": "alert_moisissures",
+        "message": "Moisissures non traitées — réapparaissent en 2-3 mois sous la peinture.",
+        "triggered_if": "peint_022 not validated AND moisissures_present",
+        "level": "danger"
+      },
+      {
+        "id": "alert_adherence",
+        "message": "Test d'adhérence absent — ancienne peinture qui se décolle entraîne la nouvelle.",
+        "triggered_if": "peint_017 not validated AND ancien_peint",
+        "level": "danger"
+      },
+      {
+        "id": "alert_noeuds",
+        "message": "Nœuds résineux non traités — résine qui transpire et tache la peinture finale.",
+        "triggered_if": "peint_029 not validated AND bois",
+        "level": "danger"
+      },
+      {
+        "id": "alert_humide_humide",
+        "message": "Pose non humide sur humide — traces de reprise visibles définitivement.",
+        "triggered_if": "peint_041 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_ordre",
+        "message": "Ordre plafond → murs non respecté à chaque couche — éclaboussures sur murs peints.",
+        "triggered_if": "peint_042 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_silicone",
+        "message": "Silicone aux jonctions intérieures — non peignable, reste visible, jaunit avec le temps.",
+        "triggered_if": "peint_047 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_lumiere_rasante_final",
+        "message": "Contrôle lumière rasante final non effectué — niveau de finition non vérifié.",
+        "triggered_if": "peint_053 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_3couches_Q34",
+        "message": "Q3/Q4 visé mais 3e couche absente — finition non atteignable au niveau visé.",
+        "triggered_if": "peint_045 not validated AND finish_level IN ['Q3','Q4']",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_aeration",
+        "message": "Aération insuffisante — exposition aux COV, risque sanitaire surtout chambres et enfants.",
+        "triggered_if": "peint_060 not validated",
+        "level": "bloquant"
+      }
+    ]
+  }
 }
