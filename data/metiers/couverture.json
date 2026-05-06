@@ -1,0 +1,332 @@
+{
+  "version": "1.0.0",
+  "metier_id": "couverture",
+  "nom": "Toiture (charpente et couverture)",
+  "norme_reference": "DTU 40.11 (tuiles terre cuite) / DTU 40.13 (tuiles béton) / DTU 40.41 (ardoises) / DTU 31.1 (charpente bois)",
+  "disclaimer": "Klaro est un outil d'aide et de recommandation. Les travaux de toiture comportent des risques de chute graves — tout travail en hauteur nécessite un équipement de sécurité adapté (harnais, échelle sécurisée, protection collective). Pour une toiture complète, faites appel à un couvreur qualifié.",
+  "avertissement_securite": "DANGER CHUTE : Ne montez jamais sur une toiture sans équipement de protection individuelle. Harnais de sécurité, crochets de toiture, échafaudage ou nacelle sont obligatoires selon la hauteur. Une chute d'une toiture à 2 niveaux est mortelle dans 50% des cas.",
+  "regles_metier": {
+    "pente_minimale": "Tuiles canal/romaines : 25-30% min. Tuiles mécaniques : 35% min. Ardoises : 45% min. Bac acier : 5% min",
+    "ventilation": "Lame d'air ventilée obligatoire entre isolant et couverture — entrée basse (égout) + sortie haute (faîtage)",
+    "fixation_vents": "Fixation renforcée obligatoire en zone de vent fort (littoral, montagne, région cyclonique) — crochet chaque tuile",
+    "ecran_sous_toiture": "Recommandé sur toutes les toitures — obligatoire si combles habitables ou si isolation sous rampant",
+    "recouvrement_tuiles": "Minimum 7 à 10cm selon la pente — plus la pente est faible, plus le recouvrement doit être important",
+    "aides_etat": "Remplacement d'une toiture ou rénovation énergétique : vérifiez l'éligibilité MaPrimeRénov' et TVA à 10%"
+  },
+  "alertes_bloquantes": [
+    {
+      "id": "alerte-01",
+      "message": "Inspection de la charpente obligatoire après dépose de l'ancienne couverture — une structure dégradée non détectée peut s'effondrer",
+      "taches_concernees": ["toit-04", "toit-05"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-02",
+      "message": "Écran sous toiture obligatoire avant pose de la couverture — sans lui, la moindre tuile mal posée ou cassée laisse l'eau entrer directement dans les combles",
+      "taches_concernees": ["toit-09"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-03",
+      "message": "L'étanchéité aux jonctions (faîtage, rives, cheminée, fenêtres de toit) doit être assurée — 80% des infiltrations de toiture viennent de ces points, pas de la couverture courante",
+      "taches_concernees": ["toit-10", "toit-20"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-04",
+      "message": "Ventilation de la toiture obligatoire — une toiture non ventilée condense et pourrit la charpente en 5 à 10 ans",
+      "taches_concernees": ["toit-18"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-05",
+      "message": "Vérification des fuites obligatoire avant réception — une infiltration non détectée détruit silencieusement la charpente et les plafonds",
+      "taches_concernees": ["toit-24"],
+      "niveau": "important"
+    }
+  ],
+  "score_chantier": {
+    "calcul": "taches_validees / total_taches * 100",
+    "penalites": [
+      { "condition": "charpente_non_inspectee", "malus": 25 },
+      { "condition": "ecran_absent", "malus": 20 },
+      { "condition": "ventilation_absente", "malus": 20 },
+      { "condition": "jonctions_non_etanches", "malus": 20 },
+      { "condition": "tache_critique_non_traitee", "malus": 10 },
+      { "condition": "alerte_bloquante_active", "malus": 15 }
+    ],
+    "risques_signales": [
+      "Infiltration eau si points singuliers non traités (cheminée, faîtage, rives)",
+      "Pourrissement charpente si ventilation absente ou insuffisante",
+      "Arrachement tuiles si fixation insuffisante en zone venteuse",
+      "Effondrement si charpente dégradée non détectée avant recouvrement",
+      "Condensation sous rampant si écran sous toiture absent"
+    ]
+  },
+  "taches": [
+    {
+      "id": "toit-01",
+      "ordre": 1,
+      "titre": "Vérifier l'état de la charpente depuis les combles",
+      "critique": true,
+      "explication": "Avant tout travail de couverture, inspectez la charpente depuis les combles : chevrons, pannes, faîtière, arbalétriers. Les problèmes cachés côté intérieur sont souvent plus graves que ce qu'on voit côté extérieur.",
+      "recommandation_klaro": "Munissez-vous d'une lampe torche et d'un outil pointu (poinçon ou tournevis). Piquez chaque élément de bois — un bois sain résiste, un bois pourri s'enfonce facilement. Cherchez les traces sombres (humidité), les galeries (insectes xylophages), les déformations (flèche excessive) et les fissures. Photographiez chaque anomalie.",
+      "erreur_frequente": "Se contenter d'un coup d'œil rapide depuis la trappe de combles sans toucher le bois. Un bois attaqué par les capricornes ou la mérule peut avoir l'air parfait en surface tout en étant entièrement creux à l'intérieur.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": []
+    },
+    {
+      "id": "toit-02",
+      "ordre": 2,
+      "titre": "Contrôler solidité et alignement de la structure",
+      "critique": true,
+      "explication": "Une charpente qui fléchit, qui a des éléments désolidarisés ou qui présente une géométrie irrégulière doit être renforcée avant toute pose de couverture. Une nouvelle couverture sur une charpente faible aggrave le problème.",
+      "recommandation_klaro": "Depuis l'extérieur, regardez la ligne du faîtage : elle doit être parfaitement droite. Toute ondulation ou affaissement visible signale une déformation de la charpente. Depuis l'intérieur, vérifiez que tous les assemblages (tenons-mortaises, boulons, sabots) sont en place et serrés. Un charpentier peut évaluer en 1h si la structure est réparable ou à remplacer.",
+      "erreur_frequente": "Recouvrir une charpente qui fléchit légèrement \"en espérant que ça tienne\". Le poids d'une nouvelle couverture aggrave la déformation et peut mener à un effondrement progressif sur plusieurs années.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-01"]
+    },
+    {
+      "id": "toit-03",
+      "ordre": 3,
+      "titre": "Déposer l'ancienne couverture",
+      "critique": false,
+      "explication": "La dépose de l'ancienne couverture se fait de haut en bas : faîtage d'abord, puis tuiles rang par rang vers l'égout. Ne laissez jamais une toiture à nu sans protection météo.",
+      "recommandation_klaro": "Travaillez par zones de 2 à 3m² à la fois et recouvrez chaque zone déposée d'un bâche de protection avant de continuer. Prévoyez une benne à pied de l'échafaudage — tuiles et ardoises pèsent lourd (40 à 80 kg/m²). Ne jetez pas les tuiles directement du toit sans dispositif de protection au sol. Vérifiez la météo : ne déposez jamais si de la pluie est prévue dans les 24h.",
+      "erreur_frequente": "Déposer toute la couverture en une journée sans protection intermédiaire. Une averse nocturne non prévue sur une charpente nue peut inonder les combles et dégrader les plafonds — dégât des eaux garantis.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-02"]
+    },
+    {
+      "id": "toit-04",
+      "ordre": 4,
+      "titre": "Inspecter la charpente bois apparente",
+      "critique": true,
+      "explication": "Une fois la couverture déposée, inspectez chaque élément de charpente à la lumière du jour. C'est la seule occasion de voir l'état réel du bois avant de tout refermer.",
+      "recommandation_klaro": "Piquez systématiquement au poinçon chaque chevron, chaque panne et chaque arbalétrier. Marquez à la craie chaque pièce défectueuse avec le type de problème (pourri, xylophage, fissuré, déformé). Photographiez l'ensemble avant intervention — ces photos sont essentielles pour un devis de réparation précis et pour votre assurance.",
+      "erreur_frequente": "Inspecter uniquement les zones visibles depuis les combles et ne pas repiocher le bois exposé après dépose. Les zones les plus dégradées sont souvent sous les faîtières et aux noues — exactement là où l'eau stagne.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-03"]
+    },
+    {
+      "id": "toit-05",
+      "ordre": 5,
+      "titre": "Traiter le bois si nécessaire",
+      "critique": false,
+      "explication": "Le traitement du bois (insecticide + fongicide) se applique uniquement après inspection complète sur les éléments sains à préserver. Un bois pourri ou trop attaqué doit être remplacé, pas traité.",
+      "recommandation_klaro": "Pour les insectes xylophages (capricornes, vrillettes) : injection de produit insecticide dans les galeries + badigeonnage généreux sur toute la surface. Pour les champignons (mérule, coniophore) : c'est une maladie contagieuse qui nécessite un traitement professionnel certifié et souvent une déclaration à la mairie. Le bois traité doit sécher avant la pose de l'écran.",
+      "erreur_frequente": "Traiter à la va-vite uniquement les zones visiblement atteintes. Les insectes xylophages colonisent tout le bois environnant — un traitement partiel laisse les zones non traitées comme réservoir de re-contamination.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-04"]
+    },
+    {
+      "id": "toit-06",
+      "ordre": 6,
+      "titre": "Réparer ou renforcer la charpente",
+      "critique": true,
+      "explication": "Les pièces de charpente trop dégradées doivent être remplacées ou renforcées avant la pose de la nouvelle couverture. C'est la condition pour que la nouvelle toiture tienne dans le temps.",
+      "recommandation_klaro": "Remplacement d'un chevron : clouez un nouveau chevron en appui sur la panne et la sablière, solidarisé à l'ancien par des boulons boulonnés. Renforcement d'une panne fléchie : ajoutez une panne de renfort en dessous, ou posez des jambes de force depuis un point d'appui solide. Pour les assemblages défaillants : sabots métalliques et tiges filetées.",
+      "erreur_frequente": "Couvrir par-dessus un chevron fissuré ou pourri \"parce qu'il tient encore\". Sous le poids de la nouvelle couverture (40 à 80 kg/m²) et les premières neiges, le chevron affaibli lâche — avec la couverture neuve et les finitions intérieures qui s'effondrent avec.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-05"]
+    },
+    {
+      "id": "toit-07",
+      "ordre": 7,
+      "titre": "Vérifier la pente de toiture",
+      "critique": true,
+      "explication": "La pente de votre toiture conditionne le type de couverture autorisé. Une pente trop faible pour les tuiles choisies entraîne des infiltrations par remontée capillaire — l'eau passe sous les tuiles.",
+      "recommandation_klaro": "Mesurez la pente avec un niveau et une règle : (hauteur / longueur rampant) × 100 = % de pente. Pentes minimales : tuiles canal 25-30%, tuiles mécaniques 35%, ardoises naturelles 45%, ardoises fibrociment 30%, bac acier 5%. Si votre pente est limite, augmentez le recouvrement des tuiles et posez obligatoirement un écran sous toiture.",
+      "erreur_frequente": "Choisir les tuiles chez le négociant sans vérifier qu'elles sont compatibles avec la pente de la toiture. Certaines tuiles mécaniques sont homologuées à partir de 22% avec écran — mais la tolérance zéro sur la pose est incompatible avec un travail amateur.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-06"]
+    },
+    {
+      "id": "toit-08",
+      "ordre": 8,
+      "titre": "Vérifier et réparer chevrons et liteaux",
+      "critique": true,
+      "explication": "Les chevrons portent le poids de la couverture et les liteaux supportent directement les tuiles. Tout élément fissuré, tordu ou pourri doit être remplacé avant la pose de l'écran.",
+      "recommandation_klaro": "Vérifiez l'entraxe des chevrons (généralement 60 à 80cm) et leur alignement à la règle. Un chevron désaligné crée une ondulation visible sur la couverture finie. Pour les liteaux anciens à remplacer : section minimale 25×50mm pour tuiles, entraxe calculé selon le type de tuile (indiquez-vous sur la fiche technique du fabricant).",
+      "erreur_frequente": "Poser les nouveaux liteaux sur d'anciens chevrons non vérifiés. Si un chevron lâche après la pose de la couverture, c'est 1 à 2m² de tuiles à déposer et reposer pour accéder à la réparation.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-06"]
+    },
+    {
+      "id": "toit-09",
+      "ordre": 9,
+      "titre": "Poser l'écran sous toiture",
+      "critique": true,
+      "explication": "L'écran sous toiture (membrane pare-pluie respirante) se pose directement sur les chevrons, sous les contre-liteaux. Il protège la charpente de la pluie battante et de la condensation.",
+      "recommandation_klaro": "Choisissez un écran HPV (Haute Perméabilité à la Vapeur) — il laisse passer la vapeur d'eau vers l'extérieur tout en bloquant la pluie. Posez de l'égout vers le faîtage avec des lés horizontaux qui se chevauchent de 15cm minimum. Tendez légèrement (pas à plat, ni trop détendu) — un léger creux entre chevrons permet l'écoulement de l'eau de condensation.",
+      "erreur_frequente": "Poser un film polyane (étanche à la vapeur) comme écran sous toiture. Le polyane bloque la migration de vapeur — la condensation s'accumule dans la charpente et la pourrit en quelques années. Seul un écran HPV respirant est adapté.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-08"]
+    },
+    {
+      "id": "toit-10",
+      "ordre": 10,
+      "titre": "Rendre étanche et continu l'écran aux jonctions",
+      "critique": true,
+      "explication": "Les chevauchements de lés, les passages de cheminées, de fenêtres de toit et les rives doivent être scellés pour que l'écran soit une barrière continue. Un seul défaut suffit à créer une infiltration.",
+      "recommandation_klaro": "Chevauchements entre lés : 15cm minimum et scotchage avec du ruban adhésif spécial écran (fourni par les fabricants ou vendu séparément). Autour des fenêtres de toit (Velux, etc.) : tablier d'habillage fourni avec le cadre — suivez impérativement le guide de pose du fabricant. Autour des cheminées : solin flexible de plomb ou solin d'ardoise.",
+      "erreur_frequente": "Se contenter du chevauchement des lés sans scotcher les jonctions. Le vent sous toiture pénètre par les chevauchements non collés et peut soulever l'écran ou laisser passer la pluie par vent fort.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-09"]
+    },
+    {
+      "id": "toit-11",
+      "ordre": 11,
+      "titre": "Poser les contre-liteaux",
+      "critique": false,
+      "explication": "Les contre-liteaux (en bois, posés dans le sens du rampant, sur l'écran) créent la lame d'air ventilée entre l'écran sous toiture et la couverture. Cette ventilation est essentielle pour évacuer la condensation.",
+      "recommandation_klaro": "Section minimale des contre-liteaux : 25×50mm. Fixez-les directement dans les chevrons à travers l'écran avec des vis longues (70 à 80mm). Scouchez les perforations à l'écran autour de chaque vis avec du ruban adhésif pour éviter les infiltrations à chaque point de fixation.",
+      "erreur_frequente": "Omettre les contre-liteaux pour \"gagner du temps\" et poser les liteaux directement sur l'écran. Sans lame d'air, la ventilation sous couverture est nulle — la condensation ne s'évacue pas et l'humidité s'accumule dans la charpente.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-10"]
+    },
+    {
+      "id": "toit-12",
+      "ordre": 12,
+      "titre": "Poser les liteaux",
+      "critique": false,
+      "explication": "Les liteaux (perpendiculaires aux contre-liteaux) supportent directement les tuiles. Leur entraxe est calculé selon le type de tuile pour respecter le recouvrement minimal.",
+      "recommandation_klaro": "L'entraxe des liteaux est calculé par la formule donnée par le fabricant de tuiles (figurant sur la fiche technique). Généralement : (hauteur rampant - recouvrement faîtière) / nombre de rangs. Tendez un cordeau entre les deux bords de toiture pour aligner chaque liteau — un liteau décalé de 1cm se voit sur la couverture finie.",
+      "erreur_frequente": "Espacer les liteaux à l'œil ou approximativement. Un entraxe trop important réduit le recouvrement des tuiles en dessous du minimum — l'eau s'infiltre entre les rangs par vent de pluie.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-11"]
+    },
+    {
+      "id": "toit-13",
+      "ordre": 13,
+      "titre": "Définir le calepinage des tuiles",
+      "critique": false,
+      "explication": "Le calepinage est la disposition des tuiles sur la toiture : comment elles s'organisent de la rive gauche à la rive droite pour tomber harmonieusement des deux côtés sans découpes inesthétiques.",
+      "recommandation_klaro": "Posez une rangée de tuiles à sec sur le premier liteau pour visualiser le rendu. Visez une coupe symétrique des deux côtés si possible. Si la largeur de la toiture n'est pas un multiple entier de la largeur de tuile, décalez l'ensemble pour équilibrer les coupes des deux rives — une demi-tuile de chaque côté est bien plus esthétique qu'une tuile entière d'un côté et un bout de 5cm de l'autre.",
+      "erreur_frequente": "Partir du bord gauche avec une tuile entière sans calepinage. On arrive à la rive droite avec une coupe de 3cm — impossible à fixer correctement et très inesthétique.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-12"]
+    },
+    {
+      "id": "toit-14",
+      "ordre": 14,
+      "titre": "Poser les tuiles",
+      "critique": false,
+      "explication": "La pose des tuiles se fait de l'égout vers le faîtage, rang par rang, en respectant le recouvrement calculé. On commence par le premier rang (doublis d'égout) qui détermine le départ de toute la pose.",
+      "recommandation_klaro": "Commencez par poser le doublis d'égout (double rang de départ) qui relève le premier rang de tuiles à l'angle correct. Utilisez un cordeau tendu pour aligner chaque rang horizontalement. Pour les tuiles canal : alternez courant et couvert en décalant les joints d'un rang à l'autre. Montez les matériaux par petit lot — surcharger localement la toiture risque de déformer les liteaux.",
+      "erreur_frequente": "Monter trop de tuiles sur la toiture en une seule fois pour éviter les allers-retours. Une palette de tuiles posée au milieu d'un pan de toiture peut représenter 600 à 800kg concentrés — au-delà de la résistance des liteaux.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-13"]
+    },
+    {
+      "id": "toit-15",
+      "ordre": 15,
+      "titre": "Fixer les tuiles (crochets si nécessaire)",
+      "critique": true,
+      "explication": "Toutes les tuiles ne nécessitent pas d'être fixées, mais les zones exposées (rives, faîtage, zones venteuses) et les tuiles de rive et de faîtage doivent être fixées mécaniquement.",
+      "recommandation_klaro": "Règle générale : fixez les deux premiers rangs (égout), les deux derniers rangs (faîtage), toutes les tuiles de rives, et toutes les tuiles tous les 5 rangs en zone courante. En zone côtière ou de montagne (vents > 120 km/h) : fixez chaque tuile individuellement. La fixation se fait par crochet inox ou par mortier pour les crêtes de faîtage.",
+      "erreur_frequente": "Ne fixer aucune tuile en pensant que leur poids suffit à les maintenir. Un vent à 100 km/h soulève les tuiles non fixées — sur une maison, le dommage se compte en milliers d'euros.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-14"]
+    },
+    {
+      "id": "toit-16",
+      "ordre": 16,
+      "titre": "Traiter les rives",
+      "critique": true,
+      "explication": "Les rives (bords latéraux de la toiture) sont des zones à risque d'infiltration et d'arrachement par le vent. Elles doivent être traitées avec des tuiles de rive spécifiques ou des closoirs.",
+      "recommandation_klaro": "Utilisez des tuiles de rive adaptées à votre type de couverture (fournies par le même fabricant). Fixez-les systématiquement au mortier ou par agrafage selon le système. Posez un closoir de rive ventilé (bande souple) sous les tuiles de rive pour bloquer l'entrée des insectes et des feuilles tout en laissant circuler l'air.",
+      "erreur_frequente": "Terminer les rives uniquement avec du mortier sans tuile de rive spécifique. Le mortier se fissure après quelques cycles gel/dégel et les tuiles de rive se décollent — souvent emportées par le premier coup de vent fort.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-15"]
+    },
+    {
+      "id": "toit-17",
+      "ordre": 17,
+      "titre": "Réaliser le faîtage",
+      "critique": true,
+      "explication": "Le faîtage couvre la ligne de crête du toit (le point le plus haut). C'est une zone critique pour l'étanchéité et la ventilation — il doit être à la fois étanche à la pluie et ouvert à l'air.",
+      "recommandation_klaro": "Utilisez des faîtières ventilées (avec closoir de faîtage) plutôt que de tout maçonner au mortier. Le faîtage ventilé permet la sortie d'air chaud et humide de la lame d'air — condition indispensable à la bonne ventilation de la toiture. Fixez chaque faîtière par crochet inox ou agrafe, ne comptez pas uniquement sur le mortier.",
+      "erreur_frequente": "Maçonner le faîtage en plein (tuiles et mortier jointifs) pour être sûr de l'étanchéité. Un faîtage plein bloque la sortie d'air — la ventilation de la toiture est compromise et la condensation s'accumule sous la couverture.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-16"]
+    },
+    {
+      "id": "toit-18",
+      "ordre": 18,
+      "titre": "Assurer la ventilation de la toiture",
+      "critique": true,
+      "explication": "La ventilation sous toiture fonctionne par tirage thermique : l'air entre en bas (à l'égout) et sort en haut (au faîtage). Sans cette circulation, la condensation détruit la charpente en quelques années.",
+      "recommandation_klaro": "Section d'entrée d'air à l'égout : 1/500ème de la surface de toiture au minimum (ex : 50 cm² par mètre linéaire d'égout). Utilisez des closoirs d'égout perforés ou des tuiles d'aération en bas de toiture. Sortie d'air au faîtage : faîtières ventilées ou tuiles de ventilation spécifiques. Vérifiez que rien ne bloque la lame d'air (isolant, débris).",
+      "erreur_frequente": "Poser l'isolant des combles en le faisant remonter jusqu'au faîtage en bouchant la lame d'air. L'air ne circule plus, la condensation s'accumule dans l'isolant et la charpente — un défaut courant dans les rénovations de combles.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-17"]
+    },
+    {
+      "id": "toit-19",
+      "ordre": 19,
+      "titre": "Poser les éléments de zinguerie",
+      "critique": true,
+      "explication": "Gouttières, chéneaux, descentes pluviales et solins : la zinguerie évacue les eaux de toiture loin des murs et des fondations. Une zinguerie défaillante est la première cause de dégradation des façades.",
+      "recommandation_klaro": "Gouttières : pente minimum de 3mm/m vers la descente pour éviter les dépôts stagnants. Fixez les crochets tous les 50cm maximum. Choisissez de l'acier laqué ou du zinc plutôt que du PVC — le PVC se déforme en été et se fissure en hiver. Descentes : fixées au mur tous les 1,5m, avec coude et raccord au réseau d'évacuation ou à un récupérateur d'eau.",
+      "erreur_frequente": "Poser les gouttières horizontalement sans pente. L'eau stagne, les débris s'accumulent, les gouttières débordent par les deux côtés et arrosent les fondations à chaque pluie.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-17"]
+    },
+    {
+      "id": "toit-20",
+      "ordre": 20,
+      "titre": "Étancher les points singuliers (cheminée, fenêtres de toit)",
+      "critique": true,
+      "explication": "Cheminées, fenêtres de toit, lucarnes et pénétrations diverses (antenne, ventilation) sont les points les plus sensibles de la toiture. 80% des infiltrations de toiture viennent de ces points, pas de la couverture courante.",
+      "recommandation_klaro": "Cheminée : solin en plomb ou en zinc soudé sur 4 côtés (montant, descendant, côtés). Ne jamais sceller au mortier seul — le mortier se fissure avec la dilatation thermique de la cheminée. Fenêtres de toit : suivez exactement le guide d'installation du fabricant avec le kit d'étanchéité fourni — chaque fabricant a son propre système et les kits ne sont pas interchangeables.",
+      "erreur_frequente": "Sceller le tour d'une cheminée uniquement au mortier de ciment. La dilatation thermique de la cheminée (qui monte à 200-300°C en fonctionnement) fissure le mortier en quelques hivers — l'eau entre et détruit la charpente adjacente.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-19"]
+    },
+    {
+      "id": "toit-21",
+      "ordre": 21,
+      "titre": "Vérifier l'écoulement des eaux",
+      "critique": true,
+      "explication": "Testez le bon écoulement des eaux pluviales sur toute la toiture : pas de zone de stagnation, pas de débordement de gouttière, pas de ruissellement le long des murs.",
+      "recommandation_klaro": "Simulez une pluie forte avec un tuyau d'arrosage en partant du faîtage et en balayant toute la surface. Observez : l'eau doit s'écouler uniformément vers les gouttières, les gouttières doivent l'acheminer sans débordement vers les descentes. Vérifiez aussi les solins de cheminée et les raccords de fenêtres de toit sous le jet d'eau.",
+      "erreur_frequente": "Valider l'écoulement uniquement par temps sec à l'aspect visuel. Un point de stagnation d'eau non détecté correspond à une zone de gel hivernal et de fissuration progressive — invisible jusqu'au premier hiver.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-20"]
+    },
+    {
+      "id": "toit-22",
+      "ordre": 22,
+      "titre": "Contrôler l'ensemble de la couverture",
+      "critique": true,
+      "explication": "Inspection finale de la toiture complète : tuiles bien posées et fixées, rives propres, faîtage continu, zinguerie en place, pas de tuile cassée ou manquante.",
+      "recommandation_klaro": "Faites ce contrôle avec des jumelles depuis le sol ou depuis un point surélevé — ne remontez pas sur la toiture sans raison pendant cette phase. Cherchez : tuile relevée ou déplacée, joint de faîtage ouvert, solin décollé, gouttière décrochée. Faites aussi le tour de l'intérieur des combles avec une lampe — à la lumière du jour, chaque trou dans la couverture laisse passer un filet de lumière visible.",
+      "erreur_frequente": "Valider depuis la toiture uniquement — on ne voit pas les défauts qu'on vient juste de créer en marchant dessus. L'inspection depuis les combles (filets de lumière) et depuis le sol (jumelles) est complémentaire et obligatoire.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-21"]
+    },
+    {
+      "id": "toit-23",
+      "ordre": 23,
+      "titre": "Nettoyer le chantier",
+      "critique": false,
+      "explication": "Les débris de tuiles, mortier, éléments métalliques et bois traité doivent être évacués proprement. Certains matériaux (tuiles amiantées, bois traité aux CCA) sont des déchets spéciaux à déposer en déchetterie agréée.",
+      "recommandation_klaro": "Les anciennes tuiles sans amiante peuvent aller en déchetterie normale ou être valorisées (concassage pour granulat). Les ardoises naturelles se recyclent. Les anciennes tuiles à base de fibro-ciment (grises, légères) peuvent contenir de l'amiante — diagnostic amiante obligatoire avant dépose et évacuation par entreprise certifiée.",
+      "erreur_frequente": "Jeter toutes les vieilles tuiles dans la même benne sans vérification amiante. Les tuiles en fibro-ciment antérieures aux années 1990 peuvent contenir de l'amiante — leur élimination incorrecte expose à des poursuites et à des risques sanitaires.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-22"]
+    },
+    {
+      "id": "toit-24",
+      "ordre": 24,
+      "titre": "Vérifier l'absence de fuites",
+      "critique": true,
+      "explication": "La vérification finale se fait par temps de pluie réelle ou par simulation à l'arrosage. C'est le seul test fiable pour valider l'étanchéité complète de la toiture.",
+      "recommandation_klaro": "Attendez les premières pluies significatives après la pose et inspectez les combles dans les 24h qui suivent : sol, chevrons, abouts de poutres. Cherchez les traces humides fraîches, les auréoles sur le bois, les gouttes actives. Toute infiltration doit être localisée précisément (pas toujours au droit du problème — l'eau chemine) et traitée avant réception.",
+      "erreur_frequente": "Valider la toiture par temps sec juste après la pose. Les premières pluies révèlent systématiquement les points faibles qui n'étaient pas visibles à sec. Une toiture validée trop tôt peut cacher une infiltration qui dégrade silencieusement la charpente pendant tout un hiver.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["toit-23"]
+    }
+  ]
+}
