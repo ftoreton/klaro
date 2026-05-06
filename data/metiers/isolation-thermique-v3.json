@@ -1102,6 +1102,665 @@
           ]
         }
       ]
+    },
+    {
+      "id": "coordination_lots",
+      "label": "Coordination avec les autres lots",
+      "tasks": [
+        {
+          "id": "iso_058",
+          "title": "Coordonner avec l'électricien (gaines AVANT pare-vapeur)",
+          "phase": "coordination_lots",
+          "applies_to_iso_type": ["iti_murs", "combles_perdus", "combles_amenages", "plancher_bas", "sarking"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Toutes les gaines électriques doivent être passées AVANT pose du pare-vapeur. Toute traversée du pare-vapeur après pose = manchon d'étanchéité supplémentaire ou fuite d'air.",
+          "klaro_recommendation": "Réunion électricien après ossature/montants avant pare-vapeur. Repérez ensemble les emplacements de prises, interrupteurs, plafonniers. Boîtiers étanches à l'air (BEC) pour les boîtes électriques en cloison étanche. Photographiez le passage des gaines.",
+          "common_mistake": "Poser pare-vapeur puis demander à l'électricien de passer les gaines — pare-vapeur troué, étanchéité ruinée.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_029"],
+          "norm_reference": "NF C 15-100 + DTU 45.10",
+          "control_questions": [
+            { "question": "Gaines électriques passées AVANT pare-vapeur ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_059",
+          "title": "Coordonner avec la VMC (prises d'air, bouches, conduits)",
+          "phase": "coordination_lots",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Caissons VMC, conduits, bouches d'extraction et entrées d'air doivent être en place AVANT fermeture. Conduits VMC isolés (anti-condensation) si traversée de zones froides.",
+          "klaro_recommendation": "Caisson VMC posé en combles ou local technique. Conduits dimensionnés selon débits réglementaires. Conduits qui traversent les combles isolés DOIVENT être eux-mêmes isolés (manchon isolant) pour éviter la condensation. Manchons d'étanchéité pare-vapeur sur chaque traversée.",
+          "common_mistake": "Conduit VMC nu dans des combles isolés — condensation à l'intérieur du conduit, eau qui s'écoule par les bouches.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_005"],
+          "norm_reference": "DTU 68.3 + DTU 45.10",
+          "control_questions": [
+            { "question": "VMC en place avec conduits isolés en zones froides et manchons d'étanchéité ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_060",
+          "title": "Coordonner avec le chauffagiste (recalcul besoins après isolation)",
+          "phase": "coordination_lots",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Après isolation, les besoins de chauffage diminuent significativement (parfois divisés par 2). Le chauffagiste doit recalculer les puissances pour adapter le chauffage (radiateurs, chaudière, PAC).",
+          "klaro_recommendation": "Bilan thermique post-isolation par le chauffagiste. Souvent : surdimensionnement de la chaudière existante, surconsommation. Solutions : remplacement chaudière par modèle plus petit, modulation de la PAC, retrait de radiateurs surnuméraires. Économie supplémentaire significative.",
+          "common_mistake": "Garder la même chaudière 30 kW après isolation alors que 12 kW suffisent — surconsommation, usure prématurée, court-cyclage.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 65.x + RE2020",
+          "control_questions": []
+        },
+        {
+          "id": "iso_061",
+          "title": "Coordonner avec le couvreur (continuité toiture-isolation)",
+          "phase": "coordination_lots",
+          "applies_to_iso_type": ["combles_amenages", "sarking"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Continuité isolation murs / toiture, sablière étanche, ventilation sous toiture (lame d'air 2 cm minimum). Coordination indispensable entre isolant et couvreur.",
+          "klaro_recommendation": "Couvreur intervient pour : pose pare-pluie HPV (sarking), ventilation sous toiture, continuité avec ITE/ITI murs. Vérifiez ensemble : raccord sablière, déflecteurs aux entrées d'air, sortie d'air en faîtage. Photographiez les jonctions.",
+          "common_mistake": "Pas de coordination = lame d'air bouchée, charpente qui ne sèche plus, dégradations à terme.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_056"],
+          "norm_reference": "DTU 40.x + DTU 45.10",
+          "control_questions": []
+        },
+        {
+          "id": "iso_062",
+          "title": "Coordonner avec le plaquiste (fixation sans percer pare-vapeur)",
+          "phase": "coordination_lots",
+          "applies_to_iso_type": ["iti_murs", "combles_amenages"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Le plaquiste fixe les plaques de plâtre sur l'ossature. Vis adaptées qui ne percent pas le pare-vapeur (ossature montée DEVANT le pare-vapeur, vis dans l'ossature uniquement).",
+          "klaro_recommendation": "Stratégie : pare-vapeur posé sur l'isolant entre les montants, puis ossature secondaire (fourrures) DEVANT le pare-vapeur, sur laquelle le placo est fixé. Les vis ne traversent pas le pare-vapeur. Si ossature unique : marquez l'emplacement des vis pour le plaquiste pour qu'il vise dans les montants (jamais entre).",
+          "common_mistake": "Visser le placo dans l'isolant en perçant le pare-vapeur — chaque vis = une fuite d'air (centaines de fuites au total).",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_050"],
+          "norm_reference": "DTU 25.41 + DTU 45.10",
+          "control_questions": [
+            { "question": "Stratégie de fixation placo qui ne perce pas le pare-vapeur ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "controle_avant_fermeture",
+      "label": "Contrôle avant fermeture",
+      "tasks": [
+        {
+          "id": "iso_063",
+          "title": "Vérifier visuellement la continuité de l'isolant",
+          "phase": "controle_avant_fermeture",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Inspection complète AVANT fermeture définitive : aucun vide, aucun tassement, aucune compression excessive, joints serrés entre éléments, traversées propres.",
+          "klaro_recommendation": "Tour complet de la zone avec lampe puissante. Recherchez : zones sombres = vides, zones brillantes = compression, jours entre éléments. Photographiez chaque mur ou pan de comble en entier + détails des points sensibles. Cette photo est votre preuve d'exécution conforme.",
+          "common_mistake": "Fermer sans contrôle visuel — défauts invisibles à l'usage qui pourrissent la performance pendant 30 ans.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": true,
+          "depends_on": ["iso_043"],
+          "norm_reference": "DTU 45.10 + ACERMI",
+          "control_questions": [
+            { "question": "Continuité de l'isolant validée visuellement (photos archivées) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_064",
+          "title": "Vérifier la continuité du pare-vapeur",
+          "phase": "controle_avant_fermeture",
+          "applies_to_iso_type": ["iti_murs", "combles_perdus", "combles_amenages", "plancher_bas", "sarking"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Contrôle final : recouvrements scotchés, manchons aux traversées, jonctions périphériques collées, aucun trou, aucune déchirure.",
+          "klaro_recommendation": "Test poussé possible : porte soufflante (Blower Door, ~500-800 €) qui met le logement en surpression et détecte les fuites au fumigène ou anémomètre. Test obligatoire RE2020 pour neuf et haute performance. Pour rénovation classique : inspection visuelle exhaustive suffit.",
+          "common_mistake": "Croire que le pare-vapeur est étanche sans vérification — un seul trou de 1 cm² annule la performance d'1 m² de pare-vapeur.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": true,
+          "depends_on": ["iso_050"],
+          "norm_reference": "DTU 45.10 + RE2020",
+          "control_questions": [
+            { "question": "Pare-vapeur intégralement continu (aucune fuite détectée) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_065",
+          "title": "Photographier l'ensemble du chantier avant fermeture",
+          "phase": "controle_avant_fermeture",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Photos d'ensemble + détails de chaque zone, chaque traversée, chaque jonction. Preuves indispensables pour : aides MaPrimeRénov'/CEE, garantie décennale, expertise sinistre, futurs DPE.",
+          "klaro_recommendation": "Photos haute résolution avec mire ou mètre dans le cadre pour échelle. Date EXIF visible. Plusieurs angles. Détails spécifiques : isolant + pare-vapeur en place, manchons, traversées, jonctions. Archivez papier + cloud. Sans ces photos, preuve impossible.",
+          "common_mistake": "Fermer rapidement sans photographier — preuve impossible des travaux, refus possible des aides au paiement.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": true,
+          "depends_on": ["iso_063"],
+          "norm_reference": "MaPrimeRénov' + assurance DO",
+          "control_questions": [
+            { "question": "Dossier photos complet et archivé (papier + cloud) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_066",
+          "title": "Conserver fiches techniques et attestation RGE",
+          "phase": "controle_avant_fermeture",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["aides_maprimerenov", "haute_performance_bbc_passif"],
+          "explanation": "Justificatifs obligatoires pour les aides : fiches techniques des isolants posés (R, λ, marquage CE, ACERMI), attestation RGE de l'artisan, factures détaillées, photos.",
+          "klaro_recommendation": "Demandez à l'artisan : fiche technique de chaque produit posé (à conserver 10 ans), attestation RGE en cours de validité au jour des travaux, facture détaillée mentionnant la marque/référence/quantité de l'isolant. Archivez avec le dossier MaPrimeRénov' / CEE. Sans ces pièces, paiement des aides bloqué.",
+          "common_mistake": "Recevoir une facture forfaitaire sans détail — paiement des aides refusé pour défaut de justificatif.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_017"],
+          "norm_reference": "MaPrimeRénov' + CEE",
+          "control_questions": [
+            { "question": "Fiches techniques + attestation RGE + facture détaillée archivées ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fermeture",
+      "label": "Fermeture",
+      "tasks": [
+        {
+          "id": "iso_067",
+          "title": "ITI : fermer avec plaques de plâtre",
+          "phase": "fermeture",
+          "applies_to_iso_type": ["iti_murs", "combles_amenages"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Plaques de plâtre BA13 vissées sur l'ossature en évitant les zones d'étanchéité. Joints décalés, finition par bandes/enduit/peinture.",
+          "klaro_recommendation": "Vis TTPC adaptées au support (ossature métallique ou bois). Joints décalés entre plaques. Plaques hydrofuges en pièces humides. Plaques techniques (feu, phonique) selon usage. Finition standard : bandes à joints, enduit, ponçage, peinture.",
+          "common_mistake": "Visser entre les montants 'au pifomètre' — vis qui percent le pare-vapeur entre les montants, fuites d'air.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_064"],
+          "norm_reference": "DTU 25.41",
+          "control_questions": []
+        },
+        {
+          "id": "iso_068",
+          "title": "ITE : finition par enduit ou bardage",
+          "phase": "fermeture",
+          "applies_to_iso_type": ["ite_murs"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Finition ITE selon CPT 3560 : enduit minéral en 2 passes (enduit de base + enduit de finition) OU bardage ventilé sur ossature secondaire (lame d'air 2 cm derrière le bardage).",
+          "klaro_recommendation": "Enduit : économique, aspect maçonné classique, large choix de teintes. Bardage : bois, composite, métal — aspect moderne, durable, lame d'air ventilée nécessaire. Pose par RGE Qualibat 7141 obligatoire pour aides. Profilés d'angle, larmiers en pied de mur, raccords aux menuiseries soignés.",
+          "common_mistake": "Enduit en une seule passe épaisse — fissuration, durabilité réduite.",
+          "pro_status": "pro_rge_obligatoire_si_aides",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_051"],
+          "norm_reference": "CPT 3560 + DTU 26.1 + DTU 41.2",
+          "control_questions": []
+        },
+        {
+          "id": "iso_069",
+          "title": "Combles aménagés / sarking : finition selon type",
+          "phase": "fermeture",
+          "applies_to_iso_type": ["combles_amenages", "sarking"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Combles aménagés : placo, lambris bois, ou mélange. Sarking : pose des tuiles/ardoises sur le contre-lattage par le couvreur.",
+          "klaro_recommendation": "Combles aménagés : placo standard, joints traités. Lambris bois en sous-face de rampants pour aspect chalet (perspirant pour bâti ancien). Sarking : couverture tuiles/ardoises selon DTU 40.x. Faîtage et arêtiers ventilés (sortie d'air).",
+          "common_mistake": "Lambris bois sans pare-vapeur dans bâti récent — vapeur qui condense dans l'isolant à long terme.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_064"],
+          "norm_reference": "DTU 25.41 + DTU 40.x",
+          "control_questions": []
+        },
+        {
+          "id": "iso_070",
+          "title": "Plancher bas par-dessus : couler la chape flottante",
+          "phase": "fermeture",
+          "applies_to_iso_type": ["plancher_bas"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Chape flottante désolidarisée : épaisseur 4-6 cm minimum, posée sur l'isolant + film polyane, bandes périphériques contre les murs (anti-pont phonique).",
+          "klaro_recommendation": "Chape ciment ou anhydrite. Treillis soudé pour limiter la fissuration. Désolidarisation périphérique (bandes mousse 5 mm) sur tout le pourtour des murs. Joints de fractionnement si grande surface (> 25 m²). Séchage 28 jours avant pose revêtement.",
+          "common_mistake": "Chape flottante sans bandes périphériques — pont phonique sur tout le pourtour, isolation acoustique compromise.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_040"],
+          "norm_reference": "DTU 26.2 + DTU 13.3",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "controle_final",
+      "label": "Contrôle final",
+      "tasks": [
+        {
+          "id": "iso_071",
+          "title": "Test d'infiltrométrie / Blower-door test",
+          "phase": "controle_final",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["haute_performance_bbc_passif"],
+          "explanation": "Test obligatoire RE2020 pour neuf et haute performance. Mise en surpression/dépression du logement avec porte soufflante. Mesure du débit de fuite à 4 Pa (Q4Pa-surf). Seuil RE2020 : ≤ 0,6 m³/h/m² maison individuelle.",
+          "klaro_recommendation": "Test réalisé par opérateur certifié (Cofrac). Coût ~500-800 €. À réaliser après pose pare-vapeur ET avant peinture (intervention possible si fuite détectée). Localisation des fuites au fumigène ou caméra thermique. Document de mesure obligatoire pour attestation RE2020 ou certification BBC.",
+          "common_mistake": "Sauter le test pour 'économiser' — pas de certification, pas d'aides liées à la performance, qualité non vérifiée.",
+          "pro_status": "pro_obligatoire_blocage",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_064"],
+          "norm_reference": "RE2020 + NF EN 13829",
+          "control_questions": [
+            { "question": "Q4Pa-surf mesuré (m³/h/m²) ?", "type": "number", "expected": "≤ 0,6 maison ind. RE2020" }
+          ]
+        },
+        {
+          "id": "iso_072",
+          "title": "Thermographie post-travaux",
+          "phase": "controle_final",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["haute_performance_bbc_passif"],
+          "explanation": "Caméra thermique en hiver après travaux pour vérifier l'absence de ponts thermiques résiduels et l'efficacité réelle de l'isolation.",
+          "klaro_recommendation": "Comparaison avant/après si thermographie initiale réalisée. Vérifie : absence de ponts thermiques aux jonctions, uniformité de la performance, détection éventuelle de défauts cachés. Coût ~300-500 €. Indispensable pour viser passif ou BBC.",
+          "common_mistake": "Considérer le travail terminé sans contrôle thermographique sur projet ambitieux — défauts résiduels invisibles non corrigés.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_071"],
+          "norm_reference": "NF EN 13187",
+          "control_questions": []
+        },
+        {
+          "id": "iso_073",
+          "title": "Vérifier le bon fonctionnement de la VMC après fermeture",
+          "phase": "controle_final",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "VMC = clé de la pérennité de l'isolation. Vérifier après fermeture : débits aux bouches conformes, absence de condensation, équilibrage des entrées d'air.",
+          "klaro_recommendation": "Mesure des débits aux bouches d'extraction avec anémomètre (cuisine 75-135 m³/h selon nombre de pièces, SDB 15-30 m³/h, WC 15 m³/h). Vérifiez l'absence de condensation aux fenêtres en hiver (signe d'une VMC sous-dimensionnée). Entretien : nettoyage bouches tous les 6 mois, filtres caisson tous les 1-2 ans.",
+          "common_mistake": "Considérer la VMC OK sans mesure des débits — sous-débit qui se traduit par condensation et moisissures à long terme.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_059"],
+          "norm_reference": "DTU 68.3 + Arrêté 24/03/1982",
+          "control_questions": [
+            { "question": "Débits VMC mesurés et conformes (cuisine 75-135, SDB 15-30, WC 15 m³/h) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_074",
+          "title": "DPE après travaux pour mesurer le gain",
+          "phase": "controle_final",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["aides_maprimerenov", "haute_performance_bbc_passif"],
+          "explanation": "Nouveau DPE après travaux pour mesurer le saut de classe énergétique. Obligatoire pour MaPrimeRénov' rénovation d'ampleur (saut de 2 classes minimum). Valorise le bien à la revente.",
+          "klaro_recommendation": "DPE par diagnostiqueur certifié (~150-250 €). Comparez avec DPE initial. Saut significatif attendu : 2-3 classes minimum sur isolation complète. Pour MaPrimeRénov' rénovation d'ampleur : saut de 2 classes obligatoire (passoire F/G → D/C minimum).",
+          "common_mistake": "Sauter le DPE post-travaux et ne pas pouvoir prouver le gain — perte de la prime rénovation d'ampleur, valorisation diminuée à la revente.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DPE 3CL-2021 + MaPrimeRénov'",
+          "control_questions": [
+            { "question": "DPE post-travaux réalisé et saut de classe constaté ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_075",
+          "title": "Surveiller pendant 6 mois (condensation, moisissures)",
+          "phase": "controle_final",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Période de surveillance post-travaux : apparition de condensation aux fenêtres, taches d'humidité aux murs/plafonds, odeur de moisi = signal d'alerte d'un défaut de ventilation ou d'étanchéité à reprendre rapidement.",
+          "klaro_recommendation": "Surveillance attentive surtout en hiver (premier hiver après travaux). Hygromètre dans chaque pièce : humidité ambiante 40-60% normal, > 70% = problème. Si signal : vérifiez d'abord la VMC (débits, fonctionnement), puis l'étanchéité. Photographiez les défauts dès apparition. Reprenez rapidement (sous garantie).",
+          "common_mistake": "Ignorer les premiers signes de condensation et attendre que ça empire — moisissures invasives, traitement curatif beaucoup plus coûteux.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_073"],
+          "norm_reference": "Bonnes pratiques + DTU 68.3",
+          "control_questions": [
+            { "question": "Surveillance 6 mois sans condensation ni moisissure ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
     }
-  ]
+  ],
+  "blocking_points": [
+    {
+      "id": "block_001",
+      "message": "Pas d'isolation sans diagnostic préalable des sources d'humidité.",
+      "blocks_task_id": "iso_042",
+      "requires_task_id": "iso_003"
+    },
+    {
+      "id": "block_002",
+      "message": "Pas d'isolation sur support humide tant que la cause n'est pas traitée et le support sec.",
+      "blocks_task_id": "iso_042",
+      "requires_task_id": "iso_004"
+    },
+    {
+      "id": "block_003",
+      "message": "Pas de pare-vapeur sans VMC fonctionnelle (piège à humidité garanti).",
+      "blocks_task_id": "iso_045",
+      "requires_task_id": "iso_005"
+    },
+    {
+      "id": "block_004",
+      "message": "Pas de pare-vapeur étanche en bâti ancien — frein-vapeur hygrovariable obligatoire.",
+      "blocks_task_id": "iso_045",
+      "requires_task_id": "iso_046"
+    },
+    {
+      "id": "block_005",
+      "message": "Pas d'aides MaPrimeRénov'/CEE sans artisan RGE ET demande déposée AVANT signature devis.",
+      "blocks_task_id": "iso_036",
+      "requires_task_id": "iso_020"
+    },
+    {
+      "id": "block_006",
+      "message": "Pas d'isolation autour d'un conduit de fumée sans coffrage incombustible et DSF respectée.",
+      "blocks_task_id": "iso_037",
+      "requires_task_id": "iso_022"
+    },
+    {
+      "id": "block_007",
+      "message": "Pas d'isolation au-dessus de spots encastrés sans capot CBI.",
+      "blocks_task_id": "iso_037",
+      "requires_task_id": "iso_023"
+    },
+    {
+      "id": "block_008",
+      "message": "Pas de pose en compression > 10% de l'épaisseur de l'isolant.",
+      "blocks_task_id": "iso_043",
+      "requires_task_id": "iso_042"
+    },
+    {
+      "id": "block_009",
+      "message": "Pas de discontinuité de l'isolant (vide ou tassement = pont thermique).",
+      "blocks_task_id": "iso_045",
+      "requires_task_id": "iso_043"
+    },
+    {
+      "id": "block_010",
+      "message": "Pas de pare-vapeur troué non réparé (un trou = pare-vapeur inutile).",
+      "blocks_task_id": "iso_067",
+      "requires_task_id": "iso_050"
+    },
+    {
+      "id": "block_011",
+      "message": "Pas de fermeture avant photos de l'isolant en place et du pare-vapeur continu.",
+      "blocks_task_id": "iso_067",
+      "requires_task_id": "iso_065"
+    },
+    {
+      "id": "block_012",
+      "message": "Pas d'isolation sans traitement des ponts thermiques aux jonctions critiques.",
+      "blocks_task_id": "iso_067",
+      "requires_task_id": "iso_055"
+    },
+    {
+      "id": "block_013",
+      "message": "Pas d'ITE sans déclaration préalable de travaux en mairie.",
+      "blocks_task_id": "iso_036",
+      "requires_task_id": "iso_018"
+    },
+    {
+      "id": "block_014",
+      "message": "Pas de pose si épaisseur d'isolant compromet la hauteur sous plafond minimale (< 1,80 m).",
+      "blocks_task_id": "iso_038",
+      "requires_task_id": "iso_027"
+    },
+    {
+      "id": "block_015",
+      "message": "Pas de gaines électriques après pose pare-vapeur — coordination AVANT obligatoire.",
+      "blocks_task_id": "iso_045",
+      "requires_task_id": "iso_058"
+    },
+    {
+      "id": "block_016",
+      "message": "Pas de bicouche avec joints alignés (croisement obligatoire entre les deux couches).",
+      "blocks_task_id": "iso_045",
+      "requires_task_id": "iso_044"
+    },
+    {
+      "id": "block_017",
+      "message": "Pas de combles isolés en bouchant la lame d'air sous toiture (ventilation 2 cm minimum).",
+      "blocks_task_id": "iso_037",
+      "requires_task_id": "iso_056"
+    },
+    {
+      "id": "block_018",
+      "message": "Pas d'haute performance sans test infiltrométrie validé (RE2020).",
+      "blocks_task_id": "iso_074",
+      "requires_task_id": "iso_071"
+    }
+  ],
+  "scoring": {
+    "progression_percent": {
+      "formula": "validated_tasks / total_tasks * 100",
+      "total_tasks": 75,
+      "filtered_by": "applies_to_iso_type INCLUDES iso_type AND applies_to_bati_type INCLUDES bati_type AND applies_to_perf_target INCLUDES perf_target"
+    },
+    "thermal_performance_score": {
+      "description": "Performance thermique : R atteint, pare-vapeur, traitement ponts thermiques, étanchéité air",
+      "components": [
+        {
+          "id": "r_cible",
+          "weight": 30,
+          "description": "R cible atteint (≥ 3,7 murs / ≥ 7 combles perdus / ≥ 6 combles aménagés / ≥ 3 plancher)",
+          "validates_if": "iso_008 validated AND iso_009 validated AND iso_042 validated"
+        },
+        {
+          "id": "pare_vapeur_continu",
+          "weight": 25,
+          "description": "Pare-vapeur intégralement continu (recouvrements, manchons, périphérie)",
+          "validates_if": "iso_047 validated AND iso_048 validated AND iso_049 validated AND iso_050 validated"
+        },
+        {
+          "id": "ponts_thermiques",
+          "weight": 25,
+          "description": "Ponts thermiques traités (mur/plancher, mur/plafond, refends, menuiseries)",
+          "validates_if": "iso_052 validated AND iso_053 validated AND iso_055 validated"
+        },
+        {
+          "id": "etancheite_air",
+          "weight": 20,
+          "description": "Étanchéité à l'air validée (isolant sans compression, jonctions étanches)",
+          "validates_if": "iso_042 validated AND iso_043 validated AND iso_064 validated"
+        }
+      ]
+    },
+    "moisture_safety_score": {
+      "description": "Sécurité humidité : diagnostic, VMC, règle 2/3-1/3, pare-vapeur adapté au bâti",
+      "components": [
+        {
+          "id": "diagnostic_humidite",
+          "weight": 25,
+          "description": "Diagnostic humidité réalisé et cause traitée",
+          "validates_if": "iso_003 validated AND iso_004 validated"
+        },
+        {
+          "id": "vmc_fonctionnelle",
+          "weight": 30,
+          "description": "VMC fonctionnelle avant pose pare-vapeur",
+          "validates_if": "iso_005 validated AND iso_059 validated"
+        },
+        {
+          "id": "regle_2_3",
+          "weight": 15,
+          "description": "Règle 2/3 côté chaud du pare-vapeur respectée",
+          "validates_if": "iso_015 validated"
+        },
+        {
+          "id": "pare_vapeur_adapte_bati",
+          "weight": 30,
+          "description": "Pare-vapeur adapté au type de bâti (frein-vapeur hygrovariable si bâti ancien)",
+          "validates_if": "iso_014 validated AND (bati_type == 'bati_recent_apres_1948' OR iso_046 validated)"
+        }
+      ]
+    },
+    "fire_safety_score": {
+      "description": "Sécurité incendie : DSF conduits, capots CBI sur spots, Euroclasse adaptée",
+      "components": [
+        {
+          "id": "dsf_conduits",
+          "weight": 40,
+          "description": "DSF conduits de fumée respectée et coffrage incombustible posé",
+          "validates_if": "iso_021 validated AND iso_022 validated"
+        },
+        {
+          "id": "capots_cbi",
+          "weight": 30,
+          "description": "Capots CBI posés sur tous les spots encastrés",
+          "validates_if": "iso_023 validated"
+        },
+        {
+          "id": "euroclasse",
+          "weight": 20,
+          "description": "Euroclasse de l'isolant adaptée à la zone (A1 si proximité conduit)",
+          "validates_if": "iso_012 validated"
+        },
+        {
+          "id": "points_chauds",
+          "weight": 10,
+          "description": "Distance de sécurité avec tout point chaud respectée",
+          "validates_if": "iso_024 validated"
+        }
+      ]
+    },
+    "aids_eligibility_score": {
+      "description": "Éligibilité aux aides MaPrimeRénov'/CEE : RGE, dossier avant devis, R minimum, justificatifs",
+      "components": [
+        {
+          "id": "rge",
+          "weight": 30,
+          "description": "Artisan RGE qualifié pour le poste",
+          "validates_if": "iso_017 validated"
+        },
+        {
+          "id": "dossier_avant_devis",
+          "weight": 25,
+          "description": "Demande aides déposée AVANT signature devis",
+          "validates_if": "iso_020 validated"
+        },
+        {
+          "id": "r_seuil_aides",
+          "weight": 25,
+          "description": "R atteignant les seuils MaPrimeRénov'",
+          "validates_if": "iso_008 validated"
+        },
+        {
+          "id": "justificatifs",
+          "weight": 20,
+          "description": "Fiches techniques + attestation RGE + factures détaillées + photos archivées",
+          "validates_if": "iso_065 validated AND iso_066 validated"
+        }
+      ]
+    },
+    "critical_alerts": [
+      {
+        "id": "alert_humidite",
+        "message": "Humidité non diagnostiquée ou non traitée — isoler aggrave les dégradations.",
+        "triggered_if": "iso_003 not validated OR iso_004 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_vmc",
+        "message": "VMC absente ou non fonctionnelle avant pare-vapeur — piège à humidité garanti.",
+        "triggered_if": "iso_005 not validated AND iso_045 validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_bati_ancien_pv",
+        "message": "Pare-vapeur étanche sur bâti ancien — mur pourrit en quelques années.",
+        "triggered_if": "iso_046 not validated AND bati_type == 'bati_ancien_avant_1948'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_dsf_conduit",
+        "message": "DSF conduit de fumée non respectée ou coffrage incombustible absent — risque incendie majeur.",
+        "triggered_if": "iso_022 not validated AND iso_type IN ['combles_perdus','combles_amenages','sarking']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_capot_cbi",
+        "message": "Spots encastrés sans capot CBI sous isolation combles — surchauffe et risque incendie majeur.",
+        "triggered_if": "iso_023 not validated AND iso_type IN ['combles_perdus','combles_amenages']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_compression",
+        "message": "Isolant comprimé > 10% — perte importante de performance, condensation possible.",
+        "triggered_if": "iso_042 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_continuite_isolant",
+        "message": "Discontinuités dans l'isolant (vides, tassements) — ponts thermiques, performance théorique non atteinte.",
+        "triggered_if": "iso_043 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_continuite_pv",
+        "message": "Pare-vapeur troué ou recouvrements défaillants — fuites d'air, condensation au point de fuite.",
+        "triggered_if": "iso_050 not validated AND iso_45 validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_rge",
+        "message": "Artisan non RGE ou demande aides après devis — aides refusées définitivement.",
+        "triggered_if": "(iso_017 not validated OR iso_020 not validated) AND perf_target IN ['aides_maprimerenov','haute_performance_bbc_passif']",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_dp_ite",
+        "message": "ITE sans déclaration préalable de travaux — démolition possible ordonnée par mairie.",
+        "triggered_if": "iso_018 not validated AND iso_type == 'ite_murs'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_hsp",
+        "message": "Hauteur sous plafond résiduelle < 1,80 m — pièce non conforme logement décent.",
+        "triggered_if": "iso_027 not validated AND iso_type IN ['combles_amenages','sarking']",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_lame_air",
+        "message": "Lame d'air sous toiture < 2 cm — condensation, charpente qui pourrit.",
+        "triggered_if": "iso_056 not validated AND iso_type IN ['combles_perdus','combles_amenages','sarking']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_photos_avant_fermeture",
+        "message": "Photos avant fermeture absentes — preuves perdues pour aides, garanties, expertise.",
+        "triggered_if": "iso_065 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_test_infiltro",
+        "message": "Test infiltrométrie absent en haute performance — non conforme RE2020 / BBC.",
+        "triggered_if": "iso_071 not validated AND perf_target == 'haute_performance_bbc_passif'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_ponts_thermiques",
+        "message": "Ponts thermiques aux jonctions critiques non traités — performance théorique non atteinte.",
+        "triggered_if": "iso_052 not validated OR iso_053 not validated OR iso_055 not validated",
+        "level": "bloquant"
+      }
+    ]
+  }
 }
