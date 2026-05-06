@@ -1,0 +1,536 @@
+{
+  "module": "menuiseries",
+  "phases": [
+    {
+      "id": "preparation_commande",
+      "label": "Préparation & commande",
+      "tasks": [
+        {
+          "id": "menu_001",
+          "title": "Définir le projet menuiseries",
+          "phase": "preparation_commande",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Listez tous les éléments à poser (fenêtres, baies, porte d'entrée, portes intérieures, volets, portail), les performances visées et le contexte (rénovation/neuf, exposition, environnement bruyant).",
+          "klaro_recommendation": "Faites un inventaire pièce par pièce avec le type d'élément, ses dimensions approximatives, son orientation et le niveau de performance souhaité (thermique, acoustique, sécurité). Ce document servira de base à toute la chaîne (cotes définitives, commande, pose).",
+          "common_mistake": "Sous-estimer les performances thermiques en pensant qu'on n'est pas en RT — la RE2020 s'applique au neuf, et toute nouvelle menuiserie devrait viser Uw ≤ 1,3 W/m²K en rénovation pour être éligible aux aides.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "L'inventaire couvre-t-il tous les éléments avec leurs performances visées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_002",
+          "title": "Choisir le type de pose",
+          "phase": "preparation_commande",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Pose neuve (sur tableau brut) : performance maximale. Rénovation totale (dépose ancien dormant) : presque équivalent. Rénovation sur dormant existant : pose rapide mais perte de clair de jour 5-10 cm/côté. Intérieur : portes intérieures uniquement.",
+          "klaro_recommendation": "Si l'ancien dormant est sain et plan : rénovation sur dormant existant = simple et rapide. Si l'ancien dormant est dégradé ou si vous voulez maximiser le clair de jour : dépose totale. Pose neuve uniquement en construction. Le coût et le délai diffèrent radicalement.",
+          "common_mistake": "Choisir la rénovation sur dormant existant sans contrôler l'état de l'ancien dormant — pose sur dormant pourri ou désaffleur, problèmes garantis.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_001"],
+          "norm_reference": "DTU 36.5 §4 + Avis Techniques rénovation",
+          "control_questions": [
+            { "question": "Le type de pose est-il choisi et cohérent avec l'état de l'existant ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_003",
+          "title": "Choisir le matériau",
+          "phase": "preparation_commande",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "PVC : économique, isolant, sans entretien (rapport qualité/prix le plus courant). Alu : moderne, profilés fins (rupture de pont thermique obligatoire). Bois : chaleureux, performant, exige entretien. Mixte alu/bois : bois intérieur + alu extérieur.",
+          "klaro_recommendation": "PVC blanc = solution courante (5 à 10× moins cher qu'un mixte). Alu en grandes baies coulissantes ou design moderne. Bois pour rénovation patrimoniale ou écologique. Mixte alu/bois = haut de gamme (intérieur bois noble + extérieur alu sans entretien). Pour le bois, privilégier mélèze, chêne ou pin lamellé-collé.",
+          "common_mistake": "Choisir l'alu sans rupture de pont thermique — performance thermique très médiocre, condensation et froid au niveau du dormant.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_001"],
+          "norm_reference": "DTU 36.5 §5",
+          "control_questions": [
+            { "question": "Le matériau choisi a-t-il une rupture de pont thermique (alu) ou une performance Uw conforme ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_004",
+          "title": "Identifier les performances exigées (AEV, Uw, Rw)",
+          "phase": "preparation_commande",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "AEV = classement Air/Eau/Vent (étiquetage obligatoire). Uw = transmission thermique de la menuiserie complète (W/m²K). Rw = isolation acoustique (dB). À adapter selon zone géographique, exposition et environnement.",
+          "klaro_recommendation": "Zone côtière, étage élevé : A4-E7-V*A3 minimum. Bord de mer/montagne : aller jusqu'à V*B3. Uw ≤ 1,3 W/m²K pour MaPrimeRénov'. Près d'une voie passante ou voie ferrée : Rw ≥ 35 dB (sinon vous entendrez tout). Indiqué obligatoirement sur la fiche produit.",
+          "common_mistake": "Commander une menuiserie sans vérifier le classement AEV pour sa zone — défaut d'étanchéité à l'eau ou bruit du vent en exposition marquée.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_001"],
+          "norm_reference": "NF EN 14351-1 + RE2020 + DTU 36.5",
+          "control_questions": [
+            { "question": "Classification AEV minimum exigée ?", "type": "text", "expected": "A*-E*-V* selon zone (ex: A3-E7B-V*A2)" },
+            { "question": "Uw exigé (W/m²K) ?", "type": "number", "expected": "≤ 1,3" }
+          ]
+        },
+        {
+          "id": "menu_005",
+          "title": "Définir le type de vitrage",
+          "phase": "preparation_commande",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["fenetre", "baie", "porte_entree"],
+          "explanation": "Double vitrage standard 4/16/4 (Ug ~1,1). Triple vitrage 4/12/4/12/4 (Ug ~0,6, plus lourd). Faible émissivité = couche métallique invisible améliorant l'isolation. Contrôle solaire = limite la chaleur en été (sud/ouest). Feuilleté = sécurité et acoustique.",
+          "klaro_recommendation": "Double vitrage faible émissivité = standard actuel. Triple vitrage uniquement orientation nord/froid (gain marginal sud, surcoût important). Vitrage feuilleté de sécurité OBLIGATOIRE en allèges < 1 m, portes vitrées et zones de chute. Vitrage de sécurité trempé pour parties basses si pas feuilleté.",
+          "common_mistake": "Choisir un vitrage standard en allège basse — risque de blessure grave en cas de choc, non conforme.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_004"],
+          "norm_reference": "DTU 39 + NF P 78-201",
+          "control_questions": [
+            { "question": "Vitrage feuilleté/trempé prévu en allèges < 1 m et portes vitrées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_006",
+          "title": "Vérifier les obligations de garde-corps (allège < 1 m)",
+          "phase": "preparation_commande",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["fenetre", "baie"],
+          "explanation": "Si l'allège (hauteur entre sol fini et bas de la fenêtre) est inférieure à 1 m ET qu'il y a une chute > 1 m côté extérieur : garde-corps obligatoire (rampe, barreaudage ou vitrage de sécurité tenant lieu de garde-corps).",
+          "klaro_recommendation": "Mesurez la hauteur entre le sol fini et le bas de la fenêtre. Si < 1 m et étage : garde-corps obligatoire. Solutions : barreaudage extérieur, vitrage feuilleté de sécurité tenant lieu de garde-corps (épaisseur dimensionnée), ou rehausse de l'allège. À traiter AVANT la pose.",
+          "common_mistake": "Poser une grande baie en RDC surélevé ou étage avec allège basse sans garde-corps — non conforme, danger de chute, refus d'assurance en cas d'accident.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_001"],
+          "norm_reference": "NF P 01-012 + DTU 36.5",
+          "control_questions": [
+            { "question": "Garde-corps prévu si allège < 1 m et chute extérieure > 1 m ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_007",
+          "title": "Vérifier la fonction d'issue de secours (chambres RDC/étages)",
+          "phase": "preparation_commande",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["fenetre"],
+          "explanation": "Toute chambre doit pouvoir être évacuée en cas d'incendie. Une fenêtre de chambre doit permettre une évacuation : ouvrant suffisant (passage ≥ 0,5 m × 0,8 m), accessible sans outil.",
+          "klaro_recommendation": "Vérifiez que chaque chambre a au moins une fenêtre permettant l'évacuation (clair d'ouverture passable). Évitez les ouvrants exclusivement à soufflet ou oscillo-battant verrouillé en chambre. Pour les fenêtres de toit : modèle avec ouverture max et accès facile.",
+          "common_mistake": "Installer une fenêtre uniquement à soufflet en chambre — impossibilité d'évacuer en cas d'incendie, danger mortel.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_001"],
+          "norm_reference": "Code de la construction + DTU 36.5",
+          "control_questions": [
+            { "question": "Chaque chambre dispose-t-elle d'une fenêtre permettant l'évacuation ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_008",
+          "title": "Prendre les cotes précises",
+          "phase": "preparation_commande",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Pour chaque ouverture : largeur (en haut, milieu, bas), hauteur (gauche, milieu, droite), profondeur du tableau ou du dormant existant. Toujours mesurer en plusieurs points et retenir la cote la plus petite.",
+          "klaro_recommendation": "Mètre laser pour la précision. Mesure largeur en 3 points (haut, milieu, bas), hauteur en 3 points (gauche, milieu, droite). Notez les écarts (signe d'un tableau hors équerre). Photographiez chaque mesure avec le mètre visible. Communiquez la cote la plus petite au menuisier (en intégrant le jeu de pose 5-10 mm).",
+          "common_mistake": "Mesurer une seule fois au milieu et commander sans tenir compte des écarts — la menuiserie ne rentre pas ou laisse un jour important à un endroit.",
+          "pro_recommended": false,
+          "photo_required_before_validation": true,
+          "depends_on": ["menu_002"],
+          "norm_reference": "DTU 36.5 §6.1",
+          "control_questions": [
+            { "question": "Cotes prises en 3 points par dimension et photographiées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_009",
+          "title": "Tenir compte des cotes de finition future",
+          "phase": "preparation_commande",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Sol fini (carrelage, parquet, sol coulé), enduit fini extérieur, placo intérieur : toutes ces finitions modifient les cotes. La menuiserie doit tenir compte de l'épaisseur finale des finitions.",
+          "klaro_recommendation": "Notez précisément ce qui sera ajouté autour de l'ouverture : isolation par l'intérieur (5-12 cm), placo (1-2 cm), enduit extérieur (1-2 cm), carrelage/parquet (1-2 cm sur le sol). La menuiserie doit affleurer ou être en retrait des finitions, pas être noyée derrière.",
+          "common_mistake": "Mesurer sur un tableau brut sans tenir compte de l'enduit ou de l'ITE — la menuiserie est trop grande, impossible à poser après finition.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_008"],
+          "norm_reference": "DTU 36.5 §6.1",
+          "control_questions": [
+            { "question": "Cotes ajustées pour les finitions futures (sol, enduit, placo, ITE) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_010",
+          "title": "Choisir la quincaillerie et les sécurités",
+          "phase": "preparation_commande",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["porte_entree", "fenetre", "baie"],
+          "explanation": "Porte d'entrée : serrure A2P (1, 2 ou 3 étoiles), verrouillage multipoints (3 à 5 points), paumelles renforcées. Fenêtres : poignées avec clé sur RDC ou accessible, gâches anti-dégondage.",
+          "klaro_recommendation": "Porte d'entrée : A2P** minimum (résistance 10 min effraction), 5 points de verrouillage. En RDC ou étage accessible : poignées de fenêtres à clé + gâches anti-dégondage. Vérifiez le classement assurance habitation (certains assureurs exigent A2P***). Documentez les certifications.",
+          "common_mistake": "Choisir une porte d'entrée 'sécurisée' sans certification A2P — résistance réelle non garantie, refus assurance.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_001"],
+          "norm_reference": "NF P 20-501 + Cahiers CNPP A2P",
+          "control_questions": [
+            { "question": "Porte d'entrée certifiée A2P avec multipoints ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_011",
+          "title": "Choisir le type de motorisation",
+          "phase": "preparation_commande",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["volet_roulant", "portail"],
+          "explanation": "Filaire (commande murale) : fiable, économique. Radio (télécommande) : pas de fil, central possible. Connecté (smartphone, alexa, google) : confort maximal, dépendance internet. Coordonnez avec l'élec dès la conception.",
+          "klaro_recommendation": "Volets roulants : motorisation radio recommandée (pas de saignées pour le câble de commande). Portail : filaire + récepteur radio pour télécommande, alimentation 230V dédiée. Centralisation : compatible Somfy, Bubendorff ou similaire. Prévoyez les arrivées électriques AVANT la pose.",
+          "common_mistake": "Choisir le moteur après la pose et devoir tirer un câble en saignée — coûteux et inesthétique.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_001"],
+          "norm_reference": "NF C 15-100 + DTU 34.4",
+          "control_questions": [
+            { "question": "Motorisation choisie + alimentations électriques coordonnées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_012",
+          "title": "Commander avec délai réaliste",
+          "phase": "preparation_commande",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Standard PVC blanc : 4 à 6 semaines. Sur-mesure : 6 à 8 semaines. Alu, bois, mixte ou couleurs spéciales : 8 à 12 semaines. Tenir compte du délai dans le planning chantier.",
+          "klaro_recommendation": "Commandez DÈS QUE les cotes définitives sont prises et le tableau préparé. Vérifiez le bon de commande (dimensions, sens d'ouverture, vitrage, accessoires) avant validation. Une erreur de cote ou de sens découverte à la livraison = refabrication + 4-8 semaines de retard.",
+          "common_mistake": "Confondre 'délai annoncé' et 'délai réel' — beaucoup de fournisseurs livrent avec 1-2 semaines de retard. Anticipez.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_009", "menu_010"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Bon de commande relu et validé (dimensions, sens, vitrage, accessoires) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "livraison_stockage",
+      "label": "Livraison & stockage",
+      "tasks": [
+        {
+          "id": "menu_013",
+          "title": "Vérifier la conformité de la livraison",
+          "phase": "livraison_stockage",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "À réception : contrôlez dimensions, sens d'ouverture, type de vitrage, étiquetage AEV/Uw, présence des accessoires (cales, vis, joints, poignées) et intégrité (pas d'éclat, rayure, casse).",
+          "klaro_recommendation": "Refusez la livraison si défaut majeur (vitrage cassé, dimension erronée, sens inversé). Émettez des réserves écrites sur le bon de livraison pour les défauts mineurs (rayure, accessoire manquant). Photographiez tout. La menuiserie est sous garantie transporteur 3 jours uniquement — soyez réactif.",
+          "common_mistake": "Signer le bon de livraison sans vérification — toute réclamation ultérieure est refusée par le transporteur.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_012"],
+          "norm_reference": "DTU 36.5 §7.1",
+          "control_questions": [
+            { "question": "Conformité contrôlée à la livraison (dimensions, sens, vitrage, AEV/Uw, accessoires, intégrité) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_014",
+          "title": "Stocker correctement avant pose",
+          "phase": "livraison_stockage",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "PVC/alu : debout sur cales (jamais à plat, déformation). Bois : à plat ou debout selon notice fabricant, à l'abri de l'humidité. À l'abri des chocs (zone protégée, sans passage).",
+          "klaro_recommendation": "Local sec, ventilé, à l'abri des intempéries. Cales en bois sous PVC/alu pour les surélever. Bois : pas de soleil direct (déformation), pas d'humidité (gonflement). Conservez les protections d'usine jusqu'à la pose. Si stockage > 1 mois : revérifiez régulièrement.",
+          "common_mistake": "Stocker à plat les menuiseries PVC ou alu — déformation par fluage du matériau, ouvrant qui ne ferme plus correctement.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_013"],
+          "norm_reference": "DTU 36.5 §7.2",
+          "control_questions": [
+            { "question": "Stockage conforme (PVC/alu debout, bois selon notice, sec, à l'abri) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_015",
+          "title": "Acclimater les menuiseries bois 48h dans le local",
+          "phase": "livraison_stockage",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["bois"],
+          "applies_to_element": ["all"],
+          "explanation": "Le bois s'adapte à l'hygrométrie ambiante. Acclimatation 48h dans le local de pose pour éviter les mouvements après pose (gonflement ou retrait selon humidité).",
+          "klaro_recommendation": "Sortez les menuiseries de leur emballage (laissez le film de protection) et placez-les dans la pièce où elles seront posées. 48h minimum, 7 jours idéalement pour bois massif. Ne pas poser un bois sortant directement d'un camion ou d'un stockage humide — gonflement post-pose.",
+          "common_mistake": "Poser une menuiserie bois fraîchement livrée par temps humide — gonflement après pose, ouvrant qui frotte ou ne ferme plus.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_014"],
+          "norm_reference": "DTU 36.5 §7.3",
+          "control_questions": [
+            { "question": "Menuiseries bois acclimatées ≥ 48h dans le local de pose ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "depose_ancienne",
+      "label": "Dépose de l'ancienne menuiserie",
+      "tasks": [
+        {
+          "id": "menu_016",
+          "title": "Sécuriser la zone de travail",
+          "phase": "depose_ancienne",
+          "applies_to_pose_type": ["pose_neuve", "renovation_dormant_existant"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Échafaudage si étage, harnais et longe si nécessaire, deux personnes pour les baies lourdes (> 80 kg). La dépose en hauteur ou de baies lourdes est la phase la plus dangereuse.",
+          "klaro_recommendation": "Échafaudage de pied préférable à l'échelle pour étage. Harnais antichute pour pose en bord de toit ou balcon. Pour baies coulissantes lourdes : 2 personnes minimum + sangles de manutention. Sécurisez l'extérieur avec balisage si chute possible. Vérifiez l'état de l'échafaudage avant utilisation.",
+          "common_mistake": "Déposer une baie lourde seul ou sans manutention adaptée — chute du vitrage, blessure grave, casse irréparable.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_015"],
+          "norm_reference": "Code du travail + DTU 36.5",
+          "control_questions": [
+            { "question": "Sécurité opérateur en place (échafaudage/harnais/binôme selon contexte) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_017",
+          "title": "Déposer les vantaux",
+          "phase": "depose_ancienne",
+          "applies_to_pose_type": ["pose_neuve", "renovation_dormant_existant"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["fenetre", "baie", "porte_entree"],
+          "explanation": "Sortez les ouvrants (vantaux) des paumelles avant de toucher au dormant. Allège la masse à manipuler et évite les casses.",
+          "klaro_recommendation": "Ouvrez le vantail à 90°, soulevez vers le haut pour le sortir des paumelles (sens dépendant du modèle). Pour vantaux lourds : 2 personnes. Posez les vantaux à plat dans une zone protégée. Notez le sens d'ouverture si vous comptez les réutiliser ailleurs.",
+          "common_mistake": "Tenter de déposer le tout (dormant + ouvrants) en bloc — masse ingérable et risque de casse.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_016"],
+          "norm_reference": "DTU 36.5 §8.1",
+          "control_questions": []
+        },
+        {
+          "id": "menu_018",
+          "title": "Découper le dormant existant",
+          "phase": "depose_ancienne",
+          "applies_to_pose_type": ["pose_neuve"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Scie sabre pour bois et PVC, disqueuse pour alu et acier. Découpez le dormant en plusieurs morceaux pour faciliter l'extraction.",
+          "klaro_recommendation": "Lunettes + masque + gants OBLIGATOIRES (poussière, étincelles, projections). Découpez en haut et bas du dormant, puis dans les montants verticaux. Pour ancien bâti scellé : prévoyez d'attaquer aussi à la massette + burin. Attention au plomb dans peinture sur menuiseries < 1949 (test plomb préalable).",
+          "common_mistake": "Découper sans EPI — projections de fragments, brûlures par étincelles, exposition au plomb si peinture ancienne.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_017"],
+          "norm_reference": "DTU 36.5 §8.2 + Code du travail",
+          "control_questions": [
+            { "question": "EPI complets portés (lunettes, masque, gants) et test plomb si bâti < 1949 ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_019",
+          "title": "Extraire le dormant et nettoyer le tableau",
+          "phase": "depose_ancienne",
+          "applies_to_pose_type": ["pose_neuve"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Extrayez les morceaux du dormant, retirez gravats, ancienne mousse expansive, anciens scellements (béton, plâtre). Le tableau doit être propre, sain et sec.",
+          "klaro_recommendation": "Marteau + burin pour les scellements tenaces. Aspirateur de chantier pour la poussière. Brossez les parois pour retirer toute particule fragile. Si vous trouvez des traces d'humidité ou de moisissure dans le tableau : traitez la cause AVANT de poser la nouvelle menuiserie (sinon ça revient).",
+          "common_mistake": "Poser la nouvelle menuiserie sur des restes de mousse expansive ou de plâtre — défaut de planéité, étanchéité compromise.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_018"],
+          "norm_reference": "DTU 36.5 §8.3",
+          "control_questions": [
+            { "question": "Tableau nettoyé, sain, sec, sans résidus ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_020",
+          "title": "Reprendre la maçonnerie si nécessaire",
+          "phase": "depose_ancienne",
+          "applies_to_pose_type": ["pose_neuve"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Fissures structurelles, désaffleurs, écornures, manque de matière : reprendre au mortier de réparation pour retrouver un tableau plan et solide.",
+          "klaro_recommendation": "Mortier de réparation à prise rapide pour les zones à reprendre. Application en couches 1-2 cm maximum. Reformer les angles vifs (équerre + règle). Laissez sécher selon notice (24-48h selon épaisseur) avant pose. Photographiez les reprises avant et après.",
+          "common_mistake": "Poser la menuiserie sur un tableau non plan ou fissuré — étanchéité compromise, fixations qui se descellent dans le temps.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_019"],
+          "norm_reference": "DTU 36.5 §8.4 + DTU 20.1",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "preparation_support",
+      "label": "Préparation du support",
+      "tasks": [
+        {
+          "id": "menu_021",
+          "title": "Vérifier l'état du tableau ou du dormant existant",
+          "phase": "preparation_support",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Inspection : rectitude, fissures structurelles, état du linteau (haut), état des appuis, qualité du support de scellement.",
+          "klaro_recommendation": "Tapez avec le manche d'un marteau sur le tableau : son creux = vide ou décollement à reprendre. Inspectez le linteau : fissures > 2 mm = expertise structurelle nécessaire AVANT pose. Sondez l'appui pour son intégrité. Documentez par photos.",
+          "common_mistake": "Poser sur un linteau fissuré — risque structurel, la menuiserie peut s'affaisser à terme.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_020"],
+          "norm_reference": "DTU 36.5 §9.1 + DTU 20.1",
+          "control_questions": [
+            { "question": "Le tableau et le linteau sont-ils sains (pas de fissure structurelle, support solide) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_022",
+          "title": "Vérifier les niveaux et aplombs du tableau",
+          "phase": "preparation_support",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Niveau (horizontal) et aplomb (vertical) du tableau : vérifiez avec niveau bulle de 2 m ET niveau laser. Deux outils valent mieux qu'un (les niveaux à bulle peuvent être déréglés).",
+          "klaro_recommendation": "Niveau laser auto-nivelant (location ~25 €/jour) pour la précision. Niveau à bulle pour la double vérification. Mesurez aplomb sur les deux montants verticaux. Mesurez niveau sur le linteau et l'appui. Notez les défauts en mm. Tolérance acceptable : ±2 mm/m.",
+          "common_mistake": "Vérifier l'aplomb avec un seul niveau bulle — si déréglé, vous découvrez le défaut après pose, impossible à rattraper.",
+          "pro_recommended": false,
+          "photo_required_before_validation": true,
+          "depends_on": ["menu_021"],
+          "norm_reference": "DTU 36.5 §9.2",
+          "control_questions": [
+            { "question": "Niveau et aplomb conformes (≤ 2 mm/m) avec deux outils de mesure ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_023",
+          "title": "Vérifier l'équerrage (mesure des diagonales)",
+          "phase": "preparation_support",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Équerrage = vérifiez que les angles sont droits (90°) en mesurant les deux diagonales. Si les diagonales sont égales : tableau d'équerre. Tolérance : différence < 2 mm/m de diagonale.",
+          "klaro_recommendation": "Mètre ruban entre angle haut-gauche et angle bas-droit, puis entre haut-droit et bas-gauche. Comparez. Si différence > tolérance : reprenez la maçonnerie OU compensez par calage spécifique (limites). Pour rénovation sur dormant existant : si dormant non équerre, soit reprise, soit changement de stratégie.",
+          "common_mistake": "Poser sur un tableau hors équerre — la menuiserie ne peut pas être posée d'aplomb et d'équerre simultanément, ouvertures forcées.",
+          "pro_recommended": false,
+          "photo_required_before_validation": true,
+          "depends_on": ["menu_022"],
+          "norm_reference": "DTU 36.5 §9.3",
+          "control_questions": [
+            { "question": "Différence entre les deux diagonales (mm/m) ?", "type": "number", "expected": "< 2" }
+          ]
+        },
+        {
+          "id": "menu_024",
+          "title": "Valider l'ancien dormant en rénovation",
+          "phase": "preparation_support",
+          "applies_to_pose_type": ["renovation_dormant_existant"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Pour pose sur dormant existant : l'ancien dormant doit être sain (pas pourri, pas désafleuré), plan, et la perte de clair de jour (5-10 cm/côté) acceptable.",
+          "klaro_recommendation": "Sondez le dormant : doit être ferme, sans pourriture (test à la pointe pour le bois). Vérifiez la planéité avec une règle de 1 m sur les 4 côtés. Mesurez la perte de clair de jour : si nouvelle ouverture < 80% de l'ancienne, mieux vaut une dépose totale. Photographiez l'état.",
+          "common_mistake": "Poser sur dormant pourri ou désaffleuré — la nouvelle menuiserie hérite des défauts, problèmes garantis dans l'année.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_023"],
+          "norm_reference": "Avis Techniques rénovation sur dormant existant",
+          "control_questions": [
+            { "question": "Ancien dormant sain, plan, et perte de clair de jour acceptable ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_025",
+          "title": "Nettoyer le support",
+          "phase": "preparation_support",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Aspirez la poussière, retirez gravats résiduels, ancien mastic, vieille peinture qui s'écaille. Le support doit être propre pour que la compribande et les fixations adhèrent.",
+          "klaro_recommendation": "Aspirateur de chantier sur tout le pourtour. Brosse métallique pour les écailles de peinture ou de béton. Chiffon humide pour finir. La compribande et les mastics ne tiennent pas sur surface poussiéreuse — étanchéité compromise.",
+          "common_mistake": "Poser la compribande sur surface poussiéreuse — décollement et perte d'étanchéité dès le premier hiver.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_024"],
+          "norm_reference": "DTU 36.5 §9.4",
+          "control_questions": [
+            { "question": "Support propre (aspiration + chiffon humide) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pose_appui_precadre",
+      "label": "Pose appui & pré-cadre",
+      "tasks": [
+        {
+          "id": "menu_026",
+          "title": "Poser l'appui de fenêtre avec rejingot",
+          "phase": "pose_appui_precadre",
+          "applies_to_pose_type": ["pose_neuve"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["fenetre", "baie"],
+          "explanation": "L'appui (seuil bas extérieur) reçoit l'eau qui ruisselle de la fenêtre. Le rejingot (relèvement à l'arrière) empêche l'eau d'aller derrière la menuiserie. Toujours posé AVANT la menuiserie.",
+          "klaro_recommendation": "Appui maçonné en place, ou appui rapporté (béton préfabriqué, pierre reconstituée). Étanchéité sous l'appui (membrane EPDM ou bitume) pour empêcher les remontées capillaires. Le rejingot doit être ≥ 25 mm pour bloquer l'eau. Posez l'appui parfaitement de niveau dans la longueur, avec pente vers l'extérieur dans la profondeur.",
+          "common_mistake": "Poser la menuiserie avant l'appui — étanchéité impossible à reprendre, infiltrations garanties.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_025"],
+          "norm_reference": "DTU 36.5 §10.1 + DTU 20.1",
+          "control_questions": [
+            { "question": "Appui posé avant menuiserie, rejingot ≥ 25 mm, étanchéité sous appui ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_027",
+          "title": "Vérifier la pente d'évacuation de l'appui",
+          "phase": "pose_appui_precadre",
+          "applies_to_pose_type": ["pose_neuve"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["fenetre", "baie"],
+          "explanation": "L'appui doit avoir une pente vers l'extérieur (1 à 2%) pour évacuer la pluie. Jamais de pente vers l'intérieur ni d'appui plat (stagnation, infiltrations).",
+          "klaro_recommendation": "Niveau à bulle ou laser sur l'appui : pente régulière vers l'extérieur, environ 1-2 cm sur la profondeur. Vérifiez aussi la planéité dans la longueur (le niveau doit être horizontal). Sans cette pente, l'eau stagne, gèle, fissure le matériau et finit par passer derrière.",
+          "common_mistake": "Poser un appui parfaitement horizontal (sans pente) — l'eau stagne et cherche à passer derrière, infiltrations.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_026"],
+          "norm_reference": "DTU 36.5 §10.1 + DTU 20.1",
+          "control_questions": [
+            { "question": "Pente d'évacuation vers l'extérieur (%) ?", "type": "number", "expected": "1 à 2" }
+          ]
+        },
+        {
+          "id": "menu_028",
+          "title": "Poser le pré-cadre si applicable",
+          "phase": "pose_appui_precadre",
+          "applies_to_pose_type": ["pose_neuve"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["fenetre", "baie", "volet_roulant"],
+          "explanation": "Pré-cadre = cadre métallique ou bois posé avant la menuiserie. Utilisé pour : coffre de volet roulant intégré, bloc baie en construction neuve, ou pose en applique avec ITE.",
+          "klaro_recommendation": "Pré-cadre fixé d'aplomb, de niveau et d'équerre dans le tableau. Étanchéité sous le pré-cadre (membrane). La menuiserie viendra ensuite se fixer dans le pré-cadre. Cette technique est indispensable pour les coffres de volets roulants intégrés (sinon le coffre dépasse à l'intérieur).",
+          "common_mistake": "Sauter le pré-cadre pour gagner du temps — coffre de volet roulant qui dépasse, finition impossible.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_027"],
+          "norm_reference": "DTU 36.5 §10.2 + DTU 34.4",
+          "control_questions": [
+            { "question": "Pré-cadre posé d'aplomb, de niveau, d'équerre, avec étanchéité sous appui ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    }
+  ]
+}
