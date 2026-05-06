@@ -1,0 +1,174 @@
+{
+  "version": "1.0.0",
+  "description": "Référentiel des corps de métier d'une rénovation complète, dans l'ordre chronologique d'intervention sur un chantier. Couvre maison et appartement.",
+  "corps_de_metier": [
+    {
+      "id": "administratif",
+      "nom": "Administratif",
+      "description": "Démarches obligatoires avant et pendant le chantier : permis de construire ou déclaration préalable de travaux, assurance dommages-ouvrage, déclaration aux impôts, autorisation de copropriété si appartement, ouverture du compteur de chantier.",
+      "ordre_intervention": 1,
+      "type": "les deux",
+      "exemples_metiers": ["mairie", "notaire", "assureur", "syndic de copropriété", "banque"]
+    },
+    {
+      "id": "conception",
+      "nom": "Conception et plans",
+      "description": "Définir précisément ce que vous voulez : plans, choix des matériaux, budget cible. Architecte obligatoire pour toute extension qui porte la surface au-delà de 150 m². Pour des travaux simples, vous pouvez faire vos propres plans.",
+      "ordre_intervention": 2,
+      "type": "les deux",
+      "exemples_metiers": ["architecte", "architecte d'intérieur", "économiste de la construction", "bureau d'études techniques"]
+    },
+    {
+      "id": "diagnostics",
+      "nom": "Diagnostics avant travaux",
+      "description": "Repérer ce qui doit être traité avant de toucher au bâti : amiante, plomb, termites, état de l'installation électrique et du gaz. Obligatoire dans certains cas selon l'ancienneté du logement et le type de travaux.",
+      "ordre_intervention": 3,
+      "type": "les deux",
+      "exemples_metiers": ["diagnostiqueur immobilier certifié", "expert termites", "géomètre"]
+    },
+    {
+      "id": "demolition",
+      "nom": "Démolition et dépose",
+      "description": "Retirer ce qui n'est plus utile : cloisons à abattre, anciens revêtements de sol et mur, sanitaires et cuisine à déposer, anciens convecteurs. Étape salissante mais essentielle pour repartir sur du propre.",
+      "ordre_intervention": 4,
+      "type": "les deux",
+      "exemples_metiers": ["démolisseur", "déposeur", "particulier équipé"]
+    },
+    {
+      "id": "gros-oeuvre",
+      "nom": "Gros œuvre",
+      "description": "Tout ce qui touche à la structure du bâtiment : ouvrir un mur porteur, créer une dalle, réaliser une chape, modifier les fondations, construire une extension. Obligatoirement avec un professionnel pour tout ce qui est porteur.",
+      "ordre_intervention": 5,
+      "type": "les deux",
+      "exemples_metiers": ["maçon", "bétonneur", "terrassier"]
+    },
+    {
+      "id": "charpente",
+      "nom": "Charpente",
+      "description": "Refaire ou modifier la charpente du toit : ajouter des poutres, transformer les combles en surface habitable, remplacer une charpente abîmée. Travail technique qui demande une vraie expertise structurelle.",
+      "ordre_intervention": 6,
+      "type": "les deux",
+      "exemples_metiers": ["charpentier bois", "charpentier métallique"]
+    },
+    {
+      "id": "couverture",
+      "nom": "Couverture et zinguerie",
+      "description": "Refaire le toit : tuiles, ardoises, zinc, gouttières, descentes d'eau de pluie. Indispensable de mettre la maison hors d'eau avant de continuer les travaux intérieurs.",
+      "ordre_intervention": 7,
+      "type": "les deux",
+      "exemples_metiers": ["couvreur", "zingueur"]
+    },
+    {
+      "id": "etancheite",
+      "nom": "Étanchéité",
+      "description": "Empêcher l'eau d'entrer là où elle ne doit pas : terrasses, balcons, sous-sols, toitures-terrasses. Souvent invisible mais critique — une erreur ici crée des dégâts pendant des années.",
+      "ordre_intervention": 8,
+      "type": "les deux",
+      "exemples_metiers": ["étancheur", "applicateur de résines"]
+    },
+    {
+      "id": "isolation",
+      "nom": "Isolation",
+      "description": "Isoler murs, sols, combles et toiture pour réduire la facture énergétique. Étape souvent négligée alors que c'est l'investissement le plus rentable sur le long terme. Pose simple en autonomie pour la laine en rouleau.",
+      "ordre_intervention": 9,
+      "type": "les deux",
+      "exemples_metiers": ["isolateur", "calorifugeur", "particulier équipé"]
+    },
+    {
+      "id": "plomberie",
+      "nom": "Plomberie",
+      "description": "Tuyaux d'eau chaude, eau froide, évacuations. À traiter en deux temps : d'abord les passages dans les murs et sols (saignées), puis la pose finale des sanitaires en fin de chantier.",
+      "ordre_intervention": 10,
+      "type": "les deux",
+      "exemples_metiers": ["plombier", "plombier-chauffagiste"]
+    },
+    {
+      "id": "electricite",
+      "nom": "Électricité",
+      "description": "Installation électrique complète : tableau, prises, interrupteurs, éclairage, mise à la terre. Travaux soumis au contrôle Consuel en rénovation lourde, obligatoire avant remise en service du compteur.",
+      "ordre_intervention": 11,
+      "type": "les deux",
+      "exemples_metiers": ["électricien", "domoticien"]
+    },
+    {
+      "id": "chauffage-ventilation",
+      "nom": "Chauffage, ventilation et climatisation",
+      "description": "Chauffage central, pompe à chaleur, poêle à granulés, climatisation, VMC simple ou double flux. Bien dimensionner est plus important que choisir la marque. Plusieurs aides de l'État disponibles.",
+      "ordre_intervention": 12,
+      "type": "les deux",
+      "exemples_metiers": ["chauffagiste", "climaticien", "ventiliste", "fumiste"]
+    },
+    {
+      "id": "menuiseries-interieures",
+      "nom": "Menuiseries intérieures",
+      "description": "Portes intérieures, plinthes, placards sur mesure, escaliers, habillages. À poser avant le placo pour intégrer les huisseries dans les cloisons — c'est l'ordre souvent inversé à tort, qui crée des reprises coûteuses.",
+      "ordre_intervention": 13,
+      "type": "les deux",
+      "exemples_metiers": ["menuisier intérieur", "ébéniste", "escaliéteur", "agenceur"]
+    },
+    {
+      "id": "cloisons",
+      "nom": "Cloisons et plâtrerie",
+      "description": "Monter de nouvelles cloisons en placo ou plâtre, doubler les murs existants, faire des faux plafonds. Étape rapide qui transforme visuellement les volumes. Accessible en autonomie avec un peu de méthode.",
+      "ordre_intervention": 14,
+      "type": "les deux",
+      "exemples_metiers": ["plaquiste", "plâtrier", "particulier équipé"]
+    },
+    {
+      "id": "revetements-sols",
+      "nom": "Revêtements de sols",
+      "description": "Carrelage, parquet, vinyle, sol PVC, moquette. Choix qui dure 15 à 20 ans, vaut le coup d'y passer du temps. Le carrelage demande de l'expérience, le sol vinyle est très accessible en autonomie.",
+      "ordre_intervention": 15,
+      "type": "les deux",
+      "exemples_metiers": ["carreleur", "parqueteur", "solier moquettiste"]
+    },
+    {
+      "id": "revetements-murs",
+      "nom": "Revêtements muraux",
+      "description": "Peinture, papier peint, faïence (mur de salle de bain et crédence cuisine), enduit décoratif. La peinture est le plus accessible en autonomie ; la faïence demande de la précision.",
+      "ordre_intervention": 16,
+      "type": "les deux",
+      "exemples_metiers": ["peintre", "faïencier", "poseur de papier peint"]
+    },
+    {
+      "id": "cuisine",
+      "nom": "Cuisine",
+      "description": "Installation et raccordements de la cuisine équipée : meubles, plan de travail, électroménager, raccordements eau et électricité. Du kit en autonomie (type IKEA) à la cuisine sur mesure faite par un cuisiniste.",
+      "ordre_intervention": 17,
+      "type": "les deux",
+      "exemples_metiers": ["cuisiniste", "agenceur", "particulier équipé"]
+    },
+    {
+      "id": "menuiseries-exterieures",
+      "nom": "Menuiseries extérieures",
+      "description": "Fenêtres, portes extérieures, baies vitrées, volets, portails. Peut se faire en fin de chantier intérieur pour éviter les chocs et dommages pendant les travaux lourds. Éligible à plusieurs aides de l'État.",
+      "ordre_intervention": 18,
+      "type": "les deux",
+      "exemples_metiers": ["menuisier extérieur", "miroitier", "métallier", "fabricant de volets"]
+    },
+    {
+      "id": "amenagements-exterieurs",
+      "nom": "Aménagements extérieurs et façade",
+      "description": "Ravalement, enduit et peinture extérieure, isolation par l'extérieur, terrasse, jardin, clôtures, portail, allées, piscine, abri de jardin. À planifier en parallèle ou en fin de chantier intérieur. Nécessite souvent une autorisation de la mairie pour le ravalement. Beaucoup de choses faisables en autonomie.",
+      "ordre_intervention": 19,
+      "type": "les deux",
+      "exemples_metiers": ["façadier", "ravaleur", "enduiseur", "peintre extérieur", "paysagiste", "maçon paysager", "clôturiste", "piscinier", "terrassier"]
+    },
+    {
+      "id": "nettoyage",
+      "nom": "Nettoyage de fin de chantier",
+      "description": "Nettoyage complet en fin de chantier : poussière de placo partout, traces de peinture, vitres, sols. Souvent sous-estimé en temps — comptez une bonne journée pour un appartement de 70 m².",
+      "ordre_intervention": 20,
+      "type": "les deux",
+      "exemples_metiers": ["entreprise de nettoyage fin de chantier", "particulier"]
+    },
+    {
+      "id": "reception",
+      "nom": "Réception du chantier",
+      "description": "Vérification finale de tous les travaux, signature du procès-verbal de réception, signalement des dernières réserves à corriger. Acte juridique important : c'est ce qui démarre les garanties (parfait achèvement, biennale, décennale).",
+      "ordre_intervention": 21,
+      "type": "les deux",
+      "exemples_metiers": ["maître d'œuvre", "architecte", "particulier accompagné"]
+    }
+  ]
+}
