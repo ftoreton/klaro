@@ -1,0 +1,811 @@
+{
+  "module": "ventilation_vmc",
+  "warnings_header": [
+    {
+      "id": "warn_001",
+      "level": "danger",
+      "title": "Isoler sans ventiler = piège à humidité",
+      "message": "Toute amélioration de l'étanchéité du logement (isolation, menuiseries neuves) doit être accompagnée d'une ventilation mécanique fonctionnelle. Sans ventilation, condensation et moisissures garanties dans les semaines/mois qui suivent."
+    },
+    {
+      "id": "warn_002",
+      "level": "danger",
+      "title": "Appareil gaz non étanche + VMC = sécurité vitale (CO)",
+      "message": "Vieille chaudière, chauffe-bain, gazinière non raccordée : la VMC devient une question de sécurité vitale. Risque de monoxyde de carbone (CO) en cas de panne ou d'obstruction. Plus de 100 morts par an en France. Dispositif de Sécurité Collectif (DSC) coupant le gaz si VMC s'arrête, OBLIGATOIRE selon configuration. Pro Qualigaz recommandé."
+    },
+    {
+      "id": "warn_003",
+      "level": "danger",
+      "title": "Bâti ancien (< 1948) : règles spécifiques",
+      "message": "Avec murs perspirants (pierre, terre, pisé, colombages), poser une VMC simple flux étanche peut perturber les transferts d'humidité. Avis d'un pro spécialisé bâti ancien fortement recommandé. La VMI (insufflation) ou l'hygroréglable peuvent être plus adaptées."
+    },
+    {
+      "id": "warn_004",
+      "level": "info",
+      "title": "Entrées d'air : à prévoir dès la commande des fenêtres",
+      "message": "Les entrées d'air doivent être commandées en même temps que les fenêtres, pas après. Sans entrées d'air, la VMC ne fonctionne pas correctement (dépression, refoulement de conduits de fumée). Le détail à anticiper IMPÉRATIVEMENT."
+    },
+    {
+      "id": "warn_005",
+      "level": "info",
+      "title": "Détalonnage des portes : 1 cm minimum",
+      "message": "1 cm minimum sous les portes intérieures. Sans détalonnage, l'air ne circule pas des pièces sèches (entrées d'air) vers les pièces humides (extraction) — la VMC ne fait rien d'utile, les pièces humides condensent."
+    },
+    {
+      "id": "warn_006",
+      "level": "info",
+      "title": "RE2020 : test d'infiltrométrie obligatoire",
+      "message": "RE2020 (neuf) impose des seuils d'étanchéité à l'air mesurés par test d'infiltrométrie (Blower-door test) et un renouvellement d'air conforme. Une VMC double flux est souvent indispensable pour atteindre les seuils."
+    }
+  ],
+  "phases": [
+    {
+      "id": "diagnostic_conception",
+      "label": "Diagnostic & conception",
+      "tasks": [
+        {
+          "id": "vmc_001",
+          "title": "Définir précisément le projet",
+          "phase": "diagnostic_conception",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Type de logement (maison, appartement), surface totale, nombre de pièces principales (séjour, chambres, bureau) et de service (cuisine, SDB, WC, buanderie).",
+          "klaro_recommendation": "Faites un plan coté avec : pièces principales et leurs entrées d'air, pièces de service et leurs bouches d'extraction, emplacement envisagé du groupe, tracé des gaines. Ce plan conditionne le dimensionnement et le choix du système.",
+          "common_mistake": "Démarrer sans plan complet et improviser le tracé des gaines au moment de la pose — perte de charge excessive, débits insuffisants.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 68.3 + Arrêté 24/03/1982",
+          "control_questions": [
+            { "question": "Le plan coté liste-t-il toutes les pièces (principales + service) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_002",
+          "title": "Choisir le type de VMC adapté",
+          "phase": "diagnostic_conception",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Simple flux autoréglable (basique, débits constants), hygroréglable A (modulation pièces humides selon humidité) ou B (modulation pièces humides + entrées d'air), double flux (récupération chaleur RE2020), VMR (modulaire) ou VMI (insufflation, bâti ancien).",
+          "klaro_recommendation": "Logement courant : hygroréglable B = meilleur compromis perf/coût. Construction RE2020 ou rénovation BBC : double flux indispensable. Bâti ancien sans VMC existante : VMI à étudier. Vérifiez l'avis technique du fabricant et la compatibilité avec votre logement.",
+          "common_mistake": "Choisir un simple flux autoréglable bas de gamme dans un logement bien isolé — débit constant excessif l'hiver, surconsommation chauffage.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_001"],
+          "norm_reference": "DTU 68.3 + Avis Techniques",
+          "control_questions": [
+            { "question": "Le type de VMC est-il choisi en cohérence avec le bâti et le contexte (RE2020, rénovation, etc.) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_003",
+          "title": "Bâti ancien : privilégier hygro ou VMI",
+          "phase": "diagnostic_conception",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["bati_ancien_avant_1948"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Murs perspirants (pierre, terre, pisé, colombages) gèrent l'humidité par diffusion. Une VMC simple flux étanche peut perturber ces transferts. VMI (insufflation, mise en surpression) ou hygroréglable B sont plus adaptées.",
+          "klaro_recommendation": "VMI = insufflation d'air filtré et préchauffé dans le séjour, met le logement en LÉGÈRE surpression, évite les remontées d'humidité par les murs. Hygroréglable B = bonne alternative classique. Avis d'un pro spécialisé bâti ancien (CMistral, ATHEBA) fortement recommandé. Évitez la VMC simple flux étanche standard.",
+          "common_mistake": "Poser une VMC simple flux étanche dans une maison en pierre du XIXᵉ — humidité piégée, salpêtre, dégradation des enduits.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_002"],
+          "norm_reference": "Règles ATHEBA + DTU 68.3",
+          "control_questions": [
+            { "question": "Système choisi adapté au bâti ancien (hygro B, VMI, ou pro consulté) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_004",
+          "title": "Construction neuve RE2020 : double flux souvent nécessaire",
+          "phase": "diagnostic_conception",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["construction_neuve_re2020"],
+          "explanation": "RE2020 impose une étanchéité à l'air élevée (Q4Pa-surf ≤ 0,6 m³/h/m² maison individuelle) et un renouvellement d'air maîtrisé. Le simple flux ne permet souvent pas d'atteindre les seuils énergétiques. La double flux récupère 70-90% de la chaleur de l'air extrait.",
+          "klaro_recommendation": "Vérifiez avec votre BET thermique (RE2020) si simple flux suffit. Pour BBC et passif : double flux quasi obligatoire. Double flux thermodynamique = combine récupération + production ECS, intéressante en climat doux. Coût double flux : 4000-8000 € posé contre 1500-2500 € simple flux.",
+          "common_mistake": "Choisir simple flux en neuf RE2020 'pour économiser' — non atteinte des seuils énergétiques, refus de conformité, reprise nécessaire.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_002"],
+          "norm_reference": "RE2020 + DTU 68.3",
+          "control_questions": [
+            { "question": "Si neuf RE2020 : choix VMC validé par BET thermique ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_005",
+          "title": "Identifier les pièces principales (entrées d'air)",
+          "phase": "diagnostic_conception",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Pièces principales = séjour, chambres, bureau, salle à manger. Reçoivent les ENTRÉES D'AIR (sur fenêtres ou en façade). L'air frais y entre, traverse le logement vers les pièces humides.",
+          "klaro_recommendation": "Notez sur le plan chaque pièce principale et le nombre d'entrées d'air à prévoir (généralement 1 par pièce). Section débit selon notice : 22 ou 30 m³/h pour autoréglable, 6-45 m³/h pour hygro B. À commander avec les fenêtres : impossible à rajouter proprement après pose.",
+          "common_mistake": "Oublier une chambre dans l'inventaire — entrée d'air manquante, dépression dans la pièce, condensation aux fenêtres.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_001"],
+          "norm_reference": "Arrêté 24/03/1982",
+          "control_questions": [
+            { "question": "Toutes les pièces principales identifiées avec entrées d'air prévues ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_006",
+          "title": "Identifier les pièces de service (bouches d'extraction)",
+          "phase": "diagnostic_conception",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Pièces de service = cuisine, SDB, WC, buanderie, cellier. Reçoivent les BOUCHES D'EXTRACTION. L'air vicié et humide y est aspiré et rejeté à l'extérieur via le groupe.",
+          "klaro_recommendation": "Inventaire complet : 1 bouche par pièce de service. Cuisine = bouche dimensionnée pour fort débit (Ø 125 mm). SDB/WC = Ø 80 mm courant. Buanderie/cellier = bouche selon humidité. Position : en partie haute (à 30 cm du plafond), à distance de la porte (pas de court-circuit air entrant/sortant).",
+          "common_mistake": "Oublier le WC séparé ou la buanderie — humidité et odeurs piégées dans la pièce, retour d'odeurs vers le logement.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_001"],
+          "norm_reference": "Arrêté 24/03/1982",
+          "control_questions": [
+            { "question": "Toutes les pièces de service identifiées avec bouches d'extraction prévues ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_007",
+          "title": "Calculer les débits réglementaires (arrêté 1982)",
+          "phase": "diagnostic_conception",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Débits minimaux par pièce de service selon arrêté du 24 mars 1982. Cuisine : 75 m³/h base / 135 m³/h pointe. SDB : 15-30 m³/h. WC : 15-30 m³/h. Autre pièce humide : 15 m³/h. Cuisine ouverte (sur séjour) : 240 m³/h pointe.",
+          "klaro_recommendation": "Calcul total : somme des débits selon configuration. Exemple maison T4 avec cuisine ouverte + 1 SDB + 1 WC : 240 + 30 + 30 = 300 m³/h pointe. Choisir un groupe VMC dimensionné en conséquence (capacité maxi ≥ débit total pointe). Plaque signalétique du groupe à comparer à la somme.",
+          "common_mistake": "Sous-dimensionner le groupe — débits insuffisants en pointe, condensation et odeurs.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_006"],
+          "norm_reference": "Arrêté 24/03/1982 modifié",
+          "control_questions": [
+            { "question": "Débits totaux calculés et groupe dimensionné en conséquence ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_008",
+          "title": "Définir l'emplacement du groupe VMC",
+          "phase": "diagnostic_conception",
+          "applies_to_vmc_type": ["simple_flux_autoreglable", "simple_flux_hygro_a", "simple_flux_hygro_b", "double_flux", "double_flux_thermo", "vmi"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Combles ISOLÉS idéalement (jamais combles perdus = condensation autour du groupe). Local technique chauffé acceptable. Accessible pour maintenance (dégagement 1 m minimum). Hors pièces de vie (bruit du moteur).",
+          "klaro_recommendation": "Combles aménagés ou combles perdus avec isolation + plancher = OK. Combles perdus non isolés = INTERDIT (condensation, gel possible, durée de vie réduite). Buanderie ou cellier chauffé = bonne alternative. JAMAIS dans une chambre ou un séjour. Prévoyez l'accès facilité (échelle escamotable, trappe d'accès).",
+          "common_mistake": "Groupe en combles perdus non isolés — condensation, corrosion, panne en 3-5 ans au lieu de 15-20 ans.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_002"],
+          "norm_reference": "DTU 68.3 §7",
+          "control_questions": [
+            { "question": "Emplacement du groupe : isolé + accessible + hors pièces de vie ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_009",
+          "title": "Double flux : prise d'air neuf à 8 m de toute pollution",
+          "phase": "diagnostic_conception",
+          "applies_to_vmc_type": ["double_flux", "double_flux_thermo"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "La prise d'air neuf double flux doit être à au moins 8 m de toute source de pollution : sortie de conduit de fumée, voirie passante, autre rejet d'air vicié, chaufferie collective, voisin direct.",
+          "klaro_recommendation": "Mesurez les distances depuis l'emplacement prévu de la prise d'air. Côté façade calme (cour intérieure ou jardin) idéal. Auvent anti-pluie + grille anti-rongeurs. Ne pas confondre prise d'air neuf (entrée du double flux) et entrée d'air sur fenêtre (interdite en double flux).",
+          "common_mistake": "Prise d'air neuf à 2 m d'une sortie de chaudière — gaz de combustion réinjectés dans le logement, intoxication possible.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_008"],
+          "norm_reference": "DTU 68.3 §7.4 + NF EN 13141",
+          "control_questions": [
+            { "question": "Prise d'air neuf à ≥ 8 m de toute source de pollution ?", "type": "number", "expected": "≥ 8 m" }
+          ]
+        },
+        {
+          "id": "vmc_010",
+          "title": "Tracer le réseau de gaines (longueur courte, peu de coudes)",
+          "phase": "diagnostic_conception",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Tracé optimal : longueurs courtes vers chaque bouche, coudes limités. Chaque coude = 1 à 2 m de gaine droite en perte de charge supplémentaire. Trop de coudes = débits effondrés en bout de réseau.",
+          "klaro_recommendation": "Étoile depuis le groupe vers chaque bouche, plutôt que en série. Longueur maxi par branche : 6-8 m courant (notice fabricant). Pas plus de 2-3 coudes par branche. Évitez les Z et les S superflus. Notez la longueur de chaque branche sur le plan pour vérification ultérieure.",
+          "common_mistake": "Tracé 'à l'œil' avec gaines de 12 m et 5 coudes — débits effondrés en bout, réseau à refaire.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_008"],
+          "norm_reference": "DTU 68.3 §8 + Notices fabricants",
+          "control_questions": [
+            { "question": "Tracé des gaines optimisé (longueur < 8 m par branche, ≤ 3 coudes) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_011",
+          "title": "Choisir type et diamètre des gaines",
+          "phase": "diagnostic_conception",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Gaines flexibles isolées (économique, courant simple flux), semi-rigides (compromis perf/coût) ou rigides (meilleure perf, double flux haut de gamme). Ø 80 mm pour bouches secondaires (SDB, WC), Ø 125 mm pour cuisine (débit fort).",
+          "klaro_recommendation": "Simple flux courant : gaines flexibles isolées (laine de verre 25 mm) Ø 80 et 125 mm. Double flux : semi-rigides ou rigides Ø 75-90 mm + collecteur central. Gaine isolée OBLIGATOIRE en zone non chauffée (combles, vide sanitaire) pour éviter condensation. Ne pas mélanger les diamètres entre piquage et bouche.",
+          "common_mistake": "Gaine Ø 80 mm pour cuisine — débit insuffisant en pointe, vapeurs et odeurs qui restent.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_010"],
+          "norm_reference": "DTU 68.3 §8 + NF EN 13141",
+          "control_questions": [
+            { "question": "Diamètres adaptés (Ø 80 secondaires, Ø 125 cuisine) et gaines isolées ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "securite_gaz_co",
+      "label": "Sécurité gaz / CO",
+      "tasks": [
+        {
+          "id": "vmc_012",
+          "title": "Identifier tous les appareils gaz et leur raccordement",
+          "phase": "securite_gaz_co",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["avec_gaz_non_etanche"],
+          "applies_to_context": ["all"],
+          "explanation": "Type C = étanche à l'extérieur (chaudière à ventouse, sans risque CO). Type B = non étanche, prend l'air dans le logement et rejette par conduit (risque CO si conduit obstrué). Atmosphérique = brûle l'air ambiant (chauffe-bain, chauffe-eau cuisine, gazinière).",
+          "klaro_recommendation": "Inventaire complet : chaudière, chauffe-bain, gazinière, chauffe-eau gaz. Type indiqué sur la plaque signalétique. Type B et atmosphérique = appareils à RISQUE CO. La VMC devient leur sécurité vitale (évacue les imbrûlés). Faites valider par un Qualigaz si doute.",
+          "common_mistake": "Considérer 'tout est sûr' sans vérifier le type — chauffe-bain atmosphérique + VMC en panne = intoxication CO mortelle en 1h.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Arrêté 23/02/2009 + DTU 24.1",
+          "control_questions": [
+            { "question": "Tous les appareils gaz identifiés avec type de raccordement ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_013",
+          "title": "DSC obligatoire pour appareils gaz non étanches",
+          "phase": "securite_gaz_co",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["avec_gaz_non_etanche"],
+          "applies_to_context": ["all"],
+          "explanation": "Dispositif de Sécurité Collectif (DSC) : coupe automatiquement l'arrivée de gaz si la VMC s'arrête. OBLIGATOIRE selon arrêté du 23 février 2009 si VMC dessert un logement avec appareil gaz non étanche.",
+          "klaro_recommendation": "DSC = électrovanne sur l'arrivée de gaz, asservie au fonctionnement de la VMC. Pose par Qualigaz obligatoire. Coût ~150-300 € + main d'œuvre. Vérification annuelle par technicien. Sans DSC : si la VMC tombe en panne (pendant des vacances par exemple), accumulation de CO mortelle.",
+          "common_mistake": "Ne pas installer le DSC car 'la VMC ne tombe jamais en panne' — panne possible en hiver (filtres bouchés, moteur grillé), CO accumulé en quelques heures.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["attestation_qualigaz"],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_012"],
+          "norm_reference": "Arrêté 23/02/2009",
+          "control_questions": [
+            { "question": "DSC installé et attestation Qualigaz jointe si appareil gaz non étanche ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_014",
+          "title": "Pro Qualigaz pour validation sécurité",
+          "phase": "securite_gaz_co",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["avec_gaz_non_etanche"],
+          "applies_to_context": ["all"],
+          "explanation": "Validation globale de la sécurité gaz + ventilation par un professionnel certifié Qualigaz : conformité du DSC, intégrité du conduit de fumée, débits de la VMC, détecteur CO.",
+          "klaro_recommendation": "Annuaire Qualigaz sur qualigaz.com. Devis avant intervention. Le pro vérifie : raccordement gaz conforme, conduit de fumée propre et étanche, DSC fonctionnel, débits VMC suffisants pour évacuer les imbrûlés. Délivre une attestation à conserver.",
+          "common_mistake": "Faire intervenir un plombier non certifié Qualigaz — non-conformité réglementaire, refus assurance en cas d'accident.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["attestation_qualigaz"],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_013"],
+          "norm_reference": "Arrêté 23/02/2009 + Qualigaz",
+          "control_questions": [
+            { "question": "Pro Qualigaz a validé l'installation et délivré attestation ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_015",
+          "title": "Détecteur CO à proximité des appareils gaz et chambres",
+          "phase": "securite_gaz_co",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["avec_gaz_non_etanche"],
+          "applies_to_context": ["all"],
+          "explanation": "Détecteur de monoxyde de carbone (CO) : alarme sonore en cas de concentration dangereuse. À installer à proximité des appareils gaz (cuisine, salle de bain avec chauffe-bain) ET dans les chambres. Le CO est inodore, incolore.",
+          "klaro_recommendation": "Détecteur certifié EN 50291 (~30-60 €). Pose à hauteur d'inhalation (1,5 m du sol) ou selon notice. Pile remplacée tous les 1-2 ans. Test mensuel (bouton). Durée de vie 5-10 ans selon modèle. Photographiez les détecteurs en place. Sans détecteur, intoxication insidieuse possible.",
+          "common_mistake": "Détecteur de fumée (DAAF) qui n'est pas un détecteur CO — fumée et CO sont 2 choses différentes, le DAAF ne détecte pas le CO.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["vmc_012"],
+          "norm_reference": "EN 50291 + recommandations INPES",
+          "control_questions": [
+            { "question": "Détecteurs CO certifiés EN 50291 installés (cuisine + chambres) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_016",
+          "title": "Vérifier l'absence de CO en fonctionnement",
+          "phase": "securite_gaz_co",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["avec_gaz_non_etanche"],
+          "applies_to_context": ["all"],
+          "explanation": "Mesure de la concentration en CO ambiante avec un détecteur professionnel ou par un pro Qualigaz, lors du fonctionnement des appareils gaz. Seuil : 0 ppm idéal, jamais > 30 ppm en continu.",
+          "klaro_recommendation": "Mesure par Qualigaz lors de l'attestation. Détecteur ambiant à hauteur d'inhalation. Mesure pendant cycle de chauffe + utilisation cuisine simultanée (pire cas). Si CO détecté : panne possible (conduit de fumée obstrué, échangeur fissuré, VMC sous-dimensionnée). Arrêt immédiat des appareils + pro en urgence.",
+          "common_mistake": "Considérer que 'pas de symptôme' = pas de CO — l'intoxication chronique faible donne maux de tête, fatigue, mais peut tuer si concentration augmente.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["mesure_co"],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_014"],
+          "norm_reference": "Arrêté 23/02/2009",
+          "control_questions": [
+            { "question": "Mesure CO effectuée et conforme (≤ 30 ppm) ?", "type": "number", "expected": "≤ 30 ppm" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "coordination_amont",
+      "label": "Coordination amont (avant tout autre lot)",
+      "tasks": [
+        {
+          "id": "vmc_017",
+          "title": "Coordonner avec le menuisier (entrées d'air dès commande)",
+          "phase": "coordination_amont",
+          "applies_to_vmc_type": ["simple_flux_autoreglable", "simple_flux_hygro_a", "simple_flux_hygro_b", "vmi"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Entrées d'air à prévoir dès la COMMANDE des fenêtres. Usinage en usine sur le profil de menuiserie. Impossible à rajouter proprement après pose (perçages disgracieux, étanchéité compromise).",
+          "klaro_recommendation": "Spécifiez sur le bon de commande : type d'entrée d'air (autoréglable ou hygroréglable selon VMC choisie), débit (22 ou 30 m³/h), couleur (assortie à la menuiserie). Commandez 1 par pièce principale. Pour double flux : NE PAS commander d'entrées d'air sur les fenêtres.",
+          "common_mistake": "Commander les fenêtres sans entrées d'air et devoir percer après — finition catastrophique, étanchéité compromise.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_005"],
+          "norm_reference": "DTU 68.3 + DTU 36.5",
+          "control_questions": [
+            { "question": "Entrées d'air spécifiées sur la commande des menuiseries ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_018",
+          "title": "Coordonner avec le placo (gaines AVANT fermeture)",
+          "phase": "coordination_amont",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Le réseau de gaines doit être posé AVANT fermeture des cloisons et plafonds par le plaquiste. Toutes les traversées de pare-vapeur doivent recevoir un manchon d'étanchéité spécifique.",
+          "klaro_recommendation": "Réunion de coordination ventilation/plaquiste avant fermeture. Gaines posées et étanchéifiées aux traversées avant placo. Manchons préformés (Pro Clima, Siga) pour les traversées de pare-vapeur. Photographiez le réseau complet avant fermeture (preuve d'exécution).",
+          "common_mistake": "Fermer le placo puis percer pour passer les gaines — pare-vapeur troué, étanchéité ruinée, fuites d'air permanentes.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_010"],
+          "norm_reference": "DTU 68.3 + DTU 25.41 + DTU 45.10",
+          "control_questions": [
+            { "question": "Coordination plaquiste validée + gaines posées avant fermeture ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_019",
+          "title": "Coordonner avec le couvreur (sortie de toit)",
+          "phase": "coordination_amont",
+          "applies_to_vmc_type": ["simple_flux_autoreglable", "simple_flux_hygro_a", "simple_flux_hygro_b", "double_flux", "double_flux_thermo", "vmi"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "La sortie de toit (rejet d'air vicié) doit être en zinc ou PVC rigide, étanche à la pluie, à distance des entrées d'air et fenêtres ouvrantes. JAMAIS gaine flexible non isolée sortant directement.",
+          "klaro_recommendation": "Embase étanche selon type de couverture. Sortie chapeau de cheminée pour évacuer haut. Distance minimale aux entrées d'air et fenêtres : 60 cm en horizontal, 1,50 m en vertical (sinon court-circuit). Pour double flux : prise d'air neuf ET rejet, séparés de 8 m minimum.",
+          "common_mistake": "Gaine flexible non isolée sortant en toiture — condensation dans la gaine, eau qui revient au groupe, panne moteur.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_010"],
+          "norm_reference": "DTU 68.3 §7.4 + DTU 40.x",
+          "control_questions": [
+            { "question": "Sortie de toit étanche, distance respectée vis-à-vis entrées d'air/fenêtres ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_020",
+          "title": "Coordonner avec l'électricien (alim dédiée)",
+          "phase": "coordination_amont",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Circuit dédié au tableau électrique avec disjoncteur 2A. Point de commande mural pour boost cuisine/SDB si applicable. Alimentation supplémentaire pour double flux thermodynamique (PAC, filtres, gestion).",
+          "klaro_recommendation": "Spécifications à donner à l'électricien dès la conception. Disjoncteur 2A dédié (NF C 15-100). Câble 1,5 mm² minimum. Point de commande filaire ou télécommande. Pour double flux thermo : alim renforcée + sonde extérieure si gestion. Ne JAMAIS partager le circuit avec autre charge importante (court-circuit possible = arrêt VMC).",
+          "common_mistake": "VMC sur circuit prises de la cuisine — déclenchement du disjoncteur en cas de surcharge, VMC arrêtée plusieurs heures sans le savoir.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "NF C 15-100 + DTU 68.3",
+          "control_questions": [
+            { "question": "Circuit dédié 2A prévu pour la VMC ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_021",
+          "title": "Coordonner avec l'isolation (calorifugeage gaines double flux)",
+          "phase": "coordination_amont",
+          "applies_to_vmc_type": ["double_flux", "double_flux_thermo"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Pour double flux : les gaines d'air neuf et d'air rejeté en zone non chauffée DOIVENT être calorifugées (isolant 25-50 mm). Sinon condensation à l'intérieur des gaines et perte de rendement de l'échangeur.",
+          "klaro_recommendation": "Gaines isolées d'origine (laine + jaquette plastique extérieure) ou calorifugeage rapporté. Continuité absolue de l'isolation : aucun pont thermique. Coordination avec l'isolant des combles : pas de tassement de la laine sur les gaines (perte du calorifugeage). Photographiez les gaines isolées avant fermeture.",
+          "common_mistake": "Gaines non isolées en combles non chauffés — condensation, eau qui s'écoule par les bouches en hiver, perte 30% rendement échangeur.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_010"],
+          "norm_reference": "DTU 68.3 §8 + DTU 45.10",
+          "control_questions": [
+            { "question": "Gaines double flux calorifugées en zone non chauffée ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preparation_chantier",
+      "label": "Préparation du chantier",
+      "tasks": [
+        {
+          "id": "vmc_022",
+          "title": "Vérifier la livraison du matériel",
+          "phase": "preparation_chantier",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Inventaire à réception : groupe, gaines (longueurs et diamètres), bouches d'extraction, entrées d'air, accessoires d'étanchéité (manchons, colliers, ruban étanchéité), kit fixation, sortie de toit.",
+          "klaro_recommendation": "Vérifiez chaque élément contre le bon de commande. Dommages à signaler immédiatement (réserves sur bon de livraison, photos). Conservez les emballages et notices fabricants pendant le chantier (utiles pour la maintenance ultérieure).",
+          "common_mistake": "Démarrer la pose sans vérifier la livraison — pièce manquante découverte au mauvais moment, chantier interrompu.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": []
+        },
+        {
+          "id": "vmc_023",
+          "title": "Préparer les outils",
+          "phase": "preparation_chantier",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Perceuse, scie cloche pour bouches (Ø 100, 125, 160 mm), mètre, niveau bulle ou laser, pince à colliers, cutter, anémomètre pour réception (mesure des débits).",
+          "klaro_recommendation": "Anémomètre indispensable pour la réception (location ~30 €/jour ou achat ~50-150 €). Scie cloche adaptée au matériau (plâtre, bois, métal). Niveau laser autonomique pratique pour la pose horizontale du groupe. Outils en bon état (scie cloche émoussée = trous mal calibrés).",
+          "common_mistake": "Pas d'anémomètre à la réception — mesure des débits impossible, conformité non vérifiable.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": []
+        },
+        {
+          "id": "vmc_024",
+          "title": "Préparer les EPI",
+          "phase": "preparation_chantier",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Masque FFP2 minimum (poussière de placo et fibres laine de verre des gaines), gants, lunettes pour découpe et perçage. FFP3 si manipulation de laine minérale en quantité.",
+          "klaro_recommendation": "Masque FFP2 pour découpe placo et perçage. FFP3 si gaines avec laine de verre apparente. Gants nitrile ou anti-coupure. Lunettes étanches (les fibres passent dans les espaces). Aspiration de la poussière au fur et à mesure.",
+          "common_mistake": "Découper du placo sans masque — poussière fine, irritation respiratoire prolongée.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code travail R4321-1 + EN 149",
+          "control_questions": [
+            { "question": "EPI complets (masque FFP2/3, gants, lunettes) prêts ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pose_groupe",
+      "label": "Pose du groupe VMC",
+      "tasks": [
+        {
+          "id": "vmc_025",
+          "title": "Suspendre le groupe par silentblocs ou sangles antivibration",
+          "phase": "pose_groupe",
+          "applies_to_vmc_type": ["simple_flux_autoreglable", "simple_flux_hygro_a", "simple_flux_hygro_b", "double_flux", "double_flux_thermo", "vmi"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Suspension par silentblocs (caoutchouc absorbant) ou sangles antivibration. JAMAIS vissé directement dans la structure (transmission directe des vibrations et bruits dans tout le bâti).",
+          "klaro_recommendation": "Silentblocs fournis par le fabricant ou en magasin de bricolage. Sangles antivibration en alternative. Vérifiez le poids supporté (groupe + condensation éventuelle pour double flux). Photographiez le groupe suspendu (preuve de mise en œuvre conforme).",
+          "common_mistake": "Visser directement le groupe sur la charpente — bruit de moteur transmis dans tout le bâti, plaintes voisinage en collectif.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["vmc_008"],
+          "norm_reference": "DTU 68.3 §7.2",
+          "control_questions": [
+            { "question": "Groupe suspendu par silentblocs/sangles antivibration et photographié ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_026",
+          "title": "Vérifier la position horizontale du groupe",
+          "phase": "pose_groupe",
+          "applies_to_vmc_type": ["simple_flux_autoreglable", "simple_flux_hygro_a", "simple_flux_hygro_b", "double_flux", "double_flux_thermo", "vmi"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Niveau bulle sur le groupe : doit être horizontal pour assurer l'évacuation correcte des condensats (double flux notamment) et le fonctionnement optimal du moteur.",
+          "klaro_recommendation": "Niveau bulle dans les 2 directions. Tolérance ≤ 2 mm/m. Pour double flux : pente vers l'évacuation des condensats. Si caisson fixé sur structure non plane : utiliser des cales sous les supports pour rattraper.",
+          "common_mistake": "Groupe en pente — condensats qui s'accumulent côté bas, débordement ou panne moteur.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_025"],
+          "norm_reference": "DTU 68.3 + Notice fabricant",
+          "control_questions": [
+            { "question": "Groupe horizontal vérifié au niveau bulle ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_027",
+          "title": "VMR : module dans chaque pièce humide",
+          "phase": "pose_groupe",
+          "applies_to_vmc_type": ["vmr"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "VMR (Ventilation Mécanique Répartie) : un petit module ventilateur dans chaque pièce humide (cuisine, SDB, WC), au lieu d'un groupe central. Pas de réseau de gaines.",
+          "klaro_recommendation": "Pose simple : percement à travers le mur extérieur, module encastré, raccordement électrique. Idéal pour rénovation où passer des gaines est complexe. Vérifiez l'absence de pollution extérieure à proximité (rejet voisin, voirie). Bruit individuel par pièce à considérer.",
+          "common_mistake": "Pose VMR sur mur exposé bruit/pollution — air vicié extérieur réintégré directement par le module quand il est en mode pause.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_002"],
+          "norm_reference": "DTU 68.3 + Notice fabricant",
+          "control_questions": []
+        },
+        {
+          "id": "vmc_028",
+          "title": "Vérifier l'accessibilité pour maintenance",
+          "phase": "pose_groupe",
+          "applies_to_vmc_type": ["simple_flux_autoreglable", "simple_flux_hygro_a", "simple_flux_hygro_b", "double_flux", "double_flux_thermo", "vmi"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Dégagement d'1 m minimum autour du groupe pour la maintenance future (changement filtres double flux, nettoyage moteur, intervention SAV). Capot ouvrable sans démontage du groupe.",
+          "klaro_recommendation": "Vérifiez avant pose : trappe d'accès aux combles dimensionnée. Échelle escamotable confortable. Espace de travail autour du groupe (1 m × 1 m mini face avant). Accès depuis le côté capot (pas dos au mur). Sans accessibilité, toute maintenance future est compromise.",
+          "common_mistake": "Groupe coincé contre une paroi sans dégagement — impossible d'ouvrir le capot, maintenance impossible.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_025"],
+          "norm_reference": "DTU 68.3 §7.3",
+          "control_questions": [
+            { "question": "Dégagement ≥ 1 m autour du groupe pour maintenance ?", "type": "number", "expected": "≥ 1 m" }
+          ]
+        },
+        {
+          "id": "vmc_029",
+          "title": "Double flux : évacuation des condensats avec siphon",
+          "phase": "pose_groupe",
+          "applies_to_vmc_type": ["double_flux", "double_flux_thermo"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Double flux : l'échangeur produit des condensats (eau condensée par refroidissement de l'air extrait). Évacuation par siphon vers une évacuation EU (eaux usées) avec garde d'eau pour éviter les remontées d'odeurs.",
+          "klaro_recommendation": "Siphon obligatoire (évacuation droite remonte les odeurs). Garde d'eau 50 mm minimum. Pente continue vers l'évacuation. Vérifiez périodiquement le siphon (pas de bouchage). Sans évacuation : condensats stagnants, prolifération bactérienne, odeurs.",
+          "common_mistake": "Évacuation sans siphon — odeurs d'égout aspirées par le groupe et soufflées dans le logement.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_025"],
+          "norm_reference": "DTU 68.3 + DTU 60.11",
+          "control_questions": [
+            { "question": "Évacuation condensats avec siphon (garde d'eau 50 mm) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pose_reseau_gaines",
+      "label": "Pose du réseau de gaines",
+      "tasks": [
+        {
+          "id": "vmc_030",
+          "title": "Tirer les gaines selon tracé prévu",
+          "phase": "pose_reseau_gaines",
+          "applies_to_vmc_type": ["simple_flux_autoreglable", "simple_flux_hygro_a", "simple_flux_hygro_b", "double_flux", "double_flux_thermo", "vmi"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Pose des gaines selon le tracé du plan, longueur maximale par bouche respectée (notice fabricant, généralement 6-8 m maxi).",
+          "klaro_recommendation": "Mesurez chaque branche avant pose. Coupez à la bonne longueur (gaines flexibles : pas de surplus enroulé = perte de charge). Si trop court : raccord avec manchon étanche. Marquez les emplacements des bouches sur le placo pour repérage ultérieur.",
+          "common_mistake": "Surplus de gaine flexible enroulé en spirale — perte de charge énorme, débit divisé par 2 sur la branche.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_025"],
+          "norm_reference": "DTU 68.3 §8 + Notices fabricants",
+          "control_questions": [
+            { "question": "Longueur de chaque branche respectée selon notice (≤ 6-8 m) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_031",
+          "title": "Limiter les coudes au strict minimum",
+          "phase": "pose_reseau_gaines",
+          "applies_to_vmc_type": ["simple_flux_autoreglable", "simple_flux_hygro_a", "simple_flux_hygro_b", "double_flux", "double_flux_thermo", "vmi"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Chaque coude = 1 à 2 m de gaine droite en perte de charge supplémentaire. 5 coudes sur une branche de 6 m = équivalent 12 m réels = débit insuffisant.",
+          "klaro_recommendation": "Maximum 2-3 coudes par branche. Préférez les coudes à grand rayon (moins de perte de charge) aux coudes à 90° serrés. Plan de retour : si tracé impose plus de coudes, augmenter le diamètre de la gaine d'une taille pour compenser.",
+          "common_mistake": "Multiplier les coudes pour 'éviter les obstacles' — débit effondré, à l'anémomètre on découvre 50% du nominal.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_030"],
+          "norm_reference": "DTU 68.3 §8",
+          "control_questions": [
+            { "question": "Coudes limités (≤ 3 par branche) avec rayons généreux ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_032",
+          "title": "Légère pente vers le groupe (évacuation condensation)",
+          "phase": "pose_reseau_gaines",
+          "applies_to_vmc_type": ["simple_flux_autoreglable", "simple_flux_hygro_a", "simple_flux_hygro_b", "double_flux", "double_flux_thermo", "vmi"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Gaines posées avec une légère pente continue vers le groupe (pas de point bas piège à eau). Évacue la condensation éventuelle vers le groupe (et son évacuation pour double flux).",
+          "klaro_recommendation": "Pente d'environ 1% (1 cm par mètre). Pas de point bas en U inversé qui bloquerait l'eau. Si point bas inévitable : prévoir un té avec siphon de purge. Sans pente, l'eau de condensation forme une 'flaque' qui réduit le diamètre utile et fait du bruit.",
+          "common_mistake": "Pente vers les bouches (côté froid) — condensation qui s'accumule, dégoulinement par les bouches en hiver.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_030"],
+          "norm_reference": "DTU 68.3 §8",
+          "control_questions": []
+        },
+        {
+          "id": "vmc_033",
+          "title": "Fixer les gaines tous les 1 à 1,5 m",
+          "phase": "pose_reseau_gaines",
+          "applies_to_vmc_type": ["simple_flux_autoreglable", "simple_flux_hygro_a", "simple_flux_hygro_b", "double_flux", "double_flux_thermo", "vmi"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Colliers de fixation tous les 1 à 1,5 m, adaptés au type de gaine. Pas écrasées (réduction du diamètre = perte débit), pas déformées, pas en tension excessive.",
+          "klaro_recommendation": "Colliers métalliques avec joint caoutchouc pour gaines flexibles. Fixation à la charpente ou structure. Pas d'écrasement (laisser la gaine dans sa forme cylindrique). Pas de tension qui décolle les raccords. Inspection visuelle à chaque collier : pas de pli, pas de pincement.",
+          "common_mistake": "Gaine flexible étranglée par un collier serré — diamètre réduit de 20%, débit divisé par 2 sur cette portion.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_030"],
+          "norm_reference": "DTU 68.3 §8",
+          "control_questions": [
+            { "question": "Gaines fixées tous les 1-1,5 m sans écrasement ni tension ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_034",
+          "title": "Raccords étanches (ruban spécifique, JAMAIS scotch d'emballage)",
+          "phase": "pose_reseau_gaines",
+          "applies_to_vmc_type": ["simple_flux_autoreglable", "simple_flux_hygro_a", "simple_flux_hygro_b", "double_flux", "double_flux_thermo", "vmi"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Raccords entre gaines et accessoires (manchons, tés, bouches) avec : manchon de raccordement + collier de serrage + ruban d'étanchéité spécifique aluminium ou ventilation. Le scotch d'emballage classique se décolle en 2-3 ans.",
+          "klaro_recommendation": "Marques : 3M Aluminium, Tesa Alu, ou ruban spécifique fabricant VMC. Pose sur surface propre et sèche. 2 tours de ruban minimum, marouflé fermement. Pour gaines rigides : joint torique caoutchouc + collier serrage. Photographiez chaque raccord d'étanchéité (preuve d'exécution, garantie).",
+          "common_mistake": "Scotch d'emballage standard sur les raccords — décollement progressif, fuite d'air, perte de débit, retour de poussière dans le réseau.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["vmc_030"],
+          "norm_reference": "DTU 68.3 §8 + NF EN 13141",
+          "control_questions": [
+            { "question": "Tous les raccords étanchés au ruban spécifique (jamais scotch d'emballage) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_035",
+          "title": "Double flux : étanchéité réseau encore plus critique",
+          "phase": "pose_reseau_gaines",
+          "applies_to_vmc_type": ["double_flux", "double_flux_thermo"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Sur double flux, toute fuite du réseau d'air neuf = air non filtré et non chauffé qui rejoint le logement = perte de rendement et bruit. Étanchéité parfaite obligatoire.",
+          "klaro_recommendation": "Pose par ventiliste expérimenté recommandée. Test d'étanchéité du réseau possible (mise en pression et mesure de fuite). Classe d'étanchéité A, B, C ou D selon norme : C minimum recommandé pour double flux haute performance. Documentez la classe d'étanchéité dans le PV de réception.",
+          "common_mistake": "Étanchéité approximative sur double flux 'comme du simple flux' — rendement échangeur effondré, ROI dégradé.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_034"],
+          "norm_reference": "NF EN 12237 + DTU 68.3",
+          "control_questions": [
+            { "question": "Réseau double flux classe étanchéité ≥ C ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_036",
+          "title": "Calorifuger les gaines en zone non chauffée",
+          "phase": "pose_reseau_gaines",
+          "applies_to_vmc_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Gaines en combles non chauffés, vide sanitaire, garage : isolation par jaquette laine + film alu (gaines isolées d'origine) ou calorifugeage rapporté. Évite la condensation à l'intérieur des gaines.",
+          "klaro_recommendation": "Isolant 25-50 mm selon zone. Gaines isolées d'origine = simple, propre. Calorifugeage rapporté : laine + jaquette spécifique. Continuité absolue de l'isolant (pas de zone nue). Pour double flux : encore plus critique (rendement échangeur en jeu).",
+          "common_mistake": "Gaine non isolée traversant des combles non chauffés — condensation à l'intérieur, eau qui dégoutte par les bouches, dégâts au plafond.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vmc_030"],
+          "norm_reference": "DTU 68.3 §8",
+          "control_questions": [
+            { "question": "Gaines en zone non chauffée calorifugées (isolant 25-50 mm) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vmc_037",
+          "title": "Photographier le réseau complet AVANT fermeture",
+          "phase": "pose_reseau_gaines",
+          "applies_to_vmc_type": ["simple_flux_autoreglable", "simple_flux_hygro_a", "simple_flux_hygro_b", "double_flux", "double_flux_thermo", "vmi"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_gaz": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Photos du réseau complet avant que le placo ne ferme les plafonds et cloisons. Preuve d'exécution conforme, indispensable pour SAV, garantie, futurs travaux.",
+          "klaro_recommendation": "Photos haute résolution avec mire ou mètre dans le cadre pour échelle. Plusieurs angles. Détails : raccords étanchéifiés, fixations, calorifugeage, manchons traversées. Date EXIF. Archivez avec dossier travaux : papier + cloud. Sans photos, preuve impossible en cas de problème.",
+          "common_mistake": "Fermer les plafonds sans photos — toute intervention future commence par un sondage à l'aveugle, parfois dangereuse.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["vmc_034"],
+          "norm_reference": "Bonnes pratiques + assurance",
+          "control_questions": [
+            { "question": "Photos du réseau complet archivées AVANT fermeture ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    }
+  ]
+}
