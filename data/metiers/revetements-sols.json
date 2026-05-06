@@ -1,0 +1,306 @@
+{
+  "version": "1.0.0",
+  "metier_id": "revetements-sols",
+  "nom": "Revêtements de sols",
+  "norme_reference": "DTU 52.1 (carrelage) / DTU 53.1 (sols souples) / DTU 51.1 (parquet)",
+  "disclaimer": "Klaro est un outil d'aide et de recommandation. Pour les grandes surfaces ou les supports complexes (chauffage au sol, plancher bois), faites valider votre projet par un professionnel.",
+  "regles_metier": {
+    "planeite_regle_2m": "Écart max 5mm sous règle de 2m pour sols souples, 3mm pour carrelage standard, 2mm pour grands formats (>60cm)",
+    "humidite_max_support": "Humidité résiduelle < 3% avant pose (béton / chape)",
+    "joint_minimum": "Joint de 2mm minimum entre carreaux — jamais de pose bord à bord",
+    "double_encollage": "Obligatoire pour les carreaux > 40cm de côté et sur plancher chauffant",
+    "temps_sechage_colle": "Minimum 24h avant de circuler, 48h avant les joints",
+    "temps_sechage_joints": "Minimum 24h avant de laver, 7 jours avant traitement hydrofuge"
+  },
+  "alertes_bloquantes": [
+    {
+      "id": "alerte-01",
+      "message": "Impossible de poser un revêtement sur un sol non plan — ragréage obligatoire avant toute pose",
+      "taches_concernees": ["sol-07"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-02",
+      "message": "Le support doit être sec (humidité < 3%) avant toute pose — risque de décollement et de moisissures",
+      "taches_concernees": ["sol-04"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-03",
+      "message": "Impossible de poser sans calepinage défini — les erreurs de départ sont impossibles à corriger sans tout déposer",
+      "taches_concernees": ["sol-08"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-04",
+      "message": "Temps de séchage colle non respecté — circuler trop tôt déplace les carreaux et crée des désaffleurs",
+      "taches_concernees": ["sol-17"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-05",
+      "message": "Joints périphériques (silicone) obligatoires en pied de mur — un joint rigide en périphérie fissurera systématiquement",
+      "taches_concernees": ["sol-21"],
+      "niveau": "important"
+    }
+  ],
+  "score_chantier": {
+    "calcul": "taches_validees / total_taches * 100",
+    "penalites": [
+      { "condition": "defaut_planeite_non_traite", "malus": 20 },
+      { "condition": "humidite_excessive_ignoree", "malus": 20 },
+      { "condition": "tache_critique_non_traitee", "malus": 10 },
+      { "condition": "alerte_bloquante_active", "malus": 15 }
+    ],
+    "risques_signales": [
+      "Carrelage fissuré si joints de dilatation manquants",
+      "Décollement si double encollage omis sur grands formats",
+      "Moisissures sous revêtement si humidité non vérifiée",
+      "Désaffleur visible si calepinage mal défini"
+    ]
+  },
+  "taches": [
+    {
+      "id": "sol-01",
+      "ordre": 1,
+      "titre": "Définir le type de revêtement",
+      "critique": false,
+      "explication": "Carrelage, parquet massif, parquet flottant, sol PVC, béton ciré... Chaque matériau a ses exigences de support, d'épaisseur et de mise en œuvre. Ce choix conditionne toute la préparation.",
+      "recommandation_klaro": "Carrelage : durable, idéal cuisine/salle de bain, froid au pied, demande un support parfaitement plan. Parquet flottant : rapide à poser, accessible en autonomie, peu exigeant sur la planéité. Sol PVC LVT : le plus simple à poser soi-même, confortable, compatible chauffage au sol. Choisissez aussi en fonction de votre compétence — un mauvais carrelage est très visible.",
+      "erreur_frequente": "Choisir un carrelage grand format (80x80cm ou plus) sans anticiper que la préparation du support doit être quasi parfaite. Un écart de 2mm sous la règle devient rédhibitoire avec ces formats.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": []
+    },
+    {
+      "id": "sol-02",
+      "ordre": 2,
+      "titre": "Vérifier l'état du support",
+      "critique": true,
+      "explication": "Avant tout, inspectez la dalle ou la chape existante : fissures, zones creuses, zones friables, traces d'humidité. Un mauvais support, c'est un revêtement qui cloque, se fissure ou se décolle.",
+      "recommandation_klaro": "Tapotez toute la surface avec un marteau ou une pièce de monnaie — un son creux révèle une zone décollée ou friable à traiter. Vérifiez les fissures : une fissure < 0,5mm est stabilisée et peut être ragréée ; une fissure > 1mm active est structurelle et nécessite un avis professionnel avant de continuer.",
+      "erreur_frequente": "Ragréer par-dessus une zone creuse ou friable sans la traiter. Le ragréage ne tient pas, la zone se détache 6 mois plus tard en emportant le carrelage avec elle.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": []
+    },
+    {
+      "id": "sol-03",
+      "ordre": 3,
+      "titre": "Vérifier la planéité du sol",
+      "critique": true,
+      "explication": "Posez une règle de 2m sur le sol dans plusieurs sens. L'écart toléré varie selon le revêtement choisi : 5mm max pour sols souples, 3mm pour carrelage standard, 2mm pour grands formats.",
+      "recommandation_klaro": "Vérifiez dans au moins 6 directions différentes (sens de la longueur, largeur, et deux diagonales). Marquez au crayon toutes les zones défectueuses — ça vous donne exactement où appliquer le ragréage. Ne skip pas cette étape : un sol qu'on croit plan cache souvent des creux de 8 à 10mm.",
+      "erreur_frequente": "Vérifier la planéité à l'œil ou à l'approximation. Le carrelage posé révèle implacablement tous les défauts de niveau — les carreaux sonnent creux, bougent au passage, et finissent par se décoller ou se fissurer.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-02"]
+    },
+    {
+      "id": "sol-04",
+      "ordre": 4,
+      "titre": "Vérifier le taux d'humidité du support",
+      "critique": true,
+      "explication": "Un support trop humide empêche la colle d'adhérer correctement et provoque cloquage, moisissures et décollement à court terme. L'humidité résiduelle doit être inférieure à 3% avant toute pose.",
+      "recommandation_klaro": "Utilisez un humidimètre de surface (20 à 30€) pour mesurer le taux d'humidité en plusieurs points. Pour une dalle neuve ou une chape fraîche : comptez 1 semaine de séchage par centimètre d'épaisseur minimum. Une chape de 5cm = 5 semaines minimum en conditions normales.",
+      "erreur_frequente": "Poser un sol PVC ou un parquet flottant sur une chape encore humide, même légèrement. La vapeur d'eau piégée sous le revêtement crée des moisissures, fait gonfler le parquet, et décolle le PVC en quelques semaines.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-02"]
+    },
+    {
+      "id": "sol-05",
+      "ordre": 5,
+      "titre": "Nettoyer et préparer le support",
+      "critique": true,
+      "explication": "La surface doit être propre, saine, et dépoussiérée avant toute application de produit ou pose. Poussière, huile, laitance de béton et restes de colle ancienne empêchent l'adhérence.",
+      "recommandation_klaro": "Aspirez soigneusement puis passez une brosse métallique sur les zones poussiéreuses ou friables. Les résidus de colle ancienne : grattez à la spatule et poncez si nécessaire. Un sol qui a été peint doit être entièrement décapé — la colle ne tient pas sur de la peinture.",
+      "erreur_frequente": "Appliquer un primaire ou un ragréage directement sur un sol poussiéreux. La laitance de béton et la poussière font écran — le produit n'adhère pas au support et se décolle avec le revêtement.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-03", "sol-04"]
+    },
+    {
+      "id": "sol-06",
+      "ordre": 6,
+      "titre": "Appliquer un primaire d'accrochage",
+      "critique": false,
+      "explication": "Le primaire prépare le support à recevoir le ragréage ou la colle : il régule l'absorption, renforce la surface friable, et améliore l'adhérence. Presque toujours nécessaire sur du béton ou une chape.",
+      "recommandation_klaro": "Choisissez le primaire recommandé par le fabricant du ragréage ou de la colle que vous utiliserez — les produits d'une même gamme sont formulés pour fonctionner ensemble. Appliquez au rouleau en une couche uniforme et laissez sécher jusqu'à l'aspect collant (environ 30 à 60 minutes selon la température).",
+      "erreur_frequente": "Utiliser n'importe quel primaire ou de la colle diluée comme \"équivalent\". Chaque produit est formulé pour une application spécifique — une incompatibilité chimique peut faire décoller le ragréage en blocs.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-05"]
+    },
+    {
+      "id": "sol-07",
+      "ordre": 7,
+      "titre": "Réaliser le ragréage si nécessaire",
+      "critique": true,
+      "explication": "Le ragréage est un mortier fluide qui s'étale et se nivelle seul pour combler les creux et corriger la planéité. Il est obligatoire si votre sol présente des écarts supérieurs aux tolérances du revêtement choisi.",
+      "recommandation_klaro": "Utilisez un ragréage auto-lissant — il se nivelle seul par fluidité, résultat bien plus régulier que le ragréage manuel. Respectez l'épaisseur minimale indiquée (souvent 3mm minimum, 30mm maximum en une passe). Pour les grands défauts, réalisez plusieurs passes en laissant sécher entre chaque.",
+      "erreur_frequente": "Appliquer une épaisseur trop fine de ragréage pour combler un creux important. En dessous de 3mm, le ragréage se fissure en séchant et n'est plus solidaire du support. Le carrelage sonne creux à cet endroit et finit par se décoller.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-06"]
+    },
+    {
+      "id": "sol-08",
+      "ordre": 8,
+      "titre": "Définir le calepinage",
+      "critique": true,
+      "explication": "Le calepinage est le plan de pose de vos carreaux : comment ils s'organisent dans la pièce, où tombent les coupes, et comment la pose est symétrique par rapport aux murs. Une fois parti sur un mauvais calepinage, impossible de corriger sans tout déposer.",
+      "recommandation_klaro": "Posez vos carreaux à sec sur le sol sans colle pour visualiser le résultat avant de commencer. Visez des coupes d'au moins 1/3 de carreau en bordure — moins, ça fait cheap et mal fini. Pour une grande pièce, centrez le calepinage sur l'axe central ou sur l'élément le plus visible (porte d'entrée, baie vitrée).",
+      "erreur_frequente": "Partir d'un angle de mur sans calepinage. On se retrouve avec une bande de 3cm de carrelage coupé d'un côté et un carreau entier de l'autre — l'asymétrie saute aux yeux immédiatement.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-07"]
+    },
+    {
+      "id": "sol-09",
+      "ordre": 9,
+      "titre": "Définir le point de départ de pose",
+      "critique": true,
+      "explication": "Le point de départ est le premier carreau posé, à partir duquel tout le reste s'organise. Un mauvais départ décale toute la pose.",
+      "recommandation_klaro": "Tracez deux lignes guides perpendiculaires (à l'équerre) sur votre sol à partir du point de départ choisi — elles servent de référence tout au long de la pose. Vérifiez l'équerrage avec la règle du 3-4-5 : un triangle dont les côtés mesurent 3, 4 et 5 unités a un angle de 90° exact.",
+      "erreur_frequente": "Prendre un mur comme guide de référence. Les murs ne sont presque jamais parfaitement droits ni perpendiculaires entre eux. Partir d'un mur biaisé fait dériver le calepinage sur toute la longueur de la pièce.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-08"]
+    },
+    {
+      "id": "sol-10",
+      "ordre": 10,
+      "titre": "Prévoir les joints de dilatation",
+      "critique": true,
+      "explication": "Les joints de dilatation permettent au revêtement de se dilater et de se rétracter avec les variations de température et d'humidité sans fissurer ni se soulever. Ils sont obligatoires et ne doivent jamais être remplis de joint rigide.",
+      "recommandation_klaro": "Prévoyez un joint de dilatation périphérique (en pied de chaque mur, colonne, seuil) de 5 à 10mm, à remplir de silicone souple en finition. Pour les grandes surfaces : un joint de fractionnement tous les 25 à 40m² selon le type de carrelage et la présence de chauffage au sol.",
+      "erreur_frequente": "Boucher les joints de dilatation périphériques avec de la colle ou du joint de carrelage rigide. Le carrelage se dilate, pousse sur les murs, et les carreaux se soulèvent ou fissurent — souvent en coin de pièce en premier.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-08"]
+    },
+    {
+      "id": "sol-11",
+      "ordre": 11,
+      "titre": "Préparer la colle adaptée",
+      "critique": true,
+      "explication": "Il existe plusieurs types de colles selon le carreau (poids, format, absorption), le support (béton, ancien carrelage, chauffage au sol) et l'usage (pièce sèche, pièce humide, extérieur). La mauvaise colle = décollement garanti.",
+      "recommandation_klaro": "Règle simple : colle C2 (déformable) pour les grands formats, les pièces humides et le chauffage au sol. Colle C1 pour les petits formats en intérieur sec. Préparez en respectant le ratio eau/poudre exact indiqué sur le sac — trop d'eau diminue la résistance finale de 30%.",
+      "erreur_frequente": "Utiliser la colle la moins chère sans vérifier sa compatibilité avec le carreau et le support. Une colle C1 standard sous un grand format grès cérame sur plancher chauffant : le carreau se décolle dès les premières montées en température.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-01", "sol-07"]
+    },
+    {
+      "id": "sol-12",
+      "ordre": 12,
+      "titre": "Poser les premiers carreaux",
+      "critique": true,
+      "explication": "On commence par les carreaux entiers en partant du point de départ défini. La qualité de ces premiers carreaux conditionne toute la pose — ils servent de référence.",
+      "recommandation_klaro": "Utilisez une règle de guidage (tasseau fixé temporairement) pour tenir le premier rang parfaitement droit. Pour les carreaux > 40cm : double encollage obligatoire — colle sur le sol ET colle au dos du carreau (peigne en V). Frappez chaque carreau avec un maillet en caoutchouc et vérifiez le niveau au laser ou à la règle.",
+      "erreur_frequente": "Encoller seulement le sol pour des grands formats. Sous un grand carreau, la colle ne couvre pas toujours 100% de la surface — les zones sans colle créent des points creux qui fissurent le carreau au passage de charges lourdes.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-09", "sol-10", "sol-11"]
+    },
+    {
+      "id": "sol-13",
+      "ordre": 13,
+      "titre": "Respecter l'alignement et les niveaux",
+      "critique": true,
+      "explication": "Chaque carreau doit être dans le même plan que ses voisins (pas de désaffleur) et suivre les lignes de calepinage. Vérifiez en continu — corriger un carreau colle est facile, corriger un carreau sec est une catastrophe.",
+      "recommandation_klaro": "Vérifiez le niveau tous les 4 à 5 carreaux avec une règle posée en travers. Utilisez des cales nivelantes (système de nivelage) pour les grands formats — elles garantissent l'arasement parfait entre carreaux pendant le séchage. Nettoyez la colle qui remonte dans les joints avant qu'elle sèche.",
+      "erreur_frequente": "Vérifier l'alignement seulement visuellement de haut. On ne voit pas les désaffleurs de face — ils apparaissent à la lumière rasante et sont impossibles à corriger une fois la colle prise.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-12"]
+    },
+    {
+      "id": "sol-14",
+      "ordre": 14,
+      "titre": "Poser les croisillons (écartement)",
+      "critique": false,
+      "explication": "Les croisillons maintiennent un espace régulier entre les carreaux pour le futur joint. La largeur du joint doit être cohérente avec le format et le style voulu.",
+      "recommandation_klaro": "Joint de 2mm : pour les grands formats contemporains (effet épuré). Joint de 3-4mm : standard pour la plupart des carreaux. Joint de 5mm et plus : pour les carreaux rustiques ou faits main. Choisissez votre largeur de joint avant de commencer et ne la changez pas en cours de pose.",
+      "erreur_frequente": "Varier la largeur du joint en cours de pose parce qu'on a mal géré le calepinage. Des joints irréguliers se voient immédiatement et gâchent tout le résultat, même un carrelage de qualité.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-12"]
+    },
+    {
+      "id": "sol-15",
+      "ordre": 15,
+      "titre": "Découper les carreaux",
+      "critique": false,
+      "explication": "Les découpes pour les bordures, angles, passages de tuyaux et seuils se font avec une carrelette (coupe mécanique) ou une meuleuse d'angle avec disque diamant.",
+      "recommandation_klaro": "Pour les coupes droites : carrelette manuelle ou électrique. Pour les découpes complexes (angles rentrants, passages de tuyaux) : meuleuse avec disque diamant à sec, portez lunettes et masque anti-poussière. Trempez la lame dans l'eau pour les coupes délicates — ça réduit l'échauffement et donne un chant plus propre.",
+      "erreur_frequente": "Couper avec une meuleuse sans eau sur les grands formats — le carreau chauffe, se fissure en cours de coupe et le chant est ébréché. Une carrelette électrique avec eau donne un chant net et un travail 3 fois plus rapide.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-13"]
+    },
+    {
+      "id": "sol-16",
+      "ordre": 16,
+      "titre": "Poser les plinthes",
+      "critique": false,
+      "explication": "Les plinthes (carrelage en angle, plinthe bois ou PVC) couvrent le joint périphérique en pied de mur et apportent la finition entre le sol et le mur.",
+      "recommandation_klaro": "Pour les plinthes carrelage : posez-les après les carreaux de sol, jamais avant. Laissez le joint de dilatation en pied de mur (5mm) et recouvrez-le avec la plinthe — il reste fonctionnel mais caché. Pour les plinthes bois ou PVC : posez-les toujours après la peinture des murs.",
+      "erreur_frequente": "Coller les plinthes en bouchant le joint de dilatation périphérique. La plinthe devient rigide, le sol se dilate, et les plinthes se décollent ou se fissurent au niveau des angles.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-15"]
+    },
+    {
+      "id": "sol-17",
+      "ordre": 17,
+      "titre": "Respecter le temps de séchage de la colle",
+      "critique": true,
+      "explication": "Après la pose du dernier carreau, il faut laisser la colle prendre avant de circuler ou de jointоyer. Circuler trop tôt déplace les carreaux et crée des désaffleurs.",
+      "recommandation_klaro": "Temps minimum selon les colles : 24h avant circulation légère, 48h avant le jointoiement, 72h à 7 jours avant de poser des charges lourdes (meubles, équipements). En hiver ou sur chauffage au sol froid, doublez ces temps. Ne mettez pas le chauffage au sol en route avant 21 jours.",
+      "erreur_frequente": "Jointer le lendemain de la pose sans avoir vérifié le temps de séchage de la colle utilisée. Un carreau encore mobile au moment du jointoiement se coince dans sa position décalée — impossible à corriger sans casser le joint.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-16"]
+    },
+    {
+      "id": "sol-18",
+      "ordre": 18,
+      "titre": "Réaliser les joints",
+      "critique": false,
+      "explication": "Le jointoiement remplit les espaces entre les carreaux avec un mortier de joint. Il protège le support de l'eau, stabilise les carreaux, et donne la finition visuelle finale.",
+      "recommandation_klaro": "Choisissez la couleur de joint avant de commander les carreaux — la couleur du joint change radicalement le rendu final. Application à la raclette en caoutchouc en mouvements diagonaux pour remplir entièrement les joints. Ne travaillez pas par trop grande surface à la fois : le joint doit rester frais pour s'essuyer facilement.",
+      "erreur_frequente": "Laisser le joint durcir trop longtemps avant d'essuyer le surplus. Le mortier de joint durci colle sur le carrelage et nécessite un nettoyage acide — risque d'abîmer le carrelage, surtout les surfaces polies.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-17"]
+    },
+    {
+      "id": "sol-19",
+      "ordre": 19,
+      "titre": "Nettoyer les résidus de joint",
+      "critique": false,
+      "explication": "Après application des joints, il faut essuyer le voile de mortier sur la surface des carreaux avant qu'il ne sèche complètement. C'est l'étape qui révèle le résultat final.",
+      "recommandation_klaro": "Essuyez en deux temps : une première passe avec une éponge humide (bien essorée, pas mouillée — l'eau dilue le joint frais et l'affaiblit). Une deuxième passe avec une peau de chamois ou un chiffon microfibre sec pour éliminer le voile blanc. Changez l'eau souvent.",
+      "erreur_frequente": "Utiliser une éponge trop mouillée pour nettoyer les résidus de joint. L'excès d'eau dilue le liant du joint, le rend poreux et friable. Le joint blanchit, s'effrite prématurément et doit être refait.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-18"]
+    },
+    {
+      "id": "sol-20",
+      "ordre": 20,
+      "titre": "Vérifier la planéité finale",
+      "critique": true,
+      "explication": "Une fois les joints secs, faites un contrôle complet de la surface posée : planéité, alignement, désaffleurs, joints réguliers. C'est le dernier moment pour signaler un défaut avant la finition.",
+      "recommandation_klaro": "Passez la règle de 2m sur toute la surface et vérifiez à l'éclairage rasant (lampe torche au ras du sol). Tapotez les carreaux pour détecter les zones creuses (son creux = pas assez de colle en dessous). Notez tous les défauts et évaluez ce qui peut être corrigé sans tout déposer.",
+      "erreur_frequente": "Valider le sol à la lumière normale debout. La lumière zénithale masque les désaffleurs et les irrégularités de joint qui seront parfaitement visibles à la lumière naturelle rasante ou avec de la lumière solaire basse.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-19"]
+    },
+    {
+      "id": "sol-21",
+      "ordre": 21,
+      "titre": "Traiter les joints périphériques au silicone",
+      "critique": true,
+      "explication": "Les joints en pied de mur, autour des éviers, baignoires, douches et seuils de porte ne doivent pas être faits au mortier de joint rigide — ils doivent être réalisés au silicone souple pour absorber les mouvements.",
+      "recommandation_klaro": "Utilisez un silicone sanitaire (anti-moisissure) en salle de bain, du silicone neutre en intérieur sec. Posez du masking tape de chaque côté du joint pour une finition droite, appliquez le silicone, lissez au doigt mouillé, retirez le tape immédiatement avant que le silicone sèche.",
+      "erreur_frequente": "Remplir les joints périphériques avec du mortier de joint rigide comme le reste du sol. Le bâtiment bouge légèrement, le joint rigide ne suit pas et se fissure — c'est la première infiltration d'eau en salle de bain.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-20"]
+    },
+    {
+      "id": "sol-22",
+      "ordre": 22,
+      "titre": "Protéger le sol après pose",
+      "critique": false,
+      "explication": "Un sol neuf doit être protégé pendant la fin du chantier (peinture, menuiseries, pose de meubles). Une seule rayure ou tache de colle sur du carrelage poli est souvent irréparable.",
+      "recommandation_klaro": "Couvrez tout le sol avec du carton épais ou du film de protection sol dès que la pose est terminée. Fixez-le avec du scotch de chantier (pas de scotch agressif qui arrache les joints). Pour les carrelages poreux ou en pierre naturelle : appliquez un imperméabilisant dès que les joints sont secs pour bloquer les taches.",
+      "erreur_frequente": "Laisser le sol nu pendant les travaux de peinture. Une seule coulure de peinture sur du carrelage poli nécessite souvent un produit chimique pour partir — avec le risque d'attaquer le jointoiement ou le traitement de surface.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["sol-21"]
+    }
+  ]
+}
