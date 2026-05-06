@@ -1,0 +1,284 @@
+{
+  "version": "1.0.0",
+  "metier_id": "revetements-murs",
+  "nom": "Peinture et finitions",
+  "norme_reference": "DTU 59.1 (peinture intérieure) / DTU 59.4 (finitions)",
+  "disclaimer": "Klaro est un outil d'aide et de recommandation. Pour les supports complexes (enduits à la chaux, béton ciré, tadelakt), l'intervention d'un professionnel est conseillée.",
+  "regles_metier": {
+    "ordre_pose": "Toujours du haut vers le bas : plafond d'abord, murs ensuite",
+    "nombre_couches_minimum": "2 couches de finition sur sous-couche — jamais une seule",
+    "sous_couche_obligatoire": "Obligatoire sur tout placo neuf, béton brut, mur ancien lessivé",
+    "temps_sechage_entre_couches": "Minimum 4h entre couches (latex), 24h pour finitions satinées ou brillantes",
+    "detection_defauts": "Lumière rasante (lampe torche au ras du mur) — test implacable avant chaque couche",
+    "temperature_pose": "Ne pas peindre en dessous de 8°C ni au-dessus de 30°C, ni par vent fort si fenêtres ouvertes"
+  },
+  "alertes_bloquantes": [
+    {
+      "id": "alerte-01",
+      "message": "Impossible de peindre sur un support non préparé — joints, trous et imperfections doivent être traités avant toute peinture",
+      "taches_concernees": ["peinture-01", "peinture-02", "peinture-03"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-02",
+      "message": "Ponçage obligatoire avant toute application de peinture — la peinture ne rattrape aucune irrégularité de surface",
+      "taches_concernees": ["peinture-04"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-03",
+      "message": "Sous-couche obligatoire sur placo neuf — sans elle, le placo absorbe irrégulièrement et les joints transparaissent sous la peinture finale",
+      "taches_concernees": ["peinture-07"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-04",
+      "message": "Temps de séchage non respecté — appliquer une couche sur une surface encore humide crée des boursoufflures et détruit l'adhérence",
+      "taches_concernees": ["peinture-11"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-05",
+      "message": "Une seule couche de finition est insuffisante — le résultat sera inégal, les joints transparaîtront et la couleur ne sera pas rendue correctement",
+      "taches_concernees": ["peinture-12"],
+      "niveau": "important"
+    }
+  ],
+  "score_chantier": {
+    "calcul": "taches_validees / total_taches * 100",
+    "penalites": [
+      { "condition": "sous_couche_omise", "malus": 20 },
+      { "condition": "sechage_non_respecte", "malus": 15 },
+      { "condition": "tache_critique_non_traitee", "malus": 10 },
+      { "condition": "alerte_bloquante_active", "malus": 15 }
+    ],
+    "risques_signales": [
+      "Rendu médiocre si sous-couche absente sur placo neuf",
+      "Joints visibles sous peinture si support mal préparé",
+      "Traces de rouleau si peinture trop épaisse ou trop diluée",
+      "Coulures sur les angles si excès de peinture au pinceau"
+    ]
+  },
+  "taches": [
+    {
+      "id": "peinture-01",
+      "ordre": 1,
+      "titre": "Vérifier que le support est prêt",
+      "critique": true,
+      "explication": "La peinture est la dernière étape visible — elle révèle tout ce que les étapes précédentes ont laissé imparfait. Vérifiez que le placo est terminé, les joints secs, et qu'aucun autre corps de métier n'interviendra après vous.",
+      "recommandation_klaro": "Assurez-vous que l'électricien a posé ses boîtes, que le plaquiste a terminé ses joints, et que le sol est protégé ou déjà posé. Peindre avant que l'électricien pose ses plaques de prises, c'est accepter des retouches inévitables. Coordonnez les intervenants avant de commencer.",
+      "erreur_frequente": "Commencer à peindre alors que d'autres corps de métier doivent encore intervenir. Chaque passage suivant abîme la peinture fraîche (projections, chocs, traces de semelles) et impose des retouches qui ne s'accordent jamais parfaitement.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": []
+    },
+    {
+      "id": "peinture-02",
+      "ordre": 2,
+      "titre": "Contrôler la qualité des joints placo",
+      "critique": true,
+      "explication": "Les joints de placo mal faits transparaissent systématiquement sous la peinture, surtout en lumière rasante ou avec une peinture satinée. C'est maintenant qu'on le corrige, pas après la peinture.",
+      "recommandation_klaro": "Éclairez chaque surface avec une lampe torche tenue à 10-15cm du mur en lumière rasante — les défauts deviennent immédiatement visibles. Chaque bosse, creux ou irrégularité de joint doit être corrigé avant de continuer. Si les joints révèlent des creux importants, une passe d'enduit de finition est nécessaire.",
+      "erreur_frequente": "Valider les joints à la lumière normale depuis le milieu de la pièce. Les défauts invisibles dans ces conditions ressortent brutalement quand la pièce est meublée et éclairée avec de la lumière rasante (lampe de bureau, applique murale).",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-01"]
+    },
+    {
+      "id": "peinture-03",
+      "ordre": 3,
+      "titre": "Reboucher les trous et imperfections",
+      "critique": false,
+      "explication": "Avant toute peinture, rebouchez tous les trous de vis, impacts, fissures superficielles et irrégularités avec de l'enduit de rebouchage. La peinture ne comble rien — elle révèle tout.",
+      "recommandation_klaro": "Utilisez un enduit de rebouchage en pâte (type Polyfilla ou équivalent) pour les petits trous — il sèche en 2h et se ponce facilement. Pour les fissures fines : appliquez l'enduit avec le doigt en forçant à l'intérieur, laissez sécher, et poncez au grain 120. Appliquez légèrement en excès — l'enduit se rétracte en séchant.",
+      "erreur_frequente": "Reboucher avec de la peinture épaisse ou du silicone. La peinture ne comble pas, le silicone ne se peint pas. Il existe des produits dédiés pour chaque type de réparation.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-02"]
+    },
+    {
+      "id": "peinture-04",
+      "ordre": 4,
+      "titre": "Poncer les surfaces",
+      "critique": true,
+      "explication": "Le ponçage arase les aspérités, élimine les traces de spatule sur les enduits, et ouvre les pores du support pour une meilleure accroche de la sous-couche. Étape non négociable.",
+      "recommandation_klaro": "Utilisez une cale à poncer au grain 120 pour les murs et les plafonds. Une girafe à poncer (perche avec plateau abrasif) vous permet de travailler debout sur les grandes surfaces — votre dos vous remerciera. Poncez les joints de placo en mouvements circulaires légers : l'objectif est d'araser, pas de creuser.",
+      "erreur_frequente": "Sauter le ponçage pour gagner du temps. Les traces de spatule et les petites bosses d'enduit disparaissent au ponçage mais deviennent parfaitement visibles sous la peinture satinée ou sous un éclairage rasant.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-03"]
+    },
+    {
+      "id": "peinture-05",
+      "ordre": 5,
+      "titre": "Dépoussiérer les supports",
+      "critique": true,
+      "explication": "La poussière de ponçage se redépose sur toutes les surfaces et empêche l'adhérence de la peinture. Elle doit être entièrement éliminée avant d'ouvrir le moindre pot.",
+      "recommandation_klaro": "Passez l'aspirateur sur les murs avec une brosse douce, puis essuyez avec un chiffon légèrement humide. Laissez sécher 30 minutes avant de peindre. La poussière de placo est très fine — elle se voit peu à l'œil nu mais forme une barrière invisible entre la peinture et le support.",
+      "erreur_frequente": "Passer directement à la peinture après le ponçage sans dépoussiérage. La peinture n'adhère pas à la poussière, elle cloque et s'écaille quelques mois plus tard.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-04"]
+    },
+    {
+      "id": "peinture-06",
+      "ordre": 6,
+      "titre": "Protéger sols et menuiseries",
+      "critique": false,
+      "explication": "Avant d'ouvrir le premier pot, protégez tout ce qui ne doit pas être peint : sol, portes, fenêtres, plinthes, interrupteurs, prises. Une projection de peinture sur du carrelage poli est souvent définitive.",
+      "recommandation_klaro": "Utilisez du film de protection plastique + scotch de peintre (scotch bleu) pour les menuiseries. Pour les sols : carton épais ou toile de protection non-tissée (les films plastiques glissent et sont dangereux). Le scotch de peintre doit être retiré avant séchage complet de la peinture pour éviter qu'il arrache la peinture.",
+      "erreur_frequente": "Utiliser du scotch adhésif normal (type Scotch transparent) au lieu du scotch de peintre. À l'arrachage, il emporte la peinture ou laisse une colle résiduelle impossible à nettoyer proprement.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-05"]
+    },
+    {
+      "id": "peinture-07",
+      "ordre": 7,
+      "titre": "Appliquer la sous-couche (impression)",
+      "critique": true,
+      "explication": "La sous-couche uniformise l'absorption du support, renforce l'adhérence de la peinture finale, et évite que les joints de placo transparaissent sous la couleur. Sur placo neuf, elle est obligatoire.",
+      "recommandation_klaro": "Choisissez une sous-couche compatible avec votre peinture finale (même marque si possible). Appliquez au rouleau à poils mi-longs (10-12mm) pour les murs, à poils courts (6mm) pour les plafonds. La sous-couche doit être légèrement diluée (5 à 10% max) pour bien pénétrer le support.",
+      "erreur_frequente": "Utiliser la peinture de finition diluée comme sous-couche. La peinture de finition n'est pas formulée pour pénétrer et uniformiser — elle reste en surface et les zones d'absorption différente restent visibles sous la couleur finale.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-06"]
+    },
+    {
+      "id": "peinture-08",
+      "ordre": 8,
+      "titre": "Vérifier l'absorption du support après sous-couche",
+      "critique": false,
+      "explication": "Une fois la sous-couche sèche, inspectez le résultat à lumière rasante. Si des zones absorbent plus que d'autres (zones mates dans un fond brillant, joints qui transparaissent), une seconde sous-couche est nécessaire.",
+      "recommandation_klaro": "Passez votre lampe torche le long du mur après séchage complet de la sous-couche. Si vous voyez encore des joints ou des variations d'absorption, appliquez une deuxième passe de sous-couche ciblée sur ces zones. Mieux vaut une deuxième sous-couche que trois couches de finition qui ne couvrent pas.",
+      "erreur_frequente": "Passer directement à la peinture de finition sans vérifier l'absorption. Les joints restent visibles sous la couleur finale, peu importe le nombre de couches de peinture appliquées ensuite.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-07"]
+    },
+    {
+      "id": "peinture-09",
+      "ordre": 9,
+      "titre": "Corriger les défauts après sous-couche",
+      "critique": false,
+      "explication": "La sous-couche sèche révèle souvent des défauts qui n'étaient pas visibles sur le placo brut : creux, bosses légères, traces de spatule. C'est le dernier moment pour les corriger sans impacter la peinture finale.",
+      "recommandation_klaro": "Pour les petits défauts révélés par la sous-couche : un peu d'enduit de finition, séchage, ponçage léger au grain 180, et une retouche de sous-couche sur la zone. Cette correction ciblée est invisible sous la peinture finale si elle est bien faite.",
+      "erreur_frequente": "Ignorer les défauts révélés par la sous-couche en espérant que la peinture de finition les cache. La peinture de finition ne cache rien — elle accentue même les défauts en jouant sur les reflets, surtout en finition satinée.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-08"]
+    },
+    {
+      "id": "peinture-10",
+      "ordre": 10,
+      "titre": "Appliquer la première couche de peinture",
+      "critique": false,
+      "explication": "La première couche de finition commence toujours par les plafonds, puis les murs. On travaille en bandes régulières, en croisant les passes rouleau pour éviter les traces.",
+      "recommandation_klaro": "Technique en V ou en W : chargez le rouleau, étalez en V ou W sur 50cm², puis lissez en passes verticales régulières sans recharger. Ne retravaillez pas une zone qui commence à sécher — ça crée des marques. Travaillez toujours pièce entière par pièce entière, jamais demi-mur.",
+      "erreur_frequente": "Travailler par petites zones et revenir sur des zones en train de sécher. Les reprises sur peinture semi-sèche laissent des traces de rouleau visibles qui ne disparaissent pas sous la deuxième couche.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-09"]
+    },
+    {
+      "id": "peinture-11",
+      "ordre": 11,
+      "titre": "Respecter les temps de séchage entre couches",
+      "critique": true,
+      "explication": "Chaque couche doit être complètement sèche avant d'appliquer la suivante. Une deuxième couche sur peinture encore humide crée des boursoufflures, des décollements et des marques permanentes.",
+      "recommandation_klaro": "Temps minimum : 4h pour une peinture latex mate en conditions normales (20°C, 50% d'humidité). Doublez ce temps par temps humide ou froid. Pour les finitions satinées ou brillantes : comptez 24h minimum. Testez avec le dos de la main — si ça colle légèrement, c'est trop tôt.",
+      "erreur_frequente": "Appliquer la seconde couche le soir de la même journée parce que la peinture \"a l'air sèche\". La peinture est sèche en surface mais pas en profondeur. La deuxième couche emprisonne l'humidité et provoque des boursoufflures en séchant.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-10"]
+    },
+    {
+      "id": "peinture-12",
+      "ordre": 12,
+      "titre": "Appliquer la seconde couche",
+      "critique": true,
+      "explication": "La deuxième couche est celle qui donne le rendu final : uniformité, profondeur de couleur, et tenue dans le temps. Une seule couche n'est jamais suffisante, quelle que soit la qualité de la peinture.",
+      "recommandation_klaro": "Appliquez la deuxième couche en sens croisé par rapport à la première (si vous avez fait des passes verticales, faites des passes horizontales). Ça compense les irrégularités de pose et donne une couverture homogène. Même quantité de peinture, même dilution, même rouleau.",
+      "erreur_frequente": "Ne faire qu'une seule couche de finition parce que la couleur \"a l'air de couvrir\". Une seule couche donne un rendu hétérogène visible dès que la pièce est éclairée latéralement. La deuxième couche est le gage de la durabilité et de l'uniformité.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-11"]
+    },
+    {
+      "id": "peinture-13",
+      "ordre": 13,
+      "titre": "Réaliser les finitions aux angles et reprises",
+      "critique": false,
+      "explication": "Les angles rentrants (jonctions mur/plafond, mur/mur) et les découpes autour des fenêtres et portes se font au pinceau coupé. C'est l'étape qui fait la différence entre un rendu amateur et un rendu professionnel.",
+      "recommandation_klaro": "Utilisez un pinceau à tracer de qualité (15-20mm) avec les soies bien droites. Pour un angle net, chargez le pinceau modérément et tracez en appuyant légèrement sur les soies pour qu'elles s'étalent jusqu'à la ligne. La vitesse de passage est plus importante que la pression.",
+      "erreur_frequente": "Faire les angles au rouleau ou avec un pinceau trop chargé. Résultat : bavures dans l'angle, coulures sur le plafond ou la couleur adjacente, et retouches interminables qui créent des surépaisseurs visibles.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-12"]
+    },
+    {
+      "id": "peinture-14",
+      "ordre": 14,
+      "titre": "Peindre plafonds puis murs (ordre logique)",
+      "critique": true,
+      "explication": "On peint toujours dans cet ordre : plafond en premier, murs ensuite. Les projections et coulures du plafond tombent sur des murs pas encore peints — on n'a donc pas à les corriger.",
+      "recommandation_klaro": "Plafond : rouleau à poils courts (6mm), peinture plus diluée (10%), bandes croisées. Murs : rouleau à poils mi-longs (10-12mm), moins dilué. Commencez par les angles au pinceau, puis remplissez au rouleau. Si vous changez de couleur entre plafond et mur, laissez le plafond sécher 24h avant d'attaquer les murs.",
+      "erreur_frequente": "Peindre les murs avant le plafond. Chaque projection ou coulure du plafond se retrouve sur des murs déjà peints et nécessite une retouche — qui ne s'accorde jamais parfaitement au fond.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-07"]
+    },
+    {
+      "id": "peinture-15",
+      "ordre": 15,
+      "titre": "Peindre boiseries et portes",
+      "critique": false,
+      "explication": "Les boiseries (plinthes, encadrements, portes) se peignent en dernier, après les murs. Elles nécessitent une peinture adaptée (glycéro ou acrylique satinée résistante) et une préparation différente des murs.",
+      "recommandation_klaro": "Poncez légèrement les boiseries existantes au grain 180 (adhérence), dépoussiérez, et appliquez une sous-couche boiserie si changement de couleur ou bois nu. Peignez au pinceau plat de 50mm en suivant le sens du bois. Pour les portes : face, chants, puis l'autre face — jamais les deux faces en même temps.",
+      "erreur_frequente": "Peindre les boiseries avec la même peinture acrylique mate que les murs. Les boiseries subissent des chocs et des frottements — une peinture mate ne résiste pas et se tache définitivement dès le premier coup.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-13"]
+    },
+    {
+      "id": "peinture-16",
+      "ordre": 16,
+      "titre": "Appliquer les joints acryliques de finition",
+      "critique": false,
+      "explication": "Le joint acrylique souple comble les micro-espaces entre la peinture et les plinthes, encadrements de portes et fenêtres. Il donne un résultat propre et empêche les infiltrations d'air et de poussière.",
+      "recommandation_klaro": "Appliquez le joint acrylique (pas du silicone — il ne se peint pas) avec un pistolet à cartouche, lissez du doigt mouillé, et essuyez le surplus immédiatement avec un chiffon humide. Le joint acrylique se peint : vous pouvez passer une retouche de peinture dessus une fois sec.",
+      "erreur_frequente": "Utiliser du silicone au lieu du joint acrylique pour les finitions intérieures. Le silicone ne se peint pas — si vous l'appliquez avant la peinture finale, vous aurez une ligne de silicone non peinte bien visible.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-15"]
+    },
+    {
+      "id": "peinture-17",
+      "ordre": 17,
+      "titre": "Nettoyer les coulures et défauts",
+      "critique": false,
+      "explication": "Repérez et éliminez toutes les coulures, traces de rouleau, gouttes séchées et imperfections avant de retirer les protections. Une coulure sèche se racle à la lame de rasoir sans abîmer la peinture si on la traite rapidement.",
+      "recommandation_klaro": "Coulures fraîches : éponge humide essorée, tamponnez sans frotter. Coulures sèches : lame de rasoir tenue à plat (30°) pour les raser, puis retouche légère au pinceau. Traces de rouleau : souvent causées par une peinture trop épaisse ou trop diluée — retouche à sec avec un rouleau légèrement chargé.",
+      "erreur_frequente": "Frotter une coulure fraîche avec un chiffon. On étale la peinture sur une surface plus grande et on crée une tache bien plus visible que la coulure d'origine.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-12"]
+    },
+    {
+      "id": "peinture-18",
+      "ordre": 18,
+      "titre": "Retirer les protections",
+      "critique": false,
+      "explication": "Le scotch de peintre doit être retiré avant le séchage complet de la dernière couche — idéalement dans les 30 minutes à 1 heure après application — pour éviter d'arracher la peinture.",
+      "recommandation_klaro": "Retirez le scotch en tirant à 45° par rapport au mur, lentement et régulièrement. Si la peinture a déjà durci, passez un cutter le long du scotch avant d'arracher pour couper proprement la membrane de peinture et éviter les arrachements.",
+      "erreur_frequente": "Laisser le scotch de peintre en place plusieurs jours après la fin des travaux. Le scotch colle de plus en plus avec le temps et finit par arracher la peinture ou laisser une colle résiduelle impossible à nettoyer sur les menuiseries.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-17"]
+    },
+    {
+      "id": "peinture-19",
+      "ordre": 19,
+      "titre": "Vérifier le rendu final",
+      "critique": true,
+      "explication": "Une fois les protections retirées, inspectez l'ensemble avec un éclairage rasant et depuis la porte d'entrée de chaque pièce. C'est maintenant qu'on voit le résultat réel et qu'on peut encore agir.",
+      "recommandation_klaro": "Testez l'éclairage rasant (lampe torche au ras du mur) ET l'éclairage naturel (fenêtres ouvertes). Vérifiez l'uniformité de la couleur, l'absence de traces de rouleau, la propreté des angles et des découpes. Faites ce contrôle dans les 48h — la peinture continue de sécher et certains défauts s'atténuent, d'autres s'accentuent.",
+      "erreur_frequente": "Valider la peinture uniquement à la lumière artificielle centrale du plafond. La lumière zénithale est la plus flatteuse et masque tous les défauts. La lumière rasante du matin ou d'une lampe d'appoint révèle la réalité.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-18"]
+    },
+    {
+      "id": "peinture-20",
+      "ordre": 20,
+      "titre": "Faire les retouches finales",
+      "critique": false,
+      "explication": "Quelques zones imparfaites sont normales — un angle pas parfaitement net, une micro-coulure, une légère différence de teinte sur une reprise. Les retouches ciblées terminent le travail.",
+      "recommandation_klaro": "Pour les retouches, utilisez la même peinture du même pot que la pose principale — une peinture d'un autre pot même de la même référence peut avoir un léger écart de teinte visible. Appliquez avec un petit pinceau ou un mini-rouleau mousse en fine couche. Une retouche trop épaisse crée une surépaisseur visible.",
+      "erreur_frequente": "Retoucher avec un nouveau pot de peinture acheté plus tard. Même référence, même marque — la teinte varie légèrement d'un lot à l'autre. Le résultat est souvent pire que le défaut d'origine.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["peinture-19"]
+    }
+  ]
+}
