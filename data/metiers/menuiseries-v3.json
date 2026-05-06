@@ -531,6 +531,1075 @@
           ]
         }
       ]
+    },
+    {
+      "id": "pose_menuiserie",
+      "label": "Pose de la menuiserie",
+      "tasks": [
+        {
+          "id": "menu_029",
+          "title": "Présenter la menuiserie à blanc dans l'ouverture",
+          "phase": "pose_menuiserie",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Pose à blanc = présenter la menuiserie sans fixation pour vérifier les jeux périphériques (5-10 mm) et anticiper les ajustements avant la pose définitive.",
+          "klaro_recommendation": "À 2 personnes pour les éléments lourds. Présentez la menuiserie centrée dans l'ouverture, vérifiez visuellement les jeux des 4 côtés. Si jeu > 15 mm sur un côté ou < 3 mm : recalibrez avant fixation. Cette étape évite les mauvaises surprises (menuiserie qui ne rentre pas, jeux trop importants à combler).",
+          "common_mistake": "Fixer directement sans pose à blanc — découvrir un jeu de 25 mm impossible à étancher correctement.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_028"],
+          "norm_reference": "DTU 36.5 §11.1",
+          "control_questions": []
+        },
+        {
+          "id": "menu_030",
+          "title": "Caler la menuiserie correctement",
+          "phase": "pose_menuiserie",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Cales en PVC haute densité sous le dormant, aux 4 angles et sous les montants verticaux. JAMAIS de cale sous le seuil bas central (zone d'évacuation d'eau).",
+          "klaro_recommendation": "Cales d'épaisseur adaptée pour reprendre les jeux (combinez plusieurs cales si nécessaire). 4 cales d'angle minimum, plus 1-2 sous les montants verticaux pour éléments lourds. Vérifiez que le dormant ne fléchit pas au centre. Le seuil bas reste libre pour permettre l'évacuation de l'eau et la dilatation.",
+          "common_mistake": "Caler sous le centre du seuil bas — bouchage du chemin d'évacuation d'eau, infiltrations.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_029"],
+          "norm_reference": "DTU 36.5 §11.2",
+          "control_questions": [
+            { "question": "Cales positionnées aux angles et sous montants verticaux, jamais sous seuil bas central ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_031",
+          "title": "Vérifier aplomb, niveau et équerrage AVANT fixation",
+          "phase": "pose_menuiserie",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Avant toute fixation : aplomb (vertical) sur les montants, niveau (horizontal) sur le dormant haut et seuil, équerrage (diagonales). Tolérance ±1 mm/m.",
+          "klaro_recommendation": "Niveau laser auto-nivelant + niveau à bulle de 2 m. Vérifiez les 2 montants verticaux à l'aplomb, le dormant haut et le seuil au niveau, les diagonales pour l'équerrage. Ajustez les cales si nécessaire. Photographiez la mesure pour archive (preuve d'une pose dans les règles).",
+          "common_mistake": "Fixer la menuiserie sans vérification — fixation hors d'aplomb impossible à corriger ensuite, ouvrant qui frotte ou ne ferme pas.",
+          "pro_recommended": false,
+          "photo_required_before_validation": true,
+          "depends_on": ["menu_030"],
+          "norm_reference": "DTU 36.5 §11.3",
+          "control_questions": [
+            { "question": "Aplomb, niveau, équerrage vérifiés et conformes (±1 mm/m) avant fixation ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_032",
+          "title": "Vérifier les jeux périphériques (5-10 mm)",
+          "phase": "pose_menuiserie",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Jeu de 5 à 10 mm tout autour du dormant pour permettre la dilatation des matériaux et la mise en place de la compribande/joint d'étanchéité.",
+          "klaro_recommendation": "Mesurez les jeux aux 4 côtés. < 5 mm : impossible de poser une compribande efficace, finition compromise. > 10 mm : compribande standard insuffisante, prévoir un calfeutrement isolant complémentaire. Documentez les jeux mesurés.",
+          "common_mistake": "Coller la menuiserie au tableau (sans jeu) en pensant 'mieux étanchéifier' — pas de place pour la compribande, pas d'absorption de la dilatation, fissures à venir.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_031"],
+          "norm_reference": "DTU 36.5 §11.4",
+          "control_questions": [
+            { "question": "Jeu périphérique tout autour (mm) ?", "type": "number", "expected": "5 à 10" }
+          ]
+        },
+        {
+          "id": "menu_033",
+          "title": "Choisir et installer les fixations adaptées",
+          "phase": "pose_menuiserie",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Béton plein : pattes à scellement ou vis béton. Parpaing creux/brique : vis traversantes type Fischer FUR (avec ancrage profond). Bois ou ITE : équerres de fixation. Adaptez SYSTÉMATIQUEMENT au support.",
+          "klaro_recommendation": "Identifiez le matériau du tableau (béton plein, parpaing creux, brique, bois, ITE). Pour parpaing/brique creux : Fischer FUR ou similaire (chevilles à expansion contrôlée), longueur ≥ 100 mm. Béton plein : pattes scellement ou vis SDS adaptées. Bois : vis bois Ø 6 mm minimum. Nombre de fixations : voir notice fabricant menuiserie (en général 2-3 par montant + 2 par traverse).",
+          "common_mistake": "Utiliser une vis classique dans du parpaing creux — la cheville ne se développe pas dans le vide, fixation qui s'arrache au premier mouvement.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_032"],
+          "norm_reference": "DTU 36.5 §11.5",
+          "control_questions": [
+            { "question": "Type de fixation utilisé adapté au support ?", "type": "text", "expected": "Pattes scellement / Fischer FUR / équerres selon support" }
+          ]
+        },
+        {
+          "id": "menu_034",
+          "title": "Fixer en respectant l'ordre (haut, bas, milieu, alternance)",
+          "phase": "pose_menuiserie",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Ordre de fixation : haut, bas, milieu en alternance. Évite de déformer le dormant en serrant tout d'un côté.",
+          "klaro_recommendation": "Première fixation en haut côté gauche. Deuxième en bas côté droit. Troisième en haut côté droit. Quatrième en bas côté gauche. Puis les milieux. Serrez progressivement, pas à fond du premier coup. Re-vérifiez l'aplomb entre chaque fixation. Cette méthode équilibre les contraintes et garde le dormant droit.",
+          "common_mistake": "Fixer tout un côté avant l'autre — le dormant se déforme et ne peut plus être redressé.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_033"],
+          "norm_reference": "DTU 36.5 §11.5",
+          "control_questions": []
+        },
+        {
+          "id": "menu_035",
+          "title": "Re-vérifier aplomb, niveau, équerrage APRÈS fixation",
+          "phase": "pose_menuiserie",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Après serrage des fixations, re-vérifiez systématiquement aplomb, niveau et équerrage. Le serrage peut induire des micro-déformations.",
+          "klaro_recommendation": "Mêmes outils qu'avant fixation. Si défaut > 1 mm/m : desserrer la fixation incriminée, ré-ajuster les cales, re-serrer. Photographiez la vérification finale. Cette double vérification est ce qui distingue une pose pro d'une pose amateur.",
+          "common_mistake": "Considérer le travail terminé sans re-vérification — défauts d'aplomb invisibles à l'œil mais qui se traduisent par un ouvrant qui frotte.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_034"],
+          "norm_reference": "DTU 36.5 §11.6",
+          "control_questions": [
+            { "question": "Aplomb, niveau, équerrage re-vérifiés après fixation ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_036",
+          "title": "Tester l'ouverture et la fermeture",
+          "phase": "pose_menuiserie",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["fenetre", "baie", "porte_entree", "porte_interieure"],
+          "explanation": "L'ouvrant doit fonctionner sans forcer, sans frottement, sans claquement. Test des modes d'ouverture (basculant, oscillo-battant, coulissant).",
+          "klaro_recommendation": "Ouvrez et fermez chaque vantail plusieurs fois. Testez tous les modes (battant + soufflet pour oscillo-battant). Le verrouillage multipoints doit s'engager sans forcer. Si frottement : passer à l'étape de réglage. Si problème majeur : desserrer la fixation incriminée et corriger l'aplomb.",
+          "common_mistake": "Ne pas tester avant de finir la pose — défaut découvert après étanchéité posée, plus difficile à reprendre.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_035"],
+          "norm_reference": "DTU 36.5 §11.7",
+          "control_questions": [
+            { "question": "Ouverture et fermeture franches sans frottement sur tous les ouvrants ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_037",
+          "title": "Régler paumelles, gâches et compressions",
+          "phase": "pose_menuiserie",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["fenetre", "baie", "porte_entree"],
+          "explanation": "Réglage fin : paumelles (jeu vertical et horizontal), gâches (alignement avec les pênes), compressions (joints qui appuient bien). Indispensable pour étanchéité et confort.",
+          "klaro_recommendation": "Paumelles : 3 réglages (vertical, horizontal, compression) accessibles à la clé Allen ou Torx. Gâches : peuvent se déplacer de quelques mm pour aligner. Compressions : jouez sur les excentriques pour serrer/desserrer le joint. Test : une feuille de papier glissée dans le joint fermé ne doit pas s'extraire facilement.",
+          "common_mistake": "Ne pas régler les paumelles à la pose — l'ouvrant frotte légèrement, les joints se tassent, étanchéité dégradée en quelques années.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_036"],
+          "norm_reference": "DTU 36.5 §11.8",
+          "control_questions": [
+            { "question": "Paumelles, gâches et compressions réglées (test feuille papier OK) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etancheite",
+      "label": "Étanchéité (eau dehors, air dedans)",
+      "tasks": [
+        {
+          "id": "menu_038",
+          "title": "Poser la compribande BG1 sur le pourtour extérieur",
+          "phase": "etancheite",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["fenetre", "baie", "porte_entree"],
+          "explanation": "Compribande pré-comprimée BG1 (mousse imprégnée qui se dilate en place) sur tout le pourtour côté extérieur. Étanchéité à l'eau ET à l'air, durable, nettement supérieure au silicone seul.",
+          "klaro_recommendation": "Compribande BG1 (la plus performante) ou BG2 (zone moins exposée). Adaptée au jeu mesuré (compriband de 15-25 mm pour jeu de 5-10 mm). Posez avant la fixation finale ou après selon le système. Le ruban se dilate en quelques heures et bouche complètement le jeu. Indispensable pour étanchéité durable AEV.",
+          "common_mistake": "Se contenter de silicone extérieur — durée de vie 5-10 ans, alors qu'une compribande tient 30+ ans.",
+          "pro_recommended": false,
+          "photo_required_before_validation": true,
+          "depends_on": ["menu_037"],
+          "norm_reference": "DTU 36.5 §12.1",
+          "control_questions": [
+            { "question": "Compribande BG1/BG2 posée sur tout le pourtour extérieur ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_039",
+          "title": "Mastic silicone neutre extérieur en alternative",
+          "phase": "etancheite",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["fenetre", "baie", "porte_entree"],
+          "explanation": "Si pas de compribande : mastic silicone neutre extérieur en cordon continu sur tout le pourtour. SILICONE NEUTRE OBLIGATOIRE (acétique attaque alu, béton et certains PVC).",
+          "klaro_recommendation": "Silicone neutre (sans acide) spécifique extérieur, résistant aux UV et aux variations de température. Cordon régulier de 5-8 mm, lissé au doigt mouillé au savon. Ligne nette des deux côtés (scotch de masquage retiré aussitôt). Privilégiez la compribande quand c'est possible — le silicone reste un compromis.",
+          "common_mistake": "Utiliser un silicone acétique (sentant le vinaigre) sur alu — corrosion du dormant à terme.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_037"],
+          "norm_reference": "DTU 36.5 §12.2 + NF EN 15651",
+          "control_questions": [
+            { "question": "Si silicone : neutre (pas acétique) et continu sur tout le pourtour ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_040",
+          "title": "Mousse expansive : calfeutrement uniquement, JAMAIS étanchéité",
+          "phase": "etancheite",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "La mousse expansive sert UNIQUEMENT au calfeutrement isolant entre dormant et tableau. Ne tient PAS lieu de fixation et N'EST PAS une étanchéité (perméable à l'air et à l'eau à long terme).",
+          "klaro_recommendation": "Mousse PU basse expansion uniquement (haute expansion = trop forte, déforme le dormant). À utiliser après pose de la compribande/silicone, pour combler le jeu intérieur entre dormant et tableau et améliorer l'isolation thermique. Coupez l'excédent au cutter une fois sec, recouvrez au mastic acrylique côté intérieur.",
+          "common_mistake": "Utiliser la mousse comme moyen de fixation principal ou comme étanchéité — la mousse n'est pas durable et la fixation cède au moindre choc.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_038"],
+          "norm_reference": "DTU 36.5 §12.3",
+          "control_questions": [
+            { "question": "Mousse expansive utilisée comme calfeutrement uniquement (pas comme fixation ni étanchéité) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_041",
+          "title": "Étanchéité à l'air côté intérieur",
+          "phase": "etancheite",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["fenetre", "baie", "porte_entree"],
+          "explanation": "Côté intérieur : étanchéité à l'air (membrane d'étanchéité auto-adhésive ou mastic acrylique). Règle DTU : étanchéité à l'air côté chaud (intérieur), étanchéité à l'eau côté froid (extérieur).",
+          "klaro_recommendation": "Membrane d'étanchéité (Compriband Tape, Illbruck, Soudal) collée sur le dormant et le tableau côté intérieur, sur tout le pourtour. Alternative : mastic acrylique peignable en cordon continu. C'est cette étanchéité qui empêche l'air chaud humide de migrer dans le mur (condensation, moisissures). Essentielle pour la performance énergétique réelle.",
+          "common_mistake": "Inverser air/eau (mastic acrylique extérieur, silicone intérieur) — condensation dans le mur, moisissures internes invisibles.",
+          "pro_recommended": false,
+          "photo_required_before_validation": true,
+          "depends_on": ["menu_040"],
+          "norm_reference": "DTU 36.5 §12.4 + RE2020",
+          "control_questions": [
+            { "question": "Étanchéité à l'air côté intérieur réalisée (membrane ou acrylique) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_042",
+          "title": "Soigner les angles et points singuliers",
+          "phase": "etancheite",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Angles de tableau, raccords avec appui, raccords avec ITE/enduit : ces points singuliers concentrent les fuites. Traitement spécifique avec accessoires angulaires.",
+          "klaro_recommendation": "Bandes d'angle pré-formées pour les jonctions appui-montant et linteau-montant. Manchettes de raccord pour les passages de gaines (volet roulant). Continuité absolue de la membrane d'étanchéité aux angles. C'est dans les angles que se font 80% des défauts d'étanchéité.",
+          "common_mistake": "Étanchéifier les linéaires droits proprement et bâcler les angles — fuites concentrées aux 4 angles, finition compromise.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_041"],
+          "norm_reference": "DTU 36.5 §12.5",
+          "control_questions": [
+            { "question": "Angles et points singuliers traités avec accessoires dédiés ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_043",
+          "title": "Vérifier la continuité de l'étanchéité",
+          "phase": "etancheite",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Inspection finale : aucun point manquant, aucune bulle dans la membrane, aucun arrachement, aucun cordon de silicone interrompu.",
+          "klaro_recommendation": "Tour complet de la menuiserie côté intérieur ET extérieur. Lampe pour repérer les défauts. Tout point manquant = à reprendre immédiatement avant que les autres lots interviennent. Documentez par photos. Pour test poussé : test à la fumée (Test Blower Door) si le projet l'exige.",
+          "common_mistake": "Laisser un point d'étanchéité défaillant en pensant qu'il sera comblé par l'enduit ou le placo — ces matériaux ne sont pas étanches à l'air.",
+          "pro_recommended": false,
+          "photo_required_before_validation": true,
+          "depends_on": ["menu_042"],
+          "norm_reference": "DTU 36.5 §12.6",
+          "control_questions": [
+            { "question": "Étanchéité continue intérieur et extérieur (sans manque, bulle, arrachement) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "volets_motorisation",
+      "label": "Volets & motorisation",
+      "tasks": [
+        {
+          "id": "menu_044",
+          "title": "Poser les volets roulants",
+          "phase": "volets_motorisation",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["volet_roulant"],
+          "explanation": "Volets roulants en applique (au-dessus de la menuiserie), en bloc baie (intégrés au châssis) ou intégrés (coffre dans le tableau). Choix selon configuration et esthétique.",
+          "klaro_recommendation": "Bloc baie = solution la plus esthétique et thermique (coffre dans la maison, isolé). Intégré = coffre extérieur visible, plus simple à poser. Applique = pour rénovation simple, perte de clair de jour. Vérifiez la compatibilité du coffre avec l'isolation (Uw cumulé).",
+          "common_mistake": "Poser un coffre extérieur non isolé sur logement BBC — pont thermique majeur qui détruit la performance globale.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_043"],
+          "norm_reference": "DTU 34.4 §6",
+          "control_questions": []
+        },
+        {
+          "id": "menu_045",
+          "title": "Vérifier l'alignement des coulisses et la course du tablier",
+          "phase": "volets_motorisation",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["volet_roulant"],
+          "explanation": "Coulisses verticales d'aplomb et parallèles. Le tablier doit descendre droit sans frottement, s'enrouler sans accrocher dans le coffre.",
+          "klaro_recommendation": "Niveau à bulle sur les deux coulisses, mesurez l'écartement haut et bas (doit être identique au mm près). Faites descendre le tablier en manuel : aucun frottement, aucun bruit anormal. Si frottement : ajustez les coulisses. Le tablier doit s'enrouler complètement dans le coffre sans dépasser.",
+          "common_mistake": "Coulisses non parallèles — le tablier coince à mi-course, blocage et risque de casse.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_044"],
+          "norm_reference": "DTU 34.4 §7",
+          "control_questions": [
+            { "question": "Coulisses parallèles et tablier qui descend droit sans frottement ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_046",
+          "title": "Poser les volets battants",
+          "phase": "volets_motorisation",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["volet_battant"],
+          "explanation": "Pivots scellés ou vissés dans la maçonnerie, espagnolettes ou crémone, arrêts de volets (limitent l'ouverture), sécurités anti-vent (clenches).",
+          "klaro_recommendation": "Pivots à hauteurs précises (selon notice) pour que les vantaux s'ouvrent à 180° sans toucher le mur. Espagnolette ou crémone bien réglée pour fermeture franche. Arrêts de volets en position ouverte ET fermée (sinon claquement au vent). Anti-vent OBLIGATOIRES en zone exposée.",
+          "common_mistake": "Sauter les arrêts ou les anti-vent — claquement au moindre vent, casse des vantaux ou du mur dans les coups de vent forts.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_043"],
+          "norm_reference": "DTU 34.4 §8",
+          "control_questions": [
+            { "question": "Arrêts de volets et sécurités anti-vent posés ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_047",
+          "title": "Coordonner avec l'élec pour les motorisations",
+          "phase": "volets_motorisation",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["volet_roulant", "portail"],
+          "explanation": "Alimentation 230V dédiée pour le moteur, point de commande mural (interrupteur ou télécommande), récepteur radio si centralisation, fil pilote pour pilotage centralisé.",
+          "klaro_recommendation": "L'élec doit avoir tiré l'alimentation AVANT la pose du volet/portail. Vérifiez la présence d'une protection dédiée au tableau (disjoncteur 2A pour volets, 10A pour portail). Pour Sense maison connectée : box compatible (Tahoma, IO, Zigbee). Faites poser par l'élec si vous n'êtes pas sûr — risque sécurité électrique.",
+          "common_mistake": "Tirer l'alim après la pose en saignée — chantier rallongé, finition compromise.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_044"],
+          "norm_reference": "NF C 15-100 + DTU 34.4",
+          "control_questions": [
+            { "question": "Alimentation 230V tirée et protection dédiée installée ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_048",
+          "title": "Régler les fins de course du moteur",
+          "phase": "volets_motorisation",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["volet_roulant"],
+          "explanation": "Fins de course = position haute (tablier complètement enroulé) et position basse (tablier descendu mais sans forcer sur le sol). Réglage précis pour ne pas user le moteur.",
+          "klaro_recommendation": "Suivez la notice du moteur (Somfy, Bubendorff, etc.). Réglage à la télécommande ou à l'aide d'un boîtier de programmation. La position basse doit s'arrêter quand le tablier touche le rebord, pas en forçant. La position haute doit éviter au tablier d'aller au-delà de l'enroulement maximal.",
+          "common_mistake": "Régler la fin de course basse en forçant le tablier sur l'appui — le moteur force et grille en quelques années.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_047"],
+          "norm_reference": "Notice fabricant + DTU 34.4",
+          "control_questions": [
+            { "question": "Fins de course haute et basse réglées sans forcer ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_049",
+          "title": "Tester l'inversion automatique en cas d'obstacle",
+          "phase": "volets_motorisation",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["volet_roulant", "portail"],
+          "explanation": "Sécurité OBLIGATOIRE : si le tablier ou le portail rencontre un obstacle pendant la course, il doit s'arrêter et s'inverser. Test à l'objet (carton ou main) à plusieurs points.",
+          "klaro_recommendation": "Test : interposez un carton (10-15 cm) sous le tablier en descente — il doit remonter immédiatement. Pour portail : interposez un balai dans le passage en fermeture — il doit s'arrêter et rouvrir. Sans ce dispositif, accident grave possible (enfant, animal). Refusez le moteur en service si la sécurité ne fonctionne pas.",
+          "common_mistake": "Considérer le moteur OK sans tester la sécurité d'inversion — accident d'écrasement possible, responsabilité civile et pénale.",
+          "pro_recommended": true,
+          "photo_required_before_validation": true,
+          "depends_on": ["menu_048"],
+          "norm_reference": "NF EN 13241 + DTU 34.4",
+          "control_questions": [
+            { "question": "Inversion automatique testée et fonctionnelle (test obstacle) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_050",
+          "title": "Cellules photoélectriques + barre palpeuse (portail motorisé)",
+          "phase": "volets_motorisation",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["portail"],
+          "explanation": "Pour tout portail motorisé : cellules photoélectriques (faisceau qui détecte un passage) + barre palpeuse (capteur de contact en bas du vantail). Sécurité personnes OBLIGATOIRE.",
+          "klaro_recommendation": "Cellules positionnées à 50 cm du sol environ (détecte enfant/animal). Barre palpeuse en bas du vantail (détecte un objet/personne contre le portail). Test obligatoire au moment de la mise en service. Sans ces deux dispositifs, le portail est non conforme et illégal en accès public.",
+          "common_mistake": "Économiser sur les sécurités d'un portail motorisé — non-conformité légale + risque accident grave (écrasement enfant).",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_047"],
+          "norm_reference": "NF EN 13241 + Décret 2010-1268",
+          "control_questions": [
+            { "question": "Cellules photoélectriques + barre palpeuse posées et testées ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "habillages_finitions",
+      "label": "Habillages & finitions",
+      "tasks": [
+        {
+          "id": "menu_051",
+          "title": "Poser les tapées d'isolation",
+          "phase": "habillages_finitions",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["fenetre", "baie", "porte_entree"],
+          "explanation": "Tapées = élargissements du dormant pour pose en rénovation avec ITE ou cloison épaisse. Permettent de raccorder proprement la menuiserie à la finition extérieure ou au placo.",
+          "klaro_recommendation": "Tapées sur-mesure ou standardisées. Vissées sur le dormant. Étanchéifiées au point de jonction. Indispensables pour pose en applique avec ITE (sinon le dormant disparaît derrière l'isolant).",
+          "common_mistake": "Sauter les tapées sur ITE — dormant noyé sous l'isolant, finition impossible à reprendre.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_043"],
+          "norm_reference": "DTU 36.5 §13.1",
+          "control_questions": []
+        },
+        {
+          "id": "menu_052",
+          "title": "Poser les couvre-joints intérieurs et extérieurs",
+          "phase": "habillages_finitions",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["fenetre", "baie", "porte_entree"],
+          "explanation": "Couvre-joints = profilés (PVC, alu, bois) qui masquent la jonction dormant/maçonnerie. Côté intérieur (esthétique) et côté extérieur (étanchéité + esthétique).",
+          "klaro_recommendation": "Couvre-joints assortis à la menuiserie (couleur, matière). Posés après la finition (peinture, enduit). Coupes d'angle propres à 45° à la boîte à onglet. Fixation par clipsage, vis ou colle néoprène selon modèle. Veillez à la continuité aux angles.",
+          "common_mistake": "Poser le couvre-joint avant peinture intérieure — bavures de peinture sur le couvre-joint, retouches visibles.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_051"],
+          "norm_reference": "DTU 36.5 §13.2",
+          "control_questions": []
+        },
+        {
+          "id": "menu_053",
+          "title": "Joints acryliques de finition intérieure",
+          "phase": "habillages_finitions",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Joint acrylique (peignable) entre couvre-joint et placo, ou entre menuiserie et placo. Lissage au doigt mouillé pour ligne nette.",
+          "klaro_recommendation": "Mastic acrylique blanc ou teinté, peignable. Cordon fin lissé au doigt mouillé au savon. Scotch de masquage des deux côtés pour ligne parfaite. Retiré aussitôt après lissage. Ces joints fins font la différence visuelle finale.",
+          "common_mistake": "Utiliser du silicone aux jonctions intérieures — ne se peint pas, jaunit avec le temps.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_052"],
+          "norm_reference": "DTU 36.5 §13.3 + DTU 59.1",
+          "control_questions": [
+            { "question": "Joints acryliques (jamais silicone) aux jonctions intérieures ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_054",
+          "title": "Coordonner avec l'enduiseur ou le façadier",
+          "phase": "habillages_finitions",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["fenetre", "baie", "porte_entree"],
+          "explanation": "Finition extérieure autour de la menuiserie : enduit, bardage ou ITE. À coordonner avec le façadier qui doit raccorder son enduit/bardage à la menuiserie sans pont thermique ni infiltration.",
+          "klaro_recommendation": "Le façadier intervient APRÈS la pose de la menuiserie et de la compribande. Il doit utiliser un profilé d'arrêt d'enduit ou une bande d'arrêt sur la menuiserie pour une jonction nette et étanche. Pour ITE : raccord avec l'isolant intégré au profilé d'angle.",
+          "common_mistake": "Laisser le façadier finir l'enduit jusqu'au dormant sans profilé — fissure inévitable à la jonction, infiltration à terme.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_043"],
+          "norm_reference": "DTU 26.1 + DTU 36.5",
+          "control_questions": []
+        },
+        {
+          "id": "menu_055",
+          "title": "Nettoyer la menuiserie et retirer les films",
+          "phase": "habillages_finitions",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Films de protection PVC/alu : retirez RAPIDEMENT après pose. Sous l'effet de la chaleur (soleil), la colle se transfère sur le profilé et devient impossible à retirer.",
+          "klaro_recommendation": "Retirez les films dans les jours qui suivent la pose, pas plus tard. Si déjà collés : décapeur thermique (basse température) + grattoir doux + alcool isopropylique. Nettoyage final : eau savonneuse douce, jamais de solvants agressifs sur PVC. Vitres : décollage des étiquettes au cutter spécial vitre.",
+          "common_mistake": "Laisser les films de protection plusieurs mois — colle cuite par le soleil, traces définitives sur le profilé.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_054"],
+          "norm_reference": "Notice fabricant + DTU 36.5",
+          "control_questions": [
+            { "question": "Films de protection retirés rapidement et menuiseries nettoyées ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "menuiseries_interieures",
+      "label": "Menuiseries intérieures (portes & blocs-portes)",
+      "tasks": [
+        {
+          "id": "menu_056",
+          "title": "Choisir le sens d'ouverture",
+          "phase": "menuiseries_interieures",
+          "applies_to_pose_type": ["interieur"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["porte_interieure"],
+          "explanation": "Sens d'ouverture : pousse droite, tire droite, pousse gauche, tire gauche. À VALIDER AVANT commande car non modifiable après fabrication.",
+          "klaro_recommendation": "Convention française : sens nommé en se plaçant côté qui pousse la porte. Pousse droite = la poignée est à droite et on pousse. Pour chaque pièce : la porte ouvre vers l'intérieur de la pièce (sauf WC : vers l'extérieur en cas de malaise). Tracez le sens sur le plan AVANT de commander.",
+          "common_mistake": "Commander sans valider le sens — porte qui s'ouvre dans le mauvais sens, refabrication ou inversion impossible.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "NF P 23-300 + DTU 36.5",
+          "control_questions": [
+            { "question": "Sens d'ouverture validé pour chaque porte AVANT commande ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_057",
+          "title": "Vérifier la hauteur de passage finie",
+          "phase": "menuiseries_interieures",
+          "applies_to_pose_type": ["interieur"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["porte_interieure"],
+          "explanation": "La hauteur de passage doit tenir compte du sol fini (carrelage, parquet, seuil). Hauteur standard 2,04 m de passage finie, à mesurer après pose du sol.",
+          "klaro_recommendation": "Si pose porte AVANT sol : prévoyez l'épaisseur du sol fini + 5 mm de jeu. Si pose APRÈS sol : adaptez la hauteur du bâti. Pour un seuil entre carrelage et parquet : prévoyez la barre de seuil dans la hauteur. Une porte trop courte : courant d'air, intimité dégradée. Une porte trop longue : frottement, blocage.",
+          "common_mistake": "Mesurer la hauteur sur dalle brute sans tenir compte du carrelage — porte qui frotte sur le sol fini.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_056"],
+          "norm_reference": "DTU 36.5 §14.1",
+          "control_questions": [
+            { "question": "Hauteur de passage calculée avec sol fini + 5 mm de jeu ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_058",
+          "title": "Poser pré-cadre pendant placo OU huisserie après placo",
+          "phase": "menuiseries_interieures",
+          "applies_to_pose_type": ["interieur"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["porte_interieure"],
+          "explanation": "2 stratégies : pré-cadre (bâti métallique posé pendant le placo, le placo s'arrête dessus) OU huisserie traditionnelle (bois, posée après placo).",
+          "klaro_recommendation": "Pré-cadre = solution rapide et propre, joint nickel. Huisserie traditionnelle = plus chaleureuse, demande plus de soin de pose. Choisissez en cohérence avec la stratégie placo. Pour bloc-porte (porte + huisserie + chambranles d'usine) : huisserie posée après placo, prête à recevoir la porte.",
+          "common_mistake": "Mélanger pré-cadre et huisserie sans coordination — placo mal arrêté, finition compromise.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_057"],
+          "norm_reference": "DTU 36.5 §14.2",
+          "control_questions": []
+        },
+        {
+          "id": "menu_059",
+          "title": "Caler et fixer le bâti d'aplomb et de niveau",
+          "phase": "menuiseries_interieures",
+          "applies_to_pose_type": ["interieur"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["porte_interieure"],
+          "explanation": "Bâti d'aplomb (vertical) et de niveau (linteau horizontal), équerre. Très exigeant : une porte voilée se voit en permanence et frotte/claque.",
+          "klaro_recommendation": "Cales en bois ou PVC entre bâti et tableau. Niveau à bulle de 2 m sur les deux montants ET le linteau. Diagonales mesurées. Vis longues (≥ 70 mm) à travers le bâti dans le tableau, traversant les cales pour bloquer. 3 fixations par montant minimum.",
+          "common_mistake": "Caler à la louche sans vérifier l'aplomb — porte voilée à vie, frottement permanent.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_058"],
+          "norm_reference": "DTU 36.5 §14.3",
+          "control_questions": [
+            { "question": "Bâti d'aplomb et de niveau (±1 mm/m) avec fixations adaptées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_060",
+          "title": "Régler le vantail",
+          "phase": "menuiseries_interieures",
+          "applies_to_pose_type": ["interieur"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["porte_interieure"],
+          "explanation": "Réglage : paumelles (jeu vertical et horizontal), jeu en haut et en bas (3-5 mm), fermeture franche du pêne dans la gâche, sans forcer.",
+          "klaro_recommendation": "Paumelles ajustables : 3 réglages possibles (vertical, latéral, profondeur). Jeu uniforme tout autour du vantail. Pêne qui s'engage franchement dans la gâche, sans frottement. Test : laissez tomber la porte par son propre poids depuis 45° d'ouverture — elle ne doit ni s'ouvrir ni se refermer toute seule (signe d'aplomb correct).",
+          "common_mistake": "Ne pas régler les paumelles à la pose — la porte se ferme mal, se voile dans le temps.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_059"],
+          "norm_reference": "DTU 36.5 §14.4",
+          "control_questions": [
+            { "question": "Vantail réglé : jeu uniforme, fermeture franche, pas d'auto-fermeture/ouverture ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_061",
+          "title": "Poser les chambranles APRÈS peinture",
+          "phase": "menuiseries_interieures",
+          "applies_to_pose_type": ["interieur"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["porte_interieure"],
+          "explanation": "Chambranles (cache-jonctions entre bâti et placo) posés APRÈS peinture des murs. Évite les bavures de peinture sur les chambranles et les retouches visibles.",
+          "klaro_recommendation": "Chambranles peints en atelier (toutes faces) avant pose. Coupes d'angle à 45° à la boîte à onglet. Fixation par clous sans tête + colle néoprène ou MS. Joint acrylique fin entre chambranle et mur peint. Cette stratégie donne le rendu le plus propre.",
+          "common_mistake": "Poser les chambranles avant peinture pour 'gagner du temps' — peinture qui déborde sur les chambranles, finition d'amateur.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_060"],
+          "norm_reference": "DTU 36.5 §14.5",
+          "control_questions": [
+            { "question": "Chambranles posés APRÈS peinture des murs ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_062",
+          "title": "Poser la quincaillerie finale",
+          "phase": "menuiseries_interieures",
+          "applies_to_pose_type": ["interieur"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["porte_interieure"],
+          "explanation": "Poignées, butoirs de portes (sol ou mur), arrêts magnétiques, plaques de propreté si besoin.",
+          "klaro_recommendation": "Poignées vissées symétriquement des deux côtés. Butoirs de portes obligatoires (sol ou mur) pour éviter que la poignée ne tape le mur — dégradation visible en quelques semaines. Pour portes WC/SDB : verrou condamnation + indicateur (occupé/libre).",
+          "common_mistake": "Sauter les butoirs — la poignée tape le mur, marque permanente sur la peinture, à reprendre.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_061"],
+          "norm_reference": "DTU 36.5 §14.6",
+          "control_questions": [
+            { "question": "Quincaillerie finale posée (poignées, butoirs, verrous) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "controle",
+      "label": "Contrôle qualité",
+      "tasks": [
+        {
+          "id": "menu_063",
+          "title": "Vérifier le fonctionnement de chaque ouvrant",
+          "phase": "controle",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["fenetre", "baie", "porte_entree"],
+          "explanation": "Test final : ouverture, fermeture, verrouillage multipoints, ventilation (oscillo-battant si présent). Aucun frottement, aucun claquement, aucun jeu anormal.",
+          "klaro_recommendation": "Manœuvrez chaque ouvrant 5-10 fois dans tous ses modes. Le verrouillage doit s'engager franchement sans forcer. La ventilation oscillo-battante doit s'enclencher à mi-course. Documentez les défauts pour les corriger avant la réception.",
+          "common_mistake": "Tester rapidement sans vérifier tous les modes — défaut découvert plus tard, plus difficile à corriger.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_055"],
+          "norm_reference": "DTU 36.5 §15.1",
+          "control_questions": [
+            { "question": "Tous les ouvrants fonctionnent dans tous les modes sans défaut ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_064",
+          "title": "Vérifier visuellement l'étanchéité",
+          "phase": "controle",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["fenetre", "baie", "porte_entree"],
+          "explanation": "Aucun jour visible entre dormant et tableau côté intérieur. Joint silicone ou compribande continu côté extérieur. Pas de point lumineux à travers le joint quand on regarde de l'autre côté.",
+          "klaro_recommendation": "Inspection à la lampe de l'intérieur vers l'extérieur (et inversement) : aucun point lumineux ne doit traverser le joint. Test à la flamme (bougie) près des joints : flamme stable = étanche, flamme qui bouge = fuite d'air. Pour test poussé : test Blower Door.",
+          "common_mistake": "Valider sans test visuel approfondi — fuite d'air découverte au premier hiver.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_043"],
+          "norm_reference": "DTU 36.5 §15.2 + RE2020",
+          "control_questions": [
+            { "question": "Étanchéité validée visuellement (pas de jour, joint continu) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_065",
+          "title": "Vérifier le fonctionnement des motorisations et sécurités",
+          "phase": "controle",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["volet_roulant", "portail"],
+          "explanation": "Test complet : montée/descente complète, fins de course, inversion à l'obstacle, télécommande, point de commande mural, cellules photo et barre palpeuse pour portail.",
+          "klaro_recommendation": "Cycle complet pour chaque motorisation. Test des sécurités OBLIGATOIRE (inversion, cellules, palpeuse). Test des modes : commande locale, télécommande, centralisation si présente. Documentez tous les tests par photo/vidéo.",
+          "common_mistake": "Considérer le moteur OK sans tester les sécurités — risque accident grave engagé.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_049", "menu_050"],
+          "norm_reference": "NF EN 13241",
+          "control_questions": [
+            { "question": "Motorisations + sécurités testées et validées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_066",
+          "title": "Vérifier la quincaillerie",
+          "phase": "controle",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Vissage de toutes les vis visibles, serrage des poignées, jeux corrects sur paumelles et gâches, pas de pièce manquante.",
+          "klaro_recommendation": "Tour complet : chaque vis serrée, chaque poignée fixe, chaque pêne qui s'engage. Pour les serrures : test de la clé dans toutes les positions. Vérification que tous les accessoires livrés ont été posés (pas de pièce oubliée dans l'emballage).",
+          "common_mistake": "Laisser des vis non serrées ou des pièces dans l'emballage — défauts qui apparaissent à l'usage.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_062"],
+          "norm_reference": "DTU 36.5 §15.3",
+          "control_questions": []
+        },
+        {
+          "id": "menu_067",
+          "title": "Vérifier l'absence de rayures, écornures et défauts",
+          "phase": "controle",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Inspection visuelle de chaque menuiserie : aucune rayure, aucune écornure, aucun défaut visible (impact, déformation, tache).",
+          "klaro_recommendation": "Tour complet sous éclairage naturel ET artificiel. Marquez les défauts éventuels par photo. Si défaut majeur : faire jouer la garantie fabricant (à signaler immédiatement, dans les jours qui suivent la pose). Conservez les notices et factures pour preuve.",
+          "common_mistake": "Découvrir un défaut majeur après plusieurs mois — la garantie fabricant peut être refusée pour signalement tardif.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_055"],
+          "norm_reference": "DTU 36.5 §15.4",
+          "control_questions": [
+            { "question": "Aucun défaut visible (rayure, écornure, tache, déformation) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "menu_068",
+          "title": "Photographier le résultat final",
+          "phase": "controle",
+          "applies_to_pose_type": ["all"],
+          "applies_to_material": ["all"],
+          "applies_to_element": ["all"],
+          "explanation": "Photos d'ensemble (intérieur ET extérieur) de chaque menuiserie posée. Sert de preuve d'exécution et facilite les interventions futures (SAV, dégât).",
+          "klaro_recommendation": "Photos en plein jour, intérieur et extérieur, pour chaque menuiserie. Conservez aussi les bons de livraison, factures, notices, certificats AEV/Uw, certifications A2P. Archivez en numérique + papier dans un dossier 'Travaux Menuiseries'. Indispensable pour : SAV, vente, expertise sinistre.",
+          "common_mistake": "Ne rien archiver — preuve impossible des performances réelles, SAV compromis.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["menu_067"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Photos finales + dossier complet (factures, certifications) archivés ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
     }
-  ]
+  ],
+  "blocking_points": [
+    {
+      "id": "block_001",
+      "message": "Pas de commande sans cotes vérifiées en 3 points et sans intégration des cotes de finition future.",
+      "blocks_task_id": "menu_012",
+      "requires_task_id": "menu_009"
+    },
+    {
+      "id": "block_002",
+      "message": "Pas de pose sur tableau hors équerrage (> 2 mm/m) sans reprise de maçonnerie.",
+      "blocks_task_id": "menu_029",
+      "requires_task_id": "menu_023"
+    },
+    {
+      "id": "block_003",
+      "message": "Pas de fixation avant vérification d'aplomb, niveau et équerrage (photo obligatoire).",
+      "blocks_task_id": "menu_033",
+      "requires_task_id": "menu_031"
+    },
+    {
+      "id": "block_004",
+      "message": "Pas de mousse expansive comme moyen de fixation principal — calfeutrement uniquement.",
+      "blocks_task_id": "menu_038",
+      "requires_task_id": "menu_034"
+    },
+    {
+      "id": "block_005",
+      "message": "Pas d'étanchéité au silicone seul si compribande disponible — compribande BG1/BG2 prioritaire.",
+      "blocks_task_id": "menu_043",
+      "requires_task_id": "menu_038"
+    },
+    {
+      "id": "block_006",
+      "message": "Pas d'inversion étanchéité air/eau (air côté intérieur, eau côté extérieur).",
+      "blocks_task_id": "menu_043",
+      "requires_task_id": "menu_041"
+    },
+    {
+      "id": "block_007",
+      "message": "Pas de finition extérieure tant que compribande/silicone non posé en continu.",
+      "blocks_task_id": "menu_054",
+      "requires_task_id": "menu_038"
+    },
+    {
+      "id": "block_008",
+      "message": "Pas d'appui posé après la menuiserie en pose neuve — toujours AVANT.",
+      "blocks_task_id": "menu_029",
+      "requires_task_id": "menu_026"
+    },
+    {
+      "id": "block_009",
+      "message": "Pas de motorisation sans cellules photoélectriques + barre palpeuse pour portail.",
+      "blocks_task_id": "menu_065",
+      "requires_task_id": "menu_050"
+    },
+    {
+      "id": "block_010",
+      "message": "Pas de pose en rénovation sur dormant existant si l'ancien dormant est dégradé.",
+      "blocks_task_id": "menu_029",
+      "requires_task_id": "menu_024"
+    },
+    {
+      "id": "block_011",
+      "message": "Pas de pose de chambranles avant peinture des murs.",
+      "blocks_task_id": "menu_061",
+      "requires_task_id": "menu_060"
+    },
+    {
+      "id": "block_012",
+      "message": "Pas de cale sous le seuil bas central — bouchage évacuation d'eau.",
+      "blocks_task_id": "menu_033",
+      "requires_task_id": "menu_030"
+    },
+    {
+      "id": "block_013",
+      "message": "Pas de mise en service motorisation sans test d'inversion à l'obstacle.",
+      "blocks_task_id": "menu_065",
+      "requires_task_id": "menu_049"
+    },
+    {
+      "id": "block_014",
+      "message": "Pas de pose grande baie sans garde-corps si allège < 1 m.",
+      "blocks_task_id": "menu_029",
+      "requires_task_id": "menu_006"
+    },
+    {
+      "id": "block_015",
+      "message": "Pas de commande porte intérieure sans validation du sens d'ouverture.",
+      "blocks_task_id": "menu_058",
+      "requires_task_id": "menu_056"
+    }
+  ],
+  "scoring": {
+    "progression_percent": {
+      "formula": "validated_tasks / total_tasks * 100",
+      "total_tasks": 68,
+      "filtered_by": "applies_to_pose_type INCLUDES pose_type AND applies_to_material INCLUDES material AND applies_to_element INTERSECTS elements"
+    },
+    "safety_score": {
+      "base": 100,
+      "penalties": [
+        {
+          "condition": "Étanchéité air/eau inversée ou absente (menu_041 ou menu_038/039 non validée)",
+          "malus": 30,
+          "category": "critique"
+        },
+        {
+          "condition": "Mousse expansive utilisée comme fixation ou seule étanchéité (menu_040 échouée)",
+          "malus": 30,
+          "category": "critique"
+        },
+        {
+          "condition": "Sécurité motorisation absente (inversion, cellules, palpeuse) (menu_049 ou menu_050 non validée)",
+          "malus": 30,
+          "category": "critique",
+          "applies_to_element": ["volet_roulant", "portail"]
+        },
+        {
+          "condition": "Garde-corps absent si allège < 1 m (menu_006 non validée)",
+          "malus": 30,
+          "category": "critique",
+          "applies_to_element": ["fenetre", "baie"]
+        },
+        {
+          "condition": "Équerrage tableau hors tolérance non corrigé (menu_023 échouée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Aplomb/niveau non vérifiés avant fixation (menu_031 non validée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Fixations inadaptées au support (menu_033 échouée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Vitrage feuilleté absent en allège < 1 m / porte vitrée (menu_005 échouée)",
+          "malus": 20,
+          "category": "critique",
+          "applies_to_element": ["fenetre", "baie", "porte_entree"]
+        },
+        {
+          "condition": "Appui posé après menuiserie en pose neuve (menu_026 non respectée)",
+          "malus": 20,
+          "category": "critique",
+          "applies_to_pose_type": ["pose_neuve"]
+        },
+        {
+          "condition": "Cotes prises en un seul point sans cotes de finition (menu_008/009 échouées)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Pose sur dormant existant dégradé (menu_024 échouée)",
+          "malus": 20,
+          "category": "critique",
+          "applies_to_pose_type": ["renovation_dormant_existant"]
+        },
+        {
+          "condition": "Cale sous seuil bas central (menu_030 échouée)",
+          "malus": 15,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Jeux périphériques hors plage 5-10 mm (menu_032 échouée)",
+          "malus": 15,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Compribande absente, silicone uniquement (menu_038 échouée)",
+          "malus": 10,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Sens d'ouverture non validé avant commande porte intérieure (menu_056 échouée)",
+          "malus": 15,
+          "category": "non_conforme",
+          "applies_to_element": ["porte_interieure"]
+        },
+        {
+          "condition": "Chambranles posés avant peinture (menu_061 échouée)",
+          "malus": 10,
+          "category": "non_conforme",
+          "applies_to_element": ["porte_interieure"]
+        },
+        {
+          "condition": "Films de protection PVC/alu non retirés rapidement (menu_055 échouée)",
+          "malus": 10,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Acclimatation bois < 48h (menu_015 échouée)",
+          "malus": 10,
+          "category": "non_conforme",
+          "applies_to_material": ["bois"]
+        }
+      ]
+    },
+    "thermal_airtightness_score": {
+      "description": "Indicateur de qualité d'étanchéité à l'air et de performance thermique de la pose",
+      "components": [
+        {
+          "id": "compribande",
+          "weight": 25,
+          "description": "Compribande BG1/BG2 posée sur tout le pourtour extérieur",
+          "validates_if": "menu_038 validated"
+        },
+        {
+          "id": "etancheite_interieure",
+          "weight": 30,
+          "description": "Étanchéité à l'air côté intérieur réalisée (membrane ou acrylique)",
+          "validates_if": "menu_041 validated"
+        },
+        {
+          "id": "jeux_controles",
+          "weight": 15,
+          "description": "Jeux périphériques 5-10 mm respectés",
+          "validates_if": "menu_032 validated"
+        },
+        {
+          "id": "angles_traites",
+          "weight": 15,
+          "description": "Angles et points singuliers traités avec accessoires dédiés",
+          "validates_if": "menu_042 validated"
+        },
+        {
+          "id": "continuite_validee",
+          "weight": 15,
+          "description": "Continuité de l'étanchéité validée intérieur et extérieur",
+          "validates_if": "menu_043 validated"
+        }
+      ]
+    },
+    "critical_alerts": [
+      {
+        "id": "alert_etancheite_inversee",
+        "message": "Étanchéité air/eau inversée — condensation dans le mur, moisissures internes à venir.",
+        "triggered_if": "menu_041 not validated OR menu_038 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_mousse_expansive",
+        "message": "Mousse expansive utilisée comme fixation/étanchéité — cède au moindre choc, étanchéité non durable.",
+        "triggered_if": "menu_040 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_securite_motorisation",
+        "message": "Sécurité motorisation absente — risque accident grave (écrasement enfant/animal).",
+        "triggered_if": "(menu_049 not validated OR menu_050 not validated) AND elements INCLUDES ['volet_roulant','portail']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_garde_corps",
+        "message": "Garde-corps absent en allège < 1 m — non conforme, danger de chute, refus assurance.",
+        "triggered_if": "menu_006 not validated AND allege < 1m",
+        "level": "danger"
+      },
+      {
+        "id": "alert_equerrage",
+        "message": "Équerrage tableau hors tolérance — pose impossible d'aplomb et d'équerre simultanément.",
+        "triggered_if": "menu_023 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_aplomb_avant_fixation",
+        "message": "Aplomb/niveau non vérifiés avant fixation — défaut impossible à corriger ensuite.",
+        "triggered_if": "menu_031 not validated AND menu_034 validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_fixations",
+        "message": "Fixations inadaptées au support — la menuiserie peut s'arracher sous l'effort.",
+        "triggered_if": "menu_033 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_vitrage_feuillete",
+        "message": "Vitrage de sécurité absent en allège basse / porte vitrée — risque de blessure grave.",
+        "triggered_if": "menu_005 not validated AND (allege < 1m OR porte_vitree)",
+        "level": "danger"
+      },
+      {
+        "id": "alert_appui",
+        "message": "Appui posé après menuiserie en pose neuve — étanchéité impossible à reprendre.",
+        "triggered_if": "menu_026 not validated AND pose_type == 'pose_neuve'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_cotes",
+        "message": "Cotes prises en un seul point ou sans cotes finition — risque erreur fabrication.",
+        "triggered_if": "menu_008 not validated OR menu_009 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_dormant_degrade",
+        "message": "Pose sur dormant existant dégradé — la nouvelle menuiserie hérite des défauts.",
+        "triggered_if": "menu_024 not validated AND pose_type == 'renovation_dormant_existant'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_seuil_bas",
+        "message": "Cale sous seuil bas central — bouchage évacuation eau, risque infiltration.",
+        "triggered_if": "menu_030 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_chambranles",
+        "message": "Chambranles posés avant peinture — bavures de peinture sur chambranles, finition compromise.",
+        "triggered_if": "menu_061 not validated AND elements INCLUDES 'porte_interieure'",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_films",
+        "message": "Films de protection PVC/alu non retirés à temps — colle cuite par le soleil, traces définitives.",
+        "triggered_if": "menu_055 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_sens_porte",
+        "message": "Sens d'ouverture porte intérieure non validé avant commande — refabrication nécessaire.",
+        "triggered_if": "menu_056 not validated AND elements INCLUDES 'porte_interieure'",
+        "level": "bloquant"
+      }
+    ]
+  }
 }
