@@ -1,0 +1,283 @@
+{
+  "version": "1.0.0",
+  "metier_id": "menuiseries",
+  "nom": "Menuiseries (portes, fenêtres, baies, volets)",
+  "norme_reference": "DTU 36.5 (fenêtres PVC/alu) / DTU 36.1 (bois) / NF EN 14351",
+  "disclaimer": "Klaro est un outil d'aide et de recommandation. Pour les grandes baies vitrées, les portes coupe-feu ou les menuiseries de plus de 2m de large, l'intervention d'un professionnel est fortement conseillée.",
+  "regles_metier": {
+    "jeu_pose": "Jeu de 10 à 15mm entre la menuiserie et le gros œuvre pour permettre la dilatation et le calfeutrement",
+    "etancheite": "Principe SECO : Sec à l'Extérieur, Continu à l'intérieur — étanchéité extérieure drainante, étanchéité intérieure continue à la vapeur",
+    "aplomb_niveau": "Tolérance maximale : 2mm/m en aplomb et en niveau",
+    "fixation": "Minimum 2 points de fixation par traverse + 1 point tous les 60cm sur les montants",
+    "verification_ouverture": "Vérifier ouverture/fermeture à chaque étape — impossible à corriger une fois les finitions posées"
+  },
+  "alertes_bloquantes": [
+    {
+      "id": "alerte-01",
+      "message": "Pose impossible sans mesures précises de l'ouverture — une erreur de 5mm peut rendre la menuiserie inutilisable",
+      "taches_concernees": ["menu-02"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-02",
+      "message": "Pose impossible si le support n'est pas droit et d'aplomb — la menuiserie se déformera et ne s'ouvrira plus correctement",
+      "taches_concernees": ["menu-05"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-03",
+      "message": "Étanchéité extérieure et intérieure obligatoires avant finitions — une menuiserie mal étanchée = infiltrations d'air et d'eau garanties",
+      "taches_concernees": ["menu-12", "menu-13"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-04",
+      "message": "Réglages ouverture/fermeture obligatoires avant pose des habillages — impossible à ajuster une fois les tapées en place",
+      "taches_concernees": ["menu-11"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-05",
+      "message": "Test d'étanchéité à l'air et à l'eau obligatoire avant validation finale — une menuiserie mal posée peut annuler vos aides MaPrimeRénov' en cas de contrôle",
+      "taches_concernees": ["menu-20"],
+      "niveau": "important"
+    }
+  ],
+  "score_chantier": {
+    "calcul": "taches_validees / total_taches * 100",
+    "penalites": [
+      { "condition": "etancheite_incomplete", "malus": 25 },
+      { "condition": "aplomb_hors_tolerance", "malus": 20 },
+      { "condition": "tache_critique_non_traitee", "malus": 10 },
+      { "condition": "alerte_bloquante_active", "malus": 15 }
+    ],
+    "risques_signales": [
+      "Infiltration d'eau si étanchéité extérieure défaillante",
+      "Infiltration d'air si étanchéité intérieure incomplète",
+      "Déformation de l'ouvrant si fixation trop serrée sans jeu de dilatation",
+      "Condensation intérieure si pont thermique en périphérie"
+    ]
+  },
+  "taches": [
+    {
+      "id": "menu-01",
+      "ordre": 1,
+      "titre": "Définir le type de menuiseries",
+      "critique": false,
+      "explication": "PVC, aluminium ou bois : chaque matériau a ses avantages en termes d'isolation, d'entretien, de durabilité et de budget. Ce choix conditionne aussi les aides de l'État disponibles.",
+      "recommandation_klaro": "PVC : meilleur rapport qualité/prix, zéro entretien, très bon isolant. Aluminium : esthétique moderne, durable, plus cher, nécessite une rupture de pont thermique intégrée. Bois : esthétique premium, excellent isolant, entretien tous les 5-7 ans. Pour les aides MaPrimeRénov', vérifiez que la menuiserie choisie atteint Uw ≤ 1,3 W/m²K.",
+      "erreur_frequente": "Choisir le matériau uniquement sur le prix d'achat sans intégrer le coût d'entretien sur 20 ans. Un bois non entretenu se dégrade en 10 ans — le coût total dépasse alors largement celui d'un PVC premium.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": []
+    },
+    {
+      "id": "menu-02",
+      "ordre": 2,
+      "titre": "Prendre les mesures précises des ouvertures",
+      "critique": true,
+      "explication": "La menuiserie est fabriquée sur mesure ou choisie selon les dimensions exactes de votre ouverture. Une erreur de mesure = une commande à refaire et des semaines de délai.",
+      "recommandation_klaro": "Mesurez chaque ouverture en 3 points : en haut, au milieu et en bas pour la largeur ; à gauche, au centre et à droite pour la hauteur. Retenez la mesure la plus petite. Déduisez le jeu de pose (10 à 15mm de chaque côté) pour obtenir la dimension de la menuiserie à commander. Mesurez deux fois, commandez une fois.",
+      "erreur_frequente": "Mesurer une seule fois à un seul endroit. Les tableaux de maçonnerie ne sont presque jamais parfaitement parallèles — une ouverture peut varier de 15 à 20mm entre le haut et le bas.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": []
+    },
+    {
+      "id": "menu-03",
+      "ordre": 3,
+      "titre": "Vérifier l'état des supports",
+      "critique": true,
+      "explication": "Les tableaux (ébrasements) et appuis de fenêtre doivent être solides et sains avant la pose. Un tableau friable ou fissuré ne tient pas les fixations et provoque des infiltrations.",
+      "recommandation_klaro": "Tapotez les tableaux avec un marteau — un son creux signale un enduit décollé à réparer avant la pose. Vérifiez l'absence de fissures actives et de traces d'humidité. En cas de tableau très dégradé, un ragréage solide est nécessaire — la fixation de la menuiserie en dépend directement.",
+      "erreur_frequente": "Poser une menuiserie sur un tableau avec de l'enduit friable. Les chevilles ne tiennent pas, la menuiserie bouge légèrement, et les joints d'étanchéité se fissurent à chaque cycle de dilatation.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": []
+    },
+    {
+      "id": "menu-04",
+      "ordre": 4,
+      "titre": "Préparer les ouvertures",
+      "critique": false,
+      "explication": "Avant d'introduire la menuiserie, nettoyez les tableaux : enlevez les restes d'ancienne menuiserie, les pointes, les restes de mastic, les zones friables. Le jeu de pose doit être uniforme tout autour.",
+      "recommandation_klaro": "Mesurez l'ancienne menuiserie déposée et comparez avec la nouvelle — si les cotes sont différentes, vous devrez peut-être ragréer ou recreuser le tableau. Vérifiez aussi la linéarité du tableau à la règle : un tableau bombé au centre forcera la menuiserie et la déformera à la fermeture.",
+      "erreur_frequente": "Laisser des résidus de mousse ou de mastic ancien dans l'about. La nouvelle menuiserie ne s'assoit pas proprement, le jeu de pose est irrégulier, et l'étanchéité finale est compromise.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["menu-03"]
+    },
+    {
+      "id": "menu-05",
+      "ordre": 5,
+      "titre": "Vérifier les niveaux et aplombs",
+      "critique": true,
+      "explication": "Une menuiserie posée hors niveau ou hors d'aplomb ne s'ouvre plus correctement après quelques mois — l'ouvrant descend sous son propre poids. C'est le point le plus important de toute la pose.",
+      "recommandation_klaro": "Utilisez un niveau à bulle de 1m minimum sur toutes les faces du tableau avant de poser. Si le tableau est hors niveau, il faudra compenser avec des cales pendant la pose. Un niveau laser est idéal pour vérifier d'aplomb sur toute la hauteur — prêtable ou louable pour moins de 30€/jour.",
+      "erreur_frequente": "Se fier à l'aspect visuel du tableau pour évaluer le niveau. Les murs de maçonnerie sont rarement parfaitement verticaux — une erreur d'aplomb de 5mm sur une porte fait décrocher le loquet en quelques mois.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["menu-04"]
+    },
+    {
+      "id": "menu-06",
+      "ordre": 6,
+      "titre": "Positionner la menuiserie à blanc",
+      "critique": true,
+      "explication": "Avant toute fixation, introduisez la menuiserie dans l'ouverture et positionnez-la provisoirement avec des cales pour vérifier que tout est correct : jeux, niveau, aplomb, ouverture des ouvrants.",
+      "recommandation_klaro": "Faites-vous aider — une fenêtre ou baie vitrée pèse entre 30 et 150kg selon le format. Vérifiez que le jeu est bien de 10 à 15mm tout autour. Ouvrez et fermez chaque ouvrant avant de fixer quoi que ce soit — c'est maintenant et seulement maintenant que vous pouvez encore tout repositionner facilement.",
+      "erreur_frequente": "Fixer immédiatement sans essai à blanc. On découvre que l'ouvrant frotte en bas ou que le battant ne ferme pas au loquet — et les fixations sont déjà posées.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["menu-05"]
+    },
+    {
+      "id": "menu-07",
+      "ordre": 7,
+      "titre": "Vérifier l'équerrage",
+      "critique": true,
+      "explication": "La menuiserie doit être parfaitement d'équerre (angles à 90°) dans l'ouverture. Un cadre non-équerre déforme l'ouvrant qui frotte ou ne ferme plus à terme.",
+      "recommandation_klaro": "Mesurez les deux diagonales du dormant (cadre fixe) : elles doivent être égales à ±2mm. Si elles diffèrent, la menuiserie est en losange — agissez sur les cales de réglage pour la ramener en équerre avant de fixer. Vérifiez aussi le gauchissement : posez une règle en travers pour détecter si le cadre est vrillé.",
+      "erreur_frequente": "Négliger la vérification des diagonales et se contenter du niveau. Un cadre peut être de niveau mais vrillé ou losangé — l'ouvrant ferme bien au départ et commence à accrocher après quelques cycles de dilatation.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["menu-06"]
+    },
+    {
+      "id": "menu-08",
+      "ordre": 8,
+      "titre": "Caler la menuiserie",
+      "critique": false,
+      "explication": "Les cales maintiennent la menuiserie en position pendant la fixation et répartissent les charges sur le tableau. Elles restent en place définitivement dans la mousse.",
+      "recommandation_klaro": "Utilisez des cales plastiques d'épaisseur variable (type cales de menuisier, jamais des copeaux de bois qui pourrissent). Placez les cales obligatoirement sous chaque coin et sous chaque point de fixation prévu. Les cales de bas de dormant sont les plus importantes — elles portent le poids de la menuiserie.",
+      "erreur_frequente": "Utiliser des morceaux de bois ou de tuile comme cales. Le bois gonfle avec l'humidité et comprime la menuiserie, le bord de tuile se fragmente — la menuiserie finit par vriller ou se tordre.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["menu-07"]
+    },
+    {
+      "id": "menu-09",
+      "ordre": 9,
+      "titre": "Fixer la menuiserie",
+      "critique": true,
+      "explication": "La menuiserie est fixée au tableau par des pattes de fixation métalliques ou des vis longues. La fixation doit être solide sans déformer le cadre.",
+      "recommandation_klaro": "Fixez d'abord les coins, vérifiez le niveau et l'aplomb, puis fixez les points intermédiaires (tous les 60cm). Ne serrez jamais trop les vis — une surtension déforme le dormant et bloque les ouvrants. Percez des avant-trous dans la maçonnerie pour éviter les éclats. Sur béton ou parpaing : chevilles à expansion. Sur brique creuse : chevilles à frapper longues.",
+      "erreur_frequente": "Serrer les vis de fixation à fond sans vérifier la déformation du cadre. Un dormant écrasé de 2mm en son milieu suffit à bloquer définitivement l'ouvrant — visible uniquement quand on essaie de fermer.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["menu-08"]
+    },
+    {
+      "id": "menu-10",
+      "ordre": 10,
+      "titre": "Vérifier l'ouverture et la fermeture",
+      "critique": true,
+      "explication": "Une fois fixée, testez chaque ouvrant en ouverture et fermeture complètes. Le loquet doit s'engager sans forcer, l'ouvrant ne doit pas frotter sur le dormant.",
+      "recommandation_klaro": "Ouvrez et fermez 5 à 6 fois de suite en faisant varier la vitesse. Vérifiez le jeu entre l'ouvrant et le dormant tout autour (doit être uniforme, environ 3mm). En cas de frottement localisé, identifiez d'abord si c'est l'ouvrant ou le dormant qui est déformé avant d'agir.",
+      "erreur_frequente": "Tester une seule fois en fermeture douce et valider. Les frottements et points durs apparaissent souvent à la fermeture rapide ou en forçant légèrement — exactement comme le ferait un utilisateur normal.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["menu-09"]
+    },
+    {
+      "id": "menu-11",
+      "ordre": 11,
+      "titre": "Ajuster les réglages",
+      "critique": true,
+      "explication": "Toutes les menuiseries modernes ont des points de réglage sur les charnières et les ferrures. Ces réglages permettent d'ajuster la position de l'ouvrant dans les 3 dimensions sans déposer la menuiserie.",
+      "recommandation_klaro": "Les charnières PVC et alu permettent généralement un réglage en hauteur (±3mm), en profondeur (±3mm) et en latéral (±3mm) avec une simple clé Allen. Réglez d'abord la hauteur (frottement bas/haut), puis le latéral (jeu gauche/droite), puis la profondeur (pression du joint). L'ordre compte.",
+      "erreur_frequente": "Forcer sur l'ouvrant pour qu'il ferme plutôt que régler les charnières. Forcer déforme progressivement les ferrures et le dormant — ce qui était un petit défaut de réglage devient une déformation permanente.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["menu-10"]
+    },
+    {
+      "id": "menu-12",
+      "ordre": 12,
+      "titre": "Réaliser l'étanchéité extérieure",
+      "critique": true,
+      "explication": "L'étanchéité extérieure empêche l'eau de pluie d'entrer entre la menuiserie et le tableau. Elle se fait avec une compribande (mousse expansive pré-comprimée) ou du silicone extérieur.",
+      "recommandation_klaro": "La compribande est la solution la plus fiable : elle se colle sur le dormant avant la pose, s'expanse progressivement pour combler le jeu et reste perméable à la vapeur. Le silicone extérieur est acceptable mais moins durable. Traitez l'angle bas du tableau en priorité — c'est par là que l'eau entre en premier.",
+      "erreur_frequente": "Utiliser de la mousse polyuréthane expansive seule pour l'étanchéité extérieure. La mousse n'est pas étanche à l'eau, absorbe l'humidité, se dégrade aux UV et finit par se décoller — une belle infiltration en quelques années.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["menu-11"]
+    },
+    {
+      "id": "menu-13",
+      "ordre": 13,
+      "titre": "Réaliser l'étanchéité intérieure",
+      "critique": true,
+      "explication": "L'étanchéité intérieure empêche l'air chaud et humide de l'intérieur de migrer dans les parois froides — ce qui provoquerait de la condensation dans les murs. Elle doit être continue et sans interruption.",
+      "recommandation_klaro": "Utilisez un ruban d'étanchéité intérieure (pare-vapeur) ou du silicone acrylique sur tout le pourtour intérieur entre le dormant et le tableau. Comblez le jeu avec de la mousse polyuréthane (qui isole mais n'étanche pas à l'eau) puis recouvrez avec le ruban pare-vapeur. Ne percez jamais l'étanchéité intérieure pour passer un câble sans recoller.",
+      "erreur_frequente": "Laisser la mousse expansive apparente côté intérieur en guise d'étanchéité. La mousse seule n'est pas une barrière à l'air — elle laisse passer des infiltrations d'air froid l'hiver et fait monter la facture de chauffage.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["menu-12"]
+    },
+    {
+      "id": "menu-14",
+      "ordre": 14,
+      "titre": "Poser les appuis de fenêtre",
+      "critique": false,
+      "explication": "L'appui de fenêtre (en aluminium, pierre reconstituée ou PVC) protège le tableau sous la fenêtre et évacue l'eau de pluie loin du mur. Il doit être légèrement incliné vers l'extérieur.",
+      "recommandation_klaro": "L'appui doit déborder de 3 à 4cm par rapport au nu extérieur du mur et être muni de gouttes d'eau (larmier) en sous-face pour que l'eau s'égoutte loin du mur. Pente minimum de 15° vers l'extérieur. Fixez-le avec de la colle-mousse ou du silicone, jamais de ciment qui craque avec la dilatation.",
+      "erreur_frequente": "Poser un appui de fenêtre sans larmier ou sans pente suffisante. L'eau ruisselle sur la façade au lieu de tomber loin — taches, infiltrations et dégradation de l'enduit en quelques années.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["menu-13"]
+    },
+    {
+      "id": "menu-15",
+      "ordre": 15,
+      "titre": "Installer les volets (roulants ou battants)",
+      "critique": false,
+      "explication": "Les volets roulants et battants se posent après la fenêtre. Leur fixation et leur réglage sont indépendants mais liés à la menuiserie sur laquelle ils s'appuient.",
+      "recommandation_klaro": "Pour les volets roulants intégrés (monobloc) : le caisson doit être posé avant le placo et la peinture — c'est souvent oublié. Pour les volets battants : vérifiez que les gonds sont fixés dans de la maçonnerie solide (pas dans l'enduit seul) et que le volet ne touche pas l'appui de fenêtre en position ouverte.",
+      "erreur_frequente": "Fixer les gonds de volet battant uniquement dans l'enduit sans atteindre la maçonnerie. Un volet de 15kg, soumis aux vents, arrache les gonds en quelques mois — souvent en prenant un morceau de façade avec lui.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["menu-14"]
+    },
+    {
+      "id": "menu-16",
+      "ordre": 16,
+      "titre": "Raccorder les motorisations",
+      "critique": false,
+      "explication": "Les volets roulants motorisés, portails et baies coulissantes motorisées nécessitent un raccordement électrique. Il doit être prévu et posé avant les finitions.",
+      "recommandation_klaro": "Le câble d'alimentation doit être prévu dès le gros œuvre — impossible de passer un câble proprement après les finitions. Vérifiez la tension du moteur (230V ou 12/24V) avant de tirer le câble. Pour les volets radio : pas de câble d'alimentation du moteur de commande, mais une batterie à changer tous les 3-5 ans.",
+      "erreur_frequente": "Oublier de tirer le câble d'alimentation avant de fermer les murs. On se retrouve avec un câble apparent le long du mur ou une goulotte visible — inesthétique et difficile à masquer proprement.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["menu-15"]
+    },
+    {
+      "id": "menu-17",
+      "ordre": 17,
+      "titre": "Poser les habillages (tapées, couvre-joints)",
+      "critique": false,
+      "explication": "Les tapées (habillage intérieur du tableau) et couvre-joints masquent les jeux de pose et les jonctions entre la menuiserie et les murs. C'est la finition visible.",
+      "recommandation_klaro": "Les tapées doivent s'ajuster parfaitement à l'épaisseur du mur — mesurez au bon endroit (entre le nu de la façade et le nu intérieur du mur fini). Pour les couvre-joints, utilisez de l'acrylique (pas du silicone) pour les peindre ensuite. Posez les tapées après la peinture — ça évite les retouches.",
+      "erreur_frequente": "Poser les tapées avant la peinture des murs. Les tapées empêchent de peindre correctement dans les angles et on finit avec des traces de peinture sur les habillages ou des angles non peints.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["menu-16"]
+    },
+    {
+      "id": "menu-18",
+      "ordre": 18,
+      "titre": "Vérifier l'isolation périphérique",
+      "critique": true,
+      "explication": "Les ponts thermiques périphériques (zones froides autour de la menuiserie) annulent une partie des gains énergétiques de la nouvelle fenêtre. Une vérification visuelle et tactile permet de les détecter.",
+      "recommandation_klaro": "En hiver ou par temps froid : passez la main autour de la menuiserie côté intérieur pour détecter les zones de froid et les courants d'air. Utilisez un thermomètre infrarouge si disponible — une chute de 2°C sur le tableau par rapport au reste du mur signale un pont thermique. Corrigez avec de l'isolant en tableau ou un cadre d'isolation périphérique.",
+      "erreur_frequente": "Valider la pose sans vérifier les ponts thermiques. Une fenêtre à Uw 0,8 installée avec un pont thermique au tableau peut avoir une performance réelle équivalente à une vieille fenêtre simple vitrage — toute l'économie d'énergie est perdue.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["menu-17"]
+    },
+    {
+      "id": "menu-19",
+      "ordre": 19,
+      "titre": "Nettoyer et finaliser la pose",
+      "critique": false,
+      "explication": "Retirez les films de protection, nettoyez les vitres, éliminez les résidus de mousse et de silicone, et vérifiez l'aspect général. Les films laissés trop longtemps sur le PVC ou l'alu deviennent très difficiles à retirer.",
+      "recommandation_klaro": "Retirez les films de protection dans les 3 mois maximum après la pose — les UV les collent définitivement sur certains profilés PVC. Pour nettoyer les vitres : eau + vinaigre blanc, ou nettoyant vitrage neutre. Évitez les produits agressifs (acétone, white-spirit) sur les joints et les profilés PVC.",
+      "erreur_frequente": "Laisser les films de protection en place pendant les travaux \"pour protéger\". Après 2 à 3 mois d'exposition aux UV, ils se décomposent et ne se retirent plus qu'en lambeaux — parfois avec l'aspect de surface du profilé.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["menu-18"]
+    },
+    {
+      "id": "menu-20",
+      "ordre": 20,
+      "titre": "Tester l'étanchéité à l'air et à l'eau",
+      "critique": true,
+      "explication": "Le test final vérifie que la menuiserie est étanche aux infiltrations d'air et d'eau. C'est le critère de qualité de pose — et la condition pour valider les aides énergétiques en cas de contrôle.",
+      "recommandation_klaro": "Test air : par temps venteux, passez la main sur tout le pourtour intérieur — tout courant d'air signale un défaut d'étanchéité. Test eau : simulez une pluie avec un tuyau d'arrosage sur le haut de la menuiserie pendant 5 minutes et observez côté intérieur. Pour les aides d'État, conservez les photos et le bon de pose de l'installateur.",
+      "erreur_frequente": "Valider sans tester par temps neutre (sans vent, sans pluie). Les défauts d'étanchéité ne se révèlent qu'en conditions réelles — la première tempête après installation est souvent celle qui révèle les infiltrations.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["menu-19"]
+    }
+  ]
+}
