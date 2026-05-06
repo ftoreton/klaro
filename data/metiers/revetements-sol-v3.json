@@ -1,0 +1,557 @@
+{
+  "module": "revetements_sol",
+  "phases": [
+    {
+      "id": "preparation",
+      "label": "Préparation & conception",
+      "applies_to": ["all"],
+      "tasks": [
+        {
+          "id": "sol_001",
+          "title": "Définir le projet (pièces, type de revêtement, surface)",
+          "phase": "preparation",
+          "applies_to": ["all"],
+          "explanation": "Listez les pièces concernées, le type de revêtement (carrelage, parquet collé, parquet flottant, PVC, lino) et la surface totale à couvrir.",
+          "klaro_recommendation": "Faites un plan coté pièce par pièce. Mesurez précisément longueur × largeur, sans déduire les zones d'huisseries (la marge sert pour les coupes). Notez la zone de chaque revêtement si vous en mélangez plusieurs (carrelage cuisine + parquet salon par exemple).",
+          "common_mistake": "Sous-estimer la surface en oubliant les zones de circulation (couloirs, rangements) — manque de matière en fin de chantier et lot de remplacement aux nuances différentes.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Le plan coté liste-t-il les pièces, le revêtement choisi et la surface ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_002",
+          "title": "Identifier le classement UPEC du local",
+          "phase": "preparation",
+          "applies_to": ["all"],
+          "explanation": "Le classement UPEC indique l'usage du local : U=usure, P=poinçonnement, E=eau, C=chimie. Le revêtement doit avoir un classement supérieur ou égal à celui du local.",
+          "klaro_recommendation": "Logement courant : U2P2E1C0 (séjour, chambre) à U3P3E2C2 (cuisine, SDB). Le classement du revêtement (visible sur l'emballage) doit être ≥ à celui du local. SDB : E2 minimum (résistance à l'eau prolongée). Cuisine pro : C2 minimum (résistance produits ménagers).",
+          "common_mistake": "Choisir un revêtement décoratif sans vérifier son UPEC — usure prématurée et garantie refusée si pose en local trop sollicité.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_001"],
+          "norm_reference": "Classement UPEC + DTU 52.2",
+          "control_questions": [
+            { "question": "Le classement UPEC du revêtement est-il ≥ à celui du local ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_003",
+          "title": "Vérifier la compatibilité avec le plancher chauffant",
+          "phase": "preparation",
+          "applies_to": ["all"],
+          "explanation": "Tous les revêtements ne sont pas compatibles avec un plancher chauffant. Carrelage : excellent. Parquet : selon essence et épaisseur. PVC/lino : selon classement.",
+          "klaro_recommendation": "Carrelage = solution idéale (transmission thermique excellente). Parquet contrecollé OK si épaisseur ≤ 14 mm + essence stable (chêne). Parquet massif déconseillé. PVC : vérifier mention 'compatible PCBT'. Résistance thermique du revêtement < 0,15 m²K/W pour ne pas isoler la chaleur.",
+          "common_mistake": "Poser un parquet massif sur plancher chauffant — dilatation incontrôlée, fentes ouvertes en hiver, déformation.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_001"],
+          "norm_reference": "DTU 65.14 + DTU 52.2 + DTU 51.2",
+          "control_questions": [
+            { "question": "Le revêtement est-il compatible avec le plancher chauffant (si présent) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_004",
+          "title": "Calculer les quantités avec marge",
+          "phase": "preparation",
+          "applies_to": ["all"],
+          "explanation": "Comptez la surface + marge de pertes : 10 % standard pour pose droite, 15 % pour pose diagonale ou grand format (>60 cm), 5 % pour PVC en lés.",
+          "klaro_recommendation": "Achetez tout d'un coup, du même lot/bain (numéro inscrit sur le carton). Conservez 1-2 m² de surplus après pose : indispensable pour réparations futures (carreau cassé, lame abîmée). Le rachat ultérieur donne presque toujours une nuance différente.",
+          "common_mistake": "Acheter 'au plus juste' pour économiser et devoir compléter au mètre près en fin de chantier avec un lot différent — différence de teinte visible.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_002"],
+          "norm_reference": "DTU 52.2 §4",
+          "control_questions": [
+            { "question": "Marge de pertes prévue (%) ?", "type": "number", "expected": "≥ 10 standard, ≥ 15 diagonale/grand format" }
+          ]
+        },
+        {
+          "id": "sol_005",
+          "title": "Définir le calepinage et le point de départ",
+          "phase": "preparation",
+          "applies_to": ["all"],
+          "explanation": "Le calepinage est le plan théorique de pose. Définissez l'axe central, le point de départ (entrée principale, zone visible) et la gestion des coupes (en zones discrètes, jamais < 5 cm).",
+          "klaro_recommendation": "Tracez le plan à l'échelle. Démarrez l'axe principal sur le centre de l'entrée pour avoir un effet visuel maîtrisé. Évitez de finir avec une coupe < 5 cm contre un mur (peu esthétique). Pour pose en diagonale : prévoyez +50 % de chutes. Photographiez le calepinage avant pose.",
+          "common_mistake": "Démarrer la pose 'depuis un mur' sans calepinage et finir avec une bande mince côté opposé — résultat visuellement raté irrécupérable.",
+          "pro_recommended": false,
+          "photo_required_before_validation": true,
+          "depends_on": ["sol_001"],
+          "norm_reference": "DTU 52.2 §6.1 + DTU 51.2",
+          "control_questions": [
+            { "question": "Le calepinage est-il dessiné et les coupes ≥ 5 cm prévues en zones discrètes ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_006",
+          "title": "Coordonner avec les autres lots",
+          "phase": "preparation",
+          "applies_to": ["all"],
+          "explanation": "La pose du sol s'articule avec : plombier (siphon de sol, hauteur de receveur), électricien (boîtes encastrées au sol), menuisier (jeu de pose des portes au-dessus du sol fini).",
+          "klaro_recommendation": "Validez avec le plombier la cote du siphon de sol (au niveau du carrelage fini). Avec l'élec : prévoir les boîtes de sol AVANT la pose. Avec le menuisier : ajustement des portes après pose pour garder un jeu de 5 mm sous les portes (passage tapis et air VMC).",
+          "common_mistake": "Poser le sol puis devoir scier le bas des portes après coup — bord non d'origine, finition compromise.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_001"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Les autres lots sont-ils coordonnés (plomberie, élec, menuiseries) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preparation_support",
+      "label": "Préparation du support",
+      "applies_to": ["all"],
+      "tasks": [
+        {
+          "id": "sol_007",
+          "title": "Vérifier la cohésion du support",
+          "phase": "preparation_support",
+          "applies_to": ["all"],
+          "explanation": "Le support doit être cohésif (ne s'effrite pas) pour accueillir un revêtement. Test au burin (rayures perpendiculaires) ou au quadrillage (test de tirage).",
+          "klaro_recommendation": "Tracez un quadrillage de 5×5 cm au cutter sur le support. Si les carrés sautent ou s'effritent, le support est friable : il faut le décaper ou poser un primaire durcisseur. Tapez avec le manche d'un marteau : son creux = décollement à reprendre.",
+          "common_mistake": "Poser sur un support qui sablée en pensant que la colle compensera — décollement du revêtement entier dans les 6 à 12 mois.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_006"],
+          "norm_reference": "DTU 52.2 §6.1",
+          "control_questions": [
+            { "question": "Le support est-il sain et cohésif (test du quadrillage / burin OK) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_008",
+          "title": "Vérifier la planéité (règle de 2 m)",
+          "phase": "preparation_support",
+          "applies_to": ["all"],
+          "explanation": "Posez une règle de 2 m sur le support. Tolérance : 5 mm pour carrelage standard, 3 mm pour grand format (>60 cm), 3 mm pour parquet et sols souples.",
+          "klaro_recommendation": "Mesurez en plusieurs endroits (au moins 5 par pièce). Notez les défauts > tolérance sur un croquis : ils nécessiteront un ragréage. Pour les grands carreaux (>60 cm), exigez 3 mm sous la règle de 2 m, sinon 'effet sourire' inévitable aux joints.",
+          "common_mistake": "Considérer un sol 'à peu près plat' suffisant — un défaut de 8 mm sur un carreau de 60 cm crée des joints en escalier irrécupérables.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_007"],
+          "norm_reference": "DTU 52.2 §6.2",
+          "control_questions": [
+            { "question": "Flèche maximale sous règle 2 m (mm) ?", "type": "number", "expected": "≤ 5 carrelage / ≤ 3 grand format & souples" }
+          ]
+        },
+        {
+          "id": "sol_009",
+          "title": "Mesurer le taux d'humidité du support",
+          "phase": "preparation_support",
+          "applies_to": ["all"],
+          "explanation": "Le support doit être sec avant pose. Chape ciment < 3 %, chape anhydrite < 0,5 %, dalle béton : 1 mois de séchage par cm d'épaisseur.",
+          "klaro_recommendation": "Mesure au déshumidiomètre à pointes (location ~20 €/jour) ou à la bombe au carbure (mesure de référence). Sans appareil : test de la feuille plastique (carré 50×50 collé au scotch sur le sol pendant 24h, buée dessous = sol pas sec). Photographiez la mesure pour archive.",
+          "common_mistake": "Poser sur dalle béton 'visiblement sèche' sans mesure — humidité résiduelle migre, soulève le revêtement et provoque moisissures sous parquet.",
+          "pro_recommended": false,
+          "photo_required_before_validation": true,
+          "depends_on": ["sol_007"],
+          "norm_reference": "DTU 52.2 §6.3 + DTU 51.2 + DTU 53.2",
+          "control_questions": [
+            { "question": "Taux d'humidité mesuré (%) ?", "type": "number", "expected": "≤ 3 chape ciment / ≤ 0,5 anhydrite" }
+          ]
+        },
+        {
+          "id": "sol_010",
+          "title": "Nettoyer entièrement le support",
+          "phase": "preparation_support",
+          "applies_to": ["all"],
+          "explanation": "Aspirez à fond, retirez plâtre, peinture écaillée, anciennes colles, taches de gras. Le support doit être propre, sec, exempt de poussière.",
+          "klaro_recommendation": "Aspirateur de chantier (filtre HEPA si possible). Pour anciens résidus de colle : grattoir + ponceuse selon nature. Pour traces grasses : dégraissant alcalin. Faites le nettoyage juste avant le primaire (sinon poussière redéposée). Aucun gras toléré : la colle ne tient pas.",
+          "common_mistake": "Balayer rapidement et appliquer le primaire — la fine couche de poussière empêche l'accrochage, décollement à terme.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_009"],
+          "norm_reference": "DTU 52.2 §6.4",
+          "control_questions": [
+            { "question": "Le support est-il aspiré, dégraissé et propre ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_011",
+          "title": "Appliquer un primaire d'accrochage",
+          "phase": "preparation_support",
+          "applies_to": ["all"],
+          "explanation": "Le primaire bloque les remontées de poussière, uniformise la porosité et améliore l'adhérence de la colle ou du ragréage.",
+          "klaro_recommendation": "Choisissez le primaire selon le couple support / revêtement / colle (compatibilité fournisseur). Universel pour béton/chape, spécifique pour anhydrite ou support très absorbant. Au rouleau, croisé, sans manque ni surcharge. Respectez le temps de séchage (2-4h) avant suite.",
+          "common_mistake": "Sauter le primaire pour gagner du temps — ragréage fissuré (séchage trop rapide) ou colle qui n'adhère pas.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_010"],
+          "norm_reference": "DTU 52.2 §6.5",
+          "control_questions": [
+            { "question": "Le primaire est-il appliqué uniformément et sec avant suite ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_012",
+          "title": "Réaliser un ragréage si nécessaire",
+          "phase": "preparation_support",
+          "applies_to": ["all"],
+          "explanation": "Si la planéité est hors tolérance : ragréage autolissant pour défauts < 2 cm, ragréage fibré pour défauts plus importants. Épaisseur typique 3-10 mm.",
+          "klaro_recommendation": "Mélangez avec rigueur (proportion d'eau exacte) : trop liquide = fissures, trop épais = grumeaux. Étalez à la lisseuse, débullez avec rouleau à picots. Séchage 24-48h avant pose. Vérifiez la nouvelle planéité avant suite.",
+          "common_mistake": "Compenser un défaut > 1 cm uniquement avec la colle — surépaisseur de colle = fissuration garantie aux joints.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_011"],
+          "norm_reference": "DTU 52.2 §6.6",
+          "control_questions": [
+            { "question": "Après ragréage, la planéité respecte-t-elle la tolérance du revêtement ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_013",
+          "title": "Appliquer un second primaire après ragréage",
+          "phase": "preparation_support",
+          "applies_to": ["all"],
+          "explanation": "Certains fabricants de colle exigent un second primaire après ragréage pour garantir l'accroche. Vérifiez la fiche technique du couple ragréage / colle.",
+          "klaro_recommendation": "Lisez les fiches techniques avant achat. Si exigé : appliquez un primaire compatible après séchage complet du ragréage (24-48h). Attendez le séchage avant la pose. C'est cette compatibilité qui conditionne la garantie produit.",
+          "common_mistake": "Sauter ce primaire intermédiaire en pensant qu'il fait double emploi — non-conformité fabricant, garantie refusée en cas de décollement.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_012"],
+          "norm_reference": "Notice fabricant + DTU 52.2 §6.5",
+          "control_questions": [
+            { "question": "Le second primaire est-il appliqué si exigé par le fabricant ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_014",
+          "title": "Acclimater les matériaux 48h dans la pièce",
+          "phase": "preparation_support",
+          "applies_to": ["all"],
+          "explanation": "Les matériaux (parquet impératif, carrelage recommandé) doivent s'acclimater 48h dans la pièce de pose pour éviter les variations dimensionnelles après pose.",
+          "klaro_recommendation": "Stockez les paquets fermés ou ouverts à plat dans la pièce où ils seront posés. Température 18-22°C, humidité 50-60%. Pour le parquet : impératif (variations 2-3 mm/m possibles selon humidité). Pour le carrelage : permet aussi de mélanger les paquets pour homogénéiser les nuances.",
+          "common_mistake": "Poser un parquet sortant directement du camion ou stocké dans un garage humide — fentes ouvertes ou bombement après pose.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_010"],
+          "norm_reference": "DTU 51.2 §5 + DTU 51.11",
+          "control_questions": [
+            { "question": "Les matériaux ont-ils été acclimatés ≥ 48h dans la pièce ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etancheite_zones_humides",
+      "label": "Étanchéité en zones humides (carrelage uniquement)",
+      "applies_to": ["carrelage"],
+      "tasks": [
+        {
+          "id": "sol_015",
+          "title": "Identifier les zones nécessitant un SPEC ou SEL",
+          "phase": "etancheite_zones_humides",
+          "applies_to": ["carrelage"],
+          "explanation": "SPEC = Système de Protection à l'Eau sous Carrelage (locaux E2). SEL = Système d'Étanchéité Liquide (locaux E3, douche italienne, sol salle d'eau).",
+          "klaro_recommendation": "Douche italienne sol + parois jusqu'à 2 m : SEL obligatoire (CPT 3527). Sol de SDB classique avec receveur : SPEC sur le sol et bas des murs (30 cm). WC, cuisine domestique : SPEC recommandé en zone évier/lave-vaisselle. Choisissez un produit sous certification CSTB.",
+          "common_mistake": "Penser que la plaque hydrofuge + carrelage = étanche. Faux : l'eau finit par traverser les joints et atteint le support. Sans SPEC/SEL, infiltration garantie.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_013"],
+          "norm_reference": "CPT 3527 + DTU 52.2 §7",
+          "control_questions": [
+            { "question": "Les zones humides nécessitant SPEC/SEL sont-elles identifiées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_016",
+          "title": "Poser les bandes de pontage aux jonctions",
+          "phase": "etancheite_zones_humides",
+          "applies_to": ["carrelage"],
+          "explanation": "Bandes de pontage souples aux jonctions sol/mur, angles rentrants/sortants et autour des traversées (siphon, tuyaux). Elles assurent la continuité d'étanchéité aux points de mouvement.",
+          "klaro_recommendation": "Bande prête à l'emploi du même fournisseur que le SPEC/SEL. Posée dans la première couche du SPEC encore frais, puis recouverte par la seconde couche. Soignez les angles : pli net, pas de cloque. Manchettes spécifiques autour du siphon de sol.",
+          "common_mistake": "Étaler le SPEC sans bande de pontage aux jonctions — l'étanchéité fissure dès le premier mouvement et l'eau passe.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_015"],
+          "norm_reference": "CPT 3527 §6",
+          "control_questions": [
+            { "question": "Les bandes de pontage sont-elles posées aux jonctions, angles et traversées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_017",
+          "title": "Appliquer le SPEC en deux couches croisées",
+          "phase": "etancheite_zones_humides",
+          "applies_to": ["carrelage"],
+          "explanation": "Le SPEC s'applique en deux couches croisées (la seconde perpendiculaire à la première) selon notice fabricant. Épaisseur totale et consommation conformes à la fiche produit.",
+          "klaro_recommendation": "Première couche : application en passes parallèles, contrôlez la consommation (g/m² indiquée par fabricant). Séchage selon notice (1-4h). Seconde couche perpendiculaire à la première pour combler tout manque. Vérifiez l'absence de pinholes (trous d'épingle) sous lampe.",
+          "common_mistake": "Appliquer une seule couche épaisse — risque pinholes non détectés, étanchéité défaillante au premier passage d'eau.",
+          "pro_recommended": true,
+          "photo_required_before_validation": true,
+          "depends_on": ["sol_016"],
+          "norm_reference": "CPT 3527 §5 + notice fabricant",
+          "control_questions": [
+            { "question": "Deux couches croisées appliquées avec consommation conforme à la fiche ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_018",
+          "title": "Test de mise en eau 24h sur le SPEC",
+          "phase": "etancheite_zones_humides",
+          "applies_to": ["carrelage"],
+          "explanation": "Avant pose du carrelage, remplir d'eau le receveur ou la zone étanchée pendant 24h (3-5 cm de hauteur d'eau). Vérifier l'absence d'infiltration côté local sous-jacent ou voisin.",
+          "klaro_recommendation": "Bouchez le siphon avec un bouchon étanche, remplissez d'eau jusqu'à 3-5 cm. Marquez le niveau. Inspectez en sous-face (plafond du local du dessous) et autour. Après 24h : niveau stable + zéro fuite = étanchéité validée. Photographiez le test.",
+          "common_mistake": "Sauter le test et découvrir une fuite après pose du carrelage — déposer le carrelage neuf pour reprendre l'étanchéité.",
+          "pro_recommended": true,
+          "photo_required_before_validation": true,
+          "depends_on": ["sol_017"],
+          "norm_reference": "CPT 3527 §7 + DTU 52.2 §7",
+          "control_questions": [
+            { "question": "Test de mise en eau 24h validé (niveau stable, pas d'infiltration) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_019",
+          "title": "Vérifier la pente du receveur de douche italienne",
+          "phase": "etancheite_zones_humides",
+          "applies_to": ["carrelage"],
+          "explanation": "Le receveur (chape ou douche prête à carreler) doit avoir une pente de 1 à 2 % vers le siphon, mesurable au niveau ou au laser.",
+          "klaro_recommendation": "Pente vérifiée AVANT le SPEC et reverifiée AVANT pose carrelage. 1,5 % idéal (1,5 cm/m). Vers un caniveau linéaire : pente uniforme sur la longueur. Vers une bonde centrée : convergence en pente d'eau (4 versants). Sans cette pente, eau qui stagne et infiltrations à terme.",
+          "common_mistake": "Réaliser un receveur 'plat' en pensant que l'eau s'écoulera quand même — flaques permanentes dans la douche, joints qui moisissent.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_017"],
+          "norm_reference": "CPT 3527 + DTU 52.2 §7",
+          "control_questions": [
+            { "question": "Pente du receveur vers le siphon (%) ?", "type": "number", "expected": "1 à 2" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "calepinage_pose",
+      "label": "Calepinage & pose",
+      "applies_to": ["all"],
+      "tasks": [
+        {
+          "id": "sol_020",
+          "title": "Pose à blanc pour valider le calepinage",
+          "phase": "calepinage_pose",
+          "applies_to": ["all"],
+          "explanation": "Avant d'encoller, posez les premiers rangs à blanc (sans colle) depuis le point de départ. Vérifiez l'effet visuel, les coupes en périphérie, l'alignement.",
+          "klaro_recommendation": "Matérialisez les axes au cordeau à craie. Posez 4-6 rangs à blanc, ajustez les croisillons et observez. Ajustez le point de départ si besoin pour avoir des coupes équilibrées. Photographiez la pose à blanc validée avant d'encoller.",
+          "common_mistake": "Encoller dès le premier carreau et découvrir le problème de calepinage trop tard — déposer ce qui est posé pour reprendre.",
+          "pro_recommended": false,
+          "photo_required_before_validation": true,
+          "depends_on": ["sol_005", "sol_014"],
+          "norm_reference": "DTU 52.2 §8.1",
+          "control_questions": [
+            { "question": "Pose à blanc validée et photographiée avant encollage ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_021",
+          "title": "Mélanger les bains de carrelage entre paquets",
+          "phase": "calepinage_pose",
+          "applies_to": ["carrelage"],
+          "explanation": "Les carreaux issus de paquets différents peuvent avoir des micro-différences de teinte (bains/lots de cuisson). Mélangez les paquets pour homogénéiser visuellement.",
+          "klaro_recommendation": "Ouvrez 3-4 paquets en parallèle, prenez les carreaux en les alternant (1er paquet, 2e, 3e, 4e, 1er...). Cette technique noie les variations dans l'ensemble. Vérifiez le numéro de bain sur les paquets : achetez prioritairement le même bain.",
+          "common_mistake": "Vider un paquet avant d'attaquer le suivant — bandes de teintes différentes visibles selon l'angle d'éclairage, irrécupérable.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_020"],
+          "norm_reference": "DTU 52.2 §8.2",
+          "control_questions": [
+            { "question": "Les paquets sont-ils mélangés à la pose ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_022",
+          "title": "Préparer la sous-couche acoustique pour parquet flottant",
+          "phase": "calepinage_pose",
+          "applies_to": ["parquet_flottant"],
+          "explanation": "La sous-couche acoustique (mousse, liège, fibre) est obligatoire sous parquet flottant : confort de marche, isolation phonique, compensation des micro-défauts.",
+          "klaro_recommendation": "Une seule couche, ne JAMAIS superposer plusieurs sous-couches (instabilité du parquet). Lés posés bord à bord (pas de chevauchement) avec scotch sur les jonctions. En logement collectif : exigez une sous-couche certifiée acoustique (Δ Lw indiqué).",
+          "common_mistake": "Superposer sous-couche + ancien tapis ou plusieurs sous-couches — parquet qui s'enfonce, lames qui se désolidarisent, garantie nulle.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_014"],
+          "norm_reference": "DTU 51.11 §6",
+          "control_questions": [
+            { "question": "Sous-couche acoustique unique posée bord à bord avec scotch ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_023",
+          "title": "Préparer la colle adaptée",
+          "phase": "calepinage_pose",
+          "applies_to": ["carrelage", "parquet_colle", "pvc", "lino"],
+          "explanation": "Colle adaptée au revêtement et au support : C2S1/C2S2 pour carrelage (grand format, plancher chauffant), polyuréthane ou MS pour parquet collé, colle PVC selon support.",
+          "klaro_recommendation": "Carrelage standard : C2 minimum. Grand format > 60 cm : C2S1 (souple). Plancher chauffant : C2S1 ou C2S2. Parquet : MS polymère (sans solvant) recommandé. PVC : colle acrylique ou contact selon support. Mélangez les proportions exactes, laissez reposer 5 min, re-mélangez.",
+          "common_mistake": "Choisir une colle C1 (économique) pour un grand format ou plancher chauffant — décollement garanti aux variations thermiques.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_020"],
+          "norm_reference": "DTU 52.2 §8.3 + DTU 51.2 + DTU 53.2 + NF EN 12004",
+          "control_questions": [
+            { "question": "La colle choisie est-elle adaptée au revêtement, au format et à l'usage (plancher chauffant, etc.) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_024",
+          "title": "Choisir la technique : simple ou double encollage",
+          "phase": "calepinage_pose",
+          "applies_to": ["carrelage"],
+          "explanation": "Simple encollage (colle au sol uniquement) pour petits formats < 1100 cm². Double encollage (colle au sol + au dos du carreau) OBLIGATOIRE pour > 1100 cm² (~33×33), local P3/P4S, extérieur.",
+          "klaro_recommendation": "Test de contrôle : décollez un carreau test après pose. ≥ 80% de surface accrochée = OK (simple encollage), ≥ 95% pour le double. Le double encollage assure le contact complet, sans vide qui finirait par fissurer sous le poids ou choc.",
+          "common_mistake": "Simple encollage sur grand carreau — vides sous le carreau, fissures aux pas répétés et casse au choc d'un objet tombé.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_023"],
+          "norm_reference": "DTU 52.2 §8.4",
+          "control_questions": [
+            { "question": "Double encollage appliqué pour carreaux > 1100 cm² (≈ 33×33) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_025",
+          "title": "Poser les premiers carreaux/lames depuis le point de départ",
+          "phase": "calepinage_pose",
+          "applies_to": ["all"],
+          "explanation": "Démarrez la pose depuis le point de départ du calepinage, en suivant les axes tracés au cordeau. Posez par sections de 1-2 m² maximum (limite du temps ouvert de la colle).",
+          "klaro_recommendation": "Étalez la colle au peigne adapté au format (peigne 6 mm jusqu'à 30×30, peigne 10 mm pour 30-60 cm, peigne 12-15 mm au-delà). Posez le carreau, exercez une pression rotative pour répartir la colle. Travaillez vite : la colle a un temps ouvert de ~30 min.",
+          "common_mistake": "Poser une grande surface de colle d'un coup et travailler trop lentement — peau qui se forme à la surface de la colle, accrochage compromis.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_024", "sol_022"],
+          "norm_reference": "DTU 52.2 §8.5 + DTU 51.2 + DTU 51.11",
+          "control_questions": []
+        },
+        {
+          "id": "sol_026",
+          "title": "Vérifier en continu alignement, niveaux et croisillons",
+          "phase": "calepinage_pose",
+          "applies_to": ["all"],
+          "explanation": "Pendant la pose, contrôlez à chaque rang : alignement (cordeau ou règle), niveau (à bulle ou laser), largeur des joints (croisillons réguliers).",
+          "klaro_recommendation": "Posez 4-6 carreaux puis vérifiez. Règle posée à plat = pas de lèvre (différence de niveau entre 2 carreaux > 1 mm). Tapotez à la talochette caoutchouc pour ajuster tant que la colle est fraîche. Au-delà du temps ouvert (~30 min), la correction est impossible sans déposer.",
+          "common_mistake": "Poser une rangée entière puis vérifier — toute correction nécessite de déposer plusieurs carreaux et de tout reprendre.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_025"],
+          "norm_reference": "DTU 52.2 §8.6",
+          "control_questions": [
+            { "question": "Aucune lèvre > 1 mm entre 2 carreaux ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_027",
+          "title": "Battre les carreaux à la maillette caoutchouc",
+          "phase": "calepinage_pose",
+          "applies_to": ["carrelage", "parquet_colle"],
+          "explanation": "Après pose, frappez chaque carreau/lame avec la maillette caoutchouc pour assurer le contact colle-revêtement. Le son doit être plein (pas creux).",
+          "klaro_recommendation": "Frappes douces et régulières au centre puis aux 4 angles. Le son creux indique un manque de colle ou un vide d'air : déposez et recollez. Cette étape conditionne la durabilité — un carreau 'creux' fissurera tôt ou tard sous le poids ou choc.",
+          "common_mistake": "Sauter cette étape sur les grands carreaux — vides sous le carreau, fissures à terme aux passages répétés.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_025"],
+          "norm_reference": "DTU 52.2 §8.5",
+          "control_questions": [
+            { "question": "Chaque carreau a-t-il un son plein au tapotement (pas creux) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_028",
+          "title": "Découper les carreaux/lames pour les bords et traversées",
+          "phase": "calepinage_pose",
+          "applies_to": ["all"],
+          "explanation": "Coupes en périphérie, autour des huisseries et traversées : carrelette manuelle pour petits formats, scie à eau pour grand format ou grès cérame. Scie sauteuse à lame bois pour parquet/PVC.",
+          "klaro_recommendation": "Mesurez précisément, marquez au feutre, coupez à 1-2 mm en deçà pour intégrer le joint. Pour les courbes (autour d'un tuyau) : scie diamantée à eau ou scie cloche. Polissez les bords coupés visibles à la lime diamant. Lunettes + gants obligatoires.",
+          "common_mistake": "Couper à la disqueuse standard (sèche) — éclats sur la face visible et finition catastrophique.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_026"],
+          "norm_reference": "DTU 52.2 §8.7",
+          "control_questions": []
+        },
+        {
+          "id": "sol_029",
+          "title": "Joints périphériques de désolidarisation (5-10 mm)",
+          "phase": "calepinage_pose",
+          "applies_to": ["all"],
+          "explanation": "Laissez 5 à 10 mm entre le revêtement et les murs (et tout obstacle fixe). JAMAIS bord à bord. Ce jeu absorbe les dilatations et sera caché par la plinthe.",
+          "klaro_recommendation": "Utilisez des cales d'écartement (5-10 mm selon revêtement) tout autour de la pièce et autour des poteaux, escaliers, traversées. Ce joint sera comblé en silicone ou caché par la plinthe. Sans ce jeu, le revêtement bombe ou fissure aux dilatations.",
+          "common_mistake": "Poser bord à bord contre le mur — bombement du parquet ou fissure du carrelage dès le premier été.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_025"],
+          "norm_reference": "DTU 52.2 §8.8 + DTU 51.2 + DTU 51.11",
+          "control_questions": [
+            { "question": "Joint périphérique de 5-10 mm respecté tout autour ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_030",
+          "title": "Joints de fractionnement dans grandes surfaces",
+          "phase": "calepinage_pose",
+          "applies_to": ["carrelage", "parquet_colle"],
+          "explanation": "Au-delà de 40 m² intérieur (60 m² avec plancher chauffant) ou tous les 8 m linéaires, prévoyez un joint de fractionnement (souple, 5-8 mm) pour absorber les mouvements.",
+          "klaro_recommendation": "Repérez les joints de fractionnement sur le calepinage. Reprenez impérativement les joints existants du support (jamais ponter un joint de dalle). Le joint sera comblé en silicone d'une teinte assortie. Sans ces joints, fissuration garantie aux changements thermiques.",
+          "common_mistake": "Pont sur un joint de dalle existant — la fissure du support se reproduit dans le carrelage en quelques mois.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_025"],
+          "norm_reference": "DTU 52.2 §8.8",
+          "control_questions": [
+            { "question": "Joints de fractionnement prévus selon surface (40 m² / 60 m² PCBT / 8 m linéaires) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_031",
+          "title": "Joint périphérique de dilatation 8-10 mm (parquet flottant)",
+          "phase": "calepinage_pose",
+          "applies_to": ["parquet_flottant"],
+          "explanation": "Le parquet flottant 'travaille' avec l'humidité. Joint de dilatation de 8 à 10 mm tout autour de la pièce, autour des huisseries et des poteaux.",
+          "klaro_recommendation": "Cales d'écartement systématiques (vendues avec la pose ou bois 8-10 mm). Le joint sera caché par la plinthe (jamais le serrer contre la plinthe : la plinthe se fixe au mur, pas au sol). Pour pièces > 8 m linéaires : joint de fractionnement supplémentaire ou barre de seuil.",
+          "common_mistake": "Poser le parquet contre le mur sans cales — bombement spectaculaire à la première saison humide, lames qui se soulèvent.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_022"],
+          "norm_reference": "DTU 51.11 §7",
+          "control_questions": [
+            { "question": "Joint de dilatation 8-10 mm respecté tout autour ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_032",
+          "title": "Souder les lés de PVC ou lino aux jonctions",
+          "phase": "calepinage_pose",
+          "applies_to": ["pvc", "lino"],
+          "explanation": "Aux jonctions entre lés de PVC ou lino, soudure à chaud (cordon thermosoudable) ou à froid (produit liquide) selon le revêtement et l'usage.",
+          "klaro_recommendation": "Soudure à chaud : recommandée pour locaux humides ou trafic intense (étanchéité parfaite). Outil dédié + cordon de soudure de la teinte du revêtement. Soudure à froid : domestique courant, produit liquide à appliquer dans la rainure préalablement coupée. Sans soudure : infiltrations aux jonctions.",
+          "common_mistake": "Poser des lés bord à bord sans soudure — eau qui passe entre les lés et atteint le support, gondolement après quelques mois.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_025"],
+          "norm_reference": "DTU 53.2 §8",
+          "control_questions": [
+            { "question": "Toutes les jonctions de lés sont-elles soudées (chaud ou froid) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "sol_033",
+          "title": "Respecter le temps de séchage avant marche et joints",
+          "phase": "calepinage_pose",
+          "applies_to": ["all"],
+          "explanation": "Avant de marcher dessus et de réaliser les joints : 24h minimum pour colles standard, 8h pour colles rapides. Plus froid ou plus humide : doublez le temps.",
+          "klaro_recommendation": "À 20°C, humidité 50% : 24h pour marche légère, 48h pour utilisation et joints. Vérifiez en pressant un croisillon : il ne doit pas s'enfoncer. Pas de courant d'air violent (séchage hétérogène). Une marche prématurée déplace les carreaux qu'il faudra ré-aligner.",
+          "common_mistake": "Faire les joints à H+12 — la colle pas sèche se compresse sous le poids du jointoyeur, carreaux qui bougent et joints fissurés.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["sol_028", "sol_032"],
+          "norm_reference": "DTU 52.2 §8.6 + notice colle",
+          "control_questions": [
+            { "question": "Temps de séchage colle respecté (≥ 24h standard / ≥ 8h rapide) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    }
+  ]
+}
