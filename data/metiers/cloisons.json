@@ -1,0 +1,317 @@
+{
+  "version": "1.0.0",
+  "metier_id": "cloisons",
+  "nom": "Cloisons et plâtrerie",
+  "norme_reference": "DTU 25.41",
+  "disclaimer": "Klaro est un outil d'aide et de recommandation. Pour les cloisons porteuses ou les travaux structurels, faites toujours appel à un professionnel qualifié.",
+  "alertes_bloquantes": [
+    {
+      "id": "alerte-01",
+      "message": "Impossible de fermer les cloisons sans avoir passé toutes les gaines électriques et plomberie",
+      "taches_concernees": ["placo-12"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-02",
+      "message": "L'isolation doit être posée AVANT de fermer la seconde face du placo",
+      "taches_concernees": ["placo-13"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-03",
+      "message": "Les bandes à joints doivent être posées et séchées avant toute peinture ou revêtement",
+      "taches_concernees": ["placo-19"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-04",
+      "message": "Les renforts pour TV, meubles et cuisine doivent être intégrés AVANT de fermer le placo — impossible à ajouter après",
+      "taches_concernees": ["placo-11"],
+      "niveau": "important"
+    }
+  ],
+  "score_chantier": {
+    "calcul": "taches_validees / total_taches * 100",
+    "penalites": [
+      { "condition": "tache_critique_non_traitee", "malus": 10 },
+      { "condition": "alerte_bloquante_active", "malus": 15 }
+    ]
+  },
+  "taches": [
+    {
+      "id": "placo-01",
+      "ordre": 1,
+      "titre": "Définir le projet placo",
+      "critique": false,
+      "explication": "Avant de commander quoi que ce soit, définissez précisément ce que vous allez faire : quelles cloisons créer, lesquelles abattre, y a-t-il un faux plafond, des doublages de murs ? Tout part de là.",
+      "recommandation_klaro": "Faites un plan au sol de chaque pièce avec les nouvelles cloisons. Notez l'emplacement des portes, des prises électriques prévues, des points d'eau. Ce plan vous servira à calculer les quantités de matériaux avec précision.",
+      "erreur_frequente": "Commencer à acheter des matériaux sans plan précis. On finit avec trop de plaques d'un type et pas assez d'un autre — et des allers-retours au magasin qui font perdre une journée.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": []
+    },
+    {
+      "id": "placo-02",
+      "ordre": 2,
+      "titre": "Vérifier l'état du support",
+      "critique": true,
+      "explication": "Avant de poser quoi que ce soit, inspectez les murs et plafonds existants : humidité, fissures, planéité, solidité. Un mauvais support compromet tout le travail.",
+      "recommandation_klaro": "Passez votre main sur les murs et regardez les plinthes et angles bas — l'humidité se repère d'abord là. En cas de taches, de cloquage ou d'odeur de moisi, traitez la cause avant de fermer avec du placo. Vous enterreriez le problème.",
+      "erreur_frequente": "Poser du placo sur un mur humide sans traiter la source. Le placo gonfle, noircit, et se décolle en quelques mois. Tout est à refaire.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": []
+    },
+    {
+      "id": "placo-03",
+      "ordre": 3,
+      "titre": "Tracer l'implantation des cloisons",
+      "critique": true,
+      "explication": "Tracez au sol, au plafond et sur les murs existants la position exacte de vos nouvelles cloisons avant de poser le premier rail. C'est la base de tout l'alignement.",
+      "recommandation_klaro": "Utilisez un niveau laser rotatif — ça se loue pour 30€/jour et ça change tout. Tracez d'abord au sol, puis projetez au plafond avec le laser. Sans laser, utilisez un fil à plomb pour reporter fidèlement la position du sol au plafond.",
+      "erreur_frequente": "Tracer seulement au sol et approximer au plafond à l'œil. La cloison finie n'est pas droite, les portes ne ferment pas bien, et le doublage de l'autre côté est impossible à rattraper.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-01"]
+    },
+    {
+      "id": "placo-04",
+      "ordre": 4,
+      "titre": "Prévoir les passages techniques",
+      "critique": true,
+      "explication": "Avant de monter la structure, planifiez l'emplacement de toutes les gaines électriques, tuyaux, et conduits qui passeront dans ou derrière vos cloisons. Une fois le placo fermé, c'est trop tard.",
+      "recommandation_klaro": "Coordonnez-vous avec l'électricien et le plombier avant de commencer. Marquez au crayon sur vos tracés l'emplacement de chaque prise, interrupteur, et point d'eau prévu. Prévoyez des passages plus larges que nécessaire — ajouter une gaine dans une cloison montée est possible, en enlever une non.",
+      "erreur_frequente": "Monter toute la structure et réaliser ensuite qu'on a oublié de prévoir le passage pour une prise ou un tuyau. On est alors obligé de démonter des montants ou de faire des saignées dans le placo déjà posé.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-03"]
+    },
+    {
+      "id": "placo-05",
+      "ordre": 5,
+      "titre": "Choisir le bon type de plaques",
+      "critique": true,
+      "explication": "Il existe plusieurs types de plaques placo selon l'usage : BA13 standard, hydrofuge (salle de bain), phonique (cloison séparative), feu (local technique, cage d'escalier). Choisir la mauvaise plaque, c'est refaire le chantier.",
+      "recommandation_klaro": "Règle simple : BA13 partout sauf exceptions. Hydrofuge (rose) dans toutes les pièces humides (salle de bain, WC, buanderie). Phonique si vous voulez réduire le bruit entre pièces. Feu si imposé par votre assurance ou un bureau de contrôle (souvent pour les cages d'escalier).",
+      "erreur_frequente": "Poser de la BA13 standard dans une salle de bain pour économiser quelques euros. En 2 ans, le placo gonfle, les joints noircissent, les carreaux se décollent. Tout est à refaire.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-01"]
+    },
+    {
+      "id": "placo-06",
+      "ordre": 6,
+      "titre": "Choisir les rails et montants adaptés",
+      "critique": false,
+      "explication": "La structure d'une cloison placo est faite de rails horizontaux (au sol et au plafond) et de montants verticaux. Leur épaisseur détermine l'épaisseur finale de la cloison et ses performances acoustiques.",
+      "recommandation_klaro": "Pour une cloison standard : rails et montants 48mm. Pour une meilleure isolation acoustique : 72mm ou double ossature. Pour une hauteur sous plafond > 2,60m : prenez du 70mm minimum. Achetez 10% de plus que votre calcul — les chutes sont inévitables.",
+      "erreur_frequente": "Prendre du 48mm pour une grande hauteur sous plafond. La cloison vibre, résonne, et peut vriller avec le temps. L'épaisseur du montant doit être proportionnelle à la hauteur de la cloison.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-01"]
+    },
+    {
+      "id": "placo-07",
+      "ordre": 7,
+      "titre": "Poser les rails au sol",
+      "critique": true,
+      "explication": "Les rails au sol définissent la position définitive de vos cloisons. Ils se fixent directement sur le sol béton ou sur la chape, avec des chevilles à frapper tous les 60cm.",
+      "recommandation_klaro": "Posez une bande résiliente (mousse adhésive) sous chaque rail avant de le fixer — elle absorbe les vibrations sonores et évite les ponts thermiques. C'est un détail qui change tout pour le confort acoustique, et ça coûte presque rien.",
+      "erreur_frequente": "Fixer les rails directement sans bande résiliente. Les bruits d'impact (pas, chocs) se transmettent directement par la structure métallique sur toute la cloison. Impossible à corriger sans tout démonter.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-03"]
+    },
+    {
+      "id": "placo-08",
+      "ordre": 8,
+      "titre": "Poser les rails au plafond",
+      "critique": true,
+      "explication": "Le rail de plafond doit être parfaitement aligné avec le rail au sol. C'est lui qui garantit que votre cloison sera droite et d'aplomb de bas en haut.",
+      "recommandation_klaro": "Utilisez votre tracé laser pour positionner le rail de plafond exactement à la verticale du rail au sol. Fixez-le tous les 60cm avec des chevilles adaptées au type de plafond (béton, hourdis, bois). Vérifiez l'alignement avec un fil à plomb ou le laser avant de fixer définitivement.",
+      "erreur_frequente": "Poser le rail de plafond à l'approximation sans vérifier l'alignement avec le sol. La cloison monte en biais, les portes ne s'encadrent plus correctement, et toute la finition est bancale.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-07"]
+    },
+    {
+      "id": "placo-09",
+      "ordre": 9,
+      "titre": "Fixer les montants verticaux",
+      "critique": false,
+      "explication": "Les montants s'insèrent dans les rails sol et plafond et se placent tous les 60cm (entraxe standard) pour recevoir les plaques de 120cm de large — chaque plaque repose ainsi sur 3 montants.",
+      "recommandation_klaro": "Ne vissez pas les montants dans les rails — laissez-les libres de coulisser légèrement. C'est voulu : ça permet à la structure de travailler avec les mouvements du bâtiment sans fissurer les joints. Commencez par placer les montants d'about (contre les murs) en les vissant, puis espacez les intermédiaires à 60cm d'entraxe.",
+      "erreur_frequente": "Visser tous les montants dans les rails. La cloison ne peut plus absorber les mouvements du bâtiment. Résultat : des fissures apparaissent aux joints, souvent dès la première année.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-07", "placo-08"]
+    },
+    {
+      "id": "placo-10",
+      "ordre": 10,
+      "titre": "Vérifier l'aplomb et l'alignement",
+      "critique": true,
+      "explication": "Avant de poser la moindre plaque, vérifiez que toute votre structure est parfaitement verticale (aplomb) et dans le même plan (alignement). C'est le dernier moment pour corriger facilement.",
+      "recommandation_klaro": "Tendez un fil entre le premier et le dernier montant pour vérifier que tous sont dans le même plan. Utilisez un niveau à bulle sur chaque montant pour l'aplomb. Prenez 20 minutes sur cette étape — vous économisez des heures de reprise après.",
+      "erreur_frequente": "Passer directement à la pose des plaques sans vérifier l'alignement des montants. Un montant décalé de 5mm crée une bosse visible sous la peinture, et impossible à corriger sans déposer les plaques.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-09"]
+    },
+    {
+      "id": "placo-11",
+      "ordre": 11,
+      "titre": "Intégrer les renforts (meubles, TV, cuisine)",
+      "critique": true,
+      "explication": "Si vous prévoyez de fixer quelque chose de lourd sur une cloison placo (TV murale, meuble de cuisine, radiateur, miroir, main courante), vous devez intégrer des renforts en bois ou en acier dans la structure AVANT de fermer.",
+      "recommandation_klaro": "Repérez précisément la hauteur et la position de chaque fixation future et insérez un morceau de bois (médium ou contreplaqué 15mm) entre deux montants à cet endroit. Photographiez leur position avant de poser le placo — vous saurez où visser plus tard.",
+      "erreur_frequente": "Oublier les renforts et vouloir fixer une TV ou un meuble de cuisine après coup. Les chevilles pour placo seules ne tiennent pas pour des charges lourdes — c'est la chute assurée.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-09"]
+    },
+    {
+      "id": "placo-12",
+      "ordre": 12,
+      "titre": "Passer les gaines électriques",
+      "critique": true,
+      "explication": "C'est maintenant qu'il faut passer toutes les gaines et câbles qui traverseront ou longeront vos cloisons. Une fois le placo posé, impossible de les faire passer sans percer.",
+      "recommandation_klaro": "Passez les gaines dans les montants en utilisant les découpes prévues à cet effet (les trous déjà présents dans les montants). Laissez toujours un excédent de câble de 30cm aux sorties de boîtes pour le raccordement futur. Coordonnez-vous avec l'électricien si ce n'est pas vous qui faites le câblage.",
+      "erreur_frequente": "Fermer le placo et réaliser qu'on a oublié de passer un câble. Percer après dans du placo sans guide est imprécis, risqué pour les câbles déjà en place, et laisse des traces visibles.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-10", "placo-11"]
+    },
+    {
+      "id": "placo-13",
+      "ordre": 13,
+      "titre": "Poser l'isolation dans la cloison",
+      "critique": true,
+      "explication": "L'isolation (laine de verre ou laine de roche) s'insère entre les montants avant de fermer la seconde face. Elle améliore à la fois l'isolation thermique et l'isolation acoustique entre les pièces.",
+      "recommandation_klaro": "Pour une simple cloison de distribution (séparation de pièces), une laine de verre de 45mm suffit. Pour une vraie performance acoustique, optez pour la laine de roche 45mm ou 70mm — elle est plus dense et coupe mieux le son. Portez des gants et un masque : les fibres irritent la peau et les poumons.",
+      "erreur_frequente": "Sauter l'isolation pour gagner du temps. Une cloison placo non isolée est acoustiquement transparente — on entend tout d'une pièce à l'autre, même les conversations normales. Impossible à corriger sans tout démonter.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-12"]
+    },
+    {
+      "id": "placo-14",
+      "ordre": 14,
+      "titre": "Poser les plaques de la première face",
+      "critique": false,
+      "explication": "On commence par fermer un côté de la cloison avec les plaques placo. Les plaques se vissent sur les montants avec des vis autoperceuses spéciales placo, toutes les 30cm.",
+      "recommandation_klaro": "Décalez les joints entre plaques d'au moins une rangée : ne faites jamais coincider deux joints horizontaux sur le même montant. Les têtes de vis doivent être légèrement noyées (1mm sous la surface) sans percer la plaque. Commencez en angle et avancez en rangées.",
+      "erreur_frequente": "Aligner tous les joints de plaques sur le même montant. Ça crée une ligne de faiblesse structurelle — les joints fissurent systématiquement à cet endroit, même avec un enduit parfait.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-13"]
+    },
+    {
+      "id": "placo-15",
+      "ordre": 15,
+      "titre": "Poser les plaques de la seconde face",
+      "critique": false,
+      "explication": "Une fois la première face posée, on ferme l'autre côté de la cloison. Les joints de la seconde face doivent être décalés de ceux de la première face pour éviter les lignes de faiblesse.",
+      "recommandation_klaro": "Décalez les joints de la seconde face d'au moins 60cm par rapport à ceux de la première. Coupez proprement vos plaques : tracez avec une règle, crantez avec un cutter, cassez d'un coup sec. Une coupe propre donne un joint propre.",
+      "erreur_frequente": "Aligner les joints des deux faces l'une en face de l'autre. La cloison est structurellement fragilisée et les fissures traversent les deux faces. Résultat visible même sous une peinture épaisse.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-14"]
+    },
+    {
+      "id": "placo-16",
+      "ordre": 16,
+      "titre": "Gérer les ouvertures (portes)",
+      "critique": true,
+      "explication": "Chaque ouverture de porte dans une cloison nécessite un encadrement renforcé : montants doubles de chaque côté, linteau horizontal au-dessus de la porte, et huisserie adaptée à l'épaisseur de la cloison.",
+      "recommandation_klaro": "Doublez les montants de chaque côté de chaque ouverture de porte. Posez votre huisserie AVANT de fermer le placo pour l'intégrer proprement dans la cloison. Vérifiez que la hauteur sous linteau correspond exactement à la hauteur de votre porte avec son jeu de passage (porte + 5mm en bas).",
+      "erreur_frequente": "Ne pas doubler les montants de porte. La cloison vibre quand on ferme la porte et s'abîme progressivement. À terme, les vis de l'huisserie lâchent et la porte ne ferme plus correctement.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-09"]
+    },
+    {
+      "id": "placo-17",
+      "ordre": 17,
+      "titre": "Réaliser un faux plafond (si concerné)",
+      "critique": false,
+      "explication": "Un faux plafond permet de cacher des réseaux (électricité, VMC, plomberie), de corriger un plafond abîmé, ou d'améliorer l'isolation acoustique entre deux étages. La structure est différente d'une cloison mais le principe est le même.",
+      "recommandation_klaro": "Pour un faux plafond sur rails, utilisez des suspentes réglables pour descendre la structure du plafond existant. Prévoyez l'accès aux boîtes de dérivation électriques — intégrez des trappes de visite avant de fermer. Calculez votre hauteur finale avant de commencer : récupérer 5cm de hauteur perdu est très difficile.",
+      "erreur_frequente": "Fermer le faux plafond sans prévoir de trappe d'accès aux boîtes de dérivation. Interdit par la norme électrique et vous obligera à percer votre plafond fini pour accéder à la première panne.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-12"]
+    },
+    {
+      "id": "placo-18",
+      "ordre": 18,
+      "titre": "Traiter les angles et jonctions",
+      "critique": false,
+      "explication": "Les angles saillants (coins de cloisons) doivent être protégés avec des cornières métalliques ou PVC. Les jonctions entre placo et murs existants doivent être traitées pour éviter les fissures.",
+      "recommandation_klaro": "Utilisez des cornières d'angle perforées sur tous les angles saillants — elles se noient dans l'enduit et protègent le coin des chocs. Pour les jonctions entre nouvelle cloison et mur existant, laissez un joint de 3mm et comble-le avec un enduit souple plutôt que rigide.",
+      "erreur_frequente": "Faire un angle saillant en placo nu sans cornière. Le premier choc (déménagement, aspirateur, enfant) ébréche le placo immédiatement. La réparation est toujours visible.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-15"]
+    },
+    {
+      "id": "placo-19",
+      "ordre": 19,
+      "titre": "Poser les bandes à joints",
+      "critique": true,
+      "explication": "Les bandes à joints (papier ou armée) se posent sur tous les joints entre plaques et sur les angles, noyées dans une première couche d'enduit. Elles empêchent les fissures d'apparaître.",
+      "recommandation_klaro": "Utilisez des bandes papier pour les joints entre plaques et des bandes armées (fibre de verre) pour les joints en angle et les zones à risque. Noyez bien la bande dans l'enduit sans bulles d'air — une bande mal collée se décollera et fissurera.",
+      "erreur_frequente": "Sauter les bandes et n'appliquer que de l'enduit sur les joints. Sans bande, les joints fissureront dans 100% des cas, souvent dès le premier hiver avec les variations de température et d'humidité.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-18"]
+    },
+    {
+      "id": "placo-20",
+      "ordre": 20,
+      "titre": "Appliquer les enduits (1ère passe)",
+      "critique": false,
+      "explication": "La première passe d'enduit noie les bandes à joints et les têtes de vis. L'objectif est de combler, pas de finir. On applique large et épais, on laisse sécher complètement avant de continuer.",
+      "recommandation_klaro": "Appliquez l'enduit avec une large spatule (25 à 30cm). N'essayez pas de faire propre du premier coup — la 1ère passe est là pour combler, la 2ème pour finir. Respectez impérativement le temps de séchage indiqué sur le sac (souvent 24h) avant de passer à la suite.",
+      "erreur_frequente": "Appliquer la 2ème passe avant que la 1ère soit totalement sèche. L'enduit encore humide en dessous craque et se détache. Tout est à poncer et refaire.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-19"]
+    },
+    {
+      "id": "placo-21",
+      "ordre": 21,
+      "titre": "Appliquer les enduits (finition)",
+      "critique": false,
+      "explication": "La passe de finition est fine, sur une surface plus large que la 1ère passe pour fondre le joint dans le mur. L'objectif : une surface invisible, sans relief ni creux.",
+      "recommandation_klaro": "Utilisez une grande spatule (40 à 60cm) pour étaler sur une zone plus large que le joint. Travaillez en croisé : une passe dans un sens, une passe dans l'autre. Mouillet légèrement la spatule pour un lissage plus facile. Visez le quasi-parfait — le ponçage ne rattrape que les petits défauts.",
+      "erreur_frequente": "Appliquer la finition trop épaisse en voulant tout corriger en une couche. Un enduit épais se rétracte en séchant et craque. Mieux vaut deux passes fines qu'une épaisse.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-20"]
+    },
+    {
+      "id": "placo-22",
+      "ordre": 22,
+      "titre": "Poncer les joints",
+      "critique": false,
+      "explication": "Le ponçage arase les dernières imperfections de l'enduit pour obtenir une surface parfaitement plane, prête à recevoir peinture ou revêtement.",
+      "recommandation_klaro": "Utilisez une girafe à poncer (perche avec plateau abrasif) pour travailler debout sans échelle — c'est plus sûr et plus régulier. Commencez au grain 80, finissez au grain 120. Portez absolument un masque anti-poussière : la poussière de placo est très fine et irritante pour les poumons.",
+      "erreur_frequente": "Poncer trop fort sur les plaques. On traverse le papier de surface du placo et la surface devient poreuse, difficile à peindre proprement. Le ponçage doit être léger et régulier.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-21"]
+    },
+    {
+      "id": "placo-23",
+      "ordre": 23,
+      "titre": "Vérifier la planéité",
+      "critique": true,
+      "explication": "Avant de déclarer le chantier terminé, vérifiez la planéité de toutes vos surfaces avec une règle de 2m. Sous un éclairage rasant, les défauts qui passeraient inaperçus à la lumière normale deviennent évidents.",
+      "recommandation_klaro": "Promenez une règle de maçon de 2m sur toutes les surfaces. L'écart maximal toléré sous peinture est de 3mm sous la règle de 2m. Utilisez une lampe torche en éclairage rasant — c'est le test implacable. Mieux vaut corriger maintenant qu'après la peinture.",
+      "erreur_frequente": "Valider la surface à la lumière normale sans tester à l'éclairage rasant. La peinture (surtout satinée ou brillante) révèle impitoyablement toutes les irrégularités que la lumière directe cachait.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-22"]
+    },
+    {
+      "id": "placo-24",
+      "ordre": 24,
+      "titre": "Nettoyer et préparer les surfaces",
+      "critique": false,
+      "explication": "Après ponçage, toutes les surfaces doivent être soigneusement dépoussiérées avant d'appliquer quoi que ce soit. La poussière de placo empêche l'adhérence de l'apprêt et de la peinture.",
+      "recommandation_klaro": "Passez l'aspirateur sur toutes les surfaces, puis un chiffon légèrement humide pour capter la poussière fine. Laissez sécher complètement avant d'appliquer l'apprêt. Vérifiez aussi le sol — la poussière de ponçage se redépose et peut contaminer votre peinture fraîche.",
+      "erreur_frequente": "Appliquer directement la peinture sur de la poussière de placo. La peinture n'adhère pas correctement, elle cloque et s'écaille en quelques mois.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-23"]
+    },
+    {
+      "id": "placo-25",
+      "ordre": 25,
+      "titre": "Préparer avant peinture ou revêtement",
+      "critique": true,
+      "explication": "Le placo neuf est très absorbant et doit recevoir un apprêt avant la peinture finale. Sans apprêt, la peinture est inégalement absorbée, les joints restent visibles et la consommation de peinture explose.",
+      "recommandation_klaro": "Appliquez une couche d'impression (apprêt) sur tout le placo avant la peinture. Choisissez un apprêt « garnissant » adapté au placo neuf — il bouche les pores et uniformise l'absorption. Pour du carrelage (salle de bain), vérifiez que la plaque hydrofuge est bien sèche et appliquez une résine d'accrochage avant de poser les carreaux.",
+      "erreur_frequente": "Peindre directement sur le placo neuf sans apprêt. La première couche est inégale, les joints transparaissent sous la peinture finale, et il faut souvent 3 à 4 couches au lieu de 2. Perte de temps et de matériaux.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["placo-24"]
+    }
+  ]
+}
