@@ -630,6 +630,820 @@
           "control_questions": []
         }
       ]
+    },
+    {
+      "id": "terrassement_decaissement",
+      "label": "Terrassement & décaissement",
+      "tasks": [
+        {
+          "id": "vrd_031",
+          "title": "Tracer l'implantation au sol",
+          "phase": "terrassement_decaissement",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Tracé sur le terrain selon plans : cordeau tendu entre piquets, équerre 3-4-5 (méthode Pythagore) pour les angles droits, peinture aérosol pour matérialiser.",
+          "klaro_recommendation": "Piquets aux 4 angles + cordeau bien tendu. Équerre 3-4-5 : 3 m sur un côté, 4 m sur l'autre, diagonale doit faire 5 m exactement. Peinture aérosol pour le périmètre. Vérifiez les diagonales du rectangle (égales = équerre OK). Pour réseau enterré : tracé linéaire entre point de départ et exutoire.",
+          "common_mistake": "Tracer 'à l'œil' avec une corde — terrasse pas d'équerre, problèmes pour le carrelage, finition compromise.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_018"],
+          "norm_reference": "DTU 13.3 + DTU 60.32",
+          "control_questions": [
+            { "question": "Implantation tracée et angles vérifiés à l'équerre 3-4-5 ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_032",
+          "title": "Décaisser à la profondeur requise",
+          "phase": "terrassement_decaissement",
+          "applies_to_project_type": ["terrasse_sur_dalle", "terrasse_sur_lambourdes_bois", "allee_beton", "allee_paves_dallage", "reseaux_enterres", "drainage_peripherique", "assainissement_non_collectif", "recuperation_eau_pluie", "mur_soutenement", "escalier_exterieur", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Profondeur selon projet : terrasse sur dalle 30-40 cm minimum, hors-gel 60-80 cm pour ouvrages fixes en zone froide, allée 25-30 cm, tranchée réseau selon profondeur du fluide.",
+          "klaro_recommendation": "Mini-pelle pour décaissement important (location ~150-250 €/jour). Manuellement pour petits volumes (terrasse < 10 m²). Profondeur conforme G2 + épaisseur de la dalle/revêtement. Sol décaissé jusqu'au sol porteur (pas dans la terre végétale, peu portante). Vérifiez le niveau au laser pour homogénéité.",
+          "common_mistake": "Décaissement insuffisant — fondation sur terre végétale, tassement à terme, déformation de la dalle.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_031"],
+          "norm_reference": "DTU 13.3 + DTU 60.32 + Carte gel France",
+          "control_questions": [
+            { "question": "Profondeur de décaissement (cm) ?", "type": "number", "expected": "≥ 30 terrasse / ≥ 60 hors gel zone froide" }
+          ]
+        },
+        {
+          "id": "vrd_033",
+          "title": "Compacter le fond de fouille",
+          "phase": "terrassement_decaissement",
+          "applies_to_project_type": ["terrasse_sur_dalle", "allee_beton", "allee_paves_dallage", "reseaux_enterres", "drainage_peripherique", "assainissement_non_collectif", "mur_soutenement", "escalier_exterieur", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Compactage à la plaque vibrante (refus) ou à la dame manuelle pour petits volumes. JAMAIS compactage à pied (insuffisant). Sol bien compacté = pas de tassement ultérieur.",
+          "klaro_recommendation": "Plaque vibrante (location ~50 €/jour). Compactage par couches de 20 cm maxi. Refus = critère de fin (sol qui ne s'enfonce plus sous l'engin). Photographiez le compactage. Sans compactage : tassement différentiel, fissures dans la dalle, descente ponctuelle des pavés.",
+          "common_mistake": "Couler une dalle sur sol non compacté — tassement à long terme, fissuration en étoile.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["vrd_032"],
+          "norm_reference": "DTU 13.3",
+          "control_questions": [
+            { "question": "Sol compacté à la plaque vibrante (refus atteint) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_034",
+          "title": "Évacuer ou réutiliser les déblais",
+          "phase": "terrassement_decaissement",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Réutilisation sur place si terre conservable (talus, remblai jardin) ou évacuation en filière (déchetterie inertes ou plateforme déchets verts).",
+          "klaro_recommendation": "Terre végétale : conservation pour aménagement paysager (jardin, talus). Argile/limon : difficile à réutiliser, évacuation. Gravats : déchetterie inertes. Mélange terre+gravats = à trier avant. Bennes (~150-300 €) ou aller-retours déchetterie.",
+          "common_mistake": "Stocker tout sur place 'pour plus tard' — encombrement, cause de chute, recolonisation par mauvaises herbes.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_032"],
+          "norm_reference": "Code environnement L541-1",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "reseaux_enterres",
+      "label": "Réseaux enterrés",
+      "tasks": [
+        {
+          "id": "vrd_035",
+          "title": "Creuser les tranchées aux profondeurs réglementaires",
+          "phase": "reseaux_enterres",
+          "applies_to_project_type": ["reseaux_enterres", "assainissement_non_collectif", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Profondeurs réglementaires : eau potable 80 cm hors gel, EU/EP 60-80 cm, électricité 50-85 cm (NF C 15-100), gaz 50 cm minimum (DTU 61.1, pro Qualigaz), télécom 35 cm.",
+          "klaro_recommendation": "Mini-pelle ou tranchée manuelle. Profondeur mesurée depuis le sol fini. En zone gélive : eau et tuyaux non isolés à 80 cm minimum. Vérifiez la présence d'autres réseaux à proximité (DT-DICT) AVANT chaque coup de pelle. Photo de chaque tranchée avec mètre apparent.",
+          "common_mistake": "Eau potable à 40 cm en zone froide — gel des tuyaux à -10°C, éclatement.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["vrd_010"],
+          "norm_reference": "DTU 60.32 + NF C 15-100 + DTU 61.1",
+          "control_questions": [
+            { "question": "Profondeurs respectées (eau 80, EU/EP 60-80, élec 50-85, gaz 50, télécom 35 cm) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_036",
+          "title": "Distances réglementaires entre réseaux différents",
+          "phase": "reseaux_enterres",
+          "applies_to_project_type": ["reseaux_enterres", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "JAMAIS plusieurs fluides différents dans la même tranchée sans précautions normalisées. Distances minimales entre réseaux : 20-50 cm selon natures (gaz/élec, gaz/eau, etc.).",
+          "klaro_recommendation": "Tranchées séparées par fluide ou regroupement avec distances + grillages avertisseurs distincts par couleur. Eau potable au-dessus des EU/EP (jamais l'inverse). Élec au-dessus de l'eau pour éviter contamination. En cas de doute : tranchées séparées.",
+          "common_mistake": "Eau potable + EU dans la même tranchée — contamination possible si fuite, non conforme sanitaire.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_035"],
+          "norm_reference": "NF C 15-100 + DTU 60.32 + DTU 61.1",
+          "control_questions": [
+            { "question": "Distances entre réseaux respectées (tranchées séparées ou regroupement normalisé) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_037",
+          "title": "Lit de sable 10 cm au fond de la tranchée",
+          "phase": "reseaux_enterres",
+          "applies_to_project_type": ["reseaux_enterres", "assainissement_non_collectif", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Lit de sable 0/4 ou 0/5 sur 10 cm minimum au fond de la tranchée AVANT pose des canalisations. Protège les tuyaux des cailloux pointus et permet une pose homogène.",
+          "klaro_recommendation": "Sable 0/4 ou 0/5 (granulométrie fine). Étalez à plat, lissez à la règle pour planéité. 10 cm minimum, plus si risque cailloux. Sans lit de sable : pierres pointues qui transpercent les canalisations PVC à long terme, fuites.",
+          "common_mistake": "Poser les canalisations directement sur la terre — pierres pointues, déformation, fuites à terme.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["vrd_035"],
+          "norm_reference": "DTU 60.32 + NF P 98-331",
+          "control_questions": [
+            { "question": "Lit de sable 0/4 sur 10 cm minimum au fond de tranchée ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_038",
+          "title": "Poser les canalisations avec pente respectée",
+          "phase": "reseaux_enterres",
+          "applies_to_project_type": ["reseaux_enterres", "assainissement_non_collectif", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Pente 2% minimum EP, 2-3% EU. JAMAIS à plat ni à contre-pente (eau qui stagne ou remonte). Vérification au niveau ou cordeau avant remblai.",
+          "klaro_recommendation": "Niveau laser sur la canalisation : pente régulière vérifiée tous les 1 m. Pour 10 m de canalisation EU à 2% : 20 cm de dénivelé entre départ et arrivée. Joints sertis ou collés selon matériau (PVC à coller, PE à compresser). Vérifiez le sens d'écoulement (départ amont, arrivée aval).",
+          "common_mistake": "Canalisation à 1% au lieu de 2% — solides qui restent dans le tube, bouchage rapide.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_037"],
+          "norm_reference": "DTU 60.32 + DTU 64.1",
+          "control_questions": [
+            { "question": "Pente respectée (≥ 2% EP, ≥ 2-3% EU) vérifiée au niveau ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_039",
+          "title": "Gaines TPC normalisées par couleur",
+          "phase": "reseaux_enterres",
+          "applies_to_project_type": ["reseaux_enterres", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Gaines TPC (Tube Annelé Polyéthylène) avec couleur normalisée par fluide : ROUGE = électricité, BLEUE = eau potable, JAUNE = gaz, VERTE = télécom. Identification visuelle immédiate à l'ouverture future.",
+          "klaro_recommendation": "Gaines TPC du Ø adapté (40-110 mm courant). Tirez un câble nylon (tire-fil) à l'intérieur pour faciliter le passage du câble final. Marquez les extrémités. Sans codification couleur : impossibilité d'identifier le réseau à l'ouverture, risque accident électrique (couper l'eau au lieu du gaz).",
+          "common_mistake": "Toutes les gaines de la même couleur — impossible d'identifier le bon réseau à l'ouverture, intervention à l'aveugle.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_038"],
+          "norm_reference": "NF C 15-100 + NF EN 13476",
+          "control_questions": [
+            { "question": "Gaines TPC normalisées (rouge élec, bleu eau, jaune gaz, vert télécom) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_040",
+          "title": "Couvrir les canalisations d'un nouveau lit de sable",
+          "phase": "reseaux_enterres",
+          "applies_to_project_type": ["reseaux_enterres", "assainissement_non_collectif", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Couvrir les canalisations posées d'un nouveau lit de sable (10 cm au-dessus). Protège du remblai (cailloux, gravats) qui pourrait endommager les tubes.",
+          "klaro_recommendation": "Sable 0/4 ou 0/5 par-dessus les canalisations, 10 cm minimum. Étalé à la pelle, sans tasser fortement. Couvrement complet sur toute la longueur. Sans cette protection : remblai grossier qui transperce les canalisations à terme.",
+          "common_mistake": "Remblai direct sur PVC sans sable de couvrement — cailloux qui percent le tube en quelques années.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_038"],
+          "norm_reference": "DTU 60.32 + NF P 98-331",
+          "control_questions": [
+            { "question": "Lit de sable 10 cm au-dessus des canalisations ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_041",
+          "title": "Grillage avertisseur OBLIGATOIRE 20 cm au-dessus",
+          "phase": "reseaux_enterres",
+          "applies_to_project_type": ["reseaux_enterres", "assainissement_non_collectif", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Grillage avertisseur (filet plastique) posé 20 cm au-dessus des canalisations enterrées. Couleur normalisée par fluide. Avertit toute personne creusant ultérieurement de la présence d'un réseau.",
+          "klaro_recommendation": "Couleurs : ROUGE élec, BLEU eau, JAUNE gaz, VERT télécom, MARRON eaux usées. Posé bien à plat, sur toute la longueur du réseau. Recouvert ensuite par le remblai. OBLIGATOIRE selon DTU et NF P 98-331. Sans grillage avertisseur : sanctions en cas d'accident futur (responsabilité civile illimitée).",
+          "common_mistake": "Sauter le grillage avertisseur 'pour économiser' — accident futur lors d'un creusement, responsabilité engagée.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["vrd_040"],
+          "norm_reference": "NF P 98-331 + DTU 60.32",
+          "control_questions": [
+            { "question": "Grillage avertisseur 20 cm au-dessus, couleur normalisée par fluide ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_042",
+          "title": "Photographier la tranchée AVANT remblai",
+          "phase": "reseaux_enterres",
+          "applies_to_project_type": ["reseaux_enterres", "drainage_peripherique", "assainissement_non_collectif", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Photos AVANT remblai : preuve irréversible du lit de sable, des canalisations en place, du grillage avertisseur. Une fois le remblai en place, plus aucune vérification possible.",
+          "klaro_recommendation": "Photos détaillées : ensemble de la tranchée, détails du lit de sable, des canalisations, des raccords, du grillage avertisseur. Mire/mètre dans le cadre pour échelle. Plusieurs angles. Date EXIF visible. Archivage avec dossier travaux. Indispensable pour : assurance, expertise, vente du bien.",
+          "common_mistake": "Remblayer rapidement sans photographier — preuves perdues en cas de problème futur, responsabilité difficile à établir.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["vrd_041"],
+          "norm_reference": "Bonnes pratiques + assurance",
+          "control_questions": [
+            { "question": "Photos détaillées de la tranchée prises AVANT remblai et archivées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_043",
+          "title": "Remblayer en couches successives compactées",
+          "phase": "reseaux_enterres",
+          "applies_to_project_type": ["reseaux_enterres", "drainage_peripherique", "assainissement_non_collectif", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Remblai en couches de 15-20 cm chacune, compactées à la plaque vibrante. Pas de remblai en grosse pelletée d'un coup (pas compactable).",
+          "klaro_recommendation": "Première couche compactée à la dame manuelle (au-dessus du grillage, pour ne pas l'endommager). Couches suivantes à la plaque vibrante. Réutilisez la terre extraite si propre (sans gravats). Sans compactage par couches : tassement progressif, dépression visible au sol après quelques mois.",
+          "common_mistake": "Remblai en bloc + plaque vibrante — couche superficielle compactée mais profondeur restée meuble, tassement à terme.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_042"],
+          "norm_reference": "NF P 98-331 + DTU 60.32",
+          "control_questions": [
+            { "question": "Remblai par couches de 15-20 cm compactées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_044",
+          "title": "Installer les regards de visite",
+          "phase": "reseaux_enterres",
+          "applies_to_project_type": ["reseaux_enterres", "assainissement_non_collectif", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Regards de visite à chaque changement de direction (≥ 45°), à chaque jonction (té), tous les 30 m maximum sur ligne droite. Permettent inspection et débouchage.",
+          "klaro_recommendation": "Regards PVC Ø 315-400 mm pour usage domestique. Tampon en surface (carrossable selon zone). Pose stable sur lit de sable + remblai compacté autour. Cunette intérieure orientée selon écoulement. Sans regards : intervention impossible sans casser.",
+          "common_mistake": "Réseau de 50 m sans regard intermédiaire — bouchage = creusage destructif pour intervenir.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_038"],
+          "norm_reference": "DTU 60.32 + DTU 64.1",
+          "control_questions": [
+            { "question": "Regards installés (changements direction, jonctions, ≤ 30 m linéaires) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_045",
+          "title": "Tabouret de raccordement en limite de propriété",
+          "phase": "reseaux_enterres",
+          "applies_to_project_type": ["reseaux_enterres", "amenagement_complet"],
+          "applies_to_raccordement": ["tout_a_l_egout"],
+          "applies_to_rga": ["all"],
+          "explanation": "Tabouret de branchement en limite de propriété (côté domaine public ou privé selon collectivité). Point de raccordement entre votre réseau privatif et le réseau public collectif.",
+          "klaro_recommendation": "Position imposée par le concessionnaire (souvent en limite de propriété, accessible depuis le trottoir). Ø adapté (PVC 200-315 mm pour EU/EP courant). Tampon carrossable si véhicules. Pose précise pour raccordement au réseau public par le concessionnaire.",
+          "common_mistake": "Position erronée du tabouret — non conforme, refus de raccordement par le concessionnaire.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_007"],
+          "norm_reference": "DTU 60.32 + Règlement collectif local",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_046",
+          "title": "Faire raccorder au réseau public par le concessionnaire",
+          "phase": "reseaux_enterres",
+          "applies_to_project_type": ["reseaux_enterres", "amenagement_complet"],
+          "applies_to_raccordement": ["tout_a_l_egout"],
+          "applies_to_rga": ["all"],
+          "explanation": "Le raccordement final au réseau public (sur trottoir/voirie) est souvent réservé au concessionnaire (Suez, Veolia, Enedis selon fluide). Intervention payante, planifiée par le concessionnaire.",
+          "klaro_recommendation": "Demande au concessionnaire après pose du tabouret côté privé. Devis et planification (délai 2-6 semaines). Coût ~500-2000 € selon fluide. Sans cette intervention : pas de mise en service possible. Conservez tous les documents (devis, facture, PV de raccordement).",
+          "common_mistake": "Tenter de raccorder soi-même sur le réseau public — illégal, refus de mise en service, démolition.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["autorisation_raccordement_public"],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_045"],
+          "norm_reference": "Règlement collectif local",
+          "control_questions": [
+            { "question": "Raccordement au réseau public effectué par le concessionnaire ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drainage_peripherique",
+      "label": "Drainage périphérique de la maison",
+      "tasks": [
+        {
+          "id": "vrd_047",
+          "title": "Décaisser autour des fondations",
+          "phase": "drainage_peripherique",
+          "applies_to_project_type": ["drainage_peripherique"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Décaisser autour des fondations jusqu'au niveau de la semelle (parfois 1,5 à 2 m de profondeur). Largeur 50-80 cm pour pose du drain et du gravier.",
+          "klaro_recommendation": "Mini-pelle obligatoire (volume important). Décaissement progressif pour ne pas déstabiliser les fondations. Distance minimale au mur : 30-50 cm. Profondeur jusqu'à la base de la semelle. Si tranchée > 1,30 m : blindage obligatoire (cf. sécurité chantier).",
+          "common_mistake": "Décaisser trop près du mur — instabilité possible des fondations.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_028"],
+          "norm_reference": "DTU 13.11 + DTU 14.1",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_048",
+          "title": "Poser un géotextile en pied de fondation",
+          "phase": "drainage_peripherique",
+          "applies_to_project_type": ["drainage_peripherique"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Géotextile (feutre filtrant) posé en pied de fondation sur fond de fouille et remontant sur les côtés. Anti-colmatage du drain par les fines du sol environnant.",
+          "klaro_recommendation": "Géotextile non-tissé 200 g/m² minimum. Pose en chaussette : feutre au fond + remontée sur les parois latérales (sera replié en chausson sur le gravier en fin de pose). Recouvrements 30 cm entre lés. Sans géotextile : drain colmaté en 2-5 ans, drainage inopérant.",
+          "common_mistake": "Drain posé directement dans la terre sans géotextile — colmaté en quelques années, drain inopérant.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["vrd_047"],
+          "norm_reference": "DTU 14.1 + Avis Techniques géotextile",
+          "control_questions": [
+            { "question": "Géotextile posé en chaussette en pied de fondation ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_049",
+          "title": "Poser le drain agricole avec pente",
+          "phase": "drainage_peripherique",
+          "applies_to_project_type": ["drainage_peripherique"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Drain agricole (tube PVC ou PE perforé Ø 100-125 mm) posé sur le géotextile, avec pente régulière 2 à 3 ‰ vers l'exutoire. Trous orientés vers le bas (ou tout autour selon modèle).",
+          "klaro_recommendation": "Pente 2-3 mm/m vers l'exutoire (puits perdu, regard EP, fossé). Vérification au niveau laser. Joints en bouts de tubes par manchons + colliers. Sans pente correcte : eau qui stagne, drainage inopérant.",
+          "common_mistake": "Drain à plat ou contre-pente — eau stagnante, drainage inopérant.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_048"],
+          "norm_reference": "DTU 14.1",
+          "control_questions": [
+            { "question": "Drain posé avec pente 2-3 ‰ vers exutoire ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_050",
+          "title": "Recouvrir de gravier 20/40 et fermer le géotextile",
+          "phase": "drainage_peripherique",
+          "applies_to_project_type": ["drainage_peripherique"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Couvrir le drain de gravier 20/40 (drainant) sur 30-50 cm. Refermer le géotextile en chausson par-dessus le gravier (anti-pénétration des fines du sol).",
+          "klaro_recommendation": "Gravier 20/40 propre (sans fines). Étalement progressif autour du drain, puis sur 30-50 cm de hauteur. Repli du géotextile en chausson par-dessus (forme un sandwich gravier+drain enveloppé de feutre). Photographiez avant remblai final.",
+          "common_mistake": "Gravier sale ou tout-venant — fines qui colmatent le drain malgré le géotextile.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["vrd_049"],
+          "norm_reference": "DTU 14.1",
+          "control_questions": [
+            { "question": "Gravier 20/40 propre + géotextile refermé en chausson ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_051",
+          "title": "Raccorder le drain à un exutoire",
+          "phase": "drainage_peripherique",
+          "applies_to_project_type": ["drainage_peripherique"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Raccorder le drain agricole à un exutoire : puits perdu (gravier 20/40 sur 2-3 m de profondeur), regard EP raccordé au réseau public, fossé. JAMAIS dans le réseau EU.",
+          "klaro_recommendation": "Puits perdu : profondeur 2-3 m, gravier 20/40 entouré de géotextile, accès par tampon en surface. Regard EP : raccordement direct au réseau public si autorisé. Fossé : selon configuration. Vérifiez l'autorisation locale d'infiltration ou de rejet.",
+          "common_mistake": "Drain raccordé en réseau EU — saturation du collectif, sanctions.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_049"],
+          "norm_reference": "DTU 14.1 + DTU 60.32",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_052",
+          "title": "Étanchéifier les fondations",
+          "phase": "drainage_peripherique",
+          "applies_to_project_type": ["drainage_peripherique"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Application d'un enduit bitumineux ou d'une membrane d'étanchéité sur les murs de fondations enterrés. Cuvelage selon DTU 14.1 si nécessaire (forte pression hydrostatique).",
+          "klaro_recommendation": "Enduit bitumineux à froid (rouleau ou pinceau) : 2-3 couches sur les murs enterrés secs. Membrane drainante (Delta-MS, Platon) : alternative haut de gamme, vissée et collée. Cuvelage = enduit hydrofuge cimentaire, pour zones humides extrêmes (DTU 14.1). Photographiez avant remblai.",
+          "common_mistake": "Drainage seul sans étanchéification des murs — humidité ascensionnelle, salpêtre dans la cave.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_047"],
+          "norm_reference": "DTU 14.1 + DTU 20.1",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "fond_de_forme_compactage",
+      "label": "Fond de forme & compactage",
+      "tasks": [
+        {
+          "id": "vrd_053",
+          "title": "Géotextile entre fond de forme et hérisson",
+          "phase": "fond_de_forme_compactage",
+          "applies_to_project_type": ["terrasse_sur_dalle", "allee_beton", "allee_paves_dallage", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Géotextile non-tissé entre la terre du fond de forme et le hérisson en gravier. Anti-mélange terre/gravier, conserve la portance et le drainage du hérisson.",
+          "klaro_recommendation": "Géotextile 100-200 g/m² selon usage. Pose plate avec recouvrements 20 cm entre lés. Remontée sur les côtés (5-10 cm) pour fermer le sandwich. Sans géotextile : terre qui remonte dans le hérisson en quelques années, perte de drainage et de portance.",
+          "common_mistake": "Hérisson directement sur la terre — fines qui remontent par capillarité, perte d'efficacité.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_033"],
+          "norm_reference": "DTU 13.3 + Avis Techniques géotextile",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_054",
+          "title": "Hérisson en gravier 20/40 compacté en couches",
+          "phase": "fond_de_forme_compactage",
+          "applies_to_project_type": ["terrasse_sur_dalle", "allee_beton", "allee_paves_dallage", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Hérisson = couche de gravier 20/40 (granulométrie 20-40 mm) sur 15-20 cm. Compacté en couches de 10 cm à la plaque vibrante. Drainant et portant.",
+          "klaro_recommendation": "Gravier 20/40 propre (sans fines). 2 couches de 8-10 cm, compactées séparément à la plaque vibrante. Niveau supérieur plan et de niveau. Refoulez les pierres saillantes pour préparer la pose du polyane sans risque de perforation.",
+          "common_mistake": "Hérisson trop mince (< 10 cm) ou avec gravier sale — pas de drainage, remontées capillaires.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["vrd_053"],
+          "norm_reference": "DTU 13.3 §6",
+          "control_questions": [
+            { "question": "Hérisson 15-20 cm gravier 20/40 propre, compacté en 2 couches ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_055",
+          "title": "Allée pavés/dalles : sable 0/4 stabilisé sur 5 cm",
+          "phase": "fond_de_forme_compactage",
+          "applies_to_project_type": ["allee_paves_dallage"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Pour allée en pavés ou dalles posés sur sable : couche de sable 0/4 stabilisé (mélange ciment-sable sec) sur 5 cm. Niveler à la règle. Permet l'ajustement précis de chaque pavé.",
+          "klaro_recommendation": "Sable 0/4 mélangé à 5-10% de ciment sec (stabilisation). Étalement à 5 cm, lissé à la règle de 2 m. Pose des pavés directement dessus, ajustement à la masse caoutchouc. Une fois posés et jointoyés : arrosage léger pour activer le ciment du stabilisé. Pose verrouillée.",
+          "common_mistake": "Sable simple sans stabilisation — pavés qui bougent à terme, déjointoiement.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_054"],
+          "norm_reference": "DTU 13.3 + DTU 52.1",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_056",
+          "title": "Vérifier les pentes finales avant pose",
+          "phase": "fond_de_forme_compactage",
+          "applies_to_project_type": ["terrasse_sur_dalle", "allee_beton", "allee_paves_dallage", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Niveau laser ou règle 2 m avec niveau bulle pour vérifier les pentes du hérisson (1,5-2% vers exutoire) AVANT pose du polyane et de la dalle. Plus difficile à corriger après.",
+          "klaro_recommendation": "Pour terrasse 5×5 m à 2% vers extérieur : 10 cm de dénivelé entre côté maison et côté opposé. Vérification multiple (4 coins + milieu). Si pente non régulière : reprenez le hérisson localement avant de continuer.",
+          "common_mistake": "Pente vérifiée seulement à la fin sur le carrelage — irrécupérable, dépose nécessaire.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_054"],
+          "norm_reference": "DTU 13.3 + DTU 52.1",
+          "control_questions": [
+            { "question": "Pentes finales vérifiées (1,5-2% vers exutoire) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dalle_support",
+      "label": "Dalle / support",
+      "tasks": [
+        {
+          "id": "vrd_057",
+          "title": "Polyane continu (recouvrements 20 cm, remontées 15 cm)",
+          "phase": "dalle_support",
+          "applies_to_project_type": ["terrasse_sur_dalle", "allee_beton", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Film polyane 200 microns minimum sur tout le hérisson. Recouvrements 20 cm minimum entre lés, scotchés. Remontées en périphérie de 15 cm. Étanchéité à l'humidité du sol.",
+          "klaro_recommendation": "Polyane 200 microns minimum. Recouvrements scotchés (scotch large adhérent). Remontées scotchées au mur ou retournées. Aucune perforation par les pierres du hérisson. Photo obligatoire avant pose du treillis.",
+          "common_mistake": "Polyane fin (50-100 microns) ou avec déchirures — humidité qui passe, dalle humide.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["vrd_054"],
+          "norm_reference": "DTU 13.3 §6",
+          "control_questions": [
+            { "question": "Polyane 200 microns continu, recouvrements 20 cm, remontées 15 cm ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_058",
+          "title": "Treillis soudé sur cales (enrobage 3 cm)",
+          "phase": "dalle_support",
+          "applies_to_project_type": ["terrasse_sur_dalle", "allee_beton", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Treillis soudé ST25 ou ST40 selon usage, posé sur cales pour garantir un enrobage de 3 cm sous (entre treillis et polyane) et 3 cm au-dessus. JAMAIS posé directement sur le polyane.",
+          "klaro_recommendation": "Cales d'enrobage en plastique ou béton, tous les 50-80 cm. Recouvrements de panneaux : 1 maille minimum (15-20 cm), liés au fil de fer. Sans enrobage : aciers exposés, corrosion, dalle qui se dégrade.",
+          "common_mistake": "Treillis posé directement sur polyane et 'tiré' pendant le coulage — enrobage nul, treillis inopérant.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["vrd_057"],
+          "norm_reference": "DTU 13.3 + Eurocode 2",
+          "control_questions": [
+            { "question": "Treillis posé sur cales (enrobage 3 cm sous et au-dessus) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_059",
+          "title": "Joint de dilatation entre dalle extérieure et fondation maison",
+          "phase": "dalle_support",
+          "applies_to_project_type": ["terrasse_sur_dalle", "allee_beton", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Joint de dilatation OBLIGATOIRE entre la dalle extérieure et la fondation/dalle de la maison. JAMAIS solidariser. La dalle extérieure se dilate/contracte différemment selon T° et humidité.",
+          "klaro_recommendation": "Bande compressible (mousse polyéthylène 10-15 mm) en pied de mur, sur toute la hauteur de la dalle. Joint silicone neutre extérieur en finition après dalle sèche. Sans joint : fissures qui apparaissent à la jonction dans les premiers mois.",
+          "common_mistake": "Solidariser la dalle extérieure au mur de la maison — fissures aux joints inévitables.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_058"],
+          "norm_reference": "DTU 13.3 §7",
+          "control_questions": [
+            { "question": "Joint de dilatation entre dalle extérieure et fondation maison ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_060",
+          "title": "Joints de fractionnement (dalles > 25 m² ou 6 m linéaires)",
+          "phase": "dalle_support",
+          "applies_to_project_type": ["terrasse_sur_dalle", "allee_beton", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Joints de fractionnement obligatoires dans les dalles > 25 m² ou longueur > 6 m. Variations thermiques plus fortes en extérieur (gel/canicule) = dilatations cumulées importantes.",
+          "klaro_recommendation": "Joints sciés au disque diamant 24-48h après coulage, profondeur 1/3 de l'épaisseur. Espacement 6 m maxi linéaires. Joints intermédiaires si surface > 25 m². Pour terrasse extérieure : joint plus rapproché que pour intérieur (4-5 m courant) à cause des variations thermiques plus fortes.",
+          "common_mistake": "Dalle de 50 m² extérieure d'un seul tenant — fissuration en réseau dès le premier hiver.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_058"],
+          "norm_reference": "DTU 13.3 §7",
+          "control_questions": [
+            { "question": "Joints de fractionnement prévus si > 25 m² ou > 6 m ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_061",
+          "title": "Couler la dalle (béton 350 kg/m³, vibrer, taloter)",
+          "phase": "dalle_support",
+          "applies_to_project_type": ["terrasse_sur_dalle", "allee_beton", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Béton dosé à 350 kg/m³ minimum (extérieur exposé gel-dégel). Coulage continu (pas de joint froid), vibration à l'aiguille, talochage manuel ou hélicoptère pour grandes surfaces. Pente respectée.",
+          "klaro_recommendation": "Toupie béton C25/30 minimum. Coulage continu pour éviter joints froids. Vibration aiguille + tirage à la règle. Talochage 2-4h après pour fermer la surface. Vérifiez la pente finale au laser. Niveau ±5 mm sous règle 2 m.",
+          "common_mistake": "Béton trop sec ou non vibré — bulles d'air, fissures à terme, pas d'enrobage du treillis.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_060"],
+          "norm_reference": "DTU 13.3 + DTU 21",
+          "control_questions": [
+            { "question": "Béton 350 kg/m³ coulé en continu, vibré, taloté, pente OK ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_062",
+          "title": "Cure du béton 7 jours minimum",
+          "phase": "dalle_support",
+          "applies_to_project_type": ["terrasse_sur_dalle", "allee_beton", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Cure = humidification 7 jours minimum après coulage. ÉTAPE LA PLUS ZAPPÉE et CAUSE NUMÉRO 1 de fissuration des dalles. Bâche, arrosage régulier ou produit de cure.",
+          "klaro_recommendation": "3 méthodes : (1) bâche plastique posée juste après talochage, maintenue 7 jours ; (2) arrosage 3-4 fois/jour pendant 7 jours ; (3) produit de cure liquide pulvérisé en surface. En zone chaude/sèche : doublez les arrosages. En extérieur : protégez aussi de la pluie battante (bâche).",
+          "common_mistake": "Considérer la dalle 'finie' après talochage — fissuration de retrait massive en quelques jours.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_061"],
+          "norm_reference": "NF EN 13670 + DTU 21",
+          "control_questions": [
+            { "question": "Cure 7 jours minimum réalisée (bâche, arrosage, produit cure) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_063",
+          "title": "Terrasse sur plots : nivellement laser",
+          "phase": "dalle_support",
+          "applies_to_project_type": ["terrasse_sur_plots"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Plots réglables posés sur géotextile + lit drainant. Réglage de chaque plot au laser pour assurer la planéité du futur revêtement (dalles ou lames bois).",
+          "klaro_recommendation": "Géotextile sur sol compacté + couche drainante 5-10 cm de gravier 5/15. Plots réglables Ø 150-200 mm. Espacement selon dimensions des dalles (1 plot par angle de dalle). Réglage à la clé : laser donné par référence, vissage du plot pour atteindre le niveau cible. Pente 1,5-2% vers exutoire.",
+          "common_mistake": "Plots posés sans niveau — terrasse qui ondule, dalles qui basculent.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_032"],
+          "norm_reference": "DTU 52.1 + Avis Techniques plots",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_064",
+          "title": "Terrasse bois : lambourdes classe 4 sur cales",
+          "phase": "dalle_support",
+          "applies_to_project_type": ["terrasse_sur_lambourdes_bois"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Lambourdes en bois classe d'emploi 4 (autoclave, contact direct sol-eau). Posées sur cales caoutchouc (anti-remontée capillaire). Entraxe selon section et épaisseur des lames de terrasse.",
+          "klaro_recommendation": "Bois classe 4 (mélèze, douglas autoclave, pin classe 4) ou composite. Cales caoutchouc tous les 60-80 cm. Entraxe lambourdes 40-50 cm courant pour lames 21 mm. Pente 1-2% vers exutoire. Aération sous la terrasse (pas plaquée au sol).",
+          "common_mistake": "Lambourdes classe 3 ou non traitées — pourriture en quelques années, terrasse à refaire.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_032"],
+          "norm_reference": "DTU 51.4",
+          "control_questions": [
+            { "question": "Lambourdes classe 4 sur cales caoutchouc, entraxe respecté ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_065",
+          "title": "Délais avant chargement (28 jours)",
+          "phase": "dalle_support",
+          "applies_to_project_type": ["terrasse_sur_dalle", "allee_beton", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "R28 = résistance caractéristique du béton à 28 jours. Avant : montée progressive (50% à 7j, 70% à 14j, 100% à 28j). Circulation piétonne possible à 7 jours, charge nominale (véhicule, mobilier lourd) à 28 jours.",
+          "klaro_recommendation": "Pas de charge significative avant 7 jours. Pas de revêtement avant 14-21 jours selon météo. Charge maximale (véhicule sur allée, gros mobilier) seulement à 28 jours. Cette discipline conditionne la durabilité de la dalle. Chargement précoce = micro-fissures.",
+          "common_mistake": "Faire rouler la voiture sur la dalle à J+5 'pour tester' — micro-fissures invisibles, dégradation à long terme.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_062"],
+          "norm_reference": "Eurocode 2 + DTU 21",
+          "control_questions": [
+            { "question": "Délais respectés (7j piéton, 28j charge nominale) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "revetement_finitions",
+      "label": "Revêtement & finitions",
+      "tasks": [
+        {
+          "id": "vrd_066",
+          "title": "Carrelage extérieur : R10 mini, absorption < 0,5%",
+          "phase": "revetement_finitions",
+          "applies_to_project_type": ["terrasse_sur_dalle", "allee_beton", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Carrelage extérieur : antidérapance R10 minimum (R11 zone humide, R12 piscine). Absorption d'eau < 0,5% obligatoire (résistance gel-dégel). Indiqués sur la fiche produit.",
+          "klaro_recommendation": "Vérifiez sur l'emballage : classement R + absorption d'eau (< 0,5% = grès cérame pleine masse). R10 = chaussures sèches, R11 = chaussures humides, R12 = pieds nus mouillés. Refusez tout carrelage intérieur en extérieur (gel-dégel = éclatement en 1-2 hivers).",
+          "common_mistake": "Carrelage intérieur en extérieur 'pour économiser' — gélif, éclatement au premier hiver.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_065"],
+          "norm_reference": "DTU 52.1 + NF EN 14411",
+          "control_questions": [
+            { "question": "Carrelage extérieur R10+ et absorption < 0,5% ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_067",
+          "title": "Carrelage zone exposée à l'eau : SPEC sous carrelage",
+          "phase": "revetement_finitions",
+          "applies_to_project_type": ["terrasse_sur_dalle", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Pour carrelage en zone exposée à l'eau (terrasse sur étage habité, balcon) : SPEC (Système de Protection à l'Eau sous Carrelage) sur la dalle AVANT le carrelage. Étanchéité totale.",
+          "klaro_recommendation": "SPEC bicomposant (résine + bandes de pontage aux jonctions) selon CPT 3527. Application en 2 couches croisées. Bandes aux angles, raccordements pluvial. Test de mise en eau 24h obligatoire avant carrelage. Sans SPEC, infiltrations vers étage inférieur.",
+          "common_mistake": "Carrelage extérieur sur balcon sans SPEC — infiltrations chez le voisin du dessous, dégât des eaux.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_065"],
+          "norm_reference": "CPT 3527 + DTU 52.2",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_068",
+          "title": "Bois extérieur : classe 4 + saturateur + espacement",
+          "phase": "revetement_finitions",
+          "applies_to_project_type": ["terrasse_sur_lambourdes_bois"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Lames de terrasse en bois classe d'emploi 4 (mélèze, douglas autoclave, pin classe 4) ou composite. Saturateur initial à la pose. Espacement 4-8 mm entre lames pour dilatation.",
+          "klaro_recommendation": "Bois classe 4 imputrescible. Saturateur appliqué AVANT pose sur la face inférieure et les chants (souvent oublié). Espacement 4-8 mm contrôlé avec cale. Vis inox A2 ou A4 pour éviter la rouille. Pente 1-2% vers exutoire intégrée à la pose.",
+          "common_mistake": "Lames jointives sans espacement — gonflement au premier été, lames qui se cassent ou se soulèvent.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_064"],
+          "norm_reference": "DTU 51.4",
+          "control_questions": [
+            { "question": "Bois classe 4 + saturateur initial + espacement 4-8 mm ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_069",
+          "title": "Pavés/dalles sur sable : joints réguliers + jointoiement",
+          "phase": "revetement_finitions",
+          "applies_to_project_type": ["allee_paves_dallage"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Pavés ou dalles posés sur sable stabilisé : joints réguliers (3-5 mm courant), jointoiement au sable polymère (auto-durcissant) ou mortier selon usage et passage.",
+          "klaro_recommendation": "Pose à joints croisés (en quinconce) ou alignés selon esthétique. Croisillons d'écartement pour régularité. Sable polymère pour piétons (durable, anti-mousse, perméable). Mortier-joint pour passage véhicule (résistance mécanique). Compactage final à la plaque vibrante avec patin caoutchouc (pas direct sur pavés).",
+          "common_mistake": "Pavés posés bord à bord sans joints — pas d'absorption des dilatations, déjointoiement.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_055"],
+          "norm_reference": "DTU 13.3 + DTU 52.1",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_070",
+          "title": "Joints souples extérieurs (CG2 + silicone neutre)",
+          "phase": "revetement_finitions",
+          "applies_to_project_type": ["terrasse_sur_dalle", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Mortier-joint CG2 spécial extérieur (résistant gel-dégel, anti-moisissures) pour les joints courants. Silicone neutre extérieur pour les joints de dilatation (jonctions au mur, joints de fractionnement).",
+          "klaro_recommendation": "CG2 obligatoire en extérieur (CG1 = intérieur uniquement). Application à la raclette caoutchouc en passes diagonales. Nettoyage laitance à l'éponge humide avant durcissement. Silicone NEUTRE (pas acétique) pour les joints de dilatation, sur fond de joint compressible.",
+          "common_mistake": "Joints CG1 en extérieur — moisissures et délitement en quelques mois.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_066"],
+          "norm_reference": "DTU 52.1 + NF EN 13888",
+          "control_questions": [
+            { "question": "Mortier-joint CG2 + silicone neutre aux joints de dilatation ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_071",
+          "title": "Vérifier niveaux et pentes finales",
+          "phase": "revetement_finitions",
+          "applies_to_project_type": ["terrasse_sur_dalle", "terrasse_sur_plots", "terrasse_sur_lambourdes_bois", "allee_beton", "allee_paves_dallage", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Contrôle final à la règle de 2 m + niveau laser : pente régulière vers exutoire, planéité ≤ 5 mm sous règle 2 m, aucune contre-pente, aucun point bas piège à eau.",
+          "klaro_recommendation": "Vérification croisée (4 directions). Test à l'eau possible (verser un seau, observer l'écoulement). Si défaut localisé : reprenez avant fin de chantier. Photographiez les contrôles. Sans pente correcte : flaques permanentes, dégradation accélérée.",
+          "common_mistake": "Pas de vérification finale — flaques découvertes à la première pluie, intervention complexe pour corriger.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_066"],
+          "norm_reference": "DTU 52.1 + DTU 13.3",
+          "control_questions": [
+            { "question": "Niveaux et pentes finales conformes (≤ 5 mm/2m, pente vers exutoire) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_072",
+          "title": "Garde-corps si chute > 1 m",
+          "phase": "revetement_finitions",
+          "applies_to_project_type": ["terrasse_sur_dalle", "terrasse_sur_plots", "terrasse_sur_lambourdes_bois", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Si la terrasse est en hauteur (chute > 1 m côté extérieur) : garde-corps réglementaire OBLIGATOIRE selon NF P 01-012 (1 m de hauteur, espacement barreaux ≤ 11 cm pour empêcher passage d'enfant).",
+          "klaro_recommendation": "Hauteur minimale 1 m depuis le sol fini. Barreaudage : espacement ≤ 11 cm. Lisse intermédiaire ≤ 45 cm du sol pour empêcher escalade. Fixation solide (calculs). Vitrage de sécurité possible. Sans garde-corps : danger chute, refus assurance en cas d'accident.",
+          "common_mistake": "Pas de garde-corps sur terrasse à 1,5 m — chute possible d'enfant ou adulte, blessure grave ou mort.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_066"],
+          "norm_reference": "NF P 01-012 + Code construction",
+          "control_questions": [
+            { "question": "Garde-corps présent si chute > 1 m (hauteur 1 m, barreaux ≤ 11 cm) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
     }
   ]
 }
