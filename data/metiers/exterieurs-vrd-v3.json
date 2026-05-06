@@ -1,0 +1,635 @@
+{
+  "module": "exterieurs_vrd",
+  "warnings_header": [
+    {
+      "id": "warn_001",
+      "level": "danger",
+      "title": "DT-DICT obligatoire avant tout creusement",
+      "message": "Téléservice www.reseaux-et-canalisations.gouv.fr — gratuit et obligatoire pour TOUT le monde, particulier inclus. Couper une canalisation gaz = explosion. Couper une fibre = jusqu'à plusieurs millions d'euros de dommages. Couper un câble HT = électrocution mortelle. SANS DT-DICT, le module bloque toute tâche de terrassement."
+    },
+    {
+      "id": "warn_002",
+      "level": "danger",
+      "title": "Tranchée > 1,30 m = risque d'éboulement mortel",
+      "message": "Blindage obligatoire au-delà de 1,30 m de profondeur. JAMAIS seul dans la tranchée. Plusieurs morts par an en France par ensevelissement. Les terres remuées s'effondrent en quelques secondes."
+    },
+    {
+      "id": "warn_003",
+      "level": "danger",
+      "title": "Étude de sol G1/G2 en zone RGA",
+      "message": "Loi ELAN : étude géotechnique obligatoire en zone à risque retrait-gonflement des argiles (RGA), qui couvre une grande partie du territoire français. Sans étude, risque d'affaissement, fissures, effondrement des ouvrages."
+    },
+    {
+      "id": "warn_004",
+      "level": "danger",
+      "title": "Assainissement non collectif (ANC)",
+      "message": "Étude de sol + dimensionnement + autorisation SPANC OBLIGATOIRES AVANT travaux. Contrôle de conformité par le SPANC AVANT remblai. Non-conformité = remise en état à vos frais + amendes."
+    },
+    {
+      "id": "warn_005",
+      "level": "info",
+      "title": "Engins de chantier : prudence",
+      "message": "Mini-pelle, dumper, plaque vibrante : formation requise. Le particulier doit être très prudent. Renversement, écrasement, projection. Vérifiez l'engin avant utilisation, EPI complets, jamais d'enfants à proximité."
+    },
+    {
+      "id": "warn_006",
+      "level": "info",
+      "title": "Autorisation d'urbanisme",
+      "message": "Terrasse, allée importante, mur de soutènement, piscine sont soumis à DP (déclaration préalable) ou PC (permis de construire) selon surface. Vérifiez le PLU local avant tout. ABF si proche d'un monument classé."
+    },
+    {
+      "id": "warn_007",
+      "level": "danger",
+      "title": "Klaro privilégie le pro qualifié",
+      "message": "Les travaux d'ANC complet, soutènement > 1,5 m, raccordement aux réseaux publics, manipulation gaz relèvent du pro. Klaro privilégie systématiquement la mise en relation avec un pro qualifié pour ces interventions."
+    }
+  ],
+  "phases": [
+    {
+      "id": "preparation_administrative",
+      "label": "Préparation administrative & urbanisme",
+      "tasks": [
+        {
+          "id": "vrd_001",
+          "title": "Définir précisément le projet",
+          "phase": "preparation_administrative",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Nature exacte (terrasse, allée, réseau, drainage, ANC, mur), surface créée, modification d'aspect, raccordement aux réseaux publics. La qualification précise conditionne TOUTE la suite.",
+          "klaro_recommendation": "Faites un descriptif écrit + plan coté avec : nature, surface, profondeur (creusement), exutoire (eaux), raccordements (eau/élec/EU/EP). Photographiez l'état initial du terrain (preuve de l'état avant travaux).",
+          "common_mistake": "Démarrer 'pour voir' sans plan précis — découverte de problèmes inattendus en cours de chantier (réseau coupé, autorisation manquante).",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 13.3 + DTU 60.32 + Code urbanisme",
+          "control_questions": [
+            { "question": "Le projet est-il défini par écrit avec plan coté et photos initiales ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_002",
+          "title": "Vérifier le PLU local",
+          "phase": "preparation_administrative",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Plan Local d'Urbanisme : emprise au sol, distances aux limites séparatives (généralement 3 m minimum), matériaux et couleurs imposés en zone protégée, prescriptions sur les clôtures et murs.",
+          "klaro_recommendation": "Téléchargez le PLU sur le site de la mairie ou consultez-le sur place (gratuit). Vérifiez le zonage de votre parcelle (U, AU, A, N) et les règles spécifiques pour votre projet. En zone ABF (500 m d'un monument classé) : avis ABF obligatoire en plus.",
+          "common_mistake": "Démarrer un projet sans lire le PLU et découvrir qu'un mur de 2 m est interdit en limite — démolition ordonnée.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_001"],
+          "norm_reference": "Code urbanisme",
+          "control_questions": [
+            { "question": "PLU consulté et projet conforme (emprise, distances, matériaux) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_003",
+          "title": "Déterminer le régime d'autorisation (DP / PC)",
+          "phase": "preparation_administrative",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "DP : terrasse 5-20 m² (40 m² zone U), mur de soutènement, modification d'aspect, piscine non couverte 10-100 m². PC : terrasse > 20/40 m², piscine > 100 m², soutènement > 2 m, abris > 20 m².",
+          "klaro_recommendation": "Mesurez précisément la surface créée. Vérifiez le zonage. Service urbanisme de la mairie (gratuit, ils aident en cas de doute). DP : formulaire CERFA 13703, délai 1 mois (2 mois en zone ABF). PC : formulaire CERFA 13406, délai 2-3 mois. Affichage obligatoire pendant les travaux.",
+          "common_mistake": "Sous-déclarer la surface (terrasse 19 m² officielle, 25 m² réelle) — recours du voisin, démolition possible.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["autorisation_urbanisme"],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_002"],
+          "norm_reference": "Code urbanisme R421-1 et R421-14",
+          "control_questions": [
+            { "question": "Régime d'autorisation déterminé (DP / PC / aucune) et autorisation obtenue si requise ?", "type": "text", "expected": "DP / PC / aucune" }
+          ]
+        },
+        {
+          "id": "vrd_004",
+          "title": "Si périmètre ABF : avis Architecte des Bâtiments de France",
+          "phase": "preparation_administrative",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Périmètre ABF (500 m d'un monument classé) : matériaux, couleur et formes imposés. Avis ABF obligatoire. Délai d'instruction allongé (2 mois DP, 4 mois PC).",
+          "klaro_recommendation": "Vérifiez le périmètre ABF (Atlas des patrimoines). Préparez plusieurs options de matériaux (l'ABF impose souvent un choix précis : pierre locale, tuiles canal, couleurs neutres). Photos du voisinage pour montrer la cohérence. Soyez patient.",
+          "common_mistake": "Choisir des matériaux modernes en zone ABF — refus, perte de plusieurs mois, projet à reprendre.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_003"],
+          "norm_reference": "Code patrimoine L621-30",
+          "control_questions": [
+            { "question": "Si périmètre ABF : avis ABF obtenu ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_005",
+          "title": "Si copropriété : accord assemblée générale",
+          "phase": "preparation_administrative",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Travaux sur partie commune (terrasse copropriété, espace vert commun) ou modification d'aspect (clôture visible) : accord syndic + vote AG obligatoire (majorité variable).",
+          "klaro_recommendation": "Demande écrite au syndic avec descriptif et plans. Inscription à l'ordre du jour AG. Vote selon majorité requise (article 24, 25 ou 26). Conservez le PV d'AG. Sans accord : annulation possible, remise en état.",
+          "common_mistake": "Faire des travaux sur balcon/terrasse copropriété sans vote AG — copropriétaires peuvent obtenir démolition.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Loi 10 juillet 1965 + Code copropriété",
+          "control_questions": [
+            { "question": "Si copropriété : vote AG obtenu et PV archivé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_006",
+          "title": "Vérifier les servitudes",
+          "phase": "preparation_administrative",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Servitudes : vues (distance fenêtres aux limites), mitoyenneté (mur partagé impose accord ou recul 50 cm minimum), droit de passage, urbanisme (réseaux, alignement).",
+          "klaro_recommendation": "Demandez un certificat d'urbanisme (CU) pour l'inventaire complet des servitudes. Pour mur en limite : choix entre mitoyen (accord écrit voisin obligatoire) ou recul 50 cm (mur entièrement chez vous). Notez tout sur un plan dédié.",
+          "common_mistake": "Construire une terrasse à 1 m de la limite sans vérifier le PLU — recours du voisin, obligation de reculer.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_002"],
+          "norm_reference": "Code civil 675-680 + Code urbanisme",
+          "control_questions": [
+            { "question": "Servitudes vérifiées (vues, mitoyenneté, passage, urbanisme) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_007",
+          "title": "Demander autorisation de raccordement réseau public",
+          "phase": "preparation_administrative",
+          "applies_to_project_type": ["reseaux_enterres", "amenagement_complet"],
+          "applies_to_raccordement": ["tout_a_l_egout"],
+          "applies_to_rga": ["all"],
+          "explanation": "Eau potable, EU, EP : raccordement au réseau public soumis à autorisation de la mairie ou du concessionnaire (Suez, Veolia selon collectivité). Intervention sur partie publique souvent réservée au concessionnaire.",
+          "klaro_recommendation": "Démarche en mairie ou directement chez le concessionnaire. Devis du tabouret de branchement (~1500-3000 €). Travaux sur trottoir réservés au concessionnaire (intervention payante). Délai 2-4 semaines pour l'autorisation. Sans autorisation : raccordement illégal, refus de mise en service.",
+          "common_mistake": "Tenter de se brancher soi-même sur le réseau public — refus de mise en service, amende, démolition du raccordement.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["autorisation_raccordement_public"],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_003"],
+          "norm_reference": "Règlement collectif local + Code santé publique",
+          "control_questions": [
+            { "question": "Autorisation de raccordement au réseau public obtenue ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_008",
+          "title": "Pour ANC : déposer dossier au SPANC",
+          "phase": "preparation_administrative",
+          "applies_to_project_type": ["assainissement_non_collectif"],
+          "applies_to_raccordement": ["assainissement_non_collectif"],
+          "applies_to_rga": ["all"],
+          "explanation": "Service Public d'Assainissement Non Collectif (SPANC) : autorisation OBLIGATOIRE avant travaux ANC. Dossier avec étude de sol, plan de la filière, dimensionnement selon nombre d'occupants.",
+          "klaro_recommendation": "SPANC à votre mairie ou intercommunalité. Étude de sol par bureau certifié (~1000-2000 €). Filière dimensionnée selon nombre d'occupants (capacité = nb occupants × 100 L/j). Plan à transmettre. Validation SPANC obligatoire AVANT travaux. Coût total ANC : 6000-15000 €.",
+          "common_mistake": "Démarrer un ANC sans SPANC — non-conformité, démolition obligatoire et nouveau dossier à refaire entièrement.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["autorisation_spanc"],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 64.1 + Arrêté 7 sept. 2009",
+          "control_questions": [
+            { "question": "Autorisation SPANC obtenue avec dossier complet (étude sol + dimensionnement) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_009",
+          "title": "Récupération EP usage intérieur : déclaration mairie",
+          "phase": "preparation_administrative",
+          "applies_to_project_type": ["recuperation_eau_pluie"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Récupération d'eau de pluie pour usage INTÉRIEUR (WC, lave-linge) : déclaration en mairie obligatoire selon arrêté du 21 août 2008. Usage extérieur (arrosage) : pas de déclaration.",
+          "klaro_recommendation": "Formulaire de déclaration en mairie. Si rejet en réseau d'eaux usées : pose d'un compteur obligatoire (taxe applicable). Double réseau strictement séparé du réseau d'eau potable obligatoire (signalétique 'eau non potable'). Disconnecteur sur l'arrivée d'eau de ville.",
+          "common_mistake": "Brancher la cuve EP sur le réseau d'eau potable 'pour secours' — contamination du réseau public possible, sanctions sévères.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Arrêté 21 août 2008",
+          "control_questions": [
+            { "question": "Si récupération EP intérieure : déclaration mairie effectuée ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dt_dict_diagnostics",
+      "label": "DT-DICT & diagnostics préalables",
+      "tasks": [
+        {
+          "id": "vrd_010",
+          "title": "Effectuer la Déclaration de Travaux (DT)",
+          "phase": "dt_dict_diagnostics",
+          "applies_to_project_type": ["allee_beton", "allee_paves_dallage", "reseaux_enterres", "drainage_peripherique", "assainissement_non_collectif", "recuperation_eau_pluie", "mur_soutenement", "escalier_exterieur", "amenagement_complet", "terrasse_sur_dalle"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "DT (Déclaration de Travaux) sur www.reseaux-et-canalisations.gouv.fr : GRATUIT et OBLIGATOIRE avant TOUT creusement, particulier inclus. Identifie tous les exploitants de réseaux à proximité.",
+          "klaro_recommendation": "Démarche en ligne gratuite, environ 15 min. Vous recevez la liste des exploitants à contacter (gaz, élec HT, eau, fibre, télécom). Récépissés DT à conserver. Délai 7-15 jours avant les travaux. SANS DT : sanctions pénales en cas d'accident, responsabilité civile illimitée pour dommages causés.",
+          "common_mistake": "Démarrer le terrassement 'pour creuser un peu' sans DT — câble fibre coupé = jusqu'à 1-2 millions € de dommages, gaz = explosion possible.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["dt_dict_recepissee"],
+          "photo_required_before_validation": true,
+          "depends_on": [],
+          "norm_reference": "Décret 2011-1241 + Construire Sans Détruire",
+          "control_questions": [
+            { "question": "DT effectuée et récépissés reçus avant tout creusement ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_011",
+          "title": "Récupérer récépissés DT/DICT et identifier les réseaux",
+          "phase": "dt_dict_diagnostics",
+          "applies_to_project_type": ["allee_beton", "allee_paves_dallage", "reseaux_enterres", "drainage_peripherique", "assainissement_non_collectif", "recuperation_eau_pluie", "mur_soutenement", "escalier_exterieur", "amenagement_complet", "terrasse_sur_dalle"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Les exploitants vous envoient les récépissés avec plans des réseaux à proximité. Identification précise : type de fluide, profondeur, distances. Document essentiel à avoir sur le chantier.",
+          "klaro_recommendation": "Récépissés papier ou numérique. Reportez les réseaux sur votre plan de travaux (calque ou superposition). Marquez au sol les zones à risque (peinture aérosol). Si réseau gaz ou élec HT à proximité : prudence redoublée + repérage in situ par l'exploitant.",
+          "common_mistake": "Ne pas reporter les réseaux sur le plan de travaux — oubli au moment de creuser, accident.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["dt_dict_recepissee"],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_010"],
+          "norm_reference": "Décret 2011-1241",
+          "control_questions": [
+            { "question": "Récépissés reçus et réseaux reportés sur plan de travaux ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_012",
+          "title": "Repérage in situ par les exploitants si zone à risque",
+          "phase": "dt_dict_diagnostics",
+          "applies_to_project_type": ["allee_beton", "allee_paves_dallage", "reseaux_enterres", "drainage_peripherique", "assainissement_non_collectif", "mur_soutenement", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Si réseau sensible (gaz, élec HT) à proximité du chantier, demande de marquage in situ aux exploitants concernés. Marquage au sol par peinture (couleur normalisée par fluide).",
+          "klaro_recommendation": "Demande aux exploitants concernés (numéro indiqué sur le récépissé DT). Intervention gratuite ou facturée selon exploitant. Marquage à la peinture aérosol : jaune gaz, rouge élec, bleu eau. Photographiez le marquage. Validité : quelques jours à quelques semaines selon exploitant.",
+          "common_mistake": "Ne pas demander le marquage in situ même quand un réseau sensible est à 1 m du chantier — risque accident élevé.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_011"],
+          "norm_reference": "Construire Sans Détruire",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_013",
+          "title": "Détecteur de réseaux à main avant creusement",
+          "phase": "dt_dict_diagnostics",
+          "applies_to_project_type": ["allee_beton", "allee_paves_dallage", "reseaux_enterres", "drainage_peripherique", "assainissement_non_collectif", "recuperation_eau_pluie", "mur_soutenement", "escalier_exterieur", "amenagement_complet", "terrasse_sur_dalle"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Détecteur de réseaux multi-fonctions (Bosch GMS, équivalent ou pro) à utiliser avant tout coup de pelle. Détecte câbles électriques sous tension, métaux, parfois canalisations plastiques.",
+          "klaro_recommendation": "Détecteur ~80-200 € ou location. Balayage de la zone avant creusement. Marquez les détections au sol. Complémentaire de la DT-DICT, ne la remplace PAS. Pour réseaux profonds (> 60 cm) : détecteurs grand public limités, pro recommandé.",
+          "common_mistake": "Se contenter de la DT-DICT sans détection in situ — réseau non documenté ou en place hors plan = accident.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_011"],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "etude_sol_terrain",
+      "label": "Étude de sol & terrain",
+      "tasks": [
+        {
+          "id": "vrd_014",
+          "title": "Identifier la nature du sol",
+          "phase": "etude_sol_terrain",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Argileux (gonfle/retraite avec humidité = RGA), sableux (drainant mais peu portant), rocheux (très portant mais difficile à creuser), remblai (à reprendre). Détermine fondations, drainage, choix techniques.",
+          "klaro_recommendation": "Test simple : sondage à la pelle/tarière à 1 m. Argile = collant, plastique. Sable = friable, drainant. Limon = doux au toucher. Rocher = pelle qui sonne creux. Vérifiez la carte des sols (Géorisques.gouv.fr) et le zonage RGA. Photos du sondage.",
+          "common_mistake": "Considérer 'la terre est de la terre' sans diagnostic — fondations sous-dimensionnées en sol argileux, affaissement.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "NF P 94-500 + Loi ELAN",
+          "control_questions": [
+            { "question": "Nature du sol identifiée (argile, sable, rocher, remblai) ?", "type": "text", "expected": "argileux / sableux / rocheux / remblai" }
+          ]
+        },
+        {
+          "id": "vrd_015",
+          "title": "Étude de sol G1+G2 en zone RGA",
+          "phase": "etude_sol_terrain",
+          "applies_to_project_type": ["terrasse_sur_dalle", "allee_beton", "mur_soutenement", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["oui_argile", "inconnu"],
+          "explanation": "Loi ELAN : étude G1 (avant achat/conception) + G2 (avant travaux) obligatoire en zone RGA pour construction neuve. Fortement recommandée pour terrasse fixe ou ouvrage enterré, même en rénovation.",
+          "klaro_recommendation": "Vérifiez si votre commune est en zone RGA (Géorisques.gouv.fr). Coût étude G1+G2 : 1500-4000 €. Fournit caractéristiques précises du sol et dimensionnement adapté. Sans étude, fondations sous-dimensionnées = fissures à 5-10 ans en saison sèche.",
+          "common_mistake": "Sauter l'étude pour 'auto-construction' — fondations sous-dimensionnées, fissures, reprise très coûteuse.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_sol_g2"],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_014"],
+          "norm_reference": "Loi ELAN + NF P 94-500",
+          "control_questions": [
+            { "question": "Étude G1+G2 réalisée en zone RGA et rapport joint ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_016",
+          "title": "Identifier pentes naturelles et exutoires",
+          "phase": "etude_sol_terrain",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Pentes du terrain (sens d'écoulement naturel des eaux) et exutoires possibles : réseau public collecteur EP, puits perdu, fossé, infiltration sur place, citerne de récupération.",
+          "klaro_recommendation": "Niveau laser ou levé topographique simple : repérez les hauts et les bas du terrain. Identifiez où l'eau s'écoule naturellement. Vérifiez la présence d'un collecteur EP en bord de propriété (regards visibles). Consultez le règlement local pour autorisation d'infiltration ou de rejet.",
+          "common_mistake": "Concevoir une terrasse sans réfléchir à l'évacuation des eaux — flaques permanentes, infiltrations vers les fondations.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 60.32 + DTU 13.3",
+          "control_questions": [
+            { "question": "Pentes et exutoires identifiés sur plan ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_017",
+          "title": "Vérifier autorisation d'infiltration ou de rejet",
+          "phase": "etude_sol_terrain",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Selon règlement local : infiltration parfois interdite (zone d'argile, périmètre de captage d'eau, parcelle imperméable). Rejet en réseau public soumis à autorisation. Vérifiez avant de creuser.",
+          "klaro_recommendation": "Service environnement de la mairie ou DDTM. Périmètre de captage = restrictions strictes (parfois interdiction d'infiltration). En zone d'argile : infiltration peut aggraver le RGA = interdite localement. Solutions alternatives : citerne de tamponnement + rejet régulé.",
+          "common_mistake": "Créer un puits perdu en zone interdite — sanctions et obligation de remise en état.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_016"],
+          "norm_reference": "Loi sur l'eau + Règlement sanitaire départemental",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_018",
+          "title": "Borner par géomètre si limites en jeu",
+          "phase": "etude_sol_terrain",
+          "applies_to_project_type": ["mur_soutenement", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Mur en limite, terrasse en limite, soutènement à proximité de la limite : bornage géomètre-expert obligatoire. Borne officielle = preuve juridique opposable au voisin.",
+          "klaro_recommendation": "Coût bornage 800-2000 € selon complexité. PV de bornage signé (les deux propriétaires). Indispensable si construction < 3 m de la limite. Sans bornage, désaccord avec voisin = procédure longue et coûteuse.",
+          "common_mistake": "Construire 'à vue' contre la limite supposée — recours du voisin, démolition possible si limite franchie.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code civil 646 + Code urbanisme",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "conception_gestion_eaux",
+      "label": "Conception de la gestion des eaux",
+      "tasks": [
+        {
+          "id": "vrd_019",
+          "title": "Calculer surfaces imperméabilisées et volumes EP",
+          "phase": "conception_gestion_eaux",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Toiture + terrasse + allée = surfaces imperméabilisées qui génèrent des eaux pluviales (EP) à évacuer. Calcul : surface × pluviométrie locale (~600-1500 mm/an selon région) = volume annuel.",
+          "klaro_recommendation": "Pluie maximale 10 min : ~30-50 mm/m² selon région. Pour 100 m² imperméabilisés : 3-5 m³ d'eau en 10 min lors d'un orage. Dimensionnez l'exutoire et les canalisations en conséquence (pas sous-dimensionner).",
+          "common_mistake": "Ne pas calculer les volumes — exutoire saturé en orage, débordement, infiltration vers fondations.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_001"],
+          "norm_reference": "DTU 60.32 + Données Météo France",
+          "control_questions": [
+            { "question": "Surfaces imperméabilisées calculées et volumes EP estimés ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_020",
+          "title": "Définir l'exutoire des eaux pluviales",
+          "phase": "conception_gestion_eaux",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Exutoire EP : réseau public collecteur EP (le mieux), puits perdu (si infiltration possible et autorisée), fossé, citerne de récupération avec trop-plein. JAMAIS dans le réseau EU (saturation).",
+          "klaro_recommendation": "Vérifiez la présence d'un collecteur EP en bord de propriété. Sinon : puits perdu (Ø 1 m, profondeur 2-3 m, gravier 20/40, géotextile) si autorisé. Citerne récupération + trop-plein vers infiltration si pluies importantes. Plan détaillé avec tracé et profondeurs.",
+          "common_mistake": "Rejeter les EP en réseau EU — non conforme, saturation du réseau, pollution potentielle, sanctions.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_019"],
+          "norm_reference": "DTU 60.32 + Règlement local",
+          "control_questions": [
+            { "question": "Exutoire EP défini (collectif EP, puits perdu, fossé, citerne) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_021",
+          "title": "Définir l'exutoire des eaux usées",
+          "phase": "conception_gestion_eaux",
+          "applies_to_project_type": ["reseaux_enterres", "assainissement_non_collectif", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Tout-à-l'égout (raccordement collectif, le mieux) ou ANC (filière privative obligatoire si pas de collectif). En zone urbaine : raccordement collectif souvent obligatoire dans les 2 ans après mise à disposition.",
+          "klaro_recommendation": "Vérifiez auprès de la mairie : collectif disponible ? Si oui = raccordement obligatoire. Si non = ANC dimensionné selon nombre d'occupants. Dans le doute : SPANC informe gratuitement. JAMAIS de rejet sauvage en cours d'eau ou fossé.",
+          "common_mistake": "ANC sans étude SPANC — non conforme, démolition + amende.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_001"],
+          "norm_reference": "DTU 64.1 + Code santé publique",
+          "control_questions": [
+            { "question": "Exutoire EU défini (collectif tout-à-l'égout ou ANC validé SPANC) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_022",
+          "title": "Calculer les pentes nécessaires",
+          "phase": "conception_gestion_eaux",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Pentes minimales : 1,5-2% terrasse (vers exutoire ou bordure), 2% évacuation EP, 2-3% évacuation EU. Sans pente : stagnation, mauvais écoulement, bouchage à terme.",
+          "klaro_recommendation": "Pente 2% = 2 cm/m. Terrasse 5×5 m vers exutoire opposé : 10 cm de dénivelé. Calculez avant terrassement pour vérifier la faisabilité. Pour grandes surfaces : pente double (vers 2 exutoires) acceptable. Vérifiez au laser à chaque étape.",
+          "common_mistake": "Terrasse plate 'pour l'esthétique' — flaques permanentes, gel de l'eau stagnante en hiver, dégradation du carrelage.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_020"],
+          "norm_reference": "DTU 13.3 + DTU 52.1 + DTU 60.32",
+          "control_questions": [
+            { "question": "Pentes calculées : 1,5-2% terrasse, 2% EP, 2-3% EU ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_023",
+          "title": "Prévoir les regards de visite",
+          "phase": "conception_gestion_eaux",
+          "applies_to_project_type": ["reseaux_enterres", "assainissement_non_collectif", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Regards de visite : à chaque changement de direction du réseau, à chaque jonction, tous les 30 m maximum sur ligne droite. Permettent l'inspection et le débouchage.",
+          "klaro_recommendation": "Regards en PVC (Ø 315-400 mm courant) ou béton selon usage. Tampon en surface pour accès. Position : chaque coude ≥ 45°, chaque té de jonction, tous les 30 m. Sans regards, débouchage impossible sans casser.",
+          "common_mistake": "Tirer un réseau de 50 m d'un seul tenant sans regard intermédiaire — bouchage = creusage destructif pour intervenir.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_021"],
+          "norm_reference": "DTU 60.32 + DTU 64.1",
+          "control_questions": [
+            { "question": "Regards prévus (changements direction, jonctions, ≤ 30 m linéaires) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_024",
+          "title": "Terrain en pente : bordures et caniveaux",
+          "phase": "conception_gestion_eaux",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Sur terrain en pente naturelle vers la maison : ruissellement vers les fondations = humidité + dégradations. Bordures, caniveaux, tranchées drainantes pour intercepter et dévier.",
+          "klaro_recommendation": "Caniveau béton ou PVC en travers de la pente, en amont de la maison. Tranchée drainante (gravier + drain agricole + géotextile) pour les pluies importantes. Raccordement à l'exutoire EP. Sans cette interception, infiltrations vers cave/sous-sol.",
+          "common_mistake": "Terrain en pente vers la maison sans interception — humidité ascensionnelle, salpêtre dans les murs, sous-sol inondable.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["vrd_016"],
+          "norm_reference": "DTU 60.32 + DTU 14.1",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "securite_chantier",
+      "label": "Sécurité du chantier",
+      "tasks": [
+        {
+          "id": "vrd_025",
+          "title": "Préparer les EPI obligatoires",
+          "phase": "securite_chantier",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Casque coquard EN 397, chaussures de sécurité S3 (semelle anti-perforation, embout coqué), gants, lunettes pour découpe béton (silice), gilet haute visibilité si proximité voirie.",
+          "klaro_recommendation": "EPI complets pour TOUTES les opérations. Masque FFP3 obligatoire pour découpe béton/parpaing (silice cristalline = silicose). Gants anti-coupure pour manipulation grillage. EPI ~150-300 €, investissement minime vs accident grave.",
+          "common_mistake": "Travailler en baskets sur chantier — clou qui transperce, pied écrasé par engin, chute.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code travail R4321-1 + EN 397/EN ISO 20345",
+          "control_questions": [
+            { "question": "EPI complets en place (casque, S3, gants, lunettes, FFP3 si découpe) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_026",
+          "title": "Engins de chantier : vérification + formation",
+          "phase": "securite_chantier",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Mini-pelle, plaque vibrante, dumper : vérification quotidienne avant utilisation (huile, frein, hydraulique). Formation à l'utilisation indispensable. EPI adaptés (casque + S3 obligatoires).",
+          "klaro_recommendation": "Location avec briefing du loueur. Mini-pelle < 6 tonnes : pas de CACES obligatoire pour particulier mais formation conseillée. Vérifications : niveaux d'huile, freins, hydraulique. Travailler en sol stable, jamais sur pente raide. Pas d'enfants à proximité.",
+          "common_mistake": "Mini-pelle utilisée sans formation — renversement sur pente, bras qui frappe, accident grave.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code travail R4323-55 + Recommandations CNAM",
+          "control_questions": []
+        },
+        {
+          "id": "vrd_027",
+          "title": "Baliser et signaler la zone de chantier",
+          "phase": "securite_chantier",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Rubalise, panneaux 'chantier interdit au public', éclairage si soir/nuit. Aucune personne non autorisée dans la zone (notamment enfants).",
+          "klaro_recommendation": "Rubalise rouge/blanc à 3 m du périmètre du chantier. Panneau visible. Si proximité voirie : panneaux signalisation routière. Éclairage pour fin de journée d'hiver. Voisins informés des dates et risques. Une tranchée ouverte la nuit = accident possible.",
+          "common_mistake": "Tranchée ouverte non balisée la nuit — chute de passant, responsabilité civile engagée.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code travail + Code voirie",
+          "control_questions": [
+            { "question": "Zone balisée et signalée + éclairage si nuit ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_028",
+          "title": "Tranchée > 1,30 m : blindage OBLIGATOIRE",
+          "phase": "securite_chantier",
+          "applies_to_project_type": ["reseaux_enterres", "drainage_peripherique", "assainissement_non_collectif", "amenagement_complet"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Tranchée > 1,30 m de profondeur : risque d'éboulement mortel. Blindage obligatoire (panneaux étayage, palplanches) ou parois talutées (1H/1V minimum, 1H/2V en sol meuble). JAMAIS seul dans la tranchée.",
+          "klaro_recommendation": "Blindage en location (~80-150 €/jour pour panneaux légers). Parois talutées : pente 45° en sol cohérent, plus douce en sol meuble. JAMAIS seul (deuxième personne en surface). Échelle de sortie tous les 25 m. Pas de stockage de terres au bord (charge supplémentaire = effondrement). Plusieurs morts par an en France par ensevelissement.",
+          "common_mistake": "Creuser à 1,5 m sans blindage — terre qui s'effondre en quelques secondes, écrasement et asphyxie en 5 min.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": [],
+          "norm_reference": "Code travail R4534-26 + NF P 98-331",
+          "control_questions": [
+            { "question": "Si tranchée > 1,30 m : blindage en place et photographié + 2 personnes minimum ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_029",
+          "title": "Vérifier la météo (pluie, gel, chaleur)",
+          "phase": "securite_chantier",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Pas de terrassement par fortes pluies (effondrement de tranchée, sol détrempé). Pas de bétonnage par gel (T° < 5°C) ou forte chaleur (> 30°C) sans précautions adaptées.",
+          "klaro_recommendation": "Météo France 24-48h avant chaque journée chantier. Pluie : tranchée à protéger (bâche), bétonnage reporté. Gel : adjuvant antigel + bâche isolante OU report. Chaleur : bétonnage tôt le matin, brumisation, bâchage immédiat, produit de cure renforcé.",
+          "common_mistake": "Couler par 2°C 'parce que la toupie est livrée' — béton gelé en surface, 30-50% de perte de résistance.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "NF EN 13670 + DTU 21",
+          "control_questions": [
+            { "question": "Météo vérifiée et conditions favorables (pas pluie/gel/chaleur excessive) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "vrd_030",
+          "title": "Évacuer les déblais avec traçabilité",
+          "phase": "securite_chantier",
+          "applies_to_project_type": ["all"],
+          "applies_to_raccordement": ["all"],
+          "applies_to_rga": ["all"],
+          "explanation": "Tri des déblais : terre végétale (réutilisable jardinage), gravats (déchetterie inertes), déchets verts (plateforme dédiée), terres polluées éventuelles (filière agréée).",
+          "klaro_recommendation": "Bennes à la déchetterie ou sur chantier. Gravats inertes : déchetterie ou centre recyclage. Terre végétale : conservation pour finitions paysage. Si terrain potentiellement pollué (ancienne usine, station-service) : analyse de sol + filière dédiée. Conservez les bordereaux 5 ans.",
+          "common_mistake": "Évacuer en mélange terre + gravats — refus à la déchetterie, surcoût, ou enfouissement sauvage = sanctions pénales.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Code environnement L541-1",
+          "control_questions": []
+        }
+      ]
+    }
+  ]
+}
