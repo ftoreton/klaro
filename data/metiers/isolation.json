@@ -1,0 +1,297 @@
+{
+  "version": "1.0.0",
+  "metier_id": "isolation",
+  "nom": "Isolation (murs, combles, plafonds)",
+  "norme_reference": "DTU 45.1 (combles) / DTU 45.10 (plafonds) / RE2020 / RT2012",
+  "disclaimer": "Klaro est un outil d'aide et de recommandation. Pour les travaux d'isolation ouvrant droit aux aides de l'État (MaPrimeRénov', CEE), l'installation doit être réalisée par un artisan certifié RGE.",
+  "regles_metier": {
+    "pare_vapeur": "Côté CHAUD (intérieur habité) — jamais côté froid — sinon condensation dans l'isolant",
+    "continuite_isolation": "Pas de trou, pas de pont, pas de compression — l'isolant doit couvrir 100% de la surface sans discontinuité",
+    "compression_interdite": "Un isolant comprimé perd proportionnellement sa résistance thermique — jamais écraser la laine",
+    "epaisseur_minimale": "Combles perdus : 30 à 40cm de laine. Murs intérieurs : 10 à 14cm. Murs extérieurs (ITE) : 12 à 20cm",
+    "etancheite_air": "L'étanchéité à l'air est la clé de la performance réelle — un logement mal étanche perd 30% de ses gains d'isolation",
+    "aides_etat": "Pour MaPrimeRénov' et CEE : artisan RGE obligatoire, R minimal à atteindre selon la zone climatique"
+  },
+  "alertes_bloquantes": [
+    {
+      "id": "alerte-01",
+      "message": "Impossible d'isoler sur un support humide — l'isolant se dégrade, les moisissures se développent, la performance s'effondre",
+      "taches_concernees": ["isol-04", "isol-05"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-02",
+      "message": "Pare-vapeur obligatoire côté intérieur en isolation de mur et plafond — sans lui, la vapeur d'eau condense dans l'isolant et le détruit",
+      "taches_concernees": ["isol-07", "isol-13"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-03",
+      "message": "Isolation inefficace si discontinuité — un seul pont thermique non traité peut représenter 20 à 30% des déperditions de la paroi",
+      "taches_concernees": ["isol-11", "isol-16"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-04",
+      "message": "L'isolation doit être validée et photographiée AVANT fermeture du placo — impossible à contrôler après",
+      "taches_concernees": ["isol-19"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-05",
+      "message": "Étanchéité à l'air non assurée — l'isolation perd jusqu'à 30% de son efficacité si l'air circule librement à travers ou autour de l'isolant",
+      "taches_concernees": ["isol-14"],
+      "niveau": "important"
+    }
+  ],
+  "score_chantier": {
+    "calcul": "taches_validees / total_taches * 100",
+    "penalites": [
+      { "condition": "pare_vapeur_absent", "malus": 25 },
+      { "condition": "support_humide_ignore", "malus": 25 },
+      { "condition": "pont_thermique_non_traite", "malus": 15 },
+      { "condition": "tache_critique_non_traitee", "malus": 10 },
+      { "condition": "alerte_bloquante_active", "malus": 15 }
+    ],
+    "risques_signales": [
+      "Déperdition thermique si pont thermique non traité",
+      "Moisissures dans isolant si vapeur d'eau non gérée",
+      "Performance réelle nulle si étanchéité à l'air défaillante",
+      "Décollement ou tassement si isolant mal fixé en plafond",
+      "Condensation dans paroi si pare-vapeur côté froid"
+    ]
+  },
+  "taches": [
+    {
+      "id": "isol-01",
+      "ordre": 1,
+      "titre": "Définir le type d'isolation",
+      "critique": false,
+      "explication": "Isolation par l'intérieur (ITI), par l'extérieur (ITE), ou soufflage en combles perdus : chaque technique a ses avantages, ses contraintes et ses niveaux d'aides disponibles. Ce choix conditionne tout le reste.",
+      "recommandation_klaro": "ITE (isolation par l'extérieur) : la plus performante — pas de perte de surface habitable, traite tous les ponts thermiques, mais nécessite un ravalement. ITI (par l'intérieur) : moins chère, accessible en autonomie, mais perd 5 à 10cm par mur. Combles perdus soufflés : le meilleur rapport investissement/gain énergétique — souvent 30 à 50% des déperditions d'un logement passent par les combles.",
+      "erreur_frequente": "Choisir l'ITI systématiquement parce que c'est \"moins cher\" sans calculer la perte de surface. Dans un appartement de 60m², perdre 10cm sur 4 murs représente 2 à 3m² de surface habitable en moins.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": []
+    },
+    {
+      "id": "isol-02",
+      "ordre": 2,
+      "titre": "Choisir le bon isolant",
+      "critique": false,
+      "explication": "Laine de verre, laine de roche, laine de bois, ouate de cellulose, polystyrène expansé, polyuréthane... Chaque isolant a une résistance thermique (valeur R), un comportement à l'humidité et un prix différents.",
+      "recommandation_klaro": "Laine de verre et laine de roche : polyvalentes, bonnes performances, prix accessible, mais irritantes à poser (gants + masque obligatoires). Ouate de cellulose : excellente pour le soufflage en combles, bonne régulation hygrométrique. Polystyrène et polyuréthane : très performants au cm, rigides, idéaux pour les grandes épaisseurs en ITE. Choisissez en priorité la valeur R nécessaire, pas la marque.",
+      "erreur_frequente": "Choisir un isolant par habitude ou par prix sans vérifier la valeur R pour l'épaisseur disponible. Une laine de verre de 10cm à R=3,20 et une autre à R=2,60 ont le même aspect mais des performances très différentes.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-01"]
+    },
+    {
+      "id": "isol-03",
+      "ordre": 3,
+      "titre": "Vérifier l'état du support",
+      "critique": true,
+      "explication": "Le mur, la toiture ou le plafond sur lequel l'isolation va être posée doit être sain, stable et exempt de fissures actives. Isoler sur un support défaillant fixe le problème en surface et l'aggrave en profondeur.",
+      "recommandation_klaro": "Tapotez les murs avec un marteau — un son creux indique un enduit décollé à traiter. Vérifiez les fissures : une fissure capillaire (< 0,3mm) peut être ragréée, une fissure active (qui s'ouvre en hiver, se ferme en été) nécessite un diagnostic structure avant de continuer. Vérifiez aussi l'état des chevrons et des solives si isolation de combles.",
+      "erreur_frequente": "Isoler par-dessus un enduit décollé ou un support fissuré. L'isolant est solidaire du support — si l'enduit tombe, l'isolation tombe avec. Et vous ne pourrez plus l'inspecter ou le réparer sans tout déposer.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-01"]
+    },
+    {
+      "id": "isol-04",
+      "ordre": 4,
+      "titre": "Vérifier l'humidité et les infiltrations",
+      "critique": true,
+      "explication": "Un support humide ou un mur avec des infiltrations actives ne doit JAMAIS être isolé. L'isolation piège l'humidité, crée des moisissures, et détruit l'isolant de l'intérieur en quelques mois.",
+      "recommandation_klaro": "Utilisez un humidimètre de surface pour mesurer le taux d'humidité du mur. Taux acceptable : < 3% pour la pierre et le béton. Inspectez les points à risque : pied de mur, angles bas, autour des fenêtres, toiture et gouttières. Un mur qui change de couleur selon la saison (plus foncé en hiver) est humide.",
+      "erreur_frequente": "Isoler un mur légèrement humide en pensant que l'isolation va \"protéger\". C'est l'inverse : l'isolation piège la vapeur d'eau qui ne peut plus s'évacuer par le mur. Les moisissures se développent dans l'isolant — impossible à voir, mais bien présentes.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-03"]
+    },
+    {
+      "id": "isol-05",
+      "ordre": 5,
+      "titre": "Traiter les problèmes d'humidité",
+      "critique": true,
+      "explication": "Si de l'humidité ou des infiltrations ont été détectées, traitez-les complètement avant d'isoler. L'isolation ne peut démarrer qu'une fois le mur sec et la cause résolue.",
+      "recommandation_klaro": "Humidité ascensionnelle (pied de mur) : injection de résine hydrophobe ou drain périphérique. Infiltration par la toiture : réparation de la couverture en priorité absolue. Condensation de surface : améliorer la ventilation de la pièce avant d'isoler. Laissez sécher au moins 2 à 4 semaines après traitement avant de contrôler à nouveau.",
+      "erreur_frequente": "Traiter les symptômes (peindre sur les taches, enduire les efflorescences) sans traiter la cause. Quelques mois plus tard, l'humidité refait surface en dégradant l'isolation posée entre-temps.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-04"]
+    },
+    {
+      "id": "isol-06",
+      "ordre": 6,
+      "titre": "Définir l'épaisseur d'isolation",
+      "critique": true,
+      "explication": "L'épaisseur d'isolant détermine la résistance thermique R de votre paroi. Plus R est élevé, moins la chaleur passe. Les aides de l'État imposent des valeurs R minimales selon la zone et le type de paroi.",
+      "recommandation_klaro": "Objectifs courants (RE2020) : combles perdus R ≥ 7 (30 à 40cm de laine), murs intérieurs R ≥ 3,7 (12 à 14cm de laine), murs extérieurs R ≥ 3,7 (12cm de PSE). N'isolez jamais à la valeur minimale des aides — visez toujours 20 à 30% au-dessus pour une performance durable et une revente valorisée.",
+      "erreur_frequente": "Choisir l'épaisseur en fonction de la place disponible plutôt qu'en fonction de la performance thermique nécessaire. 6cm d'isolant en combles, c'est insuffisant et inéligible aux aides — autant ne pas isoler.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-02"]
+    },
+    {
+      "id": "isol-07",
+      "ordre": 7,
+      "titre": "Prévoir le pare-vapeur",
+      "critique": true,
+      "explication": "Le pare-vapeur est une membrane qui empêche la vapeur d'eau de l'intérieur du logement de migrer dans l'isolant et de s'y condenser. Il se pose côté chaud (intérieur) de l'isolant, jamais côté froid.",
+      "recommandation_klaro": "Trois types : film polyéthylène simple (économique, étanche à la vapeur), frein-vapeur hygrovariable (s'adapte aux saisons, recommandé pour les murs), membrane adhésive (pour les zones complexes). Pour les combles : un frein-vapeur hygrovariable est préférable à un pare-vapeur rigide — il gère mieux les variations d'humidité saisonnières.",
+      "erreur_frequente": "Confondre pare-vapeur et pare-pluie. Le pare-pluie se pose côté extérieur (sous le bardage) et est perméable à la vapeur — il laisse le mur respirer. Le pare-vapeur se pose côté intérieur et bloque la vapeur. Les inverser provoque une condensation massive dans l'isolant.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-06"]
+    },
+    {
+      "id": "isol-08",
+      "ordre": 8,
+      "titre": "Préparer la structure (ossature)",
+      "critique": false,
+      "explication": "La plupart des isolations intérieures se montent sur une ossature métallique ou bois qui supporte à la fois l'isolant et le placo de finition. L'ossature doit être dimensionnée selon l'épaisseur d'isolant choisie.",
+      "recommandation_klaro": "Ossature métallique standard : montants et rails de 48mm pour 45mm d'isolant, 72mm pour 70mm d'isolant. Espacez les montants à 60cm d'entraxe pour recevoir les plaques de 120cm (3 appuis par plaque). Réservez les emplacements pour les boîtes électriques et les points de fixation avant de poser l'isolant.",
+      "erreur_frequente": "Choisir des montants trop fins pour l'épaisseur d'isolant prévue. Un montant 48mm avec un isolant 70mm dépasse du montant — impossible de fermer le placo proprement sans écraser l'isolant ou laisser un vide.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-05"]
+    },
+    {
+      "id": "isol-09",
+      "ordre": 9,
+      "titre": "Découper les panneaux d'isolant",
+      "critique": false,
+      "explication": "Les panneaux et rouleaux d'isolant se coupent à la dimension exacte des espaces à remplir. Une découpe trop petite laisse des vides, une découpe trop grande comprime l'isolant et réduit ses performances.",
+      "recommandation_klaro": "Pour la laine en panneaux : découpez légèrement plus grand (1 à 2cm) que l'espace à remplir — l'isolant légèrement en compression dans la largeur reste en place tout seul. Utilisez un cutter avec une lame longue et une règle, jamais des ciseaux (la coupe est irrégulière). Pour la laine de roche rigide : scie à main ou scie circulaire.",
+      "erreur_frequente": "Découper juste à la dimension de l'espace et se retrouver avec des écarts sur les bords. Ces jours de quelques millimètres entre l'isolant et le montant sont des ponts thermiques directs — petits mais nombreux et très pénalisants sur une grande surface.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-08"]
+    },
+    {
+      "id": "isol-10",
+      "ordre": 10,
+      "titre": "Poser l'isolant sans espace",
+      "critique": true,
+      "explication": "L'isolant doit remplir parfaitement chaque espace entre les montants, de haut en bas, sans vide ni superposition. Chaque vide, même de 1cm, crée un court-circuit thermique par convection de l'air.",
+      "recommandation_klaro": "Insérez les panneaux en les glissant légèrement en biais puis en les redressant pour qu'ils se plaquent contre les deux montants. Vérifiez en passant la main : vous ne devez sentir aucun courant d'air froid. Pour les angles et zones complexes, découpez des morceaux spécifiques — ne pliez jamais l'isolant en angle.",
+      "erreur_frequente": "Laisser des espaces non remplis en haut ou en bas des panneaux, dans les angles, ou autour des boîtes électriques. Ces zones représentent souvent 10 à 20% de la surface totale et annulent une partie significative des gains de l'isolation.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-09"]
+    },
+    {
+      "id": "isol-11",
+      "ordre": 11,
+      "titre": "Éliminer les ponts thermiques",
+      "critique": true,
+      "explication": "Un pont thermique est une zone où la chaleur passe facilement à travers l'isolation : montants métalliques, angles de murs, dalles intermédiaires, encadrements de fenêtres. Chaque pont thermique non traité dégrade la performance globale.",
+      "recommandation_klaro": "Montants métalliques : utilisez des bandes de désolidarisation (résilientes) sous les rails et ajoutez une contre-ossature croisée. Angles rentrants : découpez des morceaux d'isolant spécifiques pour combler les angles sans laisser de vide. Tableau de fenêtre : posez de l'isolant souple sur les ébrasements jusqu'au dormant de la menuiserie.",
+      "erreur_frequente": "Traiter uniquement les surfaces planes et ignorer les angles, les jonctions mur/plafond et les tableaux de fenêtre. Ces zones représentent moins de 5% de la surface mais peuvent concentrer 20 à 30% des déperditions si elles ne sont pas traitées.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-10"]
+    },
+    {
+      "id": "isol-12",
+      "ordre": 12,
+      "titre": "Assurer la continuité aux jonctions",
+      "critique": true,
+      "explication": "Aux endroits où deux éléments isolés se rejoignent (mur/plafond, mur/sol, mur/mur), l'isolation doit être continue sans interruption. C'est souvent là que les ponts thermiques les plus importants se cachent.",
+      "recommandation_klaro": "À chaque jonction : l'isolant du mur doit toucher l'isolant du plafond, sans espace entre les deux. Utilisez du ruban adhésif spécial isolation ou de la mousse de calfeutrage pour coller les lés entre eux aux jonctions. En ITE, les panneaux se posent décalés en quinconce pour que les joints verticaux ne coïncident jamais.",
+      "erreur_frequente": "Poser l'isolant du mur et l'isolant du plafond indépendamment, avec un angle vide entre les deux. Cet angle non traité est un pont thermique linéaire qui court sur toute la longueur du mur — visible à la caméra thermique.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-11"]
+    },
+    {
+      "id": "isol-13",
+      "ordre": 13,
+      "titre": "Poser le pare-vapeur correctement",
+      "critique": true,
+      "explication": "Le pare-vapeur se pose sur la face intérieure de l'isolant, avant le placo. Il doit être continu sur toute la surface, sans perforations ni interruptions.",
+      "recommandation_klaro": "Faites se chevaucher les lés de 10cm minimum et scellez les jointures avec du ruban adhésif spécial pare-vapeur (ruban adhésif ordinaire se décolle en quelques mois). Remontez le pare-vapeur sur les murs adjacents de 10cm et scellez. Évitez de le percer pour les boîtes électriques — utilisez des boîtes électriques étanches à l'air conçues pour cet usage.",
+      "erreur_frequente": "Fixer le pare-vapeur avec des agrafes sans scotcher les chevauchements. Chaque agrafe est un trou, chaque chevauchement non collé est une ouverture. La continuité est rompue et la vapeur passe librement à chaque jonction.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-12"]
+    },
+    {
+      "id": "isol-14",
+      "ordre": 14,
+      "titre": "Assurer l'étanchéité à l'air",
+      "critique": true,
+      "explication": "L'étanchéité à l'air est distincte du pare-vapeur — elle empêche l'air de circuler à travers et autour de l'isolation par convection. Un logement peu étanche à l'air perd 30 à 40% de ses gains d'isolation.",
+      "recommandation_klaro": "Scellez toutes les traversées (passages de câbles, tuyaux, prises) avec du mastic adhésif ou du ruban d'étanchéité à l'air. Scellez le périmètre du pare-vapeur sur tous les murs adjacents et sur le sol. En rénovation, le test d'infiltrométrie (test de la porte soufflante) peut quantifier l'étanchéité avant et après travaux.",
+      "erreur_frequente": "Confondre isolation thermique et étanchéité à l'air. Un mur parfaitement isolé avec un pare-vapeur intact perd toute efficacité si l'air peut circuler autour de l'isolant par les angles non traités ou les passages de câbles non colmatés.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-13"]
+    },
+    {
+      "id": "isol-15",
+      "ordre": 15,
+      "titre": "Fixer correctement l'isolant",
+      "critique": false,
+      "explication": "Selon le type de pose (ossature bois, ossature métal, collage direct), l'isolant doit être maintenu mécaniquement pour ne pas tasser, glisser ou se décoller sur le long terme.",
+      "recommandation_klaro": "En ossature : l'isolant tenu par friction entre les montants suffit pour les murs verticaux si la découpe est aux bonnes dimensions (+1 à 2cm). Pour les plafonds et zones inversées : chevilles spéciales isolant (tête de champignon) ou agrafes, 4 à 6 points par m². En ITE : chevilles longues traversant l'isolant jusqu'au support (6 à 8 chevilles par m² selon la hauteur et le poids).",
+      "erreur_frequente": "Coller l'isolant en plafond avec un simple mastic ou sans fixation mécanique de sécurité. Quelques années plus tard, la colle vieillit et les panneaux tombent — souvent la nuit, avec un bruit spectaculaire.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-13"]
+    },
+    {
+      "id": "isol-16",
+      "ordre": 16,
+      "titre": "Vérifier la continuité de l'isolation",
+      "critique": true,
+      "explication": "Avant de fermer quoi que ce soit, vérifiez visuellement que l'isolation est continue sur 100% de la surface : pas de zone oubliée, pas de jonction non traitée, pas de montant non isolé.",
+      "recommandation_klaro": "Faites le tour de chaque pièce en regardant à la lampe torche tous les angles, les zones autour des boîtes électriques, au-dessus des linteaux de porte, au niveau des solives de plancher. Photographiez systématiquement toutes les zones complexes (angles, jonctions) — ces photos sont votre preuve de bonne mise en œuvre pour les aides de l'État.",
+      "erreur_frequente": "Valider visuellement la surface principale sans inspecter les zones complexes. Les angles, zones autour des boîtes électriques et jonctions avec les murs adjacents représentent les défauts les plus fréquents — et les plus impactants thermiquement.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-15"]
+    },
+    {
+      "id": "isol-17",
+      "ordre": 17,
+      "titre": "Contrôler l'absence de vide et de compression",
+      "critique": true,
+      "explication": "Un isolant comprimé perd de la performance (la laine écrasée a moins d'air emprisonné). Un isolant avec des vides crée des zones de convection. Les deux défauts réduisent la valeur R réelle.",
+      "recommandation_klaro": "Passez votre main sur la surface de l'isolant : il doit être souple mais rebondir légèrement quand on le comprime. Vérifiez que le placo ne comprimera pas l'isolant une fois posé — si l'isolant dépasse les montants, réduisez l'épaisseur ou changez de montants plus profonds. Utilisez une règle pour détecter les zones en retrait (vides) ou en saillie (compression).",
+      "erreur_frequente": "Forcer un isolant trop épais dans une ossature trop fine en comptant sur le placo pour \"aplatir\" l'isolant. L'isolant comprimé perd 20 à 40% de sa valeur R — et le placo gauchit sous la pression.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-16"]
+    },
+    {
+      "id": "isol-18",
+      "ordre": 18,
+      "titre": "Préparer avant fermeture du placo",
+      "critique": false,
+      "explication": "Juste avant de fermer les cloisons, vérifiez que tous les passages de câbles, gaines et tuyaux sont en place et que leurs traversées dans le pare-vapeur sont correctement colmatées.",
+      "recommandation_klaro": "Chaque gaine électrique ou tuyau qui traverse le pare-vapeur doit être scellé avec du mastic de calfeutrement souple ou du ruban adhésif d'étanchéité enroulé autour de la gaine. C'est maintenant que vous pouvez encore intervenir facilement — une fois le placo posé, chaque reprise nécessite de percer.",
+      "erreur_frequente": "Laisser les passages de câbles non colmatés dans le pare-vapeur en pensant que le placo sera suffisamment étanche. Chaque passage non scellé est une fuite d'air directe — sur une paroi avec 10 prises et 20m de câbles, les fuites cumulées peuvent représenter l'équivalent d'un trou de 10cm de diamètre.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-17"]
+    },
+    {
+      "id": "isol-19",
+      "ordre": 19,
+      "titre": "Vérifier avant fermeture définitive",
+      "critique": true,
+      "explication": "C'est la dernière opportunité pour corriger, compléter et photographier l'isolation avant que le placo ne la cache définitivement. Chaque problème détecté ici coûte 1h à corriger — détecté après le placo, il coûte une journée.",
+      "recommandation_klaro": "Faites une inspection complète avec une checklist : continuité OK, pare-vapeur continu et scotché, traversées colmatées, angles traités, fixations en place. Photographiez chaque mur complet, chaque angle, chaque zone complexe. Conservez ces photos avec les factures pour les aides de l'État et pour toute question future.",
+      "erreur_frequente": "Fermer le placo dès que l'isolant est posé sans inspection finale. Une zone oubliée (typiquement un angle de plafond ou un tableau de fenêtre) ne sera découverte que lors d'une caméra thermique ou lors de la première facture de chauffage.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-18"]
+    },
+    {
+      "id": "isol-20",
+      "ordre": 20,
+      "titre": "Fermer avec placo ou revêtement",
+      "critique": false,
+      "explication": "Le placo ou le revêtement final protège mécaniquement l'isolant et le pare-vapeur. Sa pose doit être douce — pas de chocs qui perforeraient le pare-vapeur ou comprimer l'isolant.",
+      "recommandation_klaro": "Vissez le placo sur les montants en vérifiant que les vis n'atteignent pas le pare-vapeur (longueur de vis adaptée à l'épaisseur du placo). En combles, si l'isolant est soufflé : posez les liteaux ou les planches de circulation avant — marcher directement sur la laine soufflée la comprime définitivement aux endroits de passage.",
+      "erreur_frequente": "Percer le pare-vapeur avec des vis trop longues en posant le placo. Chaque vis est un trou dans l'étanchéité à l'air — insérez des vis de la bonne longueur (vis placo de 25mm pour placo 13mm sur montant de 48mm : la vis n'atteint pas le pare-vapeur).",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-19"]
+    },
+    {
+      "id": "isol-21",
+      "ordre": 21,
+      "titre": "Vérifier la performance globale",
+      "critique": false,
+      "explication": "Une fois les travaux terminés et le chauffage remis en route, évaluez la performance réelle de l'isolation : ressentez-vous toujours des zones froides ? Les parois sont-elles à température uniforme ? La consommation de chauffage a-t-elle baissé ?",
+      "recommandation_klaro": "Test simple : passez la main sur toutes les parois isolées par temps froid. Un mur bien isolé est à température ambiante (20°C), un pont thermique est nettement plus froid. Pour une évaluation précise, une caméra thermique (louable 50€/jour) révèle tous les défauts en quelques minutes — idéale pour vérifier avant de signer la réception avec un artisan RGE.",
+      "erreur_frequente": "Valider l'isolation sans test en conditions réelles de froid. L'efficacité d'une isolation ne se mesure qu'avec un différentiel thermique significatif (extérieur < 5°C, intérieur chauffé à 19-20°C). Un test en été ne dit rien sur les performances hivernales.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["isol-20"]
+    }
+  ]
+}
