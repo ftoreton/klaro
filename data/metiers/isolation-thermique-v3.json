@@ -582,6 +582,526 @@
           ]
         }
       ]
+    },
+    {
+      "id": "preparation_support",
+      "label": "Préparation du support",
+      "tasks": [
+        {
+          "id": "iso_030",
+          "title": "Vérifier la sécheresse du support",
+          "phase": "preparation_support",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Mesure d'humidité au support avec un humidimètre. Si humidité > 5% pour bois ou > 3% pour maçonnerie : attendre le séchage complet ou continuer le traitement avant pose.",
+          "klaro_recommendation": "Humidimètre à pointes (location ~20 €) ou test plastique (carré 50×50 scotché 24h, buée dessous = pas sec). Mesure à plusieurs endroits du mur ou de la dalle. En cas de doute : attendre 1-2 mois supplémentaires plutôt que d'isoler trop tôt. Photographiez les mesures.",
+          "common_mistake": "Isoler 'à vue' sans mesure d'humidité — l'eau résiduelle migre dans l'isolant, perd 50% de performance + moisissures.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": true,
+          "depends_on": ["iso_004"],
+          "norm_reference": "DTU 45.10 + DTU 45.11",
+          "control_questions": [
+            { "question": "Taux d'humidité du support (%) ?", "type": "number", "expected": "≤ 5 bois / ≤ 3 maçonnerie" }
+          ]
+        },
+        {
+          "id": "iso_031",
+          "title": "Nettoyer le support",
+          "phase": "preparation_support",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Aspiration, retrait peinture écaillée, brossage du salpêtre, traitement local des moisissures (eau de javel diluée + brossage). Support propre = adhérence et durabilité.",
+          "klaro_recommendation": "Aspirateur de chantier sur tout le support. Brosse métallique pour salpêtre et zones rugueuses. Solution javel 10% pour moisissures locales (laisser agir 30 min puis brosser et rincer). Laissez sécher avant pose. Pour ITE : nettoyage haute-pression possible (laisser sécher 48h).",
+          "common_mistake": "Coller des panneaux ITE sur peinture écaillée ou support sale — décollement à terme, ITE qui se détache de la façade.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_030"],
+          "norm_reference": "DTU 45.10 + CPT 3560",
+          "control_questions": [
+            { "question": "Support nettoyé (poussière, peinture écaillée, salpêtre, moisissures traitées) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_032",
+          "title": "Pour ITE : préparer la façade",
+          "phase": "preparation_support",
+          "applies_to_iso_type": ["ite_murs"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Rebouchage des fissures et défauts à l'enduit, primaire d'accrochage selon support (béton, brique, parpaing, ancien enduit). Conditionne l'adhérence des panneaux ITE.",
+          "klaro_recommendation": "Reboucher les fissures > 2 mm à l'enduit polymère. Test d'adhérence : croisillon scotch sur l'enduit existant — s'il vient avec, décaper avant. Primaire selon CPT 3560 et préconisations fabricant ITE. Séchage selon notice avant pose des panneaux.",
+          "common_mistake": "Coller les panneaux ITE sans primaire — défaut d'adhérence, panneaux qui se décollent en quelques années.",
+          "pro_status": "pro_rge_obligatoire_si_aides",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_031"],
+          "norm_reference": "CPT 3560 + DTU 45.2",
+          "control_questions": []
+        },
+        {
+          "id": "iso_033",
+          "title": "Pour combles : nettoyer plancher/solivage et vérifier la charpente",
+          "phase": "preparation_support",
+          "applies_to_iso_type": ["combles_perdus", "combles_amenages", "sarking"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Aspiration des combles (déjections rongeurs, poussière, débris). Inspection charpente : insectes xylophages (capricornes, vrillettes), champignons (mérule), affaiblissement. Traitement préalable si nécessaire.",
+          "klaro_recommendation": "Aspirateur puissant + masque FFP3 (déjections potentiellement toxiques). Inspection bois charpente : trous de sortie xylophages (Ø 1-3 mm), sciure fraîche, traces noires (mérule). Si attaque active : traitement insecticide/fongicide avant isolation. Si charpente affaiblie : reprise structurelle AVANT isolation.",
+          "common_mistake": "Souffler 30 cm de laine sur une charpente attaquée par les vrillettes — l'attaque progresse caché, charpente qui s'effondre quelques années plus tard.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 31.1 + DTU 45.11",
+          "control_questions": [
+            { "question": "Charpente saine (pas d'attaque xylophage active, pas de mérule) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_034",
+          "title": "Installer la sablière et éléments de structure",
+          "phase": "preparation_support",
+          "applies_to_iso_type": ["combles_amenages", "sarking"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Sablière (pièce horizontale en bas de chevrons) et éléments structurels nécessaires pour fixer l'isolant et la finition (placo, lambris). À installer avant pose isolant.",
+          "klaro_recommendation": "Sablière en bois traité fixée sur arase haute du mur. Pannes intermédiaires si rampants longs. Pour sarking : structure porteuse en bon état (sinon reprise par charpentier). Vérifiez la portance de la charpente pour le poids supplémentaire isolant + couverture (sarking ajoute ~30-50 kg/m²).",
+          "common_mistake": "Charger une charpente faible avec sarking sans étude — déformation, fissuration des plafonds.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_033"],
+          "norm_reference": "DTU 31.1 + DTU 45.10",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "pose_isolant",
+      "label": "Pose de l'isolant",
+      "tasks": [
+        {
+          "id": "iso_035",
+          "title": "ITI murs : poser l'ossature métallique ou bois",
+          "phase": "pose_isolant",
+          "applies_to_iso_type": ["iti_murs"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Ossature en rails+montants métalliques (M48/M70/M90) ou tasseaux bois, entraxe 60 cm standard. Désolidariser de l'ancien mur si possible (rail clipsé, fourrures M16) pour éviter les ponts thermiques.",
+          "klaro_recommendation": "M70 minimum pour intégrer l'isolant 70 mm + jeu de 5 mm. Désolidarisation = bande résiliente entre ossature et mur (limite ponts thermiques et phonique). Aplomb au laser. Renforts horizontaux pour fixer charges (TV, meubles) AVANT fermeture placo.",
+          "common_mistake": "Visser directement l'ossature dans l'ancien mur sans désolidarisation — pont thermique sur tous les rails, perte d'efficacité.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_031"],
+          "norm_reference": "DTU 45.10 + DTU 25.41",
+          "control_questions": [
+            { "question": "Ossature posée d'aplomb avec entraxe 60 cm et désolidarisation ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_036",
+          "title": "ITE : rails de départ + panneaux + maillage + enduit",
+          "phase": "pose_isolant",
+          "applies_to_iso_type": ["ite_murs"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "ITE collée-chevillée selon CPT 3560 : rail de départ horizontal en bas, panneaux d'isolant rigide collés (PSE, laine de roche, fibre de bois) + chevillage tous les 6 panneaux/m², maillage fibre de verre noyé dans 1ère couche d'enduit, finition en 2ème couche.",
+          "klaro_recommendation": "Pose impérative par artisan RGE Qualibat 7141 (ITE) pour bénéficier des aides. Joints décalés entre panneaux (en quinconce). Chevillage adapté au support (cheville à frapper sur béton/parpaing plein, cheville à expansion sur creux). Maillage en angles renforcés (cornières + bandes de renfort 30×30 cm).",
+          "common_mistake": "Pose ITE sans chevillage suffisant — décollement par grand vent ou choc thermique, démontage complet à refaire.",
+          "pro_status": "pro_rge_obligatoire_si_aides",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_032"],
+          "norm_reference": "CPT 3560 + DTU 45.2",
+          "control_questions": [
+            { "question": "ITE posée selon CPT 3560 (collage + chevillage + maillage) par artisan RGE ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_037",
+          "title": "Combles perdus : laine soufflée à la machine",
+          "phase": "pose_isolant",
+          "applies_to_iso_type": ["combles_perdus"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Soufflage mécanique de laine en vrac (verre, roche, ouate cellulose) avec machine soufflante. Épaisseur uniforme repérée par piges graduées. Bâcher trappes et zones techniques.",
+          "klaro_recommendation": "Machine soufflante = artisan obligatoire (location pour particulier rare). Piges graduées plantées dans la zone à intervalle régulier (tous les 5 m²) pour vérifier la hauteur uniforme. Densité conforme fiche fabricant (35 kg/m³ minimum pour ouate). Bâche autour de la trappe d'accès pour conserver l'accès. Photographiez les piges après soufflage.",
+          "common_mistake": "Souffler sans piges et obtenir une épaisseur très inégale (15 cm ici, 35 cm là) — performance moyenne médiocre.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_023"],
+          "norm_reference": "DTU 45.11",
+          "control_questions": [
+            { "question": "Épaisseur uniforme vérifiée par piges et densité conforme ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_038",
+          "title": "Combles aménagés : isolant entre chevrons + bicouche",
+          "phase": "pose_isolant",
+          "applies_to_iso_type": ["combles_amenages"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "1ère couche entre chevrons (épaisseur du chevron, généralement 8-12 cm). 2ème couche croisée sous chevrons (épaisseur 6-12 cm) pour atteindre R cible et casser les ponts thermiques des chevrons.",
+          "klaro_recommendation": "Bicouche obligatoire pour viser R ≥ 6. La 2ème couche est posée perpendiculairement à la 1ère (joints croisés). Maintenu par suspentes ou ossature secondaire. Lame d'air ventilée 2 cm minimum sous couverture (pare-pluie HPV obligatoire).",
+          "common_mistake": "Une seule couche entre chevrons en pensant que 'c'est suffisant' — ponts thermiques sur chaque chevron, R réel divisé par 1,5.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_034"],
+          "norm_reference": "DTU 45.10",
+          "control_questions": [
+            { "question": "Bicouche posé avec joints croisés (entre + sous chevrons) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_039",
+          "title": "Sarking : panneaux rigides + pare-pluie HPV + contre-lattage",
+          "phase": "pose_isolant",
+          "applies_to_iso_type": ["sarking"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Pose isolation par-dessus la charpente (panneaux rigides en laine de bois ou PUR), pare-pluie HPV (Sd < 0,1 m), contre-lattage horizontal puis vertical (lame d'air), couverture.",
+          "klaro_recommendation": "Sarking = solution premium (préserve hauteur sous plafond intérieure, charpente apparente). Coût 100-180 €/m². Pare-pluie HPV impératif (laisse passer la vapeur de l'intérieur vers l'extérieur). Contre-lattage 4-6 cm pour ventilation sous couverture. Pose par charpentier-couvreur expérimenté.",
+          "common_mistake": "Pose sarking sans pare-pluie HPV — condensation sous la couverture, dégradation rapide de la charpente.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_034"],
+          "norm_reference": "DTU 45.10 + DTU 40.x",
+          "control_questions": [
+            { "question": "Sarking : panneaux + pare-pluie HPV + contre-lattage + ventilation 2 cm ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_040",
+          "title": "Plancher bas : pose par-dessous ou par-dessus",
+          "phase": "pose_isolant",
+          "applies_to_iso_type": ["plancher_bas"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Par-dessous (sous dalle en cave/vide sanitaire) : panneaux rigides collés-chevillés sous le plafond du sous-sol. Par-dessus (sur dalle) : isolant + chape flottante désolidarisée. Choix selon configuration.",
+          "klaro_recommendation": "Si cave/vide sanitaire accessible : par-dessous = simple, peu cher, pas de perte de hauteur. Si pas d'accès : par-dessus avec chape flottante (perte 8-10 cm de hauteur). PSE ou XPS pour résistance compression. Bandes périphériques contre les murs pour désolidariser (anti-ponts phoniques).",
+          "common_mistake": "Plancher bas sur terre-plein sans isolation — pieds froids, condensation au pourtour, déperditions importantes (10-15% du total).",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_031"],
+          "norm_reference": "DTU 13.3 + DTU 45.10",
+          "control_questions": []
+        },
+        {
+          "id": "iso_041",
+          "title": "Découper l'isolant aux bonnes dimensions",
+          "phase": "pose_isolant",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Découpe légèrement plus large que l'espace à combler (1 cm en plus pour calage par friction). Couteau cranté pour laines, scie pour panneaux rigides.",
+          "klaro_recommendation": "Mesurez précisément, ajoutez 1 cm. Coupe au couteau cranté (laine) ou à la scie sauteuse à lame fine (rigide). L'isolant doit tenir par friction sans cale, sans compression excessive. Pour les angles et obstacles : découpe précise au cutter.",
+          "common_mistake": "Découper trop juste — isolant qui tombe ou laisse des jours, pont thermique.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 45.10 + DTU 45.11",
+          "control_questions": []
+        },
+        {
+          "id": "iso_042",
+          "title": "Poser l'isolant SANS espace ni compression excessive",
+          "phase": "pose_isolant",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Pas de vide ni jour (pont thermique). Pas de compression > 10% (perte importante de performance — l'air immobile dans les fibres fait l'isolation).",
+          "klaro_recommendation": "Isolant qui tient par friction, sans tasser. Si l'isolant est trop large : c'est qu'il est compressé = re-découpe. Si trop étroit : combler avec une chute découpée précisément. Vérifiez visuellement pas de jour à contre-jour avec une lampe.",
+          "common_mistake": "Tasser l'isolant pour le faire rentrer dans une cavité trop étroite — perte de 30-50% de performance, condensation possible.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": true,
+          "depends_on": ["iso_041"],
+          "norm_reference": "DTU 45.10 + ACERMI",
+          "control_questions": [
+            { "question": "Isolant posé sans vide ni compression > 10% ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_043",
+          "title": "Vérifier la continuité de l'isolation à chaque rangée",
+          "phase": "pose_isolant",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Inspection visuelle après chaque rangée ou panneau : aucun jour visible, aucun pont thermique, joints serrés entre éléments.",
+          "klaro_recommendation": "Lampe de poche tenue contre l'isolant : aucun rai de lumière ne doit passer. Joints entre panneaux jointifs (mousse expansive ou ruban d'étanchéité possible pour combler les micro-jeux). Contrôle systématique avant pose du pare-vapeur.",
+          "common_mistake": "Laisser des jours de 5-10 mm en pensant 'le pare-vapeur va couvrir' — non, le pont thermique reste, condensation possible.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_042"],
+          "norm_reference": "DTU 45.10",
+          "control_questions": [
+            { "question": "Continuité de l'isolant vérifiée (aucun jour, aucun pont thermique) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_044",
+          "title": "Bicouche : croiser les joints entre les deux couches",
+          "phase": "pose_isolant",
+          "applies_to_iso_type": ["combles_amenages", "sarking"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "En bicouche, la 2ème couche est posée perpendiculairement à la 1ère (joints décalés). Empêche les ponts thermiques alignés et améliore l'étanchéité à l'air.",
+          "klaro_recommendation": "1ère couche entre chevrons (parallèle aux chevrons). 2ème couche sous les chevrons, perpendiculaire (croisée). Ainsi un pont thermique de la 1ère couche est couvert par l'épaisseur pleine de la 2ème. Joints parfaitement croisés indispensable.",
+          "common_mistake": "Aligner les joints des deux couches — ponts thermiques continus, performance théorique non atteinte.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_038"],
+          "norm_reference": "DTU 45.10",
+          "control_questions": [
+            { "question": "Joints croisés entre les deux couches (bicouche) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "etancheite_air_pare_vapeur",
+      "label": "Étanchéité à l'air & pare-vapeur / frein-vapeur",
+      "tasks": [
+        {
+          "id": "iso_045",
+          "title": "Poser le pare-vapeur ou frein-vapeur côté chaud",
+          "phase": "etancheite_air_pare_vapeur",
+          "applies_to_iso_type": ["iti_murs", "combles_perdus", "combles_amenages", "plancher_bas", "sarking"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Pare-vapeur côté chaud (intérieur du logement) — JAMAIS côté froid. Empêche la vapeur d'eau intérieure de migrer vers l'isolant et y condenser.",
+          "klaro_recommendation": "Posé en lés horizontaux ou verticaux selon configuration. Tendu sans plis ni surplus. Recouvrement entre lés ≥ 10 cm scotchés. La règle 'côté chaud' est absolue : se rappeler 'air chaud + vapeur d'eau côté chauffé'.",
+          "common_mistake": "Pare-vapeur côté froid (vers l'extérieur) — condensation dans l'isolant garantie, isolant trempé à terme.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_005", "iso_043"],
+          "norm_reference": "DTU 45.10 + Th-U",
+          "control_questions": [
+            { "question": "Pare-vapeur/frein-vapeur posé côté chaud (intérieur) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_046",
+          "title": "Bâti ancien : frein-vapeur HYGROVARIABLE obligatoire",
+          "phase": "etancheite_air_pare_vapeur",
+          "applies_to_iso_type": ["all"],
+          "applies_to_bati_type": ["bati_ancien_avant_1948"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Frein-vapeur hygrovariable : Sd variable selon humidité (étanche en hiver, perméable en été). Permet au mur ancien perspirant de sécher de l'intérieur en été. Pare-vapeur étanche (Sd > 18) INTERDIT sur bâti ancien.",
+          "klaro_recommendation": "Marques recommandées : Pro Clima Intello, Siga Majrex, Klimasan VARIO. Coûte 2-3× plus cher qu'un pare-vapeur standard mais protège le mur de la pourriture. Recouvrements et étanchéité aux traversées ENCORE PLUS IMPORTANTES qu'avec pare-vapeur classique.",
+          "common_mistake": "Mettre un pare-vapeur étanche standard sur bâti ancien 'pour économiser' — mur pourrit en quelques années, dégâts irréparables.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_002"],
+          "norm_reference": "Règles ATHEBA + DTU 31.2",
+          "control_questions": [
+            { "question": "Frein-vapeur HYGROVARIABLE utilisé sur bâti ancien ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_047",
+          "title": "Recouvrements 10 cm minimum + adhésif d'étanchéité spécifique",
+          "phase": "etancheite_air_pare_vapeur",
+          "applies_to_iso_type": ["iti_murs", "combles_perdus", "combles_amenages", "plancher_bas", "sarking"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Recouvrement entre lés ≥ 10 cm. Adhésif spécifique étanchéité à l'air (pas du scotch d'emballage). Marques : Tescon Vana, Siga Sicrall, Pro Clima Tescon No1.",
+          "klaro_recommendation": "Adhésif large (60-100 mm), résistant aux UV et au vieillissement. Posé sur lé propre et sec, marouflé fermement à la main pour évacuer l'air. Le scotch d'emballage classique se décolle en 2-3 ans. Pour finition impeccable : double scotch (un sur le pli, un en finition).",
+          "common_mistake": "Scotch d'emballage standard sur les recouvrements — décollement progressif, étanchéité ruinée à terme.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_045"],
+          "norm_reference": "DTU 45.10",
+          "control_questions": [
+            { "question": "Recouvrements ≥ 10 cm avec adhésif d'étanchéité spécifique ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_048",
+          "title": "Manchons d'étanchéité autour des traversées",
+          "phase": "etancheite_air_pare_vapeur",
+          "applies_to_iso_type": ["iti_murs", "combles_perdus", "combles_amenages", "plancher_bas", "sarking"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Toute traversée du pare-vapeur (gaine élec, prise, conduit VMC, tuyau) doit être traitée par un manchon d'étanchéité spécifique pour conserver l'étanchéité à l'air.",
+          "klaro_recommendation": "Manchons préformés (Pro Clima KAFLEX, Siga Wigluv) ou bandes adhésives en croix scotchées. Pour boîtes électriques en cloison étanche : utilisez des boîtiers étanches à l'air (BEC) dédiés. Photographiez chaque manchon en place.",
+          "common_mistake": "Trouer le pare-vapeur pour passer une gaine et faire un simple coup de scotch — fuite d'air permanente, condensation au point de fuite.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": true,
+          "depends_on": ["iso_045"],
+          "norm_reference": "DTU 45.10",
+          "control_questions": [
+            { "question": "Manchons étanches posés sur toutes les traversées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_049",
+          "title": "Coller le pare-vapeur en périphérie avec mastic ou adhésif",
+          "phase": "etancheite_air_pare_vapeur",
+          "applies_to_iso_type": ["iti_murs", "combles_perdus", "combles_amenages", "plancher_bas", "sarking"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "En périphérie (sol, plafond, menuiseries, refends) : pare-vapeur collé sur l'élément rigide avec mastic d'étanchéité ou adhésif spécifique. Sans cette continuité, fuites d'air majeures aux jonctions.",
+          "klaro_recommendation": "Mastic SP100 ou ContegaSL Pro Clima sur le support rigide, pare-vapeur appliqué sur le mastic frais. Pour menuiseries : adhésif spécifique sur le dormant. Soigne les angles (point critique). Pas de pli ni de surplus dans le pare-vapeur en périphérie.",
+          "common_mistake": "Laisser le pare-vapeur 'libre' en périphérie — fuites d'air majeures sur tout le pourtour, étanchéité à l'air ruinée.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_048"],
+          "norm_reference": "DTU 45.10",
+          "control_questions": [
+            { "question": "Pare-vapeur collé en périphérie sur tous les éléments rigides ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_050",
+          "title": "Vérifier la continuité totale du pare-vapeur",
+          "phase": "etancheite_air_pare_vapeur",
+          "applies_to_iso_type": ["iti_murs", "combles_perdus", "combles_amenages", "plancher_bas", "sarking"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Un seul trou non réparé = pare-vapeur globalement inutile (l'air emprunte le chemin de moindre résistance). Inspection complète avant fermeture.",
+          "klaro_recommendation": "Inspection visuelle complète sous éclairage rasant. Recherchez : trous, déchirures, recouvrements bâillants, manchons mal scotchés, jonctions périphériques décollées. Réparez chaque défaut avec adhésif spécifique. Photographiez l'ensemble avant fermeture.",
+          "common_mistake": "Considérer le pare-vapeur posé comme 'fini' sans inspection — un trou de 1 cm² laisse passer autant d'air que 1 m² mal isolé.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": true,
+          "depends_on": ["iso_049"],
+          "norm_reference": "DTU 45.10",
+          "control_questions": [
+            { "question": "Continuité du pare-vapeur vérifiée intégralement (aucun trou, aucune déchirure) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_051",
+          "title": "ITE : pas de pare-vapeur, mais pare-pluie HPV côté extérieur",
+          "phase": "etancheite_air_pare_vapeur",
+          "applies_to_iso_type": ["ite_murs"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "ITE : pas de pare-vapeur intérieur (le mur lui-même fait pare-vapeur). Côté extérieur : pare-pluie HPV (Sd < 0,1 m) sous bardage ou avant enduit. Laisse passer la vapeur de l'intérieur, arrête l'eau de l'extérieur.",
+          "klaro_recommendation": "Pare-pluie HPV (Highly Permeable to Vapour) marques Delta-Vent N, Pro Clima Solitex. Posé tendu côté extérieur de l'isolant, recouvrements 10 cm scotchés. Protège l'isolant de la pluie pendant le chantier ET pendant la vie du bâtiment (cas des bardages ventilés).",
+          "common_mistake": "Mettre un pare-vapeur étanche entre mur et ITE — humidité du mur piégée, condensation interne, dégâts cachés.",
+          "pro_status": "pro_rge_obligatoire_si_aides",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_036"],
+          "norm_reference": "CPT 3560 + DTU 45.2",
+          "control_questions": [
+            { "question": "ITE : pare-pluie HPV (Sd < 0,1) posé côté extérieur ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "traitement_jonctions_ponts_thermiques",
+      "label": "Traitement des jonctions & ponts thermiques",
+      "tasks": [
+        {
+          "id": "iso_052",
+          "title": "Pont thermique mur / plancher bas",
+          "phase": "traitement_jonctions_ponts_thermiques",
+          "applies_to_iso_type": ["iti_murs", "ite_murs"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Jonction mur/dalle = pont thermique majeur (la dalle conduit le froid vers l'intérieur). Retour d'isolant en pied de mur sur 30-40 cm minimum côté froid (extérieur en ITE, intérieur en ITI).",
+          "klaro_recommendation": "ITE : isolant continu jusqu'au sol fini extérieur, voire descendre sous le niveau du sol (rupture pont thermique). ITI : retour d'isolant en pied de mur sur 30-40 cm, attention à l'épaisseur cumulée. Solution mixte : ITE + retour d'isolant sous chape pour rupture totale.",
+          "common_mistake": "Arrêter l'isolant à 50 cm du sol pour 'simplifier' — pont thermique majeur, sol froid permanent, condensation aux plinthes.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_043"],
+          "norm_reference": "Règles Th-Bât + RE2020",
+          "control_questions": [
+            { "question": "Pont thermique mur/plancher traité (retour d'isolant ≥ 30 cm) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_053",
+          "title": "Pont thermique mur / plafond / dalle haute",
+          "phase": "traitement_jonctions_ponts_thermiques",
+          "applies_to_iso_type": ["iti_murs", "ite_murs"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Jonction mur/plafond ou mur/dalle haute = pont thermique. Continuité avec isolation toiture/combles. Retour d'isolant en haut de mur indispensable.",
+          "klaro_recommendation": "Continuité totale entre isolant des murs et isolant des combles/toiture. Recouvrement franc sur 30 cm minimum. Pour ITI : descendez l'isolant des combles jusqu'au-dessus du dernier rang d'isolant mur (continuité par chevauchement). Documentez par photos.",
+          "common_mistake": "Pas de raccord entre isolation mur ITI et isolation combles — pont thermique en partie haute, traces noires aux angles supérieurs.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_043"],
+          "norm_reference": "Règles Th-Bât + RE2020",
+          "control_questions": [
+            { "question": "Continuité mur/plafond ou mur/combles assurée (chevauchement ≥ 30 cm) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_054",
+          "title": "Pont thermique aux refends (ITI)",
+          "phase": "traitement_jonctions_ponts_thermiques",
+          "applies_to_iso_type": ["iti_murs"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "ITI : les refends (murs porteurs intérieurs) traversent l'isolation et créent des ponts thermiques. Retour d'isolant sur 60 cm de chaque côté du refend pour atténuer.",
+          "klaro_recommendation": "Refend conducteur de froid sur toute son épaisseur. Solution : retour d'isolant 60 cm + plâtre isolant (Placomur) sur l'autre face. Pour solution complète : isoler aussi le refend en partie haute (sous plafond) sur 50 cm minimum.",
+          "common_mistake": "Ne pas traiter les refends — traces noires (condensation par pont thermique froid) sur les murs perpendiculaires, à 1-2 m de l'angle.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_043"],
+          "norm_reference": "Règles Th-Bât",
+          "control_questions": [
+            { "question": "Refends traités avec retour d'isolant ≥ 60 cm de chaque côté (ITI) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_055",
+          "title": "Pont thermique autour des menuiseries",
+          "phase": "traitement_jonctions_ponts_thermiques",
+          "applies_to_iso_type": ["iti_murs", "ite_murs"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Encadrement des fenêtres et portes = zone très critique. Compribande BG1 entre dormant et tableau, tapée d'isolant pour rattraper l'épaisseur, retour d'isolant dans le tableau.",
+          "klaro_recommendation": "ITE : compribande BG1 sur tout le pourtour de la menuiserie, retour d'isolant dans le tableau (limite la perte). ITI : tapée d'isolant entre dormant et placo, jonction étanche au pare-vapeur. Photographiez les jonctions menuiseries.",
+          "common_mistake": "Laisser l'encadrement de fenêtre nu — pont thermique majeur visible en hiver (givre intérieur autour de la fenêtre).",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_043"],
+          "norm_reference": "DTU 36.5 + Règles Th-Bât",
+          "control_questions": [
+            { "question": "Menuiseries traitées avec compribande + tapée + retour d'isolant ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_056",
+          "title": "Combles : isolant jusqu'à la sablière sans obstruer la ventilation",
+          "phase": "traitement_jonctions_ponts_thermiques",
+          "applies_to_iso_type": ["combles_perdus", "combles_amenages", "sarking"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Continuité d'isolation jusqu'à la sablière (bord de toit) MAIS sans bloquer la lame d'air ventilée sous la couverture (entrée d'air au niveau de l'avancée de toit).",
+          "klaro_recommendation": "Déflecteur en carton ou PVC posé entre les chevrons à l'aplomb de la sablière, créant un canal d'air libre de l'avant-toit jusqu'au faîtage. Isolant posé en butée contre le déflecteur. Lame d'air 2 cm minimum à conserver. Sans cela, condensation sous la couverture et dégradation de la charpente.",
+          "common_mistake": "Bourrer l'isolant jusqu'au bord de toit en bouchant les entrées d'air — condensation, charpente qui pourrit, tuiles qui se descellent.",
+          "pro_status": "pro_recommande",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_038"],
+          "norm_reference": "DTU 40.x + DTU 45.10",
+          "control_questions": [
+            { "question": "Lame d'air ≥ 2 cm conservée sous la couverture (déflecteurs en place) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "iso_057",
+          "title": "Trappe d'accès aux combles : isolation et étanchéité à l'air",
+          "phase": "traitement_jonctions_ponts_thermiques",
+          "applies_to_iso_type": ["combles_perdus", "combles_amenages"],
+          "applies_to_bati_type": ["all"],
+          "applies_to_perf_target": ["all"],
+          "explanation": "Trappe d'accès = pont thermique et fuite d'air majeurs si non traitée. Isolation sur la face supérieure de la trappe + joint d'étanchéité périphérique compressible.",
+          "klaro_recommendation": "Caisson isolé au-dessus de la trappe (laine + pare-vapeur). Joint compressible sur le pourtour (joint mousse adhésif autoadhésif). Trappe vissée pour bonne compression du joint. Pour trappe escamotable : kit isolant dédié vendu en magasin de bricolage.",
+          "common_mistake": "Laisser la trappe nue avec un simple panneau placo — fuite d'air majeure, condensation sur la trappe en hiver, traces sombres au plafond.",
+          "pro_status": "particulier_ok",
+          "photo_required_before_validation": false,
+          "depends_on": ["iso_037", "iso_038"],
+          "norm_reference": "DTU 45.11",
+          "control_questions": [
+            { "question": "Trappe d'accès isolée et étanche à l'air (joint compressible) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
     }
   ]
 }
