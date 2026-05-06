@@ -1,0 +1,639 @@
+{
+  "module": "peinture_finitions",
+  "phases": [
+    {
+      "id": "preparation",
+      "label": "Préparation & conception",
+      "tasks": [
+        {
+          "id": "peint_001",
+          "title": "Définir le projet peinture",
+          "phase": "preparation",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Listez les pièces à peindre, les couleurs choisies par pièce et le type de finition (mate, satinée, brillante).",
+          "klaro_recommendation": "Faites un plan coté pièce par pièce avec la teinte exacte (référence fabricant) et la finition. Mate pour plafonds et chambres (masque les défauts). Satinée pour pièces à vivre (lessivable). Brillante en cuisine/SDB (très lessivable, très exigeante sur la préparation).",
+          "common_mistake": "Choisir une finition brillante sur un placo Q2 — les défauts du support ressortent dans la lumière, finition catastrophique.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Le projet est-il défini par pièce (couleur + finition) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_002",
+          "title": "Choisir le niveau de finition Q2 / Q3 / Q4",
+          "phase": "preparation",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Q2 (courant) : finition standard logement. Q3 (soigné) : pas de défaut visible en éclairage normal. Q4 (haut de gamme) : aucun défaut sous lumière rasante. Le niveau visé conditionne TOUTE la chaîne.",
+          "klaro_recommendation": "Q2 = mate/satinée standard, logement courant. Q3 = satinée brillante ou pièces très éclairées, exige bandes Q3 sur le placo. Q4 = laque, brillances profondes, exige Q4 sur le placo (état final parfait avant peinture). Ne visez pas Q4 sur un placo Q2 — résultat pire qu'un Q2 cohérent.",
+          "common_mistake": "Choisir Q4 sans avoir préparé le support en conséquence — chaque défaut du placo est amplifié par la lumière rasante.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_001"],
+          "norm_reference": "Règles professionnelles Q1-Q4",
+          "control_questions": [
+            { "question": "Niveau de finition visé ?", "type": "text", "expected": "Q2 / Q3 / Q4" }
+          ]
+        },
+        {
+          "id": "peint_003",
+          "title": "Identifier le type de support principal",
+          "phase": "preparation",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Placo neuf, ancien peint, plâtre, bois ou métal — chaque support a sa propre logique de préparation et de sous-couche.",
+          "klaro_recommendation": "Faites le tour des pièces et notez le support de chaque mur / plafond / élément. Mixte : noter pour chaque surface. Le support détermine 70% du résultat final. Photographiez les zones douteuses (anciens peints, traces, moisissures) pour les diagnostiquer.",
+          "common_mistake": "Considérer que 'tout est pareil' et appliquer la même préparation partout — résultat hétérogène, certaines zones décollent à terme.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_001"],
+          "norm_reference": "DTU 59.1 §5",
+          "control_questions": [
+            { "question": "Le type de support est-il identifié pour chaque surface ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_004",
+          "title": "Choisir les peintures adaptées par pièce",
+          "phase": "preparation",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Mate sur plafonds et chambres. Satinée en pièces de vie. Satinée brillante / acrylique laquée en cuisine et SDB. Peintures spécifiques pour humidité ou anti-tache.",
+          "klaro_recommendation": "Cuisine/SDB : peinture spéciale pièces humides (anti-moisissures, lessivable). Plafonds : peinture plafond mate (couvrante, masque les défauts). Boiseries : laque acrylique satinée ou glycéro. Préférez les peintures classées A+ (faibles émissions COV) pour la santé.",
+          "common_mistake": "Mettre de la peinture mate standard en SDB — moisissures et impossibilité de nettoyer les éclaboussures.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_001"],
+          "norm_reference": "DTU 59.1 §6 + NF EN 13300",
+          "control_questions": [
+            { "question": "Les peintures sont-elles adaptées aux pièces (humidité, lessivage, COV) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_005",
+          "title": "Calculer les quantités avec rendement réel",
+          "phase": "preparation",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Comptez 8-10 m²/L (rendement réel terrain) et non le rendement théorique fabricant (souvent 12-14 m²/L, irréaliste). Prévoyez 1 pot de réserve par teinte pour retouches futures.",
+          "klaro_recommendation": "Surface totale × 2 couches ÷ 8 m²/L = volume en litres. Achetez tout d'un coup, du même lot (vérifiez le numéro sur le pot). Conservez le pot de réserve étiqueté (pièce, mur, teinte, date). Le rachat ultérieur d'une teinte donne presque toujours une nuance différente.",
+          "common_mistake": "Acheter sur la base du rendement théorique fabricant — manque de peinture en fin de chantier et lot complémentaire à teinte différente.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_004"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Calcul basé sur 8-10 m²/L + pot de réserve par teinte ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_006",
+          "title": "Vérifier les conditions d'application possibles",
+          "phase": "preparation",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Température entre 10 et 25°C, hygrométrie < 70%, pas de courant d'air violent. Hors de ces plages, séchage compromis et finition ratée.",
+          "klaro_recommendation": "Mesurez la température (thermomètre) et l'humidité (hygromètre, ~10 €) AVANT de commencer. Hiver : chauffez la pièce 24h avant pour stabiliser. Été : évitez les coups de chaud (peindre tôt le matin). Pas de fenêtres ouvertes avec vent direct sur peinture fraîche.",
+          "common_mistake": "Peindre dans une pièce non chauffée en hiver à 5°C — la peinture ne polymérise pas correctement, finition mate et fragile.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 59.1 §7",
+          "control_questions": [
+            { "question": "Température mesurée (°C) ?", "type": "number", "expected": "10 à 25" },
+            { "question": "Hygrométrie mesurée (%) ?", "type": "number", "expected": "< 70" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preparation_chantier",
+      "label": "Préparation du chantier",
+      "tasks": [
+        {
+          "id": "peint_007",
+          "title": "Vider la pièce ou bâcher le mobilier",
+          "phase": "preparation_chantier",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Idéal : pièce vide. Sinon : regroupez le mobilier au centre, recouvert d'une bâche solidement fixée par scotch.",
+          "klaro_recommendation": "Une pièce vide est 4× plus rapide à peindre qu'une pièce encombrée. Si bâchage : utilisez des bâches plastiques épaisses (80 microns mini), fixées par scotch sur le sol pour éviter qu'elles ne glissent. Laissez 1 m de circulation autour des murs.",
+          "common_mistake": "Bâcher rapidement avec une bâche fine — la peinture traverse au moindre choc, mobilier taché.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_006"],
+          "norm_reference": "DTU 59.1 §8.1",
+          "control_questions": []
+        },
+        {
+          "id": "peint_008",
+          "title": "Déposer ce qui peut l'être",
+          "phase": "preparation_chantier",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Plaques de prises, interrupteurs, appliques, plinthes anciennes (si remplacées), radiateurs si possible. Tout ce qui se dépose facilement gagne en qualité de finition.",
+          "klaro_recommendation": "Coupez le courant avant dépose des prises/interrupteurs. Mettez les vis dans un sachet étiqueté par pièce. Pour les radiateurs : purger, fermer les vannes, déposer (à 2 personnes). Une finition propre en bord d'élément déposé > 100 fois mieux qu'un masquage approximatif.",
+          "common_mistake": "Vouloir tout peindre en place pour aller vite — bavures inévitables aux contours, finition d'amateur.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_007"],
+          "norm_reference": "DTU 59.1 §8.2",
+          "control_questions": []
+        },
+        {
+          "id": "peint_009",
+          "title": "Protéger les sols",
+          "phase": "preparation_chantier",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Bâches plastiques sur toute la surface du sol + carton aux zones de passage (escabeau, chemin). Le carton absorbe les éclaboussures et évite les glissades sur la bâche.",
+          "klaro_recommendation": "Bâches plastiques 80-100 microns, fixées au scotch sur le pourtour. Cartons épais aux zones où vous marchez. Scotchez aussi les bords des bâches contre les plinthes pour éviter les remontées de peinture sous la bâche.",
+          "common_mistake": "Un simple film plastique fin posé au sol — déchirure au premier passage, taches au sol garanties.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_008"],
+          "norm_reference": "DTU 59.1 §8.3",
+          "control_questions": [
+            { "question": "Le sol est-il intégralement protégé (bâche + carton de passage) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_010",
+          "title": "Protéger menuiseries, vitrages et encadrements",
+          "phase": "preparation_chantier",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Adhésif de masquage qualité pro (Tesa Precision, 3M ou équivalent) sur menuiseries, vitrages, encadrements. Précis sur la limite à protéger.",
+          "klaro_recommendation": "Scotch de masquage spécial peinture (ne laisse pas de résidus, ligne nette). Posez-le précisément sur la limite à peindre, en appuyant bien. Pour les vitrages : scotch + film plastique combiné. Évitez le scotch d'emballage classique — il laisse des traces ou arrache la peinture en se retirant.",
+          "common_mistake": "Utiliser du scotch standard d'emballage — résidus collants ou peinture arrachée au retrait.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_008"],
+          "norm_reference": "DTU 59.1 §8.4",
+          "control_questions": [
+            { "question": "Menuiseries, vitrages et encadrements sont-ils protégés (adhésif qualité pro) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_011",
+          "title": "Protéger ce qui ne peut pas être déposé",
+          "phase": "preparation_chantier",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Radiateurs non démontés, tuyauteries, robinetterie, luminaires fixes : protection au film plastique + scotch sur les bords.",
+          "klaro_recommendation": "Film plastique alimentaire ou film de chantier, scotch de masquage en bordure. Pour les tuyauteries : enroulez le film en spirale serrée. Pour les radiateurs en place : protégez aussi les vannes et le sol immédiatement dessous.",
+          "common_mistake": "Oublier la robinetterie ou les vannes radiateur — éclaboussures qui se nettoient mal, taches durables sur le chrome.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_010"],
+          "norm_reference": "DTU 59.1 §8.4",
+          "control_questions": []
+        },
+        {
+          "id": "peint_012",
+          "title": "Préparer EPI et matériel",
+          "phase": "preparation_chantier",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Masque FFP2 minimum pour ponçage (FFP3 si support ancien suspect plomb). Escabeau adapté (jamais de chaise). Bacs, grilles, rouleaux et pinceaux à rechampir adaptés.",
+          "klaro_recommendation": "Masque FFP3 si maison construite avant 1949 (peinture au plomb possible). Lunettes de protection. Gants nitrile. Escabeau marchepied stable, hauteur adaptée. Pinceaux à rechampir (queue de morue) pour les angles. Rouleaux : poils 12 mm pour murs lisses, 18 mm pour léger relief, manchons mousse pour laques.",
+          "common_mistake": "Poncer sans masque — poussière de placo très fine, irritation respiratoire ; poussière de peinture ancienne potentiellement toxique (plomb).",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 59.1 §9 + Code du travail",
+          "control_questions": [
+            { "question": "EPI (masque FFP2/FFP3, lunettes, gants) prêts ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preparation_supports",
+      "label": "Préparation des supports",
+      "tasks": [
+        {
+          "id": "peint_013",
+          "title": "Vérifier la qualité des bandes à joints (placo neuf)",
+          "phase": "preparation_supports",
+          "applies_to_support": ["placo_neuf"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Inspectez chaque bande à joints sous éclairage rasant : pas de surépaisseur, pas de manque, ponçage terminé. Pour Q3/Q4, le placo doit être à niveau Q3/Q4.",
+          "klaro_recommendation": "Lampe rasante le long de chaque joint. Marquez au crayon : marche entre plaques, bande qui se décolle, ressaut > 1 mm, micro-fissure. Toute reprise nécessaire AVANT peinture. Pour Q3 : aucun défaut visible à 1 m. Pour Q4 : aucun défaut visible sous lumière rasante. Si bandes Q2 et Q4 visé : reprise complète à l'enduit lissant.",
+          "common_mistake": "Découvrir les défauts en peinture — il faut alors poncer la peinture, reboucher, reponcer, repeindre toute la zone.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_012"],
+          "norm_reference": "DTU 59.1 §10.1 + DTU 25.41",
+          "control_questions": [
+            { "question": "Les bandes à joints sont-elles au niveau du finish_level visé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_014",
+          "title": "Reboucher les trous, fissures et défauts ponctuels",
+          "phase": "preparation_supports",
+          "applies_to_support": ["placo_neuf", "platre", "ancien_peint"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Trous de cheville, éclats, micro-fissures : enduit de rebouchage en plusieurs passes fines plutôt qu'une grosse.",
+          "klaro_recommendation": "Enduit de rebouchage en pâte (prêt à l'emploi) pour petits défauts. En poudre pour grosses zones (séchage plus dur, moins de retrait). 2 passes fines avec ponçage léger entre. Bombez très légèrement la deuxième passe — elle se rétractera en séchant.",
+          "common_mistake": "Reboucher en une seule grosse passe — l'enduit se rétracte et il faut tout reprendre.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_013"],
+          "norm_reference": "DTU 59.1 §10.2",
+          "control_questions": []
+        },
+        {
+          "id": "peint_015",
+          "title": "Poncer les zones reprises (placo neuf)",
+          "phase": "preparation_supports",
+          "applies_to_support": ["placo_neuf"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Ponçage au grain fin (180-240) sur les zones rebouchées pour fondre le rebouchage avec le placo environnant.",
+          "klaro_recommendation": "Cale à poncer manuelle pour les angles, ponceuse girafe avec aspiration pour grandes surfaces. Mouvements croisés. Vérifiez à la lumière rasante après chaque zone. Pour Q3/Q4 : ponçage au grain 240 puis vérification. Masque FFP2 obligatoire.",
+          "common_mistake": "Ponçage au gros grain qui laisse des rayures — ces rayures ressortent sous la peinture.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_014"],
+          "norm_reference": "DTU 59.1 §10.2",
+          "control_questions": [
+            { "question": "Toutes les zones reprises sont-elles poncées au grain fin ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_016",
+          "title": "Dépoussiérer entièrement (placo neuf)",
+          "phase": "preparation_supports",
+          "applies_to_support": ["placo_neuf"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Aspirateur de chantier sur toutes les surfaces, puis chiffon microfibre légèrement humide. Aucune poussière ne doit rester.",
+          "klaro_recommendation": "Aspirateur de chantier (filtre HEPA) sur murs, plafonds, sols, plinthes, encadrements. Chiffon microfibre humide en passes croisées. Laissez sécher avant la sous-couche. Sans ce dépoussiérage, la sous-couche n'accroche pas et la finition est rugueuse.",
+          "common_mistake": "Balayer rapidement et appliquer la sous-couche — la peinture emprisonne la poussière, finition rugueuse et fragile.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_015"],
+          "norm_reference": "DTU 59.1 §10.3",
+          "control_questions": [
+            { "question": "Les supports sont-ils dépoussiérés (aspiration + chiffon humide) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_017",
+          "title": "Tester l'adhérence de l'ancienne peinture",
+          "phase": "preparation_supports",
+          "applies_to_support": ["ancien_peint"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Test de la rayure en croix + scotch : tracez une croix au cutter, appliquez du scotch fort, tirez d'un coup sec. Si la peinture vient avec le scotch = adhérence insuffisante, décapage nécessaire.",
+          "klaro_recommendation": "Faites le test à plusieurs endroits (par mur, par pièce). Si décollement : décapage thermique (décapeur thermique + grattoir) ou chimique (décapant en gel). Le décapage est long mais c'est la seule solution durable. Sans cela, la nouvelle peinture entraînera l'ancienne au bout de quelques mois.",
+          "common_mistake": "Repeindre sur une ancienne peinture qui se décolle — la nouvelle peinture entraîne l'ancienne, plaques de peinture qui tombent.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_012"],
+          "norm_reference": "DTU 59.1 §10.4",
+          "control_questions": [
+            { "question": "Test d'adhérence effectué et résultat conforme (peinture qui ne vient pas) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_018",
+          "title": "Lessiver à la lessive Saint-Marc",
+          "phase": "preparation_supports",
+          "applies_to_support": ["ancien_peint"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Lessivage à la lessive Saint-Marc (ou équivalent alcalin) pour dégraisser et matifier l'ancienne peinture. Rinçage à l'eau claire, séchage 24h.",
+          "klaro_recommendation": "Diluez selon notice. Application à l'éponge ou au pulvérisateur. Frottez en mouvements circulaires. Rincez à l'eau claire (sinon résidus alcalins qui empêchent l'accrochage). Laissez sécher 24h minimum. Le lessivage retire aussi nicotine, graisse de cuisine, traces de doigts.",
+          "common_mistake": "Repeindre sur une surface non lessivée — la nouvelle peinture n'accroche pas sur la couche grasse ou nicotine.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_017"],
+          "norm_reference": "DTU 59.1 §10.4",
+          "control_questions": [
+            { "question": "Lessivage + rinçage + séchage 24h effectués ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_019",
+          "title": "Gratter peintures écaillées et reboucher",
+          "phase": "preparation_supports",
+          "applies_to_support": ["ancien_peint"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Grattez toute zone écaillée jusqu'au support sain. Rebouchez les manques à l'enduit, en bombant très légèrement pour compenser le retrait.",
+          "klaro_recommendation": "Grattoir (couteau de peintre) ou spatule. Élargissez la zone tant que la peinture vient au grattoir — vous devez vous arrêter sur une peinture qui adhère franchement. Rebouchez à l'enduit en 2 passes fines. Poncez après séchage pour fondre avec le support environnant.",
+          "common_mistake": "Reboucher par-dessus une peinture qui se détache encore au grattoir — la nouvelle finition se décolle avec l'ancienne dans les semaines qui suivent.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_018"],
+          "norm_reference": "DTU 59.1 §10.4",
+          "control_questions": []
+        },
+        {
+          "id": "peint_020",
+          "title": "Traiter les fissures structurelles avec calicot",
+          "phase": "preparation_supports",
+          "applies_to_support": ["ancien_peint", "platre"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Fissures > 2 mm ou évolutives : pose d'une bande calicot (papier ou fibre) sur enduit frais avant rebouchage final. La calicot empêche la fissure de réapparaître.",
+          "klaro_recommendation": "Élargissez légèrement la fissure au cutter pour la nettoyer. Étalez un cordon d'enduit, posez la calicot dans l'enduit frais, marouflez à la spatule. Recouvrez d'une seconde passe d'enduit qui dépasse de 5 cm de chaque côté. Ponçage léger après séchage. Sans calicot, la fissure réapparaît dans l'année.",
+          "common_mistake": "Reboucher une fissure structurelle uniquement à l'enduit — elle réapparaît dès le premier changement de saison.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_019"],
+          "norm_reference": "DTU 59.1 §10.4",
+          "control_questions": [
+            { "question": "Toutes les fissures structurelles sont-elles traitées avec calicot ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_021",
+          "title": "Neutraliser taches grasses, nicotine, traces d'eau",
+          "phase": "preparation_supports",
+          "applies_to_support": ["ancien_peint"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Sur les taches grasses, nicotine, traces d'eau : primaire bloqueur de taches (à base solvant ou résine). Sans bloqueur, la tache traverse toutes les couches de peinture.",
+          "klaro_recommendation": "Primaire bloqueur de taches en aérosol ou en pot (Zinsser BIN, Julien Block ou équivalent). Application en 1-2 couches sur les zones concernées + 10 cm autour. Séchage selon notice avant peinture. Indispensable pour : nicotine, suie, marqueur, gras de cuisine, taches d'eau qui ont jauni.",
+          "common_mistake": "Peindre par-dessus une tache nicotine ou d'eau sans bloqueur — la tache remonte à travers les couches en quelques jours.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_018"],
+          "norm_reference": "DTU 59.1 §10.4",
+          "control_questions": [
+            { "question": "Toutes les taches sont-elles traitées au primaire bloqueur ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_022",
+          "title": "Traiter les moisissures avant peinture",
+          "phase": "preparation_supports",
+          "applies_to_support": ["ancien_peint", "platre"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Toute moisissure visible doit être traitée avec un produit anti-moisissures (à base de chlore ou ammonium quaternaire) avant peinture. Sans traitement, la moisissure revient en quelques mois.",
+          "klaro_recommendation": "Identifiez la cause de la moisissure (humidité, ventilation, pont thermique) et corrigez-la AVANT toute peinture. Appliquez le produit anti-moisissures, laissez agir, rincez selon notice. Utilisez ensuite une peinture anti-moisissures (peinture spéciale pièces humides) pour prévenir la récidive. Aération obligatoire pendant traitement.",
+          "common_mistake": "Peindre par-dessus la moisissure sans traitement ni correction de la cause — moisissure qui réapparaît en 2-3 mois.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_018"],
+          "norm_reference": "DTU 59.1 §10.4",
+          "control_questions": [
+            { "question": "La cause d'humidité est-elle identifiée et corrigée + traitement anti-moisissures effectué ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_023",
+          "title": "Poncer légèrement pour matifier (égrenage)",
+          "phase": "preparation_supports",
+          "applies_to_support": ["ancien_peint"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Ponçage léger (grain 180-240) sur toute la surface pour casser la brillance de l'ancienne peinture et favoriser l'accroche de la nouvelle. C'est l'égrenage.",
+          "klaro_recommendation": "Cale à poncer + papier 180-240. Mouvements croisés léger sur toute la surface. Vous devez passer d'une surface brillante à mate. C'est rapide mais essentiel : sans égrenage, la nouvelle peinture glisse sur l'ancienne et n'accroche pas durablement.",
+          "common_mistake": "Sauter l'égrenage sur peinture brillante ou satinée — accrochage compromis, peinture qui s'écaille à terme.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_022"],
+          "norm_reference": "DTU 59.1 §10.4",
+          "control_questions": [
+            { "question": "L'ancien support est-il égrené (mat partout) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_024",
+          "title": "Dépoussiérer (ancien support peint)",
+          "phase": "preparation_supports",
+          "applies_to_support": ["ancien_peint"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Après égrenage : aspiration + chiffon humide pour retirer toute la poussière de ponçage.",
+          "klaro_recommendation": "Aspirateur sur toutes les surfaces, puis chiffon microfibre humide en passes croisées. Laissez sécher avant la sous-couche. La poussière résiduelle empêche l'accroche.",
+          "common_mistake": "Sauter le dépoussiérage et appliquer la sous-couche — surface rugueuse et accroche compromise.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_023"],
+          "norm_reference": "DTU 59.1 §10.4",
+          "control_questions": []
+        },
+        {
+          "id": "peint_025",
+          "title": "Tester la cohésion du plâtre",
+          "phase": "preparation_supports",
+          "applies_to_support": ["platre"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Frottez le plâtre avec le doigt : si vous obtenez de la farine, le plâtre est friable et nécessite un fixateur de fond avant tout.",
+          "klaro_recommendation": "Test au doigt à plusieurs endroits. Si farine : appliquez un fixateur de fond (résine pénétrante) qui durcit le plâtre en surface. Sans fixateur, la peinture entraîne le plâtre dégradé en se rétractant. Le fixateur est invisible une fois sec.",
+          "common_mistake": "Peindre directement sur un plâtre qui sablée — la peinture entraîne la couche superficielle de plâtre, écailles à terme.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_012"],
+          "norm_reference": "DTU 59.1 §10.5",
+          "control_questions": [
+            { "question": "Le plâtre est-il cohésif (test du doigt OK) ou un fixateur a-t-il été appliqué ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_026",
+          "title": "Reboucher trous et fissures du plâtre",
+          "phase": "preparation_supports",
+          "applies_to_support": ["platre"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Enduit plâtre ou enduit de rebouchage classique en 2 passes fines, ponçage entre les deux.",
+          "klaro_recommendation": "Privilégiez un enduit plâtre (compatible chimiquement) ou un enduit polyvalent. 2 passes fines, ponçage léger entre les passes. Bombez la 2e passe. Vérifiez la planéité à la règle de 1 m sur les zones reprises.",
+          "common_mistake": "Utiliser un enduit acrylique sur plâtre ancien — incompatibilité possible avec le plâtre, fissuration de l'enduit.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_025"],
+          "norm_reference": "DTU 59.1 §10.5",
+          "control_questions": []
+        },
+        {
+          "id": "peint_027",
+          "title": "Poncer et dépoussiérer le plâtre",
+          "phase": "preparation_supports",
+          "applies_to_support": ["platre"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Ponçage grain 180-240 sur les zones reprises, dépoussiérage complet (aspiration + chiffon humide).",
+          "klaro_recommendation": "Cale à poncer manuelle, mouvements doux pour ne pas creuser. Vérifiez à la lumière rasante. Aspiration + chiffon humide. Laissez sécher avant suite.",
+          "common_mistake": "Poncer trop fort sur plâtre — créer des creux et défauts visibles ensuite.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_026"],
+          "norm_reference": "DTU 59.1 §10.5",
+          "control_questions": []
+        },
+        {
+          "id": "peint_028",
+          "title": "Poncer le bois dans le sens des fibres",
+          "phase": "preparation_supports",
+          "applies_to_support": ["bois"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Bois : ponçage dans le sens des fibres (jamais en travers), grain 120 puis 180 pour finir. Égrenage léger entre les couches de peinture.",
+          "klaro_recommendation": "Toujours dans le sens des fibres. Grain 120 pour dégrossir, 180 pour finir. Pour bois ancien peint : décapage avant. Insistez sur les nœuds. Aspirez après ponçage. Pour Q3/Q4 sur bois : grain 240 final.",
+          "common_mistake": "Poncer en travers des fibres — rayures visibles définitivement sous la peinture.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_012"],
+          "norm_reference": "DTU 59.1 §11",
+          "control_questions": [
+            { "question": "Le bois est-il poncé dans le sens des fibres (grain 120 puis 180) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_029",
+          "title": "Reboucher les nœuds résineux et traiter",
+          "phase": "preparation_supports",
+          "applies_to_support": ["bois"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Nœuds du bois : bouche-pores pour les combler, primaire spécifique anti-ressuage pour les empêcher de tacher la peinture finale (résine qui transpire).",
+          "klaro_recommendation": "Bouche-pores en pâte dans les nœuds, ponçage après séchage. Primaire spécial nœuds (gomme laque traditionnelle ou primaire moderne anti-ressuage) appliqué localement sur tous les nœuds. Sans ce traitement, taches jaunes/marron sur la peinture finale en quelques semaines.",
+          "common_mistake": "Peindre directement sur un nœud résineux — résine qui transpire et tache la peinture en quelques jours, refaire la zone.",
+          "pro_recommended": true,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_028"],
+          "norm_reference": "DTU 59.1 §11",
+          "control_questions": [
+            { "question": "Tous les nœuds sont-ils traités (bouche-pores + primaire anti-ressuage) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_030",
+          "title": "Dépoussiérer le bois au chiffon non pelucheux",
+          "phase": "preparation_supports",
+          "applies_to_support": ["bois"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Dépoussiérage au chiffon non pelucheux (microfibre ou tissu de coton sans peluche) légèrement humide. Pas de chiffon en laine ou textile pelucheux.",
+          "klaro_recommendation": "Aspirateur d'abord (mince embout dans les rainures), puis chiffon non pelucheux. Surface parfaitement sèche avant peinture. Les peluches restent prisonnières sous la peinture et sont visibles à vie sur les boiseries.",
+          "common_mistake": "Utiliser un torchon pelucheux — fibres prisonnières sous la peinture, finition rugueuse.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_029"],
+          "norm_reference": "DTU 59.1 §11",
+          "control_questions": []
+        },
+        {
+          "id": "peint_031",
+          "title": "Décaper et dégraisser le métal",
+          "phase": "preparation_supports",
+          "applies_to_support": ["metal"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Métal (radiateurs, garde-corps, tuyauteries) : décapage de la rouille, brossage métallique, dégraissage à l'acétone ou alcool.",
+          "klaro_recommendation": "Brosse métallique manuelle ou rotative pour la rouille, papier abrasif moyen ensuite. Dégraissage final à l'acétone ou alcool isopropylique sur chiffon. Surface mate, sèche, exempte de rouille et de gras avant primaire. EPI : gants, masque, lunettes.",
+          "common_mistake": "Peindre sur métal rouillé sans traitement — la rouille traverse la peinture et la fait écailler.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_012"],
+          "norm_reference": "DTU 59.1 §12",
+          "control_questions": [
+            { "question": "Métal décapé, brossé et dégraissé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_032",
+          "title": "Appliquer un primaire antirouille",
+          "phase": "preparation_supports",
+          "applies_to_support": ["metal"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Primaire antirouille (glycéro ou acrylique selon usage) appliqué en 1-2 couches selon notice. Indispensable pour bloquer la corrosion sous la peinture finale.",
+          "klaro_recommendation": "Primaire antirouille au pinceau ou au rouleau adapté métal. Application uniforme, sans manque (la rouille peut redémarrer dans le moindre point non couvert). Séchage selon notice avant peinture finale. Pour radiateurs : peinture spéciale radiateur (résistance à la chaleur) après primaire.",
+          "common_mistake": "Peindre directement avec une peinture standard sans primaire — la rouille redémarre sous la peinture en quelques mois.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_031"],
+          "norm_reference": "DTU 59.1 §12",
+          "control_questions": [
+            { "question": "Primaire antirouille appliqué uniformément ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sous_couche",
+      "label": "Sous-couche & révélation des défauts",
+      "tasks": [
+        {
+          "id": "peint_033",
+          "title": "Appliquer la sous-couche adaptée au support",
+          "phase": "sous_couche",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Sous-couche choisie selon le support : impression placo (placo neuf), fixateur (plâtre), primaire bois (bois), primaire bloqueur (zones tachées), primaire antirouille (métal).",
+          "klaro_recommendation": "Une seule couche au rouleau (manchon 12 mm pour murs lisses), croisée pour bonne uniformité. Démarrez TOUJOURS par les angles et bordures au pinceau (rechampissage), puis le rouleau juste après pour fondre les démarcations. Sans sous-couche, l'absorption hétérogène crée des taches visibles en peinture finale.",
+          "common_mistake": "Peindre directement sur placo neuf sans sous-couche — taches visibles, jonctions enduit/plaque qui marquent, surconsommation de peinture finale.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_016", "peint_024", "peint_027", "peint_030", "peint_032"],
+          "norm_reference": "DTU 59.1 §13",
+          "control_questions": [
+            { "question": "Sous-couche adaptée au support appliquée uniformément ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_034",
+          "title": "Respecter le temps de séchage de la sous-couche",
+          "phase": "sous_couche",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Délai de séchage selon fiche technique du produit : généralement 4-6h pour le toucher, 12-24h pour le recouvrement. Respectez le délai de RECOUVREMENT, pas seulement le séchage au toucher.",
+          "klaro_recommendation": "Le délai de recouvrement est différent du séchage au toucher : la peinture peut sembler sèche mais ne pas être prête à recevoir une autre couche. Lisez la fiche technique du produit. À 20°C / 50% humidité : valeurs nominales. Plus froid ou plus humide : doublez. Sans respect : arrachage de la sous-couche par la couche suivante.",
+          "common_mistake": "Repasser une couche dès que ça paraît sec au toucher — la sous-couche s'arrache et la finition est ruinée.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_033"],
+          "norm_reference": "DTU 59.1 §13 + fiche technique produit",
+          "control_questions": [
+            { "question": "Délai de RECOUVREMENT (pas séchage au toucher) respecté ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_035",
+          "title": "Contrôler la sous-couche en lumière rasante",
+          "phase": "sous_couche",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "La sous-couche révèle TOUS les défauts du support qui n'étaient pas visibles avant. Inspection à la lampe LED rasante (parallèle au mur, à 30 cm) pour repérer chaque défaut.",
+          "klaro_recommendation": "Lampe LED dans l'obscurité, tenue parallèle au mur à 30 cm. Marquez chaque défaut au crayon (effaçable) : creux, bosse, marque de spatule, joint qui ressort. Pour Q3 : aucun défaut visible à 1 m. Pour Q4 : aucun défaut visible sous lumière rasante. C'est l'étape qui distingue une finition pro d'une finition amateur.",
+          "common_mistake": "Sauter cette étape et découvrir les défauts en peinture finale — il faut alors poncer, reboucher, repoincer, repeindre toute la zone.",
+          "pro_recommended": false,
+          "photo_required_before_validation": true,
+          "depends_on": ["peint_034"],
+          "norm_reference": "DTU 59.1 §13.2 + Règles Q1-Q4",
+          "control_questions": [
+            { "question": "Contrôle lumière rasante effectué et défauts marqués ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_036",
+          "title": "Reprendre les défauts révélés",
+          "phase": "sous_couche",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Sur chaque défaut marqué : rebouchage à l'enduit fin (couteau japonais), ponçage local au grain fin, dépoussiérage.",
+          "klaro_recommendation": "Enduit lissant en pâte (très fin, séchage rapide). Couteau japonais pour application précise. Ponçage à la cale main au grain 240. Dépoussiérage local au chiffon humide. Pour Q3/Q4 : reprendre TOUS les défauts visibles, sans exception. Pour Q2 : seulement les défauts visibles en éclairage normal.",
+          "common_mistake": "Ignorer les défauts en pensant que 'la peinture les masquera' — ils ressortent au contraire amplifiés par la couleur.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_035"],
+          "norm_reference": "DTU 59.1 §13.2",
+          "control_questions": [
+            { "question": "Tous les défauts marqués sont-ils repris (enduit + ponçage + dépoussiérage) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "peint_037",
+          "title": "Repasser une sous-couche localisée sur les zones reprises",
+          "phase": "sous_couche",
+          "applies_to_support": ["all"],
+          "applies_to_finish_level": ["all"],
+          "explanation": "Sur chaque zone reprise (rebouchage frais), repassez la sous-couche localement pour uniformiser l'absorption avec le reste du mur.",
+          "klaro_recommendation": "Pinceau ou mini-rouleau pour les retouches. Étalez sur la zone reprise + 5-10 cm autour pour fondre. Sans cette étape, les zones reprises absorbent différemment et les retouches ressortent comme des taches sous la peinture finale.",
+          "common_mistake": "Passer directement la peinture finale sur une retouche fraîche d'enduit — la zone absorbe plus, finition tachée.",
+          "pro_recommended": false,
+          "photo_required_before_validation": false,
+          "depends_on": ["peint_036"],
+          "norm_reference": "DTU 59.1 §13.2",
+          "control_questions": []
+        }
+      ]
+    }
+  ]
+}
