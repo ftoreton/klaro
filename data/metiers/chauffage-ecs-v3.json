@@ -620,6 +620,838 @@
           "control_questions": []
         }
       ]
+    },
+    {
+      "id": "implantation_unites",
+      "label": "Implantation des unités",
+      "tasks": [
+        {
+          "id": "chauf_029",
+          "title": "PAC AE/AA : choisir l'emplacement de l'unité extérieure",
+          "phase": "implantation_unites",
+          "applies_to_energie": ["pac_air_eau", "pac_air_air"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Critères : distance limites séparatives (règle nuisance sonore), absence de masques (vent dominant favorable), accessibilité maintenance, évacuation condensats (jusqu'à 30 L/jour en hiver), sol non glissant en cas de dégivrage.",
+          "klaro_recommendation": "Distance limite ≥ 3 m courant (vérifiez règlement local + arrêté bruit). Orientation : à l'abri vent dominant en hiver. Masques : pas contre une haie épaisse (recyclage d'air). Évacuation condensats : pente vers caniveau ou puits perdu (anti-glissade verglas). Photographiez l'emplacement.",
+          "common_mistake": "Unité extérieure contre fenêtre voisin — plaintes voisinage, médiation/justice possible.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["chauf_011"],
+          "norm_reference": "Arrêté 31 août 2006 bruit + DTU 65",
+          "control_questions": [
+            { "question": "Emplacement unité ext. respecte distance limite + bruit + évacuation condensats ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_030",
+          "title": "Vérifier le règlement local sur le bruit",
+          "phase": "implantation_unites",
+          "applies_to_energie": ["pac_air_eau", "pac_air_air"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Certaines communes ont des arrêtés spécifiques pour PAC : niveau sonore maximal en limite de propriété, horaires de fonctionnement, distance minimale aux limites.",
+          "klaro_recommendation": "Vérifiez auprès de la mairie. Niveau sonore PAC à 1 m : ~50-60 dB(A). En limite de propriété : objectif < 35 dB(A) en nuit. Si dépassement : capot acoustique (réduit de 10-15 dB) ou déplacement de l'unité. Évitez les voisins immédiats au repos (chambres voisines).",
+          "common_mistake": "PAC à 1,50 m de la chambre du voisin — plainte, possible obligation de déplacer.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_029"],
+          "norm_reference": "Arrêté 31 août 2006 + Règlement local",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_031",
+          "title": "Construire socle béton ou supports antivibratiles",
+          "phase": "implantation_unites",
+          "applies_to_energie": ["pac_air_eau", "pac_air_air"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Unité extérieure posée sur socle béton (15-20 cm hors sol) ou supports muraux antivibratiles. JAMAIS directement au sol nu (humidité, gel, déstabilisation). JAMAIS contre la façade rigide (vibrations transmises dans le mur).",
+          "klaro_recommendation": "Socle béton ~80×40 cm pour unité courante, dépassant l'unité de 5-10 cm. Plots antivibratiles entre socle et unité (caoutchouc 20-40 mm). Pour pose murale : équerres antivibratiles. Sans antivibratiles : ronronnement transmis dans toute la maison via la structure.",
+          "common_mistake": "Unité posée à plat directement sur dalle béton — vibrations transmises, bruit dans la pièce adjacente.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["chauf_029"],
+          "norm_reference": "DTU 65 + Notice fabricant",
+          "control_questions": [
+            { "question": "Socle béton + plots antivibratiles posés (photographiés) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_032",
+          "title": "PAC géothermie : forer / poser le champ de captage",
+          "phase": "implantation_unites",
+          "applies_to_energie": ["pac_geothermie"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Champ de captage selon étude : sondes verticales (forage 80-150 m de profondeur), capteurs horizontaux (tranchées 60-120 cm sur 1,5-2 fois la surface à chauffer), sur nappe phréatique (puits + autorisation).",
+          "klaro_recommendation": "Sondes verticales : forage spécialisé (~80-150 €/m), peu emprise au sol mais coût élevé. Capteurs horizontaux : grande emprise (~1500-3000 m² pour maison 100 m²), terrain disponible obligatoire, coût moins élevé. Sur nappe : autorisation BRGM, suivi de qualité de l'eau. Conformément à l'étude G1+G2+TRT (cf. phase diagnostic).",
+          "common_mistake": "Forer 'à la louche' selon longueur estimée — sous-dimensionnement, PAC qui passe en mode appoint en hiver.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["etude_sol_geothermie"],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_007"],
+          "norm_reference": "NF X10-970 + Réglementation BRGM",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_033",
+          "title": "Chaudière granulés/bûches : local technique ventilé",
+          "phase": "implantation_unites",
+          "applies_to_energie": ["chaudiere_granules", "chaudiere_buches"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Implantation dans local technique : ventilé (amenée d'air comburant dimensionnée), accès maintenance dégagé (1 m mini), distance combustibles selon DSF, sol incombustible.",
+          "klaro_recommendation": "Local dédié, idéalement non habitable. Ventilation : grille dimensionnée selon puissance (cf. notice fabricant). Sol béton, dalle plane, pente vers évacuation. Distance entre dos chaudière et mur : 30-50 cm (maintenance). Stockage granulés/bûches à proximité immédiate (alimentation + livraison).",
+          "common_mistake": "Chaudière dans buanderie sans ventilation conforme — risque CO + sous-rendement par manque d'air.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_011"],
+          "norm_reference": "DTU 24.1 + Arrêté 23/02/2018",
+          "control_questions": [
+            { "question": "Local chaudière ventilé conformément à la notice + accès maintenance ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_034",
+          "title": "Poêle bûches/granulés : plaque protection sol + DSF",
+          "phase": "implantation_unites",
+          "applies_to_energie": ["poele_granules", "poele_buches"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Plaque de protection sol incombustible (verre, métal, pierre, carrelage adapté) sous le poêle, dépassant en façade selon notice (souvent 30-50 cm). DSF (distance de sécurité au feu) : 16 cm conduit isolé, 25-30 cm conduit non isolé, distance murs et meubles selon notice.",
+          "klaro_recommendation": "Plaque dimensions selon notice. DSF respectée vis-à-vis murs combustibles, meubles, rideaux. Coffrage incombustible si proximité (plaques de plâtre + laine de roche). Pour conduit : tubage rigide ou flexible adapté. Photographiez l'installation pour archive.",
+          "common_mistake": "Poêle posé sur parquet sans plaque — risque incendie, refus assurance.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["chauf_011"],
+          "norm_reference": "DTU 24.1 + DTU 24.2",
+          "control_questions": [
+            { "question": "Plaque protection sol + DSF respectée + photographiées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_035",
+          "title": "CESI/solaire : capteurs en toiture + étanchéité + antichute",
+          "phase": "implantation_unites",
+          "applies_to_energie": ["solaire_thermique"],
+          "applies_to_ecs": ["cesi_solaire", "all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Pose des capteurs solaires en toiture : intégration ou surimposition, étanchéité conforme (kit fabricant), fixation antichute pour les opérateurs (échafaudage + harnais), respect orientation et inclinaison.",
+          "klaro_recommendation": "Surimposition (kit fabricant sur tuiles) recommandée vs intégration (plus de risques de fuite). Échafaudage périphérique + harnais. Étanchéité avec embases plomb ou kit spécifique. Liaisons hydrauliques isolées (cuivre ou inox + isolant haute T°). Pose par RGE Qualisol.",
+          "common_mistake": "Pose sans échafaudage périphérique — chute mortelle possible.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["attestation_rge"],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_011"],
+          "norm_reference": "DTU 65.12 + DTU 40.x + Qualisol",
+          "control_questions": [
+            { "question": "Capteurs posés par RGE Qualisol avec étanchéité + antichute ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_036",
+          "title": "CET : implanter en local non chauffé > 10 m³",
+          "phase": "implantation_unites",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["cet_thermodynamique"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Chauffe-eau thermodynamique (CET) : local non chauffé > 10 m³ obligatoire (cave, garage, buanderie non chauffée), OU raccordé sur air extrait VMC (configuration spécifique). JAMAIS en pièce de vie chauffée (vol thermique).",
+          "klaro_recommendation": "Local 10 m³ minimum (~3,5×3 m hauteur 2,5). Chauffé : NON (la PAC refroidit le local en captant les calories). Idéal : cave ou garage. Raccordement air extrait VMC : configuration alternative (notice fabricant). Évacuation condensats vers EU.",
+          "common_mistake": "CET en cuisine ou pièce de vie — la PAC vole les calories du chauffage central, surconsommation chauffage.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_001"],
+          "norm_reference": "DTU 65 + Notice fabricant",
+          "control_questions": [
+            { "question": "CET en local non chauffé > 10 m³ ou raccordé air extrait VMC ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reseau_hydraulique",
+      "label": "Réseau hydraulique",
+      "tasks": [
+        {
+          "id": "chauf_037",
+          "title": "Tracer le réseau hydraulique",
+          "phase": "reseau_hydraulique",
+          "applies_to_energie": ["pac_air_eau", "pac_geothermie", "chaudiere_granules", "chaudiere_buches", "plancher_chauffant_hydraulique", "solaire_thermique"],
+          "applies_to_ecs": ["ballon_sur_pac_ou_chaudiere", "cesi_solaire", "all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Tracé au plus court entre la chaudière/PAC et les émetteurs (radiateurs, PCBT). Accessible (vannes, purgeurs). Hors zones de gel (combles non isolés, vide sanitaire) sans calorifugeage adapté.",
+          "klaro_recommendation": "Plan détaillé. Privilégiez les passages techniques existants (vide sanitaire, faux-plafond). Évitez les angles serrés (perte de charge). Vannes d'isolement à chaque embranchement principal. Photographiez le réseau avant fermeture.",
+          "common_mistake": "Réseau tortueux avec multiples coudes — perte de charge, surconsommation de la pompe.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_011"],
+          "norm_reference": "DTU 65",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_038",
+          "title": "Choisir le type de tube",
+          "phase": "reseau_hydraulique",
+          "applies_to_energie": ["pac_air_eau", "pac_geothermie", "chaudiere_granules", "chaudiere_buches", "plancher_chauffant_hydraulique", "solaire_thermique"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Cuivre (durable, brasure indispensable), multicouche (composite alu/PE, sertissage), PER avec barrière anti-oxygène pour chauffage (BAO obligatoire). PER simple INTERDIT en chauffage (oxygène traverse, corrosion des composants métalliques).",
+          "klaro_recommendation": "Multicouche : compromis perf/coût, sertissage facile, durable. Cuivre : pour départ chaudière/PAC et zones haute T°. PER BAO pour PCBT (déjà BAO d'origine pour chauffage). Évitez PER simple (eau froide uniquement, jamais chauffage). Diamètres selon débit : Ø 16 mm secondaires, Ø 20-26 mm principaux.",
+          "common_mistake": "PER non BAO en chauffage — corrosion radiateurs, échangeur PAC, pompe. Pannes répétées.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_037"],
+          "norm_reference": "DTU 65 + NF EN ISO 15875 + NF EN ISO 21003",
+          "control_questions": [
+            { "question": "Tube adapté au chauffage (cuivre, multicouche, PER BAO) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_039",
+          "title": "Vannes, purgeurs, vase d'expansion, soupape, manomètre",
+          "phase": "reseau_hydraulique",
+          "applies_to_energie": ["pac_air_eau", "pac_geothermie", "chaudiere_granules", "chaudiere_buches", "plancher_chauffant_hydraulique", "solaire_thermique"],
+          "applies_to_ecs": ["ballon_sur_pac_ou_chaudiere", "cesi_solaire", "all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Équipements de sécurité et de service obligatoires : vannes d'isolement (intervention sans vidange totale), purgeurs aux points hauts (évacuer l'air), vase d'expansion (absorber dilatation), soupape de sécurité (évacuer surpression), manomètre (contrôle visuel pression).",
+          "klaro_recommendation": "Vase d'expansion dimensionné (volume = 5-8% du volume total du circuit). Soupape tarée à 3 bars en chauffage. Purgeurs automatiques aux points hauts (collecteurs, radiateurs hauts). Manomètre lisible (pression service ~1,5 bar à froid). Vannes d'isolement à chaque appareil pour maintenance.",
+          "common_mistake": "Pas de vase d'expansion ou sous-dimensionné — pression qui monte à chaud, soupape qui crache régulièrement.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_037"],
+          "norm_reference": "DTU 65 + DTU 65.11",
+          "control_questions": [
+            { "question": "Vannes, purgeurs, vase, soupape, manomètre installés selon DTU ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_040",
+          "title": "Calorifuger les canalisations",
+          "phase": "reseau_hydraulique",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Calorifugeage des canalisations chauffage et ECS = OBLIGATOIRE RE2020. Manchons mousse polyéthylène ou élastomère, épaisseur ≥ 9 mm. Économie d'énergie 5-15% sur la facture chauffage et ECS.",
+          "klaro_recommendation": "Manchons en mousse polyéthylène ou élastomère (Armaflex, Kaiflex), épaisseur ≥ 9 mm. Découpez aux longueurs précises, ouvrez sur la longueur, refermez avec scotch alu. Soignez les coudes et raccords (point non isolé annule l'effet sur tout le tronçon). Économie réelle : 5-15% sur facture ECS et chauffage.",
+          "common_mistake": "Calorifuger uniquement les longues lignes droites et oublier les coudes — pertes thermiques quasi équivalentes à un réseau non isolé.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_037"],
+          "norm_reference": "RE2020 + DTU 65",
+          "control_questions": [
+            { "question": "Toutes les canalisations chauffage et ECS sont-elles calorifugées (lignes + coudes + raccords) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_041",
+          "title": "PAC AE : liaisons frigorifiques cuivre isolées",
+          "phase": "reseau_hydraulique",
+          "applies_to_energie": ["pac_air_eau", "pac_air_air"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Liaisons frigorifiques entre unité extérieure et unité intérieure : tubes cuivre frigo (haute pression) isolés avec mousse spéciale fluides. Longueur max selon constructeur (typiquement 15-30 m), dénivelé respecté.",
+          "klaro_recommendation": "Tubes cuivre annelés ou rigides selon installateur. Diamètres selon notice fabricant. Isolation mousse polyéthylène fluide (Armaflex Class 0). Brasage à l'azote ou raccords flare. Longueur max et dénivelé conformes notice. Pose par technicien attestation fluides obligatoire.",
+          "common_mistake": "Brasage sans circulation d'azote — oxydation interne, particules dans le circuit, panne PAC.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["attestation_fluides_frigorigenes"],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_031"],
+          "norm_reference": "Décret 2007-737 fluides + NF EN 14276",
+          "control_questions": [
+            { "question": "Liaisons frigorifiques posées par technicien attestation fluides ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_042",
+          "title": "Tirage au vide du circuit frigorifique",
+          "phase": "reseau_hydraulique",
+          "applies_to_energie": ["pac_air_eau", "pac_air_air"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Tirage au vide = évacuation de l'air et de l'humidité du circuit frigorifique avec pompe à vide. Obligatoire AVANT mise en service. Sans tirage, humidité dans le circuit = panne (gel à la détente).",
+          "klaro_recommendation": "Pompe à vide professionnelle (~80-100 microns Hg pendant 30-60 min). Test d'étanchéité : si la pression remonte = fuite à reprendre. Charge en fluide selon notice fabricant. Procédure réservée aux techniciens attestation fluides. Documenter par photo manomètre + procès-verbal.",
+          "common_mistake": "Mise en service sans tirage au vide — humidité gèle dans la détente, PAC en panne en quelques semaines.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["attestation_fluides_frigorigenes"],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_041"],
+          "norm_reference": "Décret 2007-737 fluides",
+          "control_questions": [
+            { "question": "Tirage au vide effectué par technicien attestation fluides ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_043",
+          "title": "Solaire : remplir circuit primaire glycolé + purger",
+          "phase": "reseau_hydraulique",
+          "applies_to_energie": ["solaire_thermique"],
+          "applies_to_ecs": ["cesi_solaire"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Circuit primaire solaire (entre capteurs et ballon) : remplissage avec glycol antigel adapté (type propylène glycol pour usage alimentaire indirect ECS). Purge complète de l'air. Vérification pression service.",
+          "klaro_recommendation": "Glycol propylène alimentaire (sécurité en cas de fuite vers ECS). Concentration 30-40% selon zone climatique. Pression service 1,5-3 bars. Purgeurs automatiques + manuels en partie haute. Mise en service progressive : pas de remplissage par grande chaleur (capteurs très chauds = vapeur).",
+          "common_mistake": "Glycol éthylène (toxique) sur circuit ECS — risque sanitaire en cas de fuite vers le ballon.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_035"],
+          "norm_reference": "DTU 65.12 + NF EN 12975",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_044",
+          "title": "PAC : volume tampon si requis",
+          "phase": "reseau_hydraulique",
+          "applies_to_energie": ["pac_air_eau", "pac_geothermie"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Volume tampon (ballon hydraulique) : régule les cycles de la PAC, évite les démarrages courts (court-cyclage = usure prématurée). Souvent requis si volume du circuit < 25-30 L par kW de PAC.",
+          "klaro_recommendation": "Volume selon constructeur PAC : 50-200 L courant. Branchement en série ou en parallèle selon configuration. Calorifugé épais (perte thermique = surconsommation). Sans tampon adapté, PAC qui démarre/arrête toutes les 5-10 min en mi-saison = usure rapide.",
+          "common_mistake": "Pas de tampon sur PCBT court ou radiateurs basse T° à faible volume — court-cyclage permanent.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_037"],
+          "norm_reference": "DTU 65 + Notice fabricant PAC",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_045",
+          "title": "Bouclage ECS si distance ballon → puisage > 8 m",
+          "phase": "reseau_hydraulique",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["ballon_sur_pac_ou_chaudiere", "cet_thermodynamique", "cesi_solaire"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Si distance ballon ECS → point de puisage le plus éloigné > 8 m : bouclage ECS obligatoire (circulation continue avec petite pompe, anti-légionellose, eau chaude immédiate).",
+          "klaro_recommendation": "Bouclage = retour de l'eau chaude vers le ballon avec pompe (40-60 W). T° de bouclage > 50°C en permanence (anti-légionellose). Sans bouclage > 8 m : 30 secondes d'eau froide à attendre + risque légionellose dans la zone stagnante. Prévoyez le bouclage dès la conception, ajout coûteux après coup.",
+          "common_mistake": "Ballon à 12 m de la SDB sans bouclage — eau froide à attendre + risque sanitaire.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_037"],
+          "norm_reference": "Arrêté 30 nov. 2005 + DTU 60.11",
+          "control_questions": [
+            { "question": "Distance ballon → point puisage le plus éloigné (m) ?", "type": "number", "expected": "≤ 8 sinon bouclage" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "plancher_chauffant_hydraulique",
+      "label": "Plancher chauffant hydraulique (si applicable)",
+      "tasks": [
+        {
+          "id": "chauf_046",
+          "title": "Vérifier planéité support et humidité dalle",
+          "phase": "plancher_chauffant_hydraulique",
+          "applies_to_energie": ["plancher_chauffant_hydraulique"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Support plan (tolérance < 5 mm sous règle de 2 m) + sec (humidité < 3% chape ciment, < 0,5% anhydrite). Sinon ragréage ou attente du séchage AVANT pose isolant.",
+          "klaro_recommendation": "Règle de 2 m + niveau bulle. Humidimètre à pointes. Si défaut planéité > 5 mm : ragréage autolissant. Si humidité > seuil : attendre (béton frais : 1 mois/cm). Photographiez les mesures. Sans préparation correcte : tubes en porte-à-faux, défauts d'écoulement.",
+          "common_mistake": "Pose PCBT sur dalle non plane — variations d'épaisseur de chape, performances hétérogènes.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_006"],
+          "norm_reference": "DTU 65.14 + NF EN 1264",
+          "control_questions": [
+            { "question": "Planéité ≤ 5 mm/2m + humidité < 3% (ciment) / 0,5% (anhydrite) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_047",
+          "title": "Poser un isolant thermique sous PCBT",
+          "phase": "plancher_chauffant_hydraulique",
+          "applies_to_energie": ["plancher_chauffant_hydraulique"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Isolant sous PCBT obligatoire pour diriger la chaleur vers le haut (sinon perte vers la dalle inférieure). PSE haute densité (résistance compression), épaisseur 5-10 cm selon RE2020 et configuration.",
+          "klaro_recommendation": "PSE haute densité (TH40-SE) ou PUR (λ plus faible, épaisseur réduite). RE2020 : R ≥ 2,4 m².K/W sur sol intermédiaire, R ≥ 4 m².K/W sur sol terre-plein. Joints décalés entre lés. Bandes périphériques contre les murs (désolidarisation chape).",
+          "common_mistake": "Isolant standard non adapté PCBT — écrasement sous le poids de la chape, perte de R.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_046"],
+          "norm_reference": "DTU 65.14 + RE2020",
+          "control_questions": [
+            { "question": "Isolant sous PCBT adapté (PSE HD ou PUR) avec R conforme ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_048",
+          "title": "Bande périphérique de désolidarisation",
+          "phase": "plancher_chauffant_hydraulique",
+          "applies_to_energie": ["plancher_chauffant_hydraulique"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Bande périphérique (mousse polyéthylène 5-8 mm) en pied de mur sur tout le pourtour : absorption de la dilatation de la chape (la chape chauffée se dilate 1 mm/m).",
+          "klaro_recommendation": "Mousse polyéthylène 5-8 mm. Posée verticale, du sol jusqu'au-dessus du niveau fini de la chape. Adhésif ou maintien par les tubes. Sans bande : fissuration de la chape lors du premier chauffage par contraintes thermiques.",
+          "common_mistake": "Bande oubliée ou interrompue — fissuration chape au premier chauffage, transmission acoustique aux murs.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_047"],
+          "norm_reference": "DTU 65.14 + NF EN 1264",
+          "control_questions": [
+            { "question": "Bande périphérique 5-8 mm posée sur tout le pourtour ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_049",
+          "title": "Dérouler tubes PER selon plan calepinage",
+          "phase": "plancher_chauffant_hydraulique",
+          "applies_to_energie": ["plancher_chauffant_hydraulique"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Tube PER barrière anti-oxygène (BAO) déroulé selon plan de calepinage du fabricant : escargot (départ chaud en périphérie, retour vers centre) ou serpentin. JAMAIS en boucle aléatoire.",
+          "klaro_recommendation": "Plan fabricant respecté à la lettre : pas/entraxe selon puissance (typiquement 10-30 cm). Boucles équilibrées en longueur (max 100 m par boucle pour Ø 16). Départ par l'extérieur (zone froide) en escargot. Numérotez chaque boucle pour raccordement collecteur.",
+          "common_mistake": "Pose 'libre' sans calepinage — zones surchauffées et zones froides, inconfort.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_048"],
+          "norm_reference": "DTU 65.14 + NF EN 1264",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_050",
+          "title": "Fixer les tubes (dalles à plots ou agrafes)",
+          "phase": "plancher_chauffant_hydraulique",
+          "applies_to_energie": ["plancher_chauffant_hydraulique"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Fixation des tubes selon système : dalles à plots (tubes clipsés entre plots), agrafes sur isolant, ou rails métalliques. Espacement régulier conforme au calepinage.",
+          "klaro_recommendation": "Dalles à plots = système rapide et précis. Agrafes : pose plus longue mais flexible. Vérifiez que les tubes ne flottent pas (sinon montent dans la chape, perte d'efficacité). Photographiez le PCBT en place avant test de pression.",
+          "common_mistake": "Tubes mal fixés qui flottent dans la chape — efficacité réduite, points chauds/froids.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["chauf_049"],
+          "norm_reference": "DTU 65.14",
+          "control_questions": [
+            { "question": "Tubes fixés régulièrement selon calepinage et photographiés ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_051",
+          "title": "Raccorder boucles aux collecteurs avec vannes équilibrage",
+          "phase": "plancher_chauffant_hydraulique",
+          "applies_to_energie": ["plancher_chauffant_hydraulique"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Collecteurs (1 départ + 1 retour) avec vannes d'équilibrage (réglage du débit de chaque boucle selon longueur). Position dans coffret accessible. Étiquetage des boucles par pièce.",
+          "klaro_recommendation": "Coffret de répartition mural ou encastré, accessible. Vannes d'équilibrage à débitmètre intégré (lisible). Vannes d'isolement par boucle. Étiquetez chaque boucle (cuisine, salon, chambre 1, etc.). Pour grandes maisons : plusieurs coffrets par étage.",
+          "common_mistake": "Pas d'étiquetage — au moment de l'équilibrage ou d'une intervention, impossible d'identifier la boucle.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_049"],
+          "norm_reference": "DTU 65.14",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_052",
+          "title": "Test de mise en pression AVANT coulage chape (24h)",
+          "phase": "plancher_chauffant_hydraulique",
+          "applies_to_energie": ["plancher_chauffant_hydraulique"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Test de mise en pression du circuit AVANT coulage chape : pression d'épreuve (1,5 fois pression service, ~6 bars), maintenue 24h minimum. Recherche de fuites visuelle et au manomètre.",
+          "klaro_recommendation": "Pompe de test (location ~30 €/jour). Mise en pression progressive jusqu'à 6 bars. Maintien 24h. Lecture manomètre à T0, T+1h, T+24h. Tolérance : chute < 0,3 bar. Photographiez le manomètre. ATTENTION : pression maintenue PENDANT le coulage (révèle les chocs ou erreurs).",
+          "common_mistake": "Couler la chape sans test de pression — fuite découverte plus tard = casse de la chape pour réparer.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": ["test_mise_en_pression_pcbt"],
+          "photo_required_before_validation": true,
+          "depends_on": ["chauf_051"],
+          "norm_reference": "DTU 65.14 + NF EN 1264",
+          "control_questions": [
+            { "question": "Test pression 24h validé (chute < 0,3 bar) et photographié ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_053",
+          "title": "Couler la chape sur PCBT (pression maintenue)",
+          "phase": "plancher_chauffant_hydraulique",
+          "applies_to_energie": ["plancher_chauffant_hydraulique"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Chape liquide (anhydrite ou ciment) ou chape traditionnelle (mortier ciment) selon configuration. Épaisseur conforme : 4-6 cm au-dessus du tube. Pression maintenue dans le circuit pendant tout le coulage.",
+          "klaro_recommendation": "Chape liquide = simple, rapide, enrobe parfaitement les tubes (préférable). Épaisseur 4-6 cm au-dessus du tube (selon notice fabricant). Pression maintenue à 6 bars pendant le coulage (révèle les chocs ou erreurs immédiatement). Coulage continu (pas de joint froid).",
+          "common_mistake": "Pression coupée pendant coulage — choc sur tube non détecté, fuite future.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_052"],
+          "norm_reference": "DTU 65.14 + DTU 26.2",
+          "control_questions": [
+            { "question": "Chape coulée avec pression maintenue dans le circuit ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_054",
+          "title": "Délai séchage chape avant mise en chauffe",
+          "phase": "plancher_chauffant_hydraulique",
+          "applies_to_energie": ["plancher_chauffant_hydraulique"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Séchage minimum AVANT mise en chauffe : 28 jours pour chape ciment, 7-14 jours pour chape anhydrite (selon fabricant). Mise en chauffe prématurée = fissuration de la chape.",
+          "klaro_recommendation": "Respectez le délai fabricant. Pour chape ciment : 28 jours strictement. Anhydrite : selon fiche technique (5 à 14 jours selon produit). Pendant séchage : ventilation modérée, T° ambiante 15-25°C, pas de courant d'air violent. Sans respect : retrait de la chape, fissuration.",
+          "common_mistake": "Mise en chauffe à J+7 sur chape ciment — fissures massives, à reprendre.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_053"],
+          "norm_reference": "DTU 65.14 + DTU 26.2",
+          "control_questions": [
+            { "question": "Délai de séchage chape respecté avant mise en chauffe ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_055",
+          "title": "Mise en chauffe progressive (paliers 5°C/jour)",
+          "phase": "plancher_chauffant_hydraulique",
+          "applies_to_energie": ["plancher_chauffant_hydraulique"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Mise en chauffe progressive après séchage : démarrage à 25°C, montée par paliers de 5°C par jour jusqu'au palier final selon dimensionnement (typiquement 35-45°C en croisière). Évite le choc thermique.",
+          "klaro_recommendation": "Démarrage à 25°C pendant 24h. Puis +5°C tous les jours jusqu'à T° de service. Maintien de la T° finale 3 jours. Première coupure avant pose revêtement. Pendant cette phase : enregistrez les T° (PV de mise en chauffe). Sans paliers : fissuration de la chape par dilatation brutale.",
+          "common_mistake": "Démarrer directement à 45°C — choc thermique, fissures dans la chape.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_054"],
+          "norm_reference": "DTU 65.14 + NF EN 1264",
+          "control_questions": [
+            { "question": "Mise en chauffe progressive (25°C puis +5°C/jour) effectuée et tracée ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conduit_fumee",
+      "label": "Conduit de fumée (granulés, bûches)",
+      "tasks": [
+        {
+          "id": "chauf_056",
+          "title": "Identifier le conduit existant et son état",
+          "phase": "conduit_fumee",
+          "applies_to_energie": ["chaudiere_granules", "chaudiere_buches", "poele_granules", "poele_buches"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["renovation_existant"],
+          "explanation": "État du conduit : fissures (test de fumée ou caméra), suie/bistre accumulé, dimensionnement (Ø compatible avec l'appareil), matériau (boisseau béton, brique, métal).",
+          "klaro_recommendation": "Inspection par fumiste qualifié. Test fumigène (génère fumée non toxique pour détecter fuites). Caméra endoscopique pour intérieur. Ramonage avant toute évaluation. Si conduit dégradé : tubage obligatoire. Si trop petit (Ø) : tubage en sous-section ou conduit neuf.",
+          "common_mistake": "Brancher un poêle moderne sur conduit ancien fissuré — fumée dans les pièces, intoxication.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_011"],
+          "norm_reference": "DTU 24.1 + DTU 24.2",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_057",
+          "title": "Tuber le conduit avec tubage adapté",
+          "phase": "conduit_fumee",
+          "applies_to_energie": ["chaudiere_granules", "chaudiere_buches", "poele_granules", "poele_buches"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Tubage avec inox rigide (sections droites) ou flexible (passage en angle). Désignation T (température) et P (pression) selon DTU 24.1 et l'appareil. Quasi systématique en rénovation.",
+          "klaro_recommendation": "Tubage rigide ou flexible inox 316L ou 904L (résistant condensats acides). Désignation T200/T400 selon appareil (granulés T200, bûches T400/T600). Pression : N1 pour appareils raccordés, P1 pour étanches. Pose par fumiste qualifié (descente/remontée du tubage, étanchéité).",
+          "common_mistake": "Tubage standard sur conduit haute T° — fonte/déformation, danger.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": ["chauf_056"],
+          "norm_reference": "DTU 24.1 + NF EN 1856",
+          "control_questions": [
+            { "question": "Tubage adapté à l'appareil (T/P selon DTU 24.1) posé par fumiste qualifié ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_058",
+          "title": "Hauteur conduit ≥ 40 cm au-dessus du faîtage à 8 m",
+          "phase": "conduit_fumee",
+          "applies_to_energie": ["chaudiere_granules", "chaudiere_buches", "poele_granules", "poele_buches"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Souche de conduit : 40 cm minimum au-dessus du faîtage à moins de 8 m de distance horizontale. Plus haut si plus loin (cf. abaque DTU 24.1). Tirage assuré + sécurité.",
+          "klaro_recommendation": "Mesurez la hauteur réelle de la souche par rapport au faîtage le plus proche. Si insuffisant : prolongation par tubage avec mitron. Sans hauteur suffisante : tirage compromis, refoulement des fumées dans le logement.",
+          "common_mistake": "Souche sous-dimensionnée 'pour ne pas la voir' — refoulement, mauvais tirage, risque CO.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_057"],
+          "norm_reference": "DTU 24.1 + Arrêté 22 oct. 1969",
+          "control_questions": [
+            { "question": "Hauteur souche ≥ 40 cm au-dessus du faîtage à < 8 m ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_059",
+          "title": "DSF entre conduit et matériaux combustibles",
+          "phase": "conduit_fumee",
+          "applies_to_energie": ["chaudiere_granules", "chaudiere_buches", "poele_granules", "poele_buches"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Distance de sécurité au feu (DSF) : 16 cm pour conduit isolé (double paroi inox/laine), 25-30 cm pour conduit non isolé. Mesure entre paroi externe du conduit et matériau combustible (charpente, isolant).",
+          "klaro_recommendation": "Mesure entre paroi externe et matériaux combustibles. Si non respectable : coffrage en plaques de plâtre + laine de roche A1 entre conduit et bois/isolant. Validation fumiste. Pour traversées de plancher : plaque coupe-feu obligatoire.",
+          "common_mistake": "Conduit non isolé en contact direct avec charpente — inflammation possible en saison de chauffe.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_057"],
+          "norm_reference": "DTU 24.1 + DTU 24.2",
+          "control_questions": [
+            { "question": "DSF respectée + coffrage incombustible si nécessaire ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_060",
+          "title": "Étanchéifier la sortie de toit",
+          "phase": "conduit_fumee",
+          "applies_to_energie": ["chaudiere_granules", "chaudiere_buches", "poele_granules", "poele_buches"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Sortie de toit du conduit : solin plomb plissé, embase étanche selon couverture, raccordement avec couvreur. Point de fuite potentiel à soigner.",
+          "klaro_recommendation": "Solin plomb plissé adapté à la pente et au matériau de couverture. Embase pré-formée (kit fabricant) pour solution rapide. Coordination avec couvreur lors de la pose. Photographiez l'étanchéité avant fermeture.",
+          "common_mistake": "Mastic seul autour du conduit — fissuration, infiltrations.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_057"],
+          "norm_reference": "DTU 40.x + DTU 24.1",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_061",
+          "title": "Ramonage initial après installation",
+          "phase": "conduit_fumee",
+          "applies_to_energie": ["chaudiere_granules", "chaudiere_buches", "poele_granules", "poele_buches"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Ramonage initial après installation = état zéro pour traçabilité de l'entretien. Permet de vérifier le tirage, l'étanchéité du tubage, et de partir sur une base saine.",
+          "klaro_recommendation": "Ramoneur certifié. Coût ~60-100 €. Certificat de ramonage à conserver (preuve d'entretien pour assurance). Test de tirage par fumigène. Inspection caméra si possible. Sans certificat de ramonage : assurance peut refuser en cas d'incendie.",
+          "common_mistake": "Pas de ramonage initial — pas de traçabilité, refus assurance possible en cas de sinistre.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": ["ramonage_initial"],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_060"],
+          "norm_reference": "DTU 24.1 + Règlement sanitaire départemental",
+          "control_questions": [
+            { "question": "Ramonage initial effectué et certificat reçu ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "combustible_stockage",
+      "label": "Combustible & stockage",
+      "tasks": [
+        {
+          "id": "chauf_062",
+          "title": "Chaudière granulés : silo ventilé pour CO",
+          "phase": "combustible_stockage",
+          "applies_to_energie": ["chaudiere_granules"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Silo de stockage granulés : textile suspendu (le plus courant), maçonné, ou cuve plastique. VENTILATION OBLIGATOIRE pour évacuation du CO (les granulés stockés en grand volume dégazent du CO, surtout les premières semaines).",
+          "klaro_recommendation": "Volume silo : ~2-5 m³ courant pour maison individuelle (1-2 livraisons par hiver). Ventilation : grille en partie haute vers extérieur (jamais vers local intérieur). Bouches d'aspiration et de remplissage normalisées (Storz). Local sec impérativement.",
+          "common_mistake": "Silo dans local non ventilé — accumulation de CO, intoxication possible à l'ouverture.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_033"],
+          "norm_reference": "DTU 24.1 + Avis Techniques silos",
+          "control_questions": [
+            { "question": "Silo granulés avec ventilation vers extérieur ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_063",
+          "title": "Silo granulés : accès camion souffleur",
+          "phase": "combustible_stockage",
+          "applies_to_energie": ["chaudiere_granules"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Camion souffleur granulés : longueur tuyau 25 m max courant. Bouches de remplissage et d'aspiration normalisées (Storz Ø 100 mm) à l'extérieur, accessibles au tuyau.",
+          "klaro_recommendation": "Distance silo - bouche extérieure : ≤ 25 m. Bouches Storz à hauteur accessible (90-150 cm). Identification : 'Remplissage' (avec capuchon) et 'Aspiration' (autre orifice). Vérifiez l'accès camion (largeur, portance) avant pose silo.",
+          "common_mistake": "Silo accessible uniquement par tuyau de 30 m — refus livraison ou supplément.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_062"],
+          "norm_reference": "Avis Techniques silos granulés",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_064",
+          "title": "Bûches : abri sec, ventilé, dimensionné",
+          "phase": "combustible_stockage",
+          "applies_to_energie": ["chaudiere_buches", "poele_buches"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Bûches : stockage en abri couvert (anti-pluie), ventilé (séchage), accessible. Volume : 3 stères ≈ 1 m³ corde. Consommation typique chaudière : 7-15 stères/an pour maison 100 m².",
+          "klaro_recommendation": "Abri ventilé sur 3 côtés (1 fermé contre le vent dominant). Sol drainant (palettes). Stockage par lot (ne pas mélanger années). Bûches sèches (humidité < 20%, séchage 18-24 mois après abattage). Volume : 10-15 m³ courant.",
+          "common_mistake": "Stocker des bûches sèches mélangées à du bois vert — combustion incomplète, encrassement conduit.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_001"],
+          "norm_reference": "Bonnes pratiques bois énergie",
+          "control_questions": [
+            { "question": "Abri bûches sec, ventilé, dimensionné, bois sec < 20% humidité ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_065",
+          "title": "Granulés en sac (poêle) : zone sèche absolument",
+          "phase": "combustible_stockage",
+          "applies_to_energie": ["poele_granules"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Granulés en sac de 15 kg : zone de stockage SÈCHE absolument. L'humidité désintègre les granulés (poussière + désagrégation), inutilisables.",
+          "klaro_recommendation": "Garage, cave (si non humide), buanderie. Sur palette pour aération. Pas en contact avec sol béton brut (remontée capillaire). Vérifiez l'humidité (hygromètre < 70%). Stockage saisonnier : 1-3 tonnes par hiver (~70-200 sacs).",
+          "common_mistake": "Sacs entreposés dans cave humide — granulés dégradés, fonctionnement poêle compromis.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_001"],
+          "norm_reference": "Bonnes pratiques granulés",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "raccordement_electrique",
+      "label": "Raccordement électrique",
+      "tasks": [
+        {
+          "id": "chauf_066",
+          "title": "Coordination électricien : circuit dédié + fil pilote",
+          "phase": "raccordement_electrique",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Circuit dédié au tableau pour PAC (mono ou tri selon puissance), pour chaudière (alim secourue avec batterie pour redémarrage auto), fil pilote pour radiateurs électriques avec gestionnaire d'énergie.",
+          "klaro_recommendation": "Spécifications à donner à l'électricien dès la conception. Disjoncteur dédié calibré selon notice fabricant. Câble de section adaptée (1,5 mm² jusqu'à 10A, 2,5 mm² jusqu'à 20A, 6 mm² au-delà). Fil pilote (1,5 mm²) pour radiateurs avec programmation centralisée. Pour PAC tri : 4 fils + terre.",
+          "common_mistake": "PAC sur circuit prises — déclenchement disjoncteur en cas de surcharge, PAC arrêtée plusieurs heures sans le savoir.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "NF C 15-100 + DTU 65",
+          "control_questions": [
+            { "question": "Circuits dédiés prévus (PAC, chaudière, fil pilote selon énergie) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_067",
+          "title": "PAC/CET : protection 30 mA + calibre fabricant",
+          "phase": "raccordement_electrique",
+          "applies_to_energie": ["pac_air_eau", "pac_air_air", "pac_geothermie"],
+          "applies_to_ecs": ["cet_thermodynamique", "all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Protection différentielle 30 mA dédiée pour PAC et CET (sécurité électrique en milieu humide). Calibre du disjoncteur selon notice fabricant (typiquement 16-32A mono, 16A tri).",
+          "klaro_recommendation": "Différentiel 30 mA type A (pour appareils avec composants électroniques). Disjoncteur calibré selon notice. Vérifiez la conformité avec NF C 15-100 (DOM-TOM peut différer). Tableau étiqueté clairement.",
+          "common_mistake": "Disjoncteur sous-calibré — déclenchement intempestif au démarrage PAC.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_066"],
+          "norm_reference": "NF C 15-100",
+          "control_questions": [
+            { "question": "Différentiel 30 mA + calibre disjoncteur conforme notice ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_068",
+          "title": "Chaudière granulés : alimentation secourue",
+          "phase": "raccordement_electrique",
+          "applies_to_energie": ["chaudiere_granules", "poele_granules"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Chaudière/poêle granulés : alimentation électrique secourue (onduleur ou batterie) pour redémarrage automatique en cas de coupure. Sinon, chaudière éteinte = pas de chauffage en hiver.",
+          "klaro_recommendation": "Onduleur dédié (UPS) 500-1000 VA pour ~10-30 min d'autonomie. Permet redémarrage propre en cas de microcoupure. En zone à coupures fréquentes : batteries plus importantes ou groupe électrogène en backup.",
+          "common_mistake": "Pas d'onduleur — coupure de 5 min = redémarrage manuel obligatoire, plusieurs heures de chauffe perdues.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_066"],
+          "norm_reference": "Bonnes pratiques",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_069",
+          "title": "Vérifier la mise à la terre de tous les appareils",
+          "phase": "raccordement_electrique",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Tous les appareils (PAC, chaudière, ballon, pompes) doivent être reliés à la terre du logement. Vérification visuelle + test de continuité de la terre.",
+          "klaro_recommendation": "Vérification par électricien : continuité terre depuis le tableau jusqu'à chaque appareil. Mesure de la résistance de prise de terre (< 100 Ω en domestique). Pour PAC unité extérieure : terre dédiée parfois nécessaire (proximité métal). Documenter dans PV de mise en service.",
+          "common_mistake": "Appareil non relié à la terre — risque électrocution en cas de défaut, déclenchement différentiel insuffisant.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_066"],
+          "norm_reference": "NF C 15-100",
+          "control_questions": [
+            { "question": "Mise à la terre vérifiée sur tous les appareils ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
     }
   ]
 }
