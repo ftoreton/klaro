@@ -1452,6 +1452,891 @@
           ]
         }
       ]
+    },
+    {
+      "id": "raccordement_ecs",
+      "label": "Raccordement ECS",
+      "tasks": [
+        {
+          "id": "chauf_070",
+          "title": "CET : raccorder eau froide + groupe sécurité + ECS",
+          "phase": "raccordement_ecs",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["cet_thermodynamique"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "CET : raccordement eau froide en entrée avec groupe de sécurité (vanne + soupape + clapet anti-retour), évacuation des condensats vers EU avec siphon, ECS vers points de puisage avec mitigeur thermostatique central.",
+          "klaro_recommendation": "Groupe de sécurité tarage 7 bars (vidange autorisée à pression supérieure). Évacuation condensats avec siphon (anti-odeurs). Mitigeur thermostatique central limitant ECS à 50°C aux points de puisage (anti-brûlure). Vannes d'isolement pour maintenance.",
+          "common_mistake": "Évacuation condensats directe sans siphon — odeurs d'égout aspirées vers le local CET.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_036"],
+          "norm_reference": "DTU 60.1 + DTU 60.11",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_071",
+          "title": "Ballon sur PAC/chaudière : raccordement primaire",
+          "phase": "raccordement_ecs",
+          "applies_to_energie": ["pac_air_eau", "pac_geothermie", "chaudiere_granules", "chaudiere_buches"],
+          "applies_to_ecs": ["ballon_sur_pac_ou_chaudiere"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Ballon ECS sur échangeur primaire (de la PAC ou chaudière) : raccordement entrée + retour primaire (eau de chauffage), entrée eau froide secondaire, sortie ECS. Respect des sens de circulation.",
+          "klaro_recommendation": "Ballon mixte avec serpentin échangeur. Pompe de charge dédiée (gestion par régulation chaudière/PAC). Sondes T° (haute et basse cuve) reliées à la régulation. Volume ballon : 200-300 L courant pour maison 4 personnes. Calorifugeage de classe A.",
+          "common_mistake": "Branchement primaire inversé — pas de transfert thermique, ECS qui ne chauffe pas.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_037"],
+          "norm_reference": "DTU 60.11 + DTU 65",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_072",
+          "title": "CESI : ballon double échangeur (primaire solaire + appoint)",
+          "phase": "raccordement_ecs",
+          "applies_to_energie": ["solaire_thermique"],
+          "applies_to_ecs": ["cesi_solaire"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "CESI = ballon avec 2 échangeurs : bas pour primaire solaire (zone froide, captation maximale), haut pour appoint (élec ou hydraulique). Eau froide en bas, ECS chaude en haut.",
+          "klaro_recommendation": "Ballon CESI dédié 200-400 L (1 ballon pour 4 personnes). Régulation différentielle solaire (pompe primaire si T° capteur > T° ballon de 6-10°C). Appoint électrique programmable HC/HP ou appoint hydraulique sur chaudière. Volume tampon = stockage solaire.",
+          "common_mistake": "Ballon mono-échangeur sur CESI — pas de stockage solaire, gain énergétique nul.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_043"],
+          "norm_reference": "DTU 65.12 + Qualisol",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_073",
+          "title": "Ballon élec : remplacement minimal + dimensionnement",
+          "phase": "raccordement_ecs",
+          "applies_to_energie": ["chauffage_electrique", "mixte"],
+          "applies_to_ecs": ["ballon_electrique"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Ballon électrique : énergie la plus chère pour ECS (à éviter si possible, préférer CET). Remplacement minimal uniquement. Dimensionnement 50 L/personne. Programmation HC/HP si tarif applicable.",
+          "klaro_recommendation": "Volume : 50 L/personne (min 100-150 L). Résistance stéatite (anti-calcaire, durée de vie ×2 vs blindée). Programmation contacteur jour/nuit pour fonctionnement en HC. Calorifugeage classe A. Préférez un CET si possible (3× plus économique en exploitation).",
+          "common_mistake": "Ballon électrique trop petit — douches froides, ou pic de consommation HP.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 60.11 + NF C 15-100",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_074",
+          "title": "Mitigeur thermostatique central (ECS 50°C max)",
+          "phase": "raccordement_ecs",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Mitigeur thermostatique central limitant ECS à 50°C aux points de puisage (anti-brûlure). En sortie de stockage : ballon à 60°C (anti-légionellose), mitigeur ramène à 50°C distribué.",
+          "klaro_recommendation": "Mitigeur central installé en sortie de ballon. T° de stockage : 60°C minimum (anti-légionellose). T° de distribution : 50°C maximum (anti-brûlure, surtout enfants/personnes âgées). Réglage à la pose, vérification annuelle. Stockage à 50°C autorisé uniquement sur certains CET avec cycle anti-légionellose programmé.",
+          "common_mistake": "ECS distribuée à 65°C — risque brûlure grave, surtout enfants.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_071"],
+          "norm_reference": "Arrêté 30 nov. 2005 + NF EN 1111",
+          "control_questions": [
+            { "question": "Mitigeur central ECS ≤ 50°C + stockage ≥ 60°C ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mise_en_service_essais",
+      "label": "Mise en service & essais",
+      "tasks": [
+        {
+          "id": "chauf_075",
+          "title": "Mise en service par artisan RGE (procédure constructeur)",
+          "phase": "mise_en_service_essais",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Mise en service obligatoire par l'artisan RGE selon procédure constructeur : remplissage circuit, purge, paramétrages (courbes de chauffe, sondes, programmation), tests fonctionnels.",
+          "klaro_recommendation": "Mise en service formelle avec PV (procès-verbal) : date, paramètres, mesures, observations. Conservez l'attestation. Sans mise en service par RGE : aides MaPrimeRénov'/CEE non versées (paiement conditionné). Garantie fabricant souvent conditionnée à la mise en service par pro.",
+          "common_mistake": "Mise en service 'à blanc' par le particulier sans pro — garantie fabricant déclenchée non, aides refusées.",
+          "pro_status": "pro_rge_obligatoire_si_aides",
+          "blocking_justification_required": ["attestation_rge"],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_011"],
+          "norm_reference": "NF EN 14336 + RGE",
+          "control_questions": [
+            { "question": "Mise en service effectuée par RGE avec PV à conserver ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_076",
+          "title": "Mesurer les performances (T°, COP, débits, pression)",
+          "phase": "mise_en_service_essais",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Mesures de référence à la mise en service : T° de départ et retour des émetteurs, COP/SCOP en service pour PAC (rendement), débit de circulation, pression statique. Sert d'état zéro pour suivi.",
+          "klaro_recommendation": "Thermomètre (sondes contact ou IR), wattmètre pour mesure puissance électrique PAC (calcul COP = puissance thermique / puissance électrique). Débitmètre. Manomètre. Documentation dans PV de mise en service. Comparaison aux valeurs constructeur.",
+          "common_mistake": "Pas de mesures à la mise en service — pas d'état zéro, problèmes futurs difficiles à diagnostiquer.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_075"],
+          "norm_reference": "NF EN 14336",
+          "control_questions": [
+            { "question": "Mesures de performances effectuées et tracées dans PV ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_077",
+          "title": "PAC : pressions circuit frigo + détection fuite",
+          "phase": "mise_en_service_essais",
+          "applies_to_energie": ["pac_air_eau", "pac_air_air", "pac_geothermie"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "PAC : vérification des pressions du circuit frigorifique (haute et basse pression selon notice fabricant), détection d'éventuelle fuite avec détecteur électronique fluides ou bulle savon.",
+          "klaro_recommendation": "Manomètres pression haute/basse selon notice fabricant et T° extérieure. Détecteur électronique fluides : test à proximité de chaque raccord. Pas de fuite tolérée (réglementation fluides : déclaration obligatoire au-delà de certains seuils). Réservé technicien attestation fluides.",
+          "common_mistake": "Pression hors tolérance ignorée — défaillance progressive de la PAC, panne en quelques mois.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": ["attestation_fluides_frigorigenes"],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_042"],
+          "norm_reference": "Décret 2007-737 fluides + NF EN 14276",
+          "control_questions": [
+            { "question": "Pressions circuit frigo conformes + absence fuite vérifiée ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_078",
+          "title": "PCBT : équilibrer les boucles",
+          "phase": "mise_en_service_essais",
+          "applies_to_energie": ["plancher_chauffant_hydraulique"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Équilibrage PCBT : réglage des vannes au collecteur selon longueur de chaque boucle. Boucles longues = plus de débit, boucles courtes = moins. Sans équilibrage : zones surchauffées et zones froides.",
+          "klaro_recommendation": "Calcul du débit théorique de chaque boucle (selon longueur + puissance). Réglage à la mise en service avec débitmètre intégré aux vannes. Vérification après quelques jours de fonctionnement (T° de surface uniformes en thermographie ou IR). Reprise réglage si déséquilibre.",
+          "common_mistake": "Toutes les vannes ouvertes à fond — débit majoritaire dans les boucles courtes, longues sous-alimentées.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_055"],
+          "norm_reference": "DTU 65.14 + NF EN 1264",
+          "control_questions": [
+            { "question": "Équilibrage PCBT effectué (débits réglés selon longueur boucles) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_079",
+          "title": "Solaire : pression circuit + circulateur + régulation",
+          "phase": "mise_en_service_essais",
+          "applies_to_energie": ["solaire_thermique"],
+          "applies_to_ecs": ["cesi_solaire"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Solaire : vérification pression circuit primaire glycolé (1,5-3 bars), fonctionnement du circulateur (démarrage automatique selon Δ T° capteur/ballon), régulation différentielle (paramètres Δ T° ON/OFF).",
+          "klaro_recommendation": "Pression manomètre 1,5-3 bars à froid. Circulateur : test manuel + test automatique. Régulation : Δ T° démarrage 6-10°C, Δ T° arrêt 2-4°C, T° max ballon 60-65°C, anti-gel < -10°C. Sondes T° fonctionnelles. Documenter dans PV.",
+          "common_mistake": "Pression circuit trop basse — pompe en cavitation, pas de circulation, capteurs surchauffés.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_043"],
+          "norm_reference": "DTU 65.12 + Qualisol",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "securite_co_ramonage",
+      "label": "Sécurité CO & ramonage",
+      "tasks": [
+        {
+          "id": "chauf_080",
+          "title": "Détecteur CO à proximité de l'appareil + chambres",
+          "phase": "securite_co_ramonage",
+          "applies_to_energie": ["chaudiere_granules", "chaudiere_buches", "poele_granules", "poele_buches"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Détecteur de monoxyde de carbone (CO) : alarme sonore en cas de concentration dangereuse. À installer à proximité de l'appareil de combustion ET dans les chambres. Le CO est inodore, incolore.",
+          "klaro_recommendation": "Détecteur certifié EN 50291 (~30-60 €). Pose à hauteur d'inhalation (1,5 m du sol) ou selon notice. Pile remplacée tous les 1-2 ans. Test mensuel (bouton). Durée de vie 5-10 ans selon modèle. Photographiez les détecteurs en place. Sans détecteur, intoxication insidieuse possible.",
+          "common_mistake": "Détecteur de fumée (DAAF) au lieu de CO — DAAF ne détecte pas le CO.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": true,
+          "depends_on": [],
+          "norm_reference": "EN 50291 + Recommandations INPES",
+          "control_questions": [
+            { "question": "Détecteurs CO certifiés EN 50291 installés (proximité appareil + chambres) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_081",
+          "title": "Vérifier l'amenée d'air comburant",
+          "phase": "securite_co_ramonage",
+          "applies_to_energie": ["chaudiere_granules", "chaudiere_buches", "poele_granules", "poele_buches"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Appareil étanche (type C) : entrée d'air dédiée extérieure. Appareil non étanche : ventilation conforme arrêté 2018 (grille + section selon puissance). Sans amenée d'air : combustion incomplète, CO.",
+          "klaro_recommendation": "Étanche : conduit concentrique (entrée air + sortie fumée combinées). Non étanche : grille en façade ou en pignon, section calculée selon puissance (typiquement 50 cm² pour poêle 8 kW). Vérifiez la libre circulation (pas obstruée par feuilles, neige, isolation des murs).",
+          "common_mistake": "Appareil non étanche dans logement étanche (RE2020) sans entrée d'air dédiée — combustion incomplète, CO.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Arrêté 23/02/2018 + DTU 24.1",
+          "control_questions": [
+            { "question": "Amenée d'air comburant conforme (étanche ou ventilation ouverte) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_082",
+          "title": "Mesurer la concentration CO après mise en service",
+          "phase": "securite_co_ramonage",
+          "applies_to_energie": ["chaudiere_granules", "chaudiere_buches", "poele_granules", "poele_buches"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Mesure de la concentration en CO ambiante avec détecteur professionnel par le pro après mise en service, lors du fonctionnement nominal. Seuil : 0 ppm idéal, jamais > 30 ppm en continu.",
+          "klaro_recommendation": "Mesure par le pro (chauffagiste qualifié) lors de la mise en service. Détecteur ambiant à hauteur d'inhalation. Mesure pendant cycle de chauffe. Si CO détecté : panne possible (conduit obstrué, échangeur fissuré, ventilation insuffisante). Arrêt immédiat des appareils + diagnostic.",
+          "common_mistake": "Pas de mesure CO en mise en service — défaut non détecté, intoxication chronique.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": ["mesure_co"],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_075"],
+          "norm_reference": "Arrêté 23/02/2018",
+          "control_questions": [
+            { "question": "Mesure CO effectuée et conforme (≤ 30 ppm) ?", "type": "number", "expected": "≤ 30 ppm" }
+          ]
+        },
+        {
+          "id": "chauf_083",
+          "title": "Programmer ramonage : 2/an bois, 1/an granulés",
+          "phase": "securite_co_ramonage",
+          "applies_to_energie": ["chaudiere_granules", "chaudiere_buches", "poele_granules", "poele_buches"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Ramonage OBLIGATOIRE selon règlement local : 2 fois par an pour bois (dont une en saison de chauffe), 1 fois par an pour granulés. Certificat de ramonage à conserver (preuve assurance).",
+          "klaro_recommendation": "Programmez les rendez-vous annuels avec ramoneur certifié. Coût ~60-100 € par intervention. Certificat OBLIGATOIRE pour assurance habitation (refus en cas d'incendie sans certificat). Inscription dans le carnet d'entretien. Pour bois : un ramonage AVANT saison + un PENDANT.",
+          "common_mistake": "Pas de ramonage 'parce que ça marche encore' — accumulation de suie, risque feu de cheminée + refus assurance.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_061"],
+          "norm_reference": "Règlement sanitaire départemental + DTU 24.1",
+          "control_questions": [
+            { "question": "Ramonage annuel/semestriel programmé selon combustible ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "controle_reception",
+      "label": "Contrôle & réception",
+      "tasks": [
+        {
+          "id": "chauf_084",
+          "title": "Vérifier fonctionnement émetteurs",
+          "phase": "controle_reception",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Test fonctionnel : radiateurs chauffent uniformément (haut comme bas), PCBT homogène (T° de surface régulière), poêles à tirage correct (flammes vives, fumée minimale).",
+          "klaro_recommendation": "Test pièce par pièce. Si radiateur froid en bas : air piégé, à purger. Si zones froides au PCBT : équilibrage à reprendre. Pour poêles : flamme bleutée/jaune vive = combustion correcte, fumée noire = mauvais réglage. Documentez les anomalies pour reprise.",
+          "common_mistake": "Considérer 'tout fonctionne' sans test pièce par pièce — zones froides découvertes en hiver, intervention en urgence.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_075"],
+          "norm_reference": "NF EN 14336",
+          "control_questions": [
+            { "question": "Tous les émetteurs fonctionnent uniformément ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_085",
+          "title": "Vérifier la régulation",
+          "phase": "controle_reception",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Test de la régulation : programmation horaire (jour/nuit, vacances), sondes ambiance par pièce ou zone, sonde extérieure (loi d'eau pour PAC), fonctionnement par zones si multi-zones.",
+          "klaro_recommendation": "Programmation simple : 19°C en journée, 17°C la nuit. Loi d'eau PAC : T° de départ s'adapte à la T° extérieure (gain énergétique 10-15%). Multi-zones : régulation indépendante chambres / pièces de vie. Notice utilisateur claire à l'utilisateur final.",
+          "common_mistake": "Régulation laissée par défaut — surchauffe ou inconfort, surconsommation 20-30%.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_075"],
+          "norm_reference": "NF EN 14336 + DTU 65",
+          "control_questions": [
+            { "question": "Régulation paramétrée (programmation, sondes, loi d'eau si applicable) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_086",
+          "title": "Mesurer T° points de puisage ECS (50°C max)",
+          "phase": "controle_reception",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["cet_thermodynamique", "ballon_sur_pac_ou_chaudiere", "cesi_solaire", "ballon_electrique"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Test des températures ECS : 50°C max au robinet (anti-brûlure), 60°C en stockage (anti-légionellose). Mesure au thermomètre numérique au point de puisage le plus éloigné.",
+          "klaro_recommendation": "Thermomètre numérique pour eau chaude. Ouvrir robinet 30 secondes (purger eau froide stagnante), mesurer T°. ≤ 50°C OK. Si > 50°C : régler mitigeur thermostatique central. T° de stockage : sondage du ballon ou lecture régulation = 55-60°C. Documenter.",
+          "common_mistake": "Distribution à 65°C — risque brûlure grave en quelques secondes, surtout enfants.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_074"],
+          "norm_reference": "Arrêté 30 nov. 2005",
+          "control_questions": [
+            { "question": "T° ECS au robinet le plus éloigné ≤ 50°C ?", "type": "number", "expected": "≤ 50°C" }
+          ]
+        },
+        {
+          "id": "chauf_087",
+          "title": "Récupérer PV de mise en service + attestations",
+          "phase": "controle_reception",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Documents à exiger de l'artisan : PV de mise en service (avec mesures), attestations RGE en cours de validité, fiches techniques des appareils, notices utilisateur, factures détaillées.",
+          "klaro_recommendation": "PV avec : date, paramètres, mesures, observations, signature artisan. Attestations RGE pour dossier MaPrimeRénov'. Fiches techniques (modèle, n° série, garantie). Notices utilisateur (en français, à conserver). Factures détaillées (matériaux + main d'œuvre, mention TVA 5,5% si applicable).",
+          "common_mistake": "Pas de PV de mise en service — pas de preuve de conformité, recours difficile pour SAV.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_075"],
+          "norm_reference": "NF EN 14336",
+          "control_questions": [
+            { "question": "PV de mise en service + attestations + fiches + factures archivés ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "chauf_088",
+          "title": "Conserver tous les documents 10 ans (décennale)",
+          "phase": "controle_reception",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Conservation 10 ans (durée garantie décennale) : factures, attestations RGE, certificats de neutralisation cuve, attestation Qualigaz dépose, attestation fluides PAC, PV mise en service, certificats ramonage, contrôles d'entretien.",
+          "klaro_recommendation": "Dossier 'Travaux Chauffage' : papier + cloud. Documents : devis, factures, attestation décennale, attestation DO si applicable, RGE, fiches techniques, PV de mise en service, certificats annuels (ramonage, entretien). En cas de revente : transmettez le dossier à l'acheteur.",
+          "common_mistake": "Jeter les documents — sinistre 5 ans après, impossible de prouver les conditions de pose, refus assurance.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": ["chauf_087"],
+          "norm_reference": "Code civil 1792 + Loi Spinetta 1978",
+          "control_questions": [
+            { "question": "Dossier complet (factures, attestations, PV, certificats) archivé pour 10 ans ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "maintenance",
+      "label": "Maintenance post-travaux",
+      "tasks": [
+        {
+          "id": "chauf_089",
+          "title": "PAC : entretien tous les 2 ans (obligatoire fluides)",
+          "phase": "maintenance",
+          "applies_to_energie": ["pac_air_eau", "pac_air_air", "pac_geothermie"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Entretien PAC OBLIGATOIRE tous les 2 ans par technicien attestation fluides : vérification pressions, étanchéité circuit frigorifique (charges fluides = obligation déclarative selon volume), nettoyage filtres, contrôle performances.",
+          "klaro_recommendation": "Contrat d'entretien avec installateur ou maintenancier indépendant (~150-300 €/an équivalent). Technicien attestation fluides. Visite : pressions HP/BP, recherche fuite, nettoyage évaporateur/condenseur, vérification COP. Attestation à conserver. Sans entretien : panne plus probable, garantie peut être refusée.",
+          "common_mistake": "PAC jamais entretenue — performance dégradée, panne au mauvais moment (hiver).",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Décret 2007-737 fluides + DTU 65",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_090",
+          "title": "Chaudière granulés/bûches : entretien annuel obligatoire",
+          "phase": "maintenance",
+          "applies_to_energie": ["chaudiere_granules", "chaudiere_buches"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Entretien annuel OBLIGATOIRE par chauffagiste qualifié : nettoyage de l'échangeur, du foyer, de la chambre de combustion, vérification des sondes, réglage de la combustion, attestation à conserver.",
+          "klaro_recommendation": "Visite annuelle par chauffagiste (~150-250 €). Nettoyage approfondi, contrôle combustion (taux CO et CO2), réglage si dérive. Attestation OBLIGATOIRE pour assurance habitation (refus en cas de panne ou incendie sans entretien). Idéalement avant la saison de chauffe.",
+          "common_mistake": "Chaudière granulés sans entretien — encrassement, perte de rendement 20-30%, refus assurance.",
+          "pro_status": "pro_obligatoire_blocage",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Décret 2009-649 + DTU 24.1",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_091",
+          "title": "Poêles : entretien annuel + ramonage",
+          "phase": "maintenance",
+          "applies_to_energie": ["poele_granules", "poele_buches"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Poêles : entretien annuel par professionnel + ramonage du conduit (1 fois/an granulés, 2 fois/an bois). Vérification de la chambre de combustion, nettoyage, joints, vitre.",
+          "klaro_recommendation": "Visite combinée : entretien poêle + ramonage par certificat unique. Coût ~120-200 €. Vérification visuelle du conduit. Joints de porte à remplacer périodiquement (tous les 5-7 ans). Vitre nettoyée + produit anti-suie.",
+          "common_mistake": "Pas d'entretien régulier — vitre encrassée, joints HS, perte d'étanchéité, fumée dans la pièce.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Règlement sanitaire départemental + DTU 24.1",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_092",
+          "title": "CET : entretien tous les 2 ans",
+          "phase": "maintenance",
+          "applies_to_energie": ["all"],
+          "applies_to_ecs": ["cet_thermodynamique"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "CET : entretien tous les 2 ans (filtres, fluides frigorigènes, performances). Détartrage du ballon tous les 5-10 ans selon dureté de l'eau.",
+          "klaro_recommendation": "Visite par technicien attestation fluides. Nettoyage filtre à air. Contrôle pressions circuit frigo. Détartrage anode magnésium tous les 5 ans (selon dureté eau). Vidange ballon si dépôts. Attestation à conserver.",
+          "common_mistake": "CET sans détartrage — résistance d'appoint qui chauffe en permanence, surconsommation.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "Décret 2007-737 fluides",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_093",
+          "title": "Solaire : vérifier circuit glycolé tous les 5-10 ans",
+          "phase": "maintenance",
+          "applies_to_energie": ["solaire_thermique"],
+          "applies_to_ecs": ["cesi_solaire"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Solaire : vérification du circuit primaire glycolé tous les 5-10 ans (pH, antigel, dégradation). Le glycol perd ses propriétés avec le temps (oxydation, T° élevées).",
+          "klaro_recommendation": "Test de pH (alcalin > 7) et de concentration glycol par bandelettes ou pro. Si dégradé : vidange + remplacement complet du glycol propylène. Vérification de la pression. Sans vérification : glycol acide qui corrode les capteurs et le ballon.",
+          "common_mistake": "Glycol jamais vérifié — circuit corrodé, fuite ou panne.",
+          "pro_status": "pro_recommande",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 65.12",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_094",
+          "title": "PCBT : purger collecteurs + vérifier pression annuellement",
+          "phase": "maintenance",
+          "applies_to_energie": ["plancher_chauffant_hydraulique"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "PCBT : purge des collecteurs (élimination de l'air dissous chaque année avant saison de chauffe), vérification de la pression du circuit (1-1,5 bar à froid).",
+          "klaro_recommendation": "Avant saison de chauffe : purgeurs aux collecteurs + vérification pression. Si pression < 1 bar : compléter avec eau du réseau (vanne dédiée). Si pression > 2,5 bars à froid : excès, vidanger légèrement. Sans purge : air qui empêche la circulation, zones froides.",
+          "common_mistake": "PCBT jamais purgé — air emprisonné, zones froides, pompe qui cavite.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "DTU 65.14",
+          "control_questions": []
+        },
+        {
+          "id": "chauf_095",
+          "title": "Vérifier détecteur CO annuellement",
+          "phase": "maintenance",
+          "applies_to_energie": ["chaudiere_granules", "chaudiere_buches", "poele_granules", "poele_buches"],
+          "applies_to_ecs": ["all"],
+          "applies_to_depose": ["all"],
+          "applies_to_context": ["all"],
+          "explanation": "Détecteur CO : test annuel (bouton de test simulant une alarme), remplacement de la pile selon notice (1-2 ans), remplacement de la sonde tous les 5-10 ans (durée de vie limitée).",
+          "klaro_recommendation": "Test mensuel du bouton (alarme sonore active). Pile à remplacer à la première alerte basse pile. Sonde à remplacer selon notice (souvent 5-10 ans). Date d'expiration parfois indiquée sur l'appareil. Détecteur expiré = inopérant.",
+          "common_mistake": "Détecteur CO jamais testé — défaillant le jour où il devrait alerter.",
+          "pro_status": "particulier_ok",
+          "blocking_justification_required": [],
+          "photo_required_before_validation": false,
+          "depends_on": [],
+          "norm_reference": "EN 50291",
+          "control_questions": []
+        }
+      ]
     }
-  ]
+  ],
+  "blocking_points": [
+    {
+      "id": "block_001",
+      "message": "Pas d'installation gaz neuve interdite par RE2020 (maisons individuelles depuis 2022, collectif depuis 2025).",
+      "blocks_task_id": "chauf_011",
+      "requires_task_id": "chauf_002"
+    },
+    {
+      "id": "block_002",
+      "message": "Pas d'installation fioul en remplacement interdite depuis juillet 2022.",
+      "blocks_task_id": "chauf_011",
+      "requires_task_id": "chauf_002"
+    },
+    {
+      "id": "block_003",
+      "message": "Pas de manipulation circuit frigorifique par particulier (attestation fluides obligatoire).",
+      "blocks_task_id": "chauf_075",
+      "requires_task_id": "chauf_042"
+    },
+    {
+      "id": "block_004",
+      "message": "Pas d'aides MaPrimeRénov'/CEE sans artisan RGE et sans demande déposée AVANT signature du devis.",
+      "blocks_task_id": "chauf_075",
+      "requires_task_id": "chauf_012"
+    },
+    {
+      "id": "block_005",
+      "message": "Pas de dépose chaudière gaz sans pro Qualigaz et coupure GRDF.",
+      "blocks_task_id": "chauf_017",
+      "requires_task_id": "chauf_014"
+    },
+    {
+      "id": "block_006",
+      "message": "Pas de dépose cuve fioul sans certificat de neutralisation et entreprise certifiée.",
+      "blocks_task_id": "chauf_023",
+      "requires_task_id": "chauf_019"
+    },
+    {
+      "id": "block_007",
+      "message": "Pas d'installation appareil à combustion sans détecteur CO et amenée d'air comburant.",
+      "blocks_task_id": "chauf_075",
+      "requires_task_id": "chauf_080"
+    },
+    {
+      "id": "block_008",
+      "message": "Pas de tubage de conduit absent en rénovation = risque incendie / CO.",
+      "blocks_task_id": "chauf_075",
+      "requires_task_id": "chauf_057"
+    },
+    {
+      "id": "block_009",
+      "message": "Pas de DSF respectée entre conduit et matériaux combustibles.",
+      "blocks_task_id": "chauf_075",
+      "requires_task_id": "chauf_059"
+    },
+    {
+      "id": "block_010",
+      "message": "Pas de coulage de chape PCBT sans test de mise en pression validé 24h.",
+      "blocks_task_id": "chauf_053",
+      "requires_task_id": "chauf_052"
+    },
+    {
+      "id": "block_011",
+      "message": "Pas de mise en chauffe PCBT avant 28 jours de séchage chape ciment.",
+      "blocks_task_id": "chauf_055",
+      "requires_task_id": "chauf_054"
+    },
+    {
+      "id": "block_012",
+      "message": "Pas de mise en chauffe PCBT brutale (paliers progressifs obligatoires).",
+      "blocks_task_id": "chauf_075",
+      "requires_task_id": "chauf_055"
+    },
+    {
+      "id": "block_013",
+      "message": "Pas de PAC géothermie sans étude G1+G2 et test de réponse thermique.",
+      "blocks_task_id": "chauf_032",
+      "requires_task_id": "chauf_007"
+    },
+    {
+      "id": "block_014",
+      "message": "Pas de socle PAC AE directement contre la façade (vibrations transmises).",
+      "blocks_task_id": "chauf_041",
+      "requires_task_id": "chauf_031"
+    },
+    {
+      "id": "block_015",
+      "message": "Pas de bouclage ECS si distance > 8 m (légionellose).",
+      "blocks_task_id": "chauf_075",
+      "requires_task_id": "chauf_045"
+    },
+    {
+      "id": "block_016",
+      "message": "Pas de stockage granulés en zone humide (désintégration).",
+      "blocks_task_id": "chauf_075",
+      "requires_task_id": "chauf_065"
+    },
+    {
+      "id": "block_017",
+      "message": "Pas de silo granulés sans ventilation (CO en stockage).",
+      "blocks_task_id": "chauf_075",
+      "requires_task_id": "chauf_062"
+    },
+    {
+      "id": "block_018",
+      "message": "Pas de réception sans procès-verbal de mise en service par RGE.",
+      "blocks_task_id": "chauf_088",
+      "requires_task_id": "chauf_087"
+    },
+    {
+      "id": "block_019",
+      "message": "Pas d'entretien PAC ignoré tous les 2 ans (obligatoire fluides).",
+      "blocks_task_id": "chauf_088",
+      "requires_task_id": "chauf_089"
+    },
+    {
+      "id": "block_020",
+      "message": "Pas d'entretien chaudière annuel ignoré (obligatoire).",
+      "blocks_task_id": "chauf_088",
+      "requires_task_id": "chauf_090"
+    }
+  ],
+  "scoring": {
+    "progression_percent": {
+      "formula": "validated_tasks / total_tasks * 100",
+      "total_tasks": 95,
+      "filtered_by": "applies_to_energie INCLUDES energie AND applies_to_ecs INCLUDES ecs AND applies_to_depose INCLUDES depose AND applies_to_context INCLUDES context"
+    },
+    "safety_score": {
+      "base": 100,
+      "description": "Score sécurité (FORTEMENT pondéré : CO, fluides, conduit, dépose cuve)",
+      "penalties": [
+        {
+          "condition": "Détecteur CO absent (chauf_080 non validée)",
+          "malus": 50,
+          "category": "critique_bloquant",
+          "applies_to_energie": ["chaudiere_granules", "chaudiere_buches", "poele_granules", "poele_buches"]
+        },
+        {
+          "condition": "Mesure CO non effectuée ou > 30 ppm (chauf_082 non validée)",
+          "malus": 40,
+          "category": "critique_bloquant",
+          "applies_to_energie": ["chaudiere_granules", "chaudiere_buches", "poele_granules", "poele_buches"]
+        },
+        {
+          "condition": "Manipulation fluides sans attestation (chauf_041, 042, 077 non validées)",
+          "malus": 50,
+          "category": "critique_bloquant",
+          "applies_to_energie": ["pac_air_eau", "pac_air_air", "pac_geothermie"]
+        },
+        {
+          "condition": "Conduit non tubé en rénovation (chauf_057 non validée)",
+          "malus": 40,
+          "category": "critique_bloquant",
+          "applies_to_energie": ["chaudiere_granules", "chaudiere_buches", "poele_granules", "poele_buches"]
+        },
+        {
+          "condition": "DSF conduit non respectée (chauf_059 non validée)",
+          "malus": 35,
+          "category": "critique_bloquant",
+          "applies_to_energie": ["chaudiere_granules", "chaudiere_buches", "poele_granules", "poele_buches"]
+        },
+        {
+          "condition": "Dépose cuve fioul sans certificat (chauf_023 non validée)",
+          "malus": 35,
+          "category": "critique_bloquant",
+          "applies_to_depose": ["depose_cuve_fioul_aerienne", "depose_cuve_fioul_enterree"]
+        },
+        {
+          "condition": "Dépose chaudière gaz sans Qualigaz (chauf_015 non validée)",
+          "malus": 35,
+          "category": "critique_bloquant",
+          "applies_to_depose": ["depose_chaudiere_gaz"]
+        },
+        {
+          "condition": "Mitigeur thermostatique ECS absent (chauf_074 non validée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Bouclage ECS absent si distance > 8 m (chauf_045 non validée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Plaque protection sol poêle absente (chauf_034 non validée)",
+          "malus": 20,
+          "category": "critique",
+          "applies_to_energie": ["poele_granules", "poele_buches"]
+        }
+      ]
+    },
+    "compliance_score": {
+      "description": "Conformité réglementaire : RE2020, RGE, attestations, certificats",
+      "components": [
+        { "id": "re2020", "weight": 20, "validates_if": "chauf_002 validated" },
+        { "id": "rge_qualifie", "weight": 25, "validates_if": "chauf_011 validated" },
+        { "id": "demande_aides_avant_devis", "weight": 15, "validates_if": "chauf_012 validated" },
+        { "id": "attestation_qualigaz", "weight": 10, "validates_if": "chauf_017 validated OR depose != 'depose_chaudiere_gaz'" },
+        { "id": "certificat_cuve", "weight": 10, "validates_if": "chauf_023 validated OR depose NOT IN ['depose_cuve_fioul_aerienne','depose_cuve_fioul_enterree']" },
+        { "id": "attestation_fluides_pac", "weight": 10, "validates_if": "chauf_042 validated OR energie NOT IN ['pac_air_eau','pac_air_air','pac_geothermie']" },
+        { "id": "pv_mise_en_service", "weight": 10, "validates_if": "chauf_087 validated" }
+      ]
+    },
+    "thermal_performance_score": {
+      "description": "Performance thermique : dimensionnement, recalcul isolation, équilibrage, COP",
+      "components": [
+        { "id": "bilan_thermique", "weight": 25, "validates_if": "chauf_003 validated" },
+        { "id": "recalcul_isolation", "weight": 15, "validates_if": "chauf_004 validated" },
+        { "id": "calorifugeage", "weight": 15, "validates_if": "chauf_040 validated" },
+        { "id": "equilibrage_pcbt", "weight": 15, "validates_if": "chauf_078 validated OR energie != 'plancher_chauffant_hydraulique'" },
+        { "id": "mesures_performances", "weight": 15, "validates_if": "chauf_076 validated" },
+        { "id": "regulation_parametree", "weight": 15, "validates_if": "chauf_085 validated" }
+      ]
+    },
+    "aids_eligibility_score": {
+      "description": "Éligibilité aux aides : RGE, dossier avant devis, justificatifs",
+      "components": [
+        { "id": "rge", "weight": 35, "validates_if": "chauf_011 validated" },
+        { "id": "dossier_avant_devis", "weight": 30, "validates_if": "chauf_012 validated" },
+        { "id": "decennale_pro", "weight": 15, "validates_if": "chauf_013 validated" },
+        { "id": "justificatifs_archives", "weight": 20, "validates_if": "chauf_087 validated AND chauf_088 validated" }
+      ]
+    },
+    "maintenance_planning_score": {
+      "description": "Planning d'entretien obligatoire programmé : PAC 2 ans, chaudière annuelle, ramonage",
+      "components": [
+        { "id": "entretien_pac", "weight": 30, "validates_if": "chauf_089 validated OR energie NOT IN ['pac_air_eau','pac_air_air','pac_geothermie']" },
+        { "id": "entretien_chaudiere", "weight": 25, "validates_if": "chauf_090 validated OR energie NOT IN ['chaudiere_granules','chaudiere_buches']" },
+        { "id": "ramonage_programme", "weight": 25, "validates_if": "chauf_083 validated OR energie NOT IN ['chaudiere_granules','chaudiere_buches','poele_granules','poele_buches']" },
+        { "id": "detecteur_co_verifie", "weight": 20, "validates_if": "chauf_095 validated OR energie NOT IN ['chaudiere_granules','chaudiere_buches','poele_granules','poele_buches']" }
+      ]
+    },
+    "documents_attached_score": {
+      "description": "Pourcentage des justificatifs requis effectivement uploadés",
+      "required_documents": [
+        { "type": "attestation_rge", "required_if": "energie != null AND aides_demandees" },
+        { "type": "bilan_thermique", "required_if": "always" },
+        { "type": "attestation_qualigaz", "required_if": "depose == 'depose_chaudiere_gaz'" },
+        { "type": "certificat_neutralisation_cuve", "required_if": "depose IN ['depose_cuve_fioul_aerienne','depose_cuve_fioul_enterree']" },
+        { "type": "attestation_fluides_frigorigenes", "required_if": "energie IN ['pac_air_eau','pac_air_air','pac_geothermie']" },
+        { "type": "test_mise_en_pression_pcbt", "required_if": "energie == 'plancher_chauffant_hydraulique'" },
+        { "type": "mesure_co", "required_if": "energie IN ['chaudiere_granules','chaudiere_buches','poele_granules','poele_buches']" },
+        { "type": "ramonage_initial", "required_if": "energie IN ['chaudiere_granules','chaudiere_buches','poele_granules','poele_buches']" },
+        { "type": "etude_sol_geothermie", "required_if": "energie == 'pac_geothermie'" }
+      ],
+      "formula": "documents_attached / documents_required * 100"
+    },
+    "critical_alerts": [
+      {
+        "id": "alert_re2020",
+        "message": "Énergie non conforme RE2020 (gaz neuf interdit, fioul en remplacement interdit) — installation illégale.",
+        "triggered_if": "chauf_002 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_co_detecteur",
+        "message": "Détecteur CO absent sur appareil combustion — intoxication insidieuse possible, risque mortel.",
+        "triggered_if": "chauf_080 not validated AND energie IN ['chaudiere_granules','chaudiere_buches','poele_granules','poele_buches']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_co_mesure",
+        "message": "Mesure CO non effectuée ou > 30 ppm — appareils gaz à arrêter immédiatement.",
+        "triggered_if": "chauf_082 not validated AND energie IN ['chaudiere_granules','chaudiere_buches','poele_granules','poele_buches']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_fluides",
+        "message": "Manipulation circuit frigorifique sans attestation fluides — illégal, panne PAC quasi certaine.",
+        "triggered_if": "(chauf_041 not validated OR chauf_042 not validated) AND energie IN ['pac_air_eau','pac_air_air','pac_geothermie']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_tubage",
+        "message": "Conduit non tubé en rénovation — risque incendie ou CO.",
+        "triggered_if": "chauf_057 not validated AND energie IN ['chaudiere_granules','chaudiere_buches','poele_granules','poele_buches'] AND context == 'renovation_existant'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_dsf",
+        "message": "DSF conduit non respectée — risque inflammation matériaux combustibles.",
+        "triggered_if": "chauf_059 not validated AND energie IN ['chaudiere_granules','chaudiere_buches','poele_granules','poele_buches']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_cuve_fioul",
+        "message": "Cuve fioul sans certificat de neutralisation — blocage à la vente, sanctions.",
+        "triggered_if": "chauf_023 not validated AND depose IN ['depose_cuve_fioul_aerienne','depose_cuve_fioul_enterree']",
+        "level": "danger"
+      },
+      {
+        "id": "alert_qualigaz",
+        "message": "Dépose gaz sans Qualigaz — non conforme, risque sanctions et refus assurance.",
+        "triggered_if": "chauf_015 not validated AND depose == 'depose_chaudiere_gaz'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_rge",
+        "message": "Artisan non RGE ou demande aides après devis — aides refusées définitivement.",
+        "triggered_if": "(chauf_011 not validated OR chauf_012 not validated) AND aides_demandees",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_geothermie",
+        "message": "Géothermie sans étude G1+G2 + TRT — sous-dimensionnement = PAC inopérante en hiver.",
+        "triggered_if": "chauf_007 not validated AND energie == 'pac_geothermie'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_pcbt_pression",
+        "message": "Coulage chape PCBT sans test de pression 24h — fuite découverte plus tard, casse de la chape.",
+        "triggered_if": "chauf_052 not validated AND energie == 'plancher_chauffant_hydraulique'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_pcbt_sechage",
+        "message": "Mise en chauffe PCBT avant 28j de séchage chape — fissuration massive.",
+        "triggered_if": "chauf_054 not validated AND energie == 'plancher_chauffant_hydraulique'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_bouclage_ecs",
+        "message": "Bouclage ECS absent si distance > 8 m — légionellose et eau froide à attendre.",
+        "triggered_if": "chauf_045 not validated AND distance_ecs > 8",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_silo_co",
+        "message": "Silo granulés sans ventilation — accumulation CO, intoxication possible à l'ouverture.",
+        "triggered_if": "chauf_062 not validated AND energie == 'chaudiere_granules'",
+        "level": "danger"
+      },
+      {
+        "id": "alert_socle_pac",
+        "message": "PAC AE sans socle/plots antivibratiles — vibrations transmises, bruit dans toute la maison.",
+        "triggered_if": "chauf_031 not validated AND energie IN ['pac_air_eau','pac_air_air']",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_mise_service_rge",
+        "message": "Mise en service sans RGE — aides MaPrimeRénov'/CEE refusées, garantie fabricant compromise.",
+        "triggered_if": "chauf_075 not validated AND aides_demandees",
+        "level": "danger"
+      },
+      {
+        "id": "alert_entretien_pac",
+        "message": "Entretien PAC ignoré tous les 2 ans — obligatoire fluides, panne probable.",
+        "triggered_if": "chauf_089 not validated AND energie IN ['pac_air_eau','pac_air_air','pac_geothermie']",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_entretien_chaudiere",
+        "message": "Entretien chaudière annuel ignoré — refus assurance possible en cas de sinistre.",
+        "triggered_if": "chauf_090 not validated AND energie IN ['chaudiere_granules','chaudiere_buches']",
+        "level": "bloquant"
+      }
+    ]
+  }
 }
