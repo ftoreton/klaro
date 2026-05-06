@@ -1,0 +1,354 @@
+{
+  "version": "1.0.0",
+  "metier_id": "plomberie",
+  "nom": "Plomberie",
+  "norme_reference": "DTU 60.1 / DTU 60.11 / DTU 60.31",
+  "disclaimer": "Klaro est un outil d'aide et de recommandation. Pour les raccordements au réseau public, la pose d'un chauffe-eau ou toute intervention sur le gaz, faites appel à un professionnel qualifié.",
+  "regles_metier": {
+    "pente_evacuation_min": "1 cm/m",
+    "pente_evacuation_max": "3 cm/m",
+    "diametre_wc": "100 mm",
+    "diametre_lavabo_douche": "40 mm",
+    "diametre_evier": "40 mm",
+    "convention_robinetterie": "eau chaude à gauche, eau froide à droite"
+  },
+  "alertes_bloquantes": [
+    {
+      "id": "alerte-01",
+      "message": "Impossible de fermer les murs sans avoir testé l'étanchéité de toute l'installation",
+      "taches_concernees": ["plomb-22", "plomb-24"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-02",
+      "message": "Les évacuations doivent être posées et validées AVANT les alimentations en eau",
+      "taches_concernees": ["plomb-11"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-03",
+      "message": "Les pentes d'évacuation doivent être validées avant toute fixation définitive",
+      "taches_concernees": ["plomb-12"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-04",
+      "message": "Toutes les attentes doivent être en place et testées avant la fermeture du placo",
+      "taches_concernees": ["plomb-10"],
+      "niveau": "critique"
+    },
+    {
+      "id": "alerte-05",
+      "message": "Le réseau doit être mis en pression et validé sans fuite avant toute mise en service définitive",
+      "taches_concernees": ["plomb-24"],
+      "niveau": "critique"
+    }
+  ],
+  "score_chantier": {
+    "calcul": "taches_validees / total_taches * 100",
+    "penalites": [
+      { "condition": "fuite_detectee", "malus": 20 },
+      { "condition": "tache_critique_non_traitee", "malus": 10 },
+      { "condition": "alerte_bloquante_active", "malus": 15 }
+    ]
+  },
+  "taches": [
+    {
+      "id": "plomb-01",
+      "ordre": 1,
+      "titre": "Définir le projet plomberie",
+      "critique": false,
+      "explication": "Listez tout ce que vous allez installer ou modifier : WC, douche, baignoire, évier, machine à laver, lave-vaisselle, chauffe-eau. C'est la base du plan réseau.",
+      "recommandation_klaro": "Faites un plan de chaque pièce en notant l'emplacement prévu de chaque appareil. Ce plan détermine les longueurs de tuyaux, les diamètres nécessaires et les pentes d'évacuation. Un appareil mal positionné par rapport aux évacuations existantes peut forcer des travaux de gros œuvre.",
+      "erreur_frequente": "Commencer à poser des tuyaux sans plan. On finit avec des tuyaux trop courts, des pentes impossibles à tenir, et des évacuations qui partent dans le mauvais sens.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": []
+    },
+    {
+      "id": "plomb-02",
+      "ordre": 2,
+      "titre": "Repérer les arrivées d'eau et évacuations existantes",
+      "critique": true,
+      "explication": "Localisez précisément le compteur d'eau, le vanne d'arrêt général, et les sorties d'évacuation (chutes) existantes. Tout votre réseau doit s'y raccorder.",
+      "recommandation_klaro": "Photographiez le compteur, la vanne d'arrêt, et les sorties en attente existantes avec une règle pour les dimensions. Notez le diamètre des évacuations existantes — cela conditionne ce que vous pourrez y raccorder. En appartement, repérez la colonne montante et la chute collective.",
+      "erreur_frequente": "Commencer les travaux sans localiser la vanne d'arrêt générale. En cas de fuite, chaque seconde compte pour trouver comment couper l'eau — et vous n'avez pas le temps de chercher.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": []
+    },
+    {
+      "id": "plomb-03",
+      "ordre": 3,
+      "titre": "Vérifier pression et état du réseau existant",
+      "critique": true,
+      "explication": "Avant d'ajouter quoi que ce soit, vérifiez la pression d'eau disponible et l'état des tuyaux existants. Une pression insuffisante ou des tuyaux corrodés posent des problèmes dès le départ.",
+      "recommandation_klaro": "Branchez un manomètre sur un robinet pour mesurer la pression (idéal : entre 2 et 4 bars). Si vous voyez de l'eau rouillée, des tuyaux en plomb ou en acier galvanisé corrodé, envisagez un remplacement complet du réseau plutôt que de le prolonger.",
+      "erreur_frequente": "Raccorder un réseau neuf sur de vieilles canalisations en plomb ou en acier galvanisé fortement corrodé. Les débris de corrosion viennent boucher les nouvelles robinetteries et réducteurs de pression.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-02"]
+    },
+    {
+      "id": "plomb-04",
+      "ordre": 4,
+      "titre": "Choisir le type de réseau (PER / multicouche / cuivre)",
+      "critique": false,
+      "explication": "Trois matériaux principaux existent pour les tuyaux d'alimentation. Chaque matériau a ses avantages selon l'usage, le budget, et la facilité de pose.",
+      "recommandation_klaro": "PER (tube plastique souple) : le plus facile à poser, idéal en gaine, résiste au gel, moins cher. Multicouche : rigide et souple à la fois, compatible avec toutes techniques d'assemblage, excellent rapport qualité/durabilité. Cuivre : la référence longévité, mais soudure à l'étain nécessaire — moins accessible pour un non-professionnel. Pour un particulier, le PER en gaine est le meilleur compromis.",
+      "erreur_frequente": "Mélanger les matériaux sans utiliser les raccords de transition adaptés. Un raccord PER directement sur du cuivre sans manchon approprié crée des fuites progressives par corrosion galvanique.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-03"]
+    },
+    {
+      "id": "plomb-05",
+      "ordre": 5,
+      "titre": "Définir l'emplacement des équipements",
+      "critique": true,
+      "explication": "Fixez définitivement sur votre plan la position de chaque appareil sanitaire : WC, douche, baignoire, lavabo, évier. Chaque déplacement par rapport aux évacuations existantes a un coût et une contrainte technique.",
+      "recommandation_klaro": "Rapprochez au maximum chaque appareil de sa chute d'évacuation — chaque mètre supplémentaire impose une pente qui mange de la hauteur sous le plancher. Vérifiez que vous avez assez de chute (hauteur disponible sous le sol) pour tenir la pente d'évacuation sur la distance prévue.",
+      "erreur_frequente": "Placer un WC à 3m d'une chute de 100mm sans vérifier qu'on a assez de hauteur disponible sous le plancher pour tenir la pente. Résultat : évacuation plate, WC qui ne chasse pas correctement.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-01", "plomb-02"]
+    },
+    {
+      "id": "plomb-06",
+      "ordre": 6,
+      "titre": "Tracer le réseau d'alimentation",
+      "critique": false,
+      "explication": "Dessinez sur votre plan le trajet des tuyaux d'eau froide et d'eau chaude depuis le compteur/chauffe-eau jusqu'à chaque appareil. Ce tracé optimisé réduit les longueurs et les pertes de charge.",
+      "recommandation_klaro": "Partez du plus gros (arrivée générale) vers le plus petit (chaque appareil). Prévoyez une vanne d'arrêt par pièce humide pour pouvoir isoler une zone sans couper tout le logement. Regroupez les tuyaux dans des gaines pour faciliter les passages dans les murs et les sols.",
+      "erreur_frequente": "Tracer des tuyaux qui partent dans tous les sens sans logique. Les longueurs inutiles créent des pertes de pression et une attente d'eau chaude plus longue — vous faites couler de l'eau froide pendant 1 minute avant d'avoir chaud.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-05"]
+    },
+    {
+      "id": "plomb-07",
+      "ordre": 7,
+      "titre": "Tracer le réseau d'évacuation avec pentes",
+      "critique": true,
+      "explication": "L'évacuation fonctionne par gravité : les tuyaux doivent descendre en continu de l'appareil vers la chute. La pente standard est de 1 à 3 cm par mètre. Trop plate : ça bouche. Trop pentue : l'eau part trop vite et laisse les déchets.",
+      "recommandation_klaro": "Calculez la hauteur de chute disponible dès le tracé : si votre douche est à 4m de la chute avec une pente de 2cm/m, il vous faut 8cm de hauteur disponible sous le carrelage. Vérifiez que votre plancher ou votre siphon de sol le permet avant de commencer.",
+      "erreur_frequente": "Tracer les évacuations sans calculer la pente disponible. On se retrouve à plat ou à contre-pente après pose, ce qui impose de refaire les saignées dans le sol — travail très lourd.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-05"]
+    },
+    {
+      "id": "plomb-08",
+      "ordre": 8,
+      "titre": "Prévoir les nourrices (collecteurs)",
+      "critique": false,
+      "explication": "Une nourrice (ou collecteur) est un tuyau principal qui distribue l'eau vers plusieurs sorties via des dérivations individuelles. Elle simplifie les coupures par zone et améliore la régularité de pression.",
+      "recommandation_klaro": "Placez la nourrice eau froide et la nourrice eau chaude à un endroit accessible (placard technique, local, sous l'évier). Chaque sortie de nourrice correspond à un appareil et dispose de sa propre vanne. En cas de fuite sur un appareil, vous coupez juste cette sortie sans toucher aux autres.",
+      "erreur_frequente": "Multiplier les piquages en T sur un même tuyau principal au lieu d'une nourrice. La pression chute à chaque piquage et l'installation devient un labyrinthe impossible à maintenir.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-06"]
+    },
+    {
+      "id": "plomb-09",
+      "ordre": 9,
+      "titre": "Prévoir les diamètres de tubes",
+      "critique": true,
+      "explication": "Le diamètre des tuyaux doit être adapté au débit nécessaire. Un tuyau trop fin crée des pertes de pression ; trop gros, il est inutile et coûteux.",
+      "recommandation_klaro": "Règle pratique : arrivée générale en 20mm (3/4\"), départs vers salles de bain en 16mm (1/2\"), départs vers chaque appareil en 12mm ou 16mm. Pour l'évacuation : WC en 100mm obligatoire, lavabo/douche en 40mm, baignoire en 40mm, évier en 40mm.",
+      "erreur_frequente": "Poser du 12mm partout pour économiser. Quand deux appareils fonctionnent en même temps, la pression s'effondre — la douche devient froide dès que quelqu'un tire la chasse.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-06", "plomb-07"]
+    },
+    {
+      "id": "plomb-10",
+      "ordre": 10,
+      "titre": "Prévoir les attentes (sorties en attente)",
+      "critique": true,
+      "explication": "Les \"attentes\" sont les sorties de tuyaux provisoirement bouchées qui attendent d'être raccordées à un appareil. Elles doivent être posées et fixées avant la fermeture des murs et des sols.",
+      "recommandation_klaro": "Positionnez chaque attente à la hauteur et à l'emplacement exact de l'appareil final. Photographiez leur position avant de fermer — vous saurez exactement où elles sont dans 3 mois quand vous installerez les sanitaires. Bouchonnez-les provisoirement pour le test en pression.",
+      "erreur_frequente": "Estimer à l'œil l'emplacement des attentes sans mesure précise. On découvre après la pose du carrelage que la sortie d'eau chaude est 5cm trop à droite pour raccorder le robinet prévu.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-08", "plomb-09"]
+    },
+    {
+      "id": "plomb-11",
+      "ordre": 11,
+      "titre": "Installer les évacuations (PVC)",
+      "critique": true,
+      "explication": "Les évacuations se posent en premier — avant les alimentations — car elles passent dans le sol et nécessitent souvent des saignées dans la dalle. On part de la chute vers les appareils.",
+      "recommandation_klaro": "Utilisez du PVC assainissement NF pour les évacuations (tube gris). Collez les raccords avec de la colle PVC spéciale et laissez sécher au moins 15 minutes avant de mettre de l'eau. Prévoyez des regards de nettoyage (tampons vissés) aux coudes et changements de direction.",
+      "erreur_frequente": "Poser les alimentations avant les évacuations. On finit par ne plus avoir la place ou la hauteur nécessaire pour les évacuations, qui passent sous les alimentations et dans les endroits les plus difficiles d'accès.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-07", "plomb-09"]
+    },
+    {
+      "id": "plomb-12",
+      "ordre": 12,
+      "titre": "Respecter et vérifier les pentes d'évacuation",
+      "critique": true,
+      "explication": "Avant de fixer définitivement les tuyaux d'évacuation, vérifiez la pente sur toute la longueur avec un niveau à bulle ou un niveau laser. La pente doit être régulière et continue, sans creux ni bosse.",
+      "recommandation_klaro": "Contrôlez la pente tous les 50cm avec un niveau. Pour être précis : sur 1m de tuyau, la différence de hauteur doit être de 1 à 3cm. Trop plate en un point = zone d'accumulation qui bouchera. Vérifiez aussi qu'aucun raccord ne crée un contre-pente.",
+      "erreur_frequente": "Fixer définitivement sans vérifier point par point. Un seul creux dans un tuyau d'évacuation horizontal suffit à créer un bouchon récurrent — et il est souvent dans un endroit inaccessible.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-11"]
+    },
+    {
+      "id": "plomb-13",
+      "ordre": 13,
+      "titre": "Installer les alimentations en eau",
+      "critique": false,
+      "explication": "Les tuyaux d'eau froide et d'eau chaude se posent après les évacuations. On part de la nourrice ou de l'arrivée principale vers chaque attente d'appareil.",
+      "recommandation_klaro": "Respectez la convention : eau chaude à gauche, eau froide à droite — sur tous les appareils, sans exception. Gainer les tuyaux dans des gaines annelées souples pour permettre le remplacement sans casser les murs. En PER, la gaine protège aussi les dilatations thermiques.",
+      "erreur_frequente": "Inverser eau chaude et eau froide sur un appareil. Raccorder une machine à laver avec eau chaude à droite et eau froide à gauche, ça fonctionne mais c'est inversé par rapport à toutes les normes — la prochaine intervention crée une confusion garantie.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-12", "plomb-10"]
+    },
+    {
+      "id": "plomb-14",
+      "ordre": 14,
+      "titre": "Fixer les tuyaux correctement",
+      "critique": false,
+      "explication": "Les tuyaux d'alimentation doivent être fixés au mur ou à la structure avec des colliers tous les 50 à 100cm selon le matériau. Un tuyau mal fixé vibre, claque, et finit par céder au niveau des raccords.",
+      "recommandation_klaro": "Utilisez des colliers isophoniques (avec insert caoutchouc) plutôt que des colliers métalliques simples. Ils absorbent les vibrations et suppriment les bruits de choc thermique. Serrez sans écraser le tuyau — un collier trop serré sur du PER crée une zone de fragilité.",
+      "erreur_frequente": "Poser des colliers trop espacés ou oublier les fixations dans les portions non visibles (derrière un meuble, dans un mur). Les tuyaux vibrent au passage de l'eau et les raccords finissent par se desserrer.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-13"]
+    },
+    {
+      "id": "plomb-15",
+      "ordre": 15,
+      "titre": "Poser les nourrices",
+      "critique": false,
+      "explication": "La nourrice se pose dans son emplacement définitif, raccordée à l'arrivée principale d'un côté et à chaque tuyau d'appareil de l'autre. C'est le centre de distribution de votre réseau.",
+      "recommandation_klaro": "Fixez la nourrice solidement sur une paroi accessible. Étiquetez chaque sortie (\"cuisine\", \"salle de bain\", \"WC\"...) avec un marqueur indélébile. Laissez suffisamment d'espace devant la nourrice pour manœuvrer les vannes — une nourrice inaccessible est une nourrice inutile.",
+      "erreur_frequente": "Encastrer la nourrice dans un mur sans trappe d'accès. Impossible d'intervenir sur les vannes individuelles en cas de fuite sur un appareil — on coupe tout le logement.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-13", "plomb-14"]
+    },
+    {
+      "id": "plomb-16",
+      "ordre": 16,
+      "titre": "Installer les arrivées pour appareils",
+      "critique": false,
+      "explication": "Les arrivées pour machine à laver, lave-vaisselle, et autres appareils électroménagers sont des sorties avec robinet d'arrêt intégré, positionnées à l'emplacement exact de l'appareil.",
+      "recommandation_klaro": "Positionnez les arrivées machine à laver à 60-80cm du sol, accessibles même avec l'appareil en place. Prévoyez un siphon de sol à proximité en cas de vidange ou de fuite — une machine à laver qui déborde sans siphon à proximité inonde tout.",
+      "erreur_frequente": "Placer les arrivées trop bas ou derrière l'espace où sera l'appareil, rendant les robinets inaccessibles une fois l'appareil installé. En cas de fuite, impossible de couper rapidement.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-13", "plomb-14"]
+    },
+    {
+      "id": "plomb-17",
+      "ordre": 17,
+      "titre": "Installer les WC",
+      "critique": false,
+      "explication": "Le WC nécessite une évacuation de 100mm et une alimentation eau froide uniquement. Il se raccorde en évacuation par emboîtement ou joint, et en alimentation par un flexible.",
+      "recommandation_klaro": "Choisissez entre WC à sortie horizontale (murale) ou verticale (au sol) selon votre type d'évacuation avant d'acheter — les deux ne sont pas interchangeables. Vérifiez le niveau du sol fini pour que la cuvette soit à la bonne hauteur. Posez des silentblocs sous le WC pour éviter les mouvements.",
+      "erreur_frequente": "Acheter un WC à sortie horizontale quand l'évacuation est au sol, ou l'inverse. L'adaptateur existe mais ajoute une épaisseur et une jonction supplémentaire — source de fuite.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-12", "plomb-13"]
+    },
+    {
+      "id": "plomb-18",
+      "ordre": 18,
+      "titre": "Installer douche et baignoire",
+      "critique": false,
+      "explication": "La douche et la baignoire nécessitent une évacuation de 40mm avec siphon incorporé, et deux arrivées (eau froide + eau chaude). L'étanchéité de la zone est critique.",
+      "recommandation_klaro": "Pour un receveur de douche, vérifiez la hauteur d'évacuation disponible sous le receveur avant d'acheter — certains receveurs ultra-plats n'ont que 5cm sous le siphon. Pour une baignoire, prévoyez un accès au siphon (trapillon latéral ou panneau de baignoire démontable).",
+      "erreur_frequente": "Sceller une baignoire sans prévoir l'accès au siphon. Le siphon finit toujours par boucher un jour — sans accès, c'est le bain en piscine ou le démontage complet.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-12", "plomb-13"]
+    },
+    {
+      "id": "plomb-19",
+      "ordre": 19,
+      "titre": "Installer l'évier et la cuisine",
+      "critique": false,
+      "explication": "L'évier nécessite une évacuation de 40mm avec siphon, et deux arrivées (eau froide + eau chaude). Le lave-vaisselle s'y raccorde en dérivation sur l'évacuation et sur les arrivées.",
+      "recommandation_klaro": "Prévoyez un siphon équipé d'une sortie lave-vaisselle intégrée. Positionnez les arrivées derrière le futur meuble sous-évier à une hauteur accessible avec la porte ouverte. Vérifiez que l'évacuation de votre lave-vaisselle respecte la hauteur d'anti-siphon recommandée (sortie à 60cm min du sol).",
+      "erreur_frequente": "Installer un siphon simple sans sortie lave-vaisselle, puis rajouter une jonction en T après coup. La jonction T sur siphon est souvent la première fuite — trop de contraintes mécaniques à cet endroit.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-12", "plomb-13"]
+    },
+    {
+      "id": "plomb-20",
+      "ordre": 20,
+      "titre": "Installer le chauffe-eau",
+      "critique": true,
+      "explication": "Le chauffe-eau (électrique ou thermodynamique) se raccorde sur l'arrivée d'eau froide et distribue l'eau chaude. Il nécessite également un groupe de sécurité et une vidange.",
+      "recommandation_klaro": "Installez toujours un groupe de sécurité neuf (ne réutilisez jamais l'ancien) — il protège le chauffe-eau contre la surpression et laisse goutter normalement. Prévoyez un entonnoir de vidange sous le groupe de sécurité pour évacuer les gouttes. Placez le chauffe-eau accessible pour la maintenance annuelle de l'anode.",
+      "erreur_frequente": "Réutiliser l'ancien groupe de sécurité avec un nouveau chauffe-eau. Le groupe finit par goutter excessivement ou, pire, par ne plus ouvrir en cas de surpression — risque d'explosion de la cuve.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-13", "plomb-14"]
+    },
+    {
+      "id": "plomb-21",
+      "ordre": 21,
+      "titre": "Installer les robinetteries",
+      "critique": false,
+      "explication": "Les mitigeurs, robinets et douchettes se posent en dernier sur les attentes. C'est l'étape visible — elle se fait après carrelage et finitions.",
+      "recommandation_klaro": "Enroulez du téflon (ruban d'étanchéité) dans le sens du filet sur toutes les connexions filetées. Pour les raccords à compression (flexibles), n'utilisez pas de téflon — serrez simplement à la main puis un demi-tour à la clé. Trop serré = raccord fissuré.",
+      "erreur_frequente": "Mettre du téflon sur un raccord à compression. Le téflon empêche le joint conique de se plaquer correctement et crée une micro-fuite qui s'aggrave avec le temps.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-17", "plomb-18", "plomb-19"]
+    },
+    {
+      "id": "plomb-22",
+      "ordre": 22,
+      "titre": "Vérifier l'étanchéité de tous les raccords",
+      "critique": true,
+      "explication": "Avant toute mise en eau définitive, contrôlez visuellement chaque raccord, chaque joint et chaque emboîtement. Une fuite détectée maintenant coûte 10 minutes. Détectée dans 6 mois, elle coûte un appartement.",
+      "recommandation_klaro": "Passez un chiffon sec sur chaque raccord visible après mise en pression et observez pendant 15 minutes. Pour les raccords dans les cloisons, laissez les murs ouverts et le réseau en pression pendant 24h avant de fermer. Photographiez tous les raccords accessibles avant fermeture.",
+      "erreur_frequente": "Refermer les murs le jour même de la mise en eau sans période d'observation. Une micro-fuite progressive passe inaperçue puis fait des dégâts structurels pendant des mois avant d'être détectée.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-21", "plomb-20"]
+    },
+    {
+      "id": "plomb-23",
+      "ordre": 23,
+      "titre": "Mettre en eau le réseau",
+      "critique": true,
+      "explication": "C'est la première mise en eau complète de votre réseau neuf. On ouvre progressivement la vanne générale pour remplir les tuyaux et purger l'air.",
+      "recommandation_klaro": "Ouvrez la vanne générale très lentement pour éviter les coups de bélier. Ouvrez ensuite les vannes une par une et purgez l'air en ouvrant les robinets les plus éloignés jusqu'à ce qu'un filet d'eau régulier sorte. Restez présent pendant toute la phase de montée en pression.",
+      "erreur_frequente": "Ouvrir la vanne générale d'un seul coup. Le coup de bélier met les raccords sous une surpression brutale — les emboîtements non secs et les raccords à compression peu serrés lâchent immédiatement.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-22"]
+    },
+    {
+      "id": "plomb-24",
+      "ordre": 24,
+      "titre": "Tester la pression et détecter les fuites",
+      "critique": true,
+      "explication": "Après la mise en eau, maintenez le réseau en pression pendant au moins 2 heures et inspectez méthodiquement chaque raccord. Un manomètre vous permet de vérifier qu'aucune pression ne se perd.",
+      "recommandation_klaro": "Branchez un manomètre sur le réseau et notez la pression initiale. Revenez 2h plus tard : si la pression a chuté, il y a une fuite quelque part. Passez sur chaque raccord avec du papier essuie-tout blanc — le moindre suintement le mouille instantanément.",
+      "erreur_frequente": "Considérer qu'une installation est bonne parce qu'aucune fuite visible n'apparaît dans les premières minutes. Les micro-fuites sur les raccords compression ou les joints peuvent prendre plusieurs heures à apparaître.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-23"]
+    },
+    {
+      "id": "plomb-25",
+      "ordre": 25,
+      "titre": "Corriger les défauts",
+      "critique": true,
+      "explication": "Si un test révèle une fuite ou un problème de pression, corrigez-le avant de continuer. Refermer les murs avec une fuite connue est interdit — moralement et pratiquement.",
+      "recommandation_klaro": "Identifiez la source exacte de chaque fuite avant de la corriger. Une fuite sur un raccord à compression : démontez, vérifiez la portée conique, remontez. Une fuite sur un collé PVC : coupez le tuyau, recollez avec un manchon de réparation. Ne mastiquez jamais une fuite — c'est reporter le problème.",
+      "erreur_frequente": "Entourer un raccord qui fuit avec du ruban téflon ou du scotch en espérant que ça tienne. Ça tient 2 semaines, puis la fuite reprend et le dégât des eaux est passé par là.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-24"]
+    },
+    {
+      "id": "plomb-26",
+      "ordre": 26,
+      "titre": "Isoler les tuyaux si nécessaire",
+      "critique": false,
+      "explication": "Les tuyaux exposés au gel (caves non chauffées, combles, garages) doivent être isolés. Les tuyaux d'eau chaude en circulation doivent être calorifugés pour réduire les pertes de chaleur.",
+      "recommandation_klaro": "Utilisez des manchons isolants en mousse (coquilles) adaptés au diamètre de vos tuyaux. Dans une zone exposée au gel, choisissez une épaisseur d'isolation de 20mm minimum. Pour l'eau chaude sanitaire, une coquille de 13mm suffit pour réduire les pertes.",
+      "erreur_frequente": "Oublier d'isoler un tuyau en passage de garage non chauffé. Une seule nuit de gel peut faire éclater un tuyau en PER — le dégât des eaux au retour de vacances d'hiver est un classique.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-25"]
+    },
+    {
+      "id": "plomb-27",
+      "ordre": 27,
+      "titre": "Valider avant fermeture des murs",
+      "critique": true,
+      "explication": "Avant de fermer définitivement les cloisons et de poser le carrelage, faites une dernière inspection complète de l'installation. C'est votre dernière chance d'intervenir facilement.",
+      "recommandation_klaro": "Effectuez un test en pression de 24h avec le réseau complet sous pression et tous les robinets fermés. Photographiez l'intégralité des passages de tuyaux avant fermeture — ces photos sont votre plan de recolement. Notez sur un schéma la position exacte de chaque raccord caché.",
+      "erreur_frequente": "Refermer les murs le lendemain de la mise en eau sans test prolongé. Les fuites lentes sur joints ou raccords à compression peuvent prendre 12 à 24h pour devenir visibles. Une fois le carrelage posé, la fuite sera détectée en plafond de l'appartement du dessous.",
+      "actions": ["planifier", "photo", "valider"],
+      "bloque_si": ["plomb-25", "plomb-26"]
+    }
+  ]
+}
