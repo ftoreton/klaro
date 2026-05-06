@@ -1,0 +1,736 @@
+{
+  "module": "placo_cloisons",
+  "phases": [
+    {
+      "id": "preparation",
+      "label": "Préparation & conception",
+      "tasks": [
+        {
+          "id": "placo_001",
+          "title": "Définir le projet (cloisons, doublages, faux plafonds)",
+          "phase": "preparation",
+          "explanation": "Listez précisément ce que vous voulez réaliser : cloisons de séparation, doublages de murs existants, faux plafonds. Chaque ouvrage suit des règles différentes.",
+          "klaro_recommendation": "Faites un plan coté pièce par pièce avec les emplacements des cloisons, des portes et des doublages. Notez les pièces humides (SDB, cuisine, WC) qui exigent des plaques hydrofuges (vertes).",
+          "common_mistake": "Mélanger cloisons et doublages dans la même réflexion sans distinguer leurs ossatures (cloisons = ossature 70/90/100, doublages = ossature 48 minimum).",
+          "pro_recommended": false,
+          "depends_on": [],
+          "norm_reference": "DTU 25.41 §4",
+          "control_questions": [
+            { "question": "Le plan distingue-t-il cloisons, doublages et faux plafonds ?", "type": "boolean", "expected": "true" },
+            { "question": "Les pièces humides sont-elles identifiées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_002",
+          "title": "Choisir le type de plaques",
+          "phase": "preparation",
+          "explanation": "BA13 standard (12,5 mm, blanche) pour la majorité des pièces. Hydrofuge (verte) pour pièces humides. Feu (rose) pour locaux à risque. Phonique (bleue) pour isolation acoustique renforcée.",
+          "klaro_recommendation": "En SDB et cuisine : plaques hydrofuges obligatoires sur toutes les zones à proximité de l'eau. Pour une chambre près d'une voie passante ou d'une autre pièce bruyante : plaques phoniques ou doubles plaques. Notez vos choix sur le plan.",
+          "common_mistake": "Utiliser des plaques standard en salle de bain pour économiser — l'humidité dégrade le placo en quelques mois et fait gonfler les bandes.",
+          "pro_recommended": false,
+          "depends_on": ["placo_001"],
+          "norm_reference": "DTU 25.41 §5.1",
+          "control_questions": [
+            { "question": "Les plaques hydrofuges sont-elles prévues pour toutes les pièces humides ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_003",
+          "title": "Choisir l'ossature métallique",
+          "phase": "preparation",
+          "explanation": "L'ossature (rails et montants en acier galvanisé) dépend de la hauteur et de la fonction : M48 pour doublages, M70 pour cloisons standard, M90/M100 pour grandes hauteurs ou cloisons de séparation porteuses de charges.",
+          "klaro_recommendation": "Règle simple : plus la cloison est haute, plus le montant doit être large. Au-delà de 2,60 m, passez en M70 minimum. Pour une cloison entre deux logements (mitoyenne) : M90 ou M100 + double plaque + isolant.",
+          "common_mistake": "Utiliser des montants M48 pour une cloison de 2,80 m — la cloison fléchit et les plaques fissurent au bout de quelques mois.",
+          "pro_recommended": false,
+          "depends_on": ["placo_001"],
+          "norm_reference": "DTU 25.41 §5.2",
+          "control_questions": [
+            { "question": "L'ossature est-elle dimensionnée selon la hauteur de chaque cloison ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_004",
+          "title": "Vérifier la planéité du support et l'état du sol",
+          "phase": "preparation",
+          "explanation": "Avant de tracer, contrôlez que le sol est propre, plan et de niveau. Les murs existants pour les doublages doivent être sains (pas d'humidité, pas d'effritement).",
+          "klaro_recommendation": "Tolérance de planéité du sol : 5 mm sous une règle de 2 m. Si le sol présente des creux importants, la cloison sera bancale. Pour les doublages, traitez l'humidité du mur avant de poser, sinon elle migrera.",
+          "common_mistake": "Poser une cloison sur un sol non plan en se disant que les rails compenseront — la cloison se voit gondolée à la fin.",
+          "pro_recommended": false,
+          "depends_on": ["placo_001"],
+          "norm_reference": "DTU 25.41 §6.1",
+          "control_questions": [
+            { "question": "La planéité du sol est-elle vérifiée (≤ 5 mm sous règle 2 m) ?", "type": "boolean", "expected": "true" },
+            { "question": "Le mur support des doublages est-il sain et sec ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_005",
+          "title": "Calculer les quantités de matériaux",
+          "phase": "preparation",
+          "explanation": "Comptez les plaques, l'ossature (rails + montants), les vis (TTPC = Tête Trompette Phosphatée), les bandes à joints, l'enduit et l'isolant.",
+          "klaro_recommendation": "Ajoutez systématiquement 10% de chutes sur les plaques. Pour les vis : compter ~25 vis par plaque (vis tous les 30 cm). Pour l'enduit : ~1,2 kg par m² de surface à traiter. Achetez tout d'un coup pour avoir le même lot.",
+          "common_mistake": "Acheter les plaques au coup par coup et se retrouver avec des lots différents qui réagissent différemment à la peinture.",
+          "pro_recommended": false,
+          "depends_on": ["placo_002", "placo_003"],
+          "norm_reference": "",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "tracage",
+      "label": "Traçage & implantation",
+      "tasks": [
+        {
+          "id": "placo_006",
+          "title": "Tracer l'implantation au sol",
+          "phase": "tracage",
+          "explanation": "Reportez les axes des cloisons sur le sol au cordeau à craie, en respectant les cotes du plan. C'est le moment de vérifier toutes les dimensions des futures pièces.",
+          "klaro_recommendation": "Travaillez à partir d'un mur de référence et reportez les distances avec un mètre laser. Tracez deux traits parallèles correspondant aux deux faces de la cloison (épaisseur totale = ossature + 2 plaques de 13 mm = 96 mm pour M70). Vérifiez les angles à l'équerre.",
+          "common_mistake": "Tracer un seul trait au milieu de la future cloison — au moment de poser le rail, on ne sait plus de quel côté est la pièce et l'erreur de quelques cm fausse toute la pièce.",
+          "pro_recommended": false,
+          "depends_on": ["placo_004"],
+          "norm_reference": "DTU 25.41 §6.2",
+          "control_questions": [
+            { "question": "Les angles entre cloisons sont-ils vérifiés à l'équerre ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_007",
+          "title": "Reporter le tracé au plafond",
+          "phase": "tracage",
+          "explanation": "Le tracé du sol doit être reporté au plafond exactement à l'aplomb, à l'aide d'un fil à plomb ou d'un laser à aplomb.",
+          "klaro_recommendation": "Le laser à aplomb est l'outil le plus précis (~50 € en location). Vérifiez à plusieurs endroits le long du tracé que le report est bien parallèle au sol. Si la pièce est très haute, faites attention aux courants d'air qui font dévier le fil à plomb.",
+          "common_mistake": "Reporter au pifomètre et obtenir une cloison qui penche d'un cm sur 2,5 m de hauteur — visible à l'œil nu une fois finie.",
+          "pro_recommended": false,
+          "depends_on": ["placo_006"],
+          "norm_reference": "DTU 25.41 §6.2",
+          "control_questions": [
+            { "question": "L'aplomb a-t-il été vérifié sur toute la longueur du tracé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_008",
+          "title": "Identifier les emplacements des huisseries",
+          "phase": "tracage",
+          "explanation": "Marquez sur le tracé l'emplacement exact des futures portes (largeur passage + jeu de pose) et autres ouvertures (passe-plats, baies vitrées).",
+          "klaro_recommendation": "Pour une porte de 83 cm (largeur passage), prévoyez 88-90 cm de largeur de pré-cadre dans la cloison. Notez bien le sens d'ouverture sur le tracé pour orienter les renforts d'ossature côté gond.",
+          "common_mistake": "Oublier de matérialiser les portes dans l'ossature et devoir tout démonter pour ajouter le renfort une fois les plaques posées.",
+          "pro_recommended": false,
+          "depends_on": ["placo_006"],
+          "norm_reference": "",
+          "control_questions": []
+        }
+      ]
+    },
+    {
+      "id": "ossature",
+      "label": "Pose de l'ossature",
+      "tasks": [
+        {
+          "id": "placo_009",
+          "title": "Poser les rails au sol avec bande résiliente",
+          "phase": "ossature",
+          "explanation": "Les rails se fixent au sol par chevilles ou vis (chaque 60 cm). Une bande résiliente (mousse adhésive) entre le rail et le sol limite les transmissions phoniques.",
+          "klaro_recommendation": "Bande résiliente OBLIGATOIRE pour le confort acoustique : 3 mm d'épaisseur minimum, posée sous tout le linéaire de rail. Sans elle, les bruits de pas du sol se transmettent aux cloisons. Coupez les rails à la grignoteuse ou à la scie à métaux, jamais à la disqueuse (étincelles + déformation).",
+          "common_mistake": "Oublier la bande résiliente — la cloison devient un tambour qui amplifie tous les bruits du sol.",
+          "pro_recommended": false,
+          "depends_on": ["placo_007"],
+          "norm_reference": "DTU 25.41 §7.1",
+          "control_questions": [
+            { "question": "Une bande résiliente est-elle posée sous tous les rails au sol ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_010",
+          "title": "Poser les rails hauts au plafond",
+          "phase": "ossature",
+          "explanation": "Les rails hauts se fixent au plafond exactement à l'aplomb des rails au sol. Une bande résiliente est aussi recommandée en partie haute.",
+          "klaro_recommendation": "Si le plafond est en placo (faux plafond non porteur), fixez le rail directement dans la structure (solives, fourrures) — pas seulement dans le placo qui ne tient pas la charge. Utilisez des chevilles à expansion adaptées au support.",
+          "common_mistake": "Fixer le rail haut sur du placo sans cheville molly — la cloison s'arrache au premier choc.",
+          "pro_recommended": false,
+          "depends_on": ["placo_009"],
+          "norm_reference": "DTU 25.41 §7.1",
+          "control_questions": [
+            { "question": "Les rails hauts sont-ils fixés dans la structure (pas seulement dans le placo) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_011",
+          "title": "Poser les montants verticaux",
+          "phase": "ossature",
+          "explanation": "Les montants se glissent dans les rails haut et bas, à un entraxe de 60 cm (mesuré d'axe à axe). Cet entraxe correspond à la largeur des plaques et garantit que chaque joint tombe sur un montant.",
+          "klaro_recommendation": "Vissez les montants aux rails uniquement aux extrémités et aux angles. Au milieu du parcours, les montants doivent rester libres pour absorber les dilatations. Vérifiez l'aplomb de chaque montant au niveau à bulle.",
+          "common_mistake": "Visser tous les montants partout — la cloison ne peut plus respirer et fissure aux changements de température.",
+          "pro_recommended": false,
+          "depends_on": ["placo_010"],
+          "norm_reference": "DTU 25.41 §7.2",
+          "control_questions": [
+            { "question": "L'entraxe des montants est-il bien de 60 cm ?", "type": "boolean", "expected": "true" },
+            { "question": "Chaque montant est-il d'aplomb ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_012",
+          "title": "Renforcer les huisseries",
+          "phase": "ossature",
+          "explanation": "Aux emplacements de portes, doublez les montants côté gond et côté serrure. Posez un linteau (rail horizontal) au-dessus du pré-cadre.",
+          "klaro_recommendation": "Côté gond : double montant solidarisé (visser deux montants ensemble). Le pré-cadre métallique de la porte se fixe sur ces renforts. Sans ce doublage, la porte s'affaisse au bout de quelques mois et frotte sur le sol.",
+          "common_mistake": "Utiliser un seul montant côté gond — le poids de la porte fait fléchir le montant et la porte ne ferme plus correctement.",
+          "pro_recommended": false,
+          "depends_on": ["placo_011"],
+          "norm_reference": "DTU 25.41 §7.3",
+          "control_questions": [
+            { "question": "Les montants côté gond et côté serrure sont-ils doublés ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_013",
+          "title": "Prévoir les renforts pour fixations lourdes",
+          "phase": "ossature",
+          "explanation": "TV murale, meubles suspendus, plan vasque, lavabo, radiateur, barre de douche : ces éléments se fixent dans des renforts intégrés à l'ossature, jamais directement dans le placo.",
+          "klaro_recommendation": "Posez une plaque de bois CP 22 mm entre deux montants à l'emplacement précis de la future fixation, ou un montant horizontal supplémentaire. Photographiez et notez les positions sur un plan — vous en aurez besoin pour percer au bon endroit après la pose des plaques.",
+          "common_mistake": "Oublier les renforts et tenter de fixer un meuble lourd dans le placo seul — chevilles arrachées et meuble qui tombe.",
+          "pro_recommended": true,
+          "depends_on": ["placo_011"],
+          "norm_reference": "DTU 25.41 §7.4",
+          "control_questions": [
+            { "question": "Les renforts pour fixations lourdes (TV, meubles, vasque) sont-ils en place ?", "type": "boolean", "expected": "true" },
+            { "question": "Les positions des renforts sont-elles documentées (photos + plan) ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "passages_techniques",
+      "label": "Passages techniques",
+      "tasks": [
+        {
+          "id": "placo_014",
+          "title": "Faire passer les gaines électriques avant fermeture",
+          "phase": "passages_techniques",
+          "explanation": "Les gaines ICTA (orange) doivent passer dans l'ossature AVANT la pose de la première plaque. Les montants ont des passages prédécoupés (oblongs).",
+          "klaro_recommendation": "Coordonnez avec l'électricien : il vient tirer ses gaines pendant que l'ossature est ouverte. Vérifiez que toutes les gaines arrivent bien aux emplacements prévus pour les boîtes électriques. Une fois la première plaque posée, le passage devient impossible.",
+          "common_mistake": "Fermer la cloison avant que l'électricien ait fini ses gaines — devoir tout rouvrir ou tirer les câbles en apparent.",
+          "pro_recommended": false,
+          "depends_on": ["placo_013"],
+          "norm_reference": "NF C 15-100 §5.2",
+          "control_questions": [
+            { "question": "Toutes les gaines électriques sont-elles passées et en place ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_015",
+          "title": "Préparer les sorties pour boîtes électriques",
+          "phase": "passages_techniques",
+          "explanation": "Les boîtes d'encastrement (placo) seront fixées plus tard, mais leurs emplacements doivent être repérés sur les montants et les gaines doivent y arriver.",
+          "klaro_recommendation": "Repérez sur le rail haut ou sur les montants la hauteur exacte des prises (5 cm mini sol) et interrupteurs (90-130 cm). Notez le repérage avec un marqueur indélébile pour retrouver les positions après pose des plaques.",
+          "common_mistake": "Ne pas marquer les emplacements et chercher au pifomètre où percer les plaques — souvent à côté du montant, donc fixation impossible.",
+          "pro_recommended": false,
+          "depends_on": ["placo_014"],
+          "norm_reference": "NF C 15-100 §7.3",
+          "control_questions": []
+        },
+        {
+          "id": "placo_016",
+          "title": "Préparer les passages plomberie/évacuation",
+          "phase": "passages_techniques",
+          "explanation": "Les tuyaux d'eau (PER, multicouche) et les évacuations (PVC) doivent passer dans la cloison avant fermeture. Prévoyez des renforts si la cloison reçoit un lavabo ou un WC suspendu.",
+          "klaro_recommendation": "Pour un WC suspendu : bâti-support spécifique (Geberit ou équivalent) à monter dans la cloison technique. Cette cloison doit être renforcée (rails M90/100 doublés). Pour les tuyaux : entourez-les d'un fourreau pour absorber les dilatations et limiter les bruits.",
+          "common_mistake": "Poser un WC suspendu sur une cloison standard — le poids et les efforts arrachent la cloison.",
+          "pro_recommended": true,
+          "depends_on": ["placo_014"],
+          "norm_reference": "DTU 60.1 + DTU 25.41",
+          "control_questions": [
+            { "question": "Les renforts pour WC suspendu / lavabo sont-ils en place ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_017",
+          "title": "Vérifier la protection des gaines",
+          "phase": "passages_techniques",
+          "explanation": "Les gaines électriques traversant les montants doivent être protégées par des plaques de protection acier aux endroits où une vis pourrait les percer.",
+          "klaro_recommendation": "Avant de visser la plaque, vérifiez qu'aucune gaine ne passe à moins de 30 mm de la face intérieure du montant. Si oui, posez une plaque de protection acier (vendue en magasin de bricolage). C'est imposé par la NF C 15-100 pour la sécurité.",
+          "common_mistake": "Visser à l'aveugle dans un montant et percer un câble — court-circuit ou risque d'électrocution lors de la mise sous tension.",
+          "pro_recommended": false,
+          "depends_on": ["placo_014"],
+          "norm_reference": "NF C 15-100 §5.2.4",
+          "control_questions": [
+            { "question": "Les gaines proches des faces de montants sont-elles protégées ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "isolation",
+      "label": "Isolation entre montants",
+      "tasks": [
+        {
+          "id": "placo_018",
+          "title": "Poser l'isolant entre les montants",
+          "phase": "isolation",
+          "explanation": "Pour le confort thermique et acoustique, posez de la laine minérale (verre ou roche) entre les montants. Épaisseur adaptée à la largeur du montant : 70 mm pour M70, 100 mm pour M100.",
+          "klaro_recommendation": "Coupez la laine légèrement plus large que l'entraxe (~62 cm pour 60 cm d'entraxe) pour qu'elle se maintienne par compression. Ne tassez jamais la laine : compressée, elle perd son pouvoir isolant. Portez un masque, gants et lunettes.",
+          "common_mistake": "Tasser la laine pour la faire rentrer ou laisser des trous — ponts thermiques garantis et résultat acoustique médiocre.",
+          "pro_recommended": false,
+          "depends_on": ["placo_017"],
+          "norm_reference": "DTU 25.41 §8 + RE2020",
+          "control_questions": [
+            { "question": "L'isolant est-il posé sans tassement ni vide ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_019",
+          "title": "Vérifier la continuité de l'isolant",
+          "phase": "isolation",
+          "explanation": "Aucune zone ne doit être laissée sans isolant : recoupes, contours d'huisseries, angles. Tout vide est un pont thermique ou phonique.",
+          "klaro_recommendation": "Faites un tour complet en regardant à contre-jour ou avec une lampe torche : aucun vide ne doit être visible. Aux angles et autour des huisseries, calez avec des chutes de laine. Photographiez avant fermeture (preuve pour MaPrimeRénov' / CEE si applicable).",
+          "common_mistake": "Laisser des vides aux angles ou derrière les rails de portes — la chaleur s'échappe et l'humidité condense à ces points froids.",
+          "pro_recommended": false,
+          "depends_on": ["placo_018"],
+          "norm_reference": "DTU 25.41 §8 + RE2020",
+          "control_questions": [
+            { "question": "Aucun vide n'est-il visible dans l'isolant ?", "type": "boolean", "expected": "true" },
+            { "question": "Les photos avant fermeture sont-elles archivées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_020",
+          "title": "Poser un pare-vapeur (côté chaud)",
+          "phase": "isolation",
+          "explanation": "Sur les doublages de murs extérieurs et sous toiture, un pare-vapeur (film plastique) côté intérieur empêche l'humidité de l'air de migrer dans l'isolant.",
+          "klaro_recommendation": "Le pare-vapeur se pose TOUJOURS du côté chaud (intérieur du logement). Recouvrez les lés avec 10 cm de chevauchement et scotchez avec un adhésif spécifique (pas du scotch standard). Soignez les jonctions autour des prises, des huisseries et au sol.",
+          "common_mistake": "Oublier le pare-vapeur ou le poser côté froid — l'humidité s'accumule dans l'isolant qui perd son efficacité et favorise les moisissures.",
+          "pro_recommended": true,
+          "depends_on": ["placo_018"],
+          "norm_reference": "DTU 31.2 + DTU 25.41 + RE2020",
+          "control_questions": [
+            { "question": "Le pare-vapeur est-il posé côté chaud (intérieur) ?", "type": "boolean", "expected": "true" },
+            { "question": "Les jonctions sont-elles étanchéisées avec un adhésif spécifique ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pose_plaques",
+      "label": "Pose des plaques",
+      "tasks": [
+        {
+          "id": "placo_021",
+          "title": "Poser la première face de plaques",
+          "phase": "pose_plaques",
+          "explanation": "Vissez les plaques sur les montants avec des vis TTPC (Tête Trompette Phosphatée Crucifère, 25 mm pour BA13 sur ossature 0,6 mm), espacées de 30 cm sur les montants intermédiaires et de 15 cm sur les bords.",
+          "klaro_recommendation": "Démarrez par le bas, plaque entière contre l'angle. Laissez 1 cm de jeu en pied (le bas sera caché par la plinthe). Les plaques se posent en hauteur (1,20 m × 2,50 m), les joints horizontaux sont à éviter — préférez des plaques de la hauteur de la pièce.",
+          "common_mistake": "Visser trop fort et casser le carton de surface — la plaque ne tient plus et le joint sera impossible à faire correctement.",
+          "pro_recommended": false,
+          "depends_on": ["placo_019", "placo_017"],
+          "norm_reference": "DTU 25.41 §9.1",
+          "control_questions": [
+            { "question": "Les vis sont-elles enfoncées sans casser le carton ?", "type": "boolean", "expected": "true" },
+            { "question": "L'entraxe des vis est-il respecté (30 cm centre / 15 cm bords) ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_022",
+          "title": "Découpe propre des plaques",
+          "phase": "pose_plaques",
+          "explanation": "Les plaques se coupent au cutter : tracez à la règle, entaillez le carton de surface, cassez la plaque, coupez le carton verso. Ne jamais utiliser une scie circulaire (poussière + bord déchiqueté).",
+          "klaro_recommendation": "Pour les découpes complexes (boîtes électriques, tuyaux), utilisez une scie cloche ou un outil oscillant. Vérifiez à blanc avant de visser : la plaque doit s'emboîter sans forcer. Une découpe trop petite force la plaque, une trop grande laisse un jour difficile à reboucher.",
+          "common_mistake": "Couper la plaque à la disqueuse — bord arraché, plaque cassée et impossible à finir proprement avec les bandes à joints.",
+          "pro_recommended": false,
+          "depends_on": ["placo_021"],
+          "norm_reference": "DTU 25.41 §9.1",
+          "control_questions": []
+        },
+        {
+          "id": "placo_023",
+          "title": "Poser la seconde face avec joints décalés",
+          "phase": "pose_plaques",
+          "explanation": "Sur une cloison à double parement (double plaque), la seconde face se pose avec les joints décalés par rapport à la première (au moins un montant d'écart) pour éviter les fissures.",
+          "klaro_recommendation": "Le décalage des joints est ce qui donne sa résistance phonique et mécanique à la cloison. Démarrez la seconde face avec une demi-plaque pour décaler. Vissez avec les mêmes règles d'entraxe que la première face.",
+          "common_mistake": "Aligner les joints des deux faces — la cloison fissure le long du joint au moindre choc ou changement thermique.",
+          "pro_recommended": false,
+          "depends_on": ["placo_021"],
+          "norm_reference": "DTU 25.41 §9.2",
+          "control_questions": [
+            { "question": "Les joints des deux faces sont-ils décalés d'au moins un montant ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_024",
+          "title": "Plaques spéciales en pièces humides",
+          "phase": "pose_plaques",
+          "explanation": "En SDB, cuisine et WC, utilisez des plaques hydrofuges (vertes) au minimum sur tous les murs concernés par l'eau. En zone douche/baignoire, prévoyez un système d'étanchéité complémentaire (SPEC = Système de Protection à l'Eau sous Carrelage).",
+          "klaro_recommendation": "Hydrofuge ne veut pas dire étanche : sous une douche italienne, posez en plus un SPEC (résine + bande d'étanchéité aux angles) avant le carrelage. Sans SPEC, la plaque se gorge d'eau au bout de 6 mois.",
+          "common_mistake": "Penser que la plaque hydrofuge suffit sous une douche — l'eau finit toujours par traverser le carrelage et atteindre la plaque.",
+          "pro_recommended": true,
+          "depends_on": ["placo_021"],
+          "norm_reference": "DTU 25.41 §9.3 + DTU 52.2",
+          "control_questions": [
+            { "question": "Les plaques hydrofuges sont-elles posées dans toutes les pièces humides ?", "type": "boolean", "expected": "true" },
+            { "question": "Un SPEC est-il prévu en zone douche / baignoire ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_025",
+          "title": "Photos de validation avant fermeture définitive",
+          "phase": "pose_plaques",
+          "explanation": "Avant la pose de la seconde face (ou de la première en doublage), photographiez l'intérieur de la cloison : isolant, gaines, renforts, pare-vapeur. Ces photos sont vos preuves en cas de litige.",
+          "klaro_recommendation": "Photographiez chaque cloison sur toute sa longueur, en notant la pièce et la date. Archivez ces photos avec votre dossier travaux. Indispensables pour : faire valoir une garantie, retrouver l'emplacement d'une fixation, justifier MaPrimeRénov' / CEE.",
+          "common_mistake": "Fermer la cloison sans aucune photo — impossible de justifier les travaux faits ou de retrouver un renfort caché.",
+          "pro_recommended": false,
+          "depends_on": ["placo_023"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Les photos avant fermeture sont-elles prises et archivées ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faux_plafond",
+      "label": "Faux plafond",
+      "tasks": [
+        {
+          "id": "placo_026",
+          "title": "Tracer le niveau du faux plafond au laser",
+          "phase": "faux_plafond",
+          "explanation": "Le niveau du futur faux plafond se trace au laser rotatif sur le pourtour des murs, à hauteur égale partout. Cette ligne sert de référence pour fixer les cornières.",
+          "klaro_recommendation": "Prenez votre référence depuis le sol fini (ou la chape). Hauteur courante : 2,30 m à 2,50 m. Conservez au minimum 30 cm entre le faux plafond et la dalle pour passer les gaines, les conduits VMC et l'éclairage encastré.",
+          "common_mistake": "Tracer le niveau depuis l'ancien plafond bancal — le faux plafond reproduit le défaut au lieu de le corriger.",
+          "pro_recommended": false,
+          "depends_on": ["placo_001"],
+          "norm_reference": "DTU 25.41 §10.1",
+          "control_questions": [
+            { "question": "Le niveau est-il tracé depuis le sol fini, pas depuis l'ancien plafond ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_027",
+          "title": "Poser fourrures et suspentes",
+          "phase": "faux_plafond",
+          "explanation": "Les suspentes (tiges métalliques) se fixent au plafond porteur tous les 90 cm. Les fourrures (rails métalliques) s'accrochent dessous, perpendiculairement, à un entraxe de 60 cm.",
+          "klaro_recommendation": "Les suspentes doivent être fixées dans la structure (solives bois, dalle béton), jamais dans un faux plafond existant. Sur dalle béton : chevilles à frapper ou chevilles métalliques. Sur poutre bois : tirefonds. Vérifiez le niveau des fourrures à plusieurs endroits avec une règle de 2 m.",
+          "common_mistake": "Espacer les suspentes de plus de 90 cm pour économiser — le plafond fléchit visiblement entre les fixations.",
+          "pro_recommended": false,
+          "depends_on": ["placo_026"],
+          "norm_reference": "DTU 25.41 §10.2",
+          "control_questions": [
+            { "question": "L'entraxe des suspentes est-il ≤ 90 cm ?", "type": "boolean", "expected": "true" },
+            { "question": "L'entraxe des fourrures est-il de 60 cm ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_028",
+          "title": "Visser les plaques au plafond",
+          "phase": "faux_plafond",
+          "explanation": "Les plaques se vissent sur les fourrures avec des vis TTPC 25 mm, espacées de 25-30 cm. Les joints sont décalés sur deux fourrures consécutives (joints non alignés).",
+          "klaro_recommendation": "Travaillez à deux : un qui maintient la plaque (avec un T en bois ou un lève-plaque), un qui visse. Le lève-plaque (location ~25 €/jour) est très utile pour des pièces grandes. Démarrez par un coin et progressez en quinconce.",
+          "common_mistake": "Tenter de poser seul une plaque de plafond entière — chute fréquente et plaque cassée.",
+          "pro_recommended": false,
+          "depends_on": ["placo_027"],
+          "norm_reference": "DTU 25.41 §10.3",
+          "control_questions": [
+            { "question": "Les joints des plaques de plafond sont-ils décalés ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bandes_finitions",
+      "label": "Bandes & finitions",
+      "tasks": [
+        {
+          "id": "placo_029",
+          "title": "Apprêter les têtes de vis",
+          "phase": "bandes_finitions",
+          "explanation": "Avant de poser les bandes, recouvrez chaque tête de vis avec un peu d'enduit pour éviter qu'elle ne ressorte (effet ponçage) et qu'elle ne rouille (tache jaune sous la peinture).",
+          "klaro_recommendation": "Utilisez un enduit à joint en pâte (prêt à l'emploi) ou en poudre (à mélanger). Passez deux couches fines plutôt qu'une grosse, en ponçant légèrement entre les deux. Cette étape évite les défauts visibles sous lumière rasante.",
+          "common_mistake": "Sauter cette étape et voir toutes les têtes de vis ressortir sous la peinture en éclairage rasant.",
+          "pro_recommended": false,
+          "depends_on": ["placo_023", "placo_028"],
+          "norm_reference": "DTU 25.41 §11.1",
+          "control_questions": []
+        },
+        {
+          "id": "placo_030",
+          "title": "Poser les bandes à joints",
+          "phase": "bandes_finitions",
+          "explanation": "Les bandes (calicot papier ou bande armée fibre de verre) couvrent les joints entre plaques pour éviter les fissures. Elles se posent sur une première passe d'enduit frais.",
+          "klaro_recommendation": "Étalez d'abord un cordon d'enduit dans le creux du joint. Posez la bande, marouflez avec une spatule pour évacuer l'air et l'excès d'enduit. Pour les angles : pliez la bande à 90° avant de la poser. Aux angles sortants, utilisez des cornières métalliques.",
+          "common_mistake": "Poser la bande à sec puis enduire dessus — la bande cloque et le joint fissure dès la première année.",
+          "pro_recommended": false,
+          "depends_on": ["placo_029"],
+          "norm_reference": "DTU 25.41 §11.2",
+          "control_questions": [
+            { "question": "Les bandes sont-elles posées sur enduit frais et bien marouflées ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_031",
+          "title": "Première passe d'enduit (garnissage)",
+          "phase": "bandes_finitions",
+          "explanation": "Une fois les bandes posées et sèches, recouvrez-les d'une couche d'enduit qui dépasse de 10-15 cm de chaque côté du joint pour fondre la transition avec la plaque.",
+          "klaro_recommendation": "Travaillez avec une spatule large (30 cm minimum). Tirez l'enduit en passes longues et appuyées. Laissez sécher complètement (24h à 48h selon humidité) avant de poncer ou de passer la couche suivante.",
+          "common_mistake": "Faire une couche trop épaisse pour gagner du temps — elle craquelle en séchant et il faut tout reprendre.",
+          "pro_recommended": false,
+          "depends_on": ["placo_030"],
+          "norm_reference": "DTU 25.41 §11.2",
+          "control_questions": []
+        },
+        {
+          "id": "placo_032",
+          "title": "Ponçage entre les passes",
+          "phase": "bandes_finitions",
+          "explanation": "Entre les passes d'enduit, un ponçage léger égalise la surface et fait disparaître les marques de spatule.",
+          "klaro_recommendation": "Utilisez un grain 120 sur cale ou ponceuse girafe (avec aspiration sinon poussière partout). Travaillez avec une lampe tenue de biais pour faire ressortir les défauts. Portez un masque FFP3 et des lunettes — la poussière de placo est très fine.",
+          "common_mistake": "Poncer trop fort et entamer le carton de la plaque — il faudra reboucher avant de continuer.",
+          "pro_recommended": false,
+          "depends_on": ["placo_031"],
+          "norm_reference": "",
+          "control_questions": []
+        },
+        {
+          "id": "placo_033",
+          "title": "Deuxième passe d'enduit (lissage)",
+          "phase": "bandes_finitions",
+          "explanation": "La deuxième passe est plus large que la première (30 cm de chaque côté du joint) et plus fine, pour parfaire le fondu avec la plaque.",
+          "klaro_recommendation": "Diluez légèrement l'enduit pour qu'il soit plus crémeux. Tirez en passes très longues et appuyées. C'est cette couche qui détermine la qualité finale visible — soignez-la particulièrement aux angles et aux jonctions plafond/mur.",
+          "common_mistake": "Faire une seconde passe trop épaisse — elle masque les défauts mais en crée de nouveaux (vagues, marques).",
+          "pro_recommended": false,
+          "depends_on": ["placo_032"],
+          "norm_reference": "DTU 25.41 §11.2",
+          "control_questions": []
+        },
+        {
+          "id": "placo_034",
+          "title": "Ponçage final",
+          "phase": "bandes_finitions",
+          "explanation": "Dernier ponçage à grain fin (180 ou 220) pour préparer la surface à la peinture. La paroi doit être totalement lisse au toucher.",
+          "klaro_recommendation": "Inspectez avec une lampe tenue rasante : le moindre défaut se voit. Reprenez les défauts à l'enduit fin (couteau japonais), reponcez localement. Cette étape conditionne le rendu final de la peinture — ne la bâclez pas.",
+          "common_mistake": "Ne poncer qu'au gros grain — la peinture révèle toutes les rayures du papier abrasif.",
+          "pro_recommended": false,
+          "depends_on": ["placo_033"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Aucun défaut n'est-il visible sous éclairage rasant ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_035",
+          "title": "Apprêt avant peinture",
+          "phase": "bandes_finitions",
+          "explanation": "Une sous-couche d'impression (apprêt) bloque la porosité du placo et harmonise l'absorption sur toute la surface (zones avec enduit + zones de plaque nue).",
+          "klaro_recommendation": "Utilisez un apprêt spécial placo (sous-couche universelle). Sans apprêt, la peinture sèche plus vite sur l'enduit que sur le placo et laisse des traces visibles (effet 'cartonnage'). Une seule couche d'apprêt suffit.",
+          "common_mistake": "Peindre directement sur le placo sans apprêt — taches visibles, jonctions enduit/plaque qui marquent à travers la peinture.",
+          "pro_recommended": false,
+          "depends_on": ["placo_034"],
+          "norm_reference": "DTU 59.1",
+          "control_questions": [
+            { "question": "Une sous-couche d'apprêt a-t-elle été appliquée ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "controle",
+      "label": "Contrôle final",
+      "tasks": [
+        {
+          "id": "placo_036",
+          "title": "Test de planéité (règle de 2 m)",
+          "phase": "controle",
+          "explanation": "Posez une règle de 2 m à plat sur le mur ou le plafond : la flèche maximale doit être de 5 mm. Au-delà, la peinture et la pose de revêtements (carrelage, papier peint) seront problématiques.",
+          "klaro_recommendation": "Contrôlez la planéité sur les zones critiques : derrière le futur plan de travail, autour des huisseries, sur les grands pans visibles. Si défaut > 5 mm, reprenez localement à l'enduit lissant avant peinture.",
+          "common_mistake": "Ne contrôler la planéité qu'à la fin et découvrir des défauts impossibles à corriger sans tout reprendre.",
+          "pro_recommended": false,
+          "depends_on": ["placo_034"],
+          "norm_reference": "DTU 25.41 §12.1",
+          "control_questions": [
+            { "question": "La planéité est-elle ≤ 5 mm sous règle de 2 m ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_037",
+          "title": "Vérification visuelle sous éclairage rasant",
+          "phase": "controle",
+          "explanation": "Avec une lampe tenue à plat contre le mur, on fait ressortir le moindre défaut : bosse, creux, marque de spatule, joint qui transparaît.",
+          "klaro_recommendation": "Faites ce test pièce par pièce, après le ponçage final et avant l'apprêt. Marquez les défauts au crayon (effaçable). Reprenez tous les points marqués avant de peindre. Une fois la peinture posée, les défauts seront définitifs.",
+          "common_mistake": "Sauter cette étape et découvrir tous les défauts une fois la peinture posée — il faudra alors poncer la peinture, reboucher, repeindre tout le mur.",
+          "pro_recommended": false,
+          "depends_on": ["placo_034"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Tous les défauts visibles à l'éclairage rasant sont-ils repris ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_038",
+          "title": "Validation des renforts cachés",
+          "phase": "controle",
+          "explanation": "Vérifiez que vous avez bien archivé : les photos de l'intérieur des cloisons (gaines, isolation, renforts), un plan avec les emplacements des renforts (TV, meubles, vasques) et les passages techniques.",
+          "klaro_recommendation": "Archivez tout dans un dossier numérique daté par pièce. Ce dossier vous servira pour : percer au bon endroit pour fixer un meuble, faire intervenir un artisan plus tard, vendre la maison. C'est aussi votre preuve en cas de sinistre.",
+          "common_mistake": "Ne rien archiver et perdre toute trace des renforts — devoir tout retrouver à la sondeuse ou casser le mur.",
+          "pro_recommended": false,
+          "depends_on": ["placo_025"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Le dossier photos + plan des renforts est-il complet et archivé ?", "type": "boolean", "expected": "true" }
+          ]
+        },
+        {
+          "id": "placo_039",
+          "title": "Réception du support pour les corps de métier suivants",
+          "phase": "controle",
+          "explanation": "Le placo terminé est le support des étapes suivantes : peinture, carrelage, papier peint. Il doit être propre, sec, plan et prêt à recevoir le revêtement final.",
+          "klaro_recommendation": "Avant peinture : surface dépoussiérée, sèche, pas de tache d'enduit qui dépasse, apprêt posé. Avant carrelage : SPEC posé en zone douche, support sain et plan. Documentez la réception (photos + checklist signée si artisan).",
+          "common_mistake": "Lancer la peinture ou le carrelage sans contrôle — les défauts du placo ressortent à travers la finition.",
+          "pro_recommended": false,
+          "depends_on": ["placo_035", "placo_036", "placo_037"],
+          "norm_reference": "",
+          "control_questions": [
+            { "question": "Le support est-il propre, sec, plan et apprêté ?", "type": "boolean", "expected": "true" }
+          ]
+        }
+      ]
+    }
+  ],
+  "blocking_points": [
+    {
+      "id": "block_001",
+      "message": "Impossible de poser la première face de plaques avant le passage des gaines électriques.",
+      "blocks_task_id": "placo_021",
+      "requires_task_id": "placo_014"
+    },
+    {
+      "id": "block_002",
+      "message": "Impossible de poser la seconde face avant validation de l'isolation et photo d'archive.",
+      "blocks_task_id": "placo_023",
+      "requires_task_id": "placo_025"
+    },
+    {
+      "id": "block_003",
+      "message": "Pas de pose d'isolation sans renforts (TV, meubles, vasques) en place.",
+      "blocks_task_id": "placo_018",
+      "requires_task_id": "placo_013"
+    },
+    {
+      "id": "block_004",
+      "message": "Pas de bandes à joints avant apprêt des têtes de vis.",
+      "blocks_task_id": "placo_030",
+      "requires_task_id": "placo_029"
+    },
+    {
+      "id": "block_005",
+      "message": "Pas de peinture (autre corps de métier) sans apprêt et sans contrôle de planéité.",
+      "blocks_task_id": "placo_039",
+      "requires_task_id": "placo_035"
+    },
+    {
+      "id": "block_006",
+      "message": "Pas de fermeture de cloison sans pare-vapeur posé côté chaud sur murs extérieurs.",
+      "blocks_task_id": "placo_021",
+      "requires_task_id": "placo_020"
+    },
+    {
+      "id": "block_007",
+      "message": "Pas de fixation lourde (TV, meuble, vasque) sans renfort intégré à l'ossature.",
+      "blocks_task_id": "placo_021",
+      "requires_task_id": "placo_013"
+    },
+    {
+      "id": "block_008",
+      "message": "Pas de carrelage en zone douche sans SPEC posé sur la plaque hydrofuge.",
+      "blocks_task_id": "placo_039",
+      "requires_task_id": "placo_024"
+    }
+  ],
+  "scoring": {
+    "progression_percent": {
+      "formula": "validated_tasks / total_tasks * 100",
+      "total_tasks": 39
+    },
+    "safety_score": {
+      "base": 100,
+      "penalties": [
+        {
+          "condition": "Renforts pour fixations lourdes absents (placo_013 non validée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Pare-vapeur absent ou mal posé (placo_020 non validée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "SPEC absent en zone douche (placo_024 échouée)",
+          "malus": 25,
+          "category": "critique"
+        },
+        {
+          "condition": "Plaques hydrofuges absentes en pièces humides (placo_002 échouée)",
+          "malus": 20,
+          "category": "critique"
+        },
+        {
+          "condition": "Photos d'archive avant fermeture absentes (placo_025 non validée)",
+          "malus": 15,
+          "category": "bloquant"
+        },
+        {
+          "condition": "Joints des deux faces non décalés (placo_023 échouée)",
+          "malus": 15,
+          "category": "bloquant"
+        },
+        {
+          "condition": "Bande résiliente absente sous rails (placo_009 échouée)",
+          "malus": 10,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Planéité hors tolérance (placo_036 échouée)",
+          "malus": 10,
+          "category": "non_conforme"
+        },
+        {
+          "condition": "Apprêt absent avant peinture (placo_035 non validée)",
+          "malus": 10,
+          "category": "non_conforme"
+        }
+      ]
+    },
+    "critical_alerts": [
+      {
+        "id": "alert_renforts",
+        "message": "Renforts pour fixations lourdes absents — risque d'arrachement des meubles fixés.",
+        "triggered_if": "placo_013 not validated",
+        "level": "danger"
+      },
+      {
+        "id": "alert_pare_vapeur",
+        "message": "Pare-vapeur manquant ou mal posé — humidité dans l'isolant et moisissures à venir.",
+        "triggered_if": "placo_020 not validated AND mur_exterieur",
+        "level": "danger"
+      },
+      {
+        "id": "alert_spec",
+        "message": "SPEC absent en zone douche — infiltration garantie dans la cloison.",
+        "triggered_if": "placo_024 not validated AND zone_douche",
+        "level": "danger"
+      },
+      {
+        "id": "alert_photos",
+        "message": "Photos avant fermeture absentes — preuve impossible des renforts cachés et de l'isolation.",
+        "triggered_if": "placo_025 not validated",
+        "level": "bloquant"
+      },
+      {
+        "id": "alert_planeite",
+        "message": "Planéité hors tolérance — défauts visibles sous peinture et pose de carrelage compromise.",
+        "triggered_if": "placo_036 not validated",
+        "level": "bloquant"
+      }
+    ]
+  }
+}
