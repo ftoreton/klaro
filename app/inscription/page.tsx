@@ -4,15 +4,64 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import MarketingShell from '@/components/marketing/MarketingShell';
+import GoogleButton from '@/components/auth/GoogleButton';
+import { createClient } from '@/lib/supabase/client';
 
 export default function InscriptionPage() {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [info, setInfo] = useState<string | null>(null);
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setError(null);
+    setInfo(null);
+
+    const formData = new FormData(e.currentTarget);
+    const prenom = String(formData.get('prenom') ?? '').trim();
+    const email = String(formData.get('email') ?? '').trim();
+    const password = String(formData.get('pwd') ?? '');
+    const password2 = String(formData.get('pwd2') ?? '');
+
+    if (password !== password2) {
+      setError('Les deux mots de passe ne correspondent pas.');
+      return;
+    }
+
+    if (password.length < 8) {
+      setError('Le mot de passe doit faire au moins 8 caractères.');
+      return;
+    }
+
     setSubmitting(true);
-    setTimeout(() => router.push('/questionnaire'), 250);
+    const supabase = createClient();
+
+    const { data, error: signUpError } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: `${window.location.origin}/auth/callback?next=/questionnaire`,
+        data: { prenom },
+      },
+    });
+
+    if (signUpError) {
+      setSubmitting(false);
+      setError(signUpError.message);
+      return;
+    }
+
+    // Selon la config Supabase, l'email de confirmation est envoyé OU pas.
+    // Si une session existe déjà → on enchaîne directement sur le questionnaire.
+    if (data.session) {
+      router.push('/questionnaire');
+    } else {
+      setSubmitting(false);
+      setInfo(
+        "Compte créé. Vérifiez votre boîte mail pour confirmer votre adresse, puis revenez vous connecter.",
+      );
+    }
   }
 
   return (
@@ -28,26 +77,33 @@ export default function InscriptionPage() {
             <p className="mk-auth-sub">Créez votre compte gratuitement</p>
           </div>
 
+          <GoogleButton next="/questionnaire" />
+
+          <div className="mk-auth-divider"><span>ou</span></div>
+
           <form className="mk-form" onSubmit={onSubmit}>
             <div className="mk-field">
               <label className="mk-label" htmlFor="prenom">Prénom</label>
-              <input id="prenom" className="mk-input" type="text" autoComplete="given-name" required />
+              <input id="prenom" name="prenom" className="mk-input" type="text" autoComplete="given-name" required />
             </div>
 
             <div className="mk-field">
               <label className="mk-label" htmlFor="email">Email</label>
-              <input id="email" className="mk-input" type="email" autoComplete="email" required />
+              <input id="email" name="email" className="mk-input" type="email" autoComplete="email" required />
             </div>
 
             <div className="mk-field">
               <label className="mk-label" htmlFor="pwd">Mot de passe</label>
-              <input id="pwd" className="mk-input" type="password" autoComplete="new-password" minLength={8} required />
+              <input id="pwd" name="pwd" className="mk-input" type="password" autoComplete="new-password" minLength={8} required />
             </div>
 
             <div className="mk-field">
               <label className="mk-label" htmlFor="pwd2">Confirmer le mot de passe</label>
-              <input id="pwd2" className="mk-input" type="password" autoComplete="new-password" minLength={8} required />
+              <input id="pwd2" name="pwd2" className="mk-input" type="password" autoComplete="new-password" minLength={8} required />
             </div>
+
+            {error && <div className="mk-auth-error">{error}</div>}
+            {info && <div className="mk-auth-info">{info}</div>}
 
             <button type="submit" className="mk-submit" disabled={submitting}>
               {submitting ? 'Création…' : 'Créer mon compte'}
