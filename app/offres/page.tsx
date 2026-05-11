@@ -103,7 +103,7 @@ export default function PricingPage() {
               </ul>
 
               <div className="mk-pricing-cta">
-                <Link href="/questionnaire" className="mk-btn mk-btn-accent">
+                <Link href="/inscription" className="mk-btn mk-btn-accent">
                   Commencer mon chantier
                 </Link>
               </div>

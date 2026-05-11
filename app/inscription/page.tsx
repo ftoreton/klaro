@@ -41,7 +41,7 @@ export default function InscriptionPage() {
       email,
       password,
       options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback?next=/questionnaire`,
+        emailRedirectTo: `${window.location.origin}/auth/callback?next=/onboarding`,
         data: { prenom },
       },
     });
@@ -53,9 +53,9 @@ export default function InscriptionPage() {
     }
 
     // Selon la config Supabase, l'email de confirmation est envoyé OU pas.
-    // Si une session existe déjà → on enchaîne directement sur le questionnaire.
+    // Si une session existe déjà → on enchaîne directement sur l'onboarding.
     if (data.session) {
-      router.push('/questionnaire');
+      router.push('/onboarding');
     } else {
       setSubmitting(false);
       setInfo(
@@ -77,7 +77,7 @@ export default function InscriptionPage() {
             <p className="mk-auth-sub">Créez votre compte gratuitement</p>
           </div>
 
-          <GoogleButton next="/questionnaire" />
+          <GoogleButton next="/onboarding" />
 
           <div className="mk-auth-divider"><span>ou</span></div>
 

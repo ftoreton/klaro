@@ -1,93 +1,84 @@
-'use client';
-
-import { useKlaro } from '@/app/providers';
+import { redirect } from 'next/navigation';
+import {
+  getCurrentProject,
+  getCurrentUser,
+  getProjectTasks,
+} from '@/lib/supabase/queries';
+import { TRADE_LABEL_BY_KEY } from '@/data/onboarding/trades';
+import { loadTrade } from '@/lib/onboarding/loader';
+import type { TradeKey } from '@/data/onboarding/trades';
 import Sidebar from '@/components/layout/Sidebar';
 import Topbar from '@/components/layout/Topbar';
 import MobileNav from '@/components/layout/MobileNav';
-import ScoreCard from '@/components/dashboard/ScoreCard';
-import NextAction from '@/components/dashboard/NextAction';
-import TasksList from '@/components/dashboard/TasksList';
-import AlertStrip from '@/components/dashboard/AlertStrip';
-import Toast from '@/components/ui/Toast';
-import ScenarioPanel from '@/components/ScenarioPanel';
+import DashboardClient from './DashboardClient';
+import './dashboard.css';
 
-export default function DashboardPage() {
-  const {
-    state,
-    result,
-    toast,
-    scenarioKey,
-    onValidate,
-    onLater,
-    changeScenario,
-    resetScenario,
-  } = useKlaro();
+export const dynamic = 'force-dynamic';
 
-  const { score, todays, alerts, stats } = result;
-  const topAlert = alerts[0];
-  const nextTask = todays[0];
-  const restTasks = todays.slice(1);
-  const pendingCount = state.tasks.filter((t) => t.statut !== 'terminé').length;
+const PROJECT_TYPE_LABEL: Record<string, string> = {
+  renovation_totale: 'Rénovation totale',
+  renovation_partielle: 'Rénovation partielle',
+  extension: 'Extension',
+  construction_neuve: 'Construction neuve',
+};
+
+export default async function DashboardPage() {
+  const user = await getCurrentUser();
+  if (!user) redirect('/connexion?redirect=/dashboard');
+
+  const project = await getCurrentProject();
+  if (!project) redirect('/onboarding');
+
+  const tasks = await getProjectTasks(project.id);
+
+  // Score: done/total - blocking*8, plancher 20.
+  const total = tasks.length;
+  const done = tasks.filter((t) => t.status === 'done').length;
+  const blockingPending = tasks.filter((t) => t.is_blocking && t.status !== 'done').length;
+  const completion = total > 0 ? Math.round((done / total) * 100) : 0;
+  const score = total === 0 ? 100 : Math.max(20, Math.min(100, completion - blockingPending * 8));
+  const tone: 'success' | 'warn' | 'danger' = score >= 75 ? 'success' : score >= 50 ? 'warn' : 'danger';
+
+  // Métadonnées des trades + libellés des phases présentes — chargés depuis
+  // le loader (source de vérité). Permet de regrouper joliment côté client.
+  const tradesInTasks = Array.from(new Set(tasks.map((t) => t.trade_key))) as TradeKey[];
+  const tradeMeta = tradesInTasks.map((key) => {
+    const meta = TRADE_LABEL_BY_KEY[key];
+    const loaded = loadTrade(key);
+    const phaseLabels: Record<string, string> = {};
+    for (const p of loaded.phases) phaseLabels[p.id] = p.label;
+    return {
+      key,
+      label: meta?.label ?? key,
+      icon: meta?.icon ?? '🛠️',
+      phaseLabels,
+    };
+  });
+
+  const projectSummary = `${project.name} · ${PROJECT_TYPE_LABEL[project.type] ?? project.type}`;
 
   return (
     <div className="app-shell">
-      <Sidebar alertCount={alerts.length} />
+      <Sidebar alertCount={blockingPending} />
 
       <div className="kb-content">
-        <Topbar
-          title="Tableau de bord"
-          project={`${state.project.nom} · ${state.project.lieu} · ${state.project.jour}`}
-        />
+        <Topbar title="Tableau de bord" project={projectSummary} />
 
         <div className="kb-main">
-          <ScoreCard score={score} stats={stats} alertCount={alerts.length} />
-
-          {topAlert && <AlertStrip alert={topAlert} />}
-
-          {nextTask && (
-            <NextAction
-              task={nextTask}
-              allTasks={state.tasks}
-              onValidate={onValidate}
-              onLater={onLater}
-            />
-          )}
-
-          {restTasks.length > 0 && (
-            <TasksList
-              tasks={restTasks}
-              allTasks={state.tasks}
-              pendingCount={pendingCount}
-              onValidate={onValidate}
-              onLater={onLater}
-            />
-          )}
-
-          {!nextTask && (
-            <div className="empty-state" style={{ minHeight: 300 }}>
-              <div className="icon-wrap">
-                <svg width={28} height={28} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M20 6L9 17l-5-5" />
-                </svg>
-              </div>
-              <h3>Klaro voit clair</h3>
-              <p>Toutes les tâches prioritaires sont traitées.</p>
-            </div>
-          )}
+          <DashboardClient
+            project={{ id: project.id, name: project.name, type: project.type }}
+            tasks={tasks}
+            tradeMeta={tradeMeta}
+            score={score}
+            tone={tone}
+            stats={{ done, total, blocking: blockingPending }}
+          />
         </div>
       </div>
 
       <div className="mobile-nav">
-        <MobileNav alertCount={alerts.length} />
+        <MobileNav alertCount={blockingPending} />
       </div>
-
-      <ScenarioPanel
-        current={scenarioKey}
-        onChange={changeScenario}
-        onReset={resetScenario}
-      />
-
-      {toast && <Toast message={toast} />}
     </div>
   );
 }

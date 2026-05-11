@@ -5,6 +5,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 // Tout le reste est public.
 const PROTECTED_PREFIXES = [
   '/dashboard',
+  '/onboarding',
   '/alertes',
   '/taches',
   '/calendrier',
