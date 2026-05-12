@@ -78,7 +78,7 @@ export default function AlertesPage() {
 
                 {rest.length > 0 && (
                   <div className="alerts-hint">
-                    Klaro priorise pour vous — résolvez celle-ci d&apos;abord.
+                    Klaro priorise pour toi — résous celle-ci d&apos;abord.
                   </div>
                 )}
               </div>

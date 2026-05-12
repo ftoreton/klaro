@@ -25,9 +25,9 @@ export default function Step5Tasks({
 
   return (
     <section className="ob-step">
-      <h1 className="ob-h1">Vos tâches</h1>
+      <h1 className="ob-h1">Tes tâches</h1>
       <p className="ob-sub">
-        Klaro a généré votre checklist depuis son référentiel métier (basé DTU). Décochez ce qui ne vous concerne pas — vous pourrez tout ajuster depuis le tableau de bord.
+        Klaro a généré ta checklist depuis son référentiel métier (basé DTU). Décoche ce qui ne te concerne pas — tu pourras tout ajuster depuis le tableau de bord.
       </p>
 
       <div className="ob-tasks-badge" role="status" aria-live="polite">

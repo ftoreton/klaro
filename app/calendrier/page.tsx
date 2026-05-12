@@ -5,7 +5,7 @@ export default function CalendrierPage() {
     <ComingSoon
       title="Calendrier"
       iconName="cal"
-      description="Klaro affichera ici votre planning chantier avec les dépendances entre corps de métier."
+      description="Klaro affichera ici ton planning chantier avec les dépendances entre corps de métier."
     />
   );
 }

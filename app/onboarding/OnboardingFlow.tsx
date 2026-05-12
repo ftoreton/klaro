@@ -235,7 +235,7 @@ export default function OnboardingFlow({
             disabled={!canNext || pending}
             onClick={submit}
           >
-            {pending ? 'Création de votre chantier…' : 'Créer mon chantier'}
+            {pending ? 'Création de ton chantier…' : 'Créer mon chantier'}
           </button>
         )}
       </footer>

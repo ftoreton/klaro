@@ -14,7 +14,7 @@ export default function Step4Trades({ trades, selected, onToggle }: Props) {
     <section className="ob-step">
       <h1 className="ob-h1">Les corps de métier</h1>
       <p className="ob-sub">
-        Klaro a présélectionné les métiers concernés selon votre type de projet. Décochez ce qui ne vous concerne pas.
+        Klaro a présélectionné les métiers concernés selon ton type de projet. Décoche ce qui ne te concerne pas.
       </p>
 
       <div className="ob-trades">

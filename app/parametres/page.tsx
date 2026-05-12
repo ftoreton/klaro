@@ -37,28 +37,28 @@ export default async function ParametresPage({
           <div className="pa">
             <header className="pa-head">
               <h1 className="pa-h1">Paramètres</h1>
-              <p className="pa-sub">Personnalisez votre expérience Klaro.</p>
+              <p className="pa-sub">Personnalise ton expérience Klaro.</p>
             </header>
 
             {isOnboarding && (
               <div className="pa-welcome" role="status">
                 <strong>Bienvenue 👋</strong>
-                <span>Choisissez votre niveau pour personnaliser votre expérience.</span>
+                <span>Choisis ton niveau pour personnaliser ton expérience.</span>
               </div>
             )}
 
             <section className="pa-section">
               <header className="pa-section-head">
-                <h2 className="pa-h2">Votre niveau en bricolage</h2>
+                <h2 className="pa-h2">Ton niveau en bricolage</h2>
                 <p className="pa-section-sub">
-                  Sélectionnez le profil qui vous correspond le mieux.
+                  Sélectionne le profil qui te correspond le mieux.
                 </p>
               </header>
 
               <div className="pa-info" role="note">
                 <Info size={16} />
                 <span>
-                  Votre niveau influence les estimations de durée des tâches que vous réalisez vous-même.
+                  Ton niveau influence les estimations de durée des tâches que tu réalises toi-même.
                   Les tâches déjà commencées ne sont pas recalculées.
                 </span>
               </div>

@@ -70,7 +70,7 @@ export default function PricingPage() {
           <div className="mk-pricing-grid">
             <div className="mk-pricing-card">
               <div className="mk-pricing-name">Gratuit limité</div>
-              <p className="mk-pricing-tagline">Pour découvrir Klaro et voir si l&apos;outil correspond à votre projet.</p>
+              <p className="mk-pricing-tagline">Pour découvrir Klaro et voir si l&apos;outil correspond à ton projet.</p>
 
               <div className="mk-pricing-price">
                 <span className="v">0&nbsp;€</span>
