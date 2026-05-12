@@ -7,10 +7,12 @@ import {
   type TradeKey,
 } from '@/data/onboarding/trades';
 import type { LoadedTrade } from '@/lib/onboarding/loader';
+import type { NiveauUtilisateur } from '@/lib/niveau/types';
 import Step1Project from './steps/Step1Project';
 import Step2Specs from './steps/Step2Specs';
-import Step3Trades from './steps/Step3Trades';
-import Step4Tasks from './steps/Step4Tasks';
+import Step3Niveau from './steps/Step3Niveau';
+import Step4Trades from './steps/Step4Trades';
+import Step5Tasks from './steps/Step5Tasks';
 import { createProjectFromOnboarding } from './actions';
 import './onboarding.css';
 
@@ -21,6 +23,7 @@ export type OnboardingState = {
   budget_range: string | null;
   start_date: string | null;
   duration_range: string | null;
+  niveau: NiveauUtilisateur | null;
   trades: TradeKey[];
   // Sélection par ID de tâche source (stable). `tradeKey: [taskId, ...]`.
   selectedTaskIds: Record<TradeKey, string[]>;
@@ -33,11 +36,12 @@ const EMPTY_STATE: OnboardingState = {
   budget_range: null,
   start_date: null,
   duration_range: null,
+  niveau: null,
   trades: [],
   selectedTaskIds: {} as Record<TradeKey, string[]>,
 };
 
-const TOTAL_STEPS = 4;
+const TOTAL_STEPS = 5;
 
 function allTaskIdsOfTrade(loaded: LoadedTrade): string[] {
   const out: string[] = [];
@@ -113,8 +117,9 @@ export default function OnboardingFlow({
   const canNext = (() => {
     if (step === 1) return state.name.trim().length > 0 && !!state.type;
     if (step === 2) return true;
-    if (step === 3) return state.trades.length > 0;
-    if (step === 4) return totalTasksSelected > 0;
+    if (step === 3) return !!state.niveau;
+    if (step === 4) return state.trades.length > 0;
+    if (step === 5) return totalTasksSelected > 0;
     return false;
   })();
 
@@ -129,6 +134,7 @@ export default function OnboardingFlow({
           budget_range: state.budget_range,
           start_date: state.start_date,
           duration_range: state.duration_range,
+          niveau: state.niveau!,
           trades: state.trades,
           selected_task_ids: state.selectedTaskIds,
         });
@@ -175,14 +181,20 @@ export default function OnboardingFlow({
           />
         )}
         {step === 3 && (
-          <Step3Trades
+          <Step3Niveau
+            niveau={state.niveau}
+            onPick={(niveau) => update({ niveau })}
+          />
+        )}
+        {step === 4 && (
+          <Step4Trades
             trades={trades}
             selected={state.trades}
             onToggle={onToggleTrade}
           />
         )}
-        {step === 4 && (
-          <Step4Tasks
+        {step === 5 && (
+          <Step5Tasks
             trades={trades}
             tradeKeys={state.trades}
             selectedTaskIds={state.selectedTaskIds}

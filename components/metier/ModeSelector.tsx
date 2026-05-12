@@ -1,33 +1,37 @@
 'use client';
 
-import { useMetierStore } from '@/lib/metier/store';
+import Link from 'next/link';
+import { Settings } from 'lucide-react';
+import { NIVEAU_LABEL, NIVEAU_TO_MODE, type NiveauUtilisateur } from '@/lib/niveau/types';
 import type { ModeUtilisateur } from '@/lib/metier/types';
 
-const MODES: { key: ModeUtilisateur; label: string; sub: string }[] = [
-  { key: 'debutant', label: 'Débutant', sub: 'Vocabulaire simple' },
-  { key: 'intermediaire', label: 'Intermédiaire', sub: 'Détails utiles' },
-  { key: 'expert', label: 'Expert', sub: 'Termes & DTU' },
-];
+const MODE_LABEL: Record<ModeUtilisateur, string> = {
+  debutant: 'Débutant',
+  intermediaire: 'Intermédiaire',
+  expert: 'Expert',
+};
 
-export default function ModeSelector() {
-  const mode = useMetierStore((s) => s.mode);
-  const setMode = useMetierStore((s) => s.setMode);
+interface Props {
+  niveau: NiveauUtilisateur;
+}
+
+// Bandeau read-only : affiche le niveau de l'user (auto-déclaré à l'onboarding)
+// et le mode d'affichage qui en découle. La modification se fait depuis /parametres.
+export default function ModeSelector({ niveau }: Props) {
+  const mode = NIVEAU_TO_MODE[niveau];
+  const { titre } = NIVEAU_LABEL[niveau];
 
   return (
-    <div className="mt-modes" role="radiogroup" aria-label="Mode utilisateur">
-      {MODES.map((m) => (
-        <button
-          key={m.key}
-          type="button"
-          role="radio"
-          aria-checked={mode === m.key}
-          className={`mt-mode${mode === m.key ? ' is-active' : ''}`}
-          onClick={() => setMode(m.key)}
-        >
-          <span className="mt-mode-label">{m.label}</span>
-          <span className="mt-mode-sub">{m.sub}</span>
-        </button>
-      ))}
+    <div className="mt-niveau-badge" role="status" aria-label="Votre niveau bricoleur">
+      <div className="mt-niveau-badge-text">
+        <span className="mt-niveau-badge-label">Votre niveau</span>
+        <span className="mt-niveau-badge-value">{titre}</span>
+        <span className="mt-niveau-badge-mode">Affichage : {MODE_LABEL[mode]}</span>
+      </div>
+      <Link href="/parametres" className="mt-niveau-badge-link" aria-label="Modifier dans les paramètres">
+        <Settings size={14} />
+        <span>Modifier</span>
+      </Link>
     </div>
   );
 }

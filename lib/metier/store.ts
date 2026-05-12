@@ -2,13 +2,17 @@
 
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import type { Etape, Metier, ModeUtilisateur, Photo, StatutEtape } from './types';
+import type { Etape, Metier, Photo, StatutEtape } from './types';
 import { computeStatut } from './progress';
 
 // ─────────────────────────────────────────────────────
 // État persisté par métier — uniquement les données qui
 // peuvent évoluer (statut, sous-tâches cochées, photos,
 // dates planifiées). La structure du métier reste statique.
+//
+// NB : le mode d'affichage (debutant/intermediaire/expert) n'est
+// PAS stocké ici — il dérive du niveau utilisateur (Supabase) via
+// NIVEAU_TO_MODE et est passé en prop aux composants consommateurs.
 // ─────────────────────────────────────────────────────
 
 interface EtapeOverlay {
@@ -21,9 +25,6 @@ interface EtapeOverlay {
 type MetierOverlay = Record<string, EtapeOverlay>; // etapeId → overlay
 
 interface StoreState {
-  mode: ModeUtilisateur;
-  setMode: (m: ModeUtilisateur) => void;
-
   // Par métier : overlay des étapes
   overlays: Record<string, MetierOverlay>;
   toggleSousTache: (metierId: string, etapeId: string, sousTacheId: string) => void;
@@ -42,9 +43,6 @@ function emptyEtapeOverlay(): EtapeOverlay {
 export const useMetierStore = create<StoreState>()(
   persist(
     (set, get) => ({
-      mode: 'debutant',
-      setMode: (m) => set({ mode: m }),
-
       overlays: {},
 
       toggleSousTache: (metierId, etapeId, sousTacheId) => {
@@ -158,7 +156,6 @@ export const useMetierStore = create<StoreState>()(
       name: 'klaro:metier:state',
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
-        mode: state.mode,
         overlays: state.overlays,
       }),
     },

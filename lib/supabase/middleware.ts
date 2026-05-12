@@ -14,6 +14,7 @@ const PROTECTED_PREFIXES = [
   '/documents',
   '/messages',
   '/metiers',
+  '/parametres',
 ];
 
 // Routes auth — si on est déjà connecté, on redirige vers /dashboard.

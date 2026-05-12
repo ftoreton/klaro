@@ -13,11 +13,11 @@ import CriticiteBadge from './CriticiteBadge';
 interface Props {
   metierId: string;
   etape: Etape | null;
+  mode: ModeUtilisateur;
   onClose: () => void;
 }
 
-export default function EtapeDetailDrawer({ metierId, etape, onClose }: Props) {
-  const mode = useMetierStore((s) => s.mode);
+export default function EtapeDetailDrawer({ metierId, etape, mode, onClose }: Props) {
   const toggleSousTache = useMetierStore((s) => s.toggleSousTache);
   const setStatut = useMetierStore((s) => s.setStatut);
   const setDate = useMetierStore((s) => s.setDate);

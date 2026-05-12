@@ -13,7 +13,7 @@ type Props = {
   totalSelected: number;
 };
 
-export default function Step4Tasks({
+export default function Step5Tasks({
   trades,
   tradeKeys,
   selectedTaskIds,

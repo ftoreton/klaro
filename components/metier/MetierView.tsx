@@ -6,6 +6,7 @@ import Link from 'next/link';
 import type { Metier } from '@/lib/metier/types';
 import { useMetierStore } from '@/lib/metier/store';
 import { metierProgress } from '@/lib/metier/progress';
+import { NIVEAU_TO_MODE, type NiveauUtilisateur } from '@/lib/niveau/types';
 import EtapeCard from './EtapeCard';
 import EtapeDetailDrawer from './EtapeDetailDrawer';
 import ModeSelector from './ModeSelector';
@@ -14,10 +15,11 @@ import './metier.css';
 
 interface Props {
   metier: Metier;
+  niveau: NiveauUtilisateur;
 }
 
-export default function MetierView({ metier }: Props) {
-  const mode = useMetierStore((s) => s.mode);
+export default function MetierView({ metier, niveau }: Props) {
+  const mode = NIVEAU_TO_MODE[niveau];
   const applyOverlay = useMetierStore((s) => s.applyOverlay);
   const [openEtapeId, setOpenEtapeId] = useState<string | null>(null);
 
@@ -41,7 +43,7 @@ export default function MetierView({ metier }: Props) {
               <p className="mt-subtitle">{live.description_simple}</p>
             </div>
 
-            <ModeSelector />
+            <ModeSelector niveau={niveau} />
           </div>
 
           <ProgressBar done={done} total={total} pct={pct} />
@@ -65,6 +67,7 @@ export default function MetierView({ metier }: Props) {
       <EtapeDetailDrawer
         metierId={live.id}
         etape={openEtape}
+        mode={mode}
         onClose={() => setOpenEtapeId(null)}
       />
     </div>
