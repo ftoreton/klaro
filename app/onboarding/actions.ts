@@ -6,6 +6,8 @@ import { createClient } from '@/lib/supabase/server';
 import { TRADES_META, type ProjectType, type TradeKey } from '@/data/onboarding/trades';
 import { loadTrade } from '@/lib/onboarding/loader';
 import { isNiveauUtilisateur, type NiveauUtilisateur } from '@/lib/niveau/types';
+import type { Rythme } from '@/lib/estimation/types';
+import { RYTHMES } from '@/lib/estimation/constants';
 
 export type CreateProjectInput = {
   name: string;
@@ -15,10 +17,13 @@ export type CreateProjectInput = {
   start_date: string | null; // YYYY-MM-DD
   duration_range: string | null;
   niveau: NiveauUtilisateur;
+  rythme: Rythme;
   trades: TradeKey[];
   // {tradeKey: [taskId, ...]} — IDs sources des tâches sélectionnées.
   selected_task_ids: Record<TradeKey, string[]>;
 };
+
+const VALID_RYTHMES = new Set<Rythme>(RYTHMES);
 
 const VALID_TRADES = new Set<TradeKey>(TRADES_META.map((t) => t.key));
 const VALID_TYPES = new Set<ProjectType>([
@@ -32,6 +37,7 @@ export async function createProjectFromOnboarding(input: CreateProjectInput) {
   if (!input.name?.trim()) throw new Error('Nom de chantier requis.');
   if (!VALID_TYPES.has(input.type)) throw new Error('Type de projet invalide.');
   if (!isNiveauUtilisateur(input.niveau)) throw new Error('Niveau utilisateur requis.');
+  if (!VALID_RYTHMES.has(input.rythme)) throw new Error('Rythme de chantier requis.');
   const trades = input.trades.filter((k) => VALID_TRADES.has(k));
   if (trades.length === 0) throw new Error('Au moins un corps de métier requis.');
 
@@ -63,6 +69,7 @@ export async function createProjectFromOnboarding(input: CreateProjectInput) {
       budget_range: input.budget_range ?? null,
       start_date: input.start_date ?? null,
       duration_range: input.duration_range ?? null,
+      rythme: input.rythme,
     })
     .select('id')
     .single();
@@ -114,8 +121,8 @@ export async function createProjectFromOnboarding(input: CreateProjectInput) {
     if (tasksError) throw new Error(tasksError.message);
   }
 
-  revalidatePath('/dashboard');
-  redirect('/dashboard');
+  revalidatePath('/onboarding/recap');
+  redirect('/onboarding/recap');
 }
 
 export async function toggleTaskStatus(taskId: string, nextStatus: 'todo' | 'done') {

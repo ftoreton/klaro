@@ -4,7 +4,10 @@ import {
   getCurrentUser,
   getProjectTasks,
 } from '@/lib/supabase/queries';
-import { getCurrentNiveau } from '@/lib/niveau/queries';
+import { getCurrentNiveau, getCurrentNiveauOrFallback } from '@/lib/niveau/queries';
+import { calculerEstimation } from '@/lib/estimation/calculate';
+import { projectTasksToEstimationTaches } from '@/lib/estimation/queries';
+import { RYTHME_FALLBACK } from '@/lib/estimation/constants';
 import { TRADE_LABEL_BY_KEY } from '@/data/onboarding/trades';
 import { loadTrade } from '@/lib/onboarding/loader';
 import type { TradeKey } from '@/data/onboarding/trades';
@@ -37,6 +40,15 @@ export default async function DashboardPage() {
   if (!niveau) redirect('/parametres?onboarding=true');
 
   const tasks = await getProjectTasks(project.id);
+
+  // Estimation calendaire — calcul pur côté serveur, ré-utilise les
+  // mêmes tâches déjà chargées (on évite une seconde requête).
+  const niveauForEstimation = await getCurrentNiveauOrFallback();
+  const estimation = calculerEstimation({
+    taches: projectTasksToEstimationTaches(tasks),
+    niveau: niveauForEstimation,
+    rythme: project.rythme ?? RYTHME_FALLBACK,
+  });
 
   // Score: done/total - blocking*8, plancher 20.
   const total = tasks.length;
@@ -79,6 +91,7 @@ export default async function DashboardPage() {
             score={score}
             tone={tone}
             stats={{ done, total, blocking: blockingPending }}
+            estimation={estimation}
           />
         </div>
       </div>

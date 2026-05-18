@@ -5,6 +5,14 @@ const PATHS: Record<string, React.ReactNode> = {
   list: <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />,
   bell: <path d="M6 8a6 6 0 1112 0c0 7 3 9 3 9H3s3-2 3-9zM10 21a2 2 0 004 0" />,
   cal: <path d="M3 6a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2zM3 10h18M8 2v4M16 2v4" />,
+  'cal-clock': (
+    <>
+      <path d="M21 7.5V6a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h3.5" />
+      <path d="M16 2v4M8 2v4M3 10h5" />
+      <path d="M22 16a6 6 0 11-12 0 6 6 0 0112 0z" />
+      <path d="M17.5 17.5L16 16.25V14" />
+    </>
+  ),
   euro: <path d="M18 7a8 8 0 100 10M3 10h11M3 14h9" />,
   doc: <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM14 2v6h6" />,
   msg: <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" />,

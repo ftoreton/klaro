@@ -4,6 +4,7 @@
 
 import type { ProjectType, TradeKey } from '@/data/onboarding/trades';
 import type { NiveauUtilisateur } from '@/lib/niveau/types';
+import type { Rythme } from '@/lib/estimation/types';
 
 export type UserProfileRow = {
   user_id: string;
@@ -21,6 +22,7 @@ export type ProjectRow = {
   budget_range: string | null;
   start_date: string | null;
   duration_range: string | null;
+  rythme: Rythme;
   created_at: string;
 };
 

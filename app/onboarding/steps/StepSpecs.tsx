@@ -13,7 +13,7 @@ type Props = {
   onDuration: (k: string) => void;
 };
 
-export default function Step2Specs({
+export default function StepSpecs({
   surface,
   budgetRange,
   startDate,

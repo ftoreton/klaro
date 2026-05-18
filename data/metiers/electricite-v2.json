@@ -440,6 +440,7 @@
           "title": "Poser les boîtes d'encastrement",
           "phase": "gros_oeuvre",
           "duree_reference_minutes": 360,
+          "materiau_sechage": "placo_enduit",
           "explanation": "Les boîtes d'encastrement reçoivent les prises, interrupteurs et mécanismes. Elles doivent être à la bonne profondeur et parfaitement de niveau.",
           "klaro_recommendation": "Profondeur minimum 40 mm. Utilise un niveau à bulle systématiquement. En maçonnerie, fixe avec du plâtre ; en placo, utilise des boîtes à griffes. Aligne visuellement les boîtes d'une même pièce à la même hauteur.",
           "common_mistake": "Poser les boîtes en biais ou à des hauteurs différentes d'une prise à l'autre — l'appareillage final sera de travers et visible.",

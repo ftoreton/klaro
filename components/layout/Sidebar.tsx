@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { id: 'dashboard', href: '/dashboard', name: 'Tableau de bord', icon: 'home' as const },
   { id: 'alertes', href: '/alertes', name: 'Alertes', icon: 'bell' as const },
   { id: 'taches', href: '/taches', name: 'Tâches', icon: 'list' as const },
+  { id: 'estimation', href: '/estimation', name: 'Estimation', icon: 'cal-clock' as const },
   { id: 'metiers', href: '/metiers/electricite', name: 'Vue par métier', icon: 'list' as const },
   { id: 'cal', href: '/calendrier', name: 'Calendrier', icon: 'cal' as const },
   { id: 'budget', href: '/budget', name: 'Budget', icon: 'euro' as const },
