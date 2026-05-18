@@ -19,6 +19,7 @@ export default function MarketingShell({ children }: { children: React.ReactNode
 
           <nav className="mk-nav-links" aria-label="Navigation principale">
             <Link href="/#fonctionnement" className={pathname === '/' ? 'is-active' : ''}>Fonctionnement</Link>
+            <Link href="/blog" className={pathname?.startsWith('/blog') ? 'is-active' : ''}>Blog</Link>
             <Link href="/offres" className={pathname === '/offres' ? 'is-active' : ''}>Offres</Link>
             <Link href="/faq" className={pathname === '/faq' ? 'is-active' : ''}>FAQ</Link>
           </nav>
@@ -66,6 +67,7 @@ export default function MarketingShell({ children }: { children: React.ReactNode
               <div className="mk-footer-title">Produit</div>
               <Link href="/offres">Offres</Link>
               <Link href="/faq">FAQ</Link>
+              <Link href="/blog">Blog</Link>
               <Link href="/inscription">Créer un compte</Link>
             </div>
             <div>
