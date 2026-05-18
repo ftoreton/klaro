@@ -26,7 +26,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: 'Klaro — Voir clair sur son chantier',
-  description: 'Klaro vous dit quoi faire, quand le faire, et vous évite les erreurs.',
+  description: 'Klaro te dit quoi faire, quand le faire, et t’évite les erreurs.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

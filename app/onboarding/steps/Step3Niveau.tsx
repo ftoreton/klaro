@@ -10,9 +10,9 @@ type Props = {
 export default function Step3Niveau({ niveau, onPick }: Props) {
   return (
     <section className="ob-step">
-      <h1 className="ob-h1">Votre niveau en bricolage</h1>
+      <h1 className="ob-h1">Ton niveau en bricolage</h1>
       <p className="ob-sub">
-        On adapte le contenu et les estimations de durée à votre expérience. Modifiable à tout moment dans vos paramètres.
+        On adapte le contenu et les estimations de durée à ton expérience. Modifiable à tout moment dans tes paramètres.
       </p>
 
       <div className="ob-block">

@@ -25,7 +25,7 @@ export default function NextAction({ task, allTasks, onValidate, onLater }: Next
   return (
     <div className={`next-card ${task.priorite === 'critique' ? 'danger' : ''}`}>
       <div className="eyebrow">
-        <span>★</span> Klaro vous recommande
+        <span>★</span> Klaro te recommande
       </div>
       <h2>{task.nom}</h2>
 

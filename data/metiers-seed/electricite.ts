@@ -49,7 +49,7 @@ const electricite: Metier = {
         "Section conducteurs : 1,5 mm² éclairage (8 points max), 2,5 mm² prises (8 socles 1,5 mm² ou 12 socles 2,5 mm²), 6 mm² four/plaque, 10 mm² chauffe-eau.",
       ],
       termes_techniques: [
-        { terme: 'schéma unifilaire', definition_simple: "Plan qui représente chaque circuit électrique par une seule ligne. C'est la photo d'identité de votre installation." },
+        { terme: 'schéma unifilaire', definition_simple: "Plan qui représente chaque circuit électrique par une seule ligne. C'est la photo d'identité de ton installation." },
         { terme: 'bilan de puissance', definition_simple: 'Calcul qui additionne la puissance de tous les appareils pour dimensionner correctement le tableau et l\'abonnement.' },
         { terme: 'coefficient de simultanéité', definition_simple: "Pourcentage qui tient compte du fait qu'on n'utilise jamais tous les appareils en même temps (généralement 40 à 70 %)." },
         { terme: 'circuit dédié', definition_simple: "Circuit qui n'alimente qu'un seul appareil (par exemple le four), pour éviter les surcharges." },
@@ -168,8 +168,8 @@ const electricite: Metier = {
         "Ne pas étiqueter les câbles → au moment du raccordement au tableau, on ne sait plus quel fil va où.",
       ],
       recommandations_simples: [
-        "Prenez en photo chaque mur avant fermeture du placo. Vous bénirez ces photos dans 5 ans.",
-        "Tirez 1 à 2 gaines vides en plus depuis le tableau vers chaque pièce — ça coûte 5 € et ça change tout pour l'avenir.",
+        "Prends en photo chaque mur avant fermeture du placo. Tu béniras ces photos dans 5 ans.",
+        "Tire 1 à 2 gaines vides en plus depuis le tableau vers chaque pièce — ça coûte 5 € et ça change tout pour l'avenir.",
       ],
       recommandations_techniques_DTU: [
         "Gaines ICTA Ø 16 mm pour 2 fils 1,5 mm², Ø 20 mm pour 3 fils 2,5 mm², Ø 25 mm pour 6 mm².",
@@ -342,8 +342,8 @@ const electricite: Metier = {
         "Schéma unifilaire absent ou incomplet — refus du dossier dès la réception.",
       ],
       recommandations_simples: [
-        "Comptez 4 à 8 semaines de délai entre la demande et la visite — anticipez par rapport à la date d'emménagement.",
-        "Si vous passez par un électricien certifié, il peut faire le Consuel sans visite (formulaire jaune simplifié).",
+        "Compte 4 à 8 semaines de délai entre la demande et la visite — anticipe par rapport à la date d'emménagement.",
+        "Si tu passes par un électricien certifié, il peut faire le Consuel sans visite (formulaire jaune simplifié).",
       ],
       recommandations_techniques_DTU: [
         "Attestation Consuel obligatoire pour : neuf, rénovation totale, installation > 36 kVA.",

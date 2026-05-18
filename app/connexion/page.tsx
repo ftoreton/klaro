@@ -53,8 +53,8 @@ function ConnexionForm() {
             <span className="mk-logo-mark">K</span>
             <span className="mk-logo-name">Klar<span className="o">o</span></span>
           </Link>
-          <h1 className="mk-auth-title">Bon retour sur votre chantier</h1>
-          <p className="mk-auth-sub">Connectez-vous pour reprendre où vous en étiez</p>
+          <h1 className="mk-auth-title">Bon retour sur ton chantier</h1>
+          <p className="mk-auth-sub">Connecte-toi pour reprendre où tu en étais</p>
         </div>
 
         <GoogleButton next={redirect} />

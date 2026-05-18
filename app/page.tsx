@@ -318,7 +318,7 @@ function PhoneDemo() {
                 )}
 
                 <div className="kl-sec-lab">
-                  <span>Klaro vous recommande</span>
+                  <span>Klaro te recommande</span>
                   <span className="kl-count">{total - done} à faire</span>
                 </div>
 
@@ -356,7 +356,7 @@ function PhoneDemo() {
                   <div className="kl-alerts-count">{alertCount}</div>
                   <div>
                     <div className="kl-alerts-title">Alerte{alertCount > 1 ? 's' : ''} en cours</div>
-                    <div className="kl-alerts-sub">Klaro priorise pour vous</div>
+                    <div className="kl-alerts-sub">Klaro priorise pour toi</div>
                   </div>
                 </div>
                 {ALERTS_VIEW.slice(0, alertCount === 0 ? 0 : alertCount + 1).map((a, i) => (
@@ -509,13 +509,13 @@ export default function HomePage() {
       <section className="kl-hero">
         <div className="kl-hero-left">
           <h1>
-            Votre chantier,
+            Ton chantier,
             <br />
             enfin <span className="kl-accent">sous contrôle.</span>
           </h1>
           <p className="kl-hero-sub">
-            Klaro vous dit <strong>quoi faire</strong>, <strong>quand le faire</strong>, et vous évite
-            les erreurs qui coûtent cher. Sans être du métier, vous gardez le contrôle.
+            Klaro te dit <strong>quoi faire</strong>, <strong>quand le faire</strong>, et t&apos;évite
+            les erreurs qui coûtent cher. Sans être du métier, tu gardes le contrôle.
           </p>
           <div className="kl-hero-actions">
             <Link href="/inscription" className="kl-btn kl-btn-primary">
@@ -544,17 +544,17 @@ export default function HomePage() {
         <div className="kl-how-inner">
           <div className="kl-how-eyebrow">Comment ça marche</div>
           <h2>
-            Klaro vous guide à <span className="kl-accent">chaque étape.</span>
+            Klaro te guide à <span className="kl-accent">chaque étape.</span>
           </h2>
           <p className="kl-how-sub">
             Un seul tableau de bord. Le bon ordre. Les bonnes étapes. Les bonnes alertes.
           </p>
           <div className="kl-how-grid">
             <div className="kl-how-card">
-              <div className="kl-num">01 / Vous décrivez</div>
-              <h3>Votre chantier en 2 min</h3>
+              <div className="kl-num">01 / Tu décris</div>
+              <h3>Ton chantier en 2 min</h3>
               <p>
-                Type de travaux, surface, corps de métier impliqués. Klaro construit votre plan dans le bon
+                Type de travaux, surface, corps de métier impliqués. Klaro construit ton plan dans le bon
                 ordre — sans jargon.
               </p>
             </div>
@@ -562,15 +562,15 @@ export default function HomePage() {
               <div className="kl-num">02 / Klaro pilote</div>
               <h3>Une priorité à la fois</h3>
               <p>
-                Chaque jour, Klaro vous dit la prochaine action à faire. Validez d&apos;un clic, prenez une
+                Chaque jour, Klaro te dit la prochaine action à faire. Valide d&apos;un clic, prends une
                 photo, le score se met à jour.
               </p>
             </div>
             <div className="kl-how-card">
-              <div className="kl-num">03 / Vous voyez clair</div>
+              <div className="kl-num">03 / Tu vois clair</div>
               <h3>Zéro mauvaise surprise</h3>
               <p>
-                Retards, blocages, dépendances oubliées : Klaro les voit avant vous et vous alerte en rouge —
+                Retards, blocages, dépendances oubliées : Klaro les voit avant toi et t&apos;alerte en rouge —
                 pour que rien ne dérape.
               </p>
             </div>
@@ -580,7 +580,7 @@ export default function HomePage() {
 
       <section className="kl-cta-band">
         <h2>
-          Organisez votre chantier <span className="kl-accent">dès aujourd&apos;hui.</span>
+          Organise ton chantier <span className="kl-accent">dès aujourd&apos;hui.</span>
         </h2>
         <p>Gratuit pour commencer. Sans carte bancaire. Sans engagement.</p>
         <Link href="/inscription" className="kl-btn kl-btn-primary">

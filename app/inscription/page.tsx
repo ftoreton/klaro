@@ -59,7 +59,7 @@ export default function InscriptionPage() {
     } else {
       setSubmitting(false);
       setInfo(
-        "Compte créé. Vérifiez votre boîte mail pour confirmer votre adresse, puis revenez vous connecter.",
+        "Compte créé. Vérifie ta boîte mail pour confirmer ton adresse, puis reviens te connecter.",
       );
     }
   }
@@ -74,7 +74,7 @@ export default function InscriptionPage() {
               <span className="mk-logo-name">Klar<span className="o">o</span></span>
             </Link>
             <h1 className="mk-auth-title">Bienvenue sur Klaro</h1>
-            <p className="mk-auth-sub">Créez votre compte gratuitement</p>
+            <p className="mk-auth-sub">Crée ton compte gratuitement</p>
           </div>
 
           <GoogleButton next="/onboarding" />

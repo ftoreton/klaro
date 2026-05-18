@@ -22,9 +22,9 @@ export default function ModeSelector({ niveau }: Props) {
   const { titre } = NIVEAU_LABEL[niveau];
 
   return (
-    <div className="mt-niveau-badge" role="status" aria-label="Votre niveau bricoleur">
+    <div className="mt-niveau-badge" role="status" aria-label="Ton niveau bricoleur">
       <div className="mt-niveau-badge-text">
-        <span className="mt-niveau-badge-label">Votre niveau</span>
+        <span className="mt-niveau-badge-label">Ton niveau</span>
         <span className="mt-niveau-badge-value">{titre}</span>
         <span className="mt-niveau-badge-mode">Affichage : {MODE_LABEL[mode]}</span>
       </div>

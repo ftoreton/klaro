@@ -5,7 +5,7 @@ export default function MessagesPage() {
     <ComingSoon
       title="Messages"
       iconName="msg"
-      description="Klaro regroupera ici toutes vos conversations avec vos artisans, par chantier."
+      description="Klaro regroupera ici toutes tes conversations avec tes artisans, par chantier."
     />
   );
 }

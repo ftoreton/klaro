@@ -116,7 +116,7 @@ export default function DevisPage() {
             <section className="devis-section">
               <header className="devis-section-head">
                 <h3>En attente de signature</h3>
-                <span className="sub">· Klaro vous recommande de traiter ceux-ci</span>
+                <span className="sub">· Klaro te recommande de traiter ceux-ci</span>
               </header>
               <div className="devis-list">
                 {enAttente.map((d) => (

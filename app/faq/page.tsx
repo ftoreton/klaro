@@ -29,7 +29,7 @@ const FAQ: FaqItem[] = [
   {
     cat: 'Utilisation',
     q: 'Puis-je utiliser Klaro avec des artisans ?',
-    a: "Oui. Klaro permet de mieux suivre ce qui est prévu, ce qui est fait et ce qui reste à vérifier. Vous gardez le contrôle, même sans expertise BTP.",
+    a: "Oui. Klaro permet de mieux suivre ce qui est prévu, ce qui est fait et ce qui reste à vérifier. Tu gardes le contrôle, même sans expertise BTP.",
   },
   {
     cat: 'Offres',
@@ -39,7 +39,7 @@ const FAQ: FaqItem[] = [
   {
     cat: 'Offres',
     q: 'Que contient l\'offre gratuite ?',
-    a: "Elle permet de tester Klaro avec un accès limité aux fonctionnalités : un chantier test, quelques checklists et un score basique. Idéale pour voir si l'outil correspond à votre projet.",
+    a: "Elle permet de tester Klaro avec un accès limité aux fonctionnalités : un chantier test, quelques checklists et un score basique. Idéale pour voir si l'outil correspond à ton projet.",
   },
   {
     cat: 'Offres',
@@ -75,7 +75,7 @@ export default function FaqPage() {
             <span className="mk-eyebrow">Aide</span>
             <h1 className="mk-h2" style={{ marginTop: 18 }}>Questions fréquentes</h1>
             <p className="mk-section-sub">
-              Tout ce qu&apos;il faut savoir avant de démarrer votre chantier avec Klaro.
+              Tout ce qu&apos;il faut savoir avant de démarrer ton chantier avec Klaro.
             </p>
           </div>
 
@@ -104,7 +104,7 @@ export default function FaqPage() {
           </div>
 
           <div style={{ textAlign: 'center', marginTop: 48 }}>
-            <h3 className="mk-h3" style={{ fontSize: 20 }}>Vous n&apos;avez pas trouvé votre réponse ?</h3>
+            <h3 className="mk-h3" style={{ fontSize: 20 }}>Tu n&apos;as pas trouvé ta réponse ?</h3>
             <p style={{ color: 'var(--fg-2)', fontSize: 14, margin: '0 0 20px' }}>
               L&apos;équipe Klaro répond généralement sous 24 h.
             </p>

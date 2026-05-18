@@ -17,11 +17,11 @@ export default function Step1Project({ firstName, name, type, onName, onType }: 
         {firstName ? `Bienvenue ${firstName} 👋` : 'Bienvenue sur Klaro 👋'}
       </h1>
       <p className="ob-sub">
-        On commence par le plus simple : votre projet en quelques mots.
+        On commence par le plus simple : ton projet en quelques mots.
       </p>
 
       <label className="ob-field">
-        <span className="ob-label">Nom de votre chantier</span>
+        <span className="ob-label">Nom de ton chantier</span>
         <input
           type="text"
           className="ob-input"

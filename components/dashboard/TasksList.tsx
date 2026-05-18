@@ -23,7 +23,7 @@ export default function TasksList({ tasks, allTasks: _allTasks, pendingCount, on
   return (
     <div className="tasks-list">
       <div className="tasks-head">
-        <h3>Aussi pour vous aujourd&apos;hui</h3>
+        <h3>Aussi pour toi aujourd&apos;hui</h3>
         <span className="sub">· Klaro priorise</span>
         <span className="more">+ {Math.max(0, pendingCount - 1 - tasks.length)} cette semaine</span>
       </div>

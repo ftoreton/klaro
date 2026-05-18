@@ -120,7 +120,7 @@ export default function DashboardClient({ project, tasks, tradeMeta }: Props) {
       {/* Recommended */}
       <section className="db-section">
         <header className="db-section-head">
-          <h3>Klaro vous recommande</h3>
+          <h3>Klaro te recommande</h3>
           <span className="db-count">{recommended.length} à faire</span>
         </header>
 

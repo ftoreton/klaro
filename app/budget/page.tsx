@@ -5,7 +5,7 @@ export default function BudgetPage() {
     <ComingSoon
       title="Budget"
       iconName="euro"
-      description="Klaro suivra ici votre budget chantier : prévisionnel, dépenses, écarts par lot."
+      description="Klaro suivra ici ton budget chantier : prévisionnel, dépenses, écarts par lot."
     />
   );
 }

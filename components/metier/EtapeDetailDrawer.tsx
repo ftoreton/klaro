@@ -140,7 +140,7 @@ export default function EtapeDetailDrawer({ metierId, etape, mode, onClose }: Pr
             <section className="mt-drawer-section">
               <h3 className="mt-drawer-section-title">
                 <Lightbulb size={16} />
-                Klaro vous recommande
+                Klaro te recommande
               </h3>
               <ul className="mt-tip-list">
                 {etape.recommandations_simples.map((r, i) => (
