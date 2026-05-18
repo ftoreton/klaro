@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import type { TradeKey } from '@/data/onboarding/trades';
 import type { LoadedTrade } from '@/lib/onboarding/loader';
+import TacheCard from '@/components/chantier/TacheCard';
+import '@/components/chantier/chantier.css';
 
 type Props = {
   trades: Record<TradeKey, LoadedTrade>;
@@ -90,24 +92,16 @@ export default function StepTasks({
                         <ul className="ob-tg-tasks">
                           {phase.tasks.map((task) => {
                             const on = selected.has(task.id);
+                            // À l'onboarding, toutes les tâches sont "non commencées".
+                            // Les états en_cours / terminée n'apparaissent que sur /chantier/modifier.
                             return (
                               <li key={task.id}>
-                                <label className={`ob-task ${on ? 'is-on' : ''}`}>
-                                  <input
-                                    type="checkbox"
-                                    checked={on}
-                                    onChange={(e) => onToggleTask(key, task.id, e.target.checked)}
-                                  />
-                                  <span className="ob-task-box" aria-hidden>
-                                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                                      <path d="M20 6L9 17l-5-5" />
-                                    </svg>
-                                  </span>
-                                  <span className="ob-task-label">{task.title}</span>
-                                  {task.isBlocking && (
-                                    <span className="ob-task-tag" title="Critique — débloquage justifié requis">critique</span>
-                                  )}
-                                </label>
+                                <TacheCard
+                                  state={on ? 'selectionnee_non_commencee' : 'disponible'}
+                                  label={task.title}
+                                  isBlocking={task.isBlocking}
+                                  onToggle={() => onToggleTask(key, task.id, !on)}
+                                />
                               </li>
                             );
                           })}
