@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Settings2 } from 'lucide-react';
 import Link from 'next/link';
 import type { Metier } from '@/lib/metier/types';
 import { useMetierStore } from '@/lib/metier/store';
@@ -47,6 +47,16 @@ export default function MetierView({ metier, niveau }: Props) {
           </div>
 
           <ProgressBar done={done} total={total} pct={pct} />
+
+          <div className="mt-header-actions">
+            <Link
+              href={`/chantier/modifier?metier=${encodeURIComponent(live.id)}`}
+              className="mt-header-btn"
+            >
+              <Settings2 size={14} />
+              Modifier les tâches de ce métier
+            </Link>
+          </div>
         </header>
 
         {/* Liste d'étapes */}

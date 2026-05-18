@@ -349,6 +349,33 @@
   .db-est-cta span { display: none; }
 }
 
+/* ── Action : modifier mon chantier ──────────────── */
+.db-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -8px;
+}
+
+.db-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, #e6e4dd);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg, #1a1a17);
+  text-decoration: none;
+  transition: border-color 120ms, color 120ms;
+}
+
+.db-action-btn:hover {
+  border-color: var(--accent, #00b89c);
+  color: var(--accent, #00b89c);
+}
+
 /* Mobile */
 @media (max-width: 720px) {
   .db-score { flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px 18px 22px; }

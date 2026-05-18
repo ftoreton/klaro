@@ -15,6 +15,7 @@ const PROTECTED_PREFIXES = [
   '/documents',
   '/messages',
   '/metiers',
+  '/chantier',
   '/parametres',
 ];
 
