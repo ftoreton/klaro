@@ -1,0 +1,256 @@
+/* ============================================================
+   Composants atomiques chantier (MetierCard, TacheCard)
+   préfixe ck-* (chantier-kit)
+   Utilisés sur l'onboarding ET sur /chantier/modifier.
+   ============================================================ */
+
+/* ── MetierCard ──────────────────────────────────────── */
+.ck-metier {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  background: var(--surface, #fff);
+  border: 1.5px solid var(--border, #e6e4dd);
+  border-radius: 14px;
+  transition: border-color 120ms, background 120ms;
+}
+
+.ck-metier.is-active {
+  border-color: var(--accent, #00b89c);
+  background: color-mix(in srgb, var(--accent, #00b89c) 6%, var(--surface, #fff));
+}
+
+.ck-metier.is-upgrade {
+  border-style: dashed;
+}
+
+.ck-metier-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: transparent;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  color: inherit;
+  min-width: 0;
+}
+
+.ck-metier-icon {
+  font-size: 22px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.ck-metier-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.ck-metier-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14.5px;
+  letter-spacing: -0.005em;
+}
+
+.ck-metier-count {
+  font-size: 12px;
+  color: var(--fg-muted, #6b6a63);
+  font-weight: 500;
+}
+
+.ck-metier-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.ck-metier-badge-active {
+  background: var(--accent, #00b89c);
+  color: #fff;
+}
+
+.ck-metier-badge-upgrade {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.ck-metier-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--fg, #1a1a17);
+  background: var(--surface-2, #f6f4ed);
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.ck-metier:hover .ck-metier-cta {
+  background: var(--fg, #1a1a17);
+  color: #fff;
+}
+
+.ck-metier-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  border: none;
+  border-left: 1px solid var(--border, #e6e4dd);
+  background: transparent;
+  color: var(--fg-muted, #6b6a63);
+  cursor: pointer;
+  border-radius: 0 12px 12px 0;
+  transition: background 120ms, color 120ms;
+}
+
+.ck-metier-remove:hover {
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.ck-metier-remove.is-disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.ck-metier-remove.is-disabled:hover {
+  background: transparent;
+  color: var(--fg-muted, #6b6a63);
+}
+
+/* ── TacheCard ───────────────────────────────────────── */
+.ck-tache {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 120ms;
+}
+
+.ck-tache:hover {
+  background: var(--surface-2, #f6f4ed);
+}
+
+.ck-tache.is-locked {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.ck-tache.is-locked:hover {
+  background: transparent;
+}
+
+.ck-tache input[type='checkbox'] {
+  /* visuellement caché, l'état est rendu via .ck-tache-box */
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.ck-tache-box {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  border: 1.5px solid var(--border, #e6e4dd);
+  background: var(--surface, #fff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: #fff;
+  transition: background 120ms, border-color 120ms;
+}
+
+.ck-tache.is-on .ck-tache-box {
+  background: var(--accent, #00b89c);
+  border-color: var(--accent, #00b89c);
+}
+
+.ck-tache.is-locked .ck-tache-box {
+  background: var(--fg-muted, #9b9a93);
+  border-color: var(--fg-muted, #9b9a93);
+}
+
+.ck-tache-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.ck-tache-label {
+  font-size: 13.5px;
+  color: var(--fg, #1a1a17);
+  line-height: 1.4;
+}
+
+.ck-tache.is-locked .ck-tache-label {
+  text-decoration: line-through;
+  text-decoration-color: var(--fg-muted, #9b9a93);
+  text-decoration-thickness: 1px;
+}
+
+.ck-tache-meta {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 11.5px;
+}
+
+.ck-tache-duree {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--fg-muted, #6b6a63);
+}
+
+.ck-tache-tag {
+  padding: 1px 6px;
+  background: #fef2f2;
+  color: #991b1b;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.ck-tache-badge {
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.ck-tache-badge.state-selectionnee_en_cours {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.ck-tache-badge.state-selectionnee_terminee {
+  background: color-mix(in srgb, var(--accent, #00b89c) 18%, #fff);
+  color: var(--accent, #00b89c);
+}

@@ -3,7 +3,7 @@
 import { useMemo, useState, useTransition } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ChevronDown, Info, Settings } from 'lucide-react';
+import { ChevronDown, Info, Settings, Settings2 } from 'lucide-react';
 import { calculerEstimation } from '@/lib/estimation/calculate';
 import { RYTHMES, RYTHME_LABEL } from '@/lib/estimation/constants';
 import { updateProjectRythme } from '@/lib/estimation/actions';
@@ -68,6 +68,12 @@ export default function EstimationSimulator({
         <p className="est-sub">
           Simule des changements en temps réel. Rien n&apos;est sauvegardé tant que tu n&apos;as pas cliqué sur &quot;Appliquer&quot;.
         </p>
+        <div className="est-head-actions">
+          <Link href="/chantier/modifier" className="est-link-action">
+            <Settings2 size={14} />
+            Modifier mon chantier
+          </Link>
+        </div>
       </header>
 
       {/* ─── Bloc principal : estimation actuelle ────────── */}

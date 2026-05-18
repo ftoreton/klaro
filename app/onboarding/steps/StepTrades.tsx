@@ -2,6 +2,8 @@
 
 import { TRADES_META, type TradeKey } from '@/data/onboarding/trades';
 import type { LoadedTrade } from '@/lib/onboarding/loader';
+import MetierCard from '@/components/chantier/MetierCard';
+import '@/components/chantier/chantier.css';
 
 type Props = {
   trades: Record<TradeKey, LoadedTrade>;
@@ -20,28 +22,19 @@ export default function StepTrades({ trades, selected, onToggle }: Props) {
       <div className="ob-trades">
         {TRADES_META.map((meta) => {
           const active = selected.includes(meta.key);
-          const count = trades[meta.key]?.totalTasks ?? 0;
+          const totalTasks = trades[meta.key]?.totalTasks ?? 0;
+          // Au stade onboarding, le contexte "payé / upgrade" n'existe pas :
+          // sélectionner = `actif_paye_avec_taches`, désélectionner = `disponible_sans_upgrade`.
+          // Le click sur la carte toggle la sélection (sémantique onboarding).
           return (
-            <button
+            <MetierCard
               key={meta.key}
-              type="button"
-              className={`ob-trade ${active ? 'is-active' : ''}`}
+              meta={meta}
+              state={active ? 'actif_paye_avec_taches' : 'disponible_sans_upgrade'}
+              activeTaskCount={active ? totalTasks : undefined}
+              totalTaskCount={totalTasks}
               onClick={() => onToggle(meta.key, !active)}
-              aria-pressed={active}
-            >
-              <span className="ob-trade-icon">{meta.icon}</span>
-              <span className="ob-trade-text">
-                <span className="ob-trade-label">{meta.label}</span>
-                <span className="ob-trade-tasks">{count} tâches</span>
-              </span>
-              <span className="ob-trade-check" aria-hidden>
-                {active ? (
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20 6L9 17l-5-5" />
-                  </svg>
-                ) : null}
-              </span>
-            </button>
+            />
           );
         })}
       </div>

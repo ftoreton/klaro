@@ -1,6 +1,8 @@
 'use client';
 
 import { useOptimistic, useTransition } from 'react';
+import Link from 'next/link';
+import { Settings2 } from 'lucide-react';
 import type { ProjectTaskRow } from '@/lib/database.types';
 import type { EstimationResult } from '@/lib/estimation/types';
 import { toggleTaskStatus } from '@/app/onboarding/actions';
@@ -111,6 +113,14 @@ export default function DashboardClient({ project, tasks, tradeMeta, estimation 
 
       {/* Estimation chantier */}
       <EstimationCard estimation={estimation} />
+
+      {/* Action : modifier le chantier */}
+      <div className="db-actions">
+        <Link href="/chantier/modifier" className="db-action-btn">
+          <Settings2 size={14} />
+          Modifier mon chantier
+        </Link>
+      </div>
 
       {/* Blocking banner */}
       {blockingTask && (

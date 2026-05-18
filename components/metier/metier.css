@@ -64,6 +64,32 @@
 /* ── Header ─────────────────────────────────────── */
 .mt-header { margin-bottom: 28px; }
 
+.mt-header-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mt-header-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--mt-surface, #fff);
+  border: 1px solid var(--mt-border, #e6e4dd);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mt-fg, #1a1a17);
+  text-decoration: none;
+  transition: border-color 120ms, color 120ms;
+}
+
+.mt-header-btn:hover {
+  border-color: var(--mt-accent, #00b89c);
+  color: var(--mt-accent, #00b89c);
+}
+
 .mt-back {
   display: inline-flex;
   align-items: center;
