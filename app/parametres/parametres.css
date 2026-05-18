@@ -1,0 +1,191 @@
+/* ============================================================
+   Paramètres — préfixe pa-*
+   ============================================================ */
+
+.pa {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-bottom: 80px;
+}
+
+.pa-head { display: flex; flex-direction: column; gap: 6px; }
+
+.pa-h1 {
+  font-family: var(--font-display), 'Plus Jakarta Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.pa-sub {
+  color: var(--fg-muted, #6b6a63);
+  font-size: 15px;
+  margin: 0;
+}
+
+/* Bandeau de bienvenue (?onboarding=true) */
+.pa-welcome {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  background: color-mix(in srgb, var(--accent, #00b89c) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent, #00b89c) 30%, transparent);
+  border-radius: 14px;
+  font-size: 14px;
+}
+
+.pa-welcome strong {
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+
+/* Section */
+.pa-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.pa-section-head { display: flex; flex-direction: column; gap: 4px; }
+
+.pa-h2 {
+  font-family: var(--font-display), 'Plus Jakarta Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.pa-section-sub { color: var(--fg-muted, #6b6a63); font-size: 14px; margin: 0; }
+
+/* Encart informatif */
+.pa-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  background: var(--surface-2, #f6f4ed);
+  border: 1px solid var(--border, #e6e4dd);
+  border-radius: 12px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--fg-muted, #4d4c47);
+}
+
+.pa-info svg { flex-shrink: 0; margin-top: 2px; color: var(--accent, #00b89c); }
+
+/* Cards de sélection */
+.pa-niveau-form { display: flex; flex-direction: column; gap: 18px; }
+
+.pa-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .pa-cards { grid-template-columns: 1fr; }
+}
+
+.pa-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 18px 16px;
+  background: var(--surface, #fff);
+  border: 1.5px solid var(--border, #e6e4dd);
+  border-radius: 14px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: border-color 120ms, background 120ms;
+}
+
+.pa-card:hover { border-color: var(--fg, #1a1a17); }
+
+.pa-card.is-active {
+  border-color: var(--accent, #00b89c);
+  background: color-mix(in srgb, var(--accent, #00b89c) 7%, var(--surface, #fff));
+}
+
+.pa-card-titre {
+  font-family: var(--font-display), 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+
+.pa-card-desc { font-size: 13px; color: var(--fg-muted, #6b6a63); line-height: 1.4; }
+
+.pa-card-current {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  background: var(--accent, #00b89c);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Feedback */
+.pa-error {
+  padding: 10px 14px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  color: #991b1b;
+  font-size: 13.5px;
+}
+
+.pa-saved {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: color-mix(in srgb, var(--accent, #00b89c) 12%, transparent);
+  border-radius: 999px;
+  color: var(--accent, #00b89c);
+  font-size: 13px;
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+/* Actions */
+.pa-actions { display: flex; justify-content: flex-end; gap: 12px; }
+
+.pa-btn {
+  padding: 12px 22px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 120ms, transform 120ms;
+}
+
+.pa-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pa-btn-primary {
+  background: var(--fg, #1a1a17);
+  color: #fff;
+}
+
+.pa-btn-primary:not(:disabled):hover { transform: translateY(-1px); }

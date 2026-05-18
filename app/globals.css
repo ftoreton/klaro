@@ -234,7 +234,55 @@ button {
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: filter 120ms;
 }
+
+.kb-top .av:hover { filter: brightness(0.95); }
+
+/* ── User menu (dropdown depuis l'avatar) ───────── */
+.user-menu { position: relative; display: inline-block; }
+
+.user-menu-pop {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 200px;
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, #e6e4dd);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 100;
+}
+
+.user-menu-form { margin: 0; padding: 0; }
+
+.user-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13.5px;
+  color: var(--fg);
+  text-decoration: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.user-menu-item:hover { background: var(--surface-2, #f6f4ed); }
+
+.user-menu-item svg { color: var(--fg-muted); flex-shrink: 0; }
 
 /* ── Main scrollable area ──────────────────────── */
 .kb-main {

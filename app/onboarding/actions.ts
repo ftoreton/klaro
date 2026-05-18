@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import { TRADES_META, type ProjectType, type TradeKey } from '@/data/onboarding/trades';
 import { loadTrade } from '@/lib/onboarding/loader';
+import { isNiveauUtilisateur, type NiveauUtilisateur } from '@/lib/niveau/types';
 
 export type CreateProjectInput = {
   name: string;
@@ -13,6 +14,7 @@ export type CreateProjectInput = {
   budget_range: string | null;
   start_date: string | null; // YYYY-MM-DD
   duration_range: string | null;
+  niveau: NiveauUtilisateur;
   trades: TradeKey[];
   // {tradeKey: [taskId, ...]} — IDs sources des tâches sélectionnées.
   selected_task_ids: Record<TradeKey, string[]>;
@@ -29,6 +31,7 @@ const VALID_TYPES = new Set<ProjectType>([
 export async function createProjectFromOnboarding(input: CreateProjectInput) {
   if (!input.name?.trim()) throw new Error('Nom de chantier requis.');
   if (!VALID_TYPES.has(input.type)) throw new Error('Type de projet invalide.');
+  if (!isNiveauUtilisateur(input.niveau)) throw new Error('Niveau utilisateur requis.');
   const trades = input.trades.filter((k) => VALID_TRADES.has(k));
   if (trades.length === 0) throw new Error('Au moins un corps de métier requis.');
 
@@ -37,6 +40,17 @@ export async function createProjectFromOnboarding(input: CreateProjectInput) {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) throw new Error('Non connecté.');
+
+  // 0. UPSERT du niveau utilisateur (avant le projet, pour qu'il existe
+  // dès que la vue métier sera consultée). Idempotent : si l'user repasse
+  // l'onboarding, on écrase la valeur précédente.
+  const { error: profileError } = await supabase
+    .from('user_profile')
+    .upsert(
+      { user_id: user.id, niveau: input.niveau },
+      { onConflict: 'user_id' },
+    );
+  if (profileError) throw new Error(profileError.message);
 
   // 1. INSERT projet
   const { data: project, error: projectError } = await supabase

@@ -4,6 +4,7 @@ import {
   getCurrentUser,
   getProjectTasks,
 } from '@/lib/supabase/queries';
+import { getCurrentNiveau } from '@/lib/niveau/queries';
 import { TRADE_LABEL_BY_KEY } from '@/data/onboarding/trades';
 import { loadTrade } from '@/lib/onboarding/loader';
 import type { TradeKey } from '@/data/onboarding/trades';
@@ -28,6 +29,12 @@ export default async function DashboardPage() {
 
   const project = await getCurrentProject();
   if (!project) redirect('/onboarding');
+
+  // Comptes legacy : un projet existe mais aucun niveau n'a été déclaré
+  // (signup antérieur à la feature). On invite à le renseigner avant
+  // d'accéder au dashboard — gentle nudge, pas un blocage strict ailleurs.
+  const niveau = await getCurrentNiveau();
+  if (!niveau) redirect('/parametres?onboarding=true');
 
   const tasks = await getProjectTasks(project.id);
 

@@ -9,7 +9,7 @@ type Props = {
   onToggle: (key: TradeKey, on: boolean) => void;
 };
 
-export default function Step3Trades({ trades, selected, onToggle }: Props) {
+export default function Step4Trades({ trades, selected, onToggle }: Props) {
   return (
     <section className="ob-step">
       <h1 className="ob-h1">Les corps de métier</h1>

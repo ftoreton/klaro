@@ -1,4 +1,5 @@
 import Icon from '@/components/ui/Icon';
+import UserMenu from './UserMenu';
 
 interface TopbarProps {
   title: string;
@@ -12,7 +13,7 @@ export default function Topbar({ title, project }: TopbarProps) {
       <span className="title">{title}</span>
       <span className="grow" />
       <Icon name="bell" size={16} color="var(--fg-muted)" />
-      <div className="av">M</div>
+      <UserMenu />
     </div>
   );
 }

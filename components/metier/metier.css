@@ -109,53 +109,67 @@
   .mt-header-row { flex-direction: column; gap: 16px; }
 }
 
-/* ── Mode selector ──────────────────────────────── */
-.mt-modes {
+/* ── Niveau badge (read-only) ─────────────────────
+   Affiche le niveau utilisateur déclaré à l'onboarding.
+   Modification possible uniquement depuis /parametres. */
+.mt-niveau-badge {
   display: inline-flex;
+  align-items: center;
+  gap: 12px;
   background: var(--mt-surface);
   border: 1px solid var(--mt-border);
   border-radius: var(--mt-r-md);
-  padding: 4px;
-  gap: 2px;
+  padding: 8px 12px;
   flex-shrink: 0;
 }
 
-.mt-mode {
-  padding: 8px 14px;
-  border: none;
-  background: transparent;
-  border-radius: var(--mt-r-sm);
-  cursor: pointer;
-  font-family: inherit;
+.mt-niveau-badge-text {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1px;
-  transition: all 150ms;
-  text-align: left;
+  line-height: 1.25;
 }
 
-.mt-mode:hover { background: var(--mt-bg-2); }
-
-.mt-mode.is-active {
-  background: var(--mt-fg);
-  color: #fff;
+.mt-niveau-badge-label {
+  font-size: 10px;
+  color: var(--mt-fg-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-.mt-mode-label {
-  font-size: 12px;
-  font-weight: 700;
+.mt-niveau-badge-value {
   font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
   letter-spacing: -0.01em;
 }
 
-.mt-mode-sub {
-  font-size: 10px;
+.mt-niveau-badge-mode {
+  font-size: 11px;
   color: var(--mt-fg-muted);
   font-weight: 500;
 }
 
-.mt-mode.is-active .mt-mode-sub { color: rgba(255, 255, 255, 0.65); }
+.mt-niveau-badge-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  border-radius: var(--mt-r-sm);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--mt-fg-muted);
+  background: var(--mt-bg-2);
+  text-decoration: none;
+  transition: all 150ms;
+}
+
+.mt-niveau-badge-link:hover {
+  color: var(--mt-fg);
+  background: var(--mt-border);
+}
 
 /* ── Progress bar ───────────────────────────────── */
 .mt-progress {

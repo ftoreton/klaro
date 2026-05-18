@@ -3,6 +3,14 @@
 // si on installe la CLI plus tard.
 
 import type { ProjectType, TradeKey } from '@/data/onboarding/trades';
+import type { NiveauUtilisateur } from '@/lib/niveau/types';
+
+export type UserProfileRow = {
+  user_id: string;
+  niveau: NiveauUtilisateur;
+  created_at: string;
+  updated_at: string;
+};
 
 export type ProjectRow = {
   id: string;
