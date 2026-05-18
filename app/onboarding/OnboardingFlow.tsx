@@ -8,11 +8,13 @@ import {
 } from '@/data/onboarding/trades';
 import type { LoadedTrade } from '@/lib/onboarding/loader';
 import type { NiveauUtilisateur } from '@/lib/niveau/types';
-import Step1Project from './steps/Step1Project';
-import Step2Specs from './steps/Step2Specs';
-import Step3Niveau from './steps/Step3Niveau';
-import Step4Trades from './steps/Step4Trades';
-import Step5Tasks from './steps/Step5Tasks';
+import type { Rythme } from '@/lib/estimation/types';
+import StepProjet from './steps/StepProjet';
+import StepSpecs from './steps/StepSpecs';
+import StepNiveau from './steps/StepNiveau';
+import StepRythme from './steps/StepRythme';
+import StepTrades from './steps/StepTrades';
+import StepTasks from './steps/StepTasks';
 import { createProjectFromOnboarding } from './actions';
 import './onboarding.css';
 
@@ -24,6 +26,7 @@ export type OnboardingState = {
   start_date: string | null;
   duration_range: string | null;
   niveau: NiveauUtilisateur | null;
+  rythme: Rythme | null;
   trades: TradeKey[];
   // Sélection par ID de tâche source (stable). `tradeKey: [taskId, ...]`.
   selectedTaskIds: Record<TradeKey, string[]>;
@@ -37,11 +40,32 @@ const EMPTY_STATE: OnboardingState = {
   start_date: null,
   duration_range: null,
   niveau: null,
+  rythme: null,
   trades: [],
   selectedTaskIds: {} as Record<TradeKey, string[]>,
 };
 
-const TOTAL_STEPS = 5;
+// ─────────────────────────────────────────────────────
+// Ordre canonique des étapes.
+// Pour réordonner ou insérer une étape : modifier ce tableau, rien d'autre.
+// ─────────────────────────────────────────────────────
+type StepKey = 'projet' | 'specs' | 'niveau' | 'rythme' | 'trades' | 'tasks';
+
+type StepDef = {
+  key: StepKey;
+  canNext: (state: OnboardingState, helpers: { totalTasks: number }) => boolean;
+};
+
+const STEPS: readonly StepDef[] = [
+  { key: 'projet', canNext: (s) => s.name.trim().length > 0 && !!s.type },
+  { key: 'specs', canNext: () => true },
+  { key: 'niveau', canNext: (s) => !!s.niveau },
+  { key: 'rythme', canNext: (s) => !!s.rythme },
+  { key: 'trades', canNext: (s) => s.trades.length > 0 },
+  { key: 'tasks', canNext: (_, h) => h.totalTasks > 0 },
+];
+
+const TOTAL_STEPS = STEPS.length;
 
 function allTaskIdsOfTrade(loaded: LoadedTrade): string[] {
   const out: string[] = [];
@@ -58,7 +82,7 @@ export default function OnboardingFlow({
   firstName: string | null;
   trades: Record<TradeKey, LoadedTrade>;
 }) {
-  const [step, setStep] = useState(1);
+  const [stepIndex, setStepIndex] = useState(0);
   const [state, setState] = useState<OnboardingState>(EMPTY_STATE);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
@@ -114,14 +138,9 @@ export default function OnboardingFlow({
     [state.selectedTaskIds],
   );
 
-  const canNext = (() => {
-    if (step === 1) return state.name.trim().length > 0 && !!state.type;
-    if (step === 2) return true;
-    if (step === 3) return !!state.niveau;
-    if (step === 4) return state.trades.length > 0;
-    if (step === 5) return totalTasksSelected > 0;
-    return false;
-  })();
+  const currentStep = STEPS[stepIndex];
+  const canNext = currentStep.canNext(state, { totalTasks: totalTasksSelected });
+  const isLastStep = stepIndex === TOTAL_STEPS - 1;
 
   const submit = () => {
     setError(null);
@@ -135,11 +154,12 @@ export default function OnboardingFlow({
           start_date: state.start_date,
           duration_range: state.duration_range,
           niveau: state.niveau!,
+          rythme: state.rythme!,
           trades: state.trades,
           selected_task_ids: state.selectedTaskIds,
         });
       } catch (e) {
-        setError(e instanceof Error ? e.message : 'Création échouée. Réessayez.');
+        setError(e instanceof Error ? e.message : 'Création échouée. Réessaye.');
       }
     });
   };
@@ -151,16 +171,19 @@ export default function OnboardingFlow({
           <span className="ob-logo-mark">K</span>
           <span className="ob-logo-name">Klaro</span>
         </div>
-        <div className="ob-step-info">Étape {step} / {TOTAL_STEPS}</div>
+        <div className="ob-step-info">Étape {stepIndex + 1} / {TOTAL_STEPS}</div>
       </header>
 
       <div className="ob-progress" aria-hidden>
-        <div className="ob-progress-fill" style={{ width: `${(step / TOTAL_STEPS) * 100}%` }} />
+        <div
+          className="ob-progress-fill"
+          style={{ width: `${((stepIndex + 1) / TOTAL_STEPS) * 100}%` }}
+        />
       </div>
 
       <main className="ob-main">
-        {step === 1 && (
-          <Step1Project
+        {currentStep.key === 'projet' && (
+          <StepProjet
             firstName={firstName}
             name={state.name}
             type={state.type}
@@ -168,8 +191,8 @@ export default function OnboardingFlow({
             onType={onPickType}
           />
         )}
-        {step === 2 && (
-          <Step2Specs
+        {currentStep.key === 'specs' && (
+          <StepSpecs
             surface={state.surface}
             budgetRange={state.budget_range}
             startDate={state.start_date}
@@ -180,21 +203,27 @@ export default function OnboardingFlow({
             onDuration={(duration_range) => update({ duration_range })}
           />
         )}
-        {step === 3 && (
-          <Step3Niveau
+        {currentStep.key === 'niveau' && (
+          <StepNiveau
             niveau={state.niveau}
             onPick={(niveau) => update({ niveau })}
           />
         )}
-        {step === 4 && (
-          <Step4Trades
+        {currentStep.key === 'rythme' && (
+          <StepRythme
+            rythme={state.rythme}
+            onPick={(rythme) => update({ rythme })}
+          />
+        )}
+        {currentStep.key === 'trades' && (
+          <StepTrades
             trades={trades}
             selected={state.trades}
             onToggle={onToggleTrade}
           />
         )}
-        {step === 5 && (
-          <Step5Tasks
+        {currentStep.key === 'tasks' && (
+          <StepTasks
             trades={trades}
             tradeKeys={state.trades}
             selectedTaskIds={state.selectedTaskIds}
@@ -208,23 +237,23 @@ export default function OnboardingFlow({
       </main>
 
       <footer className="ob-footer">
-        {step > 1 ? (
+        {stepIndex > 0 ? (
           <button
             type="button"
             className="ob-btn ob-btn-ghost"
-            onClick={() => setStep((s) => Math.max(1, s - 1))}
+            onClick={() => setStepIndex((i) => Math.max(0, i - 1))}
             disabled={pending}
           >
             Retour
           </button>
         ) : <span />}
 
-        {step < TOTAL_STEPS ? (
+        {!isLastStep ? (
           <button
             type="button"
             className="ob-btn ob-btn-primary"
             disabled={!canNext}
-            onClick={() => setStep((s) => Math.min(TOTAL_STEPS, s + 1))}
+            onClick={() => setStepIndex((i) => Math.min(TOTAL_STEPS - 1, i + 1))}
           >
             Continuer
           </button>

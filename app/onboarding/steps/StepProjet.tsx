@@ -10,7 +10,7 @@ type Props = {
   onType: (t: ProjectType) => void;
 };
 
-export default function Step1Project({ firstName, name, type, onName, onType }: Props) {
+export default function StepProjet({ firstName, name, type, onName, onType }: Props) {
   return (
     <section className="ob-step">
       <h1 className="ob-h1">

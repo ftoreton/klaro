@@ -7,7 +7,7 @@ type Props = {
   onPick: (n: NiveauUtilisateur) => void;
 };
 
-export default function Step3Niveau({ niveau, onPick }: Props) {
+export default function StepNiveau({ niveau, onPick }: Props) {
   return (
     <section className="ob-step">
       <h1 className="ob-h1">Ton niveau en bricolage</h1>

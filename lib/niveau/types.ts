@@ -39,7 +39,7 @@ export const NIVEAU_TO_MODE: Record<NiveauUtilisateur, ModeUtilisateur> = {
   artisan: 'expert',
 };
 
-// Libellés produit — utilisés dans Step3Niveau et /parametres.
+// Libellés produit — utilisés dans StepNiveau et /parametres.
 export const NIVEAU_LABEL: Record<NiveauUtilisateur, { titre: string; description: string }> = {
   bricoleur_du_dimanche: {
     titre: 'Bricoleur du dimanche',

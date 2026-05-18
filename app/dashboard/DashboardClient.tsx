@@ -2,7 +2,9 @@
 
 import { useOptimistic, useTransition } from 'react';
 import type { ProjectTaskRow } from '@/lib/database.types';
+import type { EstimationResult } from '@/lib/estimation/types';
 import { toggleTaskStatus } from '@/app/onboarding/actions';
+import EstimationCard from '@/components/dashboard/EstimationCard';
 
 type TradeMeta = {
   key: string;
@@ -18,6 +20,7 @@ type Props = {
   score: number;
   tone: 'success' | 'warn' | 'danger';
   stats: { done: number; total: number; blocking: number };
+  estimation: EstimationResult;
 };
 
 const TONE_LABEL: Record<Props['tone'], string> = {
@@ -26,7 +29,7 @@ const TONE_LABEL: Record<Props['tone'], string> = {
   danger: 'En tension',
 };
 
-export default function DashboardClient({ project, tasks, tradeMeta }: Props) {
+export default function DashboardClient({ project, tasks, tradeMeta, estimation }: Props) {
   const [optimisticTasks, applyOptimistic] = useOptimistic(
     tasks,
     (state: ProjectTaskRow[], action: { id: string; status: ProjectTaskRow['status'] }) =>
@@ -105,6 +108,9 @@ export default function DashboardClient({ project, tasks, tradeMeta }: Props) {
           </p>
         </div>
       </div>
+
+      {/* Estimation chantier */}
+      <EstimationCard estimation={estimation} />
 
       {/* Blocking banner */}
       {blockingTask && (

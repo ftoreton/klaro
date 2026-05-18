@@ -8,6 +8,7 @@ const PROTECTED_PREFIXES = [
   '/onboarding',
   '/alertes',
   '/taches',
+  '/estimation',
   '/calendrier',
   '/budget',
   '/devis',

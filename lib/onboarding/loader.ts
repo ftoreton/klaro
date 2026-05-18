@@ -29,6 +29,12 @@ export type LoadedTask = {
   phaseKey: string;
   isBlocking: boolean;
   photoRequired: boolean;
+  // Champs consommés par le module Estimation (lib/estimation/calculate.ts).
+  // Optionnels : seul électricité est rempli en V1, les autres métiers
+  // utiliseront une valeur par défaut + le palier de confiance dégradé.
+  dureeReferenceMinutes?: number;
+  materiauSechage?: string;
+  proRecommended?: boolean;
 };
 
 export type LoadedPhase = {
@@ -55,6 +61,8 @@ type RawTask = {
   pro_recommended?: boolean;
   blocking_justification_required?: unknown;
   photo_required_before_validation?: boolean;
+  duree_reference_minutes?: number;
+  materiau_sechage?: string;
 };
 
 type RawPhase = {
@@ -133,7 +141,13 @@ function applyFilter(phases: RawPhase[], filter?: Source['filter']): RawPhase[] 
 
 export function loadTrade(key: TradeKey): LoadedTrade {
   const meta = TRADE_LABEL_BY_KEY[key];
-  const phases: LoadedPhase[] = [];
+  // Déduplication par phase.id : un trade peut combiner plusieurs JSON sources
+  // (cf. SOURCES) et deux sources peuvent partager un même phase.id (ex.
+  // revetements : sol-v3 + peinture-v3 ont tous deux 'preparation'). On merge
+  // leurs tâches dans une seule entrée pour éviter les clés React dupliquées
+  // et garder une UX cohérente (une section par concept).
+  const phasesById = new Map<string, LoadedPhase>();
+  const phaseOrder: string[] = [];
   let total = 0;
 
   for (const source of SOURCES[key] ?? []) {
@@ -145,13 +159,26 @@ export function loadTrade(key: TradeKey): LoadedTrade {
         phaseKey: p.id,
         isBlocking: deriveBlocking(t),
         photoRequired: !!t.photo_required_before_validation,
+        dureeReferenceMinutes: t.duree_reference_minutes,
+        materiauSechage: t.materiau_sechage,
+        proRecommended: t.pro_recommended,
       }));
       if (tasks.length === 0) continue;
       total += tasks.length;
-      phases.push({ id: p.id, label: p.label, tasks });
+
+      const existing = phasesById.get(p.id);
+      if (existing) {
+        // Phase déjà présente (autre source) → concaténer les tâches.
+        // Label conservé du premier passage (les labels sont identiques en pratique).
+        existing.tasks.push(...tasks);
+      } else {
+        phasesById.set(p.id, { id: p.id, label: p.label, tasks });
+        phaseOrder.push(p.id);
+      }
     }
   }
 
+  const phases = phaseOrder.map((id) => phasesById.get(id)!);
   return { key, label: meta.label, icon: meta.icon, phases, totalTasks: total };
 }
 
