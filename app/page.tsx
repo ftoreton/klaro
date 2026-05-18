@@ -591,6 +591,7 @@ export default function HomePage() {
       <footer className="kl-foot">
         <span>© {new Date().getFullYear()} Klaro — Voir clair sur son chantier.</span>
         <div className="kl-foot-links">
+          <Link href="/blog">Blog</Link>
           <Link href="/offres">Offres</Link>
           <Link href="/faq">FAQ</Link>
           <Link href="/mentions-legales">Mentions légales</Link>

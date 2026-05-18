@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1a17"/>
+      <stop offset="1" stop-color="#00b89c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g)"/>
+  <text x="800" y="450" font-family="Helvetica,Arial,sans-serif" font-size="64" font-weight="700" fill="white" text-anchor="middle" dominant-baseline="middle">Image placeholder Klaro</text>
+  <text x="800" y="530" font-family="Helvetica,Arial,sans-serif" font-size="28" fill="white" text-anchor="middle" opacity="0.7">À remplacer dans /public/blog-images/</text>
+</svg>

@@ -24,7 +24,10 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
+import { SITE_URL } from '@/lib/site-config';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: 'Klaro — Voir clair sur son chantier',
   description: 'Klaro te dit quoi faire, quand le faire, et t’évite les erreurs.',
 };
